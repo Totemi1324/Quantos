@@ -14,6 +14,7 @@
 <a href="#">
   <img alt="lines of code" src="https://img.shields.io/tokei/lines/github/Totemi1324/Quantos?style=for-the-badge" />
 </a>
+![](https://tokei.rs/b1/github/Totemi1324/Quantos)
 <a href="#">
   <img alt="code size" src="https://img.shields.io/github/languages/code-size/Totemi1324/Quantos?style=for-the-badge" />
 </a>
