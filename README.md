@@ -72,4 +72,10 @@ An Observatory debugger and profiler on iPhone X is available
 at: http://127.0.0.1:50976/Swm0bjIe0ks=/
 ```
 
-Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your security token in the dialogue to connect the app.
+Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your token in the dialogue to connect the app.
+
+## Supporters
+
+<a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
+  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="/assets/github/supporter_juniq.svg" />
+</a>
