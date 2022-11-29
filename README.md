@@ -21,19 +21,19 @@
 Built with:
 
 
-<a href="#">
+<a href="https://flutter.dev/">
   <img alt="Flutter" src="./assets/github/flutter.svg" width="50" />
 </a>
-<a href="#">
+<a href="https://www.figma.com/">
   <img alt="Figma" src="./assets/github/figma.svg" width="50" />
 </a>
-<a href="#">
+<a href="https://rive.app/">
   <img alt="Rive" src="./assets/github/rive.svg" width="50" />
 </a>
-<a href="#">
+<a href="https://firebase.google.com/">
   <img alt="Firebase" src="./assets/github/firebase.svg" width="50" />
 </a>
-<a href="#">
+<a href="https://www.dwavesys.com/">
   <img alt="DWave" src="./assets/github/dwave.svg" width="50" />
 </a>
 
