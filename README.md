@@ -50,3 +50,26 @@ Project website: [Project site and blog](https://www.example.com)
     <img alt="Download for Linux" src="./assets/github/linux.png" height="40">
   </a>
 </div>
+
+Follow the steps below to run Quantos on your machine locally (requires Flutter installation):
+
+```
+# Clone repo
+$ git clone git@github.com:Totemi1324/Quantos
+
+# Get packages
+$ flutter pub get
+
+# Start Dart DevTools:
+$ dart devtools
+
+# Run the app in debug mode
+# Make sure to select your device (browser/emulator) before executing!
+$ flutter run
+
+# You should get an output with a security token, copy it!
+An Observatory debugger and profiler on iPhone X is available
+at: http://127.0.0.1:50976/Swm0bjIe0ks=/
+```
+
+Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your security token in the dialogue to connect the app.
