@@ -31,21 +31,22 @@ Project website: [Project site and blog](https://www.example.com)
 
 <div align="center">
   <a href="https://play.google.com/store/apps/details?id=de.xp4u1.discite">
-    <img alt="Get it on Google Play" src="./assets/github/playstore.png" width="140">
+    <img alt="Get it on Google Play" src="./assets/github/playstore.png" height="60">
   </a>
   <a href="https://apps.apple.com/app/id1566607319">
-    <img alt="Download on the app store" src="./assets/github/appstore.png" width="140">
+    <img alt="Download on the app store" src="./assets/github/appstore.png" height="60">
   </a>
   <a href="https://app.quantos.com">
-    <img alt="Launch PWA" src="./assets/github/pwa.png" width="140">
+    <img alt="Launch PWA" src="./assets/github/pwa.png" height="60">
   </a>
+  <br>
   <a href="https://apps.microsoft.com/store/detail/dolby-access/9N0866FS04W8">
-    <img alt="Get it from the Windows store" src="./assets/github/microsoft.png" width="140">
+    <img alt="Get it from the Windows store" src="./assets/github/microsoft.png" height="60">
   </a>
   <a href="https://apps.apple.com/app/id1566607319">
-    <img alt="Download on the Mac app store" src="./assets/github/mac.png" width="140">
+    <img alt="Download on the Mac app store" src="./assets/github/mac.png" height="60">
   </a>
   <a href="https://example.com/">
-    <img alt="Download for Linux" src="./assets/github/linux.png" width="140">
+    <img alt="Download for Linux" src="./assets/github/linux.png" height="60">
   </a>
 </div>
