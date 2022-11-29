@@ -18,6 +18,10 @@
   <img alt="issues" src="https://img.shields.io/github/issues/Totemi1324/Quantos?label=Issues&style=for-the-badge" />
 </a>
 
+Built with:
+
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Flutter</title><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/></svg>
+
 ## What is QUANTOS?
 
 Progress is reaching a fascinating speed in today's world due to ever more powerful computers in development and research. Formerly buzzword technologies, such as AI and machine learning, are arriving in the middle of the working world - and the "next big thing" is already on the horizon: "Quantum computing" is the buzzword of the future, which has the potential to permanently change many work processes. Accordingly, it is important to familiarize yourself with it as early as possible. Too complicated? It doesn't have to be!
