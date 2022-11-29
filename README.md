@@ -21,19 +21,19 @@
 Built with:
 
 
-<a href="#" style="margin-right: 50px">
+<a href="#">
   <img alt="Flutter" src="./assets/github/flutter.svg" width="50" />
 </a>
-<a href="#" style="margin-right: 50px">
+<a href="#">
   <img alt="Figma" src="./assets/github/figma.svg" width="50" />
 </a>
-<a href="#" style="margin-right: 50px">
+<a href="#">
   <img alt="Rive" src="./assets/github/rive.svg" width="50" />
 </a>
-<a href="#" style="margin-right: 50px">
+<a href="#">
   <img alt="Firebase" src="./assets/github/firebase.svg" width="50" />
 </a>
-<a href="#" style="margin-right: 50px">
+<a href="#">
   <img alt="DWave" src="./assets/github/dwave.svg" width="50" />
 </a>
 
