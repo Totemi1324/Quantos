@@ -23,7 +23,7 @@ Built with:
 <table>
   <tr>
     <td><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></td>
-    <td><a href="https://flutter.dev/"></a>Flutter</td>
+    <td><a href="https://flutter.dev/">Flutter</a></td>
   </tr>
 </table>
 <!-- | <img alt="Flutter" src="./assets/github/flutter.svg" width="50" /> | [Flutter](https://flutter.dev/) |
