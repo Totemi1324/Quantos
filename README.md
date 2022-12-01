@@ -20,16 +20,23 @@
 
 Built with:
 
-<table>
-  <tr>
-    <td><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></td>
-    <td><a href="https://flutter.dev/">Flutter</a></td>
-  </tr>
-</table>
-<!-- | <img alt="Flutter" src="./assets/github/flutter.svg" width="50" /> | [Flutter](https://flutter.dev/) |
-| <img alt="Rive" src="./assets/github/rive.svg" width="50" /> | [Rive](https://rive.app/) |
-| <img alt="Supabase" src="./assets/github/supabase.svg" width="50" /> | [Supabase](https://supabase.com/) |
-| <img alt="DWave" src="./assets/github/dwave.svg" width="50" /> | [DWave](https://www.dwavesys.com/) | -->
+<div align="center">
+<div align="center">
+<div align="center">
+<code>
+<a href="https://flutter.dev/"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
+<a href="https://dart.dev/"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
+<a href="https://rive.app/"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
+</code> <br>
+</div>
+<code>
+<a href="https://www.dwavesys.com/"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
+</code> <br>
+</div>
+<code>
+<a href="https://firebase.google.com/"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
+</code> <br>
+</div>
 
 ## What is QUANTOS?
 
