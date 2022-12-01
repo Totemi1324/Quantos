@@ -20,10 +20,16 @@
 
 Built with:
 
-| <img alt="Flutter" src="./assets/github/flutter.svg" width="50" /> | [Flutter](https://flutter.dev/) |
+<table>
+  <tr>
+    <td><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></td>
+    <td><a href="https://flutter.dev/"></a>Flutter</td>
+  </tr>
+</table>
+<!-- | <img alt="Flutter" src="./assets/github/flutter.svg" width="50" /> | [Flutter](https://flutter.dev/) |
 | <img alt="Rive" src="./assets/github/rive.svg" width="50" /> | [Rive](https://rive.app/) |
 | <img alt="Supabase" src="./assets/github/supabase.svg" width="50" /> | [Supabase](https://supabase.com/) |
-| <img alt="DWave" src="./assets/github/dwave.svg" width="50" /> | [DWave](https://www.dwavesys.com/) |
+| <img alt="DWave" src="./assets/github/dwave.svg" width="50" /> | [DWave](https://www.dwavesys.com/) | -->
 
 ## What is QUANTOS?
 
