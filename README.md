@@ -20,22 +20,23 @@
 
 Built with:
 
-
-<a href="https://flutter.dev/">
-  <img alt="Flutter" src="./assets/github/flutter.svg" width="50" />
-</a>
-<a href="https://www.figma.com/">
-  <img alt="Figma" src="./assets/github/figma.svg" width="50" />
-</a>
-<a href="https://rive.app/">
-  <img alt="Rive" src="./assets/github/rive.svg" width="50" />
-</a>
-<a href="https://firebase.google.com/">
-  <img alt="Firebase" src="./assets/github/firebase.svg" width="50" />
-</a>
-<a href="https://www.dwavesys.com/">
-  <img alt="DWave" src="./assets/github/dwave.svg" width="50" />
-</a>
+<div align="center">
+<div align="center">
+<div align="center">
+<code>
+<a href="https://flutter.dev/"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
+<a href="https://dart.dev/"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
+<a href="https://rive.app/"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
+</code> <br>
+</div>
+<code>
+<a href="https://www.dwavesys.com/"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
+</code> <br>
+</div>
+<code>
+<a href="https://firebase.google.com/"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
+</code> <br>
+</div>
 
 ## What is QUANTOS?
 
@@ -96,7 +97,7 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 ## Supporters
 
 <a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
-  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="/assets/github/supporter_juniq.png" width="500"/>
+  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="/assets/github/support_juniq.png" width="500"/>
 </a>
 
 ## Screenshots
