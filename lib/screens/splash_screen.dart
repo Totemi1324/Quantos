@@ -33,9 +33,19 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _toNextPage(BuildContext buildContext) {
-    Navigator.of(buildContext).pushReplacementNamed(
-      AuthHomeScreen.routeName,
-    );
+    Navigator.of(buildContext).pushReplacement(PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          const AuthHomeScreen(),
+      transitionDuration: const Duration(milliseconds: 500),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var animationCurve =
+            CurvedAnimation(parent: animation, curve: Curves.ease);
+        return FadeTransition(
+          opacity: animationCurve,
+          child: child,
+        );
+      },
+    ));
   }
 
   @override
