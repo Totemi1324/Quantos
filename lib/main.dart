@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
+import 'screens/auth/auth_home_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -91,6 +92,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
+        AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),
       },
     );
   }
