@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 import 'base/flat.dart';
 
@@ -11,9 +12,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flat(
       body: Center(
-        child: Text(
-          "Splash screen",
-          style: Theme.of(context).textTheme.headlineLarge,
+        child: RiveAnimation.asset(
+          "assets/animations/quantos_logo_intro.riv",
+          fit: BoxFit.fitWidth,
         ),
       ),
     );
