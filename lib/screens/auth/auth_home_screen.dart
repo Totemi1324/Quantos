@@ -30,9 +30,8 @@ class AuthHomeScreen extends StatelessWidget {
         Flexible(
           flex: 5,
           fit: FlexFit.loose,
-          child: Button(
+          child: Button.primary(
             buttonLabel,
-            type: ButtonType.primary,
             onPressed: () {},
           ),
         ),

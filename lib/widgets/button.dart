@@ -15,6 +15,29 @@ class Button extends StatelessWidget {
   const Button(this.label,
       {required this.type, required this.onPressed, this.icon, super.key});
 
+  factory Button.primary(String label, {required VoidCallback onPressed}) =>
+      Button(
+        label,
+        type: ButtonType.primary,
+        onPressed: onPressed,
+      );
+
+  factory Button.secondary(String label, {required VoidCallback onPressed}) =>
+      Button(
+        label,
+        type: ButtonType.secondary,
+        onPressed: onPressed,
+      );
+
+  factory Button.icon(String label,
+          {required VoidCallback onPressed, required IconData icon}) =>
+      Button(
+        label,
+        type: ButtonType.primary,
+        onPressed: onPressed,
+        icon: icon,
+      );
+
   @override
   Widget build(BuildContext context) {
     final BoxDecoration decorationFirstLayer = BoxDecoration(
@@ -48,6 +71,14 @@ class Button extends StatelessWidget {
       ),
     );
 
+    final AutoSizeText labelText = AutoSizeText(
+      label,
+      textAlign: TextAlign.center,
+      minFontSize: 14,
+      maxLines: 2,
+      overflow: TextOverflow.fade,
+    );
+
     return SizedBox(
       width: 140,
       height: 60,
@@ -77,13 +108,19 @@ class Button extends StatelessWidget {
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 onPressed: onPressed,
-                child: AutoSizeText(
-                  label,
-                  textAlign: TextAlign.center,
-                  minFontSize: 14,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                ),
+                child: icon == null
+                    ? labelText
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(
+                            icon,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          Flexible(child: labelText),
+                        ],
+                      ),
               ),
             )
           ],
