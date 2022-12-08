@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     colorScheme: const ColorScheme(
       primary: Color(0xFF2EB6E8),
       secondary: Color(0xFFF1B6E8),
+      tertiary: Color(0xFF80F1EF),
       surface: Color(0xFF5C678E),
       background: Color(0xFF1B2033),
       brightness: Brightness.dark,
@@ -89,7 +90,7 @@ class MyApp extends StatelessWidget {
       labelSmall: TextStyle(
         // Form field label
         fontFamily: "Quicksand",
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
