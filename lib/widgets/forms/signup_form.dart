@@ -17,47 +17,46 @@ class _SignUpFormState extends State<SignUpForm> {
     final TextStyle? labelStyle = Theme.of(context).textTheme.labelSmall;
 
     return Form(
-      child: Flexible(
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            TextFormField(
-              style: inputStyle,
-              autocorrect: false,
-              enableSuggestions: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.alternate_email_rounded),
-                labelText: "Email",
-                labelStyle: labelStyle,
-              ),
-              textInputAction: TextInputAction.next,
+      child: ListView(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          TextFormField(
+            style: inputStyle,
+            autocorrect: false,
+            enableSuggestions: true,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.alternate_email_rounded),
+              labelText: "Email",
+              labelStyle: labelStyle,
             ),
-            TextFormField(
-              style: inputStyle,
-              autocorrect: false,
-              enableSuggestions: false,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock_outline_rounded),
-                labelText: "Password",
-                labelStyle: labelStyle,
-              ),
-              textInputAction: TextInputAction.next,
+            textInputAction: TextInputAction.next,
+          ),
+          TextFormField(
+            style: inputStyle,
+            autocorrect: false,
+            enableSuggestions: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.lock_outline_rounded),
+              labelText: "Password",
+              labelStyle: labelStyle,
             ),
-            TextFormField(
-              style: inputStyle,
-              autocorrect: false,
-              enableSuggestions: false,
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.spellcheck_rounded),
-                labelText: "Confirm password",
-                labelStyle: labelStyle,
-              ),
-              textInputAction: TextInputAction.send,
-            )
-          ],
-        ),
+            textInputAction: TextInputAction.next,
+          ),
+          TextFormField(
+            style: inputStyle,
+            autocorrect: false,
+            enableSuggestions: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.spellcheck_rounded),
+              labelText: "Confirm password",
+              labelStyle: labelStyle,
+            ),
+            textInputAction: TextInputAction.send,
+          )
+        ],
       ),
     );
   }
