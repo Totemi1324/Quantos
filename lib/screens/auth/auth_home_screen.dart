@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import '../base/flat.dart';
+import '../../widgets/button.dart';
 
 class AuthHomeScreen extends StatelessWidget {
   static const routeName = "/authenticate";
@@ -16,7 +17,7 @@ class AuthHomeScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(
-          flex: 6,
+          flex: 4,
           child: Text(
             description,
             style: Theme.of(buildContext).textTheme.bodyMedium,
@@ -26,10 +27,14 @@ class AuthHomeScreen extends StatelessWidget {
           flex: 1,
           child: SizedBox(),
         ),
-        const Flexible(
-          flex: 3,
+        Flexible(
+          flex: 5,
           fit: FlexFit.loose,
-          child: Text("BUTTON"),
+          child: Button(
+            buttonLabel,
+            type: ButtonType.primary,
+            onPressed: () {},
+          ),
         ),
       ],
     );

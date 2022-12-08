@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.of(buildContext).pushReplacement(PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
           const AuthHomeScreen(),
-      transitionDuration: const Duration(milliseconds: 800),
+      transitionDuration: const Duration(milliseconds: 1200),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var animationCurve =
             CurvedAnimation(parent: animation, curve: Curves.ease);

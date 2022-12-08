@@ -71,7 +71,22 @@ class MyApp extends StatelessWidget {
         fontSize: 16,
         color: Colors.white,
       ),
+      labelLarge: TextStyle(
+        // Standard button label
+        fontFamily: "Quicksand",
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+      labelMedium: TextStyle(
+        // Small button label
+        fontFamily: "Quicksand",
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
       labelSmall: TextStyle(
+        // Form field label
         fontFamily: "Quicksand",
         fontSize: 16,
         fontWeight: FontWeight.w300,
