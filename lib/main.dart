@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
+import 'screens/auth/auth_home_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -70,7 +71,22 @@ class MyApp extends StatelessWidget {
         fontSize: 16,
         color: Colors.white,
       ),
+      labelLarge: TextStyle(
+        // Standard button label
+        fontFamily: "Quicksand",
+        fontSize: 24,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
+      labelMedium: TextStyle(
+        // Small button label
+        fontFamily: "Quicksand",
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: Colors.white,
+      ),
       labelSmall: TextStyle(
+        // Form field label
         fontFamily: "Quicksand",
         fontSize: 16,
         fontWeight: FontWeight.w300,
@@ -91,6 +107,7 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
+        AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),
       },
     );
   }
