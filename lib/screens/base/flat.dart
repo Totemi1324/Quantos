@@ -25,6 +25,15 @@ class Flat extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          leading: ModalRoute.of(context)?.canPop == true
+              ? IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(
+                    Icons.arrow_back_rounded,
+                    size: 40,
+                  ),
+                )
+              : null,
         ),
         body: body,
       ),
