@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -11,6 +8,9 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  bool _passwordHidden = true;
+  bool _confirmPasswordHidden = true;
+
   @override
   Widget build(BuildContext context) {
     final TextStyle? inputStyle = Theme.of(context).textTheme.bodyMedium;
@@ -36,9 +36,19 @@ class _SignUpFormState extends State<SignUpForm> {
             style: inputStyle,
             autocorrect: false,
             enableSuggestions: false,
-            obscureText: true,
+            obscureText: _passwordHidden,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.lock_outline_rounded),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _passwordHidden
+                      ? Icons.visibility_rounded
+                      : Icons.visibility_off_rounded,
+                ),
+                onPressed: () => setState(() {
+                  _passwordHidden = !_passwordHidden;
+                }),
+              ),
               labelText: "Password",
               labelStyle: labelStyle,
             ),
@@ -48,9 +58,19 @@ class _SignUpFormState extends State<SignUpForm> {
             style: inputStyle,
             autocorrect: false,
             enableSuggestions: false,
-            obscureText: true,
+            obscureText: _confirmPasswordHidden,
             decoration: InputDecoration(
               prefixIcon: const Icon(Icons.spellcheck_rounded),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _confirmPasswordHidden
+                      ? Icons.visibility_rounded
+                      : Icons.visibility_off_rounded,
+                ),
+                onPressed: () => setState(() {
+                  _confirmPasswordHidden = !_confirmPasswordHidden;
+                }),
+              ),
               labelText: "Confirm password",
               labelStyle: labelStyle,
             ),
