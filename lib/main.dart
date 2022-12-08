@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Screens
 import 'screens/splash_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
+import 'screens/auth/auth_signup_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -104,10 +105,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: AuthSignUpScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),
+        AuthSignUpScreen.routeName: (context) => const AuthSignUpScreen(),
       },
     );
   }
