@@ -108,11 +108,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: AuthHomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
-        AuthSignUpScreen.routeName: (context) => const AuthSignUpScreen(),
-        AuthLogInScreen.routeName: (context) => const AuthLogInScreen(),
       },
       onGenerateRoute: (settings) {
         switch (settings.name) {
@@ -122,6 +120,16 @@ class MyApp extends StatelessWidget {
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 1200),
+            );
+          case AuthSignUpScreen.routeName:
+            return PageTransition(
+              child: const AuthSignUpScreen(),
+              type: PageTransitionType.rightToLeft,
+            );
+          case AuthLogInScreen.routeName:
+            return PageTransition(
+              child: const AuthLogInScreen(),
+              type: PageTransitionType.rightToLeft,
             );
           default:
             return null;
