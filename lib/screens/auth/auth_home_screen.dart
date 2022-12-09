@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+import 'auth_signup_screen.dart';
+
 import '../base/flat.dart';
 import '../../widgets/button.dart';
 
@@ -32,7 +34,8 @@ class AuthHomeScreen extends StatelessWidget {
           fit: FlexFit.loose,
           child: Button.primary(
             buttonLabel,
-            onPressed: () {},
+            extended: false,
+            onPressed: () => Navigator.of(buildContext).pushNamed(routeName),
           ),
         ),
       ],
@@ -61,7 +64,7 @@ class AuthHomeScreen extends StatelessWidget {
                 context,
                 description: "New here?",
                 buttonLabel: "Sign Up",
-                routeName: "/authenticate/sign-up",
+                routeName: AuthSignUpScreen.routeName,
               ),
               _buildAuthOption(
                 context,

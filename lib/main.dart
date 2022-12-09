@@ -106,7 +106,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: AuthSignUpScreen.routeName,
+      initialRoute: AuthHomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),

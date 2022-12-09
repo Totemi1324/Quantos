@@ -35,6 +35,7 @@ class AuthSignUpScreen extends StatelessWidget {
                   ),
                   Button.secondary(
                     "Sign Up",
+                    extended: true,
                     onPressed: () {},
                   )
                 ],
