@@ -12,8 +12,6 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
   final _form = GlobalKey<FormState>();
   final _nodes = List<FocusNode>.generate(6, (index) => FocusNode());
 
-  int _focusedFieldIndex = 0;
-
   Widget _buildAutoFormField(
     BuildContext buildContext, {
     required int index,
@@ -50,20 +48,11 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
     if (next != null) {
       if (newValue.isEmpty) {
         FocusScope.of(context).requestFocus(prev);
-        setState(() {
-          _focusedFieldIndex--;
-        });
       } else {
         FocusScope.of(context).requestFocus(next);
-        setState(() {
-          _focusedFieldIndex++;
-        });
       }
     } else if (prev != null && newValue.isEmpty) {
       FocusScope.of(context).requestFocus(prev);
-      setState(() {
-        _focusedFieldIndex--;
-      });
     } else {
       // Submit
     }
