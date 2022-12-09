@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../adaptive_form_field.dart';
+
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
 
@@ -8,73 +10,44 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  bool _passwordHidden = true;
-  bool _confirmPasswordHidden = true;
+  final _form = GlobalKey<FormState>();
+  final _passwordFocusNode = FocusNode();
+  final _confirmPasswordFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _passwordFocusNode.dispose();
+    _confirmPasswordFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle? inputStyle = Theme.of(context).textTheme.bodyMedium;
-    final TextStyle? labelStyle = Theme.of(context).textTheme.labelSmall;
-
     return Form(
+      key: _form,
       child: ListView(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          TextFormField(
-            style: inputStyle,
+          AdaptiveFormField.icon(
+            "Email",
+            prefixIcon: Icons.alternate_email_rounded,
             autocorrect: false,
             enableSuggestions: true,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.alternate_email_rounded),
-              labelText: "Email",
-              labelStyle: labelStyle,
-            ),
-            textInputAction: TextInputAction.next,
+            isFinalField: false,
+            nextField: _passwordFocusNode,
           ),
-          TextFormField(
-            style: inputStyle,
-            autocorrect: false,
-            enableSuggestions: false,
-            obscureText: _passwordHidden,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.lock_outline_rounded),
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _passwordHidden
-                      ? Icons.visibility_rounded
-                      : Icons.visibility_off_rounded,
-                ),
-                onPressed: () => setState(() {
-                  _passwordHidden = !_passwordHidden;
-                }),
-              ),
-              labelText: "Password",
-              labelStyle: labelStyle,
-            ),
-            textInputAction: TextInputAction.next,
+          AdaptiveFormField.password(
+            "Password",
+            isFinalField: false,
+            thisField: _passwordFocusNode,
+            nextField: _confirmPasswordFocusNode,
           ),
-          TextFormField(
-            style: inputStyle,
-            autocorrect: false,
-            enableSuggestions: false,
-            obscureText: _confirmPasswordHidden,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(Icons.spellcheck_rounded),
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _confirmPasswordHidden
-                      ? Icons.visibility_rounded
-                      : Icons.visibility_off_rounded,
-                ),
-                onPressed: () => setState(() {
-                  _confirmPasswordHidden = !_confirmPasswordHidden;
-                }),
-              ),
-              labelText: "Confirm password",
-              labelStyle: labelStyle,
-            ),
-            textInputAction: TextInputAction.send,
+          AdaptiveFormField.password(
+            "Confirm password",
+            prefixIcon: Icons.spellcheck_rounded,
+            isFinalField: true,
+            thisField: _confirmPasswordFocusNode,
           )
         ],
       ),
