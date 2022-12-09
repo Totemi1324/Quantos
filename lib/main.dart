@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 // Screens
 import 'screens/splash_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
+import 'screens/auth/auth_signup_screen.dart';
+import 'screens/auth/auth_login_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
     colorScheme: const ColorScheme(
       primary: Color(0xFF2EB6E8),
       secondary: Color(0xFFF1B6E8),
+      tertiary: Color(0xFF80F1EF),
       surface: Color(0xFF5C678E),
       background: Color(0xFF1B2033),
       brightness: Brightness.dark,
@@ -88,7 +91,7 @@ class MyApp extends StatelessWidget {
       labelSmall: TextStyle(
         // Form field label
         fontFamily: "Quicksand",
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
@@ -104,10 +107,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: AuthHomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
         AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),
+        AuthSignUpScreen.routeName: (context) => const AuthSignUpScreen(),
+        AuthLogInScreen.routeName: (context) => const AuthLogInScreen(),
       },
     );
   }

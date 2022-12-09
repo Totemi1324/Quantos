@@ -9,11 +9,44 @@ enum ButtonType {
 class Button extends StatelessWidget {
   final ButtonType type;
   final String label;
+  final bool extended;
   final VoidCallback onPressed;
   final IconData? icon;
 
   const Button(this.label,
-      {required this.type, required this.onPressed, this.icon, super.key});
+      {required this.type,
+      required this.extended,
+      required this.onPressed,
+      this.icon,
+      super.key});
+
+  factory Button.primary(String label,
+          {required bool extended, required VoidCallback onPressed}) =>
+      Button(
+        label,
+        type: ButtonType.primary,
+        extended: extended,
+        onPressed: onPressed,
+      );
+
+  factory Button.secondary(String label,
+          {required bool extended, required VoidCallback onPressed}) =>
+      Button(
+        label,
+        type: ButtonType.secondary,
+        extended: extended,
+        onPressed: onPressed,
+      );
+
+  factory Button.icon(String label,
+          {required VoidCallback onPressed, required IconData icon}) =>
+      Button(
+        label,
+        type: ButtonType.primary,
+        extended: false,
+        onPressed: onPressed,
+        icon: icon,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +81,16 @@ class Button extends StatelessWidget {
       ),
     );
 
+    final AutoSizeText labelText = AutoSizeText(
+      label,
+      textAlign: TextAlign.center,
+      minFontSize: 14,
+      maxLines: 2,
+      overflow: TextOverflow.fade,
+    );
+
     return SizedBox(
-      width: 140,
+      width: extended ? double.infinity : 140,
       height: 60,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
@@ -77,13 +118,19 @@ class Button extends StatelessWidget {
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 onPressed: onPressed,
-                child: AutoSizeText(
-                  label,
-                  textAlign: TextAlign.center,
-                  minFontSize: 14,
-                  maxLines: 2,
-                  overflow: TextOverflow.fade,
-                ),
+                child: icon == null
+                    ? labelText
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(
+                            icon,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          Flexible(child: labelText),
+                        ],
+                      ),
               ),
             )
           ],
