@@ -6,6 +6,7 @@ import 'screens/splash_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
+import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -61,6 +62,12 @@ class MyApp extends StatelessWidget {
         fontFamily: "Quicksand",
         fontSize: 22,
         fontWeight: FontWeight.w700,
+        color: Colors.white,
+      ),
+      bodyLarge: TextStyle(
+        // Standard body
+        fontFamily: "Quicksand",
+        fontSize: 24,
         color: Colors.white,
       ),
       bodyMedium: TextStyle(
@@ -129,6 +136,11 @@ class MyApp extends StatelessWidget {
           case AuthLogInScreen.routeName:
             return PageTransition(
               child: const AuthLogInScreen(),
+              type: PageTransitionType.rightToLeft,
+            );
+          case AuthGroupAccessScreen.routeName:
+            return PageTransition(
+              child: const AuthGroupAccessScreen(),
               type: PageTransitionType.rightToLeft,
             );
           default:
