@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -107,12 +108,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: AuthHomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
-        AuthHomeScreen.routeName: (context) => const AuthHomeScreen(),
         AuthSignUpScreen.routeName: (context) => const AuthSignUpScreen(),
         AuthLogInScreen.routeName: (context) => const AuthLogInScreen(),
+      },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case AuthHomeScreen.routeName:
+            return PageTransition(
+              child: const AuthHomeScreen(),
+              type: PageTransitionType.fade,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 1200),
+            );
+          default:
+            return null;
+        }
       },
     );
   }
