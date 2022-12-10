@@ -7,6 +7,7 @@ import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
 import 'screens/auth/auth_groupaccess_screen.dart';
+import 'screens/profile/profile_name_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -115,7 +116,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: AuthHomeScreen.routeName,
+      initialRoute: ProfileNameScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
@@ -142,6 +143,13 @@ class MyApp extends StatelessWidget {
             return PageTransition(
               child: const AuthGroupAccessScreen(),
               type: PageTransitionType.rightToLeft,
+            );
+          case ProfileNameScreen.routeName:
+            return PageTransition(
+              child: const ProfileNameScreen(),
+              type: PageTransitionType.fade,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 1200),
             );
           default:
             return null;
