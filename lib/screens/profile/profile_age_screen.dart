@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 import '../base/flat.dart';
-import '../../widgets/forms/age_select_form.dart';
+import '../../widgets/forms/select_form.dart';
 import '../../widgets/button.dart';
+
+Map<int, String> stringForSliderDivision = {
+  0: "15-18",
+  1: "19-28",
+  2: "29-59",
+  3: "60+",
+};
 
 class ProfileAgeScreen extends StatelessWidget {
   static const routeName = "/profile/age";
@@ -39,7 +47,16 @@ class ProfileAgeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 30),
-                  child: const AgeSelectForm(),
+                  child: SliderSelectForm(
+                    divisions: 3,
+                    divisionToString: stringForSliderDivision,
+                    initialDivision: 1,
+                    stateMachine: const RiveAnimation.asset(
+                      'assets/animations/age_selection.riv',
+                      fit: BoxFit.fitWidth,
+                      stateMachines: ['AgeClasses'],
+                    ),
+                  ),
                 ),
                 Button.primary(
                   "Confirm",
