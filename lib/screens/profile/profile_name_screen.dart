@@ -9,10 +9,10 @@ class ProfileNameScreen extends StatelessWidget {
 
   const ProfileNameScreen({super.key});
 
-  void _onSubmit(BuildContext buildContext) {
+  void _onSubmit(BuildContext buildContext, String? name) {
     FocusManager.instance.primaryFocus?.unfocus();
     Navigator.of(buildContext)
-        .pushNamed(ProfileAgeScreen.routeName, arguments: "Tamas");
+        .pushNamed(ProfileAgeScreen.routeName, arguments: name);
   }
 
   @override
@@ -56,13 +56,13 @@ class ProfileNameScreen extends StatelessWidget {
                   Button.primary(
                     "Confirm",
                     extended: true,
-                    onPressed: () => _onSubmit(context),
+                    onPressed: () => _onSubmit(context, "Tamas"),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => _onSubmit(context, null),
                     child: Text(
                       "I don't want to be called by my name",
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
