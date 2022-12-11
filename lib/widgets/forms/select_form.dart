@@ -5,11 +5,13 @@ class SliderSelectForm extends StatefulWidget {
   final Map<int, String> divisionToString;
   final int divisions;
   final int? initialDivision;
-  final RiveAnimation stateMachine;
+  final String animationAsset;
+  final String stateMachine;
 
   const SliderSelectForm({
     required this.divisions,
     required this.divisionToString,
+    required this.animationAsset,
     required this.stateMachine,
     this.initialDivision,
     super.key,
@@ -21,6 +23,18 @@ class SliderSelectForm extends StatefulWidget {
 
 class _SliderSelectFormState extends State<SliderSelectForm> {
   late double _selected;
+  late StateMachineController _controller;
+
+  void _onInit(Artboard artboard) {
+    var controller =
+        StateMachineController.fromArtboard(artboard, widget.stateMachine)
+            as StateMachineController;
+    controller.isActive = true;
+    artboard.addController(controller);
+    setState(() {
+      _controller = controller;
+    });
+  }
 
   @override
   void initState() {
@@ -38,7 +52,11 @@ class _SliderSelectFormState extends State<SliderSelectForm> {
             maxWidth: 300,
             maxHeight: 400,
           ),
-          child: widget.stateMachine,
+          child: RiveAnimation.asset(
+            widget.animationAsset,
+            fit: BoxFit.fitWidth,
+            onInit: _onInit,
+          ),
         ),
         Text(
           widget.divisionToString[_selected] ?? "NaN",

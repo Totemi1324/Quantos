@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import '../base/flat.dart';
+import './profile_experience_screen.dart';
 import '../../widgets/forms/select_form.dart';
 import '../../widgets/button.dart';
 
-Map<int, String> stringForSliderDivision = {
-  0: "15-18",
-  1: "19-28",
-  2: "29-59",
-  3: "60+",
-};
-
 class ProfileAgeScreen extends StatelessWidget {
   static const routeName = "/profile/age";
+  final Map<int, String> _stringForSliderDivision = {
+    0: "15-18",
+    1: "19-28",
+    2: "29-59",
+    3: "60+",
+  };
 
-  const ProfileAgeScreen({super.key});
+  ProfileAgeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,19 +49,17 @@ class ProfileAgeScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 30),
                   child: SliderSelectForm(
                     divisions: 3,
-                    divisionToString: stringForSliderDivision,
+                    divisionToString: _stringForSliderDivision,
                     initialDivision: 1,
-                    stateMachine: const RiveAnimation.asset(
-                      'assets/animations/age_selection.riv',
-                      fit: BoxFit.fitWidth,
-                      stateMachines: ['AgeClasses'],
-                    ),
+                    animationAsset: "assets/animations/age_selection.riv",
+                    stateMachine: "AgeClasses",
                   ),
                 ),
                 Button.primary(
                   "Confirm",
                   extended: true,
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context)
+                      .pushNamed(ProfileExperienceScreen.routeName),
                 )
               ],
             ),
