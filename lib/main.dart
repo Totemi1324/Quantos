@@ -116,7 +116,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: ProfileNameScreen.routeName,
+      initialRoute: AuthHomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
@@ -149,7 +149,7 @@ class MyApp extends StatelessWidget {
               child: const ProfileNameScreen(),
               type: PageTransitionType.fade,
               curve: Curves.ease,
-              duration: const Duration(milliseconds: 1200),
+              duration: const Duration(milliseconds: 500),
             );
           default:
             return null;

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AccessCodeForm extends StatefulWidget {
-  const AccessCodeForm({super.key});
+  final VoidCallback onSubmit;
+
+  const AccessCodeForm(this.onSubmit, {super.key});
 
   @override
   State<AccessCodeForm> createState() => _AccessCodeFormState();
@@ -54,7 +56,7 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
     } else if (prev != null && newValue.isEmpty) {
       FocusScope.of(context).requestFocus(prev);
     } else {
-      // Submit
+      widget.onSubmit();
     }
   }
 

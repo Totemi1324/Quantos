@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
+import '../profile/profile_name_screen.dart';
 import '../../widgets/forms/signup_form.dart';
 import '../../widgets/button.dart';
 
@@ -36,7 +37,9 @@ class AuthSignUpScreen extends StatelessWidget {
                   Button.secondary(
                     "Sign Up",
                     extended: true,
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context)
+                        .pushNamedAndRemoveUntil(
+                            ProfileNameScreen.routeName, (_) => false),
                   )
                 ],
               ),
