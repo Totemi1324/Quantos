@@ -8,6 +8,7 @@ import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
 import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
+import 'screens/profile/profile_age_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -116,7 +117,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: AuthHomeScreen.routeName,
+      initialRoute: ProfileNameScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
@@ -147,6 +148,14 @@ class MyApp extends StatelessWidget {
           case ProfileNameScreen.routeName:
             return PageTransition(
               child: const ProfileNameScreen(),
+              type: PageTransitionType.fade,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 500),
+            );
+          case ProfileAgeScreen.routeName:
+            return PageTransition(
+              child: const ProfileAgeScreen(),
+              settings: settings,
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 500),

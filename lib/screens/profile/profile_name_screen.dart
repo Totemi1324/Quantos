@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
+import './profile_age_screen.dart';
 import '../../widgets/button.dart';
 
 class ProfileNameScreen extends StatelessWidget {
-  static const routeName = "/profile-name";
+  static const routeName = "/profile";
 
   const ProfileNameScreen({super.key});
+
+  void _onSubmit(BuildContext buildContext) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    Navigator.of(buildContext)
+        .pushNamed(ProfileAgeScreen.routeName, arguments: "Tamas");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,7 @@ class ProfileNameScreen extends StatelessWidget {
                   Button.primary(
                     "Confirm",
                     extended: true,
-                    onPressed: () {},
+                    onPressed: () => _onSubmit(context),
                   ),
                   const SizedBox(
                     height: 10,
