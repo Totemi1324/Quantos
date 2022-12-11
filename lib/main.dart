@@ -9,6 +9,7 @@ import 'screens/auth/auth_login_screen.dart';
 import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
 import 'screens/profile/profile_age_screen.dart';
+import 'screens/profile/profile_experience_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -154,7 +155,15 @@ class MyApp extends StatelessWidget {
             );
           case ProfileAgeScreen.routeName:
             return PageTransition(
-              child: const ProfileAgeScreen(),
+              child: ProfileAgeScreen(),
+              settings: settings,
+              type: PageTransitionType.fade,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 500),
+            );
+          case ProfileExperienceScreen.routeName:
+            return PageTransition(
+              child: ProfileExperienceScreen(),
               settings: settings,
               type: PageTransitionType.fade,
               curve: Curves.ease,

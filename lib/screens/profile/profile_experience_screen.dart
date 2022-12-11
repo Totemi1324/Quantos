@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
-import './profile_experience_screen.dart';
 import '../../widgets/forms/select_form.dart';
 import '../../widgets/button.dart';
 
-class ProfileAgeScreen extends StatelessWidget {
-  static const routeName = "/profile/age";
+class ProfileExperienceScreen extends StatelessWidget {
+  static const routeName = "/profile/experience";
   final Map<int, String> _stringForSliderDivision = {
-    0: "15-18",
-    1: "19-28",
-    2: "29-59",
-    3: "60+",
+    0: "Beginner",
+    1: "Advanced",
+    2: "Skilled",
   };
 
-  ProfileAgeScreen({super.key});
+  ProfileExperienceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-    final profileName = args as String?;
-
     return Flat(
       body: SafeArea(
         child: Padding(
@@ -33,7 +28,7 @@ class ProfileAgeScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    "And how old are\nyou${profileName != null ? ", $profileName" : ""}?",
+                    "How would you describe yourself?",
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
@@ -47,18 +42,17 @@ class ProfileAgeScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 30),
                   child: SliderSelectForm(
-                    divisions: 3,
+                    divisions: 2,
                     divisionToString: _stringForSliderDivision,
-                    initialDivision: 1,
+                    initialDivision: 0,
                     animationAsset: "assets/animations/age_selection.riv",
                     stateMachine: "AgeClasses",
                   ),
                 ),
                 Button.primary(
-                  "Confirm",
+                  "I'm ready",
                   extended: true,
-                  onPressed: () => Navigator.of(context)
-                      .pushNamed(ProfileExperienceScreen.routeName),
+                  onPressed: () {},
                 ),
               ],
             ),
