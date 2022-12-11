@@ -52,6 +52,7 @@ flutter:
   assets:
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv
+    - assets/animations/circular_progress_indicator.riv
     - assets/animations/age_selection.riv
 
   # To add custom fonts to your application, add a fonts section here,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:quantos/screens/loading_screen.dart';
 
 import '../base/flat.dart';
+import '../home_screen.dart';
 import '../../widgets/forms/select_form.dart';
 import '../../widgets/button.dart';
 
@@ -52,7 +54,11 @@ class ProfileExperienceScreen extends StatelessWidget {
                 Button.primary(
                   "I'm ready",
                   extended: true,
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              const LoadingScreen(HomeScreen.routeName)),
+                      (_) => false),
                 ),
               ],
             ),
