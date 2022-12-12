@@ -14,6 +14,7 @@ class Decorated extends StatefulWidget {
 
 class _DecoratedState extends State<Decorated> {
   int _selectedIndex = 2;
+  late ImageProvider _image;
 
   Widget _buildNavbarIcon(IconData icon) {
     return Icon(
@@ -24,11 +25,23 @@ class _DecoratedState extends State<Decorated> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _image = const AssetImage("assets/images/background.png");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(_image, context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/background.png"),
+          image: _image,
           fit: BoxFit.cover,
         ),
       ),
