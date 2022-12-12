@@ -3,7 +3,6 @@ import 'package:page_transition/page_transition.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
-import 'screens/loading_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -119,7 +118,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: ProfileNameScreen.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },

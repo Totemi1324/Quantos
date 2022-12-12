@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-class Decorated extends StatelessWidget {
+class Decorated extends StatefulWidget {
   final Widget body;
+  final bool enableNavigationBar;
 
-  const Decorated({required this.body, super.key});
+  const Decorated(
+      {required this.enableNavigationBar, required this.body, super.key});
+
+  @override
+  State<Decorated> createState() => _DecoratedState();
+}
+
+class _DecoratedState extends State<Decorated> {
+  int _selectedIndex = 2;
+
+  Widget _buildNavbarIcon(IconData icon) {
+    return Icon(
+      icon,
+      color: Colors.white,
+      size: 35,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Theme.of(context).colorScheme.primaryContainer,
-            Theme.of(context).colorScheme.secondaryContainer,
-          ],
-          stops: const [
-            0.0,
-            1.0,
-          ],
-          begin: const Alignment(-0.9, -0.9),
-          end: const Alignment(0.3, 0.3),
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/background.png"),
+          fit: BoxFit.cover,
         ),
       ),
       child: Scaffold(
+        extendBody: true,
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -59,15 +70,22 @@ class Decorated extends StatelessWidget {
             )
           ],
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/background.png"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: body,
+        bottomNavigationBar: CurvedNavigationBar(
+          items: [
+            _buildNavbarIcon(Icons.download_rounded),
+            _buildNavbarIcon(Icons.code_rounded),
+            _buildNavbarIcon(Icons.home_rounded),
+            _buildNavbarIcon(Icons.stacked_bar_chart_rounded),
+            _buildNavbarIcon(Icons.person_rounded),
+          ],
+          index: _selectedIndex,
+          height: 50,
+          backgroundColor: Colors.transparent,
+          color: const Color(0xFF004964),
+          animationDuration: const Duration(milliseconds: 300),
+          animationCurve: Curves.decelerate,
         ),
+        body: widget.body,
       ),
     );
   }
