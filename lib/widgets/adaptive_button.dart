@@ -6,41 +6,41 @@ enum ButtonType {
   secondary,
 }
 
-class Button extends StatelessWidget {
+class AdaptiveButton extends StatelessWidget {
   final ButtonType type;
   final String label;
   final bool extended;
   final VoidCallback onPressed;
   final IconData? icon;
 
-  const Button(this.label,
+  const AdaptiveButton(this.label,
       {required this.type,
       required this.extended,
       required this.onPressed,
       this.icon,
       super.key});
 
-  factory Button.primary(String label,
+  factory AdaptiveButton.primary(String label,
           {required bool extended, required VoidCallback onPressed}) =>
-      Button(
+      AdaptiveButton(
         label,
         type: ButtonType.primary,
         extended: extended,
         onPressed: onPressed,
       );
 
-  factory Button.secondary(String label,
+  factory AdaptiveButton.secondary(String label,
           {required bool extended, required VoidCallback onPressed}) =>
-      Button(
+      AdaptiveButton(
         label,
         type: ButtonType.secondary,
         extended: extended,
         onPressed: onPressed,
       );
 
-  factory Button.icon(String label,
+  factory AdaptiveButton.icon(String label,
           {required VoidCallback onPressed, required IconData icon}) =>
-      Button(
+      AdaptiveButton(
         label,
         type: ButtonType.primary,
         extended: false,

@@ -4,7 +4,7 @@ import 'package:quantos/screens/loading_screen.dart';
 import '../base/flat.dart';
 import '../home_screen.dart';
 import '../../widgets/forms/select_form.dart';
-import '../../widgets/button.dart';
+import '../../widgets/adaptive_button.dart';
 
 class ProfileExperienceScreen extends StatelessWidget {
   static const routeName = "/profile/experience";
@@ -51,7 +51,7 @@ class ProfileExperienceScreen extends StatelessWidget {
                     stateMachine: "AgeClasses",
                   ),
                 ),
-                Button.primary(
+                AdaptiveButton.primary(
                   "I'm ready",
                   extended: true,
                   onPressed: () => Navigator.of(context).pushAndRemoveUntil(

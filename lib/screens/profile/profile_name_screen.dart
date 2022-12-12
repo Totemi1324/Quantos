@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import './profile_age_screen.dart';
-import '../../widgets/button.dart';
+import '../../widgets/adaptive_button.dart';
 
 class ProfileNameScreen extends StatelessWidget {
   static const routeName = "/profile";
@@ -53,7 +53,7 @@ class ProfileNameScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Button.primary(
+                  AdaptiveButton.primary(
                     "Confirm",
                     extended: true,
                     onPressed: () => _onSubmit(context, "Tamas"),

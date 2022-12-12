@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../base/flat.dart';
 import '../profile/profile_name_screen.dart';
 import '../../widgets/forms/signup_form.dart';
-import '../../widgets/button.dart';
+import '../../widgets/adaptive_button.dart';
 
 class AuthSignUpScreen extends StatelessWidget {
   static const routeName = "/authenticate/sign-up";
@@ -34,7 +34,7 @@ class AuthSignUpScreen extends StatelessWidget {
                     margin: const EdgeInsets.symmetric(vertical: 50),
                     child: const SignUpForm(),
                   ),
-                  Button.secondary(
+                  AdaptiveButton.secondary(
                     "Sign Up",
                     extended: true,
                     onPressed: () => Navigator.of(context)

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../base/flat.dart';
 import './profile_experience_screen.dart';
 import '../../widgets/forms/select_form.dart';
-import '../../widgets/button.dart';
+import '../../widgets/adaptive_button.dart';
 
 class ProfileAgeScreen extends StatelessWidget {
   static const routeName = "/profile/age";
@@ -54,7 +54,7 @@ class ProfileAgeScreen extends StatelessWidget {
                     stateMachine: "AgeClasses",
                   ),
                 ),
-                Button.primary(
+                AdaptiveButton.primary(
                   "Confirm",
                   extended: true,
                   onPressed: () => Navigator.of(context)

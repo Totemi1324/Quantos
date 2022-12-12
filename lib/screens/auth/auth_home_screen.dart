@@ -6,7 +6,7 @@ import 'auth_login_screen.dart';
 import 'auth_groupaccess_screen.dart';
 
 import '../base/flat.dart';
-import '../../widgets/button.dart';
+import '../../widgets/adaptive_button.dart';
 
 class AuthHomeScreen extends StatelessWidget {
   static const routeName = "/authenticate";
@@ -34,7 +34,7 @@ class AuthHomeScreen extends StatelessWidget {
         Flexible(
           flex: 5,
           fit: FlexFit.loose,
-          child: Button.primary(
+          child: AdaptiveButton.primary(
             buttonLabel,
             extended: false,
             onPressed: () => Navigator.of(buildContext).pushNamed(routeName),
