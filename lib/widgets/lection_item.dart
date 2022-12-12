@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
 
+import './ui/adaptive_progress_bar.dart';
+
 class LectionItem extends StatelessWidget {
   final String previewImageAsset;
   final String title;
   final double progressPercent;
   final bool unlocked;
+
+  static const ColorFilter grayscaleImageFilter = ColorFilter.matrix(<double>[
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0.2126,
+    0.7152,
+    0.0722,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+  ]);
 
   const LectionItem(
     this.title, {
@@ -16,6 +41,12 @@ class LectionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final icon = Image.asset(
+      previewImageAsset,
+      fit: BoxFit.contain,
+    );
+    final _progressBar = AdaptiveProgressBar.icon(progressPercent);
+
     return Column(
       children: [
         Row(
@@ -23,61 +54,33 @@ class LectionItem extends StatelessWidget {
             Flexible(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Image.asset(
-                  previewImageAsset,
-                  fit: BoxFit.contain,
-                ),
+                padding: const EdgeInsets.only(right: 10, bottom: 10, top: 10),
+                child: unlocked
+                    ? icon
+                    : ColorFiltered(
+                        colorFilter: grayscaleImageFilter,
+                        child: icon,
+                      ),
               ),
             ),
             Flexible(
               flex: 8,
-              child: Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            const Icon(
-              Icons.emoji_events_rounded,
-              size: 30,
-              color: Color(0xFF43BA73),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Flexible(
-              child: SizedBox(
-                height: 15,
-                child: Stack(
-                  children: [
-                    FractionallySizedBox(
-                      widthFactor: progressPercent,
-                      child: Container(
-                          decoration: BoxDecoration(
-                        color: const Color(0xFF43BA73),
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: const Color(0xFF43BA73),
-                          width: 3,
-                        ),
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ],
+              child: Container(
+                margin: const EdgeInsets.only(left: 5),
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
             ),
           ],
-        )
+        ),
+        unlocked
+            ? _progressBar
+            : ColorFiltered(
+                colorFilter: grayscaleImageFilter,
+                child: _progressBar,
+              ),
       ],
     );
   }

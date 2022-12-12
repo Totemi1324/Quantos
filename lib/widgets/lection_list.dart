@@ -16,7 +16,7 @@ class LectionList extends StatelessWidget {
       itemCount: lections.length,
       itemBuilder: (buildContext, index) => InkWell(
         splashFactory: NoSplash.splashFactory,
-        onTap: () {},
+        onTap: lections[index].unlocked ? () {} : null,
         child: PanelCard(
           padding: const EdgeInsets.all(10),
           child: LectionItem(
