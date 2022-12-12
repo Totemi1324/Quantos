@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'base/flat.dart';
+import 'base/decorated.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = "/home";
@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flat(
+    return Decorated(
       body: Container(),
     );
   }

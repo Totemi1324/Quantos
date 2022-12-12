@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+
+class Decorated extends StatelessWidget {
+  final Widget body;
+
+  const Decorated({required this.body, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Theme.of(context).colorScheme.primaryContainer,
+            Theme.of(context).colorScheme.secondaryContainer,
+          ],
+          stops: const [
+            0.0,
+            1.0,
+          ],
+          begin: const Alignment(-0.9, -0.9),
+          end: const Alignment(0.3, 0.3),
+        ),
+      ),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: ModalRoute.of(context)?.canPop == true
+              ? IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(
+                    Icons.arrow_back_rounded,
+                    size: 40,
+                  ),
+                )
+              : null,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      offset: const Offset(0, 5),
+                      blurRadius: 8.0,
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.settings_rounded,
+                  size: 30,
+                ),
+              ),
+            )
+          ],
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: body,
+        ),
+      ),
+    );
+  }
+}
