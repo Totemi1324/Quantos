@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import '../../widgets/forms/login_form.dart';
-import '../../widgets/adaptive_button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class AuthLogInScreen extends StatelessWidget {
   static const routeName = "/authenticate/log-in";

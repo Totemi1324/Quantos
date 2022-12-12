@@ -6,7 +6,7 @@ import 'auth_login_screen.dart';
 import 'auth_groupaccess_screen.dart';
 
 import '../base/flat.dart';
-import '../../widgets/adaptive_button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class AuthHomeScreen extends StatelessWidget {
   static const routeName = "/authenticate";

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../base/flat.dart';
 import '../profile/profile_name_screen.dart';
 import '../../widgets/forms/signup_form.dart';
-import '../../widgets/adaptive_button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class AuthSignUpScreen extends StatelessWidget {
   static const routeName = "/authenticate/sign-up";

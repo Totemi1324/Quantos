@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'base/decorated.dart';
-import '../widgets/panel_card.dart';
+import '../widgets/containers/panel_card.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = "/home";
@@ -54,7 +54,9 @@ class HomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: 4,
                   itemBuilder: (buildContext, index) => PanelCard(
-                    child: Container(height: 1,),
+                    child: Container(
+                      height: 1,
+                    ),
                   ),
                 )
               ],

@@ -8,7 +8,6 @@ class PanelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
       decoration: BoxDecoration(
         border: Border.all(
           color: const Color(0xFF303859).withOpacity(0.5),
@@ -19,7 +18,10 @@ class PanelCard extends StatelessWidget {
             const Color(0xFF404B75).withOpacity(0.95),
             const Color(0xFF404B75).withOpacity(0.55),
           ],
-          stops: const [0.0, 1.0,],
+          stops: const [
+            0.0,
+            1.0,
+          ],
           begin: const Alignment(-1.0, 1.0),
           end: const Alignment(1.0, -1.0),
         ),

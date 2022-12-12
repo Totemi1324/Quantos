@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import './profile_age_screen.dart';
-import '../../widgets/adaptive_button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileNameScreen extends StatelessWidget {
   static const routeName = "/profile";
