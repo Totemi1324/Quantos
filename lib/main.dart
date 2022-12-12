@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   final activeTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: const Color(0xFF2EB6E8),
+    highlightColor: const Color(0xFF2EB6E8),
     colorScheme: const ColorScheme(
       primary: Color(0xFF2EB6E8),
       secondary: Color(0xFFF1B6E8),

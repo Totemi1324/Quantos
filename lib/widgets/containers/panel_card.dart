@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class PanelCard extends StatelessWidget {
   final Widget child;
+  final EdgeInsetsGeometry? padding;
 
-  const PanelCard({required this.child, super.key});
+  const PanelCard({this.padding, required this.child, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class PanelCard extends StatelessWidget {
           end: const Alignment(1.0, -1.0),
         ),
       ),
+      padding: padding,
       child: child,
     );
   }

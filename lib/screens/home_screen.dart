@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'base/decorated.dart';
-import '../widgets/containers/panel_card.dart';
+import '../widgets/lection_list.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = "/home";
@@ -49,15 +49,9 @@ class HomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 4,
-                  itemBuilder: (buildContext, index) => PanelCard(
-                    child: Container(
-                      height: 1,
-                    ),
-                  ),
+                const LectionList(),
+                const SizedBox(
+                  height: 30,
                 )
               ],
             ),
