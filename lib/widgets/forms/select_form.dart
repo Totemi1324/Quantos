@@ -48,13 +48,13 @@ class _SliderSelectFormState extends State<SliderSelectForm> {
     return Column(
       children: [
         ConstrainedBox(
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 300,
-            maxHeight: 400,
+            maxHeight: MediaQuery.of(context).size.height * 0.4,
           ),
           child: RiveAnimation.asset(
             widget.animationAsset,
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.contain,
             onInit: _onInit,
           ),
         ),
