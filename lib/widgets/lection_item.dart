@@ -41,9 +41,12 @@ class LectionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final icon = Image.asset(
-      previewImageAsset,
-      fit: BoxFit.contain,
+    final icon = ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 80),
+      child: Image.asset(
+        previewImageAsset,
+        fit: BoxFit.contain,
+      ),
     );
     final _progressBar = AdaptiveProgressBar.icon(progressPercent);
 
