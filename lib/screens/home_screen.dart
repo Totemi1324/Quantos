@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'base/decorated.dart';
+import '../widgets/notification_bar.dart';
 import '../widgets/lection_list.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,14 +31,8 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 30),
-                  height: 200,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) => Container(
-                      width: 100,
-                      color: Colors.red,
-                    ),
+                  child: NotificationBar(
+                    height: MediaQuery.of(context).size.height * 0.25,
                   ),
                 ),
                 Container(
