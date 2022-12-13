@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import 'auth_signup_screen.dart';
+import 'auth_login_screen.dart';
+import 'auth_groupaccess_screen.dart';
 
 import '../base/flat.dart';
-import '../../widgets/button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class AuthHomeScreen extends StatelessWidget {
   static const routeName = "/authenticate";
@@ -32,7 +34,7 @@ class AuthHomeScreen extends StatelessWidget {
         Flexible(
           flex: 5,
           fit: FlexFit.loose,
-          child: Button.primary(
+          child: AdaptiveButton.primary(
             buttonLabel,
             extended: false,
             onPressed: () => Navigator.of(buildContext).pushNamed(routeName),
@@ -70,13 +72,13 @@ class AuthHomeScreen extends StatelessWidget {
                 context,
                 description: "Already on board?",
                 buttonLabel: "Log In",
-                routeName: "/authenticate/log-in",
+                routeName: AuthLogInScreen.routeName,
               ),
               _buildAuthOption(
                 context,
                 description: "Part of a classroom or team?",
                 buttonLabel: "Enter Access Code",
-                routeName: "/authenticate/group-access",
+                routeName: AuthGroupAccessScreen.routeName,
               ),
             ],
           ),

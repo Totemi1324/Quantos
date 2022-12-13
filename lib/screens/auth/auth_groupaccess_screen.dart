@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import '../profile/profile_name_screen.dart';
-import '../../widgets/forms/signup_form.dart';
-import '../../widgets/ui/adaptive_button.dart';
+import '../../widgets/forms/accesscode_form.dart';
 
-class AuthSignUpScreen extends StatelessWidget {
-  static const routeName = "/authenticate/sign-up";
+class AuthGroupAccessScreen extends StatelessWidget {
+  static const routeName = "/authenticate/group-access";
 
-  const AuthSignUpScreen({super.key});
+  const AuthGroupAccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +30,19 @@ class AuthSignUpScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 50),
-                    child: const SignUpForm(),
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.only(top: 70),
+                    child: Text(
+                      "Enter your 6-digit access code",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
-                  AdaptiveButton.secondary(
-                    "Sign Up",
-                    extended: true,
-                    onPressed: () => Navigator.of(context)
-                        .pushNamedAndRemoveUntil(
-                            ProfileNameScreen.routeName, (_) => false),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 30),
+                    child: AccessCodeForm(
+                      () => Navigator.of(context).pushNamedAndRemoveUntil(
+                          ProfileNameScreen.routeName, (_) => false),
+                    ),
                   )
                 ],
               ),

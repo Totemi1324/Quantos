@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import '../../widgets/forms/login_form.dart';
-import '../../widgets/button.dart';
+import '../../widgets/ui/adaptive_button.dart';
 
 class AuthLogInScreen extends StatelessWidget {
   static const routeName = "/authenticate/log-in";
@@ -33,7 +33,7 @@ class AuthLogInScreen extends StatelessWidget {
                     margin: const EdgeInsets.symmetric(vertical: 50),
                     child: const LogInForm(),
                   ),
-                  Button.secondary(
+                  AdaptiveButton.secondary(
                     "Log In",
                     extended: true,
                     onPressed: () {},

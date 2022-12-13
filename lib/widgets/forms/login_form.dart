@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../adaptive_form_field.dart';
+import '../ui/adaptive_form_field.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({super.key});

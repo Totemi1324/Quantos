@@ -33,9 +33,12 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
+  http: ^0.13.5
   flutter_bloc: ^8.1.1
   rive: ^0.9.1
   auto_size_text: ^3.0.0
+  page_transition: ^2.0.9
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +53,10 @@ flutter:
   assets:
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv
+    - assets/animations/circular_progress_indicator.riv
+    - assets/animations/age_selection.riv
+    - assets/images/background.png
+    - assets/images/lection_preview_image.png
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section.

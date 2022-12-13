@@ -26,14 +26,11 @@ class Flat extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: ModalRoute.of(context)?.canPop == true
-              ? Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(
-                      Icons.arrow_back_rounded,
-                      size: 40,
-                    ),
+              ? IconButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(
+                    Icons.arrow_back_rounded,
+                    size: 40,
                   ),
                 )
               : null,
