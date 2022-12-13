@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/notification_news.dart';
+
 class NotificationBar extends StatelessWidget {
-  final height;
+  final double height;
 
   const NotificationBar({required this.height, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height,
-      padding: const EdgeInsets.all(20),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, index) => Container(
-          width: 100,
-          color: Colors.red,
+        itemCount: 2,
+        itemBuilder: (context, index) => const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: NotificationNews(
+            senderIconNetworkAddress: "https://cdn.iconscout.com/icon/free/png-256/flutter-3629369-3032362.png",
+            message: "Version 1.0.0 is out! ^_^\nThe full version contains various bug fixes and improvenets.",
+          ),
         ),
       ),
     );
