@@ -5,7 +5,6 @@ import '../models/notification.dart';
 import '../models/news.dart';
 import '../data/notifications.dart';
 
-
 class NotificationBar extends StatefulWidget {
   final double height;
 
@@ -31,14 +30,14 @@ class _NotificationBarState extends State<NotificationBar> {
       case NotificationType.news:
         var newsObject = _notifications[listIndex] as News;
         return NotificationNews(
-            senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
-            message: newsObject.message,
-            onCloseAction: () {
-              setState(() {
-                _notifications.removeAt(listIndex);
-              });
-            },
-          );
+          senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
+          message: newsObject.message,
+          onCloseAction: () {
+            setState(() {
+              _notifications.removeAt(listIndex);
+            });
+          },
+        );
     }
   }
 
@@ -46,12 +45,16 @@ class _NotificationBarState extends State<NotificationBar> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: _notifications.isEmpty ? 0 : widget.height,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: _notifications.length,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: _buildNotificationItem(index),
+      child: RawScrollbar(
+        thumbColor: Theme.of(context).colorScheme.surface.withOpacity(0.3),
+        radius: const Radius.circular(5),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _notifications.length,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: _buildNotificationItem(index),
+          ),
         ),
       ),
     );
