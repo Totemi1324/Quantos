@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Notification;
 
 import '../widgets/notification_news.dart';
+import '../models/synced_list.dart';
 import '../models/notification.dart';
 import '../models/news.dart';
 import '../data/notifications.dart';
@@ -15,28 +16,58 @@ class NotificationBar extends StatefulWidget {
 }
 
 class _NotificationBarState extends State<NotificationBar> {
-  late List<Notification> _notifications;
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  final Animatable<double> animationTween = Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.easeOutBack));
+  late SyncedList<Notification> _notifications;
 
   @override
   void initState() {
     super.initState();
-    _notifications = [...news];
+    _notifications = SyncedList<Notification>(
+      listKey: _listKey,
+      initialItems: news.map((element) => element).toList(),
+      removedItemBuilder: _buildRemovedItem,
+    );
   }
 
-  Widget _buildNotificationItem(int listIndex) {
+  Widget _buildItem(BuildContext buildContext, int listIndex, Animation<double> animation) {
     var notification = _notifications[listIndex];
 
     switch (notification.type) {
       case NotificationType.news:
-        var newsObject = _notifications[listIndex] as News;
-        return NotificationNews(
-          senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
-          message: newsObject.message,
-          onCloseAction: () {
-            setState(() {
-              _notifications.removeAt(listIndex);
-            });
-          },
+        var newsObject = notification as News;
+        return SizeTransition(
+          sizeFactor: animation.drive(animationTween),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: NotificationNews(
+              senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
+              message: newsObject.message,
+              onCloseAction: () {
+                setState(() {
+                  _notifications.removeAt(listIndex);
+                });
+              },
+            ),
+          ),
+        );
+    }
+  }
+
+  Widget _buildRemovedItem(Notification notification, BuildContext buildContext, Animation<double> animation) {
+    switch (notification.type) {
+      case NotificationType.news:
+        var newsObject = notification as News;
+        return ScaleTransition(
+          scale: animation.drive(animationTween),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            child: NotificationNews(
+              senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
+              message: newsObject.message,
+              onCloseAction: () {},
+            ),
+          ),
         );
     }
   }
@@ -48,13 +79,11 @@ class _NotificationBarState extends State<NotificationBar> {
       child: RawScrollbar(
         thumbColor: Theme.of(context).colorScheme.surface.withOpacity(0.3),
         radius: const Radius.circular(5),
-        child: ListView.builder(
+        child: AnimatedList(
           scrollDirection: Axis.horizontal,
-          itemCount: _notifications.length,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            child: _buildNotificationItem(index),
-          ),
+          key: _listKey,
+          initialItemCount: _notifications.length,
+          itemBuilder: _buildItem,
         ),
       ),
     );
