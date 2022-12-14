@@ -7,10 +7,12 @@ class NotificationNews extends NotificationItem {
   static const notificationTypeTitle = "News";
   final String senderIconNetworkAddress;
   final String message;
+  final VoidCallback onCloseAction;
 
   const NotificationNews({
     required this.senderIconNetworkAddress,
     required this.message,
+    required this.onCloseAction,
     super.key,
   }) : super(notificationTypeTitle);
 
@@ -21,20 +23,26 @@ class NotificationNews extends NotificationItem {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(
+            height: 10,
+          ),
           CircleAvatar(
             radius: 25,
-            backgroundImage: const AssetImage("assets/images/avatar_background.png"),
+            backgroundImage:
+                const AssetImage("assets/images/avatar_background.png"),
             foregroundImage: NetworkImage(senderIconNetworkAddress),
           ),
-          const SizedBox(height: 10,),
-          AutoSizeText(
-            message,
-            style: Theme.of(buildContext).textTheme.labelSmall,
-            minFontSize: 16,
-            maxFontSize: 18,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          )
+          const SizedBox(
+            height: 10,
+          ),
+          Flexible(
+            child: AutoSizeText(
+              message,
+              style: Theme.of(buildContext).textTheme.labelSmall,
+              overflow: TextOverflow.fade,
+              minFontSize: 16,
+            ),
+          ),
         ],
       ),
     );
@@ -42,6 +50,11 @@ class NotificationNews extends NotificationItem {
 
   @override
   void onClose() {
-    // TODO: implement onClose
+    onCloseAction();
+  }
+
+  @override
+  void onOpen() {
+    // TODO: implement onOpen
   }
 }
