@@ -15,4 +15,10 @@ List<Notification> news = [
         "Now using Firebase as our new backend. The user experience didn't recieve any impact.",
     date: DateTime.now(),
   ),
+  News(
+    senderIconNetworkAddress: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png",
+    message:
+        "Actually, switching to Supabase. Apperently it's better because it's open source ¯\\_(ツ)_/¯",
+    date: DateTime.now(),
+  ),
 ];
