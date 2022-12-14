@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+import '../models/notification.dart';
 import './notification_item.dart';
 
 class NotificationNews extends NotificationItem {
-  static const notificationTypeTitle = "News";
   final String senderIconNetworkAddress;
   final String message;
   final VoidCallback onCloseAction;
@@ -14,7 +14,7 @@ class NotificationNews extends NotificationItem {
     required this.message,
     required this.onCloseAction,
     super.key,
-  }) : super(notificationTypeTitle);
+  }) : super(NotificationType.news);
 
   @override
   Widget buildContent(BuildContext buildContext) {

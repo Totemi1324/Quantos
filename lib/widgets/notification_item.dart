@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../models/notification.dart';
 import './containers/rounded_card.dart';
 
 abstract class NotificationItem extends StatelessWidget {
-  final String title;
+  final NotificationType type;
 
-  const NotificationItem(this.title, {super.key});
+  const NotificationItem(this.type, {super.key});
 
   Widget buildContent(BuildContext buildContext);
   void onClose();
   void onOpen();
+
+  @protected
+  String _typeToString(NotificationType type) {
+    switch (type) {
+      case NotificationType.news: return "News";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ abstract class NotificationItem extends StatelessWidget {
             top: 10,
             left: 10,
             child: Text(
-              title,
+              _typeToString(type),
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),

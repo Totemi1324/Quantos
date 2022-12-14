@@ -1,11 +1,14 @@
-class News {
+import './notification.dart';
+
+class News extends Notification {
+  static const notificationType = NotificationType.news;
+
   final String senderIconNetworkAddress;
   final String message;
-  final DateTime? date;
 
   News({
     required this.senderIconNetworkAddress,
     required this.message,
-    this.date,
-  });
+    required DateTime date
+  }) : super(type: notificationType, date: date);
 }

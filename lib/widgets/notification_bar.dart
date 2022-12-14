@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Notification;
 
 import '../widgets/notification_news.dart';
-import '../data/news_data.dart';
+import '../models/notification.dart';
+import '../models/news.dart';
+import '../data/notifications.dart';
+
 
 class NotificationBar extends StatefulWidget {
   final double height;
@@ -13,7 +16,7 @@ class NotificationBar extends StatefulWidget {
 }
 
 class _NotificationBarState extends State<NotificationBar> {
-  late List _notifications; //TODO: Notification model superclass
+  late List<Notification> _notifications;
 
   @override
   void initState() {
@@ -21,24 +24,34 @@ class _NotificationBarState extends State<NotificationBar> {
     _notifications = [...news];
   }
 
+  Widget _buildNotificationItem(int listIndex) {
+    var notification = _notifications[listIndex];
+
+    switch (notification.type) {
+      case NotificationType.news:
+        var newsObject = _notifications[listIndex] as News;
+        return NotificationNews(
+            senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
+            message: newsObject.message,
+            onCloseAction: () {
+              setState(() {
+                _notifications.removeAt(listIndex);
+              });
+            },
+          );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: news.isEmpty ? widget.height : 0,
+      height: _notifications.isEmpty ? 0 : widget.height,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: news.length,
+        itemCount: _notifications.length,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: NotificationNews(
-            senderIconNetworkAddress: news[index].senderIconNetworkAddress,
-            message: news[index].message,
-            onCloseAction: () {
-              setState(() {
-                news.removeAt(index);
-              });
-            },
-          ),
+          child: _buildNotificationItem(index),
         ),
       ),
     );

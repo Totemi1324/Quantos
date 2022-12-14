@@ -1,6 +1,7 @@
+import '../models/notification.dart';
 import '../models/news.dart';
 
-List<News> news = [
+List<Notification> news = [
   News(
     senderIconNetworkAddress: "https://pbs.twimg.com/media/FJ96vOQWUAwbIah.jpg",
     message:
