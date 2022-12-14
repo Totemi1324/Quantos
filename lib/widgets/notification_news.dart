@@ -49,9 +49,7 @@ class NotificationNews extends NotificationItem {
   }
 
   @override
-  void onClose() {
-    onCloseAction();
-  }
+  void onClose() => onCloseAction();
 
   @override
   void onOpen() {
