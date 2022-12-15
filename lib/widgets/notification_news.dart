@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import '../models/notification.dart';
+import '../models/news.dart';
 import './notification_item.dart';
 
 class NotificationNews extends NotificationItem {
-  final String senderIconNetworkAddress;
-  final String message;
+  final News newsObject;
   final VoidCallback onCloseAction;
+  final VoidCallback onOpenAction;
 
   const NotificationNews({
-    required this.senderIconNetworkAddress,
-    required this.message,
+    required this.newsObject,
     required this.onCloseAction,
+    required this.onOpenAction,
     super.key,
   }) : super(NotificationType.news);
 
@@ -30,14 +31,14 @@ class NotificationNews extends NotificationItem {
             radius: 25,
             backgroundImage:
                 const AssetImage("assets/images/avatar_background.png"),
-            foregroundImage: NetworkImage(senderIconNetworkAddress),
+            foregroundImage: NetworkImage(newsObject.senderIconNetworkAddress),
           ),
           const SizedBox(
             height: 10,
           ),
           Flexible(
             child: AutoSizeText(
-              message,
+              newsObject.message,
               style: Theme.of(buildContext).textTheme.labelSmall,
               overflow: TextOverflow.fade,
               minFontSize: 16,
@@ -52,7 +53,5 @@ class NotificationNews extends NotificationItem {
   void onClose() => onCloseAction();
 
   @override
-  void onOpen() {
-    // TODO: implement onOpen
-  }
+  void onOpen() => onOpenAction();
 }

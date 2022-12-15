@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
+import 'screens/notification_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -37,6 +38,11 @@ class MyApp extends StatelessWidget {
       onSurface: Colors.white,
       primaryContainer: Color(0xFF262D47),
       secondaryContainer: Color(0xFF1B2033),
+    ),
+    dividerTheme: DividerThemeData(
+      color: Colors.white.withOpacity(0.5),
+      space: 30,
+      thickness: 3,
     ),
     fontFamily: "Quicksand",
     textTheme: const TextTheme(
@@ -176,6 +182,12 @@ class MyApp extends StatelessWidget {
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 500),
+            );
+          case NotificationScreen.routeName:
+            return PageTransition(
+              child: const NotificationScreen(),
+              settings: settings,
+              type: PageTransitionType.bottomToTop,
             );
           default:
             return null;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' hide Notification;
 
+import '../screens/notification_screen.dart';
+
 import '../widgets/notification_news.dart';
 import '../models/synced_list.dart';
 import '../models/notification.dart';
@@ -17,7 +19,8 @@ class NotificationBar extends StatefulWidget {
 
 class _NotificationBarState extends State<NotificationBar> {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
-  final Animatable<double> animationTween = Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.easeOutBack));
+  final Animatable<double> animationTween =
+      Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: Curves.easeOutBack));
   late SyncedList<Notification> _notifications;
 
   @override
@@ -30,19 +33,24 @@ class _NotificationBarState extends State<NotificationBar> {
     );
   }
 
-  Widget _buildItem(BuildContext buildContext, int listIndex, Animation<double> animation) {
+  Widget _buildItem(
+      BuildContext buildContext, int listIndex, Animation<double> animation) {
     var notification = _notifications[listIndex];
 
     switch (notification.type) {
       case NotificationType.news:
-        var newsObject = notification as News;
         return SizeTransition(
           sizeFactor: animation.drive(animationTween),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: NotificationNews(
-              senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
-              message: newsObject.message,
+              newsObject: notification as News,
+              onOpenAction: () {
+                Navigator.of(buildContext).pushNamed(
+                  NotificationScreen.routeName,
+                  arguments: notification,
+                );
+              },
               onCloseAction: () {
                 setState(() {
                   _notifications.removeAt(listIndex);
@@ -54,17 +62,17 @@ class _NotificationBarState extends State<NotificationBar> {
     }
   }
 
-  Widget _buildRemovedItem(Notification notification, BuildContext buildContext, Animation<double> animation) {
+  Widget _buildRemovedItem(Notification notification, BuildContext buildContext,
+      Animation<double> animation) {
     switch (notification.type) {
       case NotificationType.news:
-        var newsObject = notification as News;
         return ScaleTransition(
           scale: animation.drive(animationTween),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: NotificationNews(
-              senderIconNetworkAddress: newsObject.senderIconNetworkAddress,
-              message: newsObject.message,
+              newsObject: notification as News,
+              onOpenAction: () {},
               onCloseAction: () {},
             ),
           ),
