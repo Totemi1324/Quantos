@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 // Screens
 import 'screens/splash_screen.dart';
 import 'screens/notification_screen.dart';
+import 'screens/settings_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -138,6 +139,17 @@ class MyApp extends StatelessWidget {
               curve: Curves.ease,
               duration: const Duration(milliseconds: 1200),
             );
+          case NotificationScreen.routeName:
+            return PageTransition(
+              child: const NotificationScreen(),
+              settings: settings,
+              type: PageTransitionType.bottomToTop,
+            );
+          case SettingsScreen.routeName:
+            return PageTransition(
+              child: const SettingsScreen(),
+              type: PageTransitionType.bottomToTop,
+            );
           case AuthHomeScreen.routeName:
             return PageTransition(
               child: const AuthHomeScreen(),
@@ -183,12 +195,7 @@ class MyApp extends StatelessWidget {
               curve: Curves.ease,
               duration: const Duration(milliseconds: 500),
             );
-          case NotificationScreen.routeName:
-            return PageTransition(
-              child: const NotificationScreen(),
-              settings: settings,
-              type: PageTransitionType.bottomToTop,
-            );
+
           default:
             return null;
         }

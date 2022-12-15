@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
+import '../settings_screen.dart';
+
 class Decorated extends StatefulWidget {
   final Widget body;
   final bool enableNavigationBar;
@@ -63,7 +65,8 @@ class _DecoratedState extends State<Decorated> {
               : null,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(SettingsScreen.routeName),
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
