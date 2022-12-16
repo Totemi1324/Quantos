@@ -14,7 +14,7 @@ import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
 import 'screens/profile/profile_age_screen.dart';
 import 'screens/profile/profile_experience_screen.dart';
-import 'screens/home_screen.dart';
+import 'screens/base/home.dart';
 
 void main() {
   Paint.enableDithering = true;
@@ -128,15 +128,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: HelpScreen.routeName,
+      initialRoute: Home.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case HomeScreen.routeName:
+          case Home.routeName:
             return PageTransition(
-              child: const HomeScreen(),
+              child: const Home(),
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 1200),
