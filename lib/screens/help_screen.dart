@@ -31,7 +31,7 @@ class HelpScreen extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      "We're sorry you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
+                      "We're sorry if you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
