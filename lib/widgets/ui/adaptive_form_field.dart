@@ -9,6 +9,7 @@ class AdaptiveFormField extends StatefulWidget {
   final FocusNode? nextField;
   final IconData? prefixIcon;
   final bool passwordField;
+  final bool multiline;
 
   const AdaptiveFormField(
     this.labelText, {
@@ -19,6 +20,7 @@ class AdaptiveFormField extends StatefulWidget {
     this.nextField,
     this.prefixIcon,
     this.passwordField = false,
+    this.multiline = false,
     super.key,
   });
 
@@ -55,6 +57,24 @@ class AdaptiveFormField extends StatefulWidget {
         passwordField: true,
       );
 
+  factory AdaptiveFormField.multiline(String labelText,
+          {required bool autocorrect,
+          required bool enableSuggestions,
+          required bool isFinalField,
+          IconData? prefixIcon,
+          FocusNode? thisField,
+          FocusNode? nextField}) =>
+      AdaptiveFormField(
+        labelText,
+        autocorrect: autocorrect,
+        enableSuggestions: enableSuggestions,
+        isFinalField: isFinalField,
+        prefixIcon: prefixIcon,
+        multiline: true,
+        thisField: thisField,
+        nextField: nextField,
+      );
+
   @override
   State<AdaptiveFormField> createState() => _AdaptiveFormFieldState();
 }
@@ -70,8 +90,11 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
       enableSuggestions: widget.enableSuggestions,
       obscureText: widget.passwordField ? _hidden : false,
       focusNode: widget.thisField,
-      textInputAction:
-          widget.isFinalField ? TextInputAction.done : TextInputAction.next,
+      keyboardType: widget.multiline ? TextInputType.multiline : null,
+      maxLines: widget.multiline ? null : 1,
+      textInputAction: widget.multiline
+          ? TextInputAction.newline
+          : (widget.isFinalField ? TextInputAction.done : TextInputAction.next),
       onFieldSubmitted: !widget.isFinalField
           ? (_) => FocusScope.of(context).requestFocus(widget.nextField)
           : null,

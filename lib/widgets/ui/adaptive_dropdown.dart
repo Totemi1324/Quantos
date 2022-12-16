@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class AdaptiveDropdown extends StatefulWidget {
   final List<DropdownMenuItem> items;
   final int? defaultSelectedIndex;
-  final Function onChanged;
+  final Function(dynamic) onChanged;
+  final bool expanded;
 
   const AdaptiveDropdown(
       {required this.items,
       required this.onChanged,
+      this.expanded = false,
       this.defaultSelectedIndex,
       super.key});
 
@@ -29,6 +31,8 @@ class _AdaptiveDropdownState extends State<AdaptiveDropdown> {
     return DropdownButton(
       items: widget.items,
       value: widget.items[_selectedIndex].value,
+      isExpanded: widget.expanded,
+      itemHeight: null,
       onChanged: (value) {
         widget.onChanged(value);
         for (var i = 0; i < widget.items.length; i++) {
