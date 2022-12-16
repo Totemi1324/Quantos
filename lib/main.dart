@@ -3,6 +3,10 @@ import 'package:page_transition/page_transition.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
+import 'screens/notification_screen.dart';
+import 'screens/settings_screen.dart';
+import 'screens/info_screen.dart';
+import 'screens/help_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -10,7 +14,7 @@ import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
 import 'screens/profile/profile_age_screen.dart';
 import 'screens/profile/profile_experience_screen.dart';
-import 'screens/home_screen.dart';
+import 'screens/base/home.dart';
 
 void main() {
   Paint.enableDithering = true;
@@ -37,6 +41,11 @@ class MyApp extends StatelessWidget {
       onSurface: Colors.white,
       primaryContainer: Color(0xFF262D47),
       secondaryContainer: Color(0xFF1B2033),
+    ),
+    dividerTheme: DividerThemeData(
+      color: Colors.white.withOpacity(0.5),
+      space: 30,
+      thickness: 3,
     ),
     fontFamily: "Quicksand",
     textTheme: const TextTheme(
@@ -119,18 +128,39 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: Home.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
       onGenerateRoute: (settings) {
         switch (settings.name) {
-          case HomeScreen.routeName:
+          case Home.routeName:
             return PageTransition(
-              child: const HomeScreen(),
+              child: const Home(),
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 1200),
+            );
+          case NotificationScreen.routeName:
+            return PageTransition(
+              child: const NotificationScreen(),
+              settings: settings,
+              type: PageTransitionType.bottomToTop,
+            );
+          case SettingsScreen.routeName:
+            return PageTransition(
+              child: const SettingsScreen(),
+              type: PageTransitionType.bottomToTop,
+            );
+          case InfoScreen.routeName:
+            return PageTransition(
+              child: const InfoScreen(),
+              type: PageTransitionType.bottomToTop,
+            );
+          case HelpScreen.routeName:
+            return PageTransition(
+              child: const HelpScreen(),
+              type: PageTransitionType.bottomToTop,
             );
           case AuthHomeScreen.routeName:
             return PageTransition(
@@ -177,6 +207,7 @@ class MyApp extends StatelessWidget {
               curve: Curves.ease,
               duration: const Duration(milliseconds: 500),
             );
+
           default:
             return null;
         }

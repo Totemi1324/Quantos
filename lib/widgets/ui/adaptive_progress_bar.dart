@@ -38,7 +38,7 @@ class AdaptiveProgressBar extends StatelessWidget {
           ),
         Flexible(
           child: SizedBox(
-            height: 15,
+            height: 10,
             child: Stack(
               children: [
                 FractionallySizedBox(

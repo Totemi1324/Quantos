@@ -37,8 +37,10 @@ dependencies:
   flutter_bloc: ^8.1.1
   rive: ^0.9.1
   auto_size_text: ^3.0.0
-  page_transition: ^2.0.9
+  flutter_switch: ^0.3.2
   curved_navigation_bar: ^1.0.3
+  page_transition: ^2.0.9
+  package_info_plus: 3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -55,8 +57,13 @@ flutter:
     - assets/animations/quantos_logo_idle.riv
     - assets/animations/circular_progress_indicator.riv
     - assets/animations/age_selection.riv
+    
+    - assets/images/logo.png
     - assets/images/background.png
     - assets/images/lection_preview_image.png
+    - assets/images/avatar_background.png
+    - assets/images/profile_background.png
+    - assets/images/profile_foreground.png
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section.
