@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './info_screen.dart';
+
 import './base/flat.dart';
 import '../widgets/settings_list.dart';
 
@@ -31,7 +33,8 @@ class SettingsScreen extends StatelessWidget {
                   child: const SettingsList(),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(InfoScreen.routeName),
                   child: Text(
                     "App Information",
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
@@ -41,20 +44,17 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          "We're working on that... Meanwhile, send us your message to help@quantos-learning.com",
-                          style:
-                              Theme.of(context).textTheme.labelSmall?.copyWith(
-                                    fontSize: 16,
-                                  ),
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.surface,
+                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        "We're working on that... Meanwhile, send us your message to help@quantos-learning.com",
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              fontSize: 16,
+                            ),
                       ),
-                    );
-                  },
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                    ),
+                  ),
                   child: Text(
                     "Help Center",
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
