@@ -6,6 +6,7 @@ import 'screens/splash_screen.dart';
 import 'screens/notification_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/info_screen.dart';
+import 'screens/help_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -127,7 +128,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: HelpScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
@@ -154,6 +155,11 @@ class MyApp extends StatelessWidget {
           case InfoScreen.routeName:
             return PageTransition(
               child: const InfoScreen(),
+              type: PageTransitionType.bottomToTop,
+            );
+          case HelpScreen.routeName:
+            return PageTransition(
+              child: const HelpScreen(),
               type: PageTransitionType.bottomToTop,
             );
           case AuthHomeScreen.routeName:
