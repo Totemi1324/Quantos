@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/notification_bar.dart';
-import '../widgets/lection_list.dart';
+import '../../widgets/notification_bar.dart';
+import '../../widgets/part_separator.dart';
+import '../../widgets/lection_list.dart';
 
 class HomeScreen extends StatelessWidget {
   final String? name = "Tamas";
@@ -31,14 +32,9 @@ class HomeScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.25,
                 ),
               ),
-              Container(
-                alignment: Alignment.centerLeft,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  "Lections",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+              const PartSeparator(
+                "Lections",
+                verticalMargin: 10,
               ),
               const LectionList(),
               const SizedBox(

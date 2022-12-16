@@ -42,13 +42,13 @@ class LectionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final icon = ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 80),
+      constraints: const BoxConstraints(maxWidth: 80),
       child: Image.asset(
         previewImageAsset,
         fit: BoxFit.contain,
       ),
     );
-    final _progressBar = AdaptiveProgressBar.icon(progressPercent);
+    final progressBar = AdaptiveProgressBar.icon(progressPercent);
 
     return Column(
       children: [
@@ -79,10 +79,10 @@ class LectionItem extends StatelessWidget {
           ],
         ),
         unlocked
-            ? _progressBar
+            ? progressBar
             : ColorFiltered(
                 colorFilter: grayscaleImageFilter,
-                child: _progressBar,
+                child: progressBar,
               ),
       ],
     );
