@@ -126,7 +126,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Quantos",
       theme: activeTheme,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SettingsScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => const SplashScreen(),
       },
