@@ -16,7 +16,7 @@ class AdaptiveCircularProgressBar extends StatelessWidget {
       lineWidth: 12,
       animation: true,
       animationDuration: 1000,
-      curve: Curves.elasticOut,
+      curve: Curves.easeOutQuad,
       progressColor: Theme.of(context).colorScheme.secondary,
       backgroundColor: Colors.transparent,
       percent: progress,
