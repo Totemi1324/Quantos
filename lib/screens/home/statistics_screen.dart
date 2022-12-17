@@ -28,7 +28,7 @@ class StatisticsScreen extends StatelessWidget {
                 0.57,
                 footer: "completed",
               ),
-              StatisticsList(),
+              const StatisticsList(),
               RoundedCard(
                 padding: const EdgeInsets.all(20),
                 fillWidth: true,
