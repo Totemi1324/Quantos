@@ -64,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
+                margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   boxShadow: [
