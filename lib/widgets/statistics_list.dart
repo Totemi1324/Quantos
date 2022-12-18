@@ -13,9 +13,60 @@ class StatisticsList extends StatelessWidget {
   TitledElement _buildElement(BuildContext buildContext, int index) {
     switch (index) {
       case 0:
-        return const TitledElement(
+        return TitledElement(
           title: "Activity",
-          element: HeatmapChart(),
+          element: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "this month",
+                style: Theme.of(buildContext).textTheme.labelSmall,
+              ),
+              const HeatmapChart(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(buildContext).colorScheme.secondary,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "online",
+                    style: Theme.of(buildContext).textTheme.labelSmall,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Theme.of(buildContext).colorScheme.secondary,
+                            width: 3,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "offline",
+                    style: Theme.of(buildContext).textTheme.labelSmall,
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
       case 1:
         return TitledElement(
