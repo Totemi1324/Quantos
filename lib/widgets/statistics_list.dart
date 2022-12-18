@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
 import './canvas/line_chart.dart';
+import './canvas/heatmap_chart.dart';
 
 class StatisticsList extends StatelessWidget {
   final int elementCount = 3;
@@ -12,9 +13,9 @@ class StatisticsList extends StatelessWidget {
   TitledElement _buildElement(BuildContext buildContext, int index) {
     switch (index) {
       case 0:
-        return TitledElement(
+        return const TitledElement(
           title: "Activity",
-          element: Container(),
+          element: HeatmapChart(),
         );
       case 1:
         return TitledElement(
