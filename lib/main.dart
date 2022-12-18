@@ -77,6 +77,13 @@ class MyApp extends StatelessWidget {
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
+      titleSmall: TextStyle(
+        // Lesson titles
+        fontFamily: "Quicksand",
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+      ),
       bodyLarge: TextStyle(
         // Standard body
         fontFamily: "Quicksand",
