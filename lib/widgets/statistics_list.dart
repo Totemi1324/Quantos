@@ -9,7 +9,7 @@ class StatisticsList extends StatelessWidget {
 
   const StatisticsList({super.key});
 
-  TitledElement _buildElement(int index) {
+  TitledElement _buildElement(BuildContext buildContext, int index) {
     switch (index) {
       case 0:
         return TitledElement(
@@ -17,9 +17,25 @@ class StatisticsList extends StatelessWidget {
           element: Container(),
         );
       case 1:
-        return const TitledElement(
+        return TitledElement(
           title: "Performace",
-          element: LineChart(),
+          element: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "in the last 7 days",
+                style: Theme.of(buildContext).textTheme.labelSmall,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const LineChart(),
+              Text(
+                "completed lessons per day",
+                style: Theme.of(buildContext).textTheme.labelSmall,
+              ),
+            ],
+          ),
         );
       case 2:
         return TitledElement(
@@ -38,28 +54,42 @@ class StatisticsList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: elementCount,
       itemBuilder: (context, index) {
-        TitledElement item = _buildElement(index);
+        TitledElement item = _buildElement(context, index);
 
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 20),
-          child: Stack(
-            children: [
-              RoundedCard(
-                fillWidth: true,
-                fillHeight: false,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-                child: item.element,
-              ),
-              Positioned(
-                left: 10,
-                top: 10,
-                child: Text(
-                  item.title,
-                  style: Theme.of(context).textTheme.labelMedium,
+          child: RoundedCard(
+            fillWidth: true,
+            fillHeight: false,
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      item.title,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    if (index != 2)
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(25),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.record_voice_over_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
-              ),
-            ],
+                item.element
+              ],
+            ),
           ),
         );
       },

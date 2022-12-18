@@ -26,7 +26,6 @@ class _LineChartState extends State<LineChart> {
   @override
   void initState() {
     super.initState();
-    var min = double.maxFinite;
     var max = -double.maxFinite;
     dailyActivities.forEach((element) {
       max = (max < element.completedLessons ? element.completedLessons : max)
