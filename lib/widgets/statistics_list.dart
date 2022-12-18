@@ -4,6 +4,7 @@ import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
 import './canvas/line_chart.dart';
 import './canvas/heatmap_chart.dart';
+import './progress_list.dart';
 
 class StatisticsList extends StatelessWidget {
   final int elementCount = 3;
@@ -90,9 +91,9 @@ class StatisticsList extends StatelessWidget {
           ),
         );
       case 2:
-        return TitledElement(
+        return const TitledElement(
           title: "Progress",
-          element: Container(),
+          element: ProgressList(),
         );
       default:
         return TitledElement.empty();
