@@ -122,7 +122,7 @@ class LineChartPainter extends CustomPainter {
 
     final yOffsets =
         _computeY(centerOfSegment, segmentWidth, height, unitHeight);
-    final path = _computePath(yOffsets);
+    final path = _computePath(yOffsets, segmentWidth);
     final labels = _computeLabels();
 
     _drawGuidelines(canvas, centerOfSegment, width, height);
@@ -152,14 +152,23 @@ class LineChartPainter extends CustomPainter {
     return y;
   }
 
-  Path _computePath(List<Offset> yOffsets) {
+  Path _computePath(List<Offset> yOffsets, double segmentWidth) {
     final path = Path();
     for (var i = 0; i < yOffsets.length; i++) {
       final offset = yOffsets[i];
+
       if (i == 0) {
         path.moveTo(offset.dx, offset.dy);
       } else {
-        path.lineTo(offset.dx, offset.dy);
+        final previousOffset = yOffsets[i - 1];
+        path.cubicTo(
+          previousOffset.dx + segmentWidth / 2,
+          previousOffset.dy,
+          offset.dx - segmentWidth / 2,
+          offset.dy,
+          offset.dx,
+          offset.dy,
+        );
       }
     }
     return path;
