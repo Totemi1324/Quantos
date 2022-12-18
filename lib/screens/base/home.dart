@@ -5,6 +5,7 @@ import '../home/home_screen.dart';
 import '../home/profile_screen.dart';
 import '../home/statistics_screen.dart';
 import '../home/download_screen.dart';
+import '../home/coding_screen.dart';
 import '../settings_screen.dart';
 
 class Home extends StatefulWidget {
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
   void initState() {
     _pages = [
       const DownloadScreen(),
-      Container(),
+      const CodingScreen(),
       const HomeScreen(),
       const StatisticsScreen(),
       const ProfileScreen(),
