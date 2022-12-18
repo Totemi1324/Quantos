@@ -12,7 +12,8 @@ class AdaptiveCircularProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      radius: radius ?? MediaQuery.of(context).size.width * 0.2,
+      radius:
+          radius ?? (MediaQuery.of(context).size.width * 0.2).clamp(50, 100),
       lineWidth: 12,
       animation: true,
       animationDuration: 1000,
