@@ -107,11 +107,11 @@ class _HomeState extends State<Home> {
         bottomNavigationBar: CurvedNavigationBar(
           key: _navigationBarKey,
           items: [
-            _buildNavbarIcon(Icons.download_rounded),
+            _buildNavbarIcon(Icons.save_alt_rounded),
             _buildNavbarIcon(Icons.code_rounded),
             _buildNavbarIcon(Icons.home_rounded),
-            _buildNavbarIcon(Icons.stacked_bar_chart_rounded),
-            _buildNavbarIcon(Icons.person_rounded),
+            _buildNavbarIcon(Icons.show_chart_rounded),
+            _buildNavbarIcon(Icons.person_outline_rounded),
           ],
           index: _selectedPageIndex,
           height: 50,
