@@ -6,7 +6,9 @@ import '../widgets/canvas/heatmap_chart.dart';
 
 List<Notification> news = [
   Statistic(
-    statistics: const HeatmapChart(),
+    statistics: const HeatmapChart(
+      height: 150,
+    ),
     date: DateTime.now(),
   ),
   News(

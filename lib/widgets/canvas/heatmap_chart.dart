@@ -153,7 +153,7 @@ class HeatmapChartPainter extends CustomPainter {
       }
       canvas.drawRRect(
         RRect.fromRectAndRadius(square, Radius.circular(radius)),
-        offlinePaint..color = themeColors.secondary,
+        offlinePaint..strokeWidth = (1 / 80 * parentHeight)..color = themeColors.secondary,
       );
     }
   }
