@@ -18,7 +18,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var _pages = List<Widget>.empty();
+  final GlobalKey<CurvedNavigationBarState> _navigationBarKey = GlobalKey();
+  List<Widget> _pages = List<Widget>.empty();
   int _selectedPageIndex = 2;
   late ImageProvider _image;
 
@@ -104,6 +105,7 @@ class _HomeState extends State<Home> {
           ],
         ),
         bottomNavigationBar: CurvedNavigationBar(
+          key: _navigationBarKey,
           items: [
             _buildNavbarIcon(Icons.download_rounded),
             _buildNavbarIcon(Icons.code_rounded),
