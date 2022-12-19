@@ -13,9 +13,9 @@ class AdaptiveDownloadButton extends StatelessWidget {
         Container(
           width: 60,
           height: 60,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            gradient: const RadialGradient(
+            gradient: RadialGradient(
               colors: [
                 Color(0xFFDADADA),
                 Color(0xFFBDBDBD),
@@ -24,13 +24,6 @@ class AdaptiveDownloadButton extends StatelessWidget {
               center: Alignment(0.3, -0.5),
               radius: 1,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                offset: const Offset(0, 5),
-                blurRadius: 5,
-              )
-            ],
           ),
         ),
         IconButton(

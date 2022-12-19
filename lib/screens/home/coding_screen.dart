@@ -104,7 +104,7 @@ class _CodingScreenState extends State<CodingScreen> {
                                 ),
                                 const TextSpan(
                                   text:
-                                      " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time if you want to send an optimization problem.",
+                                      " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time you want to send an optimization problem.",
                                 ),
                               ],
                             ),

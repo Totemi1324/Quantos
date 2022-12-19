@@ -60,6 +60,9 @@ class ProfileAgeScreen extends StatelessWidget {
                   onPressed: () => Navigator.of(context)
                       .pushNamed(ProfileExperienceScreen.routeName),
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),

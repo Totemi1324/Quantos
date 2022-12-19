@@ -61,6 +61,9 @@ class ProfileExperienceScreen extends StatelessWidget {
                     (_) => false,
                   ),
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),
