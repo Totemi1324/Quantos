@@ -27,10 +27,10 @@ class _LineChartState extends State<LineChart> {
   void initState() {
     super.initState();
     var max = -double.maxFinite;
-    dailyActivities.forEach((element) {
+    for (var element in dailyActivities) {
       max = (max < element.completedLessons ? element.completedLessons : max)
           .toDouble();
-    });
+    }
     _points = List<NumericDataPoint>.generate(
       7,
       (index) => NumericDataPoint(
@@ -46,7 +46,7 @@ class _LineChartState extends State<LineChart> {
     setState(() {
       _minY = 0;
       _maxY = max + 1;
-      dailyActivities.forEach((element) {
+      for (var element in dailyActivities) {
         var differenceInDays =
             widget.daysBetween(element.lastOnline, DateTime.now());
         if (differenceInDays < 7) {
@@ -54,7 +54,7 @@ class _LineChartState extends State<LineChart> {
           _points[differenceInDays] = NumericDataPoint(
               currectItem.label, element.completedLessons.toDouble());
         }
-      });
+      }
       _points = _points.reversed.toList();
     });
   }
@@ -142,13 +142,13 @@ class LineChartPainter extends CustomPainter {
   List<Offset> _computeY(Offset centerOfSegment, double segmentWidth,
       double height, double unitHeight) {
     List<Offset> y = [];
-    points.forEach((point) {
+    for (var point in points) {
       final scaledY = height - (point.value - minY) * unitHeight;
       final localY = Offset(
           centerOfSegment.dx, centerOfSegment.dy - height / 2.0 + scaledY);
       y.add(localY);
       centerOfSegment += Offset(segmentWidth, 0);
-    });
+    }
     return y;
   }
 
@@ -227,10 +227,10 @@ class LineChartPainter extends CustomPainter {
   }
 
   void _drawXLabels(Canvas canvas, Offset centerOffset, double segmentWidth) {
-    points.forEach((point) {
+    for (var point in points) {
       _drawTextCentered(
           canvas, centerOffset, point.label, axisLabelStyle, segmentWidth);
       centerOffset += Offset(segmentWidth, 0);
-    });
+    }
   }
 }

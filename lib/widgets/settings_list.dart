@@ -13,22 +13,22 @@ enum ThemeMode {
 class SettingsList extends StatelessWidget {
   final List<DropdownMenuItem> _themes = const [
     DropdownMenuItem(
-      child: Text("Dark"),
       value: ThemeMode.dark,
+      child: Text("Dark"),
     ),
     DropdownMenuItem(
-      child: Text("Light"),
       value: ThemeMode.light,
+      child: Text("Light"),
     ),
   ];
   final List<DropdownMenuItem> _languages = const [
     DropdownMenuItem(
-      child: Text("Deutsch"),
       value: "DE",
+      child: Text("Deutsch"),
     ),
     DropdownMenuItem(
-      child: Text("English"),
       value: "EN",
+      child: Text("English"),
     ),
   ];
 

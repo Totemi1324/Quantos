@@ -135,7 +135,7 @@ class HeatmapChartPainter extends CustomPainter {
     const border = 5;
     const radius = 5.0;
 
-    points.forEach((point) {
+    for (var point in points) {
       final center = centerOfSquare +
           Offset(squareSize * (point.x - 3), squareSize * point.y);
       final square = Rect.fromCenter(
@@ -153,7 +153,7 @@ class HeatmapChartPainter extends CustomPainter {
         RRect.fromRectAndRadius(square, const Radius.circular(radius)),
         offlinePaint..color = themeColors.secondary,
       );
-    });
+    }
   }
 
   void _drawXLabels(Canvas canvas, Offset centerOffset, double squareSize) {

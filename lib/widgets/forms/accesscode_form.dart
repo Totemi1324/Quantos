@@ -62,7 +62,9 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
 
   @override
   void dispose() {
-    _nodes.forEach((element) => element.dispose());
+    for (var node in _nodes) {
+      node.dispose();
+    }
     super.dispose();
   }
 

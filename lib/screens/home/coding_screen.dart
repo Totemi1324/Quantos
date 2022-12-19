@@ -14,12 +14,12 @@ class CodingScreen extends StatefulWidget {
 class _CodingScreenState extends State<CodingScreen> {
   final List<DropdownMenuItem> _modes = const [
     DropdownMenuItem(
-      child: Text("Simulator"),
       value: 0,
+      child: Text("Simulator"),
     ),
     DropdownMenuItem(
-      child: Text("DWave Advantage"),
       value: 1,
+      child: Text("DWave Advantage"),
     ),
   ];
 
