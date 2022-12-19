@@ -64,6 +64,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.center,
+                margin: const EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   boxShadow: [
@@ -119,6 +120,9 @@ class ProfileScreen extends StatelessWidget {
                     onTap: () => _sendWorkInProgressMessage(context),
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),

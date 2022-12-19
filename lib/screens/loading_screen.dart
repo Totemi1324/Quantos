@@ -14,6 +14,7 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  // ignore: unused_field
   late Timer _timer;
 
   @override

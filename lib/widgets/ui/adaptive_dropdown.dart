@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AdaptiveDropdown extends StatefulWidget {
   final List<DropdownMenuItem> items;
-  final int? defaultSelectedIndex;
+  final int defaultSelectedIndex;
   final Function(dynamic) onChanged;
   final bool expanded;
 
@@ -10,7 +10,7 @@ class AdaptiveDropdown extends StatefulWidget {
       {required this.items,
       required this.onChanged,
       this.expanded = false,
-      this.defaultSelectedIndex,
+      this.defaultSelectedIndex = 0,
       super.key});
 
   @override
@@ -23,7 +23,7 @@ class _AdaptiveDropdownState extends State<AdaptiveDropdown> {
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.defaultSelectedIndex ?? 0;
+    _selectedIndex = widget.defaultSelectedIndex;
   }
 
   @override

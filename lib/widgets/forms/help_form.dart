@@ -7,20 +7,20 @@ import '../ui/adaptive_dropdown.dart';
 class HelpForm extends StatefulWidget {
   final List<DropdownMenuItem> _issues = const [
     DropdownMenuItem(
-      child: Text("I have a problem regarding my account"),
       value: "Account issue",
+      child: Text("I have a problem regarding my account"),
     ),
     DropdownMenuItem(
-      child: Text("I want to report a bug/error in the app"),
       value: "Bug report",
+      child: Text("I want to report a bug/error in the app"),
     ),
     DropdownMenuItem(
-      child: Text("I have an inquiry about the app or its contents"),
       value: "Feature inquiry",
+      child: Text("I have an inquiry about the app or its contents"),
     ),
     DropdownMenuItem(
-      child: Text("Other"),
       value: "Other",
+      child: Text("Other"),
     ),
   ];
 

@@ -3,6 +3,9 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import '../home/home_screen.dart';
 import '../home/profile_screen.dart';
+import '../home/statistics_screen.dart';
+import '../home/download_screen.dart';
+import '../home/coding_screen.dart';
 import '../settings_screen.dart';
 
 class Home extends StatefulWidget {
@@ -22,10 +25,10 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     _pages = [
-      Container(),
-      Container(),
+      const DownloadScreen(),
+      const CodingScreen(),
       const HomeScreen(),
-      Container(),
+      const StatisticsScreen(),
       const ProfileScreen(),
     ];
     _image = const AssetImage("assets/images/background.png");
