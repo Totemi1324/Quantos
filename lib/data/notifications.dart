@@ -1,7 +1,14 @@
 import '../models/notification.dart';
 import '../models/news.dart';
+import '../models/statistic.dart';
+
+import '../widgets/canvas/heatmap_chart.dart';
 
 List<Notification> news = [
+  Statistic(
+    statistics: const HeatmapChart(),
+    date: DateTime.now(),
+  ),
   News(
     senderIconNetworkAddress: "https://pbs.twimg.com/media/FJ96vOQWUAwbIah.jpg",
     message: '''Version 1.0.0 is out! ^_^

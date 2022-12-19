@@ -1,5 +1,6 @@
 enum NotificationType {
   news,
+  statistic,
 }
 
 abstract class Notification {

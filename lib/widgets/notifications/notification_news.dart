@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-import '../models/notification.dart';
-import '../models/news.dart';
-import './notification_item.dart';
+import '../../models/notification.dart';
+import '../../models/news.dart';
+import 'notification_item.dart';
 
 class NotificationNews extends NotificationItem {
   final News newsObject;
@@ -15,7 +15,7 @@ class NotificationNews extends NotificationItem {
     required this.onCloseAction,
     required this.onOpenAction,
     super.key,
-  }) : super(NotificationType.news);
+  }) : super(NotificationType.news, dismissible: true);
 
   @override
   Widget buildContent(BuildContext buildContext) {

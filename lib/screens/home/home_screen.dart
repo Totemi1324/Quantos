@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/notification_bar.dart';
+import '../../widgets/notifications/notification_bar.dart';
 import '../../widgets/part_separator.dart';
 import '../../widgets/lection_list.dart';
 
