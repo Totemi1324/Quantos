@@ -96,6 +96,10 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    width: 2,
+                  ),
                 ),
                 child: SingleChildScrollView(
                   child: AnimatedTextKit(

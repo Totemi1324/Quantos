@@ -27,31 +27,12 @@ class _CodingScreenState extends State<CodingScreen> {
       child: Text("DWave Advantage"),
     ),
   ];
-  late List<List<Widget>> _modeContent;
 
   int _selectedMode = 0;
 
   @override
   void initState() {
     super.initState();
-    _modeContent = List<List<Widget>>.empty(growable: true);
-
-    _modeContent.add([
-      HamiltonianInput(
-        onSubmit: () =>
-            Scrollable.ensureVisible(_outputConsoleKey.currentContext!),
-      ),
-      ConsoleOutput(_selectedMode),
-      const ProbabilityDistribution(),
-    ]);
-    _modeContent.add([
-      const TokenInput(),
-      HamiltonianInput(
-        onSubmit: () =>
-            Scrollable.ensureVisible(_outputConsoleKey.currentContext!),
-      ),
-      ConsoleOutput(_selectedMode),
-    ]);
   }
 
   @override
@@ -117,7 +98,21 @@ class _CodingScreenState extends State<CodingScreen> {
                   ],
                 ),
               ),
-              if (_modeContent.isNotEmpty) ..._modeContent[_selectedMode],
+              if (_selectedMode == 1) const TokenInput(),
+              HamiltonianInput(
+                onSubmit: () {
+                  if (_outputConsoleKey.currentContext != null) {
+                    Scrollable.ensureVisible(
+                      _outputConsoleKey.currentContext as BuildContext,
+                    );
+                  }
+                },
+              ),
+              ConsoleOutput(
+                _selectedMode,
+                key: _outputConsoleKey,
+              ),
+              if (_selectedMode == 0) const ProbabilityDistribution(),
               const SizedBox(
                 height: 30,
               )
