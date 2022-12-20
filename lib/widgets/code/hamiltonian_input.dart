@@ -10,7 +10,9 @@ import '../ui/adaptive_dropdown.dart';
 import '../ui/adaptive_button.dart';
 
 class HamiltonianInput extends StatefulWidget {
-  const HamiltonianInput({super.key});
+  final VoidCallback onSubmit;
+
+  const HamiltonianInput({required this.onSubmit, super.key});
 
   @override
   State<HamiltonianInput> createState() => _HamiltonianInputState();
@@ -86,10 +88,11 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const PartSeparator(
           "Hamiltonian",
-          verticalMargin: 10,
+          verticalMargin: 20,
         ),
         PanelCard(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -145,7 +148,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
               AdaptiveButton.secondary(
                 "Send",
                 extended: false,
-                onPressed: () {},
+                onPressed: widget.onSubmit,
               )
             ],
           ),
