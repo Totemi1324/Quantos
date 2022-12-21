@@ -23,8 +23,8 @@ class _BarChartState extends State<BarChart> {
     super.initState();
 
     setState(() {
-      _minY = widget.values.fold(0, (v1, v2) => min(v1, v2));
-      _maxY = widget.values.fold(0, (v1, v2) => max(v1, v2));
+      _minY = widget.values.fold(double.maxFinite, (v1, v2) => min(v1, v2));
+      _maxY = widget.values.fold(-double.maxFinite, (v1, v2) => max(v1, v2));
       if (widget.values.length >= 5) {
         _points = List<NumericDataPoint>.generate(
           5,
