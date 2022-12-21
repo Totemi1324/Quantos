@@ -1,55 +1,48 @@
 import 'dart:math' show min, max;
 
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 
 import '../../models/numeric_data_point.dart';
 
-class BarChart extends StatefulWidget {
+class BarChart extends StatelessWidget {
   final double height;
   final List<double> values;
 
   const BarChart({this.height = 200, required this.values, super.key});
 
-  @override
-  State<BarChart> createState() => _BarChartState();
-}
-
-class _BarChartState extends State<BarChart> {
-  late double _minY, _maxY;
-  late List<NumericDataPoint> _points;
-
-  @override
-  void initState() {
-    super.initState();
-
-    setState(() {
-      _minY = widget.values.fold(0, (v1, v2) => min(v1, v2));
-      _maxY = widget.values.fold(0, (v1, v2) => max(v1, v2));
-      if (widget.values.length >= 5) {
-        _points = List<NumericDataPoint>.generate(
-          5,
-          (index) => NumericDataPoint(
-            "#${index + 1}",
-            widget.values[index],
-          ),
-        );
-      }
-    });
+  Tuple3<double, double, List<NumericDataPoint>> _calculateData() {
+    final double minY = values.fold(0, (v1, v2) => min(v1, v2));
+    final double maxY = values.fold(0, (v1, v2) => max(v1, v2));
+    List<NumericDataPoint> points = List<NumericDataPoint>.empty();
+    if (values.length >= 5) {
+      points = List<NumericDataPoint>.generate(
+        5,
+        (index) => NumericDataPoint(
+          "#${index + 1}",
+          values[index],
+        ),
+      );
+    }
+    return Tuple3<double, double, List<NumericDataPoint>>(minY, maxY, points);
   }
 
   @override
   Widget build(BuildContext context) {
+    final data = _calculateData();
+
     return SizedBox(
-      height: widget.height,
+      height: height,
       child: CustomPaint(
         painter: BarChartPainter(
-            _points,
-            5,
-            _minY,
-            _maxY,
-            Theme.of(context).colorScheme,
-            Theme.of(context).textTheme.labelMedium!,
-            Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14)),
+          data.item3,
+          5,
+          data.item1,
+          data.item2,
+          Theme.of(context).colorScheme,
+          Theme.of(context).textTheme.labelMedium!,
+          Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+        ),
         child: Container(),
       ),
     );
@@ -110,20 +103,7 @@ class BarChartPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    /*bool repaint = false;
-    BarChartPainter old = oldDelegate as BarChartPainter;
-
-    if (points.length == old.points.length) {
-      for (var i = 0; i < points.length; i++) {
-        if ((points[i].value - old.points[i].value).abs() > 1.0e-6) {
-          repaint = true;
-        }
-      }
-    } else {
-      repaint = true;
-    }*/
-
-    return true;
+    return false;
   }
 
   List<Offset> _computeY(
