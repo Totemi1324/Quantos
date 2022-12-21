@@ -63,7 +63,10 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
             Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Theme.of(buildContext)
+                    .colorScheme
+                    .onBackground
+                    .withOpacity(0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: _inputField,
