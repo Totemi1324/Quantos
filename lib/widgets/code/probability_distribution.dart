@@ -18,7 +18,13 @@ class ProbabilityDistribution extends StatelessWidget {
         ),
         PanelCard(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: ProbabilityCalculator(),
+          child: ProbabilityCalculator([
+            -37.6,
+            -37.1,
+            -36.2,
+            -33.9,
+            -27.7,
+          ]),
         ),
       ],
     );
