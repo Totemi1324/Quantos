@@ -1,4 +1,4 @@
-import 'dart:math' show exp;
+import 'dart:math' show exp, max, log;
 
 import 'package:flutter/material.dart';
 
@@ -14,43 +14,19 @@ class ProbabilityCalculator extends StatefulWidget {
 }
 
 class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
-  double _selected = 0.05;
+  double _selected = 0.16;
   late List<double> _probabilityDistribution;
 
   List<double> _boltzmannDistribution(
       List<double> energies, double temperature) {
-    List<double> scaledEnergies = _scaleListOfNumbersToRange(energies, 0, 1);
-    double normalizationDenominator = scaledEnergies
-        .map((e) => _boltzmannFactor(e, temperature))
-        .fold(0, (e1, e2) => e1 + e2);
-
-    return scaledEnergies
-        .map((e) =>
-            (1 / normalizationDenominator) * _boltzmannFactor(e, temperature))
-        .toList();
+    List<double> factorized = energies.map((e) => -e / temperature).toList();
+    double lse = _logsumexp(factorized);
+    return factorized.map((e) => exp(e - lse)).toList();
   }
 
-  double _boltzmannFactor(double energy, double temperature) =>
-      exp(-energy / temperature);
-
-  List<double> _scaleListOfNumbersToRange(
-      List<double> inputs, double lower, double upper) {
-    List<double> numbers = List<double>.from(inputs);
-    numbers.sort();
-    double lowest = numbers[0];
-    double highest = numbers[numbers.length - 1];
-
-    for (var i = 0; i < numbers.length; i++) {
-      if (i == 0) {
-        numbers[i] = lower;
-      } else if (i == numbers.length - 1) {
-        numbers[i] = upper;
-      } else {
-        numbers[i] = (numbers[i] - lowest).abs() / (highest - lowest).abs();
-      }
-    }
-
-    return numbers;
+  double _logsumexp(List<double> numbers) {
+    double c = numbers.fold(0, (v1, v2) => max(v1, v2));
+    return c + log(numbers.map((n) => exp(n - c)).fold(0, (a, b) => a + b));
   }
 
   @override
@@ -68,7 +44,7 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        BarChart(values: _probabilityDistribution), //Graph
+        BarChart(values: _probabilityDistribution),
         Text(
           "${_selected.toStringAsFixed(2)} Millikelvin",
           style: Theme.of(context).textTheme.labelLarge,
@@ -83,7 +59,7 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
           child: Slider(
             value: _selected,
             min: 0.01,
-            max: 1,
+            max: 5,
             onChanged: (double value) {
               setState(() {
                 _selected = value;
