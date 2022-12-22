@@ -68,6 +68,8 @@ flutter:
     - assets/images/profile_background.png
     - assets/images/profile_foreground.png
 
+    - assets/images/lessons/ucDIs.png
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section.
   fonts:

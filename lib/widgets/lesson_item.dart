@@ -86,7 +86,7 @@ class LessonItem extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: AutoSizeText(
               previewText,
-              minFontSize: 18,
+              minFontSize: 15,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

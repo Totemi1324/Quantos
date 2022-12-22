@@ -15,6 +15,7 @@ import 'screens/profile/profile_name_screen.dart';
 import 'screens/profile/profile_age_screen.dart';
 import 'screens/profile/profile_experience_screen.dart';
 import 'screens/lection_screen.dart';
+import 'screens/lesson_screen.dart';
 import 'screens/base/home.dart';
 
 void main() {
@@ -219,6 +220,14 @@ class MyApp extends StatelessWidget {
               child: const LectionScreen(),
               settings: settings,
               type: PageTransitionType.bottomToTop,
+            );
+          case LessonScreen.routeName:
+            return PageTransition(
+              child: LessonScreen(),
+              settings: settings,
+              type: PageTransitionType.fade,
+              curve: Curves.ease,
+              duration: const Duration(milliseconds: 500),
             );
           default:
             return null;

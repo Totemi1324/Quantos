@@ -1,8 +1,10 @@
+import './content/content_item.dart';
+
 class Lesson {
   final String id;
   final String lectionId;
   final String title;
-  final String content;
+  final List<ContentItem> content;
   final int readTimeInMinutes;
   final double progress;
 
