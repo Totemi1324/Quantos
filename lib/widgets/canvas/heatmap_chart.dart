@@ -69,6 +69,7 @@ class _HeatmapChartState extends State<HeatmapChart> {
           _points,
           Theme.of(context).colorScheme,
           Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+          widget.height,
         ),
         child: Container(),
       ),
@@ -81,12 +82,13 @@ class HeatmapChartPainter extends CustomPainter {
   final List<BooleanDataPoint> points;
   final ColorScheme themeColors;
   final TextStyle axisLabelStyle;
+  final double parentHeight;
 
   final Paint offlinePaint = Paint()
     ..strokeWidth = 3
     ..style = PaintingStyle.stroke;
 
-  HeatmapChartPainter(this.points, this.themeColors, this.axisLabelStyle);
+  HeatmapChartPainter(this.points, this.themeColors, this.axisLabelStyle, this.parentHeight);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -132,8 +134,8 @@ class HeatmapChartPainter extends CustomPainter {
   }
 
   void _drawDataPoints(Canvas canvas, Offset centerOfSquare, squareSize) {
-    const border = 5;
-    const radius = 5.0;
+    final border = 1 / 48 * parentHeight;
+    final radius = 1 / 48 * parentHeight;
 
     for (var point in points) {
       final center = centerOfSquare +
@@ -145,13 +147,13 @@ class HeatmapChartPainter extends CustomPainter {
       );
       if (point.value) {
         canvas.drawRRect(
-          RRect.fromRectAndRadius(square, const Radius.circular(radius)),
+          RRect.fromRectAndRadius(square, Radius.circular(radius)),
           Paint()..color = themeColors.secondary,
         );
       }
       canvas.drawRRect(
-        RRect.fromRectAndRadius(square, const Radius.circular(radius)),
-        offlinePaint..color = themeColors.secondary,
+        RRect.fromRectAndRadius(square, Radius.circular(radius)),
+        offlinePaint..strokeWidth = (1 / 80 * parentHeight)..color = themeColors.secondary,
       );
     }
   }

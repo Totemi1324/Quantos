@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../base/flat.dart';
 import './profile_experience_screen.dart';
-import '../../widgets/forms/select_form.dart';
+import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileAgeScreen extends StatelessWidget {
@@ -59,6 +59,9 @@ class ProfileAgeScreen extends StatelessWidget {
                   extended: true,
                   onPressed: () => Navigator.of(context)
                       .pushNamed(ProfileExperienceScreen.routeName),
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
               ],
             ),

@@ -3,7 +3,7 @@ import 'package:quantos/screens/loading_screen.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
-import '../../widgets/forms/select_form.dart';
+import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileExperienceScreen extends StatelessWidget {
@@ -60,6 +60,9 @@ class ProfileExperienceScreen extends StatelessWidget {
                     ),
                     (_) => false,
                   ),
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
               ],
             ),

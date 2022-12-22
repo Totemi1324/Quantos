@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart' hide Notification;
 
-import '../screens/notification_screen.dart';
+import '../../screens/notification_screen.dart';
 
-import '../widgets/notification_news.dart';
-import '../models/synced_list.dart';
-import '../models/notification.dart';
-import '../models/news.dart';
-import '../data/notifications.dart';
+import 'notification_news.dart';
+import 'notification_statistic.dart';
+import '../../models/synced_list.dart';
+import '../../models/notification.dart';
+import '../../models/news.dart';
+import '../../models/statistic.dart';
+import '../../data/notifications.dart';
 
 class NotificationBar extends StatefulWidget {
   final double height;
@@ -59,6 +61,13 @@ class _NotificationBarState extends State<NotificationBar> {
             ),
           ),
         );
+      case NotificationType.statistic:
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+          child: NotificationStatistic(
+            statisticObject: notification as Statistic,
+          ),
+        );
     }
   }
 
@@ -77,6 +86,8 @@ class _NotificationBarState extends State<NotificationBar> {
             ),
           ),
         );
+      case NotificationType.statistic:
+        return Container();
     }
   }
 

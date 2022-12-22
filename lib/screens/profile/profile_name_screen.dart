@@ -71,6 +71,9 @@ class ProfileNameScreen extends StatelessWidget {
                           ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
             ),

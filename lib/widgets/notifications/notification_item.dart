@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../models/notification.dart';
-import './containers/rounded_card.dart';
+import '../../models/notification.dart';
+import '../containers/rounded_card.dart';
 
 abstract class NotificationItem extends StatelessWidget {
   final NotificationType type;
+  final bool dismissible;
 
-  const NotificationItem(this.type, {super.key});
+  const NotificationItem(this.type, {required this.dismissible, super.key});
 
   Widget buildContent(BuildContext buildContext);
   void onClose();
@@ -16,6 +17,7 @@ abstract class NotificationItem extends StatelessWidget {
   String _typeToString(NotificationType type) {
     switch (type) {
       case NotificationType.news: return "News";
+      case NotificationType.statistic: return "Your Activity";
     }
   }
 
@@ -41,7 +43,7 @@ abstract class NotificationItem extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
-          Positioned(
+          if (dismissible) Positioned(
             top: 0,
             right: 0,
             child: ClipRRect(
