@@ -14,7 +14,7 @@ class ProbabilityCalculator extends StatefulWidget {
 }
 
 class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
-  double _selected = 0.16;
+  double _selected = 16;
   late List<double> _probabilityDistribution;
 
   List<double> _boltzmannDistribution(
@@ -35,7 +35,7 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
 
     _probabilityDistribution = _boltzmannDistribution(
       widget.energies,
-      _selected,
+      _selected / 100.0,
     );
   }
 
@@ -46,7 +46,7 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
       children: [
         BarChart(values: _probabilityDistribution),
         Text(
-          "${_selected.toStringAsFixed(2)} Millikelvin",
+          "${_selected.toStringAsFixed(1)} Millikelvin",
           style: Theme.of(context).textTheme.labelLarge,
         ),
         SliderTheme(
@@ -59,13 +59,13 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
           child: Slider(
             value: _selected,
             min: 0.01,
-            max: 5,
+            max: 500,
             onChanged: (double value) {
               setState(() {
                 _selected = value;
                 _probabilityDistribution = _boltzmannDistribution(
                   widget.energies,
-                  _selected,
+                  _selected / 100.0,
                 );
               });
             },
