@@ -223,7 +223,7 @@ class MyApp extends StatelessWidget {
             );
           case LessonScreen.routeName:
             return PageTransition(
-              child: LessonScreen(),
+              child: const LessonScreen(),
               settings: settings,
               type: PageTransitionType.fade,
               curve: Curves.ease,

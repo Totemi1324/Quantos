@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^8.1.1
   rive: ^0.9.1
   auto_size_text: ^3.0.0
+  flutter_math_fork: ^0.6.3
   flutter_switch: ^0.3.2
   curved_navigation_bar: ^1.0.3
   percent_indicator: ^4.2.2

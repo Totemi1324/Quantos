@@ -4,6 +4,8 @@ import './base/flat.dart';
 import '../data/lessons.dart';
 import '../models/content/content_item.dart';
 import '../models/content/section_title.dart';
+import '../widgets/lesson_content_renderer.dart';
+import '../widgets/ui/adaptive_button.dart';
 
 class LessonScreen extends StatelessWidget {
   static const routeName = "/home/lection/lesson";
@@ -28,14 +30,16 @@ class LessonScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  lesson.title,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: Text(
+                    lesson.title,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
                 ),
                 const Divider(),
                 ExpansionTile(
                   title: const Text("Jump to sections"),
-                  tilePadding: const EdgeInsets.all(0),
                   children: [
                     Row(
                       children: [
@@ -74,7 +78,25 @@ class LessonScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                
+                const SizedBox(
+                  height: 20,
+                ),
+                LessonContentRenderer(lesson),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: AdaptiveButton.primary(
+                    "Finish",
+                    extended: false,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),

@@ -108,10 +108,21 @@ List<Lesson> lessons = [
         id: "mbXwg",
       ),
       Equation(
-        tex: "\\min C\\left(q\\right)=\\min_{q_i=0,1}\\left(\\sum_{i=1}^{N}a_iq_i+\\sum_{i<j}^{N}b_{ij}q_iq_j\\right)=\\min\\left(\\vec{q}^TH\\vec{q}\\right)",
+        tex: r"\min C\left(q\right)=",
         id: "tpzFo",
         altText:
             "The minimum of the function C of q is the minimum of the sum of two sum operators, the first one being a product of all q and their factor a, the second a product of all pairs of q and their factor b, which equals the minimum of vector q transposed times the matrix H times the vector q.",
+      ),
+      Equation(
+        tex:
+            r"\min_{q_i=0,1}\left(\sum_{i=1}^{N}a_iq_i+\sum_{i<j}^{N}b_{ij}q_iq_j\right)=",
+        id: "igh5P",
+        altText: "",
+      ),
+      Equation(
+        tex: r"\min\left(\vec{q}^TH\vec{q}\right)",
+        id: "76j4F",
+        altText: "",
       ),
     ],
     readTimeInMinutes: 4,
