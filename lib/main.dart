@@ -14,6 +14,7 @@ import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
 import 'screens/profile/profile_age_screen.dart';
 import 'screens/profile/profile_experience_screen.dart';
+import 'screens/lection_screen.dart';
 import 'screens/base/home.dart';
 
 void main() {
@@ -209,12 +210,16 @@ class MyApp extends StatelessWidget {
           case ProfileExperienceScreen.routeName:
             return PageTransition(
               child: ProfileExperienceScreen(),
-              settings: settings,
               type: PageTransitionType.fade,
               curve: Curves.ease,
               duration: const Duration(milliseconds: 500),
             );
-
+          case LectionScreen.routeName:
+            return PageTransition(
+              child: const LectionScreen(),
+              settings: settings,
+              type: PageTransitionType.bottomToTop,
+            );
           default:
             return null;
         }
