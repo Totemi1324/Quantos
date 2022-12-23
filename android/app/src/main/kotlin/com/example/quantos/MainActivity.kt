@@ -1,4 +1,4 @@
-package com.example.quantos
+package com.quantoslearning.app
 
 import io.flutter.embedding.android.FlutterActivity
 
