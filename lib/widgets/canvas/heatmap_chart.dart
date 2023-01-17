@@ -88,7 +88,8 @@ class HeatmapChartPainter extends CustomPainter {
     ..strokeWidth = 3
     ..style = PaintingStyle.stroke;
 
-  HeatmapChartPainter(this.points, this.themeColors, this.axisLabelStyle, this.parentHeight);
+  HeatmapChartPainter(
+      this.points, this.themeColors, this.axisLabelStyle, this.parentHeight);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -116,9 +117,10 @@ class HeatmapChartPainter extends CustomPainter {
     if (squareSize < 5) return;
 
     final centerOfSquare = Offset(
-      padding + width / 2 + squareSize * (points.first.x - 3),
+      padding + width / 2,
       padding + squareSize / 2 + segmentHeight,
     );
+
     _drawDataPoints(canvas, centerOfSquare, squareSize);
 
     final axisLabelOffset = Offset(
@@ -153,7 +155,9 @@ class HeatmapChartPainter extends CustomPainter {
       }
       canvas.drawRRect(
         RRect.fromRectAndRadius(square, Radius.circular(radius)),
-        offlinePaint..strokeWidth = (1 / 80 * parentHeight)..color = themeColors.secondary,
+        offlinePaint
+          ..strokeWidth = (1 / 80 * parentHeight)
+          ..color = themeColors.secondary,
       );
     }
   }
