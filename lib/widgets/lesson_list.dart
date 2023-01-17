@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quantos/models/content/content_item.dart';
 
 import '../data/lessons.dart';
 import '../models/lesson.dart';
