@@ -1,23 +1,21 @@
-import 'package:flutter/material.dart' hide ThemeMode;
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/theme_service.dart';
 
 import './section_separator.dart';
 import './settings_item.dart';
 import './ui/adaptive_switch.dart';
 import './ui/adaptive_dropdown.dart';
 
-enum ThemeMode {
-  dark,
-  light,
-}
-
 class SettingsList extends StatelessWidget {
   final List<DropdownMenuItem> _themes = const [
     DropdownMenuItem(
-      value: ThemeMode.dark,
+      value: Brightness.dark,
       child: Text("Dark"),
     ),
     DropdownMenuItem(
-      value: ThemeMode.light,
+      value: Brightness.light,
       child: Text("Light"),
     ),
   ];
@@ -43,8 +41,10 @@ class SettingsList extends StatelessWidget {
         SettingsItem(
           title: "Accessibility mode",
           selector: AdaptiveSwitch(
-            defaultEnabled: false,
-            onToggle: () {},
+            defaultEnabled:
+                context.read<ThemeService>().accessibilityModeActive,
+            onToggle: (newValue) =>
+                context.read<ThemeService>().toggleAccessibilityMode(newValue),
           ),
         ),
         SettingsItem(
@@ -62,8 +62,10 @@ class SettingsList extends StatelessWidget {
           title: "Choose theme",
           selector: AdaptiveDropdown(
             items: _themes,
-            defaultSelectedIndex: 0,
-            onChanged: (newValue) {},
+            defaultSelectedIndex:
+                Theme.of(context).brightness == Brightness.dark ? 0 : 1,
+            onChanged: (newValue) =>
+                context.read<ThemeService>().selectTheme(newValue),
           ),
         ),
         const SectionSeparator(

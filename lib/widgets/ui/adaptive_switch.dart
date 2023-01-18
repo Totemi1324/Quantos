@@ -3,7 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 class AdaptiveSwitch extends StatefulWidget {
   final bool? defaultEnabled;
-  final VoidCallback onToggle;
+  final Function onToggle;
 
   const AdaptiveSwitch(
       {required this.onToggle, this.defaultEnabled, super.key});
@@ -32,7 +32,7 @@ class _AdaptiveSwitchState extends State<AdaptiveSwitch> {
         width: 2,
       ),
       onToggle: (newValue) {
-        widget.onToggle();
+        widget.onToggle(newValue);
         setState(() {
           _enabled = newValue;
         });
