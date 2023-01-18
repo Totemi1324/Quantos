@@ -54,11 +54,11 @@ class AuthHomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const SizedBox(
-                width: 360,
-                height: 80,
+                width: 330,
+                height: 90,
                 child: RiveAnimation.asset(
                   'assets/animations/quantos_logo_idle.riv',
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.contain,
                   stateMachines: ['Mixer'],
                 ),
               ),

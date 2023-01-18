@@ -57,11 +57,13 @@ flutter:
 
   # To add assets to your application, add an assets section.
   assets:
+    # Rive animations
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv
     - assets/animations/circular_progress_indicator.riv
     - assets/animations/age_selection.riv
     
+    # App images
     - assets/images/logo.png
     - assets/images/background.png
     - assets/images/lection_preview_image.png
@@ -69,7 +71,9 @@ flutter:
     - assets/images/profile_background.png
     - assets/images/profile_foreground.png
 
-    - assets/images/lessons/ucDIs.png
+    # Lection content images
+    - assets/images/lessons/annealer_insides.png
+
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section.
