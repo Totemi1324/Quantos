@@ -12,33 +12,39 @@ class ProfileScreen extends StatelessWidget {
 
   const ProfileScreen({super.key});
 
-  Widget _buildUserInfo(BuildContext buildContext,
-      {String? name,
-      required String age,
-      String? team,
-      required double height}) {
-    return SizedBox(
-      height: height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (name != null)
-            Text(
-              name,
-              style: Theme.of(buildContext).textTheme.headlineLarge,
-              textAlign: TextAlign.center,
-            ),
+  Widget _buildUserInfo(
+    BuildContext buildContext, {
+    String? name,
+    required String age,
+    String? team,
+  }) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        if (name != null)
           Text(
-            age,
-            style: Theme.of(buildContext).textTheme.labelLarge,
+            name,
+            style: Theme.of(buildContext).textTheme.headlineLarge,
+            textAlign: TextAlign.center,
           ),
-          if (team != null)
-            Text(
-              "belonging to\n$team",
-              textAlign: TextAlign.center,
-            ),
-        ],
-      ),
+        if (name != null)
+          const SizedBox(
+            height: 10,
+          ),
+        Text(
+          age,
+          style: Theme.of(buildContext).textTheme.labelLarge,
+        ),
+        if (team != null)
+          const SizedBox(
+            height: 10,
+          ),
+        if (team != null)
+          Text(
+            "belonging to\n$team",
+            textAlign: TextAlign.center,
+          ),
+      ],
     );
   }
 
@@ -87,7 +93,6 @@ class ProfileScreen extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 30),
                 child: _buildUserInfo(
                   context,
-                  height: 150,
                   name: name,
                   age: age,
                   team: team,
