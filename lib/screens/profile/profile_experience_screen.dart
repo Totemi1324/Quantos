@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quantos/screens/loading_screen.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
+import '../../screens/loading_screen.dart';
 import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 

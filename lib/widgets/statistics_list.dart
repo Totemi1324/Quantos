@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/theme_service.dart';
 
 import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
@@ -6,12 +9,18 @@ import './canvas/line_chart.dart';
 import './canvas/heatmap_chart.dart';
 import './progress_list.dart';
 
-class StatisticsList extends StatelessWidget {
-  final int elementCount = 3;
+class StatisticsList extends StatefulWidget {
 
   const StatisticsList({super.key});
 
-  TitledElement _buildElement(BuildContext buildContext, int index) {
+  @override
+  State<StatisticsList> createState() => _StatisticsListState();
+}
+
+class _StatisticsListState extends State<StatisticsList> {
+  final int elementCount = 3;
+
+  TitledElement _buildElement(ThemeData theme, int index) {
     switch (index) {
       case 0:
         return TitledElement(
@@ -21,7 +30,7 @@ class StatisticsList extends StatelessWidget {
             children: [
               Text(
                 "this month",
-                style: Theme.of(buildContext).textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
               const HeatmapChart(),
               Row(
@@ -34,7 +43,7 @@ class StatisticsList extends StatelessWidget {
                       height: 20,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Theme.of(buildContext).colorScheme.secondary,
+                          color: theme.colorScheme.secondary,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -42,7 +51,7 @@ class StatisticsList extends StatelessWidget {
                   ),
                   Text(
                     "online",
-                    style: Theme.of(buildContext).textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -52,7 +61,7 @@ class StatisticsList extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Theme.of(buildContext).colorScheme.secondary,
+                            color: theme.colorScheme.secondary,
                             width: 3,
                           ),
                           borderRadius: BorderRadius.circular(5),
@@ -62,7 +71,7 @@ class StatisticsList extends StatelessWidget {
                   ),
                   Text(
                     "offline",
-                    style: Theme.of(buildContext).textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ],
               ),
@@ -77,7 +86,7 @@ class StatisticsList extends StatelessWidget {
             children: [
               Text(
                 "in the last 7 days",
-                style: Theme.of(buildContext).textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
               const SizedBox(
                 height: 10,
@@ -85,7 +94,7 @@ class StatisticsList extends StatelessWidget {
               const LineChart(),
               Text(
                 "completed lessons per day",
-                style: Theme.of(buildContext).textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
             ],
           ),
@@ -102,50 +111,54 @@ class StatisticsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: elementCount,
-      itemBuilder: (context, index) {
-        TitledElement item = _buildElement(context, index);
-
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          child: RoundedCard(
-            fillWidth: true,
-            fillHeight: false,
-            padding: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      item.title,
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                    if (index != 2)
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.record_voice_over_rounded,
-                              color: Colors.white,
+    return BlocListener<ThemeService, ThemeData>(
+      listener: (context, state) => setState(() {}),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: elementCount,
+        itemBuilder: (context, index) {
+          ThemeData activeTheme = context.read<ThemeService>().state;
+          TitledElement item = _buildElement(activeTheme, index);
+    
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            child: RoundedCard(
+              fillWidth: true,
+              fillHeight: false,
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        item.title,
+                        style: activeTheme.textTheme.labelMedium,
+                      ),
+                      if (index != 2)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.record_voice_over_rounded,
+                                color: activeTheme.colorScheme.onBackground,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                  ],
-                ),
-                item.element
-              ],
+                    ],
+                  ),
+                  item.element
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

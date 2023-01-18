@@ -61,7 +61,7 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
         return Text(
           "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
           style: defaultStyle?.copyWith(
-            color: const Color(0xFF43BA73),
+            color: Theme.of(context).colorScheme.onErrorContainer,
           ),
         );
       case ConsoleStatus.failure:

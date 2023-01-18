@@ -30,6 +30,15 @@ class _DecoratedState extends State<Decorated> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        gradient: RadialGradient(
+          center: const Alignment(-0.6, -0.7),
+          radius: 2,
+          colors: [
+            Theme.of(context).colorScheme.primaryContainer,
+            Theme.of(context).colorScheme.secondaryContainer,
+          ],
+          stops: const [0.0, 1.0],
+        ),
         image: DecorationImage(
           image: _image,
           fit: BoxFit.cover,

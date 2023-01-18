@@ -20,18 +20,18 @@ class LessonItem extends StatelessWidget {
     super.key,
   });
 
-  final gradient = const LinearGradient(
-    colors: [
-      Color(0xFFF1B6E8),
-      Color(0xFFBB7FB2),
-    ],
-    stops: [0.0, 1.0],
-    begin: Alignment(1.0, -1.0),
-    end: Alignment(-1.0, 1.0),
-  );
-
   @override
   Widget build(BuildContext context) {
+    final gradient = LinearGradient(
+      colors: [
+        Theme.of(context).colorScheme.secondary,
+        const Color(0xFFBB7FB2),
+      ],
+      stops: const [0.0, 1.0],
+      begin: const Alignment(1.0, -1.0),
+      end: const Alignment(-1.0, 1.0),
+    );
+
     return RoundedCard(
       fillWidth: true,
       fillHeight: false,
@@ -72,9 +72,9 @@ class LessonItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.schedule_rounded,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
               const SizedBox(
                 width: 5,
@@ -86,11 +86,12 @@ class LessonItem extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: AutoSizeText(
               previewText,
-              minFontSize: 15,
+              minFontSize:
+                  Theme.of(context).textTheme.displaySmall?.fontSize ?? 15,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.labelSmall,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
           ),
           AdaptiveProgressBar(

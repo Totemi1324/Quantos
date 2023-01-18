@@ -27,10 +27,10 @@ class AdaptiveProgressBar extends StatelessWidget {
     return Row(
       children: [
         if (withIcon)
-          const Icon(
+          Icon(
             Icons.emoji_events_rounded,
             size: 30,
-            color: Color(0xFF43BA73),
+            color: Theme.of(context).colorScheme.onErrorContainer,
           ),
         if (withIcon)
           const SizedBox(
@@ -45,14 +45,14 @@ class AdaptiveProgressBar extends StatelessWidget {
                   widthFactor: progressPercent,
                   child: Container(
                       decoration: BoxDecoration(
-                    color: const Color(0xFF43BA73),
+                    color: Theme.of(context).colorScheme.onErrorContainer,
                     borderRadius: BorderRadius.circular(10),
                   )),
                 ),
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color(0xFF43BA73),
+                      color: Theme.of(context).colorScheme.onErrorContainer,
                       width: 3,
                     ),
                     color: Colors.transparent,

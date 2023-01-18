@@ -65,8 +65,7 @@ class ProfileNameScreen extends StatelessWidget {
                     onPressed: () => _onSubmit(context, null),
                     child: Text(
                       "I don't want to be called by my name",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            fontSize: 15,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
                             decoration: TextDecoration.underline,
                           ),
                     ),

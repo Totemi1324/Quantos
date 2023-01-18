@@ -38,8 +38,7 @@ class SettingsScreen extends StatelessWidget {
                       Navigator.of(context).pushNamed(InfoScreen.routeName),
                   child: Text(
                     "App Information",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          fontSize: 15,
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           decoration: TextDecoration.underline,
                         ),
                   ),
@@ -49,8 +48,7 @@ class SettingsScreen extends StatelessWidget {
                       Navigator.of(context).pushNamed(HelpScreen.routeName),
                   child: Text(
                     "Help Center",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          fontSize: 15,
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           decoration: TextDecoration.underline,
                         ),
                   ),

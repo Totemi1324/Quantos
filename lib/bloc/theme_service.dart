@@ -14,7 +14,7 @@ class ThemeService extends Cubit<ThemeData> {
       background: Color(0xFF1B2033),
       brightness: Brightness.dark,
       error: Color(0xFFBA4360),
-      tertiaryContainer: Color(0xFF43BA73),
+      onErrorContainer: Color(0xFF43BA73),
       onBackground: Colors.white,
       onError: Colors.white,
       onPrimary: Colors.white,
@@ -22,6 +22,7 @@ class ThemeService extends Cubit<ThemeData> {
       onSurface: Colors.white,
       primaryContainer: Color(0xFF262D47),
       secondaryContainer: Color(0xFF1B2033),
+      tertiaryContainer: Color(0xFF404B75),
     ),
     dividerTheme: DividerThemeData(
       color: Colors.white.withOpacity(0.5),
@@ -104,6 +105,13 @@ class ThemeService extends Cubit<ThemeData> {
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
+      displaySmall: TextStyle(
+        // Small label
+    	  fontFamily: "Quicksand",
+        fontSize: 15,
+        fontWeight: FontWeight.w300,
+        color: Colors.white,
+      ),
     ),
     backgroundColor: const Color(0xFF1B2033),
   );
@@ -114,13 +122,13 @@ class ThemeService extends Cubit<ThemeData> {
     highlightColor: const Color(0xFF2EB6E8),
     colorScheme: ColorScheme(
       primary: const Color(0xFF2EB6E8),
-      secondary: const Color(0xFFF1B6E8),
+      secondary: const Color(0xFFE78AD8),
       tertiary: const Color(0xFF80F1EF),
-      surface: const Color(0xFFA3AED5),
+      surface: const Color(0xFFB1BADB),
       background: const Color(0xFFC2C2C2),
       brightness: Brightness.light,
       error: const Color(0xFFBA4360),
-      tertiaryContainer: const Color(0xFF43BA73),
+      onErrorContainer: const Color(0xFF2E9658),
       onBackground: Colors.grey.shade900,
       onError: Colors.grey.shade900,
       onPrimary: Colors.grey.shade900,
@@ -128,6 +136,7 @@ class ThemeService extends Cubit<ThemeData> {
       onSurface: Colors.grey.shade900,
       primaryContainer: const Color(0xFFE8E8E8),
       secondaryContainer: const Color(0xFFC2C2C2),
+      tertiaryContainer: Color.fromARGB(255, 128, 145, 214),
     ),
     dividerTheme: DividerThemeData(
       color: Colors.grey.shade900.withOpacity(0.5),
@@ -210,6 +219,13 @@ class ThemeService extends Cubit<ThemeData> {
         fontWeight: FontWeight.w300,
         color: Colors.grey.shade900,
       ),
+      displaySmall: TextStyle(
+        // Small label
+    	  fontFamily: "Quicksand",
+        fontSize: 15,
+        fontWeight: FontWeight.w300,
+        color: Colors.grey.shade900,
+      ),
     ),
     backgroundColor: const Color(0xFFC2C2C2),
   );
@@ -222,11 +238,11 @@ class ThemeService extends Cubit<ThemeData> {
       primary: Color(0xFF2EB6E8),
       secondary: Color(0xFFF1B6E8),
       tertiary: Color(0xFF80F1EF),
-      surface: Color(0xFF4C4C4C),
+      surface: Color(0xFF333333),
       background: Color(0xFF000000),
       brightness: Brightness.dark,
       error: Color(0xFFFE5D84),
-      tertiaryContainer: Color(0xFF43BA73),
+      onErrorContainer: Color(0xFF43BA73),
       onBackground: Color(0xFFFFFD48),
       onError: Color(0xFFFFFD48),
       onPrimary: Color(0xFFFFFD48),
@@ -234,6 +250,7 @@ class ThemeService extends Cubit<ThemeData> {
       onSurface: Color(0xFFFFFD48),
       primaryContainer: Color(0xFF000000),
       secondaryContainer: Color(0xFF000000),
+      tertiaryContainer: Color(0xFF404B75),
     ),
     dividerTheme: const DividerThemeData(
       color: Color(0x7FFFFD48),
@@ -245,74 +262,81 @@ class ThemeService extends Cubit<ThemeData> {
       headlineLarge: TextStyle(
         // Large headers
         fontFamily: "Josefin Sans",
-        fontSize: 40,
+        fontSize: 42,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       headlineMedium: TextStyle(
         // Medium headers
         fontFamily: "Josefin Sans",
-        fontSize: 36,
+        fontSize: 38,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       titleLarge: TextStyle(
         // Section titles
         fontFamily: "Josefin Sans",
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       titleMedium: TextStyle(
         // Lesson titles
         fontFamily: "Quicksand",
-        fontSize: 26,
+        fontSize: 28,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       titleSmall: TextStyle(
         // Lesson titles
         fontFamily: "Quicksand",
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       bodyLarge: TextStyle(
         // Standard body
         fontFamily: "Quicksand",
-        fontSize: 28,
+        fontSize: 30,
         color: Color(0xFFFFFD48),
       ),
       bodyMedium: TextStyle(
         // Standard body
         fontFamily: "Quicksand",
-        fontSize: 24,
+        fontSize: 26,
         color: Color(0xFFFFFD48),
       ),
       bodySmall: TextStyle(
         // Small body
         fontFamily: "Quicksand",
-        fontSize: 20,
+        fontSize: 22,
         color: Color(0xFFFFFD48),
       ),
       labelLarge: TextStyle(
         // Standard button label
         fontFamily: "Quicksand",
-        fontSize: 28,
+        fontSize: 30,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       labelMedium: TextStyle(
         // Small button label
         fontFamily: "Quicksand",
-        fontSize: 22,
+        fontSize: 24,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       labelSmall: TextStyle(
         // Form field label
         fontFamily: "Quicksand",
-        fontSize: 22,
+        fontSize: 24,
+        fontWeight: FontWeight.w300,
+        color: Color(0xFFFFFD48),
+      ),
+      displaySmall: TextStyle(
+        // Small label
+    	  fontFamily: "Quicksand",
+        fontSize: 21,
         fontWeight: FontWeight.w300,
         color: Color(0xFFFFFD48),
       ),

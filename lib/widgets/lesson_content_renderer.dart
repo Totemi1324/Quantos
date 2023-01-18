@@ -62,10 +62,7 @@ class LessonContentRenderer extends StatelessWidget {
                   Flexible(
                     child: Text(
                       interactive.caption,
-                      style: Theme.of(buildContext)
-                          .textTheme
-                          .labelSmall
-                          ?.copyWith(fontSize: 15),
+                      style: Theme.of(buildContext).textTheme.displaySmall,
                     ),
                   ),
                 ],
@@ -86,10 +83,7 @@ class LessonContentRenderer extends StatelessWidget {
             ),
             Text(
               image.caption,
-              style: Theme.of(buildContext)
-                  .textTheme
-                  .labelSmall
-                  ?.copyWith(fontSize: 15),
+              style: Theme.of(buildContext).textTheme.displaySmall,
             )
           ],
         );

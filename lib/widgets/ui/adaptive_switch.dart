@@ -26,7 +26,7 @@ class _AdaptiveSwitchState extends State<AdaptiveSwitch> {
     return FlutterSwitch(
       value: _enabled,
       inactiveColor: Theme.of(context).colorScheme.error,
-      activeColor: const Color(0xFF43BA73),
+      activeColor: Theme.of(context).colorScheme.onErrorContainer,
       switchBorder: Border.all(
         color: Theme.of(context).colorScheme.onBackground,
         width: 2,

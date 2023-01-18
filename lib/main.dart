@@ -23,11 +23,11 @@ import 'screens/base/home.dart';
 
 void main() {
   Paint.enableDithering = true;
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

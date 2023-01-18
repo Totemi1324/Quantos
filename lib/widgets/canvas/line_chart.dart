@@ -65,13 +65,14 @@ class _LineChartState extends State<LineChart> {
       height: widget.height,
       child: CustomPaint(
         painter: LineChartPainter(
-            _points,
-            4,
-            _minY,
-            _maxY,
-            Theme.of(context).colorScheme,
-            Theme.of(context).textTheme.labelMedium!,
-            Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14)),
+          _points,
+          4,
+          _minY,
+          _maxY,
+          Theme.of(context).colorScheme,
+          Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18),
+          Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+        ),
         child: Container(),
       ),
     );
