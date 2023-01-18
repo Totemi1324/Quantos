@@ -360,7 +360,7 @@ class ThemeService extends Cubit<ThemeData> {
     if (switchState) {
       lastThemeBrightness = state.brightness;
       accessibilityModeActivated = true;
-      emit(_accessibilityTheme);
+      emit(_accessibilityTheme.copyWith(brightness: lastThemeBrightness));
     } else {
       accessibilityModeActivated = false;
       emit(lastThemeBrightness == Brightness.dark ? _darkTheme : _lightTheme);

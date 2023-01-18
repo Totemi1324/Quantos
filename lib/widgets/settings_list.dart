@@ -61,6 +61,7 @@ class SettingsList extends StatelessWidget {
         SettingsItem(
           title: "Choose theme",
           selector: AdaptiveDropdown(
+            enabled: !context.watch<ThemeService>().accessibilityModeActive,
             items: _themes,
             defaultSelectedIndex:
                 Theme.of(context).brightness == Brightness.dark ? 0 : 1,
