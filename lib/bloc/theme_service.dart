@@ -136,7 +136,7 @@ class ThemeService extends Cubit<ThemeData> {
       onSurface: Colors.grey.shade900,
       primaryContainer: const Color(0xFFE8E8E8),
       secondaryContainer: const Color(0xFFC2C2C2),
-      tertiaryContainer: Color.fromARGB(255, 128, 145, 214),
+      tertiaryContainer: const Color(0xFF8091D6),
     ),
     dividerTheme: DividerThemeData(
       color: Colors.grey.shade900.withOpacity(0.5),
