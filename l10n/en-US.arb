@@ -1,0 +1,239 @@
+{
+    "confirmButtonLabel": "Confirm",
+    "@confirmButtonLabel": {
+        "description": "Confirm button label"
+    },
+    "readyButtonLabel": "I'm ready",
+    "@readyButtonLabel": {
+        "description": "Ready button label"
+    },
+    "workInProgressMessage": "Beep boop... Work in progress detected... Come back later, human!",
+    "@workInProgressMessage": {
+        "description": "Work in progress message for display in alert dialogs and snack bars"
+    },
+
+    "authSignUpDescription": "New here?",
+    "@authSignUpDescription": {
+        "description": "Auth sign up description",
+    },
+    "authSignUpButtonLabel": "Sign Up",
+    "@authSignUpButtonLabel": {
+        "description": "Auth sign up button label",
+    },
+    "authLogInDescription": "Already on board?",
+    "@authLogInDescription": {
+        "description": "Auth log in description",
+    },
+    "authLogInButtonLabel": "Log In",
+    "@authLogInButtonLabel": {
+        "description": "Auth log in button label",
+    },
+    "authGroupAccessDescription": "Part of a classroom or team?",
+    "@authGroupAccessDescription": {
+        "description": "Auth group access description",
+    },
+    "authGroupAccessButtonLabel": "Enter Access Code",
+    "@authGroupAccessButtonLabel": {
+        "description": "Auth group access button label",
+    },
+
+    "authSignUpScreenTitle": "Welcome!",
+    "@authSignUpScreenTitle": {
+        "description": "Auth sign up screen title"
+    },
+    "authLogInScreenTitle": "Welcome back!",
+    "@authLogInScreenTitle": {
+        "description": "Auth log in screen title"
+    },
+    "authGroupAccessScreenTitle": "Welcome!",
+    "@authGroupAccessScreenTitle": {
+        "description": "Auth group access screen title",
+    },
+    "authGroupAccessScreenInstructions": "Enter your 6-digit access code",
+    "@authGroupAccessScreenInstructions": {
+        "description": "Auth group access screen instructions"
+    },
+
+    "authFormEmail": "Email",
+    "@authFormEmail": {
+        "description": "Auth form email field"
+    },
+    "authFormPassword": "Password",
+    "@authFormPassword": {
+        "description": "Auth form password field"
+    },
+    "authFormConfirmPassword": "Confirm password",
+    "@authFormConfirmPassword": {
+        "description": "Auth form password confirmation field"
+    },
+
+    "profileNameScreenTitle": "Hi!\nWhat's your name?",
+    "@profileNameScreenTitle": {
+        "description": "Profile name screen title"
+    },
+    "profileNameScreenFormField": "First name",
+    "@profileNameScreenTitle": {
+        "description": "Profile name screen form field"
+    },
+    "profileNameScreenTextButtonLabel": "I don't want to be called by my name",
+    "@profileNameScreenTextButtonLabel": {
+        "description": "Profile name screen text button label"
+    },
+
+    "profileAgeScreenTitleWithName": "And how old are you, {name}?",
+    "@profileAgeScreenTitleWithName": {
+        "description": "Profile age screen title with name placeholder",
+        "placeholders": {
+            "name": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    },
+    "profileAgeScreenTitleWithoutName": "And how old are you?",
+    "@profileAgeScreenTitleWithoutName": {
+        "description": "Profile age screen title"
+    },
+    "profileAgeScreenInstructions": "We need this information to choose the optimal learning contents for you.",
+    "@profileAgeScreenInstructions": {
+        "description": "Profile age screen instructions"
+    },
+    "profileAgeScreenSliderClass1": "15-18",
+    "@profileAgeScreenSliderClass1": {
+        "description": "First age class"
+    },
+    "profileAgeScreenSliderClass2": "19-28",
+    "@profileAgeScreenSliderClass2": {
+        "description": "Second age class"
+    },
+    "profileAgeScreenSliderClass3": "29-59",
+    "@profileAgeScreenSliderClass3": {
+        "description": "Third age class"
+    },
+    "profileAgeScreenSliderClass4": "60+",
+    "@profileAgeScreenSliderClass4": {
+        "description": "Fourth age class"
+    },
+
+    "profileExperienceScreenTitle": "How would you describe yourself?",
+    "@profileExperienceScreenTitle": {
+        "description": "Profile experience screen title"
+    },
+    "profileExperienceScreenInstructions": "That is, how familiar are you with quantum computing in general?",
+    "@profileExperienceScreenInstructions": {
+        "description": "Profile experience screen instructions"
+    },
+    "profileExperienceScreenSliderClass1": "Beginner",
+    "@profileExperienceScreenSliderClass1": {
+        "description": "First experience class",
+    },
+    "profileExperienceScreenSliderClass2": "Advanced",
+    "@profileExperienceScreenSliderClass2": {
+        "description": "Second experience class",
+    },
+    "profileExperienceScreenSliderClass3": "Skilled",
+    "@profileExperienceScreenSliderClass3": {
+        "description": "Third experience class",
+    },
+
+    "homeScreenTitleWithName": "Hello {name}!",
+    "@homeScreenTitleWithName": {
+        "description": "Home screen title with name placeholder",
+        "placeholders": {
+            "name": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    },
+    "homeScreenTitleWithoutName": "Hello!",
+    "@homeScreenTitleWithoutName": {
+        "description": "Home screen title"
+    },
+    "homeScreenLectionsSection": "Lections",
+    "@homeScreenLectionsSection": {
+        "description": "Home screen lection section label"
+    },
+    
+    "statisticsScreenTitle": "Statistics",
+    "@statisticsScreenTitle": {
+        "description": "Statistics screen title"
+    },
+    "statisticsScreenProgressSubtitle": "completed",
+    "@statisticsScreenProgressSubtitle": {
+        "description": "Statistics screen subtitle for cumulative progress bar with percentage, e.g. '60% completed'"
+    },
+    "statisticsScreenDisclaimer": "Usage data older than 30 days is deleted automatically",
+    "@statisticsScreenDisclaimer": {
+        "description": "Statistics screen disclaimer",
+    },
+
+    "profileScreenAffiliation": "belonging to {institution}",
+    "@profileScreenAffiliation": {
+        "description": "Profile screen affiliation data, e.g. belonging to Foobar Ltd.",
+        "placeholders": {
+            "institution": {
+                "type": "String",
+                "example": "Foobar Ltd."
+            }
+        }
+    },
+    "profileScreenOptionGroups": "Manage groups",
+    "@profileScreenOptionGroups": {
+        "description": "Profile screen option for managing groups"
+    },
+    "profileScreenOptionPersonal": "Personal settings",
+    "@profileScreenOptionPersonal": {
+        "description": "Profile screen option for updating personal settings"
+    },
+    "profileScreenOptionPassword": "Change password",
+    "@profileScreenOptionPassword": {
+        "description": "Profile screen option for changing password"
+    },
+    "profileScreenOptionDelete": "Delete account",
+    "@profileScreenOptionDelete": {
+        "description": "Profile screen option for deleting account"
+    },
+
+    "notificationNewsTitle": "News",
+    "@notificationNewsTitle": {
+        "description": "Notification news item title"
+    },
+    "notificationStatisticTitle": "Your activity",
+    "@notificationStatisticTitle": {
+        "description": "Notification statistic item title"
+    },
+
+    "statisticsListElementActivityTitle": "Activity",
+    "@statisticsListElementActivityTitle": {
+        "description": "Statistics list activity element title"
+    },
+    "statisticsListElementActivitySubtitle": "this month",
+    "@statisticsListElementActivitySubtitle": {
+        "description": "Statistics list activity element subtitle"
+    },
+    "statisticsListElementActivityOnline": "online",
+    "@statisticsListElementActivityOnline": {
+        "description": "Statistics list activity element online status"
+    },
+    "statisticsListElementActivityOffline": "offline",
+    "@statisticsListElementActivityOffline": {
+        "description": "Statistics list activity element offline status"
+    },
+    "statisticsListElementPerformanceTitle": "Performance",
+    "@statisticsListElementPerformanceTitle": {
+        "description": "Statistics list performance element title"
+    },
+    "statisticsListElementPerformanceSubitle": "in the last 7 days",
+    "@statisticsListElementPerformanceSubitle": {
+        "description": "Statistics list performance element subtitle"
+    },
+    "statisticsListElementPerformanceLegend": "completed lessons per day",
+    "@statisticsListElementPerformanceLegend": {
+        "description": "Statistics list performance element legend"
+    },
+    "statisticsListElementProgressTitle": "Progress",
+    "@statisticsListElementProgressTitle": {
+        "description": "Statistics list progress element title"
+    },
+}
