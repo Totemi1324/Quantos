@@ -27,7 +27,7 @@ class LectionList extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: LectionItem(
             lections[index].title,
-            previewImageAsset: lections[index].previewImageAsset,
+            iconAnimationAsset: lections[index].iconAnimationAsset,
             progressPercent: lections[index].progressPercent,
             unlocked: lections[index].unlocked,
           ),

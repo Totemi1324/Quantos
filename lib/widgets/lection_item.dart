@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './ui/adaptive_progress_bar.dart';
 
 class LectionItem extends StatelessWidget {
-  final String previewImageAsset;
+  final String iconAnimationAsset;
   final String title;
   final double progressPercent;
   final bool unlocked;
@@ -33,7 +33,7 @@ class LectionItem extends StatelessWidget {
 
   const LectionItem(
     this.title, {
-    required this.previewImageAsset,
+    required this.iconAnimationAsset,
     required this.progressPercent,
     required this.unlocked,
     super.key,
@@ -44,7 +44,7 @@ class LectionItem extends StatelessWidget {
     final icon = ConstrainedBox(
       constraints: const BoxConstraints(maxWidth: 80),
       child: Image.asset(
-        previewImageAsset,
+        iconAnimationAsset,
         fit: BoxFit.contain,
       ),
     );
