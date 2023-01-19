@@ -50,8 +50,9 @@ class SettingsList extends StatelessWidget {
         SettingsItem(
           title: "Enable colorblind theme",
           selector: AdaptiveSwitch(
-            defaultEnabled: false,
-            onToggle: () {},
+            defaultEnabled: context.read<ThemeService>().colorblindModeActive,
+            onToggle: (newValue) =>
+                context.read<ThemeService>().toggleColorblindMode(newValue),
           ),
         ),
         const SectionSeparator(
