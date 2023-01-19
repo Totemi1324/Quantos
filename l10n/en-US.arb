@@ -7,34 +7,46 @@
     "@readyButtonLabel": {
         "description": "Ready button label"
     },
+    "finishButtonLabel": "Finish",
+    "@finishButtonLabel": {
+        "description": "Finish button label"
+    },
+    "sendButtonLabel": "Send",
+    "@sendButtonLabel": {
+        "description": "Send button label"
+    },
     "workInProgressMessage": "Beep boop... Work in progress detected... Come back later, human!",
     "@workInProgressMessage": {
         "description": "Work in progress message for display in alert dialogs and snack bars"
     },
+    "loadingPlaceholder": "Loading...",
+    "@loadingPlaceholder": {
+        "description": "Loading placeholder text"
+    },
 
     "authSignUpDescription": "New here?",
     "@authSignUpDescription": {
-        "description": "Auth sign up description",
+        "description": "Auth sign up description"
     },
     "authSignUpButtonLabel": "Sign Up",
     "@authSignUpButtonLabel": {
-        "description": "Auth sign up button label",
+        "description": "Auth sign up button label"
     },
     "authLogInDescription": "Already on board?",
     "@authLogInDescription": {
-        "description": "Auth log in description",
+        "description": "Auth log in description"
     },
     "authLogInButtonLabel": "Log In",
     "@authLogInButtonLabel": {
-        "description": "Auth log in button label",
+        "description": "Auth log in button label"
     },
     "authGroupAccessDescription": "Part of a classroom or team?",
     "@authGroupAccessDescription": {
-        "description": "Auth group access description",
+        "description": "Auth group access description"
     },
     "authGroupAccessButtonLabel": "Enter Access Code",
     "@authGroupAccessButtonLabel": {
-        "description": "Auth group access button label",
+        "description": "Auth group access button label"
     },
 
     "authSignUpScreenTitle": "Welcome!",
@@ -47,7 +59,7 @@
     },
     "authGroupAccessScreenTitle": "Welcome!",
     "@authGroupAccessScreenTitle": {
-        "description": "Auth group access screen title",
+        "description": "Auth group access screen title"
     },
     "authGroupAccessScreenInstructions": "Enter your 6-digit access code",
     "@authGroupAccessScreenInstructions": {
@@ -195,6 +207,106 @@
         "description": "Profile screen option for deleting account"
     },
 
+    "downloadScreenTitle": "Download Center",
+    "@downloadScreenTitle": {
+        "description": "Download screen title"
+    },
+    "downloadScreenInstructions": "Here, you find helper programs (desktop only) and materials for further reading that didn't make the cut in the final lessons. Happy browsing!",
+    "@downloadScreenInstructions": {
+        "description": "Download screen instructions"
+    },
+
+    "codingScreenTitle": "Coding",
+    "@codingScreenTitle": {
+        "description": "Coding screen title"
+    },
+    "codingScreenInstructions": "Ready to take matters in your own hands? Send your Hamilton matrices to our simulator or a real-life DWave quantum annealer and use the results to solve problems nobody ever attempted before!",
+    "@codingScreenInstructions": {
+        "description": "Coding screen instructions"
+    },
+    "codingScreenWarningTitle": "Warning",
+    "@codingScreenWarningTitle": {
+        "description": "Coding screen warning title"
+    },
+    "codingScreenWarning": "The introductory lection 'Introduction to Quantum Annealers' contains useful information on how to use the coding interface. If you're inexperienced with quantum annealing, make sure to check that out first!",
+    "@codingScreenWarning": {
+        "description": "Coding screen warning on first visit"
+    },
+    "codingScreenInfoSimulator": " calculates the five best solutions to your Hamiltonian locally and displays them as they would come from a real quantum annealer, giving you freedom to experiment and a sense of how the real thing works. Additionally, it provides an approximate probability distribution to show how likely each result would show up.",
+    "@codingScreenInfoSimulator": {
+        "description": "Coding screen info on Simulator coding mode: 'Simulator calculates the...'"
+    },
+    "codingScreenInfoAnnealer": " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time you want to send an optimization problem.",
+    "@codingScreenInfoAnnealer": {
+        "description": "Coding screen info on Annealer coding mode: 'DWave Advantage sends your...'"
+    },
+
+    "lectionScreenLessonsSection": "Lessons",
+    "@lectionScreenLessonsSection": {
+        "description": "Lection screen lessons section title"
+    },
+
+    "settingsScreenTitle": "Settings",
+    "@settingsScreenTitle": {
+        "description": "Settings screen title"
+    },
+
+    "infoScreenTitle": "App Information",
+    "@infoScreenTitle": {
+        "description": "Info screen title"
+    },
+    "infoScreenVersion": "Version number",
+    "@infoScreenVersion": {
+        "description": "Info screen version number label"
+    },
+    "infoScreenBuild": "Build number",
+    "@infoScreenBuild": {
+        "description": "Info screen build number label"
+    },
+    "infoScreenImprintSection": "Imprint",
+    "@infoScreenImprintSection": {
+        "description": "Info screen imprint section title"
+    },
+    "infoScreenImprintResponsiblePartyTitle": "Resposible party",
+    "@infoScreenImprintResponsiblePartyTitle": {
+        "description": "Info screen imprint responsible party title"
+    },
+    "infoScreenImprintContactTitle": "Contact",
+    "@infoScreenImprintContactTitle": {
+        "description": "Info screen imprint contact title"
+    },
+    "infoScreenImprintContactDescription": "Email: {email}\nWeb: {website}",
+    "@infoScreenImprintContactDescription": {
+        "description": "Info screen imprint contact description",
+        "placeholders": {
+            "email": {
+                "type": "String",
+                "example": "foo@bar.com"
+            },
+            "website": {
+                "type": "String",
+                "example": "www.foobar.com"
+            }
+        }
+    }
+    "infoScreenPrivacySection": "Privacy policy",
+    "@infoScreenPrivacySection": {
+        "description": "Info screen privacy policy section title"
+    },
+    "infoScreenPrivacyDescription": "Visit our website {website} to learn more about our Privacy Policy.\n\nIn short: We don't collect data about you, other the ones you personally provided :)",
+    "@infoScreenPrivacyDescription": {
+        "description": "Info screen privacy policy description"
+    },
+
+    "helpScreenTitle": "Help Center",
+    "@helpScreenTitle": {
+        "description": "Help screen title"
+    },
+    "helpScreenInstructions": "We're sorry if you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
+    "@helpScreenInstructions": {
+        "description": "Help screen instructions"
+    },
+
     "notificationNewsTitle": "News",
     "@notificationNewsTitle": {
         "description": "Notification news item title"
@@ -236,4 +348,146 @@
     "@statisticsListElementProgressTitle": {
         "description": "Statistics list progress element title"
     },
+
+    "codingModeSimulator": "Simulator",
+    "@codingModeSimulator": {
+        "description": "Simulator coding mode"
+    },
+    "codingModeAnnealer": "DWave Advantage",
+    "@codingModeAnnealer": {
+        "description": "Annealer coding mode"
+    },
+    "codingTokenFormFieldTitle": "Your API token:",
+    "@codingTokenFormFieldTitle": {
+        "description": "Coding token input form field title"
+    },
+    "codingTokenFormField": "Paste your token here",
+    "@codingTokenFormField": {
+        "description": "Coding token input form field"
+    },
+    "codingHamiltonianInputTitle": "Hamiltonian",
+    "@codingHamiltonianInputTitle": {
+        "description": "Coding hamiltonian input title"
+    },
+    "codingHamiltonianInputLoadButtonLabel": "Load local",
+    "@codingHamiltonianInputLoadButtonLabel": {
+        "description": "Coding hamiltonian input load local button label"
+    },
+    "codingHamiltonianInputInstructions": "Upon sending, empty fields will be set to 0.",
+    "@codingHamiltonianInputInstructions": {
+        "description": "Coding hamiltonian input instructions"
+    },
+    "codingHamiltonianInputSendButtonLabel": "Send",
+    "@codingHamiltonianInputSendButtonLabel": {
+        "description": "Coding hamiltonian input send button label"
+    },
+    "codingConsoleOutputTitleSimulator": "Response from the simulator",
+    "@codingConsoleOutputTitleSimulator": {
+        "description": "Coding console output title for Simulator mode"
+    },
+    "codingConsoleOutputTitleAnnealer": "Response from the DWave annealer",
+    "@codingConsoleOutputTitleAnnealer": {
+        "description": "Coding console output title for Annealer mode",
+    }
+    "codingConsoleOutputMessageIdle": "Waiting for input.",
+    "@codingConsoleOutputMessageIdle": {
+        "description": "Coding console output message for idle status"
+    },
+    "codingConsoleOutputMessageLoading": "Waiting for response...",
+    "@codingConsoleOutputMessageLoading": {
+        "description": "Coding console output message for loading status"
+    },
+    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
+    "@codingConsoleOutputMessageSuccess": {
+        "description": "Coding console output message for success status"
+    },
+    "codingConsoleOutputMessageFailure": "Something went wrong - unable to fetch response. If you're using DWave Advantage mode, check your internet connection, or try again.",
+    "@codingConsoleOutputMessageFailure": {
+        "description": "Coding console output message for failure status"
+    },
+    "codingProbabilityTitle": "Probability distribution",
+    "@codingProbabilityTitle": {
+        "description": "Coding probability title"
+    },
+    "codingProbabilitySliderLabel": "{temperature} millikelvin",
+    "@codingProbabilitySliderLabel": {
+        "description": "Coding probability slider label",
+        "placeholders": {
+            "temperature": {
+                type: "String",
+                example: "16.0"
+            }
+        }
+    },
+    "codingProbabilityDescription": "This simulates how likely you would get each result on a real quantum annealer, from best to worst. At this temparature of the QPU, the best solution to your problem has a {percentage}% chance to be found.",
+    "@codingProbabilityDescription": {
+        "description": "Coding probability description",
+        "placeholders": {
+            "percentage": {
+                "type": "num"
+            }
+        }
+    }
+
+    "themeDark": "Dark",
+    "@themeDark": {
+        "description": "Dark theme name"
+    },
+    "themeLight": "Light",
+    "@themeLight": {
+        "description": "Light theme name"
+    },
+    "settingsSectionAccessibility": "Accessibility options",
+    "@settingsSectionAccessibility": {
+        "description": "Settings accessibility section title"
+    },
+    "settingsSectionVisuals": "Visuals",
+    "@settingsSectionVisuals": {
+        "description": "Settings visuals section title"
+    },
+    "settingsSectionOther": "Others",
+    "@settingsSectionOther": {
+        "description": "Settings others section title"
+    },
+    "settingsOptionAccessibilityMode": "Accessibility mode",
+    "@settingsOptionAccessibilityMode": {
+        "description": "Settings accessibility mode option"
+    },
+    "settingsOptionColorblindTheme": "Enable colorblind theme",
+    "@settingsOptionColorblindTheme": {
+        "description": "Settings colorblind theme option"
+    },
+    "settingsOptionTheme": "Choose theme",
+    "@settingsOptionTheme": {
+        "description": "Settings theme option"
+    },
+    "settingsOptionLanguage": "Language",
+    "@settingsOptionLanguage": {
+        "description": "Settings language option"
+    },
+
+    "helpRequestTypeAccont": "I have a problem regarding my account",
+    "@helpRequestTypeAccont": {
+        "description": "Help request type for account issues"
+    },
+    "helpRequestTypeBug": "I want to report a bug/error in the app",
+    "@helpRequestTypeBug": {
+        "description": "Help request type for bug reports"
+    },
+    "helpRequestTypeFeature": "I have an inquiry about the app or its contents",
+    "@helpRequestTypeFeature": {
+        "description": "Help request type for feature inquiries"
+    },
+    "helpRequestTypeOther": "Other",
+    "@helpRequestTypeOther": {
+        "description": "Help request type for other requests"
+    },
+    "helpInstructions": "Select a category:",
+    "@helpInstructions": {
+        "description": "Help instructions"
+    },
+    "helpMessageFormField": "Your message",
+    "@helpMessageFormField": {
+        "description": "Help message form field"
+    }
 }
