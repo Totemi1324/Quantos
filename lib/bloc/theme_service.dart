@@ -107,7 +107,7 @@ class ThemeService extends Cubit<ThemeData> {
       ),
       displaySmall: TextStyle(
         // Small label
-    	  fontFamily: "Quicksand",
+        fontFamily: "Quicksand",
         fontSize: 15,
         fontWeight: FontWeight.w300,
         color: Colors.white,
@@ -221,7 +221,7 @@ class ThemeService extends Cubit<ThemeData> {
       ),
       displaySmall: TextStyle(
         // Small label
-    	  fontFamily: "Quicksand",
+        fontFamily: "Quicksand",
         fontSize: 15,
         fontWeight: FontWeight.w300,
         color: Colors.grey.shade900,
@@ -335,7 +335,7 @@ class ThemeService extends Cubit<ThemeData> {
       ),
       displaySmall: TextStyle(
         // Small label
-    	  fontFamily: "Quicksand",
+        fontFamily: "Quicksand",
         fontSize: 21,
         fontWeight: FontWeight.w300,
         color: Color(0xFFFFFD48),
@@ -346,26 +346,52 @@ class ThemeService extends Cubit<ThemeData> {
 
   ThemeService() : super(_darkTheme);
 
-  static Brightness lastThemeBrightness = Brightness.dark;
+  static ThemeData currentTheme = _darkTheme;
+  static ThemeData previousTheme = _darkTheme;
   static bool accessibilityModeActivated = false;
   static bool colorblindModeActivated = false;
 
   bool get accessibilityModeActive => accessibilityModeActivated;
+  bool get colorblindModeActive => colorblindModeActivated;
 
   void selectTheme(Brightness selectedBrightness) {
-    emit(selectedBrightness == Brightness.dark ? _darkTheme : _lightTheme);
+    if (selectedBrightness == Brightness.dark) {
+      currentTheme = _darkTheme;
+      emit(_darkTheme);
+    } else {
+      currentTheme = _lightTheme;
+      emit(_lightTheme);
+    }
   }
 
   void toggleAccessibilityMode(bool switchState) {
     if (switchState) {
-      lastThemeBrightness = state.brightness;
+      previousTheme = state;
       accessibilityModeActivated = true;
-      emit(_accessibilityTheme.copyWith(brightness: lastThemeBrightness));
+      currentTheme =
+          _accessibilityTheme.copyWith(brightness: currentTheme.brightness);
+      emit(currentTheme);
     } else {
       accessibilityModeActivated = false;
-      emit(lastThemeBrightness == Brightness.dark ? _darkTheme : _lightTheme);
+      currentTheme = previousTheme;
+      emit(currentTheme);
     }
   }
 
-  void toggleColorblindMode(bool switchState) {}
+  void toggleColorblindMode(bool switchState) {
+    if (switchState) {
+      colorblindModeActivated = true;
+      emit(
+        currentTheme.copyWith(
+          colorScheme: currentTheme.colorScheme.copyWith(
+            error: const Color(0xFFBAAE43),
+            onErrorContainer: const Color(0xFF2EB6E8),
+          ),
+        ),
+      );
+    } else {
+      colorblindModeActivated = false;
+      emit(currentTheme);
+    }
+  }
 }

@@ -61,7 +61,18 @@ flutter:
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv
     - assets/animations/circular_progress_indicator.riv
+
     - assets/animations/age_selection.riv
+    - assets/animations/experience_selection.riv
+
+    - assets/animations/introduction_to_quantum_annealers.riv
+    - assets/animations/the_n_queens_problem.riv
+    - assets/animations/the_traveling_salesman_problem.riv
+
+    - assets/animations/icon_introduction_to_quantum_annealers.riv
+    - assets/animations/icon_the_n_queens_problem.riv
+    - assets/animations/icon_the_traveling_salesman_problem.riv
+    - assets/animations/icon_solving_sudoku_riddles.riv
     
     # App images
     - assets/images/logo.png
