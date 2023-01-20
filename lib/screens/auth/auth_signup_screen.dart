@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import '../profile/profile_name_screen.dart';
@@ -26,7 +27,7 @@ class AuthSignUpScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 50),
                     child: Text(
-                      "Welcome!",
+                      AppLocalizations.of(context)!.authSignUpScreenTitle,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
@@ -35,7 +36,7 @@ class AuthSignUpScreen extends StatelessWidget {
                     child: const SignUpForm(),
                   ),
                   AdaptiveButton.secondary(
-                    "Sign Up",
+                    AppLocalizations.of(context)!.authSignUpButtonLabel,
                     extended: true,
                     onPressed: () => Navigator.of(context)
                         .pushNamedAndRemoveUntil(

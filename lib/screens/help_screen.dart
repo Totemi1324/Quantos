@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/flat.dart';
 import '../widgets/forms/help_form.dart';
@@ -24,14 +25,14 @@ class HelpScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 50),
                     child: Text(
-                      "Help",
+                      AppLocalizations.of(context)!.helpScreenTitle,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      "We're sorry if you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
+                      AppLocalizations.of(context)!.helpScreenInstructions,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),

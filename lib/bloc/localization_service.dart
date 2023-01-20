@@ -1,10 +1,9 @@
-import 'dart:io';
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 
 class LocalizationService extends Cubit<Locale> {
   static final List<Locale> _supportedLocales = [
@@ -29,6 +28,11 @@ class LocalizationService extends Cubit<Locale> {
 
   List<LocalizationsDelegate<Object>> get localizationsDelegates =>
       _localizationsDelegates;
+  
+  int get currentLocaleIndex {
+    var index = supportedLocales.indexOf(state);
+    return index >= 0 ? index : 0;
+  }
 
   void setLocale(Locale newLocale) {
     if (!AppLocalizations.supportedLocales

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
@@ -8,16 +9,17 @@ import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileExperienceScreen extends StatelessWidget {
   static const routeName = "/profile/experience";
-  final Map<int, String> _stringForSliderDivision = {
-    0: "Beginner",
-    1: "Advanced",
-    2: "Skilled",
-  };
 
-  ProfileExperienceScreen({super.key});
+  const ProfileExperienceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Map<int, String> stringForSliderDivision = {
+      0: AppLocalizations.of(context)?.profileExperienceScreenSliderClass1 ?? "Beginner",
+      1: AppLocalizations.of(context)?.profileExperienceScreenSliderClass2 ?? "Advanced",
+      2: AppLocalizations.of(context)?.profileExperienceScreenSliderClass3 ?? "Skilled",
+    };
+
     return Flat(
       body: SafeArea(
         child: Padding(
@@ -30,14 +32,15 @@ class ProfileExperienceScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    "How would you describe yourself?",
+                    AppLocalizations.of(context)!.profileExperienceScreenTitle,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    "We need this information to choose the optimal learning contents for you.",
+                    AppLocalizations.of(context)!
+                        .profileExperienceScreenInstructions,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -45,14 +48,14 @@ class ProfileExperienceScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 30),
                   child: SliderSelectForm(
                     divisions: 2,
-                    divisionToString: _stringForSliderDivision,
+                    divisionToString: stringForSliderDivision,
                     initialDivision: 0,
                     animationAsset: "assets/animations/age_selection.riv",
                     stateMachine: "AgeClasses",
                   ),
                 ),
                 AdaptiveButton.primary(
-                  "I'm ready",
+                  AppLocalizations.of(context)!.readyButtonLabel,
                   extended: true,
                   onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(

@@ -1,0 +1,4 @@
+enum CodingMode {
+  simulator,
+  annealer,
+}

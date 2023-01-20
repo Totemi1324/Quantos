@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../ui/adaptive_form_field.dart';
 
@@ -30,7 +31,7 @@ class _LogInFormState extends State<LogInForm> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: AdaptiveFormField.icon(
-              "Email",
+              AppLocalizations.of(context)!.authFormEmail,
               prefixIcon: Icons.alternate_email_rounded,
               autocorrect: false,
               enableSuggestions: true,
@@ -41,7 +42,7 @@ class _LogInFormState extends State<LogInForm> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: AdaptiveFormField.password(
-              "Password",
+              AppLocalizations.of(context)!.authFormPassword,
               isFinalField: true,
               thisField: _passwordFocusNode,
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../bloc/theme_service.dart';
 
@@ -20,16 +21,16 @@ class StatisticsList extends StatefulWidget {
 class _StatisticsListState extends State<StatisticsList> {
   final int elementCount = 3;
 
-  TitledElement _buildElement(ThemeData theme, int index) {
+  TitledElement _buildElement(ThemeData theme, AppLocalizations localization, int index) {
     switch (index) {
       case 0:
         return TitledElement(
-          title: "Activity",
+          title: localization.statisticsListElementActivityTitle,
           element: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "this month",
+                localization.statisticsListElementActivitySubtitle,
                 style: theme.textTheme.labelSmall,
               ),
               const HeatmapChart(),
@@ -50,7 +51,7 @@ class _StatisticsListState extends State<StatisticsList> {
                     ),
                   ),
                   Text(
-                    "online",
+                    localization.statisticsListElementActivityOnline,
                     style: theme.textTheme.labelSmall,
                   ),
                   Padding(
@@ -70,7 +71,7 @@ class _StatisticsListState extends State<StatisticsList> {
                     ),
                   ),
                   Text(
-                    "offline",
+                    localization.statisticsListElementActivityOffline,
                     style: theme.textTheme.labelSmall,
                   ),
                 ],
@@ -80,12 +81,12 @@ class _StatisticsListState extends State<StatisticsList> {
         );
       case 1:
         return TitledElement(
-          title: "Performace",
+          title: localization.statisticsListElementPerformanceTitle,
           element: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "in the last 7 days",
+                localization.statisticsListElementPerformanceSubtitle,
                 style: theme.textTheme.labelSmall,
               ),
               const SizedBox(
@@ -93,16 +94,16 @@ class _StatisticsListState extends State<StatisticsList> {
               ),
               const LineChart(),
               Text(
-                "completed lessons per day",
+                localization.statisticsListElementPerformanceLegend,
                 style: theme.textTheme.labelSmall,
               ),
             ],
           ),
         );
       case 2:
-        return const TitledElement(
-          title: "Progress",
-          element: ProgressList(),
+        return TitledElement(
+          title: localization.statisticsListElementProgressTitle,
+          element: const ProgressList(),
         );
       default:
         return TitledElement.empty();
@@ -118,8 +119,9 @@ class _StatisticsListState extends State<StatisticsList> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: elementCount,
         itemBuilder: (context, index) {
-          ThemeData activeTheme = context.read<ThemeService>().state;
-          TitledElement item = _buildElement(activeTheme, index);
+          final activeTheme = context.read<ThemeService>().state;
+          final localization = AppLocalizations.of(context)!;
+          final item = _buildElement(activeTheme, localization, index);
     
           return Container(
             margin: const EdgeInsets.symmetric(vertical: 20),

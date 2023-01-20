@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import '../profile/profile_name_screen.dart';
@@ -25,7 +26,7 @@ class AuthGroupAccessScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 50),
                     child: Text(
-                      "Welcome!",
+                      AppLocalizations.of(context)!.authGroupAccessScreenTitle,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
@@ -33,7 +34,7 @@ class AuthGroupAccessScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 70),
                     child: Text(
-                      "Enter your 6-digit access code",
+                      AppLocalizations.of(context)!.authGroupAccessScreenInstructions,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),

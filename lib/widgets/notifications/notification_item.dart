@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../models/notification.dart';
 import '../containers/rounded_card.dart';
@@ -14,10 +15,10 @@ abstract class NotificationItem extends StatelessWidget {
   void onOpen();
 
   @protected
-  String _typeToString(NotificationType type) {
+  String _typeToString(BuildContext buildContext, NotificationType type) {
     switch (type) {
-      case NotificationType.news: return "News";
-      case NotificationType.statistic: return "Your Activity";
+      case NotificationType.news: return AppLocalizations.of(buildContext)!.notificationNewsTitle;
+      case NotificationType.statistic: return AppLocalizations.of(buildContext)!.notificationStatisticTitle;
     }
   }
 
@@ -39,7 +40,7 @@ abstract class NotificationItem extends StatelessWidget {
             top: 10,
             left: 10,
             child: Text(
-              _typeToString(type),
+              _typeToString(context, type),
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),

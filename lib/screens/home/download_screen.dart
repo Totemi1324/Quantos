@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../widgets/containers/rounded_card.dart';
 import '../../widgets/part_separator.dart';
@@ -22,19 +23,19 @@ class DownloadScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               margin: const EdgeInsets.only(top: 20),
               child: Text(
-                "Download Center",
+                AppLocalizations.of(context)!.downloadScreenTitle,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               margin: const EdgeInsets.symmetric(vertical: 30),
-              child: const RoundedCard(
+              child: RoundedCard(
                 fillHeight: false,
                 fillWidth: true,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Text(
-                  "Here, you find helper programs (desktop only) and materials for further reading that didn't make the cut in the final lessons. Happy browsing!",
+                  AppLocalizations.of(context)!.downloadScreenInstructions,
                 ),
               ),
             ),
@@ -44,6 +45,7 @@ class DownloadScreen extends StatelessWidget {
                 itemCount: downloadCategories.length,
                 itemBuilder: (context, index) {
                   bool show = true;
+                  
                   if (Platform.isAndroid || Platform.isIOS) {
                     show = downloadCategories[index].id != "2fT4z";
                   }

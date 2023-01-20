@@ -1,6 +1,7 @@
 import 'dart:math' show exp, max, log;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../canvas/bar_chart.dart';
 
@@ -46,7 +47,8 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
       children: [
         BarChart(values: _probabilityDistribution),
         Text(
-          "${_selected.toStringAsFixed(1)} Millikelvin",
+          AppLocalizations.of(context)!
+              .codingProbabilitySliderLabel(_selected.toStringAsFixed(1)),
           style: Theme.of(context).textTheme.labelLarge,
         ),
         SliderTheme(
@@ -72,7 +74,11 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
           ),
         ),
         Text(
-          "This simulates how likely you would get each result on a real quantum annealer, from best to worst. At this temparature of the QPU, the best solution to your problem has a ${((_probabilityDistribution.isNotEmpty ? _probabilityDistribution[0] : 0) * 100).round()}% chance to be found.",
+          AppLocalizations.of(context)!.codingProbabilityDescription(
+            _probabilityDistribution.isNotEmpty
+                ? _probabilityDistribution[0]
+                : 0.0,
+          ),
           textAlign: TextAlign.center,
         ),
       ],

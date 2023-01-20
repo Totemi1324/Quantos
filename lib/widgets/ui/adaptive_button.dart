@@ -87,7 +87,7 @@ class AdaptiveButton extends StatelessWidget {
     final AutoSizeText labelText = AutoSizeText(
       label,
       textAlign: TextAlign.center,
-      minFontSize: 14,
+      minFontSize: 12,
       maxLines: 2,
       overflow: TextOverflow.fade,
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../models/coding_mode.dart';
 import '../../widgets/code/token_input.dart';
 import '../../widgets/code/coding_mode_info_popup.dart';
 import '../../widgets/code/hamiltonian_input.dart';
@@ -17,18 +19,18 @@ class CodingScreen extends StatefulWidget {
 
 class _CodingScreenState extends State<CodingScreen> {
   final _outputConsoleKey = GlobalKey();
-  final List<DropdownMenuItem> _modes = const [
-    DropdownMenuItem(
-      value: 0,
+  final List<DropdownMenuItem<CodingMode>> _modes = [
+    const DropdownMenuItem(
+      value: CodingMode.simulator,
       child: Text("Simulator"),
     ),
-    DropdownMenuItem(
-      value: 1,
+    const DropdownMenuItem(
+      value: CodingMode.annealer,
       child: Text("DWave Advantage"),
     ),
   ];
 
-  int _selectedMode = 0;
+  CodingMode _selectedMode = CodingMode.simulator;
 
   @override
   void initState() {
@@ -37,6 +39,15 @@ class _CodingScreenState extends State<CodingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _modes[0] = DropdownMenuItem(
+      value: CodingMode.simulator,
+      child: Text(AppLocalizations.of(context)!.codingModeSimulator),
+    );
+    _modes[1] = DropdownMenuItem(
+      value: CodingMode.annealer,
+      child: Text(AppLocalizations.of(context)!.codingModeAnnealer),
+    );
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SingleChildScrollView(
@@ -49,19 +60,19 @@ class _CodingScreenState extends State<CodingScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 margin: const EdgeInsets.only(top: 20),
                 child: Text(
-                  "Coding",
+                  AppLocalizations.of(context)!.codingScreenTitle,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 margin: const EdgeInsets.symmetric(vertical: 30),
-                child: const RoundedCard(
+                child: RoundedCard(
                   fillHeight: false,
                   fillWidth: true,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Text(
-                    "Ready to take matters in your own hands? Send your Hamilton matrices to our simulator or a real-life DWave quantum annealer and use the results to solve problems nobody ever attempted before!",
+                    AppLocalizations.of(context)!.codingScreenInstructions,
                   ),
                 ),
               ),
@@ -76,7 +87,7 @@ class _CodingScreenState extends State<CodingScreen> {
                         defaultSelectedIndex: 0,
                         expanded: true,
                         onChanged: (newValue) {
-                          if (newValue is int) {
+                          if (newValue is CodingMode) {
                             setState(() {
                               _selectedMode = newValue;
                             });
@@ -98,7 +109,7 @@ class _CodingScreenState extends State<CodingScreen> {
                   ],
                 ),
               ),
-              if (_selectedMode == 1) const TokenInput(),
+              if (_selectedMode == CodingMode.annealer) const TokenInput(),
               HamiltonianInput(
                 onSubmit: () {
                   if (_outputConsoleKey.currentContext != null) {
@@ -112,7 +123,7 @@ class _CodingScreenState extends State<CodingScreen> {
                 _selectedMode,
                 key: _outputConsoleKey,
               ),
-              if (_selectedMode == 0) const ProbabilityDistribution(),
+              if (_selectedMode == CodingMode.simulator) const ProbabilityDistribution(),
               const SizedBox(
                 height: 30,
               )

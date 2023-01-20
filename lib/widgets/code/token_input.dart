@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
@@ -12,8 +13,8 @@ class TokenInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const PartSeparator(
-          "Authentication",
+        PartSeparator(
+          AppLocalizations.of(context)!.codingTokenFormFieldSectionTitle,
           verticalMargin: 20,
         ),
         PanelCard(
@@ -22,11 +23,11 @@ class TokenInput extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Your API token:",
+                AppLocalizations.of(context)!.codingTokenFormFieldTitle,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               AdaptiveFormField.password(
-                "Paste your token here",
+                AppLocalizations.of(context)!.codingTokenFormField,
                 isFinalField: true,
               ),
             ],

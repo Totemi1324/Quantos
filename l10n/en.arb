@@ -179,6 +179,10 @@
             }
         }
     },
+    "profileScreenOptionsSection": "Account settings",
+    "@profileScreenOptionsSection": {
+        "description": "Profile screen options section title"
+    },
     "profileScreenOptionGroups": "Manage groups",
     "@profileScreenOptionGroups": {
         "description": "Profile screen option for managing groups"
@@ -336,8 +340,8 @@
     "@statisticsListElementPerformanceTitle": {
         "description": "Statistics list performance element title"
     },
-    "statisticsListElementPerformanceSubitle": "in the last 7 days",
-    "@statisticsListElementPerformanceSubitle": {
+    "statisticsListElementPerformanceSubtitle": "in the last 7 days",
+    "@statisticsListElementPerformanceSubtitle": {
         "description": "Statistics list performance element subtitle"
     },
     "statisticsListElementPerformanceLegend": "completed lessons per day",
@@ -369,6 +373,10 @@
     "@codingInfoAnnealer": {
         "description": "Info on Annealer coding mode: 'DWave Advantage sends your...'"
     },
+    "codingTokenFormFieldSectionTitle": "Authentication",
+    "@codingTokenFormFieldSectionTitle": {
+        "description": "Coding token input form field section title"
+    },
     "codingTokenFormFieldTitle": "Your API token:",
     "@codingTokenFormFieldTitle": {
         "description": "Coding token input form field title"
@@ -388,10 +396,6 @@
     "codingHamiltonianInputInstructions": "Upon sending, empty fields will be set to 0.",
     "@codingHamiltonianInputInstructions": {
         "description": "Coding hamiltonian input instructions"
-    },
-    "codingHamiltonianInputSendButtonLabel": "Send",
-    "@codingHamiltonianInputSendButtonLabel": {
-        "description": "Coding hamiltonian input send button label"
     },
     "codingConsoleOutputTitleSimulator": "Response from the simulator",
     "@codingConsoleOutputTitleSimulator": {
@@ -436,7 +440,7 @@
         "description": "Coding probability description",
         "placeholders": {
             "percentage": {
-                "type": "int",
+                "type": "double",
                 "format": "percentPattern"
             }
         }

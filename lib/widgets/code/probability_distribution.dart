@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
@@ -11,12 +12,12 @@ class ProbabilityDistribution extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: const [
+      children: [
         PartSeparator(
-          "Probability distribution",
+          AppLocalizations.of(context)!.codingProbabilityTitle,
           verticalMargin: 20,
         ),
-        PanelCard(
+        const PanelCard(
           padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           child: ProbabilityCalculator([
             -37.6,

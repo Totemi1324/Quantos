@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import './profile_experience_screen.dart';
@@ -7,19 +8,20 @@ import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileAgeScreen extends StatelessWidget {
   static const routeName = "/profile/age";
-  final Map<int, String> _stringForSliderDivision = {
-    0: "15-18",
-    1: "19-28",
-    2: "29-59",
-    3: "60+",
-  };
 
-  ProfileAgeScreen({super.key});
+  const ProfileAgeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
     final profileName = args as String?;
+
+    final Map<int, String> stringForSliderDivision = { //TODO
+      0: AppLocalizations.of(context)?.profileAgeScreenSliderClass1 ?? "15-18",
+      1: AppLocalizations.of(context)?.profileAgeScreenSliderClass2 ?? "19-28",
+      2: AppLocalizations.of(context)?.profileAgeScreenSliderClass3 ?? "29-59",
+      3: AppLocalizations.of(context)?.profileAgeScreenSliderClass4 ?? "60+",
+    };
 
     return Flat(
       body: SafeArea(
@@ -33,14 +35,18 @@ class ProfileAgeScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    "And how old are\nyou${profileName != null ? ", $profileName" : ""}?",
+                    profileName == null
+                        ? AppLocalizations.of(context)!
+                            .profileAgeScreenTitleWithoutName
+                        : AppLocalizations.of(context)!
+                            .profileAgeScreenTitleWithName(profileName),
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    "We need this information to choose the optimal learning contents for you.",
+                    AppLocalizations.of(context)!.profileAgeScreenInstructions,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -48,14 +54,14 @@ class ProfileAgeScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 30),
                   child: SliderSelectForm(
                     divisions: 3,
-                    divisionToString: _stringForSliderDivision,
+                    divisionToString: stringForSliderDivision,
                     initialDivision: 1,
                     animationAsset: "assets/animations/age_selection.riv",
                     stateMachine: "AgeClasses",
                   ),
                 ),
                 AdaptiveButton.primary(
-                  "Confirm",
+                  AppLocalizations.of(context)!.confirmButtonLabel,
                   extended: true,
                   onPressed: () => Navigator.of(context)
                       .pushNamed(ProfileExperienceScreen.routeName),

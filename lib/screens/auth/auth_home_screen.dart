@@ -66,27 +66,25 @@ class AuthHomeScreen extends StatelessWidget {
               _buildAuthOption(
                 context,
                 description:
-                    AppLocalizations.of(context)?.authSignUpDescription ?? "",
+                    AppLocalizations.of(context)!.authSignUpDescription,
                 buttonLabel:
-                    AppLocalizations.of(context)?.authSignUpButtonLabel ?? "",
+                    AppLocalizations.of(context)!.authSignUpButtonLabel,
                 routeName: AuthSignUpScreen.routeName,
               ),
               _buildAuthOption(
                 context,
                 description:
-                    AppLocalizations.of(context)?.authLogInDescription ?? "",
+                    AppLocalizations.of(context)!.authLogInDescription,
                 buttonLabel:
-                    AppLocalizations.of(context)?.authLogInButtonLabel ?? "",
+                    AppLocalizations.of(context)!.authLogInButtonLabel,
                 routeName: AuthLogInScreen.routeName,
               ),
               _buildAuthOption(
                 context,
                 description:
-                    AppLocalizations.of(context)?.authGroupAccessDescription ??
-                        "",
+                    AppLocalizations.of(context)!.authGroupAccessDescription,
                 buttonLabel:
-                    AppLocalizations.of(context)?.authGroupAccessButtonLabel ??
-                        "",
+                    AppLocalizations.of(context)!.authGroupAccessButtonLabel,
                 routeName: AuthGroupAccessScreen.routeName,
               ),
             ],
