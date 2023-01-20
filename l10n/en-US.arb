@@ -66,19 +66,6 @@
         "description": "Auth group access screen instructions"
     },
 
-    "authFormEmail": "Email",
-    "@authFormEmail": {
-        "description": "Auth form email field"
-    },
-    "authFormPassword": "Password",
-    "@authFormPassword": {
-        "description": "Auth form password field"
-    },
-    "authFormConfirmPassword": "Confirm password",
-    "@authFormConfirmPassword": {
-        "description": "Auth form password confirmation field"
-    },
-
     "profileNameScreenTitle": "Hi!\nWhat's your name?",
     "@profileNameScreenTitle": {
         "description": "Profile name screen title"
@@ -194,9 +181,9 @@
     "@profileScreenOptionGroups": {
         "description": "Profile screen option for managing groups"
     },
-    "profileScreenOptionPersonal": "Personal settings",
+    "profileScreenOptionPersonal": "Edit personal settings",
     "@profileScreenOptionPersonal": {
-        "description": "Profile screen option for updating personal settings"
+        "description": "Profile screen option for editing personal settings"
     },
     "profileScreenOptionPassword": "Change password",
     "@profileScreenOptionPassword": {
@@ -228,17 +215,9 @@
     "@codingScreenWarningTitle": {
         "description": "Coding screen warning title"
     },
-    "codingScreenWarning": "The introductory lection 'Introduction to Quantum Annealers' contains useful information on how to use the coding interface. If you're inexperienced with quantum annealing, make sure to check that out first!",
+    "codingScreenWarning": "The introductory lection 'Introduction to Quantum Annealers' contains the information and knowledge necessary for using the coding interface. If you're inexperienced with quantum annealing, make sure to check that out first!",
     "@codingScreenWarning": {
         "description": "Coding screen warning on first visit"
-    },
-    "codingScreenInfoSimulator": " calculates the five best solutions to your Hamiltonian locally and displays them as they would come from a real quantum annealer, giving you freedom to experiment and a sense of how the real thing works. Additionally, it provides an approximate probability distribution to show how likely each result would show up.",
-    "@codingScreenInfoSimulator": {
-        "description": "Coding screen info on Simulator coding mode: 'Simulator calculates the...'"
-    },
-    "codingScreenInfoAnnealer": " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time you want to send an optimization problem.",
-    "@codingScreenInfoAnnealer": {
-        "description": "Coding screen info on Annealer coding mode: 'DWave Advantage sends your...'"
     },
 
     "lectionScreenLessonsSection": "Lessons",
@@ -295,7 +274,13 @@
     },
     "infoScreenPrivacyDescription": "Visit our website {website} to learn more about our Privacy Policy.\n\nIn short: We don't collect data about you, other the ones you personally provided :)",
     "@infoScreenPrivacyDescription": {
-        "description": "Info screen privacy policy description"
+        "description": "Info screen privacy policy description",
+        "placeholders": {
+            "website": {
+                "type": "String",
+                "example": "www.foobar.com"
+            }
+        }
     },
 
     "helpScreenTitle": "Help Center",
@@ -305,6 +290,19 @@
     "helpScreenInstructions": "We're sorry if you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
     "@helpScreenInstructions": {
         "description": "Help screen instructions"
+    },
+
+    "authFormEmail": "Email",
+    "@authFormEmail": {
+        "description": "Auth form email field"
+    },
+    "authFormPassword": "Password",
+    "@authFormPassword": {
+        "description": "Auth form password field"
+    },
+    "authFormConfirmPassword": "Confirm password",
+    "@authFormConfirmPassword": {
+        "description": "Auth form password confirmation field"
     },
 
     "notificationNewsTitle": "News",
@@ -356,6 +354,18 @@
     "codingModeAnnealer": "DWave Advantage",
     "@codingModeAnnealer": {
         "description": "Annealer coding mode"
+    },
+    "codingInfoTitle": "Coding modes",
+    "@codingInfoTitle": {
+        "description": "Coding info title"
+    },
+    "codingInfoSimulator": " calculates the five best solutions to your Hamiltonian locally and displays them as they would come from a real quantum annealer, giving you freedom to experiment and a sense of how the real thing works. Additionally, it provides an approximate probability distribution to show how likely each result would show up.",
+    "@codingInfoSimulator": {
+        "description": "Info on Simulator coding mode: 'Simulator calculates the...'"
+    },
+    "codingInfoAnnealer": " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time you want to send an optimization problem.",
+    "@codingInfoAnnealer": {
+        "description": "Info on Annealer coding mode: 'DWave Advantage sends your...'"
     },
     "codingTokenFormFieldTitle": "Your API token:",
     "@codingTokenFormFieldTitle": {
