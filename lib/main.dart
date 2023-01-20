@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'bloc/theme_service.dart';
 import 'bloc/localization_service.dart';
+import '';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -38,17 +40,21 @@ class MyApp extends StatelessWidget {
           create: (_) => ThemeService(),
         ),
         BlocProvider<LocalizationService>(
-          create: (BuildContext buildContext) =>
-              LocalizationService(buildContext),
+          create: (_) => LocalizationService(),
         ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(
-        builder: (context, currentLocale) => BlocBuilder<ThemeService, ThemeData>(
+        builder: (context, currentLocale) =>
+            BlocBuilder<ThemeService, ThemeData>(
           builder: (context, activeTheme) => MaterialApp(
             debugShowCheckedModeBanner: false,
             title: "Quantos",
             theme: activeTheme,
-            supportedLocales: context.read<LocalizationService>().supportedLocales,
+            locale: context.read<LocalizationService>().state,
+            supportedLocales:
+                context.read<LocalizationService>().supportedLocales,
+            localizationsDelegates:
+                context.read<LocalizationService>().localizationsDelegates,
             initialRoute: SplashScreen.routeName,
             routes: {
               SplashScreen.routeName: (context) => const SplashScreen(),
