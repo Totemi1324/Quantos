@@ -1,4 +1,6 @@
 {
+    "@@locale": "en",
+
     "confirmButtonLabel": "Confirm",
     "@confirmButtonLabel": {
         "description": "Confirm button label"
@@ -71,7 +73,7 @@
         "description": "Profile name screen title"
     },
     "profileNameScreenFormField": "First name",
-    "@profileNameScreenTitle": {
+    "@profileNameScreenFormField": {
         "description": "Profile name screen form field"
     },
     "profileNameScreenTextButtonLabel": "I don't want to be called by my name",
@@ -124,15 +126,15 @@
     },
     "profileExperienceScreenSliderClass1": "Beginner",
     "@profileExperienceScreenSliderClass1": {
-        "description": "First experience class",
+        "description": "First experience class"
     },
     "profileExperienceScreenSliderClass2": "Advanced",
     "@profileExperienceScreenSliderClass2": {
-        "description": "Second experience class",
+        "description": "Second experience class"
     },
     "profileExperienceScreenSliderClass3": "Skilled",
     "@profileExperienceScreenSliderClass3": {
-        "description": "Third experience class",
+        "description": "Third experience class"
     },
 
     "homeScreenTitleWithName": "Hello {name}!",
@@ -164,7 +166,7 @@
     },
     "statisticsScreenDisclaimer": "Usage data older than 30 days is deleted automatically",
     "@statisticsScreenDisclaimer": {
-        "description": "Statistics screen disclaimer",
+        "description": "Statistics screen disclaimer"
     },
 
     "profileScreenAffiliation": "belonging to {institution}",
@@ -267,7 +269,7 @@
                 "example": "www.foobar.com"
             }
         }
-    }
+    },
     "infoScreenPrivacySection": "Privacy policy",
     "@infoScreenPrivacySection": {
         "description": "Info screen privacy policy section title"
@@ -397,8 +399,8 @@
     },
     "codingConsoleOutputTitleAnnealer": "Response from the DWave annealer",
     "@codingConsoleOutputTitleAnnealer": {
-        "description": "Coding console output title for Annealer mode",
-    }
+        "description": "Coding console output title for Annealer mode"
+    },
     "codingConsoleOutputMessageIdle": "Waiting for input.",
     "@codingConsoleOutputMessageIdle": {
         "description": "Coding console output message for idle status"
@@ -424,20 +426,21 @@
         "description": "Coding probability slider label",
         "placeholders": {
             "temperature": {
-                type: "String",
-                example: "16.0"
+                "type": "String",
+                "example": "16.0"
             }
         }
     },
-    "codingProbabilityDescription": "This simulates how likely you would get each result on a real quantum annealer, from best to worst. At this temparature of the QPU, the best solution to your problem has a {percentage}% chance to be found.",
+    "codingProbabilityDescription": "This simulates how likely you would get each result on a real quantum annealer, from best to worst. At this temparature of the QPU, the best solution to your problem has a {percentage} chance to be found.",
     "@codingProbabilityDescription": {
         "description": "Coding probability description",
         "placeholders": {
             "percentage": {
-                "type": "num"
+                "type": "int",
+                "format": "percentPattern"
             }
         }
-    }
+    },
 
     "themeDark": "Dark",
     "@themeDark": {
