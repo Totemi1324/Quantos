@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../models/coding_mode.dart';
+import '../../bloc/stores/coding_modes_store_service.dart';
+
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
 

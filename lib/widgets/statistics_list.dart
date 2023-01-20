@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../bloc/theme_service.dart';
+import '../bloc/localization_service.dart';
 
 import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
@@ -11,7 +12,6 @@ import './canvas/heatmap_chart.dart';
 import './progress_list.dart';
 
 class StatisticsList extends StatefulWidget {
-
   const StatisticsList({super.key});
 
   @override
@@ -21,7 +21,8 @@ class StatisticsList extends StatefulWidget {
 class _StatisticsListState extends State<StatisticsList> {
   final int elementCount = 3;
 
-  TitledElement _buildElement(ThemeData theme, AppLocalizations localization, int index) {
+  TitledElement _buildElement(
+      ThemeData theme, AppLocalizations localization, int index) {
     switch (index) {
       case 0:
         return TitledElement(
@@ -112,8 +113,15 @@ class _StatisticsListState extends State<StatisticsList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<ThemeService, ThemeData>(
-      listener: (context, state) => setState(() {}),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ThemeService, ThemeData>(
+          listener: (context, state) => setState(() {}),
+        ),
+        BlocListener<LocalizationService, Locale>(
+          listener: (context, state) => setState(() {}),
+        ),
+      ],
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -122,7 +130,7 @@ class _StatisticsListState extends State<StatisticsList> {
           final activeTheme = context.read<ThemeService>().state;
           final localization = AppLocalizations.of(context)!;
           final item = _buildElement(activeTheme, localization, index);
-    
+
           return Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             child: RoundedCard(

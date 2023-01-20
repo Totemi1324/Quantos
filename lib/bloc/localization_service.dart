@@ -18,8 +18,6 @@ class LocalizationService extends Cubit<Locale> {
     GlobalWidgetsLocalizations.delegate,
   ];
 
-  Locale _currentLocale = _supportedLocales[0];
-
   LocalizationService() : super(const Locale('en')) {
     setLocale(Locale(Platform.localeName.substring(0, 2)));
   }
@@ -28,7 +26,7 @@ class LocalizationService extends Cubit<Locale> {
 
   List<LocalizationsDelegate<Object>> get localizationsDelegates =>
       _localizationsDelegates;
-  
+
   int get currentLocaleIndex {
     var index = supportedLocales.indexOf(state);
     return index >= 0 ? index : 0;
@@ -38,7 +36,6 @@ class LocalizationService extends Cubit<Locale> {
     if (!AppLocalizations.supportedLocales
         .any((locale) => locale.languageCode == newLocale.languageCode)) return;
 
-    _currentLocale = newLocale;
-    emit(_currentLocale);
+    emit(newLocale);
   }
 }

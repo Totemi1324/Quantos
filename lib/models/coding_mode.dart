@@ -1,4 +1,0 @@
-enum CodingMode {
-  simulator,
-  annealer,
-}
