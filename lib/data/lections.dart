@@ -44,5 +44,6 @@ List<Lection> lections = [
     description:
         "Everyone knows them: The magic number tables from Japan. Are they also able to challenge the brains of quantum anealers?",
     difficultyLevel: Difficulty.advanced,
+    unlocked: true,
   ),
 ];

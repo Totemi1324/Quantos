@@ -80,8 +80,8 @@ flutter:
     # App images
     - assets/images/logo.png
     - assets/images/background.png
-    - assets/images/lection_preview_image.png
-    - assets/images/avatar_background.png
+    - assets/images/icon_background.png
+    - assets/images/icon_background_gradient.png
     - assets/images/profile_background.png
     - assets/images/profile_foreground.png
 

@@ -28,8 +28,8 @@ class NotificationScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage:
-                    const AssetImage("assets/images/avatar_background.png"),
+                backgroundImage: const AssetImage(
+                    "assets/images/icon_background_gradient.png"),
                 foregroundImage:
                     NetworkImage(newsObject.senderIconNetworkAddress),
               ),
