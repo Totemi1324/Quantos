@@ -3,7 +3,7 @@
 # QUANTOS
 
 <a href="#">
-  <img alt="version" src="https://img.shields.io/static/v1.svg?label=Version&message=0.0.1&color=389ad5&labelColor=31c4f3&style=for-the-badge" />
+  <img alt="version" src="https://img.shields.io/static/v1.svg?label=Version&message=1.0.0&color=389ad5&labelColor=31c4f3&style=for-the-badge" />
 </a>
 <a href="#">
   <img alt="open source" src="https://img.shields.io/static/v1.svg?label=Open&message=Source&color=46a4b8&labelColor=3ac1d0&style=for-the-badge" />
@@ -21,53 +21,33 @@
 Built with:
 
 <div align="center">
-<div align="center">
-<div align="center">
-<code>
 <a href="https://flutter.dev/"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
 <a href="https://dart.dev/"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
 <a href="https://rive.app/"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
-</code> <br>
-</div>
-<code>
 <a href="https://www.dwavesys.com/"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
-</code> <br>
-</div>
-<code>
 <a href="https://firebase.google.com/"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
-</code> <br>
 </div>
 
 ## What is QUANTOS?
 
 Progress is reaching a fascinating speed in today's world due to ever more powerful computers in development and research. Formerly buzzword technologies, such as AI and machine learning, are arriving in the middle of the working world - and the "next big thing" is already on the horizon: "Quantum computing" is the buzzword of the future, which has the potential to permanently change many work processes. Accordingly, it is important to familiarize yourself with it as early as possible. Too complicated? It doesn't have to be!
 
-Quantos is a cooperation with the [Forschungszentrum Jülich](https://www.fz-juelich.de/en) - a beginner-friendly and WCAG 2.1 Level AA-accessible learning platform that enables a wide target group from middle school to workpersons to learn how quantum annealers function. The app design is based on gamification, delivering content in diverse ways with a mix of text blocks and interactive participatory tasks. Quantos runs natively on all major platforms, including mobile on Android and iOS, web, and desktop on Windows, macOS, and Linux. Making quantum physics as easy as brushing your teeth - you may not like doing it, but with the right approach, it can actually be fun!
+Quantos is a cooperation with the [Forschungszentrum Jülich (Jülich Research Center)](https://www.fz-juelich.de/en) - a beginner-friendly and WCAG 2.1 Level AA-accessible learning platform that enables a wide target group from middle school to workpersons to learn how quantum annealers function. The app design is based on gamification, delivering content in diverse ways with a mix of text blocks and interactive participatory tasks. Quantos runs natively on all major platforms, including mobile on Android and iOS, web, and desktop on Windows, macOS, and Linux. Making quantum physics as easy as brushing your teeth - you may not like doing it, but with the right approach, it can actually be fun!
 
-Documentation: [QUANTOS Documentation](https://www.example.com) \
-Project website: [Project site and blog](https://www.example.com)
+Documentation: [QUANTOS Documentation](https://www.quantos-learning.com) \
+Project website: [Project site and blog](https://www.quantos-learning.com)
 
 ## Installation
 
 <div align="center">
-  <a href="https://play.google.com/store/apps/details?id=de.xp4u1.discite">
+  <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app">
     <img alt="Get it on Google Play" src="./assets/github/playstore.png" height="40">
-  </a>
-  <a href="https://apps.apple.com/app/id1566607319">
-    <img alt="Download on the app store" src="./assets/github/appstore.png" height="40">
   </a>
   <a href="https://app.quantos.com">
     <img alt="Launch PWA" src="./assets/github/pwa.png" height="40">
   </a>
-  <br>
-  <a href="https://apps.microsoft.com/store/detail/dolby-access/9N0866FS04W8">
+  <a href="https://quantos-learning.com">
     <img alt="Get it from the Windows store" src="./assets/github/microsoft.png" height="40">
-  </a>
-  <a href="https://apps.apple.com/app/id1566607319">
-    <img alt="Download on the Mac app store" src="./assets/github/mac.png" height="40">
-  </a>
-  <a href="https://example.com/">
-    <img alt="Download for Linux" src="./assets/github/linux.png" height="40">
   </a>
 </div>
 
