@@ -34,7 +34,6 @@ Progress is reaching a fascinating speed in today's world due to ever more power
 
 Quantos is a cooperation with the [Forschungszentrum Jülich (Jülich Research Center)](https://www.fz-juelich.de/en) - a beginner-friendly and WCAG 2.1 Level AA-accessible learning platform that enables a wide target group from middle school to workpersons to learn how quantum annealers function. The app design is based on gamification, delivering content in diverse ways with a mix of text blocks and interactive participatory tasks. Quantos runs natively on all major platforms, including mobile on Android and iOS, web, and desktop on Windows, macOS, and Linux. Making quantum physics as easy as brushing your teeth - you may not like doing it, but with the right approach, it can actually be fun!
 
-Documentation: [QUANTOS Documentation](https://www.quantos-learning.com) \
 Project website: [Project site and blog](https://www.quantos-learning.com)
 
 ## Installation
@@ -77,7 +76,13 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 ## Supporters
 
 <a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
-  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="/assets/github/support_juniq.png" width="500"/>
+  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="./assets/github/support_juniq.png" width="500"/>
+</a>
+<a href="https://www.dwavesys.com/">
+  <img alt="DWave Systems - The Quantum Computing Company" src="./assets/github/support_dwave.png" width="500"/>
+</a>
+<a href="https://www.juforum.de/">
+  <img alt="Deutsches Jungforschernetzwerk JuFORUM e.V." src="./assets/github/support_juforum.png" width="300"/>
 </a>
 
 ## Screenshots
