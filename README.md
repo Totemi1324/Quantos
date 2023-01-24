@@ -1,4 +1,4 @@
-<p align="center"><img src="./assets/github/header.png" width="400" /></p>
+<p align="center"><img src="./assets/github/header.png" /></p>
 
 # QUANTOS
 
@@ -76,18 +76,27 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 ## Supporters
 
 <a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
-  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="./assets/github/support_juniq.png" width="500"/>
+  <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="./assets/github/support_juniq.png" width="300"/>
 </a>
 <a href="https://www.dwavesys.com/">
-  <img alt="DWave Systems - The Quantum Computing Company" src="./assets/github/support_dwave.png" width="500"/>
+  <img alt="DWave Systems - The Quantum Computing Company" src="./assets/github/support_dwave.png" width="300"/>
 </a>
 <a href="https://www.juforum.de/">
-  <img alt="Deutsches Jungforschernetzwerk JuFORUM e.V." src="./assets/github/support_juforum.png" width="300"/>
+  <img alt="Deutsches Jungforschernetzwerk JuFORUM e.V." src="./assets/github/support_juforum.png" width="150"/>
 </a>
 
 ## Screenshots
-
-<img alt="Home screen" src="./assets/github/screenshot1.png" width="400"/>
-<img alt="Age selection" src="./assets/github/screenshot2.png" width="400"/>
-<img alt="Coding interface" src="./assets/github/screenshot3.png" width="400"/>
-<img alt="Lessons" src="./assets/github/screenshot4.png" width="400"/>
+<div align="center">
+  <a href="#">
+    <img alt="Home screen" src="./assets/github/screenshot1.png" width="200"/>
+  </a>
+  <a href="#">
+    <img alt="Age selection" src="./assets/github/screenshot2.png" width="200"/>
+  </a>
+  <a href="#">
+    <img alt="Coding interface" src="./assets/github/screenshot3.png" width="200"/>
+  </a>
+  <a href="#">
+    <img alt="Lessons" src="./assets/github/screenshot4.png" width="200"/>
+  </a>
+</div>
