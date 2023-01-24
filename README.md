@@ -86,3 +86,5 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 </a>
 
 ## Screenshots
+
+<img alt="Home screen" src="./assets/github/screenshot1.png" width="400"/>
