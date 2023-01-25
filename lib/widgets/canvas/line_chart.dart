@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:intl/date_symbol_data_local.dart';
+
+import '../../bloc/localization_service.dart';
 
 import '../../data/daily_activites.dart';
 import '../../models/numeric_data_point.dart';
@@ -57,21 +61,39 @@ class _LineChartState extends State<LineChart> {
       }
       _points = _points.reversed.toList();
     });
+
+    initializeDateFormatting();
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<String> weekdays = List<String>.generate(
+      7,
+      (index) => DateFormat(
+        "E",
+        context.read<LocalizationService>().state.languageCode,
+      ).format(
+        DateTime.now().subtract(
+          Duration(days: index),
+        ),
+      ),
+    );
+    for (int i = 0; i < _points.length; i++) {
+      _points[i] = NumericDataPoint(weekdays[i], _points[i].value);
+    }
+
     return SizedBox(
       height: widget.height,
       child: CustomPaint(
         painter: LineChartPainter(
-            _points,
-            4,
-            _minY,
-            _maxY,
-            Theme.of(context).colorScheme,
-            Theme.of(context).textTheme.labelMedium!,
-            Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14)),
+          _points,
+          4,
+          _minY,
+          _maxY,
+          Theme.of(context).colorScheme,
+          Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18),
+          Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
+        ),
         child: Container(),
       ),
     );
@@ -96,8 +118,15 @@ class LineChartPainter extends CustomPainter {
     ..strokeWidth = 2
     ..style = PaintingStyle.stroke;
 
-  LineChartPainter(this.points, this.guides, this.minY, this.maxY,
-      this.themeColors, this.dataLabelStyle, this.axisLabelStyle);
+  LineChartPainter(
+    this.points,
+    this.guides,
+    this.minY,
+    this.maxY,
+    this.themeColors,
+    this.dataLabelStyle,
+    this.axisLabelStyle,
+  );
 
   @override
   void paint(Canvas canvas, Size size) {

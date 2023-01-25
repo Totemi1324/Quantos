@@ -1,0 +1,510 @@
+{
+    "@@locale": "en",
+
+    "confirmButtonLabel": "Confirm",
+    "@confirmButtonLabel": {
+        "description": "Confirm button label"
+    },
+    "readyButtonLabel": "I'm ready",
+    "@readyButtonLabel": {
+        "description": "Ready button label"
+    },
+    "finishButtonLabel": "Finish",
+    "@finishButtonLabel": {
+        "description": "Finish button label"
+    },
+    "sendButtonLabel": "Send",
+    "@sendButtonLabel": {
+        "description": "Send button label"
+    },
+    "workInProgressMessage": "Beep boop... Work in progress detected... Come back later, human!",
+    "@workInProgressMessage": {
+        "description": "Work in progress message for display in alert dialogs and snack bars"
+    },
+    "loadingPlaceholder": "Loading...",
+    "@loadingPlaceholder": {
+        "description": "Loading placeholder text"
+    },
+
+    "authSignUpDescription": "New here?",
+    "@authSignUpDescription": {
+        "description": "Auth sign up description"
+    },
+    "authSignUpButtonLabel": "Sign Up",
+    "@authSignUpButtonLabel": {
+        "description": "Auth sign up button label"
+    },
+    "authLogInDescription": "Already on board?",
+    "@authLogInDescription": {
+        "description": "Auth log in description"
+    },
+    "authLogInButtonLabel": "Log In",
+    "@authLogInButtonLabel": {
+        "description": "Auth log in button label"
+    },
+    "authGroupAccessDescription": "Part of a classroom or team?",
+    "@authGroupAccessDescription": {
+        "description": "Auth group access description"
+    },
+    "authGroupAccessButtonLabel": "Enter Access Code",
+    "@authGroupAccessButtonLabel": {
+        "description": "Auth group access button label"
+    },
+
+    "authSignUpScreenTitle": "Welcome!",
+    "@authSignUpScreenTitle": {
+        "description": "Auth sign up screen title"
+    },
+    "authLogInScreenTitle": "Welcome back!",
+    "@authLogInScreenTitle": {
+        "description": "Auth log in screen title"
+    },
+    "authGroupAccessScreenTitle": "Welcome!",
+    "@authGroupAccessScreenTitle": {
+        "description": "Auth group access screen title"
+    },
+    "authGroupAccessScreenInstructions": "Enter your 6-digit access code",
+    "@authGroupAccessScreenInstructions": {
+        "description": "Auth group access screen instructions"
+    },
+
+    "profileNameScreenTitle": "Hi!\nWhat's your name?",
+    "@profileNameScreenTitle": {
+        "description": "Profile name screen title"
+    },
+    "profileNameScreenFormField": "First name",
+    "@profileNameScreenFormField": {
+        "description": "Profile name screen form field"
+    },
+    "profileNameScreenTextButtonLabel": "I don't want to be called by my name",
+    "@profileNameScreenTextButtonLabel": {
+        "description": "Profile name screen text button label"
+    },
+
+    "profileAgeScreenTitleWithName": "And how old are you, {name}?",
+    "@profileAgeScreenTitleWithName": {
+        "description": "Profile age screen title with name placeholder",
+        "placeholders": {
+            "name": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    },
+    "profileAgeScreenTitleWithoutName": "And how old are you?",
+    "@profileAgeScreenTitleWithoutName": {
+        "description": "Profile age screen title"
+    },
+    "profileAgeScreenInstructions": "We need this information to choose the optimal learning contents for you.",
+    "@profileAgeScreenInstructions": {
+        "description": "Profile age screen instructions"
+    },
+    "profileAgeScreenSliderClass1": "15-18",
+    "@profileAgeScreenSliderClass1": {
+        "description": "First age class"
+    },
+    "profileAgeScreenSliderClass2": "19-28",
+    "@profileAgeScreenSliderClass2": {
+        "description": "Second age class"
+    },
+    "profileAgeScreenSliderClass3": "29-59",
+    "@profileAgeScreenSliderClass3": {
+        "description": "Third age class"
+    },
+    "profileAgeScreenSliderClass4": "60+",
+    "@profileAgeScreenSliderClass4": {
+        "description": "Fourth age class"
+    },
+
+    "profileExperienceScreenTitle": "How would you describe yourself?",
+    "@profileExperienceScreenTitle": {
+        "description": "Profile experience screen title"
+    },
+    "profileExperienceScreenInstructions": "That is, how familiar are you with quantum computing in general?",
+    "@profileExperienceScreenInstructions": {
+        "description": "Profile experience screen instructions"
+    },
+    "profileExperienceScreenSliderClass1": "Beginner",
+    "@profileExperienceScreenSliderClass1": {
+        "description": "First experience class"
+    },
+    "profileExperienceScreenSliderClass2": "Advanced",
+    "@profileExperienceScreenSliderClass2": {
+        "description": "Second experience class"
+    },
+    "profileExperienceScreenSliderClass3": "Skilled",
+    "@profileExperienceScreenSliderClass3": {
+        "description": "Third experience class"
+    },
+
+    "homeScreenTitleWithName": "Hello {name}!",
+    "@homeScreenTitleWithName": {
+        "description": "Home screen title with name placeholder",
+        "placeholders": {
+            "name": {
+                "type": "String",
+                "example": "Bob"
+            }
+        }
+    },
+    "homeScreenTitleWithoutName": "Hello!",
+    "@homeScreenTitleWithoutName": {
+        "description": "Home screen title"
+    },
+    "homeScreenLectionsSection": "Lections",
+    "@homeScreenLectionsSection": {
+        "description": "Home screen lection section label"
+    },
+    
+    "statisticsScreenTitle": "Statistics",
+    "@statisticsScreenTitle": {
+        "description": "Statistics screen title"
+    },
+    "statisticsScreenProgressSubtitle": "completed",
+    "@statisticsScreenProgressSubtitle": {
+        "description": "Statistics screen subtitle for cumulative progress bar with percentage, e.g. '60% completed'"
+    },
+    "statisticsScreenDisclaimer": "Usage data older than 30 days is deleted automatically",
+    "@statisticsScreenDisclaimer": {
+        "description": "Statistics screen disclaimer"
+    },
+
+    "profileScreenAffiliation": "belonging to {institution}",
+    "@profileScreenAffiliation": {
+        "description": "Profile screen affiliation data, e.g. belonging to Foobar Ltd.",
+        "placeholders": {
+            "institution": {
+                "type": "String",
+                "example": "Foobar Ltd."
+            }
+        }
+    },
+    "profileScreenOptionsSection": "Account settings",
+    "@profileScreenOptionsSection": {
+        "description": "Profile screen options section title"
+    },
+    "profileScreenOptionGroups": "Manage groups",
+    "@profileScreenOptionGroups": {
+        "description": "Profile screen option for managing groups"
+    },
+    "profileScreenOptionPersonal": "Edit personal settings",
+    "@profileScreenOptionPersonal": {
+        "description": "Profile screen option for editing personal settings"
+    },
+    "profileScreenOptionPassword": "Change password",
+    "@profileScreenOptionPassword": {
+        "description": "Profile screen option for changing password"
+    },
+    "profileScreenOptionDelete": "Delete account",
+    "@profileScreenOptionDelete": {
+        "description": "Profile screen option for deleting account"
+    },
+
+    "downloadScreenTitle": "Download Center",
+    "@downloadScreenTitle": {
+        "description": "Download screen title"
+    },
+    "downloadScreenInstructions": "Here, you find helper programs (desktop only) and materials for further reading that didn't make the cut in the final lessons. Happy browsing!",
+    "@downloadScreenInstructions": {
+        "description": "Download screen instructions"
+    },
+
+    "codingScreenTitle": "Coding",
+    "@codingScreenTitle": {
+        "description": "Coding screen title"
+    },
+    "codingScreenInstructions": "Ready to take matters in your own hands? Send your Hamilton matrices to our simulator or a real-life DWave quantum annealer and use the results to solve problems nobody ever attempted before!",
+    "@codingScreenInstructions": {
+        "description": "Coding screen instructions"
+    },
+    "codingScreenWarningTitle": "Warning",
+    "@codingScreenWarningTitle": {
+        "description": "Coding screen warning title"
+    },
+    "codingScreenWarning": "The introductory lection 'Introduction to Quantum Annealers' contains the information and knowledge necessary for using the coding interface. If you're inexperienced with quantum annealing, make sure to check that out first!",
+    "@codingScreenWarning": {
+        "description": "Coding screen warning on first visit"
+    },
+
+    "lectionScreenLessonsSection": "Lessons",
+    "@lectionScreenLessonsSection": {
+        "description": "Lection screen lessons section title"
+    },
+
+    "settingsScreenTitle": "Settings",
+    "@settingsScreenTitle": {
+        "description": "Settings screen title"
+    },
+
+    "infoScreenTitle": "App Information",
+    "@infoScreenTitle": {
+        "description": "Info screen title"
+    },
+    "infoScreenVersion": "Version number",
+    "@infoScreenVersion": {
+        "description": "Info screen version number label"
+    },
+    "infoScreenBuild": "Build number",
+    "@infoScreenBuild": {
+        "description": "Info screen build number label"
+    },
+    "infoScreenImprintSection": "Imprint",
+    "@infoScreenImprintSection": {
+        "description": "Info screen imprint section title"
+    },
+    "infoScreenImprintResponsiblePartyTitle": "Resposible party",
+    "@infoScreenImprintResponsiblePartyTitle": {
+        "description": "Info screen imprint responsible party title"
+    },
+    "infoScreenImprintContactTitle": "Contact",
+    "@infoScreenImprintContactTitle": {
+        "description": "Info screen imprint contact title"
+    },
+    "infoScreenImprintContactDescription": "Email: {email}\nWeb: {website}",
+    "@infoScreenImprintContactDescription": {
+        "description": "Info screen imprint contact description",
+        "placeholders": {
+            "email": {
+                "type": "String",
+                "example": "foo@bar.com"
+            },
+            "website": {
+                "type": "String",
+                "example": "www.foobar.com"
+            }
+        }
+    },
+    "infoScreenPrivacySection": "Privacy policy",
+    "@infoScreenPrivacySection": {
+        "description": "Info screen privacy policy section title"
+    },
+    "infoScreenPrivacyDescription": "Visit our website {website} to learn more about our Privacy Policy.\n\nIn short: We don't collect data about you, other the ones you personally provided :)",
+    "@infoScreenPrivacyDescription": {
+        "description": "Info screen privacy policy description",
+        "placeholders": {
+            "website": {
+                "type": "String",
+                "example": "www.foobar.com"
+            }
+        }
+    },
+
+    "helpScreenTitle": "Help Center",
+    "@helpScreenTitle": {
+        "description": "Help screen title"
+    },
+    "helpScreenInstructions": "We're sorry if you're experiencing trouble. Please describe your request in detail and we will get back to you on the email address linked to your account.",
+    "@helpScreenInstructions": {
+        "description": "Help screen instructions"
+    },
+
+    "authFormEmail": "Email",
+    "@authFormEmail": {
+        "description": "Auth form email field"
+    },
+    "authFormPassword": "Password",
+    "@authFormPassword": {
+        "description": "Auth form password field"
+    },
+    "authFormConfirmPassword": "Confirm password",
+    "@authFormConfirmPassword": {
+        "description": "Auth form password confirmation field"
+    },
+
+    "notificationNewsTitle": "News",
+    "@notificationNewsTitle": {
+        "description": "Notification news item title"
+    },
+    "notificationStatisticTitle": "Your activity",
+    "@notificationStatisticTitle": {
+        "description": "Notification statistic item title"
+    },
+
+    "statisticsListElementActivityTitle": "Activity",
+    "@statisticsListElementActivityTitle": {
+        "description": "Statistics list activity element title"
+    },
+    "statisticsListElementActivitySubtitle": "this month",
+    "@statisticsListElementActivitySubtitle": {
+        "description": "Statistics list activity element subtitle"
+    },
+    "statisticsListElementActivityOnline": "online",
+    "@statisticsListElementActivityOnline": {
+        "description": "Statistics list activity element online status"
+    },
+    "statisticsListElementActivityOffline": "offline",
+    "@statisticsListElementActivityOffline": {
+        "description": "Statistics list activity element offline status"
+    },
+    "statisticsListElementPerformanceTitle": "Performance",
+    "@statisticsListElementPerformanceTitle": {
+        "description": "Statistics list performance element title"
+    },
+    "statisticsListElementPerformanceSubtitle": "in the last 7 days",
+    "@statisticsListElementPerformanceSubtitle": {
+        "description": "Statistics list performance element subtitle"
+    },
+    "statisticsListElementPerformanceLegend": "completed lessons per day",
+    "@statisticsListElementPerformanceLegend": {
+        "description": "Statistics list performance element legend"
+    },
+    "statisticsListElementProgressTitle": "Progress",
+    "@statisticsListElementProgressTitle": {
+        "description": "Statistics list progress element title"
+    },
+
+    "codingModeSimulator": "Simulator",
+    "@codingModeSimulator": {
+        "description": "Simulator coding mode"
+    },
+    "codingModeAnnealer": "DWave Advantage",
+    "@codingModeAnnealer": {
+        "description": "Annealer coding mode"
+    },
+    "codingInfoTitle": "Coding modes",
+    "@codingInfoTitle": {
+        "description": "Coding info title"
+    },
+    "codingInfoSimulator": " calculates the five best solutions to your Hamiltonian locally and displays them as they would come from a real quantum annealer, giving you freedom to experiment and a sense of how the real thing works. Additionally, it provides an approximate probability distribution to show how likely each result would show up.",
+    "@codingInfoSimulator": {
+        "description": "Info on Simulator coding mode: 'Simulator calculates the...'"
+    },
+    "codingInfoAnnealer": " sends your Hamiltonian to the latest model of a real quantum annealer by DWave Systems with 5627 qubits. In order to use this mode, you have to provide your API token. Instructions on how to create a Leap account and get your token are on our website. For security reasons, we don't save your token, so you have to re-enter it every time you want to send an optimization problem.",
+    "@codingInfoAnnealer": {
+        "description": "Info on Annealer coding mode: 'DWave Advantage sends your...'"
+    },
+    "codingTokenFormFieldSectionTitle": "Authentication",
+    "@codingTokenFormFieldSectionTitle": {
+        "description": "Coding token input form field section title"
+    },
+    "codingTokenFormFieldTitle": "Your API token:",
+    "@codingTokenFormFieldTitle": {
+        "description": "Coding token input form field title"
+    },
+    "codingTokenFormField": "Paste your token here",
+    "@codingTokenFormField": {
+        "description": "Coding token input form field"
+    },
+    "codingHamiltonianInputTitle": "Hamiltonian",
+    "@codingHamiltonianInputTitle": {
+        "description": "Coding hamiltonian input title"
+    },
+    "codingHamiltonianInputLoadButtonLabel": "Load local",
+    "@codingHamiltonianInputLoadButtonLabel": {
+        "description": "Coding hamiltonian input load local button label"
+    },
+    "codingHamiltonianInputInstructions": "Upon sending, empty fields will be set to 0.",
+    "@codingHamiltonianInputInstructions": {
+        "description": "Coding hamiltonian input instructions"
+    },
+    "codingConsoleOutputTitleSimulator": "Response from the simulator",
+    "@codingConsoleOutputTitleSimulator": {
+        "description": "Coding console output title for Simulator mode"
+    },
+    "codingConsoleOutputTitleAnnealer": "Response from the DWave annealer",
+    "@codingConsoleOutputTitleAnnealer": {
+        "description": "Coding console output title for Annealer mode"
+    },
+    "codingConsoleOutputMessageIdle": "Waiting for input.",
+    "@codingConsoleOutputMessageIdle": {
+        "description": "Coding console output message for idle status"
+    },
+    "codingConsoleOutputMessageLoading": "Waiting for response...",
+    "@codingConsoleOutputMessageLoading": {
+        "description": "Coding console output message for loading status"
+    },
+    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
+    "@codingConsoleOutputMessageSuccess": {
+        "description": "Coding console output message for success status"
+    },
+    "codingConsoleOutputMessageFailure": "Something went wrong - unable to fetch response. If you're using DWave Advantage mode, check your internet connection, or try again.",
+    "@codingConsoleOutputMessageFailure": {
+        "description": "Coding console output message for failure status"
+    },
+    "codingProbabilityTitle": "Probability distribution",
+    "@codingProbabilityTitle": {
+        "description": "Coding probability title"
+    },
+    "codingProbabilitySliderLabel": "{temperature} millikelvin",
+    "@codingProbabilitySliderLabel": {
+        "description": "Coding probability slider label",
+        "placeholders": {
+            "temperature": {
+                "type": "String",
+                "example": "16.0"
+            }
+        }
+    },
+    "codingProbabilityDescription": "This simulates how likely you would get each result on a real quantum annealer, from best to worst. At this temparature of the QPU, the best solution to your problem has a {percentage} chance to be found.",
+    "@codingProbabilityDescription": {
+        "description": "Coding probability description",
+        "placeholders": {
+            "percentage": {
+                "type": "double",
+                "format": "percentPattern"
+            }
+        }
+    },
+
+    "themeDark": "Dark",
+    "@themeDark": {
+        "description": "Dark theme name"
+    },
+    "themeLight": "Light",
+    "@themeLight": {
+        "description": "Light theme name"
+    },
+    "settingsSectionAccessibility": "Accessibility options",
+    "@settingsSectionAccessibility": {
+        "description": "Settings accessibility section title"
+    },
+    "settingsSectionVisuals": "Visuals",
+    "@settingsSectionVisuals": {
+        "description": "Settings visuals section title"
+    },
+    "settingsSectionOther": "Others",
+    "@settingsSectionOther": {
+        "description": "Settings others section title"
+    },
+    "settingsOptionAccessibilityMode": "Accessibility mode",
+    "@settingsOptionAccessibilityMode": {
+        "description": "Settings accessibility mode option"
+    },
+    "settingsOptionColorblindTheme": "Enable colorblind theme",
+    "@settingsOptionColorblindTheme": {
+        "description": "Settings colorblind theme option"
+    },
+    "settingsOptionTheme": "Choose theme",
+    "@settingsOptionTheme": {
+        "description": "Settings theme option"
+    },
+    "settingsOptionLanguage": "Language",
+    "@settingsOptionLanguage": {
+        "description": "Settings language option"
+    },
+
+    "helpRequestTypeAccont": "I have a problem regarding my account",
+    "@helpRequestTypeAccont": {
+        "description": "Help request type for account issues"
+    },
+    "helpRequestTypeBug": "I want to report a bug/error in the app",
+    "@helpRequestTypeBug": {
+        "description": "Help request type for bug reports"
+    },
+    "helpRequestTypeFeature": "I have an inquiry about the app or its contents",
+    "@helpRequestTypeFeature": {
+        "description": "Help request type for feature inquiries"
+    },
+    "helpRequestTypeOther": "Other",
+    "@helpRequestTypeOther": {
+        "description": "Help request type for other requests"
+    },
+    "helpInstructions": "Select a category:",
+    "@helpInstructions": {
+        "description": "Help instructions"
+    },
+    "helpMessageFormField": "Your message",
+    "@helpMessageFormField": {
+        "description": "Help message form field"
+    }
+}

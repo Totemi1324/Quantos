@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/flat.dart';
 import '../data/lessons.dart';
@@ -87,7 +88,7 @@ class LessonScreen extends StatelessWidget {
                 ),
                 Center(
                   child: AdaptiveButton.primary(
-                    "Finish",
+                    AppLocalizations.of(context)!.finishButtonLabel,
                     extended: false,
                     onPressed: () {
                       Navigator.of(context).pop();

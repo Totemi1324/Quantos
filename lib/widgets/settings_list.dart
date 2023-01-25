@@ -1,34 +1,25 @@
-import 'package:flutter/material.dart' hide ThemeMode;
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quantos/bloc/stores/theme_store_service.dart';
+
+import '../bloc/theme_service.dart';
+import '../bloc/localization_service.dart';
 
 import './section_separator.dart';
 import './settings_item.dart';
 import './ui/adaptive_switch.dart';
 import './ui/adaptive_dropdown.dart';
 
-enum ThemeMode {
-  dark,
-  light,
-}
-
 class SettingsList extends StatelessWidget {
-  final List<DropdownMenuItem> _themes = const [
-    DropdownMenuItem(
-      value: ThemeMode.dark,
-      child: Text("Dark"),
-    ),
-    DropdownMenuItem(
-      value: ThemeMode.light,
-      child: Text("Light"),
-    ),
-  ];
   final List<DropdownMenuItem> _languages = const [
     DropdownMenuItem(
-      value: "DE",
-      child: Text("Deutsch"),
+      value: Locale('en'),
+      child: Text("English"),
     ),
     DropdownMenuItem(
-      value: "EN",
-      child: Text("English"),
+      value: Locale('de'),
+      child: Text("Deutsch"),
     ),
   ];
 
@@ -36,49 +27,78 @@ class SettingsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SectionSeparator("Accessibility options"),
-        SettingsItem(
-          title: "Accessibility mode",
-          selector: AdaptiveSwitch(
-            defaultEnabled: false,
-            onToggle: () {},
+    return BlocProvider(
+      create: (context) =>
+          ThemeStoreService(context.read<LocalizationService>().state),
+      child: BlocBuilder<ThemeStoreService, List<DropdownMenuItem<Brightness>>>(
+        builder: (context, state) => BlocListener<LocalizationService, Locale>(
+          listener: (context, state) =>
+              context.read<ThemeStoreService>().updateStore(state),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SectionSeparator(
+                AppLocalizations.of(context)!.settingsSectionAccessibility,
+              ),
+              SettingsItem(
+                title: AppLocalizations.of(context)!
+                    .settingsOptionAccessibilityMode,
+                selector: AdaptiveSwitch(
+                  defaultEnabled:
+                      context.read<ThemeService>().accessibilityModeActive,
+                  onToggle: (newValue) => context
+                      .read<ThemeService>()
+                      .toggleAccessibilityMode(newValue),
+                ),
+              ),
+              SettingsItem(
+                title:
+                    AppLocalizations.of(context)!.settingsOptionColorblindTheme,
+                selector: AdaptiveSwitch(
+                  defaultEnabled:
+                      context.read<ThemeService>().colorblindModeActive,
+                  onToggle: (newValue) => context
+                      .read<ThemeService>()
+                      .toggleColorblindMode(newValue),
+                ),
+              ),
+              SectionSeparator(
+                AppLocalizations.of(context)!.settingsSectionVisuals,
+                topMargin: 30,
+              ),
+              SettingsItem(
+                title: AppLocalizations.of(context)!.settingsOptionTheme,
+                selector: AdaptiveDropdown(
+                  enabled:
+                      !context.watch<ThemeService>().accessibilityModeActive,
+                  items: state,
+                  defaultSelectedIndex:
+                      Theme.of(context).brightness == Brightness.dark ? 0 : 1,
+                  onChanged: (newValue) =>
+                      context.read<ThemeService>().selectTheme(newValue),
+                ),
+              ),
+              SectionSeparator(
+                AppLocalizations.of(context)!.settingsSectionOther,
+                topMargin: 30,
+              ),
+              SettingsItem(
+                title: AppLocalizations.of(context)!.settingsOptionLanguage,
+                selector: AdaptiveDropdown(
+                  items: _languages,
+                  defaultSelectedIndex:
+                      context.read<LocalizationService>().currentLocaleIndex,
+                  onChanged: (newValue) {
+                    final newLocale = newValue as Locale;
+
+                    context.read<LocalizationService>().setLocale(newLocale);
+                  },
+                ),
+              ),
+            ],
           ),
         ),
-        SettingsItem(
-          title: "Enable colorblind theme",
-          selector: AdaptiveSwitch(
-            defaultEnabled: false,
-            onToggle: () {},
-          ),
-        ),
-        const SectionSeparator(
-          "Visuals",
-          topMargin: 30,
-        ),
-        SettingsItem(
-          title: "Choose theme",
-          selector: AdaptiveDropdown(
-            items: _themes,
-            defaultSelectedIndex: 0,
-            onChanged: (newValue) {},
-          ),
-        ),
-        const SectionSeparator(
-          "Others",
-          topMargin: 30,
-        ),
-        SettingsItem(
-          title: "Language",
-          selector: AdaptiveDropdown(
-            items: _languages,
-            defaultSelectedIndex: 1,
-            onChanged: (newValue) {},
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

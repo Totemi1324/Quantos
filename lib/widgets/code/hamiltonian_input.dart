@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../data/hamiltonian_sizes.dart';
 
@@ -93,8 +94,8 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const PartSeparator(
-          "Hamiltonian",
+        PartSeparator(
+          AppLocalizations.of(context)!.codingHamiltonianInputTitle,
           verticalMargin: 20,
         ),
         PanelCard(
@@ -117,7 +118,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                     },
                   ),
                   AdaptiveButton.icon(
-                    "Load local",
+                    AppLocalizations.of(context)!.codingHamiltonianInputLoadButtonLabel,
                     onPressed: () {},
                     icon: Icons.file_upload_rounded,
                   ),
@@ -141,15 +142,15 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  "Upon sending, empty fields will be set to 0.",
+                  AppLocalizations.of(context)!.codingHamiltonianInputInstructions,
                   textAlign: TextAlign.center,
                 ),
               ),
               AdaptiveButton.secondary(
-                "Send",
+                AppLocalizations.of(context)!.sendButtonLabel,
                 extended: false,
                 onPressed: widget.onSubmit,
               )

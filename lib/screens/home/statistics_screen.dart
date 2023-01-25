@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../data/lections.dart';
 import '../../widgets/ui/adaptive_circular_progress_bar.dart';
@@ -27,13 +28,13 @@ class StatisticsScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 margin: const EdgeInsets.only(top: 20, bottom: 30),
                 child: Text(
-                  "Statistics",
+                  AppLocalizations.of(context)!.statisticsScreenTitle,
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),
               AdaptiveCircularProgressBar(
                 _cumulativeProgress,
-                footer: "completed",
+                footer: AppLocalizations.of(context)!.statisticsScreenProgressSubtitle,
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
@@ -44,7 +45,7 @@ class StatisticsScreen extends StatelessWidget {
                 fillWidth: true,
                 fillHeight: false,
                 child: Text(
-                  "Usage data older than 30 days is deleted automatically",
+                  AppLocalizations.of(context)!.statisticsScreenDisclaimer,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),

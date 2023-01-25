@@ -30,7 +30,7 @@ class NotificationNews extends NotificationItem {
           CircleAvatar(
             radius: 25,
             backgroundImage:
-                const AssetImage("assets/images/avatar_background.png"),
+                const AssetImage("assets/images/icon_background_gradient.png"),
             foregroundImage: NetworkImage(newsObject.senderIconNetworkAddress),
           ),
           const SizedBox(

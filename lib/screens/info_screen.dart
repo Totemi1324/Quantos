@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/flat.dart';
 import '../widgets/section_separator.dart';
@@ -15,12 +16,12 @@ class InfoScreen extends StatefulWidget {
 
 class _InfoScreenState extends State<InfoScreen> {
   PackageInfo _packageInfo = PackageInfo(
-    appName: "Loading...",
-    packageName: "Loading...",
-    version: "Loading...",
-    buildNumber: "Loading...",
-    buildSignature: "Loading...",
-    installerStore: "Loading...",
+    appName: "...",
+    packageName: "...",
+    version: "...",
+    buildNumber: "...",
+    buildSignature: "...",
+    installerStore: "...",
   );
 
   @override
@@ -129,38 +130,36 @@ class _InfoScreenState extends State<InfoScreen> {
                     children: [
                       _buildDataItem(
                         context,
-                        title: "Version number",
+                        title: AppLocalizations.of(context)!.infoScreenVersion,
                         data: _packageInfo.version,
                       ),
                       _buildDataItem(
                         context,
-                        title: "Build number",
+                        title: AppLocalizations.of(context)!.infoScreenBuild,
                         data: _packageInfo.buildNumber,
                       ),
-                      const SectionSeparator(
-                        "Imprint",
+                      SectionSeparator(
+                        AppLocalizations.of(context)!.infoScreenImprintSection,
                         topMargin: 30,
                       ),
                       _buildTextParagraph(
                         context,
-                        title: "Responsible party",
+                        title: AppLocalizations.of(context)!.infoScreenImprintResponsiblePartyTitle,
                         text:
                             "Tamas Nemes\nAdolf-Schmetzer-Strasse 54\n93055 Regensburg\nGERMANY",
                       ),
                       _buildTextParagraph(
                         context,
-                        title: "Contact",
-                        text:
-                            "Email: info@quantos-learning.com\nWeb: www.quantos-learning.com",
+                        title: AppLocalizations.of(context)!.infoScreenImprintContactTitle,
+                        text: AppLocalizations.of(context)!.infoScreenImprintContactDescription("info@quantos-learning.com", "www.quantos-learning.com"),
                       ),
-                      const SectionSeparator(
-                        "Privacy policy",
+                      SectionSeparator(
+                        AppLocalizations.of(context)!.infoScreenPrivacySection,
                         topMargin: 30,
                       ),
                       _buildTextParagraph(
                         context,
-                        text:
-                            "Visit our website www.quantos-learning.com to learn more about our Privacy Policy.\n\nIn short: We don't collect data about you, other the ones you personally provided :)",
+                        text: AppLocalizations.of(context)!.infoScreenPrivacyDescription("www.quantos-learning.com"),
                       ),
                     ],
                   ),

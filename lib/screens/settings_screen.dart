@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './info_screen.dart';
 import './help_screen.dart';
@@ -25,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(top: 50),
                   child: Text(
-                    "Settings",
+                    AppLocalizations.of(context)!.settingsScreenTitle,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ),
@@ -37,9 +38,8 @@ class SettingsScreen extends StatelessWidget {
                   onPressed: () =>
                       Navigator.of(context).pushNamed(InfoScreen.routeName),
                   child: Text(
-                    "App Information",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          fontSize: 15,
+                    AppLocalizations.of(context)!.infoScreenTitle,
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           decoration: TextDecoration.underline,
                         ),
                   ),
@@ -48,9 +48,8 @@ class SettingsScreen extends StatelessWidget {
                   onPressed: () =>
                       Navigator.of(context).pushNamed(HelpScreen.routeName),
                   child: Text(
-                    "Help Center",
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          fontSize: 15,
+                    AppLocalizations.of(context)!.helpScreenTitle,
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           decoration: TextDecoration.underline,
                         ),
                   ),

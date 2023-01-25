@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quantos/widgets/ui/adaptive_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../bloc/stores/request_type_store_service.dart';
+import '../../bloc/localization_service.dart';
 
 import '../ui/adaptive_form_field.dart';
 import '../ui/adaptive_dropdown.dart';
+import '../ui/adaptive_button.dart';
 
 class HelpForm extends StatefulWidget {
-  final List<DropdownMenuItem> _issues = const [
-    DropdownMenuItem(
-      value: "Account issue",
-      child: Text("I have a problem regarding my account"),
-    ),
-    DropdownMenuItem(
-      value: "Bug report",
-      child: Text("I want to report a bug/error in the app"),
-    ),
-    DropdownMenuItem(
-      value: "Feature inquiry",
-      child: Text("I have an inquiry about the app or its contents"),
-    ),
-    DropdownMenuItem(
-      value: "Other",
-      child: Text("Other"),
-    ),
-  ];
-
   const HelpForm({super.key});
 
   @override
@@ -40,39 +26,46 @@ class _HelpFormState extends State<HelpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Text(
-            "Select a category:",
+    return BlocProvider(
+      create: (context) =>
+          RequestTypeStoreService(context.read<LocalizationService>().state),
+      child: BlocBuilder<RequestTypeStoreService,
+          List<DropdownMenuItem<HelpCategory>>>(
+        builder: (context, state) => Form(
+          key: _formKey,
+          child: ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              Text(
+                AppLocalizations.of(context)!.helpInstructions,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10),
+                child: AdaptiveDropdown(
+                  items: state,
+                  expanded: true,
+                  onChanged: (newValue) {},
+                ),
+              ),
+              AdaptiveFormField.multiline(
+                AppLocalizations.of(context)!.helpMessageFormField,
+                prefixIcon: Icons.edit_note_rounded,
+                autocorrect: true,
+                enableSuggestions: true,
+                isFinalField: true,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 50),
+                child: AdaptiveButton.secondary(
+                  AppLocalizations.of(context)!.sendButtonLabel,
+                  extended: true,
+                  onPressed: () {},
+                ),
+              )
+            ],
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 10),
-            child: AdaptiveDropdown(
-              items: widget._issues,
-              expanded: true,
-              onChanged: (newValue) {},
-            ),
-          ),
-          AdaptiveFormField.multiline(
-            "Your message",
-            prefixIcon: Icons.edit_note_rounded,
-            autocorrect: true,
-            enableSuggestions: true,
-            isFinalField: true,
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 50),
-            child: AdaptiveButton.secondary(
-              "Send",
-              extended: true,
-              onPressed: () {},
-            ),
-          )
-        ],
+        ),
       ),
     );
   }

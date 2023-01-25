@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart' hide TextDirection;
+import 'package:intl/date_symbol_data_local.dart';
+
+import '../../bloc/localization_service.dart';
 
 import '../../data/daily_activites.dart';
 import '../../models/boolean_data_point.dart';
@@ -58,6 +62,8 @@ class _HeatmapChartState extends State<HeatmapChart> {
             value: true);
       });
     });
+
+    initializeDateFormatting();
   }
 
   @override
@@ -70,6 +76,7 @@ class _HeatmapChartState extends State<HeatmapChart> {
           Theme.of(context).colorScheme,
           Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
           widget.height,
+          context.read<LocalizationService>().state,
         ),
         child: Container(),
       ),
@@ -83,12 +90,19 @@ class HeatmapChartPainter extends CustomPainter {
   final ColorScheme themeColors;
   final TextStyle axisLabelStyle;
   final double parentHeight;
+  final Locale locale;
 
   final Paint offlinePaint = Paint()
     ..strokeWidth = 3
     ..style = PaintingStyle.stroke;
 
-  HeatmapChartPainter(this.points, this.themeColors, this.axisLabelStyle, this.parentHeight);
+  HeatmapChartPainter(
+    this.points,
+    this.themeColors,
+    this.axisLabelStyle,
+    this.parentHeight,
+    this.locale,
+  );
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -116,9 +130,10 @@ class HeatmapChartPainter extends CustomPainter {
     if (squareSize < 5) return;
 
     final centerOfSquare = Offset(
-      padding + width / 2 + squareSize * (points.first.x - 3),
+      padding + width / 2,
       padding + squareSize / 2 + segmentHeight,
     );
+
     _drawDataPoints(canvas, centerOfSquare, squareSize);
 
     final axisLabelOffset = Offset(
@@ -153,7 +168,9 @@ class HeatmapChartPainter extends CustomPainter {
       }
       canvas.drawRRect(
         RRect.fromRectAndRadius(square, Radius.circular(radius)),
-        offlinePaint..strokeWidth = (1 / 80 * parentHeight)..color = themeColors.secondary,
+        offlinePaint
+          ..strokeWidth = (1 / 80 * parentHeight)
+          ..color = themeColors.secondary,
       );
     }
   }
@@ -163,7 +180,7 @@ class HeatmapChartPainter extends CustomPainter {
     DateTime currentDay = now.subtract(Duration(days: now.weekday - 1));
 
     for (var i = 0; i < 7; i++) {
-      final dayName = DateFormat("E").format(currentDay);
+      final dayName = DateFormat("E", locale.languageCode).format(currentDay);
       _drawTextCentered(
           canvas, centerOffset, dayName, axisLabelStyle, squareSize);
       centerOffset += Offset(squareSize, 0);

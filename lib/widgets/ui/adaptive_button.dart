@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+
+import '../../bloc/theme_service.dart';
 
 enum ButtonType {
   primary,
@@ -84,7 +87,7 @@ class AdaptiveButton extends StatelessWidget {
     final AutoSizeText labelText = AutoSizeText(
       label,
       textAlign: TextAlign.center,
-      minFontSize: 14,
+      minFontSize: 12,
       maxLines: 2,
       overflow: TextOverflow.fade,
     );
@@ -110,7 +113,10 @@ class AdaptiveButton extends StatelessWidget {
             Positioned.fill(
               child: TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
+                  foregroundColor:
+                      context.read<ThemeService>().accessibilityModeActive
+                          ? Theme.of(context).colorScheme.onPrimary
+                          : Colors.white,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 10,
@@ -125,7 +131,11 @@ class AdaptiveButton extends StatelessWidget {
                         children: [
                           Icon(
                             icon,
-                            color: Colors.white,
+                            color: context
+                                    .read<ThemeService>()
+                                    .accessibilityModeActive
+                                ? Theme.of(context).colorScheme.onPrimary
+                                : Colors.white,
                             size: 30,
                           ),
                           Flexible(child: labelText),

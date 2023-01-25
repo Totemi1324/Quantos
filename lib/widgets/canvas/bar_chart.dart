@@ -40,7 +40,7 @@ class BarChart extends StatelessWidget {
           data.item1,
           data.item2,
           Theme.of(context).colorScheme,
-          Theme.of(context).textTheme.labelMedium!,
+          Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18),
           Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
         ),
         child: Container(),

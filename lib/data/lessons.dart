@@ -69,7 +69,7 @@ List<Lesson> lessons = [
         id: "cfpjD",
       ),
       Image(
-        asset: "assets/images/lessons/ucDIs.png",
+        asset: "assets/images/lessons/annealer_insides.png",
         caption:
             "The graphs of the (a) Chimera architecture of the D-Wave 2000Q and the newer (b) Pegasus architecture",
         id: "ucDIs",

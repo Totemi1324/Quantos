@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../bloc/stores/coding_modes_store_service.dart';
 
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
@@ -12,7 +15,7 @@ enum ConsoleStatus {
 }
 
 class ConsoleOutput extends StatefulWidget {
-  final int mode;
+  final CodingMode mode;
 
   const ConsoleOutput(this.mode, {super.key});
 
@@ -35,7 +38,7 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
     switch (status) {
       case ConsoleStatus.idle:
         return Text(
-          "Waiting for input.",
+          AppLocalizations.of(buildContext)!.codingConsoleOutputMessageIdle,
           style: defaultStyle,
         );
       case ConsoleStatus.loading:
@@ -49,8 +52,10 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
               style: defaultStyle ?? fallbackStyle,
               child: AnimatedTextKit(
                 animatedTexts: [
-                  FadeAnimatedText("Waiting for response..."),
-                  FadeAnimatedText("Waiting for response..."),
+                  FadeAnimatedText(AppLocalizations.of(buildContext)!
+                      .codingConsoleOutputMessageLoading),
+                  FadeAnimatedText(AppLocalizations.of(buildContext)!
+                      .codingConsoleOutputMessageLoading),
                 ],
                 repeatForever: true,
               ),
@@ -59,14 +64,14 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
         );
       case ConsoleStatus.success:
         return Text(
-          "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
+          AppLocalizations.of(buildContext)!.codingConsoleOutputMessageSuccess,
           style: defaultStyle?.copyWith(
-            color: const Color(0xFF43BA73),
+            color: Theme.of(context).colorScheme.onErrorContainer,
           ),
         );
       case ConsoleStatus.failure:
         return Text(
-          "Something went wrong - unable to fetch response. If you're using DWave Advantage mode, check your internet connection, or try again.",
+          AppLocalizations.of(buildContext)!.codingConsoleOutputMessageFailure,
           style: defaultStyle?.copyWith(
             color: Theme.of(buildContext).colorScheme.error,
           ),
@@ -80,7 +85,9 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PartSeparator(
-          "Response from the ${widget.mode == 0 ? "simulator" : "DWave"}",
+          widget.mode == CodingMode.simulator
+              ? AppLocalizations.of(context)!.codingConsoleOutputTitleSimulator
+              : AppLocalizations.of(context)!.codingConsoleOutputTitleAnnealer,
           verticalMargin: 20,
         ),
         PanelCard(

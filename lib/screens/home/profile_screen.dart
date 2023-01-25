@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../profile/profile_name_screen.dart';
 
@@ -12,33 +13,39 @@ class ProfileScreen extends StatelessWidget {
 
   const ProfileScreen({super.key});
 
-  Widget _buildUserInfo(BuildContext buildContext,
-      {String? name,
-      required String age,
-      String? team,
-      required double height}) {
-    return SizedBox(
-      height: height,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (name != null)
-            Text(
-              name,
-              style: Theme.of(buildContext).textTheme.headlineLarge,
-              textAlign: TextAlign.center,
-            ),
+  Widget _buildUserInfo(
+    BuildContext buildContext, {
+    String? name,
+    required String age,
+    String? team,
+  }) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        if (name != null)
           Text(
-            age,
-            style: Theme.of(buildContext).textTheme.labelLarge,
+            name,
+            style: Theme.of(buildContext).textTheme.headlineLarge,
+            textAlign: TextAlign.center,
           ),
-          if (team != null)
-            Text(
-              "belonging to\n$team",
-              textAlign: TextAlign.center,
-            ),
-        ],
-      ),
+        if (name != null)
+          const SizedBox(
+            height: 10,
+          ),
+        Text(
+          age,
+          style: Theme.of(buildContext).textTheme.labelLarge,
+        ),
+        if (team != null)
+          const SizedBox(
+            height: 10,
+          ),
+        if (team != null)
+          Text(
+            AppLocalizations.of(buildContext)!.profileScreenAffiliation(team),
+            textAlign: TextAlign.center,
+          ),
+      ],
     );
   }
 
@@ -46,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
       ScaffoldMessenger.of(buildContext).showSnackBar(
         SnackBar(
           content: Text(
-            "Beep boop... Work in progress detected... Come back later, human!",
+            AppLocalizations.of(buildContext)!.workInProgressMessage,
             style: Theme.of(buildContext).textTheme.bodySmall,
           ),
           backgroundColor: Theme.of(buildContext).colorScheme.surface,
@@ -87,14 +94,13 @@ class ProfileScreen extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 30),
                 child: _buildUserInfo(
                   context,
-                  height: 150,
                   name: name,
                   age: age,
                   team: team,
                 ),
               ),
-              const PartSeparator(
-                "Account Settings",
+              PartSeparator(
+                AppLocalizations.of(context)!.profileScreenOptionsSection,
                 verticalMargin: 10,
               ),
               ListView(
@@ -102,20 +108,20 @@ class ProfileScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   AccountSettingsItem(
-                    "Manage groups",
+                    AppLocalizations.of(context)!.profileScreenOptionGroups,
                     onTap: () => _sendWorkInProgressMessage(context),
                   ),
                   AccountSettingsItem(
-                    "Change personal settings",
+                    AppLocalizations.of(context)!.profileScreenOptionPersonal,
                     onTap: () => Navigator.of(context)
                         .pushNamed(ProfileNameScreen.routeName),
                   ),
                   AccountSettingsItem(
-                    "Change password",
+                    AppLocalizations.of(context)!.profileScreenOptionPassword,
                     onTap: () => _sendWorkInProgressMessage(context),
                   ),
                   AccountSettingsItem(
-                    "Delete account",
+                    AppLocalizations.of(context)!.profileScreenOptionDelete,
                     optionColor: Theme.of(context).colorScheme.error,
                     onTap: () => _sendWorkInProgressMessage(context),
                   ),

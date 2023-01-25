@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../ui/adaptive_form_field.dart';
 
@@ -30,7 +31,7 @@ class _SignUpFormState extends State<SignUpForm> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           AdaptiveFormField.icon(
-            "Email",
+            AppLocalizations.of(context)!.authFormEmail,
             prefixIcon: Icons.alternate_email_rounded,
             autocorrect: false,
             enableSuggestions: true,
@@ -38,13 +39,13 @@ class _SignUpFormState extends State<SignUpForm> {
             nextField: _passwordFocusNode,
           ),
           AdaptiveFormField.password(
-            "Password",
+            AppLocalizations.of(context)!.authFormPassword,
             isFinalField: false,
             thisField: _passwordFocusNode,
             nextField: _confirmPasswordFocusNode,
           ),
           AdaptiveFormField.password(
-            "Confirm password",
+            AppLocalizations.of(context)!.authFormConfirmPassword,
             prefixIcon: Icons.spellcheck_rounded,
             isFinalField: true,
             thisField: _confirmPasswordFocusNode,

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_math_fork/ast.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
-import 'package:flutter_math_fork/tex.dart';
 
 import '../models/lesson.dart';
 import '../models/content/content_item.dart';
@@ -64,10 +62,7 @@ class LessonContentRenderer extends StatelessWidget {
                   Flexible(
                     child: Text(
                       interactive.caption,
-                      style: Theme.of(buildContext)
-                          .textTheme
-                          .labelSmall
-                          ?.copyWith(fontSize: 15),
+                      style: Theme.of(buildContext).textTheme.displaySmall,
                     ),
                   ),
                 ],
@@ -88,10 +83,7 @@ class LessonContentRenderer extends StatelessWidget {
             ),
             Text(
               image.caption,
-              style: Theme.of(buildContext)
-                  .textTheme
-                  .labelSmall
-                  ?.copyWith(fontSize: 15),
+              style: Theme.of(buildContext).textTheme.displaySmall,
             )
           ],
         );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/decorated.dart';
 import '../data/lections.dart';
@@ -32,7 +34,14 @@ class LectionScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Rive animation,
+                      SizedBox(
+                        width: 350,
+                        height: 350,
+                        child: RiveAnimation.asset(
+                          lection.headerAnimationAsset,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                       Text(
                         lection.title,
                         style: Theme.of(context).textTheme.headlineMedium,
@@ -50,8 +59,8 @@ class LectionScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const PartSeparator(
-                  "Lessons",
+                PartSeparator(
+                  AppLocalizations.of(context)!.lectionScreenLessonsSection,
                   verticalMargin: 20,
                 ),
                 Padding(

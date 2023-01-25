@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import './profile_age_screen.dart';
@@ -31,7 +32,7 @@ class ProfileNameScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      "Hi!\nWhat's your name?",
+                      AppLocalizations.of(context)!.profileNameScreenTitle,
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
@@ -46,7 +47,7 @@ class ProfileNameScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
-                          labelText: "First name",
+                          labelText: AppLocalizations.of(context)!.profileNameScreenFormField,
                           labelStyle: Theme.of(context).textTheme.labelSmall,
                         ),
                         onFieldSubmitted: (_) {},
@@ -54,7 +55,7 @@ class ProfileNameScreen extends StatelessWidget {
                     ),
                   ),
                   AdaptiveButton.primary(
-                    "Confirm",
+                    AppLocalizations.of(context)!.confirmButtonLabel,
                     extended: true,
                     onPressed: () => _onSubmit(context, "Tamas"),
                   ),
@@ -64,9 +65,9 @@ class ProfileNameScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () => _onSubmit(context, null),
                     child: Text(
-                      "I don't want to be called by my name",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            fontSize: 15,
+                      AppLocalizations.of(context)!.profileNameScreenTextButtonLabel,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
                             decoration: TextDecoration.underline,
                           ),
                     ),

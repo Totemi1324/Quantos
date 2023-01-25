@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'auth_signup_screen.dart';
 import 'auth_login_screen.dart';
@@ -54,30 +55,36 @@ class AuthHomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const SizedBox(
-                width: 360,
-                height: 80,
+                width: 330,
+                height: 90,
                 child: RiveAnimation.asset(
                   'assets/animations/quantos_logo_idle.riv',
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.contain,
                   stateMachines: ['Mixer'],
                 ),
               ),
               _buildAuthOption(
                 context,
-                description: "New here?",
-                buttonLabel: "Sign Up",
+                description:
+                    AppLocalizations.of(context)!.authSignUpDescription,
+                buttonLabel:
+                    AppLocalizations.of(context)!.authSignUpButtonLabel,
                 routeName: AuthSignUpScreen.routeName,
               ),
               _buildAuthOption(
                 context,
-                description: "Already on board?",
-                buttonLabel: "Log In",
+                description:
+                    AppLocalizations.of(context)!.authLogInDescription,
+                buttonLabel:
+                    AppLocalizations.of(context)!.authLogInButtonLabel,
                 routeName: AuthLogInScreen.routeName,
               ),
               _buildAuthOption(
                 context,
-                description: "Part of a classroom or team?",
-                buttonLabel: "Enter Access Code",
+                description:
+                    AppLocalizations.of(context)!.authGroupAccessDescription,
+                buttonLabel:
+                    AppLocalizations.of(context)!.authGroupAccessButtonLabel,
                 routeName: AuthGroupAccessScreen.routeName,
               ),
             ],

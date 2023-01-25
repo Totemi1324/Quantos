@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../bloc/theme_service.dart';
 
 class RoundedCard extends StatelessWidget {
   final Widget child;
@@ -19,6 +21,10 @@ class RoundedCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(15),
+        border: context.read<ThemeService>().accessibilityModeActive ? Border.all(
+          color: Colors.white,
+          width: 3,
+        ) : null,
       ),
       padding: padding,
       alignment: alignment,

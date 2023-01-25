@@ -17,7 +17,7 @@ class PartSeparator extends StatelessWidget {
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
           shadows: [
             Shadow(
-              color: Colors.black.withOpacity(0.8),
+              color: Colors.black.withOpacity(0.6),
               blurRadius: 7,
               offset: const Offset(0, 3),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import '../../widgets/forms/login_form.dart';
@@ -25,7 +26,7 @@ class AuthLogInScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 50),
                     child: Text(
-                      "Welcome back!",
+                      AppLocalizations.of(context)!.authLogInScreenTitle,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
                   ),
@@ -34,7 +35,7 @@ class AuthLogInScreen extends StatelessWidget {
                     child: const LogInForm(),
                   ),
                   AdaptiveButton.secondary(
-                    "Log In",
+                    AppLocalizations.of(context)!.authLogInButtonLabel,
                     extended: true,
                     onPressed: () {},
                   )

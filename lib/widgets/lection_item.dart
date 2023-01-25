@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 import './ui/adaptive_progress_bar.dart';
 
-class LectionItem extends StatelessWidget {
-  final String previewImageAsset;
+class LectionItem extends StatefulWidget {
+  final String iconAnimationAsset;
   final String title;
   final double progressPercent;
   final bool unlocked;
@@ -33,58 +34,92 @@ class LectionItem extends StatelessWidget {
 
   const LectionItem(
     this.title, {
-    required this.previewImageAsset,
+    required this.iconAnimationAsset,
     required this.progressPercent,
     required this.unlocked,
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final icon = ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 80),
-      child: Image.asset(
-        previewImageAsset,
-        fit: BoxFit.contain,
-      ),
-    );
-    final progressBar = AdaptiveProgressBar.icon(progressPercent);
+  State<LectionItem> createState() => _LectionItemState();
+}
 
-    return Column(
+class _LectionItemState extends State<LectionItem> {
+  SMIBool? _pressed;
+
+  void _onIconInit(Artboard artboard) {
+    final controller = StateMachineController.fromArtboard(artboard, 'Mobile');
+    artboard.addController(controller!);
+    _pressed = controller.findInput<bool>('Pressed') as SMIBool;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = Stack(
+      alignment: Alignment.center,
       children: [
-        Row(
-          children: [
-            Flexible(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10, bottom: 10, top: 10),
-                child: unlocked
-                    ? icon
-                    : ColorFiltered(
-                        colorFilter: grayscaleImageFilter,
-                        child: icon,
-                      ),
-              ),
-            ),
-            Flexible(
-              flex: 8,
-              child: Container(
-                margin: const EdgeInsets.only(left: 5),
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium,
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 60, maxHeight: 60),
+          child: Image.asset(
+            "assets/images/icon_background.png",
+            fit: BoxFit.contain,
+          ),
+        ),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 80, maxHeight: 80),
+          child: RiveAnimation.asset(
+            widget.iconAnimationAsset,
+            fit: BoxFit.contain,
+            onInit: _onIconInit,
+          ),
+        ),
+      ],
+    );
+    final progressBar = AdaptiveProgressBar.icon(widget.progressPercent);
+
+    return GestureDetector(
+      onLongPress: () {
+        if (_pressed?.value != null && widget.unlocked) {
+          _pressed!.value = !_pressed!.value;
+        }
+      },
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Flexible(
+                flex: 2,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(right: 10, bottom: 10, top: 10),
+                  child: widget.unlocked
+                      ? icon
+                      : ColorFiltered(
+                          colorFilter: LectionItem.grayscaleImageFilter,
+                          child: icon,
+                        ),
                 ),
               ),
-            ),
-          ],
-        ),
-        unlocked
-            ? progressBar
-            : ColorFiltered(
-                colorFilter: grayscaleImageFilter,
-                child: progressBar,
+              Flexible(
+                flex: 8,
+                child: Container(
+                  margin: const EdgeInsets.only(left: 5),
+                  child: Text(
+                    widget.title,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
               ),
-      ],
+            ],
+          ),
+          widget.unlocked
+              ? progressBar
+              : ColorFiltered(
+                  colorFilter: LectionItem.grayscaleImageFilter,
+                  child: progressBar,
+                ),
+        ],
+      ),
     );
   }
 }

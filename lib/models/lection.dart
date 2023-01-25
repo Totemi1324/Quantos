@@ -6,8 +6,8 @@ enum Difficulty {
 
 class Lection {
   final String id;
-  final String previewImageAsset;
-  //final String animationAsset,
+  final String iconAnimationAsset;
+  final String headerAnimationAsset;
   final String title;
   final String description;
   final Difficulty difficultyLevel;
@@ -16,7 +16,8 @@ class Lection {
 
   Lection({
     required this.id,
-    required this.previewImageAsset,
+    required this.iconAnimationAsset,
+    required this.headerAnimationAsset,
     required this.title,
     required this.description,
     required this.difficultyLevel,
