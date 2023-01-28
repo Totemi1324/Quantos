@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'lesson_manager.dart';
+
 class LocalizationService extends Cubit<Locale> {
   static final List<Locale> _supportedLocales = [
     const Locale("en"),
@@ -13,6 +15,7 @@ class LocalizationService extends Cubit<Locale> {
 
   static final List<LocalizationsDelegate<Object>> _localizationsDelegates = [
     AppLocalizations.delegate,
+    LessonManager.delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
@@ -33,8 +36,7 @@ class LocalizationService extends Cubit<Locale> {
   }
 
   void setLocale(Locale newLocale) {
-    if (!AppLocalizations.supportedLocales
-        .any((locale) => locale.languageCode == newLocale.languageCode)) return;
+    if (!AppLocalizations.delegate.isSupported(newLocale)) return;
 
     emit(newLocale);
   }

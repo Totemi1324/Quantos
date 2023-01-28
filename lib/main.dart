@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
               SplashScreen.routeName: (context) => const SplashScreen(),
             },
             onGenerateRoute: (settings) {
+              //TODO: Extract in separate class
               switch (settings.name) {
                 case Home.routeName:
                   return PageTransition(
@@ -118,7 +119,7 @@ class MyApp extends StatelessWidget {
                   );
                 case ProfileAgeScreen.routeName:
                   return PageTransition(
-                    child: ProfileAgeScreen(),
+                    child: const ProfileAgeScreen(),
                     settings: settings,
                     type: PageTransitionType.fade,
                     curve: Curves.ease,
@@ -126,7 +127,7 @@ class MyApp extends StatelessWidget {
                   );
                 case ProfileExperienceScreen.routeName:
                   return PageTransition(
-                    child: ProfileExperienceScreen(),
+                    child: const ProfileExperienceScreen(),
                     type: PageTransitionType.fade,
                     curve: Curves.ease,
                     duration: const Duration(milliseconds: 500),

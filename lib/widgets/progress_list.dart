@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/theme_service.dart';
+import '../bloc/lesson_manager.dart';
 
-import '../data/lections.dart';
 import './ui/adaptive_progress_bar.dart';
+import '../models/lection.dart';
 
 class ProgressList extends StatefulWidget {
   const ProgressList({super.key});
@@ -16,6 +17,8 @@ class ProgressList extends StatefulWidget {
 class _ProgressListState extends State<ProgressList> {
   @override
   Widget build(BuildContext context) {
+    final lections = LessonManager.of(context)?.lectionList() as List<Lection>;
+
     return BlocListener<ThemeService, ThemeData>(
       listener: (context, state) => setState(() {}),
       child: ListView.builder(

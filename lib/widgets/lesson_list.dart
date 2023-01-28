@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/lessons.dart';
 import '../models/lesson.dart';
 import '../models/content/content_item.dart';
 import '../models/content/paragraph.dart';
@@ -9,23 +8,18 @@ import './lesson_item.dart';
 
 class LessonList extends StatelessWidget {
   final String lectionId;
+  final List<Lesson> lessons;
 
-  const LessonList(this.lectionId, {super.key});
-
-  List<Lesson> get lessonsOfCurrentCategory {
-    return lessons.where((element) => element.lectionId == lectionId).toList();
-  }
+  const LessonList(this.lectionId, this.lessons, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    final lessonsToDisplay = lessonsOfCurrentCategory;
-
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: lessonsToDisplay.length,
+      itemCount: lessons.length,
       itemBuilder: (context, index) {
-        final firstTextElement = lessonsToDisplay[index].content.firstWhere(
+        final firstTextElement = lessons[index].content.firstWhere(
               (element) => element.type == ContentType.paragraph,
               orElse: () => Paragraph(id: "", text: ""),
             ) as Paragraph;
@@ -34,16 +28,16 @@ class LessonList extends StatelessWidget {
           splashFactory: NoSplash.splashFactory,
           onTap: () => Navigator.of(context).pushNamed(
             LessonScreen.routeName,
-            arguments: lessonsToDisplay[index].id,
+            arguments: <String>[lectionId, lessons[index].id],
           ),
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: LessonItem(
               index: index + 1,
-              title: lessonsToDisplay[index].title,
+              title: lessons[index].title,
               previewText: firstTextElement.text,
-              readTimeInMinutes: lessonsToDisplay[index].readTimeInMinutes,
-              progress: lessonsToDisplay[index].progress,
+              readTimeInMinutes: lessons[index].readTimeInMinutes,
+              progress: lessons[index].progress,
             ),
           ),
         );

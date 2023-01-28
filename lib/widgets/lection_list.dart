@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../data/lections.dart';
-
-import './containers/panel_card.dart';
+import '../bloc/lesson_manager.dart';
 import '../screens/lection_screen.dart';
+import './containers/panel_card.dart';
 import "./lection_item.dart";
 
 class LectionList extends StatelessWidget {
@@ -11,6 +10,8 @@ class LectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lections = LessonManager.of(context)?.lectionList() ?? [];
+
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),

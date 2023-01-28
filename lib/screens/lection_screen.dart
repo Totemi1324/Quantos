@@ -3,7 +3,8 @@ import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/decorated.dart';
-import '../data/lections.dart';
+import '../bloc/lesson_manager.dart';
+import '../models/lection.dart';
 import '../widgets/containers/panel_card.dart';
 import '../widgets/difficulty_badge.dart';
 import '../widgets/part_separator.dart';
@@ -17,8 +18,8 @@ class LectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
-    final lectionId = args as String?;
-    final lection = lections.firstWhere((element) => element.id == lectionId!);
+    final lectionId = args as String;
+    final lection = LessonManager.of(context)?.lection(lectionId) as Lection;
 
     return Decorated(
       body: Padding(
@@ -65,7 +66,7 @@ class LectionScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: LessonList(lection.id),
+                  child: LessonList(lection.id, lection.lessons),
                 ),
               ],
             ),

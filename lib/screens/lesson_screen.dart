@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './base/flat.dart';
-import '../data/lessons.dart';
-import '../models/content/content_item.dart';
-import '../models/content/section_title.dart';
+import '../bloc/lesson_manager.dart';
+import '../models/lesson.dart';
 import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
 
@@ -16,12 +15,10 @@ class LessonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
-    final id = args as String?;
-    final lesson = lessons.firstWhere((lesson) => lesson.id == id);
-    final sectionTitles = lesson.content
-        .where((item) => item.type == ContentType.sectionTitle)
-        .map((e) => e as SectionTitle)
-        .toList();
+    final ids = args as List<String>;
+    final lesson = LessonManager.of(context)?.lesson(ids[0], ids[1]) as Lesson;
+    final sectionTitles = LessonManager.of(context)
+        ?.lessonOutline(ids[0], ids[1]) as List<String>;
 
     return Flat(
       body: SafeArea(
@@ -69,7 +66,7 @@ class LessonScreen extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Text(
-                                  sectionTitles[index].title,
+                                  sectionTitles[index],
                                 ),
                               ),
                             ),
