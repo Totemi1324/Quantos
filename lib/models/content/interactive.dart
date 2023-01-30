@@ -8,10 +8,9 @@ class Interactive extends ContentItem {
   final Widget content;
   final String caption;
 
-  Interactive({
+  const Interactive({
     required this.content,
     required this.caption,
-    required String id,
     required String altText,
-  }) : super(id: id, type: contentType, altText: altText);
+  }) : super(type: contentType, altText: altText);
 }

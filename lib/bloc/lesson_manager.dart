@@ -1,17 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Image;
 import 'package:flutter/services.dart';
 
+import './lesson_content_parser.dart';
+import '../data/lections.dart';
 import '../models/lection.dart';
 import '../models/lesson.dart';
 import '../models/content/content_item.dart';
-import '../models/content/paragraph.dart';
 import '../models/content/section_title.dart';
-import '../models/content/image.dart';
-import '../models/content/equation.dart';
-import '../models/content/interactive.dart';
 
 class LessonManager {
   final Locale locale;
@@ -25,43 +23,20 @@ class LessonManager {
   static const LocalizationsDelegate<LessonManager> delegate =
       _LessonManagerDelegate();
 
-  final List<Lection> _lections = [
-    Lection(
-      id: "1",
-      iconAnimationAsset:
-          "assets/animations/icon_introduction_to_quantum_annealers.riv",
-      headerAnimationAsset:
-          "assets/animations/introduction_to_quantum_annealers.riv",
-      difficultyLevel: Difficulty.easy,
-    ),
-    Lection(
-      id: "2",
-      iconAnimationAsset: "assets/animations/icon_the_n_queens_problem.riv",
-      headerAnimationAsset: "assets/animations/the_n_queens_problem.riv",
-      difficultyLevel: Difficulty.advanced,
-    ),
-    Lection(
-      id: "3",
-      iconAnimationAsset:
-          "assets/animations/icon_the_traveling_salesman_problem.riv",
-      headerAnimationAsset:
-          "assets/animations/the_traveling_salesman_problem.riv",
-      difficultyLevel: Difficulty.challenging,
-    ),
-    Lection(
-      id: "4",
-      iconAnimationAsset: "assets/animations/icon_solving_sudoku_riddles.riv",
-      headerAnimationAsset: "",
-      difficultyLevel: Difficulty.advanced,
-    ),
-  ];
+  final List<Lection> _lections = lections;
 
   Future<bool> load() async {
     final jsonString =
         await rootBundle.loadString("lessons/${locale.languageCode}.json");
-    final jsonMap = json.decode(jsonString);
+    final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
 
-    //Converter logic
+    final success = LessonContentParser.parseFromJson(jsonMap, _lections);
+
+    if (!success) {
+      throw Exception(
+        "Parsing lesson content in ${locale.languageCode}.json failed.",
+      );
+    }
 
     return true;
   }

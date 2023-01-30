@@ -11,9 +11,10 @@ class Lection {
   final String iconAnimationAsset;
   final String headerAnimationAsset;
   final Difficulty difficultyLevel;
+  final List<Lesson> lessons;
   String title;
   String description;
-  List<Lesson> lessons = [];
+
   double progressPercent;
   bool unlocked;
 
@@ -22,6 +23,7 @@ class Lection {
     required this.iconAnimationAsset,
     required this.headerAnimationAsset,
     required this.difficultyLevel,
+    required this.lessons,
     this.title = "",
     this.description = "",
     this.progressPercent = 0.0,

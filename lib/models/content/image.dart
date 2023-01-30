@@ -6,10 +6,9 @@ class Image extends ContentItem {
   final String asset;
   final String caption;
 
-  Image({
+  const Image({
     required this.asset,
     required this.caption,
-    required String id,
     required String altText,
-  }) : super(id: id, type: contentType, altText: altText);
+  }) : super(type: contentType, altText: altText);
 }

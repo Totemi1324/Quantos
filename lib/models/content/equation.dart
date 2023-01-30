@@ -5,9 +5,8 @@ class Equation extends ContentItem {
 
   final String tex;
 
-  Equation({
+  const Equation({
     required this.tex,
-    required String id,
     required String altText,
-  }) : super(id: id, type: contentType, altText: altText);
+  }) : super(type: contentType, altText: altText);
 }

@@ -1,22 +1,21 @@
 {
-    "lection-1": {
+    "lection-8hg": {
         "title": "Quantenannealer: Eine Einführung",
         "description": "...Aber was genau sind Quantencomputer? Wie funktionieren sie? Auf diese Fragen und mehr gibt diese Einführungslektion eine Antwort!",
         "content": {
-            "lesson-1": {
+            "lesson-S6N": {
                 "title": "Was ist ein Qubit?",
-                "read-time": "5",
                 "content": {
                     "paragraph-1": {
                         "text": "Das **Qubit**, eine Mischung aus 'Quanten' und 'Bit' und das Herzstück dieser neuen Technologie, ist für die enorme Rechenleistung verantwortlich. Es skaliert mit $$n^{2}$$."
                     },
-                    "section_title-1": {
+                    "sectiontitle-1": {
                         "title": "Ein paar Grundlagen"
                     },
                     "image-1": {
                         "asset": "assets/images/lessons/topologies.png",
                         "caption": "Die Diagramme der (a) Chimera-Architektur des D-Wave 2000Q und der neueren (b) Pegasus-Architektur",
-                        "altText": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen"
+                        "alttext": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen"
                     }
                 }
             }

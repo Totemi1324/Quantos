@@ -1,22 +1,21 @@
 {
-    "lection-1": {
+    "lection-8hg": {
         "title": "Introduction to quantum annealers",
         "description": "...But what are quantum computers exactly? How do they work? These questions and more are addressed in this introductory lecture!",
         "content": {
-            "lesson-1": {
+            "lesson-S6N": {
                 "title": "What is a qubit?",
-                "read-time": "5",
                 "content": {
                     "paragraph-1": {
                         "text": "The **qubit**, a blend between 'quantum' and 'bit' and the heart of this new technology, is responsible for its enormous computing power. It scales with $$n^{2}$$."
                     },
-                    "section_title-1": {
+                    "sectiontitle-1": {
                         "title": "Some basics"
                     },
                     "image-1": {
                         "asset": "assets/images/lessons/topologies.png",
                         "caption": "The graphs of the (a) Chimera architecture of the DWave 2000Q and the newer (b) Pegasus architecture",
-                        "altText": "Circles connected by lines showing a regular arrangement, next to them the same structure as part of a denser network of circles"
+                        "alttext": "Circles connected by lines showing a regular arrangement, next to them the same structure as part of a denser network of circles"
                     }
                 }
             }

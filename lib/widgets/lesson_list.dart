@@ -21,7 +21,7 @@ class LessonList extends StatelessWidget {
       itemBuilder: (context, index) {
         final firstTextElement = lessons[index].content.firstWhere(
               (element) => element.type == ContentType.paragraph,
-              orElse: () => Paragraph(id: "", text: ""),
+              orElse: () => Paragraph(text: ""),
             ) as Paragraph;
 
         return InkWell(

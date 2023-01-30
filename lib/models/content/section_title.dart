@@ -5,8 +5,7 @@ class SectionTitle extends ContentItem {
 
   final String title;
 
-  SectionTitle({
+  const SectionTitle({
     required this.title,
-    required String id,
-  }) : super(id: id, type: contentType);
+  }) : super(type: contentType);
 }
