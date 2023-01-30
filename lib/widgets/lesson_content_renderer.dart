@@ -20,10 +20,18 @@ class LessonContentRenderer extends StatelessWidget {
         final paragraph = item as Paragraph;
         return Container(
           margin: const EdgeInsets.only(bottom: 10),
-          child: Text(
-            paragraph.text,
+          child: RichText(
             textAlign: TextAlign.justify,
-            style: Theme.of(buildContext).textTheme.bodySmall,
+            text: TextSpan(
+              style: Theme.of(buildContext).textTheme.bodySmall,
+              children: _transformParagraphSpans(
+                paragraph.texts,
+                Theme.of(buildContext)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(fontWeight: FontWeight.w700),
+              ),
+            ),
           ),
         );
       case ContentType.sectionTitle:
@@ -89,18 +97,52 @@ class LessonContentRenderer extends StatelessWidget {
         );
       case ContentType.equation:
         final equation = item as Equation;
+        final longTex = Math.tex(
+          equation.tex,
+          mathStyle: MathStyle.display,
+          textStyle:
+              TextStyle(color: Theme.of(buildContext).colorScheme.onBackground),
+        );
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 5),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Center(
-              child: Math.tex(
-                equation.tex,
-              ),
+          child: Center(
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: longTex.texBreak().parts,
             ),
           ),
         );
     }
+  }
+
+  List<InlineSpan> _transformParagraphSpans(
+      List<ParagraphSpan> spans, TextStyle? boldStyle) {
+    final List<InlineSpan> result = [];
+
+    for (var span in spans) {
+      switch (span.type) {
+        case ParagraphSpanType.normal:
+          result.add(TextSpan(text: span.text));
+          break;
+        case ParagraphSpanType.bold:
+          result.add(TextSpan(text: span.text, style: boldStyle));
+          break;
+        case ParagraphSpanType.equation:
+          result.add(
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: Math.tex(
+                span.text,
+                mathStyle: MathStyle.text,
+              ),
+            ),
+          );
+          break;
+      }
+    }
+
+    return result;
   }
 
   @override

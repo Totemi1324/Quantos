@@ -19,10 +19,15 @@ class LessonList extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: lessons.length,
       itemBuilder: (context, index) {
-        final firstTextElement = lessons[index].content.firstWhere(
+        final firstParagraph = lessons[index].content.firstWhere(
               (element) => element.type == ContentType.paragraph,
-              orElse: () => Paragraph(text: ""),
+              orElse: () => const Paragraph(texts: [
+                ParagraphSpan(type: ParagraphSpanType.normal, text: ""),
+              ]),
             ) as Paragraph;
+
+        final firstText = firstParagraph.texts
+            .map((e) => e.text).join();
 
         return InkWell(
           splashFactory: NoSplash.splashFactory,
@@ -35,7 +40,7 @@ class LessonList extends StatelessWidget {
             child: LessonItem(
               index: index + 1,
               title: lessons[index].title,
-              previewText: firstTextElement.text,
+              previewText: firstText,
               readTimeInMinutes: lessons[index].readTimeInMinutes,
               progress: lessons[index].progress,
             ),

@@ -31,6 +31,7 @@ final List<Lection> lections = [
         readTimeInMinutes: 4,
       ),
     ],
+    unlocked: true,
   ),
   Lection(
     id: "fC9",

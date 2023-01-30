@@ -62,8 +62,8 @@ class LessonContentParser {
     lesson.content.clear();
 
     for (var entry in content.entries) {
-      if (entry.value is! Map<String, String>) return false;
-      final content = entry.value as Map<String, String>;
+      if (entry.value is! Map<String, dynamic>) return false;
+      final content = entry.value as Map<String, dynamic>;
       ContentItem? item;
 
       switch (entry.key.substring(0, entry.key.indexOf("-"))) {
@@ -91,13 +91,13 @@ class LessonContentParser {
     return true;
   }
 
-  static Paragraph? _parseParagraph(Map<String, String> json) {
-    final text = json["text"];
+  static Paragraph? _parseParagraph(Map<String, dynamic> json) {
+    final text = json["text"] as String?;
     if (text == null) {
       return null;
     }
 
-    final spans = _extractSpans(text);
+    final spans = extractSpans(text);
 
     if (spans.isEmpty) {
       return null;
@@ -106,7 +106,7 @@ class LessonContentParser {
     return Paragraph(texts: spans);
   }
 
-  static List<ParagraphSpan> _extractSpans(String text) {
+  static List<ParagraphSpan> extractSpans(String text) {
     final List<ParagraphSpan> spans = [];
 
     final boldIndex = text.indexOf(RegExp(r"\*\*.*\*\*"));
@@ -142,7 +142,7 @@ class LessonContentParser {
     final endIndex = text.indexOf(formatters[type] ?? "", index + 2);
 
     spans.addAll(_extractFormatted(text, index, endIndex, type));
-    spans.addAll(_extractSpans(text.substring(endIndex + 2)));
+    spans.addAll(extractSpans(text.substring(endIndex + 2)));
 
     return spans;
   }
@@ -171,8 +171,8 @@ class LessonContentParser {
     return spans;
   }
 
-  static SectionTitle? _parseSectionTitle(Map<String, String> json) {
-    final title = json["title"];
+  static SectionTitle? _parseSectionTitle(Map<String, dynamic> json) {
+    final title = json["title"] as String?;
     if (title == null) {
       return null;
     }
@@ -180,10 +180,10 @@ class LessonContentParser {
     return SectionTitle(title: title);
   }
 
-  static Image? _parseImage(Map<String, String> json) {
-    final asset = json["asset"];
-    final caption = json["caption"];
-    final altText = json["alttext"];
+  static Image? _parseImage(Map<String, dynamic> json) {
+    final asset = json["asset"] as String?;
+    final caption = json["caption"] as String?;
+    final altText = json["alttext"] as String?;
 
     if (asset == null || caption == null || altText == null) {
       return null;
@@ -192,9 +192,9 @@ class LessonContentParser {
     return Image(asset: asset, caption: caption, altText: altText);
   }
 
-  static Equation? _parseEquation(Map<String, String> json) {
-    final tex = json["tex"];
-    final altText = json["alttext"];
+  static Equation? _parseEquation(Map<String, dynamic> json) {
+    final tex = json["tex"] as String?;
+    final altText = json["alttext"] as String?;
 
     if (tex == null || altText == null) {
       return null;
@@ -203,7 +203,7 @@ class LessonContentParser {
     return Equation(tex: tex, altText: altText);
   }
 
-  static Interactive? _parseInteractive(Map<String, String> json) {
+  static Interactive? _parseInteractive(Map<String, dynamic> json) {
     return const Interactive(
         content: SizedBox(height: 50), caption: "", altText: "");
   }
