@@ -71,7 +71,10 @@ flutter:
     - assets/images/profile_foreground.png
 
     # Lection content images
-    - assets/images/lessons/annealer_insides.png
+    - assets/images/lessons/qubit_visualization.png
+    - assets/images/lessons/electron_spin_example.png
+    - assets/images/lessons/ion_example.png
+    - assets/images/lessons/superconductor_example.png
 
 
   # To add custom fonts to your application, add a fonts section here,
