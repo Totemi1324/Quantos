@@ -21,7 +21,7 @@ class LessonContentRenderer extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.only(bottom: 10),
           child: RichText(
-            textAlign: TextAlign.justify,
+            textAlign: TextAlign.left,
             text: TextSpan(
               style: Theme.of(buildContext).textTheme.bodySmall,
               children: _transformParagraphSpans(
