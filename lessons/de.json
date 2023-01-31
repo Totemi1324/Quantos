@@ -200,6 +200,30 @@
                         "text": "Vielleicht ahnst du schon, worauf es hinausläuft: Diese Effekte wollen Quantenannealer ausnutzen, indem man versucht, die Energiekurve der QPU (durch die Programmierung der Koppler) der vorhin behandelten Kostenkurve anzupassen, damit diese **ungefähr gleich aussehen**. Der Vorgang des \"annealings\", also des \"Abkühlens\", ist nichts anderes, als die Superposition der Qubits durch gezielte Messungen stückweise zerfallen zu lassen, damit sie den Zustand der geringsten Energie anstreben und ihre Werte so annehmen, dass sie die beste Lösung für das ursprüngliche Optimierungsproblem darstellen. Wo die Energiekurven eng zusammenlaufen, beim sogenannten \"minimum gap\", besteht die Chance, dass durch die Tunneleffekte nicht die optimalste Lösung rauskommt, deswegen führen Quantenannealer meist mehrere hundert Anneals durch und sind dabei extrem schnell, da ein Anneal nur ca. 20 Mikrosekunden (0.00002 Sekunden) dauert!"
                     }
                 }
+            },
+            "lesson-WrU": {
+                "title": "Die QUBO-Gleichung",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Wie man mit Quantenannealern kommuniziert"
+                    },
+                    "paragraph-1": {
+                        "text": "Angenommen, du hast ein konkretes Problem vor Augen — Wie machst du es einem Quantencomputer verständlich? Nun geht es darum, Optimierungsprobleme an den Annealer zu bringen. So wie klassische Computer programmiert werden müssen, um Anweisungen in Code auszuführen, müssen auch Optimierungsprobleme in eine geeignete \"Sprache\" übersetzt werden, damit der Quantenannealer sie versteht — in diesem Fall in die Sprache der Mathematik."
+                    },
+                    "paragraph-2": {
+                        "text": "Damit der Annealer eine Aufgabe lösen kann, muss diese als **quadratic unconstrained binary optimization problem**, oder kurz **QUBO-Problem**, formuliert werden. Dieser Name ist beim ersten Hören nicht besonders hilfreich, es handelt sich jedoch um ein Kernkonzept der Quanteninformatik. Hier also einige Erläuterungen:"
+                    },
+                    "paragraph-3": {
+                        "text": "- **Quadratic** (quadratisch) bedeutet, dass maximal zwei Variablen miteinander multipliziert werden können.\n- **Unconstrained** (uneingeschränkt) bedeutet, dass die richtige Antwort nicht durch andere Bedingungen eingeschränkt ist.\n- **Binary** (binär) bedeutet, dass wir nur 0 oder 1 eingeben können.\n- **Optimization** (Optimierung) ist — wir erinnern uns an vorangegangene Einheiten — der Prozess, die optimale Lösung für ein komplexes Problem durch Annäherung zu finden."
+                    },
+                    "paragraph-4": {
+                        "text": "Angemerkt sei, dass es auch andere Möglichkeiten gibt, einen Quantenannealer zu programmieren, wie z.B. Ising-Probleme, die wir der Kürze und Verständlichkeit halber auslassen werden. Jetzt aber zurück zu QUBO-Problemen; betrachten wir ein Beispiel, um das Konzept zu veranschaulichen:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/checkers_board.png",
+                        "caption": "Ein illustrierte"
+                    }
+                }
             }
         }
     }
