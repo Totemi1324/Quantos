@@ -91,8 +91,12 @@ class LessonContentRenderer extends StatelessWidget {
             ),
             Text(
               image.caption,
+              textAlign: TextAlign.center,
               style: Theme.of(buildContext).textTheme.displaySmall,
-            )
+            ),
+            const SizedBox(
+              height: 15,
+            ),
           ],
         );
       case ContentType.equation:
@@ -104,10 +108,11 @@ class LessonContentRenderer extends StatelessWidget {
               TextStyle(color: Theme.of(buildContext).colorScheme.onBackground),
         );
         return Container(
-          margin: const EdgeInsets.symmetric(vertical: 5),
+          margin: const EdgeInsets.only(top: 5, bottom: 15),
           child: Center(
             child: Wrap(
               alignment: WrapAlignment.center,
+              runSpacing: 10,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: longTex.texBreak().parts,
             ),
