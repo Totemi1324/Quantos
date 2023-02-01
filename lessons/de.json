@@ -205,10 +205,10 @@
                 "title": "Die QUBO-Gleichung",
                 "content": {
                     "sectiontitle-1": {
-                        "title": "Wie man mit Quantenannealern kommuniziert"
+                        "title": "Wie Quantenannealer sprechen"
                     },
                     "paragraph-1": {
-                        "text": "Angenommen, du hast ein konkretes Problem vor Augen — Wie machst du es einem Quantencomputer verständlich? Nun geht es darum, Optimierungsprobleme an den Annealer zu bringen. So wie klassische Computer programmiert werden müssen, um Anweisungen in Code auszuführen, müssen auch Optimierungsprobleme in eine geeignete \"Sprache\" übersetzt werden, damit der Quantenannealer sie versteht — in diesem Fall in die Sprache der Mathematik."
+                        "text": "Angenommen, du hast ein konkretes Problem vor Augen — wie machst du es einem Quantencomputer verständlich? Nun geht es darum, Optimierungsprobleme an den Annealer zu bringen. So wie klassische Computer programmiert werden müssen, um Anweisungen in Code auszuführen, müssen auch Optimierungsprobleme in eine geeignete \"Sprache\" übersetzt werden, damit der Quantenannealer sie versteht — in diesem Fall in die Sprache der Mathematik."
                     },
                     "paragraph-2": {
                         "text": "Damit der Annealer eine Aufgabe lösen kann, muss diese als **quadratic unconstrained binary optimization problem**, oder kurz **QUBO-Problem**, formuliert werden. Dieser Name ist beim ersten Hören nicht besonders hilfreich, es handelt sich jedoch um ein Kernkonzept der Quanteninformatik. Hier also einige Erläuterungen:"
@@ -221,7 +221,389 @@
                     },
                     "image-1": {
                         "asset": "assets/images/lessons/checkers_board.png",
-                        "caption": "Ein illustrierte"
+                        "caption": "Eine beispielhaftes Damenbrett mit Spielsteinen",
+                        "alttext": "Ein illustriertes rot-schwarzes Damenbrett mit vier Feldern, beschriftet von oben links mit den Buchstaben a, b, c und d; darüber vier schwarze Spielsteine."
+                    },
+                    "paragraph-5": {
+                        "text": "Dieses Damenbrett der Größe 2x2 hat die vier Felder a, b, c und d. Zusätzlich gibt es vier Spielsteine, von denen jeder auf ein beliebiges Feld gesetzt werden kann, aber nicht muss (jedoch nicht mehrere auf dasselbe Feld). Wenn ein Feld besetzt ist, wird es als 1 dargestellt, ansonsten als 0. Der Quantencomputer soll die Steine so platzieren, dass **möglichst viele Felder besetzt** sind. Hier kommen die Kostenfunktionen wieder zum Einsatz, um zu bewerten, wie gut eine bestimmte Lösung ist: Je niedriger die Kosten, desto besser. Die Suche nach der besten Lösung läuft somit auf die Minimierung der Kostenfunktion hinaus. Wenn wir ein QUBO-Problem haben, das vier Variablen a, b, c und d (die entweder 0 oder 1 sind) als Eingabe nimmt, ist die Kostenfunktion wie folgt definiert:"
+                    },
+                    "equation-1": {
+                        "tex": "f\\left(a,b,c,d\\right)=h_aa+h_bb+h_cc+h_dd+h_{ab}ab+h_{ac}ac+h_{ad}ad+h_{bc}bc+h_{bd}bd+h_{cd}cd",
+                        "alttext": "f(a,b,c,d)=ha×a + hb×b + hc×c + hd×d + hab×a×b + hac×a×c + had×a×d + hbc×b×c + hbd×b×d + hcd×c×d"
+                    },
+                    "paragraph-6": {
+                        "text": "Zunächst summieren wir die Werte aller Felder, dann addieren wir das Produkt jedes möglichen Paares der Feldwerte. Die $$h$$, mit denen die Feldwerte multipliziert werden, sind einfache Koeffizienten, d.h. positive oder negative Zahlen, die steuern, wie stark wir die einzelnen Belegungen belohnen (oder bestrafen) wollen. Dies ist ein ziemlich cleveres System: Ist ein Feld unbesetzt, also 0, wird der entsprechende Koeffizient aus der Gleichung entfernt (denn eine Multiplikation mit 0 ergibt immer 0)."
+                    },
+                    "paragraph-7": {
+                        "text": "Ähnlich verhält es sich bei den Feldpaaren: Eine Belohnung bleibt nur in der Gleichung, wenn beide Felder 1 sind (Wenn auch nur eine 0 im Produkt ist, ist das Ergebnis des Produkts 0). Da wir nach den niedrigsten Kosten suchen, bedeutet $$h < 0$$ \"Belohnung\", $$h > 0$$ \"Strafe\" und $$h = 0$$ \"irrelevant\". Ein Beispiel: Wenn Feld a unbedingt besetzt werden soll, sollte es ein h von z.B. -10 haben, oder wenn wir verhindern wollen, dass b und c gleichzeitig besetzt sind, sollte h eine hohe positive Zahl wie 25 sein."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Ein paar Beispiele"
+                    },
+                    "paragraph-8": {
+                        "text": "Nun können wir ein QUBO-Problem für unsere ursprüngliche Aufgabe definieren: Es sollen **so viele Felder wie möglich** besetzt werden."
+                    },
+                    "equation-2": {
+                        "tex": "f\\left(a,b,c,d\\right)=(-1)\\times a+(-1)\\times b+(-1)\\times c+(-1)\\times d=-a-b-c-d",
+                        "alttext": "f(a,b,c,d)=-1×a + -1×b + -1×c + -1×d = -a-b-c-d"
+                    },
+                    "paragraph-9": {
+                        "text": "Wir können darauf verzichten, die Werte von Feldpaaren festzulegen, da die Beziehungen zwischen Feldern für dieses Problem irrelevant sind. Dies ist eine gültige Kostenfunktion, denn die niedrigsten Kosten, nämlich -4, werden nur erreicht, wenn alle Felder 1 sind. Fügen wir die folgende Bedingung zu unserer Aufgabe hinzu: Die Felder a und b dürfen nicht gleichzeitig belegt sein."
+                    },
+                    "equation-3": {
+                        "tex": "f\\left(a,b,c,d\\right)=-a-b-c-d+4ab",
+                        "alttext": "f(a,b,c,d)=-a-b-c-d+4×a×b"
+                    },
+                    "paragraph-10": {
+                        "text": "Wenn a und b beide 1 sind, sind die Kosten 0, auch wenn alle Felder für die maximale Belohnung besetzt sind, was bedeutet, dass die Lösung schlechter ist als alle anderen möglichen Lösungen. Die besten erreichbaren Kosten sind hier also -3, was die richtige Lösung liefert. Eine weitere praktische Strategie bei QUBO-Problemen ist das **Quadrieren**, zum Beispiel bei der Aufgabe \"Genau zwei von vier Feldern sollten besetzt sein\":"
+                    },
+                    "equation-4": {
+                        "tex": "f\\left(a,b,c,d\\right)=\\left(a+b+c+d-2\\right)^2=a^2+2ab+2ac+2ad-4a+b^2+2bc+2bd-4b+c^2+2cd-4c+d^2-4d+4=-3a-3b-3c-3d+2ab+2ac+2ad+2bc+2bd+2cd",
+                        "alttext": "f(a,b,c,d)=(a+b+c+d)²=a²+2ab+2ac+2ad-4a+b²+2bc+2bd-4b+c²+2cd-4c+d²-4d=-3a-3b-3c-3d+2ab+2ac+2ad+2bc+2bd+2cd"
+                    },
+                    "paragraph-11": {
+                        "text": "Das funktioniert, weil bei der Summierung aller Felder und der Subtraktion von 2 das Ergebnis genau dann 0 ist, wenn genau zwei Felder 1 sind. Aber: Wenn kein Feld oder ein Feld besetzt ist, wäre das Ergebnis negativ, was ein noch besseres Ergebnis zur Folge hätte. Dies kann durch das Quadrieren der Gleichung behoben werden, denn wenn eine negative Zahl quadriert wird, ergibt sich immer ein positiver Wert. Die nachfolgende graphische Darstellung zeigt, was das Quadrieren bewirkt:"
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/quadratic_qubo.png",
+                        "caption": "Durch das Quadrieren entsteht die charakteristische Parabel, die ihren Tiefpunkt bei der optimalen Lösung hat",
+                        "alttext": "Nach oben geöffnete parabelförmige Kurve im Koordinatensystem; Anzahl an Belegungen x-Achse, Kosten y-Achse; tiefster Punkt markiert mit einem Pfeil und der Beschriftung Minimum."
+                    },
+                    "paragraph-12": {
+                        "text": "Die quadrierten Variablen wie a², b² usw., die sich aus dem Ausmultiplizieren der Gleichung ergeben, wären eigentlich nicht zulässig (da sie gegen die Regeln von QUBO verstoßen), aber da im Falle von Binärzahlen $$x^2=x$$ gilt, können sie durch a, b usw. ersetzt werden. Auch Konstanten wie +4 können weggelassen werden, da sie nur alle Ergebnisse um den gleichen Betrag nach oben oder unten verschieben. Wir können überprüfen, ob unsere Kostenfunktion korrekt ist, indem wir sie mit verschiedenen Eingaben testen."
+                    },
+                    "equation-5": {
+                        "tex": "f\\left(0, 1, 0, 0\\right)=-3",
+                        "alttext": "f(0,1,0,0)=-3"
+                    },
+                    "equation-6": {
+                        "tex": "f\\left(1, 0, 1, 0\\right)=-4",
+                        "alttext": "f(1,0,1,0)=-4"
+                    },
+                    "equation-7": {
+                        "tex": "f\\left(0, 1, 1, 1\\right)=-3",
+                        "alttext": "f(0,1,1,1)=-3"
+                    },
+                    "equation-8": {
+                        "tex": "f\\left(1, 1, 1, 1\\right)=0",
+                        "alttext": "f(1,1,1,1)=0"
+                    },
+                    "paragraph-13": {
+                        "text": "Probiere, aus fertigen QUBO-Gleichungen selbst die optimalen Belegungen herauszulesen!"
+                    },
+                    "interactive-1": {
+                        
+                    },
+                    "paragraph-14": {
+                        "text": "Ein Optimierungsproblem als QUBO-Problem formulieren zu können, ist die **einzige** und **wichtigste** Voraussetzung, es auf einem Quantenannealer lösen zu können. Dieser Schritt erfordert oft etwas Gedankenarbeit; wenn es aber geschafft ist, ist es die halbe Miete! Die nachfolgenden Lektionen geben genug Beispiele und Möglichkeiten, dies zu üben."
+                    }
+                }
+            },
+            "lesson-Bwk": {
+                "title": "Kommunikations-Schnittstelle: (Hamilton-)Matrizen",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Jetzt fehlt nur noch ein finaler Schritt, um Optimierungsprobleme auf einem Quantenannealer zu lösen: Ihm die QUBO-Gleichung zu übermitteln. Zudem müssen die Ergebnisse, wenn der Annealer fertig ist, in irgendeiner Form wieder zurückkommen. Für diese Kommunikation gibt es ein einheitliches Protokoll, welche die Formatierung der Daten festlegt. Sie sieht ungefähr so aus:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/dwave_procedure.png",
+                        "caption": "Der Verlauf einer Rechenoperation am DWave-Annealer",
+                        "alttext": "Flussdiagramm, an dessen Anfang ein quadratisches Zahlenfeld steht, welches zu einem Foto des Quantenannealers zeigt, welches wiederum auf eine Reihe aus den Ziffern 0 und 1 zeigt."
+                    },
+                    "paragraph-2": {
+                        "text": "Das sieht vielleicht etwas verwirrend aus, gehen wir es also Schritt für Schritt durch."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Vektoren und Matrizen"
+                    },
+                    "paragraph-3": {
+                        "text": "Doch zuerst einige Grundlagen. Für die Darstellung der Daten sind **Vektoren** von zentraler Bedeutung. In seiner traditionellen Form ist ein Vektor eine Größe im Raum mit einer **Richtung** und **Länge** (oft als Pfeil oder Strahl dargestellt) und besteht aus zwei oder mehr Koordinaten, die in einer vertikalen Spalte untereinandergeschrieben werden. Ein Vektor im 3-dimensionalen Raum würde zum Beispiel drei Koordinaten enthalten."
+                    },
+                    "equation-1": {
+                        "tex": "\\vec{q}=\\begin{pmatrix}q_1\\\\q_2\\\\q_3\\end{pmatrix}",
+                        "alttext": "q=(q₁, q₂, q₃)"
+                    },
+                    "image-4": {
+                        "asset": "assets/images/lessons/vector_example.png",
+                        "caption": "Mit Pfeilen können 3-dimensionale Vektoren visualisiert werden",
+                        "alttext": "Bunter Pfeil in einem dreidimensionalen Koordinatensystem, welches vom Ursprung aus dem Bildschirm heraus zeigt."
+                    },
+                    "paragraph-4": {
+                        "text": "Da ein Vektor im Grunde eine Zahlenreihe ist, werden Vektoren verwenden, um die Ergebnisse aus dem Quantenannealer abzurufen. Wenn wir ein 4×4-Spielbrett mit 4²=16 Feldern hätten, würden die Einträge angeben, ob unsere Felder a, b, usw. bis n besetzt (1) oder unbesetzt (0) sein sollten. Dies wird als der **Antwortvektor** $$q_A$$ definiert und ist das, was der Quantencomputer nach jedem Anneal ausgibt."
+                    },
+                    "equation-2": {
+                        "tex": "\\vec{q}_A=\\begin{pmatrix}a\\\\b\\\\\\vdots\\\\n\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\\\\\vdots\\\\1\\end{pmatrix}",
+                        "alttext": "qₐ=(a, b, ..., n)=(0, 1, ..., 1)"
+                    },
+                    "paragraph-5": {
+                        "text": "In ähnlicher Weise kann man sich eine **Matrix** als eine Reihe von zusammengeklebten Vektoren vorstellen. Es handelt sich um ein rechteckiges Feld aus Zahlen, bei dem jedes Element im Format $$m_{ij}$$ indiziert ist (i und j bezeichnen den Zeilen- und Spaltenindex eines bestimmten Elements, also in welcher Zeile und Spalte es sich in der Matrix befindet). Ein Beispiel:"
+                    },
+                    "equation-3": {
+                        "tex": "M=\\begin{pmatrix}1&4&2&1\\\\3&0&3&1\\\\5&1&2&0\\\\4&1&2&3\\end{pmatrix}",
+                        "alttext": "M=((1,4,2,1),(3,0,3,1),(5,1,2,0),(4,1,2,3))"
+                    },
+                    "paragraph-6": {
+                        "text": "Hier wäre das Element $$m_{31}$$ der Matrix gleich 5. Keine Angst, wenn es noch nicht ganz klar ist, wir werden Matrizen nur als einfaches Mittel zum Zweck verwenden. Denn in der Tat sind Matrizen die kompakteste Möglichkeit, QUBO-Probleme als Eingabe an den Quantenannealer zu übermitteln. Da die Form der QUBO-Gleichungen immer gleich ist, können die Koeffizienten (die einzigen Werte, die sich ändern) in einer Matrix im folgenden Format zusammengefasst werden, um sie dem Quantencomputer zugänglich zu machen:"
+                    },
+                    "equation-4": {
+                        "tex": "f\\left(a,b,c,d\\right)=h_aa+h_bb+h_cc+h_dd+h_{ab}ab+h_{ac}ac+h_{ad}ad+h_{bc}bc+h_{bd}bd+h_{cd}cd",
+                        "alttext": "f(a,b,c,d)=ha×a + hb×b + hc×c + hd×d + hab×a×b + hac×a×c + had×a×d + hbc×b×c + hbd×b×d + hcd×c×d"
+                    },
+                    "equation-5": {
+                        "tex": "\\Rightarrow H=\\begin{pmatrix}h_a&h_{ab}&h_{ac}&h_{ad}\\\\0&h_b&h_{bc}&h_{bd}\\\\0&0&h_c&h_{cd}\\\\0&0&0&h_d\\end{pmatrix}",
+                        "alttext": "⇒H=((ha, hab, hac, had),(0, hb, hbc, hbd),(0, 0, hc, hcd),(0, 0, 0, hd))"
+                    },
+                    "paragraph-7": {
+                        "text": "Beobachte das **Muster**, wie die einzelnen Felder aufeinander folgen; auf gleicher Weise skaliert der Hamiltonian auch für QUBO-Gleichungen mit mehr Variablen."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/hamiltonian_scaling.png",
+                        "caption": "Eine Hamilton-Matrix für eine QUBO-Gleichung mit 6 Unbekannten",
+                        "alttext": "Quadratische Zahlenmatrix mit 6 mal 6 Einträgen, von h a bis h f durchnummeriert."
+                    },
+                    "image-3": {
+                        "asset": "assets/images/lessons/hamiltonian_pattern.png",
+                        "caption": "Hamiltonians bilden mit ihren Variablen ein regelmäßiges Muster",
+                        "alttext": "Eine Anordnung von bunten bzw. zweifarbigen Quadraten in einem Gitter; oben sind a, b, c und d unterschiedliche Farben zugewiesen; im Gitter repräsentieren sie die Stellung der Variablen."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Kopplung von Qubits"
+                    },
+                    "paragraph-8": {
+                        "text": "Zusammengefasst versucht der Quantenannealer also, den Antwortvektor zu finden, dessen Koordinaten die geringsten Kosten verursachen. Die Einträge der Hamilton-Matrix dienen dabei als Grundlage für die Gewichtung (Bias) der Koppler-Magnetfelder auf der QPU. Diese Übersetzung wird automatisch berechnet und nennt sich **Embedding**. Was ist aber, wenn das QUBO-Problem komplexer ist? Nehmen wir die Chimera-Topologie als Beispiel: Hier kann jeder Qubit mit höchstens 6 anderen gekoppelt werden, was einer maximalen Hamiltonian-Größe von 7×7 entspricht."
+                    },
+                    "paragraph-9": {
+                        "text": "Wenn ein Qubit mehr als 6 Verbindungen braucht, können dann mehrere **physikalische** Qubits zu sogenannten **logischen** Qubits gekoppelt werden, indem sie mit sehr starken Gleichheitskopplern verbunden werden. Bei der Messung verhalten sie sich dann beinahe wie eine Einheit. Mit jedem physikalischen Qubit, der an einen logischen angeschlossen wird, kommen 6 weitere Verbindungsmöglichkeiten dazu, es erhöht sich aber auch die Wahrscheinlichkeit, dass die Kette bricht und die Ergebnisse unbrauchbar werden."
+                    },
+                    "interactive-1": {
+
+                    },
+                    "paragraph-10": {
+                        "text": "Herzlichen Glückwunsch! Du hast nun ein fundiertes Verständnis darüber erlangt, wie Quantenannealer Aufgaben lösen. Damit kannst du bereits den **Coding-Tab** auf dem Homescreen verwenden, um mit einem echten Annealer von DWave zu interagieren. Leg direkt los oder stürze dich in die nächsten Lektionen, die dieses Grundlagenwissen anhand echter Problemstellungen anwenden und Aufschluss über eine methodische Herangehensweise sowie die Grenzen des Quantenannealing geben!"
+                    }
+                }
+            }
+        }
+    },
+    "lection-fC9": {
+        "title": "Das N-Damen-Problem",
+        "description": "Eine Frage nach optimalen Schachstellungen — für viele heutige Rechner nach wie vor komplex. Aber auch für Quantenphysik?",
+        "content": {
+            "lesson-uFZ": {
+                "title": "Einführung zum N-Damen-Problem",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Schach zählt zu den bekanntesten und am meisten praktiziertesten Brettspielen weltweit — und entgegen seiner Schlichtheit zu den mathematisch komplexesten. Dies fängt schon dort an, dass es mehr mögliche Schachpartien gibt als Atome im beobachtbaren Universum. Zu viel also, um brute force, also einzelnes Durchprobieren anzuwenden; das schreit nach einem Optimierungsproblem!"
+                    },
+                    "sectiontitle-1": {
+                        "title": "Was macht die Dame im Schach?"
+                    },
+                    "paragraph-2": {
+                        "text": "Ein Schachbrett besteht aus einem Feld, welches in schwarze und weiße Quadrate aufgeteilt ist — 8 in der horizontalen und 8 in der vertikalen Seite, das macht insgesamt 64 Felder. Es gibt mehrere Schachfiguren, die sich auf diesem Brett bewegen können, für uns von Bedeutung ist hier aber nur die **Dame**, die stärkste aller Figuren. Sie kann sich in horizontaler, vertikaler und diagonaler Richtung beliebig viele Felder bewegen, um andere Figuren zu schlagen. Steht eine andere Figur also im Wirkungsbereich einer Dame, gilt sie als bedroht."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/queen_range.png",
+                        "caption": "Die Dame deckt mit ihrer Reichweite eine große Fläche auf dem Brett ab",
+                        "alttext": "Schachbrett aus der Vogelperspektive mit einer Damenfigur auf D3; von ihr ausgehend eine Reihe, eine Spalte und zwei Diagonalen an Feldern blau schattiert."
+                    },
+                    "paragraph-3": {
+                        "text": "Dies machte Max Bezzel, einen deutschen Schachmeister, nachdenklich. 1848 formulierte er in der Berliner Schachzeitung erstmals das 8-Damen-Problem. Dabei ist das Ziel, 8 Damen auf einem Schachbrett so zu platzieren, dass sie sich **nicht gegenseitig bedrohen**, also dass keine eine andere schlagen kann. Später wurde das Problem aufgeweitet und zum N-Damen-Problem verallgemeinert, wobei es N Damen auf einem Schachfeld der Größe N×N Felder bedrohungsfrei aufzustellen gilt (N ist hierbei eine beliebige ganze Zahl). Dieses Rätsel ist bis heute Gegenstand aktiver Forschung, wobei die höchste exakt gelöste Größe $$N=27$$ beträgt und über **200 Billiarden** (!) verschiedene Möglichkeiten für eine gültige Aufstellung bietet."
+                    },
+                    "interactive-1": {
+
+                    },
+                    "paragraph-4": {
+                        "text": "Bei kleineren Schachbrettgrößen ist die Lösung noch relativ einfach per Hand möglich. Mit jeder weiteren Dame jedoch erhöht sich jedoch die Komplexität um ein Vielfaches. Können wir also den Lösungsprozess vereinfachen und neue Konstellationen innerhalb von Mikrosekunden finden? Diese Lektion zeigt, wie das N-Damen-Problem als Optimierungs- und QUBO-Problem formuliert werden kann und wie es mit einem Quantenannealer lösbar ist. Dabei wollen wir auch der Frage nachgehen, ob sich der quantenbasierte Ansatz überhaupt lohnt und wo die Grenzen dieser neuen Technologie sind."
+                    }
+                }
+            },
+            "lesson-cOU": {
+                "title": "Formulierung der QUBO-Gleichung",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Mathematische Modellierung von Aufgaben"
+                    },
+                    "paragraph-1": {
+                        "text": "Quantenannealer sind (noch) sehr angepasst; sie können nur ganz bestimmte Probleme modellieren und lösen. Die einführende Lektion hat bereits erläutert, welche diese sind: Die QUBO-Probleme. Der erste Schritt bei der Problemlösung mit Quantenannealern ist demnach, die Aufgabe als eine QUBO-Gleichung zu formulieren, welche dann die niedrigsten Kosten ausgibt, wenn die korrekte Lösung gefunden wurde."
+                    },
+                    "paragraph-2": {
+                        "text": "Vielleicht erkennst du bereits die Parallele: Bei diesem oftmals eher abstrakten Schritt ist es hilfreich, die Problemstellung bildlich zu betrachten und **als ein Gitter darzustellen**. Beim N-Damen-Problem ist dies glücklicherweise ziemlich offensichtlich: Die Felder des Schachbretts sind die Variablen a, b, c usw, auf denen sich entweder eine Dame befindet (1) oder nicht (0). Wenn du dich an die entsprechende Einheit der ersten Lektion erinnerst, wurde dort der gleiche Ansatz angewandt. Betrachten wir das einfachste Beispiel des 4-Damen-Problems:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/chessboard_variables.png",
+                        "caption": "Ein 4×4-Schachbrett mit beschrifteten Feldern",
+                        "alttext": "Ein Schachbrett der Größe vier mal vier, Felder sind in alphabetischer Reihenfolge von a nach p beschriftet."
+                    },
+                    "paragraph-3": {
+                        "text": "Wir beschriften die Felder alphabetisch von a bis p, die je nach dem ihren Binärwert verändern, ob sie mit einer Dame **belegt** sind oder **nicht**. Das ist deswegen nützlich, weil nun jede mögliche Stellung der 4 Damen auf dem Brett durch eine Zahlenreihe, bestehend aus 16 Einsen und Nullen, dargestellt werden kann — mathematisch ausgedrückt: Ein Vektor mit 16 Koordinaten. Diese Modellierungstechnik wird auch **One-Hot Encoding** genannt."
+                    },
+                    "equation-1": {
+                        "tex": "q=\\begin{bmatrix}a&b&c&d&e&f&g&h&i&j&k&l&m&n&o&p\\end{bmatrix}",
+                        "alttext": "q=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p]"
+                    },
+                    "equation-2": {
+                        "tex": "\\begin{bmatrix}0&1&0&0&0&0&0&1&1&0&0&0&0&0&1&0\\end{bmatrix}\\Rightarrow",
+                        "alttext": "[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]⇒"
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/four_queens_problem.png",
+                        "caption": "Die Lösung des 4-Damen-Problems, welches vom obigen Vektor dargestellt wird",
+                        "alttext": "Ein Schachbrett der Größe vier mal vier mit vier Damenfiguren in einer Konstellation, dass keine eine andere schlagen kann."
+                    },
+                    "paragraph-4": {
+                        "text": "Nun können wir, ausgehend von den Regeln im Schach, unsere Regeln festlegen:"
+                    },
+                    "paragraph-5": {
+                        "text": "1. Pro Zeile soll **genau eine** Dame stehen\n2. Pro Spalte soll **genau eine** Dame stehen\n3. Pro Diagonale **muss keine, darf aber höchstens eine** Dame stehen"
+                    },
+                    "paragraph-6": {
+                        "text": "Diese Regeln können durch logische Begründungen hergeleitet werden: Da das Schachfeld N×N groß ist und mehrere Damen nicht in der gleichen Zeile stehen dürfen (da sie sich sonst gegenseitig bedrohen würden), müssen die N Damen so verteilt werden, dass keine Zeile frei bleiben darf und jede genau eine beinhaltet. Ähnlich verhält es sich mit den Spalten, da Damen auch eine beliebige Distanz in vertikaler Richtung zurücklegen können. In einem 4×4-Schachbrett gibt es 5 Diagonalen von links nach rechts und 5 von rechts nach links, das wäre zu viel für 4 Damen. Daher müssen nicht alle belegt werden, pro Diagonale darf es aber aufgrund der Bedrohungslage trotzdem höchstens eine Dame geben."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Die Umsetzung der Regeln"
+                    },
+                    "paragraph-7": {
+                        "text": "Für die Zeilen ist folgende QUBO-Form korrekt:"
+                    },
+                    "image-3": {
+                        "asset": "assets/images/lessons/row_highlight.png",
+                        "caption": "QUBO-Gleichung am Beispiel einer Zeile",
+                        "alttext": "Ein Schachbrett der Größe vier mal vier, dessen oberste Reihe an Feldern blau schattiert ist."
+                    },
+                    "equation-3": {
+                        "tex": "f\\left(a,b,c,d\\right)=\\left(a+b+c+d-1\\right)^2",
+                        "alttext": "f(a,b,c,d)=(a+b+c+d-1)²"
+                    },
+                    "paragraph-8": {
+                        "text": "Das Quadrieren sorgt dafür, dass nur dann die **geringsten Kosten** entstehen, wenn $$a+b+c+d-1$$ gleich 0 ist, d.h. wenn aus allen Feldern der Zeile nur eines belegt ist (wie auch in der Einführungslektion dargestellt). Das wird auf alle Zeilen übertragen und addiert. Für die Spalten genauso:"
+                    },
+                    "image-4": {
+                        "asset": "assets/images/lessons/column_highlight.png",
+                        "caption": "QUBO-Gleichung am Beispiel einer Spalte",
+                        "alttext": "Ein Schachbrett der Größe vier mal vier, dessen linke Spalte an Feldern blau schattiert ist."
+                    },
+                    "equation-4": {
+                        "tex": "f\\left(a,e,i,m\\right)=\\left(a+e+i+m-1\\right)^2",
+                        "alttext": "f(a,e,i,m)=(a+e+i+m-1)²"
+                    },
+                    "paragraph-9": {
+                        "text": "Um die \"höchstens 1 Belegung\"-Regel für die Diagonalen zu verwirklichen, wird dieses Mal ½ statt 1 in der Klammer subtrahiert; damit verschiebt sich das Minimum der Funktion so, dass 0 **oder** 1 die Summe der Felder sein kann. Wenn man das ausmultipliziert, ist ersichtlich, dass das im Endeffekt bedeutet, dass alle paarweise Belegungen dieser Felder **mit einer Strafe belegt** ist. Die Korrektheit kann auch mit einer sogenannten Wahrheitstabelle überprüft werden. Insgesamt gibt es beim N-Damen-Problem $$2(2N-3)=4N-6$$ Diagonalen zu berücksichtigen."
+                    },
+                    "equation-5": {
+                        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2",
+                        "alttext": "f(a,f,k,p)=(a+f+k+p-½)²"
+                    },
+                    "image-5": {
+                        "asset": "assets/images/lessons/diagonal_highlight.png",
+                        "caption": "QUBO-Gleichung am Beispiel einer Diagonale",
+                        "alttext": "Ein Schachbrett der Größe vier mal vier, bei dem eine Querdiagonale an Feldern blau schattiert ist."
+                    },
+                    "image-6": {
+                        "asset": "assets/images/lessons/truth_table.png",
+                        "caption": "Eine Wahrheitstabelle listet alle möglichen Paare von Ein- und Ausgaben einer Funktion auf. 0 und 1 Belegungen ergeben in dieser Diagonalen die niedrigsten Kosten",
+                        "alttext": "Tabelle mit Eingabewerten x in der ersten Zeile und Funktionswerten f in der zweiten Spalte; null zu null-komma-zwei-fünf, eins zu null-komma-zwei-fünf, zwei zu zwei-komma-zwei-fünf, drei zu sechs-komma-zwei-fünf, vier zu zwölf-komma-zwei-fünf."
+                    }
+                }
+            },
+            "lesson-t8i": {
+                "title": "Von Koeffizienten zur Hamilton-Matrix",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Wenn alle Bestandteile ausgeschrieben und addiert sind (noch eine etwas mühselige Handarbeit), kann die Gleichung ausmultipliziert und somit die Quadrate aufgelöst werden, um der QUBO-Form gerecht zu werden. Das bedeutet, dass Elemente so lange **zusammengefasst und vereinfacht** werden, bis alle Regeln von QUBO erfüllt sind (die Details sind in der Einführungslektion erläutert). Das Ergebnis ist folgendes:"
+                    },
+                    "equation-1": {
+                        "tex": "f\\left(a,...,p\\right)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo+10.5",
+                        "alttext": "f(a,...,p)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo"
+                    },
+                    "paragraph-2": {
+                        "text": "Eine massive, unhandliche Gleichung, jedoch eine gültige Kostenfunktion, da nur die regelkonformen Damenanordnungen die geringsten Kosten verursachen. Da die QUBO-Gleichung auf N, der Größe des Schachbretts, basiert, beansprucht sie N² logische Qubits (was bedeutet, dass die nötige Anzahl an physischen Qubits mit steigender Problemgröße mit einer äußerst schnellen Rate steigt) und muss für jede Brettgröße neu berechnet werden. Das 4-Damen-Problem braucht 16 logische Qubits, das 5-Damen-Problem 25, das 6-Damen-Problem 36 und so weiter."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Ein einzigartiges Muster"
+                    },
+                    "paragraph-3": {
+                        "text": "Da die Darstellung in dieser Form eher unübersichtlich ist, sollte man sie immer in eine Hamilton-Matrix umwandeln. Hamiltonians, die, wie in der einführenden Lektion erklärt, lediglich die Koeffizienten der jeweiligen Felder und Felderpaare enthalten, sind wesentlich kompakter und ermöglichen einen Fokus auf diese einzig wichtigen Informationen. Somit kann man sie auch als charakteristischen **Fingerabdruck** entsprechender Optimierungsprobleme betrachten. Hier ist die Hamilton-Matrix des eben gelösten 4-Damen-Problems:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/nqueens_hamiltonian.png",
+                        "caption": "Koeffizienten der N-Damen-Gleichung ergeben als Hamilton-Matrix ein charakteristisches Muster",
+                        "alttext": "Quadratische Zahlenmatrix mit sechzehn mal sechzehn Einträgen, dessen unteres Dreieck mit Nullen und oberes Dreieck mit zwei und minus zwei gefüllt sind."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/nqueens_hamiltonian_visualization.png",
+                        "caption": "Dies kann man auch visuell darstellen; je heller die Farbe eines Kästchens, desto höher die Zahl",
+                        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
+                    },
+                    "paragraph-4": {
+                        "text": "Was als Nächstes passiert, lässt sich im Coding-Tab des Homescreens selbst umsetzen: Die **Übermittlung des Hamiltonians** an den DWave-Quantenannealer. Dies geschieht im Hintergrund mittels des Ocean SDKs, welches eine Kommunikationsschnittstelle zwischen dem Endnutzer und den Servern von DWave bietet. Beim Absenden wird automatisch das Embedding generiert und mindestens ein paar Hundert Messungen durchgeführt, um den Zufallsfaktor der quantenphysikalischen Zustandsübergänge soweit wie möglich auszugleichen. Die dabei verbrauchte Rechenzeit wird vom eigenen Konto in DWave Leap abgezogen. Eine Anleitung dazu gibt es auf unserer Website."
+                    }
+                }
+            },
+            "lesson-qhs": {
+                "title": "Experimentelle Ergebnisse (und Grenzen)",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Wie man Annealer-Ergebnisse interpretiert"
+                    },
+                    "paragraph-1": {
+                        "text": "Die Antwort des Quantenannealers ist da! Schauen wir uns also an, wie wir die Datenpakete interpretieren können. Wenn Hamiltonians an den Annealer geschickt werden, sehen die Ergebnisse in etwa so aus:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/nqueens_results.png",
+                        "caption": "Mit diesen Zahlenreihen \"antwortet\" der Quantenannealer auf ein Rechenproblem",
+                        "alttext": "Tabelle mit Zeilen, die jeweils 16 binäre Zahlen beinhalten; zweite Spalte ist beschriftet mit Energie, die sich zwischen minus acht und minus sechs bewegt, dritte Spalte mit Häufigkeit, wobei die Zahl in der ersten Zeile mit Abstand am höchsten ist."
+                    },
+                    "paragraph-2": {
+                        "text": "Die Tabelle zeigt einen Ausschnitt aus den Messergebnissen, sortiert von der geringsten bis zur höchsten Energie — was bedeutet, dass eine Lösung desto \"besser\" ist, je **weiter oben** sie in der Tabelle steht. Jede Zeile beinhaltet den Antwortvektor sowie rechts die Häufigkeit, wie oft diese jeweils gemessen wurden. Zu diesem Zeitpunkt ist das noch Zahlensalat; um zu verstehen, ob sich der Aufwand gelohnt hat, müssen die Ergebnisse erst im Kontext **interpretiert** werden."
+                    },
+                    "paragraph-3": {
+                        "text": "Nehmen wir die oberste Lösung als Beispiel: Die Einträge der Antwortmatrix kommen in der Reihenfolge zurück, wie wir sie in der ursprünglichen QUBO-Gleichung berücksichtigt haben. Also schreiben wir die Werte von oben nach unten und von links nach rechts wieder in die Felder des ursprünglichen Gitters (in diesem Fall, des Schachbretts) und ersetzen jede 1 mit einer Dame. Idealerweise sollten das beim 4-Damen-Problem vier Stück sein, sonst stimmt etwas mit dem QUBO-Problem nicht."
+                    },
+                    "equation-1": {
+                        "tex": "\\vec{q}_A=\\begin{bmatrix}0&10&0&0&0&0&1&1&0&0&0&0&0&1&0\\end{bmatrix}",
+                        "alttext": "qₐ=[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]"
+                    },
+                    "equation-2": {
+                        "tex": "\\Rightarrow\\begin{bmatrix}0&1&0&0\\\\0&0&0&1\\\\1&0&0&0\\\\0&0&1&0\\end{bmatrix}",
+                        "alttext": "⇒[[0,1,0,0],[0,0,0,1],[1,0,0,0],[0,0,1,0]]"
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/four_queens_problem.png",
+                        "caption": "So sieht die obige Lösung des 4-Damen-Problems auf dem Schachbrett aus",
+                        "alttext": "Schachbrett der Größe vier mal vier aus der Vogelperspektive mit vier Damenfiguren auf B1, D2, A3 und C4."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Wie groß ist die Leistung?"
+                    },
+                    "paragraph-4": {
+                        "text": "Der erste wichtige Schritt ist getan. Für diesen Kurs wollen wir aber etwas weitergehen und erforschen, wo die **Grenzen** des Quantencomputings liegen. Wenn es darum geht, die Leistung von Quantenalgorithmen zu evaluieren, stellt dies oft eine Herausforderung dar, da diese Methode von Natur aus **nicht deterministisch** ist. Das bedeutet, dass aufgrund der Arbeit mit Quantenzuständen immer ein gewisser Anteil an Zufälligkeit im Spiel ist. Im ersten Experiment werden daher jeweils 2000 Messungen für das 4-Damen-Problem bis zum 8-Damen-Problem gemacht und verglichen, wie viele der Lösungen korrekt waren und wie viele nicht. Zum Vergleich wird der Versuch auch auf dem DWave 2000Q, dem Vorgängermodell der aktuellen Generation, wiederholt."
+                    },
+                    "interactive-1": {
+                        
+                    },
+                    "interactive-2": {
+
+                    },
+                    "paragraph-5": {
+                        "text": "Beim Scrollen durch die Diagramme wird der Leistungsabfall mit jeder neu hinzugekommenen Dame gut sichtbar. Während die Quantenannealer beim 4-Damen-Problem bei fast der Hälfte ihrer Messungen richtig liegen, sind bei größeren Schachbrettern nur noch eine aus 2000 Lösungen korrekt. Beim DWave Advantage liegt diese Leistungsgrenze bei 8 Damen, beim 2000Q-Modell (der generell öfter danebenliegt als sein Nachfolger) bei 7 Damen."
+                    },
+                    "paragraph-6": {
+                        "text": "Das gleiche Optimierungsproblem wurde auch auf einem herkömmlichen Computer mit dem weit verbreiteten Algorithmus Simulated Annealing (\"simuliertes Abkühlen\") gelöst. Wie das funktioniert, ist nicht relevant und sprengt den Rahmen des Kurses, hier aber eine visuelle Darstellung, wie lange die beiden Arten von Computern jeweils gebraucht haben:"
+                    },
+                    "image-3": {
+                        "asset": "assets/images/lessons/runtime_comparison.png",
+                        "caption": "Die Volumen der Würfel repräsentieren die Zeit, die die beiden Computerarten für das N-Damen-Problem gebraucht haben",
+                        "alttext": "Drei kleine Würfel, die gleich groß sind und mit N gleich 4, N gleich 6 und N gleich 8 beschriftet sind, darunter 3 große Würfel, die immer größer werden mit der gleichen Beschriftung."
+                    },
+                    "paragraph-7": {
+                        "text": "Diese Experimente zeigen sofort den Nachteil von traditionellen Berechnungsmethoden: Die für die Optimierung benötigte Zeit ist sehr lang, hier größtenteils über 10 Minuten und, das schwerwiegendste, **steigen mit größeren Problemen an**. Der Quantenannealer hingegen sind in der Lage, die gleichen Aufgaben in Bruchteilen einer Sekunde zu lösen, und das **unabhängig von der Problemgröße**."
+                    },
+                    "paragraph-8": {
+                        "text": "Obwohl die unschlagbare Geschwindigkeit des quantenbasierten Ansatzes ihn sehr attraktiv macht, hat er leistungstechnisch große Einschränkungen. Eine allgemeine Faustregel besagt, dass je nach Embedding und dadurch eingesetzten Kopplungen zur Umsetzung von $$n$$ logischen Qubits ungefähr $$n^2$$ physikalische Qubits gebraucht werden. Der Advantage besitzt 5627 Qubits; da aus jedem N-Damen-Problem ein Hamiltonian der Größe N² wird, berechnet sich die theoretische Höchstleistung auf **8 Damen**."
+                    },
+                    "equation-3": {
+                        "tex": "\\sqrt[4]{5627}\\approx8.66",
+                        "alttext": "4√5627≈8.66"
                     }
                 }
             }

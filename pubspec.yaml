@@ -75,6 +75,10 @@ flutter:
     - assets/images/lessons/electron_spin_example.png
     - assets/images/lessons/ion_example.png
     - assets/images/lessons/superconductor_example.png
+    - assets/images/lessons/checkers_board.png
+    - assets/images/lessons/hamiltonian_pattern.png
+    - assets/images/lessons/vector_example.png
+    - assets/images/lessons/dwave_procedure.png
 
 
   # To add custom fonts to your application, add a fonts section here,
