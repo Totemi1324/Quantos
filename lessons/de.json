@@ -606,6 +606,123 @@
                         "alttext": "4√5627≈8.66"
                     }
                 }
+            },
+            "lesson-rdx": {
+                "title": "Möglichkeiten zur Optimierung",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Können wir unser Vorgehen verbessern? Und wie! Je nach Optimierungsproblem ist es so oft möglich, die theoretischen Kapazitätslimits des Quantenannealers zu überschreiten und zusätzliche Problemgrößen, die sonst nicht möglich gewesen wären, herauszukitzeln."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Eine Dame geht noch"
+                    },
+                    "paragraph-2": {
+                        "text": "Eine Möglichkeit zur Lösung des sonst zu schweren 9-Damen-Problems ist zum Beispiel, die Lösungsmenge zu verkleinern. Man könnte eine Dame in einer Ecke vorgeben, in der Darstellung links oben, die die Stellung weiterer Damen in der äußersten Zeile sowie Spalte **ausschließt**, um das Feld, welches dem Annealer zur Verarbeitung gegeben wird, auf 8×8 zu verkleinern und somit effektiv das 8-Damen-Problem lösen zu lassen. Erkennst du aber, was zusätzlich beachtet werden muss?"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/nine_queens.png",
+                        "caption": "Ein Trick zum Lösen des 9-Damen-Problems: Die geschickte Positionierung der ersten Figur",
+                        "alttext": "Schachbrett der Größe neun mal neun aus der Vogelperspektive mit einer Damenfigur in der rechten oberen Ecke, dessen Zeile, Spalte und Diagonale blau schattiert sind; das restliche acht mal acht große Feld ist mit acht Damen in gültiger Aufstellung belegt, keine steht auf den schattierten Feldern."
+                    },
+                    "paragraph-3": {
+                        "text": "Das hier vorliegende 8-Damen-Problem braucht eine Zusatzregel, die besagt, dass die Diagonale, welche im Wirkungsbereich der Eck-Dame liegt, frei bleiben muss, da sie schon belegt ist. Mathematisch ausgedrückt bedeutet das, dass auf dieser Diagonale **genau 0 Felder** besetzt sein sollen. Um das umzusetzen, passen wir einfach die QUBO-Gleichung der Diagonale an, je nach dem, um welche es sich handelt:"
+                    },
+                    "equation-1": {
+                        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
+                        "alttext": "f(a,f,k,p)=(a+f+k+p-½)²⇒f(a,f,k,p)=(a+f+k+p)²"
+                    },
+                    "paragraph-4": {
+                        "text": "Das wäre eine entsprechende Anpassung im Falle des 4-Damen-Problems. Da in der neuen Form die Werte aller Felder einfach addiert werden, entstehen nur dann die geringsten Kosten, wenn alle 0, also unbelegt sind. Tauschen wir diesen Teil des QUBO-Problems aus und senden die entsprechend geänderte 64×64 große Hamilton-Matrix an den Quantenannealer, finden sich tatsächlich einige korrekte Lösungen!"
+                    },
+                    "interactive-1": {
+
+                    },
+                    "paragraph-5": {
+                        "text": "Versuche also, über den Tellerrand zu blicken und durch geschickte Vorgaben den Job des Quantencomputers einfacher zu machen!"
+                    }
+                }
+            },
+            "lesson-nAh": {
+                "title": "Bonus: Eine andere Perspektive auf die Kostenfunktion",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Diese Bonuslektion dient dazu, besser zu verstehen, welche Mathematik eigentlich hinter QUBO steckt und was Quantenannealer wirklich minimieren möchten. Außer in seiner Form als QUBO-Gleichung spielt das Optimierungsproblem als Hamilton-Matrix in der folgenden Operation eine Rolle:"
+                    },
+                    "equation-1": {
+                        "tex": "\\min C\\left(q\\right)=\\min_{q_i=0,1}\\left(\\sum_{i=1}^{N}a_iq_i+\\sum_{i<j}^{N}b_{ij}q_iq_j\\right)=\\min\\left(\\vec{q}^T\\times H\\times\\vec{q}\\right)",
+                        "alttext": "min C(q)=min[qᵢ=0,1](Σ[N,i=1](aᵢqᵢ)+Σ[N,i<j](bᵢⱼqᵢqⱼ))=min(qᵗ×H×q)"
+                    },
+                    "paragraph-2": {
+                        "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten C minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/TODO.png",
+                        "caption": "TODO",
+                        "alttext": "TODO"
+                    }
+                }
+            }
+        }
+    },
+    "lection-chj": {
+        "title": "Das Traveling-Salesman-Problem",
+        "description": "Immer die richtige Route finden — geht das auch mit Quantencomputern als Navi? Das erfährst du in dieser Lektion!",
+        "content": {
+            "lesson-wgr": {
+                "title": "Einführung zum Traveling-Salesman-Problem",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Stell dir vor, du bist der Vertreter eines großen Unternehmens, welches dich auf eine Geschäftsreise durch seine wichtigsten Standorte schickt. Zufälligerweise befinden sich diese in acht Hauptstädten, die über ganz Europa verteilt sind. Deine Firma will natürlich so viel Zeit wie möglich sparen. Wenn du von Berlin aus startest, jede Stadt genau einmal besuchst und anschließend nach Berlin zurückkehrst, in welcher Reihenfolge solltest du die Städte besuchen, um die Reise **so kurz wie möglich** zu halten?"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/TODO.png",
+                        "caption": "TODO",
+                        "alttext": "TODO"
+                    },
+                    "paragraph-2": {
+                        "text": "Das ist die Frage, mit der sich das **Traveling-Salesman-Problem** (zu Deutsch: \"Problem des Handelsreisenden\", Abkürzung: TSP) beschäftigt. Oder, allgemeiner ausgedrückt: Wie lautet die kürzeste mögliche Route, die jede Stadt genau einmal besucht und zur Ausgangsstadt zurückführt, wenn eine Liste von Städten und die Entfernungen zwischen jedem Städtepaar gegeben ist? Als praktisches Alltagsproblem schon seit dem 17. Jahrhundert immer wieder erwähnt, wurde es erstmals um 1930 vom österreichischen Mathematiker Karl Weber als mathematisches Optimierungsproblem formuliert und ausgearbeitet. Es ist in zahlreichen realen Anwendungen zu finden, z.B. bei der Planung von Lieferketten, der Renovierung von Pipelines oder der Strukturanalyse von Kristallen."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Die Herausforderung"
+                    },
+                    "paragraph-3": {
+                        "text": "Aber warum Optimierungsproblem? Bei solch einfachen Aufgaben wie der vorherigen ist die Lösung natürlich schnell ersichtlich: Nimmt man die Entfernungen als Luftlinien an, so wäre der kürzeste Weg derjenige, der außen herumführt."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/TODO.png",
+                        "caption": "TODO",
+                        "alttext": "TODO"
+                    },
+                    "paragraph-4": {
+                        "text": "Wenn man jedoch 20, 50 oder gar 100 Städte besuchen muss, ist die Sache gar nicht mehr so einfach. Das liegt daran, dass es mit jeder neuen Stadt ein Vielfaches an neuen Möglichkeiten für eine Rundreise gibt, als bereits vorhandene Ortschaften, wodurch die Zahl der zu prüfenden Optionen rasant steigt. In unserem Beispiel mit 8 Städten haben wir 2520 Möglichkeiten zur Auswahl, aber mit 12 Städten gibt es bereits 19.958.400 verschiedene Wege (dies lässt sich durch eine Formel berechnen). Daher ist das Problem **NP-schwer**, was im Grunde bedeutet, dass ein Algorithmus, der die exakte Lösung für große Eingaben in endlicher Zeit findet, wahrscheinlich unmöglich ist."
+                    },
+                    "equation-1": {
+                        "tex": "S\\left(n\\right)=\\frac{\\left(n-1\\right)!}{2}",
+                        "alttext": "S(n)=(n-1)!/2"
+                    },
+                    "paragraph-5": {
+                        "text": "Können wir also die Fähigkeiten der Qubits nutzen, um Touren in wenigen Millisekunden zu finden — und bis zu welcher Kartengröße?"
+                    }
+                }
+            },
+            "lesson-CWC": {
+                "title": "Was ist Graphentheorie?",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Verbindungen mathematisch darstellen"
+                    },
+                    "paragraph-1": {
+                        "text": "Computer können nur mit Zahlen arbeiten, also müssen wir auch mit ihnen umgehen. Die vorherige Einheit hat mit den Städten, die durch Linien untereinander verbunden sind, bereits ein Schlüsselkonzept der Lösungsmethode eingeführt: **Graphen** sind ein grundlegender Bestandteil der Mathematik, und zwar so sehr, dass sie ein eigenes Fachgebiet namens **Graphentheorie** besitzen. Im Allgemeinen beschreibt ein Graph eine Menge von Städten, **Knoten** genannt, und wie sie mathematisch miteinander verbunden sind."
+                    },
+                    "paragraph-2": {
+                        "text": "Vereinfachen wir unser Beispiel von vorhin auf nur 4 Städte mit dem Namen A, B, C und D."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/graph_example.png",
+                        "caption": "Ein simpler Graph mit 4 Knoten sowie ihren Abständen zueinander",
+                        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien mit jeweils einer Zahl daneben verbunden."
+                    }
+                }
             }
         }
     }
