@@ -1,0 +1,95 @@
+{
+    "sectiontitle-1": {
+        "title": "Wie Quantenannealer sprechen"
+    },
+    "paragraph-1": {
+        "text": "Angenommen, du hast ein konkretes Problem vor Augen — wie machst du es einem Quantencomputer verständlich? Nun geht es darum, Optimierungsprobleme an den Annealer zu bringen. So wie klassische Computer programmiert werden müssen, um Anweisungen in Code auszuführen, müssen auch Optimierungsprobleme in eine geeignete \"Sprache\" übersetzt werden, damit der Quantenannealer sie versteht — in diesem Fall in die Sprache der Mathematik."
+    },
+    "paragraph-2": {
+        "text": "Damit der Annealer eine Aufgabe lösen kann, muss diese als **quadratic unconstrained binary optimization problem**, oder kurz **QUBO-Problem**, formuliert werden. Dieser Name ist beim ersten Hören nicht besonders hilfreich, es handelt sich jedoch um ein Kernkonzept der Quanteninformatik. Hier also einige Erläuterungen:"
+    },
+    "paragraph-3": {
+        "text": "- **Quadratic** (quadratisch) bedeutet, dass maximal zwei Variablen miteinander multipliziert werden können.\n- **Unconstrained** (uneingeschränkt) bedeutet, dass die richtige Antwort nicht durch andere Bedingungen eingeschränkt ist.\n- **Binary** (binär) bedeutet, dass wir nur 0 oder 1 eingeben können.\n- **Optimization** (Optimierung) ist — wir erinnern uns an vorangegangene Einheiten — der Prozess, die optimale Lösung für ein komplexes Problem durch Annäherung zu finden."
+    },
+    "paragraph-4": {
+        "text": "Angemerkt sei, dass es auch andere Möglichkeiten gibt, einen Quantenannealer zu programmieren, wie z.B. Ising-Probleme, die wir der Kürze und Verständlichkeit halber auslassen werden. Jetzt aber zurück zu QUBO-Problemen; betrachten wir ein Beispiel, um das Konzept zu veranschaulichen:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/checkers_board.png",
+        "caption": "Eine beispielhaftes Damenbrett mit Spielsteinen",
+        "alttext": "Ein illustriertes rot-schwarzes Damenbrett mit vier Feldern, beschriftet von oben links mit den Buchstaben a, b, c und d; darüber vier schwarze Spielsteine."
+    },
+    "paragraph-5": {
+        "text": "Dieses Damenbrett der Größe 2x2 hat die vier Felder a, b, c und d. Zusätzlich gibt es vier Spielsteine, von denen jeder auf ein beliebiges Feld gesetzt werden kann, aber nicht muss (jedoch nicht mehrere auf dasselbe Feld). Wenn ein Feld besetzt ist, wird es als 1 dargestellt, ansonsten als 0. Der Quantencomputer soll die Steine so platzieren, dass **möglichst viele Felder besetzt** sind. Hier kommen die Kostenfunktionen wieder zum Einsatz, um zu bewerten, wie gut eine bestimmte Lösung ist: Je niedriger die Kosten, desto besser. Die Suche nach der besten Lösung läuft somit auf die Minimierung der Kostenfunktion hinaus. Wenn wir ein QUBO-Problem haben, das vier Variablen a, b, c und d (die entweder 0 oder 1 sind) als Eingabe nimmt, ist die Kostenfunktion wie folgt definiert:"
+    },
+    "equation-1": {
+        "tex": "f\\left(a,b,c,d\\right)=h_aa+h_bb+h_cc+h_dd+h_{ab}ab+h_{ac}ac+h_{ad}ad+h_{bc}bc+h_{bd}bd+h_{cd}cd",
+        "alttext": "f(a,b,c,d)=ha×a + hb×b + hc×c + hd×d + hab×a×b + hac×a×c + had×a×d + hbc×b×c + hbd×b×d + hcd×c×d"
+    },
+    "paragraph-6": {
+        "text": "Zunächst summieren wir die Werte aller Felder, dann addieren wir das Produkt jedes möglichen Paares der Feldwerte. Die $$h$$, mit denen die Feldwerte multipliziert werden, sind einfache Koeffizienten, d.h. positive oder negative Zahlen, die steuern, wie stark wir die einzelnen Belegungen belohnen (oder bestrafen) wollen. Dies ist ein ziemlich cleveres System: Ist ein Feld unbesetzt, also 0, wird der entsprechende Koeffizient aus der Gleichung entfernt (denn eine Multiplikation mit 0 ergibt immer 0)."
+    },
+    "paragraph-7": {
+        "text": "Ähnlich verhält es sich bei den Feldpaaren: Eine Belohnung bleibt nur in der Gleichung, wenn beide Felder 1 sind (Wenn auch nur eine 0 im Produkt ist, ist das Ergebnis des Produkts 0). Da wir nach den niedrigsten Kosten suchen, bedeutet $$h < 0$$ \"Belohnung\", $$h > 0$$ \"Strafe\" und $$h = 0$$ \"irrelevant\". Ein Beispiel: Wenn Feld a unbedingt besetzt werden soll, sollte es ein h von z.B. -10 haben, oder wenn wir verhindern wollen, dass b und c gleichzeitig besetzt sind, sollte h eine hohe positive Zahl wie 25 sein."
+    },
+    "sectiontitle-2": {
+        "title": "Ein paar Beispiele"
+    },
+    "paragraph-8": {
+        "text": "Nun können wir ein QUBO-Problem für unsere ursprüngliche Aufgabe definieren: Es sollen **so viele Felder wie möglich** besetzt werden."
+    },
+    "equation-2": {
+        "tex": "f\\left(a,b,c,d\\right)=(-1)\\times a+(-1)\\times b+(-1)\\times c+(-1)\\times d=-a-b-c-d",
+        "alttext": "f(a,b,c,d)=-1×a + -1×b + -1×c + -1×d = -a-b-c-d"
+    },
+    "paragraph-9": {
+        "text": "Wir können darauf verzichten, die Werte von Feldpaaren festzulegen, da die Beziehungen zwischen Feldern für dieses Problem irrelevant sind. Dies ist eine gültige Kostenfunktion, denn die niedrigsten Kosten, nämlich -4, werden nur erreicht, wenn alle Felder 1 sind. Fügen wir die folgende Bedingung zu unserer Aufgabe hinzu: Die Felder a und b dürfen nicht gleichzeitig belegt sein."
+    },
+    "equation-3": {
+        "tex": "f\\left(a,b,c,d\\right)=-a-b-c-d+4ab",
+        "alttext": "f(a,b,c,d)=-a-b-c-d+4×a×b"
+    },
+    "paragraph-10": {
+        "text": "Wenn a und b beide 1 sind, sind die Kosten 0, auch wenn alle Felder für die maximale Belohnung besetzt sind, was bedeutet, dass die Lösung schlechter ist als alle anderen möglichen Lösungen. Die besten erreichbaren Kosten sind hier also -3, was die richtige Lösung liefert. Eine weitere praktische Strategie bei QUBO-Problemen ist das **Quadrieren**, zum Beispiel bei der Aufgabe \"Genau zwei von vier Feldern sollten besetzt sein\":"
+    },
+    "equation-4": {
+        "tex": "f\\left(a,b,c,d\\right)=\\left(a+b+c+d-2\\right)^2=a^2+2ab+2ac+2ad-4a+b^2+2bc+2bd-4b+c^2+2cd-4c+d^2-4d+4=-3a-3b-3c-3d+2ab+2ac+2ad+2bc+2bd+2cd",
+        "alttext": "f(a,b,c,d)=(a+b+c+d)²=a²+2ab+2ac+2ad-4a+b²+2bc+2bd-4b+c²+2cd-4c+d²-4d=-3a-3b-3c-3d+2ab+2ac+2ad+2bc+2bd+2cd"
+    },
+    "paragraph-11": {
+        "text": "Das funktioniert, weil bei der Summierung aller Felder und der Subtraktion von 2 das Ergebnis genau dann 0 ist, wenn genau zwei Felder 1 sind. Aber: Wenn kein Feld oder ein Feld besetzt ist, wäre das Ergebnis negativ, was ein noch besseres Ergebnis zur Folge hätte. Dies kann durch das Quadrieren der Gleichung behoben werden, denn wenn eine negative Zahl quadriert wird, ergibt sich immer ein positiver Wert. Die nachfolgende graphische Darstellung zeigt, was das Quadrieren bewirkt:"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/quadratic_qubo.png",
+        "caption": "Durch das Quadrieren entsteht die charakteristische Parabel, die ihren Tiefpunkt bei der optimalen Lösung hat",
+        "alttext": "Nach oben geöffnete parabelförmige Kurve im Koordinatensystem; Anzahl an Belegungen x-Achse, Kosten y-Achse; tiefster Punkt markiert mit einem Pfeil und der Beschriftung Minimum."
+    },
+    "paragraph-12": {
+        "text": "Die quadrierten Variablen wie a², b² usw., die sich aus dem Ausmultiplizieren der Gleichung ergeben, wären eigentlich nicht zulässig (da sie gegen die Regeln von QUBO verstoßen), aber da im Falle von Binärzahlen $$x^2=x$$ gilt, können sie durch a, b usw. ersetzt werden. Auch Konstanten wie +4 können weggelassen werden, da sie nur alle Ergebnisse um den gleichen Betrag nach oben oder unten verschieben. Wir können überprüfen, ob unsere Kostenfunktion korrekt ist, indem wir sie mit verschiedenen Eingaben testen."
+    },
+    "equation-5": {
+        "tex": "f\\left(0, 1, 0, 0\\right)=-3",
+        "alttext": "f(0,1,0,0)=-3"
+    },
+    "equation-6": {
+        "tex": "f\\left(1, 0, 1, 0\\right)=-4",
+        "alttext": "f(1,0,1,0)=-4"
+    },
+    "equation-7": {
+        "tex": "f\\left(0, 1, 1, 1\\right)=-3",
+        "alttext": "f(0,1,1,1)=-3"
+    },
+    "equation-8": {
+        "tex": "f\\left(1, 1, 1, 1\\right)=0",
+        "alttext": "f(1,1,1,1)=0"
+    },
+    "paragraph-13": {
+        "text": "Probiere, aus fertigen QUBO-Gleichungen selbst die optimalen Belegungen herauszulesen!"
+    },
+    "interactive-1": {
+        
+    },
+    "paragraph-14": {
+        "text": "Ein Optimierungsproblem als QUBO-Problem formulieren zu können, ist die **einzige** und **wichtigste** Voraussetzung, es auf einem Quantenannealer lösen zu können. Dieser Schritt erfordert oft etwas Gedankenarbeit; wenn es aber geschafft ist, ist es die halbe Miete! Die nachfolgenden Lektionen geben genug Beispiele und Möglichkeiten, dies zu üben."
+    }
+}

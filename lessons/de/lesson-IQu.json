@@ -1,0 +1,44 @@
+{
+    "paragraph-1": {
+        "text": "Auch bei dieser Aufgabe möchten wir beispielhaft zeigen, wie man das eigene Vorgehen verbessern kann, um die theoretische Kapazitätsgrenze der vorhandenen Qubits zu überschreiten. Denn indem man die Eigenschaften des vorliegenden Optimierungsproblems analysiert und die Lösungsmenge geschickt begrenzt, kann man oft einige Qubits einsparen!"
+    },
+    "sectiontitle-1": {
+        "title": "Noch mehr Daten einsparen"
+    },
+    "paragraph-2": {
+        "text": "Da es sich bei TSP-Touren um geschlossene Hamiltonpfade (Schleifen) handelt, die jede Stadt besuchen, kann der Startpunkt **beliebig festgelegt** werden. Wenn wir also dem Quantenannealer diese Entscheidung abnehmen und den Startpunkt z.B. auf A setzen, können die erste Zeile und die erste Spalte der Tour-Matrix weggelassen werden, da der erste Zeitschritt somit bereits getan ist und diese Stadt im weiteren Verlauf des Pfades garantiert nicht mehr besucht wird."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/tour_optimization.png",
+        "caption": "Wenn die erste besuchte Stadt bekannt ist, ist die Spalte und die Zeile dieses Besuchs irrelevant",
+        "alttext": "Gitter mit alphabetischen Buchstaben von a nach p, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; die Felder 1A, 2C, 3B und 4D sind blau markiert, Zeile A und Spalte 1 sind rot schattiert."
+    },
+    "paragraph-3": {
+        "text": "Hier sind wir aber noch nicht fertig, denn zusätzlich muss die Kostenfunktion so angepasst werden, dass der Weg von A nach B, A nach C usw. nur vom zweiten besuchten Knoten abhängt — die logischen Qubits für A müssen schließlich **ganz aus der QUBO-Gleichung verschwinden**, sonst war die Optimierung umsonst. Dieser Ansatz reduziert die Größe der Tour-Matrix um 1, was bedeutet, dass die Anzahl der Städte, für die der Annealer eine Lösung finden kann, auf 9 steigt."
+    },
+    "sectiontitle-2": {
+        "title": "Unvollständige Graphen"
+    },
+    "paragraph-4": {
+        "text": "Um den Algorithmus für reale Alltagssituationen anwendbarer zu machen, wäre es auch möglich, ihn über den Rahmen des klassischen Traveling-Salesman-Problems hinaus für **unvollständige Graphen** (bei denen nicht alle Knoten miteinander verbunden sind) zu erweitern. In der Praxis kann es oft vorkommen, dass nicht alle Knoten von jedem Punkt erreichbar sind. Wenn eine Verbindung zwischen zwei Städten nicht existiert (z.B. aufgrund der Struktur eines Straßennetzes), muss der Quantenannealer um jeden Preis davon **abgehalten** werden, sie in die Lösung einzubeziehen."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/incomplete_graph.png",
+        "caption": "Ein Beispiel für einen unvollständigen Graph",
+        "alttext": "Kreise, die durch graue Linien verbunden sind; zwischen manchen Kreisen besteht keine Verbindung."
+    },
+    "paragraph-5": {
+        "text": "Um eine nicht existierende Kante zu repräsentieren, könnte man sie also mit einer **massiven Strafe** belegen, so dass die niedrigsten Kosten nie erreicht werden, wenn sie Teil der Tour ist. In der mathematischen Literatur wird dies üblicherweise mit einem Unendlichkeitssymbol ausgedrückt, aber in unserem Fall ist eine hohe ganze Zahl besser geeignet."
+    },
+    "equation-1": {
+        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0&\\hdots\\\\0&-2&\\infty&2&\\infty\\hdots\\\\0&0&-2&\\infty&2&\\hdots\\\\0&0&0&-2&\\infty\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "alttext": "H=[[-2,2,2,∞,0,⋯],[0,-2,∞,2,∞,⋯],[0,0,-2,∞,2,⋯],[0,0,0,-2,∞,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
+    },
+    "equation-2": {
+        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0&\\hdots\\\\0&-2&100&2&100\\hdots\\\\0&0&-2&100&2&\\hdots\\\\0&0&0&-2&100\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "alttext": "⇒[[-2,2,2,100,0,⋯],[0,-2,100,2,100,⋯],[0,0,-2,100,2,⋯],[0,0,0,-2,100,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
+    },
+    "paragraph-6": {
+        "text": "Optimierungen, die über einzelne gewonnene Problemgrößen hinausgehen, sind nur möglich, wenn die Spärlichkeit der Hamilton-Matrix erhöht wird, sprich die Anzahl der Nicht-Null-Einträge tatsächlich reduziert werden."
+    }
+}

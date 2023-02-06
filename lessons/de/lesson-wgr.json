@@ -1,0 +1,34 @@
+{
+    "paragraph-1": {
+        "text": "Stell dir vor, du bist der Vertreter eines großen Unternehmens, welches dich auf eine Geschäftsreise durch seine wichtigsten Standorte schickt. Zufälligerweise befinden sich diese in acht Hauptstädten, die über ganz Europa verteilt sind. Deine Firma will natürlich so viel Zeit wie möglich sparen. Wenn du von Berlin aus startest, jede Stadt genau einmal besuchst und anschließend nach Berlin zurückkehrst, in welcher Reihenfolge solltest du die Städte besuchen, um die Reise **so kurz wie möglich** zu halten?"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/europe_map.png",
+        "caption": "Berlin, Wien, Paris und Bucharest — diese und weitere Städte sollen bei der Rundreise passiert werden",
+        "alttext": "Vereinfachte Karte von Kontinentaleuropa mit Markern an den acht Städten Berlin, Wien, Bucharest, Rom, Zürich, Paris, London und Lissabon."
+    },
+    "paragraph-2": {
+        "text": "Das ist die Frage, mit der sich das **Traveling-Salesman-Problem** (zu Deutsch: \"Problem des Handelsreisenden\", Abkürzung: TSP) beschäftigt. Oder, allgemeiner ausgedrückt: Wie lautet die kürzeste mögliche Route, die jede Stadt genau einmal besucht und zur Ausgangsstadt zurückführt, wenn eine Liste von Städten und die Entfernungen zwischen jedem Städtepaar gegeben ist? Als praktisches Alltagsproblem schon seit dem 17. Jahrhundert immer wieder erwähnt, wurde es erstmals um 1930 vom österreichischen Mathematiker Karl Weber als mathematisches Optimierungsproblem formuliert und ausgearbeitet. Es ist in zahlreichen realen Anwendungen zu finden, z.B. bei der Planung von Lieferketten, der Renovierung von Pipelines oder der Strukturanalyse von Kristallen."
+    },
+    "sectiontitle-1": {
+        "title": "Die Herausforderung"
+    },
+    "paragraph-3": {
+        "text": "Aber warum Optimierungsproblem? Bei solch einfachen Aufgaben wie der vorherigen ist die Lösung natürlich schnell ersichtlich: Nimmt man die Entfernungen als Luftlinien an, so wäre der kürzeste Weg derjenige, der außen herumführt."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/europe_route.png",
+        "caption": "Die kürzeste Reise mit direkten Flügen",
+        "alttext": "Vorherige Karte mit Linien, die die eingezeichneten Städte zu einer geschlossenen Schleife verbinden."
+    },
+    "paragraph-4": {
+        "text": "Wenn man jedoch 20, 50 oder gar 100 Städte besuchen muss, ist die Sache gar nicht mehr so einfach. Das liegt daran, dass es mit jeder neuen Stadt ein Vielfaches an neuen Möglichkeiten für eine Rundreise gibt, als bereits vorhandene Ortschaften, wodurch die Zahl der zu prüfenden Optionen rasant steigt. In unserem Beispiel mit 8 Städten haben wir 2520 Möglichkeiten zur Auswahl, aber mit 12 Städten gibt es bereits 19.958.400 verschiedene Wege (dies lässt sich durch eine Formel berechnen). Daher ist das Problem **NP-schwer**, was im Grunde bedeutet, dass ein Algorithmus, der die exakte Lösung für große Eingaben in endlicher Zeit findet, wahrscheinlich unmöglich ist."
+    },
+    "equation-1": {
+        "tex": "S\\left(n\\right)=\\frac{\\left(n-1\\right)!}{2}",
+        "alttext": "S(n)=(n-1)!/2"
+    },
+    "paragraph-5": {
+        "text": "Können wir also die Fähigkeiten der Qubits nutzen, um Touren in wenigen Millisekunden zu finden — und bis zu welcher Kartengröße?"
+    }
+}

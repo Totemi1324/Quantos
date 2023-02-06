@@ -1,0 +1,31 @@
+{
+    "paragraph-1": {
+        "text": "Wenn alle Bestandteile ausgeschrieben und addiert sind (noch eine etwas mühselige Handarbeit), kann die Gleichung ausmultipliziert und somit die Quadrate aufgelöst werden, um der QUBO-Form gerecht zu werden. Das bedeutet, dass Elemente so lange **zusammengefasst und vereinfacht** werden, bis alle Regeln von QUBO erfüllt sind (die Details sind in der Einführungslektion erläutert). Das Ergebnis ist folgendes:"
+    },
+    "equation-1": {
+        "tex": "f\\left(a,...,p\\right)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo+10.5",
+        "alttext": "f(a,...,p)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo"
+    },
+    "paragraph-2": {
+        "text": "Eine massive, unhandliche Gleichung, jedoch eine gültige Kostenfunktion, da nur die regelkonformen Damenanordnungen die geringsten Kosten verursachen. Da die QUBO-Gleichung auf N, der Größe des Schachbretts, basiert, beansprucht sie N² logische Qubits (was bedeutet, dass die nötige Anzahl an physischen Qubits mit steigender Problemgröße mit einer äußerst schnellen Rate steigt) und muss für jede Brettgröße neu berechnet werden. Das 4-Damen-Problem braucht 16 logische Qubits, das 5-Damen-Problem 25, das 6-Damen-Problem 36 und so weiter."
+    },
+    "sectiontitle-1": {
+        "title": "Ein einzigartiges Muster"
+    },
+    "paragraph-3": {
+        "text": "Da die Darstellung in dieser Form eher unübersichtlich ist, sollte man sie immer in eine Hamilton-Matrix umwandeln. Hamiltonians, die, wie in der einführenden Lektion erklärt, lediglich die Koeffizienten der jeweiligen Felder und Felderpaare enthalten, sind wesentlich kompakter und ermöglichen einen Fokus auf diese einzig wichtigen Informationen. Somit kann man sie auch als charakteristischen **Fingerabdruck** entsprechender Optimierungsprobleme betrachten. Hier ist die Hamilton-Matrix des eben gelösten 4-Damen-Problems:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/nqueens_hamiltonian.png",
+        "caption": "Koeffizienten der N-Damen-Gleichung ergeben als Hamilton-Matrix ein charakteristisches Muster",
+        "alttext": "Quadratische Zahlenmatrix mit sechzehn mal sechzehn Einträgen, dessen unteres Dreieck mit Nullen und oberes Dreieck mit zwei und minus zwei gefüllt sind."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/nqueens_hamiltonian_visualization.png",
+        "caption": "Dies kann man auch visuell darstellen; je heller die Farbe eines Kästchens, desto höher die Zahl",
+        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
+    },
+    "paragraph-4": {
+        "text": "Was als Nächstes passiert, lässt sich im Coding-Tab des Homescreens selbst umsetzen: Die **Übermittlung des Hamiltonians** an den DWave-Quantenannealer. Dies geschieht im Hintergrund mittels des Ocean SDKs, welches eine Kommunikationsschnittstelle zwischen dem Endnutzer und den Servern von DWave bietet. Beim Absenden wird automatisch das Embedding generiert und mindestens ein paar Hundert Messungen durchgeführt, um den Zufallsfaktor der quantenphysikalischen Zustandsübergänge soweit wie möglich auszugleichen. Die dabei verbrauchte Rechenzeit wird vom eigenen Konto in DWave Leap abgezogen. Eine Anleitung dazu gibt es auf unserer Website."
+    }
+}

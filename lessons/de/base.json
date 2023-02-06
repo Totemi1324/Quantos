@@ -1,0 +1,92 @@
+{
+    "lection-8hg": {
+        "title": "Quantenannealer: Eine Einführung",
+        "description": "...Aber was genau sind Quantencomputer? Wie funktionieren sie? Auf diese Fragen und mehr gibt diese Einführungslektion eine Antwort!",
+        "content": {
+            "lesson-S6N": {
+                "title": "Was ist ein Qubit?"
+            },
+            "lesson-75N": {
+                "title": "Das Innenleben von Quantenannealern"
+            },
+            "lesson-XOQ": {
+                "title": "Optimierungsprobleme und Anneals"
+            },
+            "lesson-WrU": {
+                "title": "Die QUBO-Gleichung"
+            },
+            "lesson-Bwk": {
+                "title": "Kommunikations-Schnittstelle: (Hamilton-)Matrizen"
+            }
+        }
+    },
+    "lection-fC9": {
+        "title": "Das N-Damen-Problem",
+        "description": "Eine Frage nach optimalen Schachstellungen — für viele heutige Rechner nach wie vor komplex. Aber auch für Quantenphysik?",
+        "content": {
+            "lesson-uFZ": {
+                "title": "Einführung zum N-Damen-Problem"
+            },
+            "lesson-cOU": {
+                "title": "Formulierung der QUBO-Gleichung"
+            },
+            "lesson-t8i": {
+                "title": "Von Koeffizienten zur Hamilton-Matrix"
+            },
+            "lesson-qhs": {
+                "title": "Experimentelle Ergebnisse (und Grenzen)"
+            },
+            "lesson-rdx": {
+                "title": "Möglichkeiten zur Optimierung"
+            },
+            "lesson-nAh": {
+                "title": "Bonus: Eine andere Perspektive auf die Kostenfunktion"
+            }
+        }
+    },
+    "lection-chj": {
+        "title": "Das Traveling-Salesman-Problem",
+        "description": "Immer die richtige Route finden — geht das auch mit Quantencomputern als Navi? Das erfährst du in dieser Lektion!",
+        "content": {
+            "lesson-wgr": {
+                "title": "Einführung zum Traveling-Salesman-Problem"
+            },
+            "lesson-CWC": {
+                "title": "Was ist Graphentheorie?"
+            },
+            "lesson-Bgf": {
+                "title": "Umwandlung der Problemstellung für Quantenannealer"
+            },
+            "lesson-lNJ": {
+                "title": "QUBO-Gleichung und Hamilton-Matrix"
+            },
+            "lesson-56h": {
+                "title": "Wie man Messungen verbessern kann"
+            },
+            "lesson-IQu": {
+                "title": "Optimierungen und Erweiterungen"
+            },
+            "lesson-Y7A": {
+                "title": "Bonus: Erstelle deine eigenen Graphen!"
+            }
+        }
+    },
+    "lection-BiE": {
+        "title": "Sudoku-Rätsel Lösen",
+        "description": "Jeder kennt sie: Die magischen Zahlentabellen aus Japan. Schaffen sie es auch, das Gehirn von Quantenannealern zu fordern?",
+        "content": {
+            "lesson-2D9": {
+                "title": "Einführung in die Prinzipien von Sudoku"
+            },
+            "lesson-A3P": {
+                "title": "QUBO-Gleichung: Naive vs. optimierte Formulierung"
+            },
+            "lesson-PBv": {
+                "title": "Experimentelle Ergebnisse"
+            },
+            "lesson-kJN": {
+                "title": "Bonus: Schlussfazit und Gratulation!"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "paragraph-1": {
+        "text": "Schach zählt zu den bekanntesten und am meisten praktiziertesten Brettspielen weltweit — und entgegen seiner Schlichtheit zu den mathematisch komplexesten. Dies fängt schon dort an, dass es mehr mögliche Schachpartien gibt als Atome im beobachtbaren Universum. Zu viel also, um brute force, also einzelnes Durchprobieren anzuwenden; das schreit nach einem Optimierungsproblem!"
+    },
+    "sectiontitle-1": {
+        "title": "Was macht die Dame im Schach?"
+    },
+    "paragraph-2": {
+        "text": "Ein Schachbrett besteht aus einem Feld, welches in schwarze und weiße Quadrate aufgeteilt ist — 8 in der horizontalen und 8 in der vertikalen Seite, das macht insgesamt 64 Felder. Es gibt mehrere Schachfiguren, die sich auf diesem Brett bewegen können, für uns von Bedeutung ist hier aber nur die **Dame**, die stärkste aller Figuren. Sie kann sich in horizontaler, vertikaler und diagonaler Richtung beliebig viele Felder bewegen, um andere Figuren zu schlagen. Steht eine andere Figur also im Wirkungsbereich einer Dame, gilt sie als bedroht."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/queen_range.png",
+        "caption": "Die Dame deckt mit ihrer Reichweite eine große Fläche auf dem Brett ab",
+        "alttext": "Schachbrett aus der Vogelperspektive mit einer Damenfigur auf D3; von ihr ausgehend eine Reihe, eine Spalte und zwei Diagonalen an Feldern blau schattiert."
+    },
+    "paragraph-3": {
+        "text": "Dies machte Max Bezzel, einen deutschen Schachmeister, nachdenklich. 1848 formulierte er in der Berliner Schachzeitung erstmals das 8-Damen-Problem. Dabei ist das Ziel, 8 Damen auf einem Schachbrett so zu platzieren, dass sie sich **nicht gegenseitig bedrohen**, also dass keine eine andere schlagen kann. Später wurde das Problem aufgeweitet und zum N-Damen-Problem verallgemeinert, wobei es N Damen auf einem Schachfeld der Größe N×N Felder bedrohungsfrei aufzustellen gilt (N ist hierbei eine beliebige ganze Zahl). Dieses Rätsel ist bis heute Gegenstand aktiver Forschung, wobei die höchste exakt gelöste Größe $$N=27$$ beträgt und über **200 Billiarden** (!) verschiedene Möglichkeiten für eine gültige Aufstellung bietet."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-4": {
+        "text": "Bei kleineren Schachbrettgrößen ist die Lösung noch relativ einfach per Hand möglich. Mit jeder weiteren Dame jedoch erhöht sich jedoch die Komplexität um ein Vielfaches. Können wir also den Lösungsprozess vereinfachen und neue Konstellationen innerhalb von Mikrosekunden finden? Diese Lektion zeigt, wie das N-Damen-Problem als Optimierungs- und QUBO-Problem formuliert werden kann und wie es mit einem Quantenannealer lösbar ist. Dabei wollen wir auch der Frage nachgehen, ob sich der quantenbasierte Ansatz überhaupt lohnt und wo die Grenzen dieser neuen Technologie sind."
+    }
+}

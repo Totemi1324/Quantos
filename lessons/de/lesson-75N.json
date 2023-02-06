@@ -1,0 +1,54 @@
+{
+    "sectiontitle-1": {
+        "title": "Der Blick hinter die Kulissen"
+    },
+    "paragraph-1": {
+        "text": "**Quantenannealer** — ein auf den ersten Blick nicht vielsagender Begriff. Tatsächlich ist es aber Gegenstand eine der aktuellsten Forschungen der Gegenwart. Damit ist eine spezielle Art von Quantencomputern gemeint, die dieser Kurs behandelt. Im Gegensatz zu gatterbasierten Quantencomputern sind sie bereits weit fortgeschritten und können tatsächlich benutzt werden, um anwendungsbezogene Probleme zu lösen. \"Annealing\" bedeutet so viel wie \"Abkühlung\"; was es damit auf sich hat, wird in Einheit 3 gezeigt. Und so sehen sie aus:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/dwave_advantage.png",
+        "caption": "Der Advantage-Annealer von DWave Systems, zum Vergleich eine erwachsene Person im Maßstab",
+        "alttext": "Schwarzes Metallgehäuse mit orangenen Leuchtakzenten, daneben ein Strichmännchen auf etwa halber Höhe."
+    },
+    "paragraph-2": {
+        "text": "Ein großer, schwarzer Kasten, fast 3 Meter hoch und 3,8 Tonnen schwer, mit einem Kostenpunkt von ca. 15 Millionen Dollar. Sie hat also (noch) nicht die Dimensionen eines Heimcomputers, sondern ist vielmehr für Rechenzentren und Unternehmen gedacht. Bedient wird der DWave Advantage über einen — vergleichsweise — kleinen Monitor mit Tastatur an der Seite des Gehäuses."
+    },
+    "paragraph-3": {
+        "text": "Doch wozu die viele, große Technik? Damit die Qubits im Annealer richtig funktionieren können — also dass die vorhin erklärte Superposition stabil bleibt und die Messungen durch Störungen nicht verfälscht werden — muss das Innere des Gehäuses auf eine Temperatur von **16 mK** (Millikelvin) gekühlt werden; das entspricht ungefähr -273,13° Celsius, was nahe dem absoluten Nullpunkt ist, dem physikalisch höchstem möglichen Maß an Kälte überhaupt. Dies ist für Ingenieure eine riesige Herausforderung: Einiges an Elektronik und dicke Wände aus Stahl, in dessen Inneren ein Vakuum, also ein luftleerer Raum, herrschen muss, sind nötig, um die Qubits vor aller möglichen Interferenz durch andere Teilchen zu schützen. Das Gehäuse selbst beherbergt ein umgekehrtes, pyramidenähnliches Gestell:"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/annealer_insides.png",
+        "caption": "Quantenannealer beherbergen ein sog. Mischungskryostat, dessen Stufen immer kühler werden, je weiter unten sie sich befinden",
+        "alttext": "Kupferfarbenes zylindrisches Metallgestell aus mehreren Stufen, welches an einer Decke befestigt und dicht vertrahtet ist."
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/qpu.png",
+        "caption": "Mit diesem QPU-Chip führt der Annealer Rechenoperationen aus",
+        "alttext": "Rautenförmiger Silikonchip befestigt an einer kupfernen Stange und einer Leiterplatte mit vielen hervorstehenden Kabeln."
+    },
+    "paragraph-4": {
+        "text": "Die **QPU** (Quantum Processing Unit, also \"Quantenverarbeitungseinheit\"), das Gegenstück zum klassischen CPU, steht dabei an der Spitze und ist das Herz des Quantenannealers; ein wenige Quadratzentimeter großer Chip, auf dessen Oberfläche sich die Qubits befinden. Das aktuellste Modell vom Hersteller DWave, der \"Advantage\", besitzt 5627 davon. Zum Vergleich: Die gebräuchlichsten CPUs in heutigen Heim-PCs und Smartphones besitzen zwischen 100 Millionen und 3 Billionen Transistoren, sprich individuell ein- und ausschaltbare Einheiten."
+    },
+    "sectiontitle-2": {
+        "title": "Die Muster auf einer QPU"
+    },
+    "paragraph-5": {
+        "text": "Die Qubits auf einer QPU sind in einer Art Muster, der sogenannten **Topologie**, angeordnet und sind untereinander durch **Koppler** verbunden. Die folgende schematische Zeichnung zeigt zwei Beispiele: Die Topologie des \"Advantage\"-Vorgängermodells heißt \"Chimera-Graph\", die des \"Advantage\"-s \"Pegasus-Graph\":"
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/topologies.png",
+        "caption": "Die Diagramme der (a) Chimera-Architektur des D-Wave 2000Q und der neueren (b) Pegasus-Architektur",
+        "alttext": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen."
+    },
+    "image-5": {
+        "asset": "assets/images/lessons/topology_legend.png",
+        "caption": "Die Linien im Diagramm stellen die Koppler, die Kreise die Qubits dar",
+        "alttext": "Pfeile, die auf hervorgehobene Linien und Kreise des vorherigen Bildes zeigen, mit der Aufschrift Koppler und Qubit."
+    },
+    "paragraph-6": {
+        "text": "Koppler sind im realen Gerät Magnetfelder, deren Stärke individuell angepasst werden kann. Und hier kommt der wichtigste Punkt: Sie können beeinflussen, ob Qubits bei der Messung in den Zustand $$\\vert 0\\rangle$$ oder $$\\vert 1\\rangle$$ zusammenfallen, jedoch nicht mit Sicherheit garantieren. Auch können sie das Verhalten von zwei Qubits so anpassen, dass sie dazu neigen, entweder einen gleichen oder einen ungleichen Wert einnehmen. Diese Arten heißen entsprechend Gleichheits- bzw. Ungleichheitskoppler. Wenn zum Beispiel zwei Qubits mit einem Ungleichheitskoppler verbunden sind und das erste eine $$\\vert 1\\rangle$$ wird, so wird die andere mit hoher Wahrscheinlichkeit eine $$\\vert 0\\rangle$$."
+    },
+    "paragraph-7": {
+        "text": "Quantenannealer werden programmiert, Probleme zu lösen, indem die Stärke und die Art dieser Koppler angepasst werden. Ein Qubit kann allerdings nur mit einer begrenzten Anzahl von anderen Qubits gekoppelt werden; die genaue Anzahl ist abhängig von der Topologie und ist maßgeblich für die \"Rechenpower\" des Quantenannealers verantwortlich. Wie dies alles genau zusammenhängt, erklärt die nächste Einheit."
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "paragraph-1": {
+        "text": "Die Erstellung eines Quantenlösungsverfahrens für das TSP ist ein spannendes Beispiel für die Vielseitigkeit der Quanteninformatik und eine Demonstration, wie sie zur Verbesserung alltäglicher Aufgaben beitragen kann. In den beiden vorangegangenen Lektionen haben wir das **Spielbrettmodell** für QUBO-Probleme ausführlich kennengelernt; diese möchten wir auch dieses Mal nutzen, die Umformung ist dieses Mal aber weniger offensichtlich. Der erste Schritt ist also die Frage, wie man die Kernkomponente des TSP, den Graphen, in ein QUBO-Problem umwandelt."
+    },
+    "sectiontitle-1": {
+        "title": "Vom Graphen zur Matrix"
+    },
+    "paragraph-2": {
+        "text": "Wie kommen wir am einfachsten von einem Graphen zu einem quadratischen Gitter mit nummerierten Zellen? Die einfachste Instanz des TSP und unser erstes Beispiel ist ein Graph mit vier Städten (da dies die minimale Anzahl von Eckpunkten ist, die andere Lösungen als das Optimum zulässt):"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/example_tour.png",
+        "caption": "Das ist nicht die optimale Tour, aber ein gültiger Hamiltonpfad",
+        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach B nach D nach C ist rosa hervorgehoben."
+    },
+    "paragraph-3": {
+        "text": "Wenn wir A als Ausgangspunkt nehmen, ist hier die Tour **A – B – D – C – A** eingezeichnet (natürlich ist auch der umgekehrte Weg A – C – D – B – A gültig). Eine mögliche Tour ist durch zwei Angaben definiert:"
+    },
+    "paragraph-4": {
+        "text": "1. Die chronologische **Reihenfolge** der besuchten Städte\n2. Die **Gesamtkosten der Route**, d.h. die Summe der Länge der Kanten, die befahren werden"
+    },
+    "paragraph-5": {
+        "text": "Mit Hilfe einer Matrix lässt sich der erste Punkt angehen. Eine Möglichkeit, den vorherigen Graphen zu modellieren, ist das Kodieren der Besuchsreihenfolge in einer Tabelle."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/tour_matrix.png",
+        "caption": "So kann eine Reihe an besuchten Städten numerisch kodiert werden",
+        "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1A, 2B, 3D und 4C ist jeweils eine Eins eingetragen."
+    },
+    "paragraph-6": {
+        "text": "Die Zeilen repräsentieren die einzelnen Städte, während die Spalten die \"Zeitpunkte\", d.h. die einzelnen Schritte, markieren. Ein Eintrag von 1 im Feld $$m_{ij}$$ bedeutet, dass die $$i$$-te Stadt im $$j$$-ten Zeitschritt besucht wird. Die fünfte Spalte würde die Rückkehr zur Ausgangsstadt markieren, aber da sie immer eine exakte Kopie der ersten Spalte wäre, kann sie weggelassen werden, um die Daten zu sparen. Nun haben wir eine Art Abstraktion definiert, die auf Touren in Graphen beliebiger Größe angewendet werden kann. Diese wird fortan **Tour-Matrix** genannt."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-7": {
+        "text": "Vielleicht siehst du bereits, worauf das hinausläuft: In der Tat sieht dies sehr ähnlich aus wie das Damen-Problem aus der letzten Lektion. Die 1-en sind hierbei quasi Spielsteine, die auf ein Spielbrett gelegt werden können, um zu markieren, welche Stadt zu welchem Zeitschritt gehört. Daraus können wir im nächsten Schritt die QUBO-Gleichung extrahieren."
+    }
+}
