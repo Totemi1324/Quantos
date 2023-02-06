@@ -1098,13 +1098,17 @@
                         "text": "Was ist aber mit den verschiedenen Ziffern? Hier können im Gegensatz zu QUBO nicht nur die Binärzahlen 0 und 1, sondern die Ziffern von 1 bis 4 eingetragen werden. Diese können als eine Art zusätzliche \"Dimension\" des Problems verstanden werden. Und genau das ist auch die Lösung: Wir erweitern unser QUBO-Quadrat ins **Dreidimensionale** mit weiteren Ebenen!"
                     },
                     "image-2": {
-                        "asset": "TODO"
-                    },
-                    "image-3": {
-                        "asset": "TODO"
+                        "asset": "assets/images/lessons/variables_stack.png",
+                        "caption": "Um unterschiedliche Ziffern zu repräsentieren, kann das Sudoku-Feld auf mehrere Ebenen aufgeteilt werden",
+                        "alttext": "Zahlengitter der Größe vier mal vier Kästchen mit Ziffern von eins bis vier in dicker, brauner Schrift; daneben perspektivische Darstellung eines Stapels von vier Gittern gleicher Größe übereinander, deren Felder mit q eins bis q vierundsechzig beschriftet sind."
                     },
                     "paragraph-3": {
                         "text": "In dieser Darstellung sind die Kästchen diesmal nicht alphabetisch, sondern mit $$q_1$$ bis $$q_{64}$$ benannt, einfach, weil es sonst zu wenige Buchstaben gäbe. Jedes dieser Ebenen repräsentiert eine Ziffer von 1 bis 4 und beinhaltet in einem Kästchen 1, wenn im Sudoku **an dieser Stelle** die entsprechende Ziffer steht. Somit ist diese Technik eine Abwandlung des bereits behandelten One-Hot Encodings, wobei jede Ziffer als eine Kombination von 4 Binärzahlen repräsentiert wird: 1 ist $$[1, 0, 0, 0]$$, 2 ist $$[0, 1, 0, 0]$$ usw."
+                    },
+                    "image-3": {
+                        "asset": "assets/images/lessons/one_hot_encoding.png",
+                        "caption": "So würde der One-Hot-encodierte Stack für unser 4×4-Beispielsudoku aussehen; wenn in Ebene 2 eine 1 steht, dann ist im entsprechenden Feld im Original eine 2 eingetragen usw.",
+                        "alttext": "perspektivische Darstellung eines Stapels von vier Gittern der Größe vier mal vier übereinander, wobei manche Felder leer und andere Felder mit den Ziffern null und eins ausgefüllt sind."
                     },
                     "paragraph-4": {
                         "text": "Damit können wir bereits unsere QUBO-Gleichung formulieren. Da die ganze Formel viel zu lang wäre, um sie hier auf einmal zu zeigen, wird nur die Anleitung angegeben, um die Sudoku-Regeln in QUBO umzusetzen. Diese Einzelteile werden, sollte man sie ausformulieren, einfach addiert, um die fertige Kostenfunktion zu erhalten."
@@ -1138,14 +1142,118 @@
                         "text": "- Bereits ausgefüllte Felder dürfen nicht verändert werden (d.h. die Belegung anderer Ziffern als die eingetragenen mit hohen Kosten bestrafen):"
                     },
                     "equation-5": {
-                        "tex": "100\\times q_5+100\\times q_7+100\\times q_8+100\\times q_{13}+100\\times q_{14}+100\\times q_{16}+\\hdots",
-                        "alttext": "100×q₅+100×q₇+100×q₈+100×q₁₃+100×q₁₄+100×q₁₆+⋯"
+                        "tex": "64\\times q_5+64\\times q_7+64\\times q_8+64\\times q_{13}+64\\times q_{14}+64\\times q_{16}+\\hdots",
+                        "alttext": "64×q₅+64×q₇+64×q₈+64×q₁₃+64×q₁₄+64×q₁₆+⋯"
                     },
                     "paragraph-9": {
                         "text": "Hier ein Ausschnitt aus dem Hamiltonian und eine Visualisierung der ganzen Matrix:"
                     },
                     "image-4": {
-                        "asset": ""
+                        "asset": "assets/images/lessons/sudoku_hamiltonian.png",
+                        "caption": "Die fertige Hamilton-Matrix des 4x4 Sudoku-Problems",
+                        "alttext": "Ausschnitt aus einer Matrix mit reellen Zahlen, dessen untere Dreieckshälfte mit Nullen gefüllt ist und in der oberen Dreieckshälfte regelmäßige Anordnungen von zwei vier, minus vier und vierundsechzig aufweist."
+                    },
+                    "image-5": {
+                        "asset": "assets/images/lessons/sudoku_hamiltonian_visualization.png",
+                        "caption": "In der Visualisierung sind Streifenmuster unterschiedlicher Helligkeit, die pyramidenartig angeordnet sind, erkennbar",
+                        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen und kürzeren diagonalen Linien in dreieckiger Anordnung bilden."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Es geht aber noch besser"
+                    },
+                    "paragraph-10": {
+                        "text": "Ziemlich groß, nicht wahr? Dabei haben wir uns ein sehr einfaches Beispiel mit einem Sudoku vorgenommen, welches nicht mal halb so groß ist wie das klassische Rätsel. Die Art, wie wir unsere QUBO-Gleichung formulieren, ist zwar formell korrekt mit einem passenden Minimum, aber **drastisch ineffizient**. Wenn $$n$$ die Größe des Sudoku-Feldes ist, verbraucht die Modellierung bereits $$n\\times n\\times n=n^3$$ logische Qubits, was $$(n^3)^2=n^6$$ physikalische Qubits benötigt — ein horrendes Wachstum, würde man doch damit für ein 9×9-Sudoku einen Hamiltonian der Größe **729** brauchen."
+                    },
+                    "paragraph-11": {
+                        "text": "Den Weg, den wir bisher gewählt haben, wird deswegen auch **naiver Ansatz** genannt; für eine tatsächliche praktische Anwendung ist diese oft, besonders bei komplexeren Problemstellungen, nicht ausreichend. Anstatt das Problem allgemein zu modellieren, ist es ratsam, gleich zu optimieren und nur Qubits mit einzubeziehen, die wirklich gebraucht werden. Wie könnte so eine Optimierung aussehen?"
+                    },
+                    "paragraph-12": {
+                        "text": "Als erstes werden alle Qubits entfernt, die zu Zellen gehören, die im vorgegebenen Sudoku bereits ausgefüllt sind. Da sie sowieso nicht bearbeitet werden sollen, verbrauchen sie unnötig Kapazitäten. Dann kann die Methode so angepasst werden, wie wir Menschen ein Sudoku-Rätsel auch lösen würden: In den leeren Feldern **ausgeschlossene Optionen zu streichen**. Ein Beispiel dafür gibt die folgende Abbildung; in der obersten linken Zelle etwa ist nur eine 4 möglich, da in der zugehörigen Zeile bereits die 2 und die 3 und der ersten Spalte eine 1 steht."
+                    },
+                    "image-6": {
+                        "asset": "assets/images/lessons/exclude_digits.png",
+                        "caption": "Mit Hilfe der vorgegebenen Einträge können wir viele Möglichkeiten eliminieren",
+                        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten jeweils vier von eins bis vier bezifferte Kreise, von denen manche durchgestrichen sind."
+                    },
+                    "paragraph-13": {
+                        "text": "Übrig bleibt nur eine Handvoll von Optionen, in unserem Beispiel 11 an der Zahl. Diese können wir als unsere neuen Qubits betrachten und nach dem Schema $$q_{xyz}$$ benennen ($$x$$ = Zeilenindex, $$y$$ = Spaltenindex, $$z$$ = Ziffer der Option). Damit haben wir also die benötigte Anzahl von Qubits von 64 auf 11 reduziert. Der letzte Schritt ist es, die Paare von Qubits zu markieren, die nach den Sudoku-Regeln **nicht zusammen** in der Lösung auftreten dürfen:"
+                    },
+                    "image-7": {
+                        "asset": "assets/images/lessons/qubit_relationships.png",
+                        "caption": "Die Pfeile zeigen jeweils auf ein Paar von Qubits, die sich gegenseitig ausschließen, z.B. weil sie in der selben Zeile die gleiche Ziffer repräsentieren",
+                        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten mit q benannte Variablen und zweiendige, blaue Pfeile, die jeweils auf zwei verschiedene Variablen zeigen."
+                    },
+                    "paragraph-14": {
+                        "text": "Grundsätzlich soll das Eintragen von Ziffern durch negative Koeffizienten belohnt werden, regelwidrige Paare werden aber mit einer positiven Strafe belegt. Nun müssen wir die Koeffizienten nur noch in die Hamilton-Matrix eintragen — und fertig!"
+                    },
+                    "image-8": {
+                        "asset": "assets/images/lessons/optimized_hamiltonian.png",
+                        "caption": "Der finale, optimierte Sudoku-Hamiltonian",
+                        "alttext": "Zahlentabelle der Größe elf mal elf Zellen, dessen Zeilen und Spalten mit nummerierten q-Variablen beschriftet sind; gefüllt mit Nullen, in der Hauptdiagonale mit minus eins und in der oberen Dreieckshäfte vereinzelt mit eins."
+                    },
+                    "paragraph-15": {
+                        "text": "Dieses Vorgehen ist ein Paradebeispiel, wie sich ein QUBO-Problem optimieren lässt, wenn man nicht den Überblick darüber verliert, welche Lösungen erlaubt sind und welche nicht. Die fertige Matrix ist fast **36-mal kleiner** als die vorherige und ist relativ spärlich, sodass der Quantenannealer sie einfacher lösen können sollte. Die Optimierung durch das Ausschlussverfahren ist umso effektiver, je mehr Einträge im ursprünglichen Sudoku vorgegeben werden."
+                    }
+                }
+            },
+            "lesson-PBv": {
+                "title": "Experimentelle Ergebnisse",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Differenzen in den Energieniveaus"
+                    },
+                    "paragraph-1": {
+                        "text": "Aus der Quantenphysik wissen wir, dass das Springen in andere Energieniveaus durch den Tunneleffekt wahrscheinlicher ist, je höher ihre Dichte und demzufolge, je geringer die Distanz zwischen ihnen ist. Für den Quantenannealer bedeutet das, dass die Wahrscheinlichkeit für **nicht optimale Ergebnisse** wächst. Die Lösungen werden bereits beim Eintreffen nach aufsteigender Energie sortiert; oft ist es daher hilfreich, die besten $$n$$ Lösungen herauszusuchen und ihr Energiedelta $$\\delta E$$, d.h. ihre Differenz zur theoretisch optimalen Energie zu betrachten. Bei unserem naiven Ansatz ergibt sich folgendes Bild:"
+                    },
+                    "interactive-1": {
+                        
+                    },
+                    "paragraph-2": {
+                        "text": "Bei dieser Art der Auswertung muss zuerst die geringste mögliche Energie anhand der QUBO-Gleichung festgestellt werden, um sie als Vergleichsbasis benutzen zu können. Ein Blick auf den 64×64-Hamiltonian des naiven Algorithmus verrät uns: Der Annealer muss alle Kästchen des Sudokus mit einer Ziffer belegen, ohne Strafen einzufahren. Für jede Belegung gibt es eine Belohnung von -4, also ist die optimale Energie $$(-4)\\times16=-64$$. "
+                    },
+                    "paragraph-3": {
+                        "text": "Das Diagramm zeigt, um wie viel die Lösungen, die das Optimum knapp verfehlen, genau danebenliegen. Dass der Sprung von der besten zur zweitbesten größer ist als zwischen den Lösungen danach, zeigt, dass dort die **Energielücke größer** ist — dies ist zu unserem Vorteil, da dadurch die Wahrscheinlichkeit sinkt, dass das quantenmechanische System zu einer nicht-optimalen Lösung tunnelt."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Wie groß ist der Optimierungsgrad?"
+                    },
+                    "paragraph-4": {
+                        "text": "Abschließend ein Vergleich zwischen dem naiven und dem optimierten Ansatz, wie viele der 2500 Messungen erfolgreich die geringste Energie gefunden haben."
+                    },
+                    "interactive-2": {
+                        
+                    },
+                    "paragraph-5": {
+                        "text": "Der Unterschied ist bemerkenswert, jedoch aufgrund der unterschiedlichen Größe der Hamiltonians nicht überraschend. Für das 4×4-Beispielsudoku der Lektion konnte noch mit beiden Ansätzen die korrekte Lösung gefunden werden, größere Rätsel werden aber **nur mit dem ausschlussbasierten Verfahren** lösbar sein (solange genug Felder vorgegeben sind)."
+                    }
+                }
+            },
+            "lesson-kJN": {
+                "title": "Bonus: Schlussfazit und Gratulation!",
+                "content": {
+                    "paragraph-1": {
+                        "text": "**Herzlichen Glückwunsch!** Du hast es bis zum Ende des Kurses geschafft. Hoffentlich hast du dabei viel Neues lernen und ein Gefühl dafür bekommen können, wozu Quantencomputer fähig sind. Hier ist unsere Einschätzung dazu:"
+                    },
+                    "paragraph-2": {
+                        "text": "Da jährlich neue Meilensteine erreicht werden, ist Quantencomputing ist eine sich rasant entwickelnde Technologie, die unser Leben stark beeinflussen wird. Es ist derzeit eines unserer vielversprechendsten Lösungen für die Klasse der Optimierungsproblem insgesamt, weshalb sich die weitere Forschung an Quantenalgorithmen u.a. für das Traveling Salesman-Problem und andere Aufgaben auf jeden Fall lohnt."
+                    },
+                    "paragraph-3": {
+                        "text": "Dennoch ist es wichtig, auch die Grenzen anzuerkennen. Bis diese Methode auf alltags- und industrierelevante Aufgabenstellungen angewandt werden kann, müssen noch viele Fortschritte gemacht werden. Obschon seiner (noch) begrenzten Kapazität und seiner Fehlerquote hat der Quantenansatz jedoch ein großes Potenzial für den Einsatz im wirklichen Leben, da in der Industrie meistens nicht unbedingt die beste, sondern eine ausreichend gute Lösung benötigt wird und die **Geschwindigkeit**, mit der sie gefunden wird, viel wichtiger ist als ihre **Genauigkeit**. Allem voran Quantenannealer stellen daher eine große Chance dar, die Herstellungs-, Logistik- und Forschungsprozesse in Zukunft erheblich zu beschleunigen."
+                    },
+                    "paragraph-4": {
+                        "text": "Wir hoffen, dass dir die App gefällt. Wenn du Feedback hast, laden wir dich dazu ein, sie im Hilfe-Center oder auf unserer Website mitzuteilen. Danke, dass du Quantos nutzt — und ein Hoch auf deinen Wissensdurst!"
+                    },
+                    "sectiontitle-1": {
+                        "title": "Danksagungen"
+                    },
+                    "paragraph-5": {
+                        "text": "Dankeschön an alle, die die Forschung von Quantos unterstützt haben, insbesondere **DWave Systems Inc.** und der **Jülich Supercomputing Centre** des Forschungszentrums Jülich. Alle Berechnungen und Experimente für diese Kursinhalte wurden mit Hilfe von **JUNIQ** (Jürlich Unified Infrastructure for Quantum Computing) und derer virtuellen **JUPSI**-Architektur durchgeführt."
+                    },
+                    "paragraph-6": {
+                        "text": "Ein besonderer Dank geht an **Dennis Willsch** und **Kristen Michielsen** vom JSC für ihre großzügige Unterstützung, Beratung und Koordination."
+                    },
+                    "paragraph-7": {
+                        "text": "Danke auch an **René Grünbauer** vom Gymnasium der Regensburger Domspatzen, der das Projekt durch Materialien und seinen hervorragenden Ideen ermöglicht hat."
                     }
                 }
             }
