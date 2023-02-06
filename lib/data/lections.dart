@@ -87,7 +87,7 @@ final List<Lection> lections = [
       ),
       Lesson(
         id: "lNJ",
-        readTimeInMinutes: 4,
+        readTimeInMinutes: 5,
       ),
       Lesson(
         id: "56h",

@@ -656,9 +656,9 @@
                         "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten C minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
                     },
                     "image-1": {
-                        "asset": "assets/images/lessons/TODO.png",
-                        "caption": "TODO",
-                        "alttext": "TODO"
+                        "asset": "assets/images/lessons/matrix_multiplication.png",
+                        "caption": "Die Matrixmultiplikation ist ein weiterer Weg, um die Kosten zu berechnen. Links der normale, unten der transponierte Antwortvektor",
+                        "alttext": "Zahlengitter, an dessen linker Seite eine vertikale und an dessen Unterseite eine horizontale Zahlenreihe angelegt ist."
                     }
                 }
             }
@@ -675,9 +675,9 @@
                         "text": "Stell dir vor, du bist der Vertreter eines großen Unternehmens, welches dich auf eine Geschäftsreise durch seine wichtigsten Standorte schickt. Zufälligerweise befinden sich diese in acht Hauptstädten, die über ganz Europa verteilt sind. Deine Firma will natürlich so viel Zeit wie möglich sparen. Wenn du von Berlin aus startest, jede Stadt genau einmal besuchst und anschließend nach Berlin zurückkehrst, in welcher Reihenfolge solltest du die Städte besuchen, um die Reise **so kurz wie möglich** zu halten?"
                     },
                     "image-1": {
-                        "asset": "assets/images/lessons/TODO.png",
-                        "caption": "TODO",
-                        "alttext": "TODO"
+                        "asset": "assets/images/lessons/europe_map.png",
+                        "caption": "Berlin, Wien, Paris und Bucharest — diese und weitere Städte sollen bei der Rundreise passiert werden",
+                        "alttext": "Vereinfachte Karte von Kontinentaleuropa mit Markern an den acht Städten Berlin, Wien, Bucharest, Rom, Zürich, Paris, London und Lissabon."
                     },
                     "paragraph-2": {
                         "text": "Das ist die Frage, mit der sich das **Traveling-Salesman-Problem** (zu Deutsch: \"Problem des Handelsreisenden\", Abkürzung: TSP) beschäftigt. Oder, allgemeiner ausgedrückt: Wie lautet die kürzeste mögliche Route, die jede Stadt genau einmal besucht und zur Ausgangsstadt zurückführt, wenn eine Liste von Städten und die Entfernungen zwischen jedem Städtepaar gegeben ist? Als praktisches Alltagsproblem schon seit dem 17. Jahrhundert immer wieder erwähnt, wurde es erstmals um 1930 vom österreichischen Mathematiker Karl Weber als mathematisches Optimierungsproblem formuliert und ausgearbeitet. Es ist in zahlreichen realen Anwendungen zu finden, z.B. bei der Planung von Lieferketten, der Renovierung von Pipelines oder der Strukturanalyse von Kristallen."
@@ -689,9 +689,9 @@
                         "text": "Aber warum Optimierungsproblem? Bei solch einfachen Aufgaben wie der vorherigen ist die Lösung natürlich schnell ersichtlich: Nimmt man die Entfernungen als Luftlinien an, so wäre der kürzeste Weg derjenige, der außen herumführt."
                     },
                     "image-2": {
-                        "asset": "assets/images/lessons/TODO.png",
-                        "caption": "TODO",
-                        "alttext": "TODO"
+                        "asset": "assets/images/lessons/europe_route.png",
+                        "caption": "Die kürzeste Reise mit direkten Flügen",
+                        "alttext": "Vorherige Karte mit Linien, die die eingezeichneten Städte zu einer geschlossenen Schleife verbinden."
                     },
                     "paragraph-4": {
                         "text": "Wenn man jedoch 20, 50 oder gar 100 Städte besuchen muss, ist die Sache gar nicht mehr so einfach. Das liegt daran, dass es mit jeder neuen Stadt ein Vielfaches an neuen Möglichkeiten für eine Rundreise gibt, als bereits vorhandene Ortschaften, wodurch die Zahl der zu prüfenden Optionen rasant steigt. In unserem Beispiel mit 8 Städten haben wir 2520 Möglichkeiten zur Auswahl, aber mit 12 Städten gibt es bereits 19.958.400 verschiedene Wege (dies lässt sich durch eine Formel berechnen). Daher ist das Problem **NP-schwer**, was im Grunde bedeutet, dass ein Algorithmus, der die exakte Lösung für große Eingaben in endlicher Zeit findet, wahrscheinlich unmöglich ist."
@@ -721,6 +721,431 @@
                         "asset": "assets/images/lessons/graph_example.png",
                         "caption": "Ein simpler Graph mit 4 Knoten sowie ihren Abständen zueinander",
                         "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien mit jeweils einer Zahl daneben verbunden."
+                    },
+                    "paragraph-3": {
+                        "text": "Jeder Knoten wird als bunter Kreis dargestellt, der mit anderen Knoten durch Kanten verbunden ist, wobei die Abstände zwischen den Knoten in grau notiert sind. Im Beispiel ist jedes mögliche Knotenpaar miteinander verbunden, jede Kante kann in beide Richtungen durchlaufen werden und jeder Kante ist ein eindeutiger Distanzwert, ein sogenanntes \"Gewicht\" zugewiesen. Dies wird als **vollständiger, ungerichteter und gewichteter Graph** bezeichnet. Graphen können verschiedene Arten und Formen annehmen, aber in diesem Kurs konzentrieren wir uns nur auf diese eine Kategorie, da er der Standarddefinition des TSP entspricht. Mathematisch gesehen lässt sich ein solcher Graph wie folgt charakterisieren:"
+                    },
+                    "equation-1": {
+                        "tex": "G=\\left(V,E,d\\right)",
+                        "alttext": "G=(V,E,d)"
+                    },
+                    "equation-2": {
+                        "tex": "V=\\left{v_1,v_2,...\\right}",
+                        "alttext": "V={v₁,v₂,...,vₙ}"
+                    },
+                    "equation-3": {
+                        "tex": "E\\subseteq\\left{\\left{v_i,v_j\\right}|\\left(v_i,v_j\\right)\\in V^2\\wedge v_i\\neq v_j\\right}",
+                        "alttext": "E⊆{{vᵢ,vⱼ}|(vᵢ,vⱼ)∈V²∧vᵢ≠vⱼ}"
+                    },
+                    "equation-4": {
+                        "tex": "d:E\\to\\mathbb{R}",
+                        "alttext": "d:E→ℝ"
+                    },
+                    "paragraph-4": {
+                        "text": "Ganz schön viel auf einmal; hier also Schritt für Schritt:"
+                    },
+                    "paragraph-5": {
+                        "text": "- Ein Graph $$G$$ besteht aus drei Komponenten: $$V$$, die Knoten (von Englisch \"vertices\"), $$E$$, die Kanten (von Englisch \"edges\"), und $$d$$, die Distanzfunktion. Die Notation mit () als ein Tripel verdeutlicht, dass sie zusammengehören.\n- $$V$$ bezeichnet die Menge der Knoten, aus denen ein Graph besteht. Mengen erkennt man an den geschweiften Klammern {}.\n- $$E$$ ist die Menge der Kanten, dargestellt als nicht geordnete Knotenpaare $${v_i,v_j}$$. Der senkrechte Strich | definiert, welche Bedingungen diese Paare erfüllen müssen: Sowohl $$v_i$$ als auch $$v_j$$ müssen Teil von $$V^2$$ sein (\"hoch zwei\" steht in der Mengenschreibweise für das kartesische Produkt, d.h. die Menge aller möglichen Kombinationen der Elemente einer Menge) und $$v_i$$ darf nicht gleich $$v_j$$ sein, um Schleifen zu vermeiden.\n- $$d$$ ist eine Funktion, die jeder Kante (also einem ungeordneten Paar von Knoten) eine reelle Zahl zuordnet, in diesem Fall die Länge."
+                    },
+                    "paragraph-6": {
+                        "text": "Unser Beispielgraph kann also wie folgt beschrieben werden:"
+                    },
+                    "equation-5": {
+                        "tex": "V=\\left{A,B,C,D\\right}",
+                        "alttext": "V={A,B,C,D}"
+                    },
+                    "equation-6": {
+                        "tex": "E=\\left{\\left{A,B\\right},\\left{A,C\\right},\\left{A,D\\right},\\left{B,C\\right},\\left{B,D\\right},\\left{C,D\\right}\\right}",
+                        "alttext": "E={{A,B},{A,C},{A,D},{B,C},{B,D},{C,D}}"
+                    },
+                    "equation-7": {
+                        "tex": "d:E\\to\\begin{cases}5.7 & \\text{wenn }E=\\left\\{A,B\\right\\} \\\\ 2.5 & \\text{wenn }E=\\left\\{A,C\\right\\} \\\\ 3.3 & \\text{wenn }E=\\left\\{A,D\\right\\} \\\\ 3.4 & \\text{wenn }E=\\left\\{B,C\\right\\} \\\\ 5.6 & \\text{wenn }E=\\left\\{B,D\\right\\} \\\\ 4.1 & \\text{wenn }E=\\left\\{C,D\\right\\}\\end{cases}",
+                        "alttext": "d:E→{5.7 wenn E={A,B},2.5 wenn E={A,C},3.3 wenn E={A,D},3.4 wenn E={B,C},5.6 wenn E={B,D},4.1 wenn E={C,D}"
+                    },
+                    "paragraph-7": {
+                        "text": "Pfade sind dabei eine Reihenfolge von Knoten, die nacheinander besucht werden. Ein Pfad, der alle Knoten genau einmal passiert, ohne Kanten mehrfach zu durchlaufen, heißt **Hamiltonpfad**. Ein Hamiltonpfad, dessen Start- und Endpunkt gleich sind, heißt wiederum geschlossener Hamiltonpfad oder **Hamiltonkreis** — beim TSP wird derjenige davon gesucht, bei der die Summe der Distanzen aus der Distanzfunktion so gering wie möglich ist. Sowohl ersteres als auch letzteres sind bei vollständigen Graphen in jedem Fall vorhanden."
+                    },
+                    "interactive-1": {
+
+                    }
+                }
+            },
+            "lesson-Bgf": {
+                "title": "Umwandlung der Problemstellung für Quantenannealer",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Die Erstellung eines Quantenlösungsverfahrens für das TSP ist ein spannendes Beispiel für die Vielseitigkeit der Quanteninformatik und eine Demonstration, wie sie zur Verbesserung alltäglicher Aufgaben beitragen kann. In den beiden vorangegangenen Lektionen haben wir das **Spielbrettmodell** für QUBO-Probleme ausführlich kennengelernt; diese möchten wir auch dieses Mal nutzen, die Umformung ist dieses Mal aber weniger offensichtlich. Der erste Schritt ist also die Frage, wie man die Kernkomponente des TSP, den Graphen, in ein QUBO-Problem umwandelt."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Vom Graphen zur Matrix"
+                    },
+                    "paragraph-2": {
+                        "text": "Wie kommen wir am einfachsten von einem Graphen zu einem quadratischen Gitter mit nummerierten Zellen? Die einfachste Instanz des TSP und unser erstes Beispiel ist ein Graph mit vier Städten (da dies die minimale Anzahl von Eckpunkten ist, die andere Lösungen als das Optimum zulässt):"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/example_tour.png",
+                        "caption": "Das ist nicht die optimale Tour, aber ein gültiger Hamiltonpfad",
+                        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach B nach D nach C ist rosa hervorgehoben."
+                    },
+                    "paragraph-3": {
+                        "text": "Wenn wir A als Ausgangspunkt nehmen, ist hier die Tour **A – B – D – C – A** eingezeichnet (natürlich ist auch der umgekehrte Weg A – C – D – B – A gültig). Eine mögliche Tour ist durch zwei Angaben definiert:"
+                    },
+                    "paragraph-4": {
+                        "text": "1. Die chronologische **Reihenfolge** der besuchten Städte\n2. Die **Gesamtkosten der Route**, d.h. die Summe der Länge der Kanten, die befahren werden"
+                    },
+                    "paragraph-5": {
+                        "text": "Mit Hilfe einer Matrix lässt sich der erste Punkt angehen. Eine Möglichkeit, den vorherigen Graphen zu modellieren, ist das Kodieren der Besuchsreihenfolge in einer Tabelle."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/tour_matrix.png",
+                        "caption": "So kann eine Reihe an besuchten Städten numerisch kodiert werden",
+                        "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1A, 2B, 3D und 4C ist jeweils eine Eins eingetragen."
+                    },
+                    "paragraph-6": {
+                        "text": "Die Zeilen repräsentieren die einzelnen Städte, während die Spalten die \"Zeitpunkte\", d.h. die einzelnen Schritte, markieren. Ein Eintrag von 1 im Feld $$m_{ij}$$ bedeutet, dass die $$i$$-te Stadt im $$j$$-ten Zeitschritt besucht wird. Die fünfte Spalte würde die Rückkehr zur Ausgangsstadt markieren, aber da sie immer eine exakte Kopie der ersten Spalte wäre, kann sie weggelassen werden, um die Daten zu sparen. Nun haben wir eine Art Abstraktion definiert, die auf Touren in Graphen beliebiger Größe angewendet werden kann. Diese wird fortan **Tour-Matrix** genannt."
+                    },
+                    "interactive-1": {
+
+                    },
+                    "paragraph-7": {
+                        "text": "Vielleicht siehst du bereits, worauf das hinausläuft: In der Tat sieht dies sehr ähnlich aus wie das Damen-Problem aus der letzten Lektion. Die 1-en sind hierbei quasi Spielsteine, die auf ein Spielbrett gelegt werden können, um zu markieren, welche Stadt zu welchem Zeitschritt gehört. Daraus können wir im nächsten Schritt die QUBO-Gleichung extrahieren."
+                    }
+                }
+            },
+            "lesson-lNJ": {
+                "title": "QUBO-Gleichung und Hamilton-Matrix",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Wie findet man die QUBO-Regeln?"
+                    },
+                    "paragraph-1": {
+                        "text": "Ähnlich wie beim N-Damen-Problem ist es ratsam, **Muster und Regelmäßigkeiten** in der gewählten Darstellungsform zu suchen. Aus der Tour-Matrix lassen sich folgende Regeln für die Belegung ableiten:"
+                    },
+                    "paragraph-2": {
+                        "text": "1. Es ist **genau eine** Belegung pro Zeile erlaubt (da es nicht möglich ist, eine Stadt zwei- oder mehrmal zu besuchen)\n2. Es ist **genau eine** Belegung pro Spalte erlaubt (da es nicht möglich ist, mehrere Städte gleichzeitig zu besuchen)"
+                    },
+                    "paragraph-3": {
+                        "text": "Betrachten wir unsere Matrix erneut als 4×4-Gitter, dessen Felder in alphabetischer Reihenfolge benannt sind. Mittlerweile sind wir schon geübt darin, die obigen Regeln als QUBO-Gleichung umzusetzen!"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/tour_matrix_variables.png",
+                        "caption": "Eine Tour-Matrix mit Variablen als Felder",
+                        "alttext": "Gitter, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; die Felder sind von links oben nach rechts unten in alphabetischer Reihenfolge mit a bis p beschriftet."
+                    },
+                    "equation-1": {
+                        "tex": "f\\left(a,...,p\\right)=\\left(a+b+c+d-1\\right)^2+\\left(e+f+g+h-1\\right)^2+\\left(i+j+k+l-1\\right)^2+\\left(m+n+o+p-1\\right)^2+\\left(a+e+i+m-1\\right)^2+\\left(b+f+j+n-1\\right)^2+\\left(c+g+k+o-1\\right)^2+\\left(d+h+l+p-1\\right)^2=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8",
+                        "alttext": "f(a,...,p)=(a+b+c+d-1)²+(e+f+g+h-1)²+(i+j+k+l-1)²+(m+n+o+p-1)²+left(a+e+i+m-1)²+(b+f+j+n-1)²+(c+g+k+o-1)²+(d+h+l+p-1)²=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8"
+                    },
+                    "sectiontitle-2": {
+                        "title": "Und was ist mit den Wegkosten?"
+                    },
+                    "paragraph-4": {
+                        "text": "Aber das ist nur die halbe Miete. Da es auch unser Ziel ist, die **Länge der Tour zu minimieren**, müssen auch die Streckenkosten in der QUBO-Gleichung berücksichtigt werden. Da es sich hierbei glücklicherweise ebenfalls um eine Kostenfunktion handelt, können die Werte übernommen und zu den Gesamtkosten addiert werden. Aber wie bestimmt man, welche Werte man wann hinzufügt?"
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/tour_costs.png",
+                        "caption": "Alle Möglichkeiten, von Stadt B in andere Städte zu kommen, unabhängig vom Zeitpunkt.",
+                        "alttext": "Das vorherige Gitter mit alphabetischer Beschriftung, wo von jedem Feld der zweiten Reihe aus Pfeile zu allen Feldern aus der jeweils nächsten Spalte, die nicht zur zweiten Zeile gehören, zeigen."
+                    },
+                    "paragraph-5": {
+                        "text": "Eine bestimmte Kante wird genau dann befahren, wenn ihr **Anfangsknoten** in einer Spalte und ihr **Zielknoten** in der darauffolgenden Spalte belegt sind. Die Pfeile stellen hier alle Kanten dar, die von der Stadt B zu anderen Knoten führen. Da wir anfangs nicht wissen, wann wir B besuchen werden, muss dies für alle Zeitschritte wiederholt werden."
+                    },
+                    "paragraph-6": {
+                        "text": "Die Kante $$\\overline{BA}$$ mit den Kosten von 6,6 entspricht zum Beispiel $$(e,b)$$, $$(f,c)$$, $$(g,d)$$ und $$(h,a)$$. Wenn wir den Kostenbetrag mit diesen Variablenpaaren multiplizieren (dies ist mit den Regeln von QUBO-Problemen vereinbar), wird sie nur addiert, wenn beide Felder besucht werden, d.h. gleich 1 sind. Außerdem besteht keine Gefahr, die Kosten für eine bestimmte Kante mehr als einmal zu addieren: Da es verboten ist, eine Stadt mehr als einmal zu besuchen, wird bei einer gültigen Belegung, wenn überhaupt, nur einer dieser vier Fälle eintreten. So sieht also die zweite Hälfte der QUBO-Gleichung aus:"
+                    },
+                    "equation-2": {
+                        "tex": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la$+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi"
+                    },
+                    "sectiontitle-3": {
+                        "title": "Ein kleiner Haken"
+                    },
+                    "paragraph-7": {
+                        "text": "Dieser Teil wird einfach zum Rest der Gleichung hinzugefügt und muss für jede TSP-Instanz **neu generiert** werden. Es gibt aber noch ein Problem. Würde man das QUBO-Problem schon zum jetzigen Zeitpunkt an den Quantenannealer senden, sähen die Ergebnisse ungefähr so aus:"
+                    },
+                    "image-3": {
+                        "asset": "assets/images/lessons/tsp_results.png",
+                        "caption": "Die Lösungsvektoren des Quantenannealers für die jetzige QUBO-Gleichung",
+                        "alttext": "Tabelle mit fünf Zeilen, die jeweils 16 binäre Zahlen beinhalten, von denen immer drei Stück Eins und der Rest Null sind; zweite Spalte ist beschriftet mit Energie, die immer minus vier beträgt."
+                    },
+                    "paragraph-8": {
+                        "text": "Die Tabelle zeigt die besten fünf aus den Ergebnissen des D-Wave-Annealers. Alle davon besuchen nur **drei oder noch weniger** Städte. Das liegt daran, dass die Koeffizienten, die den Annealer zwingen, die Regel \"Genau eine Belegung pro Zeile/Spalte\" zu befolgen, -2 oder 2 sind – zu klein im Vergleich zu den Entfernungen zwischen den Knoten, die zwischen 3 und 7 liegen. Wenn der Annealer weniger Zellen belegt, **überwiegt** die Energie, die er durch das Weglassen von Kanten spart, bei weitem die Strafe, die er für den Besuch weniger Städte erhält."
+                    },
+                    "paragraph-9": {
+                        "text": "Um dieses Problem zu lösen, müssen wir unsere Koeffizienten entsprechend skalieren: Wenn wir alle Koeffizienten mit demselben Faktor multiplizieren, bleiben die Beziehungen erhalten, was bedeutet, dass wir bestimmte Teile der Gleichung skalieren können, um diese stärker zu **gewichten**. Als allgemeine Faustregel gilt: Wenn $$s$$ = die Länge der längsten möglichen Tour im Graphen und $$n$$ = die Anzahl der Städte ist, sollten alle Koeffizienten $$h_{ij}$$ aus der ersten Hälfte der QUBO-Gleichung nach dieser Formel berechnet werden:"
+                    },
+                    "equation-3": {
+                        "tex": "h_{ij}=\\frac{\\left(\\frac{3\\times s}{n}\\right)}{2}",
+                        "alttext": "hᵢⱼ=((3×s)/n)/2"
+                    },
+                    "paragraph-10": {
+                        "text": "Diese Kostenfunktion sollte nun die beste (niedrigste) Energie liefern, wenn die formalen Regeln der Belegung, d.h. 1 pro Zeile und 1 pro Spalte, erfüllt sind und der Quantenannealer diejenigen Verbindungen auswählt, deren Summe gemäß den TSP-Anforderungen am kürzesten ist."
+                    },
+                    "image-4": {
+                        "asset": "assets/images/lessons/tsp_hamiltonian.png",
+                        "caption": "Die fertige Hamilton-Matrix des TSP",
+                        "alttext": "Ausschnitt aus einer Matrix, einmal mit Buchstaben als Variablennamen und einmal mit reellen Zahlenwerten ausgefüllt"
+                    },
+                    "image-5": {
+                        "asset": "assets/images/lessons/tsp_visualization.png",
+                        "caption": "Visuell dargestellt weist der Hamiltonian ein typisches Muster mit diagonalen Streifen auf",
+                        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
+                    },
+                    "sectiontitle-4": {
+                        "title": "Alles kommt zusammen"
+                    },
+                    "paragraph-11": {
+                        "text": "Mit der nun angepassten Hamilton-Matrix lässt sich auch das TSP aus unserem ursprünglichen Beispiel lösen. Schickt man diese an den DWave Advantage, ist die beste Lösung der folgende Antwortvektor:"
+                    },
+                    "equation-4": {
+                        "tex": "\\vec{q}_A=\\left[0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0\\right]",
+                        "alttext": "qₐ=[0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0]"
+                    },
+                    "paragraph-12": {
+                        "text": "Doch wie kommen wir daraus wieder an die Tour auf dem Graphen? Dieser Prozess nennt sich **reverse engineering** (\"umgekehrtes Entwickeln\"). Der Antwortvektor $$q_A$$ (der die Werte der Variablen a bis n beinhaltet) muss zunächst in die Tourmatrix übersetzt werden, indem die Werte einzeln in ein 4×4-Gitter übertragen werden."
+                    },
+                    "image-6": {
+                        "asset": "assets/images/lessons/solution_matrix.png",
+                        "caption": "Die Tourmatrix, der die Werte aus dem Antwortvektor beinhaltet",
+                        "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1D, 2B, 3C und 4A ist jeweils eine Eins eingetragen."
+                    },
+                    "paragraph-13": {
+                        "text": "Durch das Hinzufügen der Zeitschritt- und Städtebezeichnungen wird die Reihenfolge der besuchten Städte sichtbar: D – B – C – A (– D). Werfen wir noch einmal einen Blick auf den Graphen: Tatsächlich, er hat den kürzesten Weg gefunden!"
+                    },
+                    "image-7": {
+                        "asset": "assets/images/lessons/solution_tour.png",
+                        "caption": "Korrekte Lösung des TSP-Problems aus der letzten Einheit, visualisiert am Graphen",
+                        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach D nach B nach C und zurück nach A ist rosa hervorgehoben."
+                    }
+                }
+            },
+            "lesson-56h": {
+                "title": "Wie man Messungen verbessern kann",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Bei der Bedienung des DWave Advantage passiert viel Arbeit im Hintergrund. Ein Beispiel dafür, das wir bereits kennen, ist das Embedding auf der QPU; davon bekommt man bei einer standardmäßigen Anfrage meistens nicht viel mit, da sie von der Kommunikationsschnittstelle automatisch berechnet wird. Es gibt aber auch statische Werte, sogenannte **Hyperparameter**, die die Leistung des Algorithmus direkt beeinflussen und nur durch Ausprobieren optimiert werden können. In Verbindung mit der Auswertung unseres TSP-Algorithmus werden wir sie dieses Mal näher beleuchten."
+                    },
+                    "sectiontitle-1": {
+                        "title": "Das richtige Benchmarking"
+                    },
+                    "paragraph-2": {
+                        "text": "Doch zunächst stellt sich die Frage: **Mit welchen Graphen soll der Quantenannealer geprüft werden?** Im Gegensatz zum Schachbrett beim N-Damen-Problem ist diese Datenstruktur viel flexibler und es ist nicht nur die Anzahl der Städte, sondern auch deren Lage entscheidend. Ein Ansatz für eine Vereinheitlichung ist es daher, Graphen in Form **regelmäßiger Polygone** (also Vielecke mit gleicher Seitenlänge) zu verwenden, beginnend mit einem Dreieck (die einfachste Form mit einem gültigen Hamiltonkreis) bis hin zu einem Achteck."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/benchmark_graphs.png",
+                        "caption": "Regelmäßige Polygone sind besonders geeignet, Algorithmen für Routenfindung zu testen",
+                        "alttext": "Dreieck, Viereck, Fünfeck, Sechseck, Siebeneck und Achteck mit jeweils gleicher Seitenlänge, dessen Ecken mit bunten Kreuzen markiert sind."
+                    },
+                    "paragraph-3": {
+                        "text": "Die Städte sind so gelegt, dass die Kantenlänge der Polygone 0,5 beträgt. Das hat gleich mehrere Vorteile:"
+                    },
+                    "paragraph-4": {
+                        "text": "1.Die kürzeste Tour und damit die richtige Lösung des Traveling-Salesman-Problems ist immer der **Umfang des Vielecks**.\n2. Es kann einfach ermittelt werden, ob der Quantenannealer korrekt liegt, da die optimale Energie durch die immer gleiche Streckenlänge mit einer Formel **hergeleitet** werden kann, die von der Anzahl der Ecken des Vielecks $$n$$ abhängt ($$h$$ ist der skalierte Koeffizient, der die Belegung von Städten begünstigt)."
+                    },
+                    "equation-1": {
+                        "tex": "\\min E=h\\times n+\\frac{1}{2}\\times n=\\left(h+\\frac{1}{2}\\right)\\times n",
+                        "alttext": "min E=h×n+½×n=(h+½)×n"
+                    },
+                    "sectiontitle-2": {
+                        "title": "Optimierung der Hyperparameter"
+                    },
+                    "paragraph-5": {
+                        "text": "Die für unser Problem wichtigsten Hyperparameter sind **chain strength** und **annealing time**. Ersteres steht für die Gleichheitskopplungsstärke zwischen Qubits, die eine Kette auf der QPU bilden, d.h. die **Stärke der Magnetfelder**, die die Qubits zwingen, identische Werte anzunehmen. In ähnlicher Weise legt letzteres die **Zeitdauer** fest, die die Qubits sich ihrem optimalen Energiezustand annähern dürfen, bevor sie ausgelesen werden und die Superposition kollabiert. Für jeden dieser Werte gibt es Standards, die jedoch nicht immer die besten Ergebnisse liefern müssen."
+                    },
+                    "paragraph-6": {
+                        "text": "Der Optimierungsprozess ist langwierig und benötigt viele Daten, sie wird hier nicht tiefer behandelt; wenn du am detaillierten Verfahren interessiert bist, kannst du diese vom Download-Tab auf dem Homescreen beziehen. Unten sind die Diagramme, die den Verlauf der Erfolgsrate (dem Prozentsatz der richtigen Ergebnisse) beim DWave Advantage zeigen, wenn man die Kettenstärke erhöht — mit einer Kurve, die den Durchschnitt aus 10 verschiedenen Embeddings abbildet. Oben ist eine Lösung richtig, wenn es eine gültige Rundreise darstellt, unten, wenn es die kürzeste Rundreise ist."
+                    },
+                    "interactive-1": {
+
+                    },
+                    "paragraph-7": {
+                        "text": "Man merkt, dass stärkere Koppler bei logischen Qubits nicht immer **besser** sind: Die Genauigkeit hat bei allen Kurven einen Höhepunkt und fällt danach stetig ab. Bei größeren Stadtnetzwerken wird der Unterschied zwischen der einfacheren und der komplexeren Aufgabe immer größer, bis schließlich ab $$n=7$$ Städten der kürzeste Rundweg nicht mehr gefunden werden kann."
+                    },
+                    "paragraph-8": {
+                        "text": "Das gleiche machen wir auch mit der annealing time; die Erwartungshaltung ist logischerweise, dass der Anteil der korrekten Lösungen immer weiter zunehmen sollte, je länger der Quantencomputer Zeit für die einzelnen Anneals hat."
+                    },
+                    "interactive-2": {
+
+                    },
+                    "paragraph-9": {
+                        "text": "Unsere Annahme hat sich bestätigt, aber auch hier zeigt sich das Problem des Leistungsabfalls, wenn die Wegkosten berücksichtigt werden. Das liegt an einem Konzept, welches sich **Spärlichkeit** (auf Englisch \"sparsity\") nennt. Je spärlicher die Hamilton-Matrix ist, sprich **je mehr Nullen** sie hat, desto besser kann ein Quantenannealer sie lösen — denn wenn kein Koeffizient vorliegt, kann man mehr Koppler einsparen, wodurch die Komplexität und der Zufallsfaktor des QPU-Embeddings reduziert werden. Die Wegkosten kommen in der QUBO-Gleichung als Koeffizienten vor, die vorher 0 waren, was die Spärlichkeit der Hamilton-Matrix senkt."
+                    }
+                }
+            },
+            "lesson-IQu": {
+                "title": "Optimierungen und Erweiterungen",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Auch bei dieser Aufgabe möchten wir beispielhaft zeigen, wie man das eigene Vorgehen verbessern kann, um die theoretische Kapazitätsgrenze der vorhandenen Qubits zu überschreiten. Denn indem man die Eigenschaften des vorliegenden Optimierungsproblems analysiert und die Lösungsmenge geschickt begrenzt, kann man oft einige Qubits einsparen!"
+                    },
+                    "sectiontitle-1": {
+                        "title": "Noch mehr Daten einsparen"
+                    },
+                    "paragraph-2": {
+                        "text": "Da es sich bei TSP-Touren um geschlossene Hamiltonpfade (Schleifen) handelt, die jede Stadt besuchen, kann der Startpunkt **beliebig festgelegt** werden. Wenn wir also dem Quantenannealer diese Entscheidung abnehmen und den Startpunkt z.B. auf A setzen, können die erste Zeile und die erste Spalte der Tour-Matrix weggelassen werden, da der erste Zeitschritt somit bereits getan ist und diese Stadt im weiteren Verlauf des Pfades garantiert nicht mehr besucht wird."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/tour_optimization.png",
+                        "caption": "Wenn die erste besuchte Stadt bekannt ist, ist die Spalte und die Zeile dieses Besuchs irrelevant",
+                        "alttext": "Gitter mit alphabetischen Buchstaben von a nach p, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; die Felder 1A, 2C, 3B und 4D sind blau markiert, Zeile A und Spalte 1 sind rot schattiert."
+                    },
+                    "paragraph-3": {
+                        "text": "Hier sind wir aber noch nicht fertig, denn zusätzlich muss die Kostenfunktion so angepasst werden, dass der Weg von A nach B, A nach C usw. nur vom zweiten besuchten Knoten abhängt — die logischen Qubits für A müssen schließlich **ganz aus der QUBO-Gleichung verschwinden**, sonst war die Optimierung umsonst. Dieser Ansatz reduziert die Größe der Tour-Matrix um 1, was bedeutet, dass die Anzahl der Städte, für die der Annealer eine Lösung finden kann, auf 9 steigt."
+                    },
+                    "sectiontitle-2": {
+                        "title": "Unvollständige Graphen"
+                    },
+                    "paragraph-4": {
+                        "text": "Um den Algorithmus für reale Alltagssituationen anwendbarer zu machen, wäre es auch möglich, ihn über den Rahmen des klassischen Traveling-Salesman-Problems hinaus für **unvollständige Graphen** (bei denen nicht alle Knoten miteinander verbunden sind) zu erweitern. In der Praxis kann es oft vorkommen, dass nicht alle Knoten von jedem Punkt erreichbar sind. Wenn eine Verbindung zwischen zwei Städten nicht existiert (z.B. aufgrund der Struktur eines Straßennetzes), muss der Quantenannealer um jeden Preis davon **abgehalten** werden, sie in die Lösung einzubeziehen."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/incomplete_graph.png",
+                        "caption": "Ein Beispiel für einen unvollständigen Graph",
+                        "alttext": "Kreise, die durch graue Linien verbunden sind; zwischen manchen Kreisen besteht keine Verbindung."
+                    },
+                    "paragraph-5": {
+                        "text": "Um eine nicht existierende Kante zu repräsentieren, könnte man sie also mit einer **massiven Strafe** belegen, so dass die niedrigsten Kosten nie erreicht werden, wenn sie Teil der Tour ist. In der mathematischen Literatur wird dies üblicherweise mit einem Unendlichkeitssymbol ausgedrückt, aber in unserem Fall ist eine hohe ganze Zahl besser geeignet."
+                    },
+                    "equation-1": {
+                        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0&\\hdots\\\\0&-2&\\infty&2&\\infty\\hdots\\\\0&0&-2&\\infty&2&\\hdots\\\\0&0&0&-2&\\infty\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+                        "alttext": "H=[[-2,2,2,∞,0,⋯],[0,-2,∞,2,∞,⋯],[0,0,-2,∞,2,⋯],[0,0,0,-2,∞,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
+                    },
+                    "equation-2": {
+                        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0&\\hdots\\\\0&-2&100&2&100\\hdots\\\\0&0&-2&100&2&\\hdots\\\\0&0&0&-2&100\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+                        "alttext": "⇒[[-2,2,2,100,0,⋯],[0,-2,100,2,100,⋯],[0,0,-2,100,2,⋯],[0,0,0,-2,100,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
+                    },
+                    "paragraph-6": {
+                        "text": "Optimierungen, die über einzelne gewonnene Problemgrößen hinausgehen, sind nur möglich, wenn die Spärlichkeit der Hamilton-Matrix erhöht wird, sprich die Anzahl der Nicht-Null-Einträge tatsächlich reduziert werden."
+                    }
+                }
+            },
+            "lesson-Y7A": {
+                "title": "Bonus: Erstelle deine eigenen Graphen!",
+                "content": {
+                    "paragraph-1": {
+                        "text": "Es ist Zeit, kreativ zu werden und sich mit komplexeren Netzwerken zu beschäftigen! Jetzt, wo du diese Lektion erfolgreich abgeschlossen hast, kannst du mit größeren oder sogar selbst entworfenen TSPs experimentieren."
+                    },
+                    "paragraph-2": {
+                        "text": "Wenn du deine eigenen Netze an den Quantenannealer übermitteln möchtest, musst du sie zunächst in den Hamiltonian umwandeln. Auf Desktop steht dir dafür das Tool **Graph to Matrix** im Download-Tab des Homescreens zur Verfügung, welches einen Hamiltonian aus einem Graphen als Input generiert, so dass du diesen nicht von Hand berechnen musst."
+                    },
+                    "paragraph-3": {
+                        "text": "1. Markiere deine Städte auf der Leinwand und klicke auf \"Generate\", um die Kanten zu berechnen; der Abstand in Pixeln zwischen jedem Knoten stellt die Kosten der entsprechenden Kante dar.\n2. Der Hamiltonian wird automatisch mit der richtigen Skalierung erstellt. Klicke auf \"Save Hamiltonian...\", um ihn auf deinem Computer im NumPy-Matrixformat zu speichern. 3.\nKlicke auf \"Save Vertices...\", um das Layout deines Graphen zu speichern; dies wird später für die Auswertung der Ergebnisse benötigt."
+                    },
+                    "paragraph-4": {
+                        "text": "Für die Übermittlung des Hamiltonians steht dir der Coding-Tab auf dem Homescreen zur Verfügung. Für den echten Zufallsfaktor ist es empfehlenswert, den DWave Advantage-Modus zu verwenden; dafür brauchst du einen API-Key, der jedem DWave Leap-Account zugeordnet ist. Eine entsprechende Anleitung zur Erstellung und korrekten Verwendung findet sich auf unserer Website."
+                    },
+                    "paragraph-5": {
+                        "text": "Wenn du die Ergebnisse visualisieren möchtest, lade auf Desktop das Tool **Path Visualizer** herunter, welches die Ergebnisse des Annealers einliest und die entsprechenden Pfade einzeichnet. Du kannst zwischen den Lösungen hin- und herwechseln und ihre Energie im Textausgabefenster vergleichen."
+                    },
+                    "paragraph-6": {
+                        "text": "**Viel Spaß beim Experimentieren!**"
+                    }
+                }
+            }
+        }
+    },
+    "lection-BiE": {
+        "title": "Sudoku-Rätsel Lösen",
+        "description": "Jeder kennt sie: Die magischen Zahlentabellen aus Japan. Schaffen sie es auch, das Gehirn von Quantenannealern zu fordern?",
+        "content": {
+            "lesson-2D9": {
+                "title": "Einführung in die Prinzipien von Sudoku",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Uralt und doch neu"
+                    },
+                    "paragraph-1": {
+                        "text": "Wenn es um **Sudoku** geht, hat man es wahrlich mit einem wiederauferstandenen Fossil zu tun. Es ist eines der populärsten Logikrätsel unserer Zeit — jedoch definitiv keine neue Erfindung. Schon vor über 4000 Jahren wurde im antiken China fieberhaft Sudoku gespielt; damals war es unter dem Namen \"magische Quadrate\" bekannt. In diesen Jahrtausenden faszinierte das Spiel über alle Epochen, nicht zuletzt, da es sich einfach nie zu wiederholen scheint. Mittlerweile wissen wir, dass beim klassischen 9×9-Sudoku **sechs Trilliarden individuelle Konstellationen** möglich sind — richtig gelesen, eine Sechs mit 21 Nullen. Damit könnte die gesamte Erdbevölkerung Millionen Jahre lang täglich mehrere Sudokus lösen, ohne je zwei identischen zu begegnen."
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/sudoku_example_empty.png",
+                        "caption": "Ein Beispiel für ein klassisches 9×9-Sudoku in Ausgangslage",
+                        "alttext": "Quadrat, das in neun mal neun kleine Quadrate zerteilt ist; in einigen Feldern sind Ziffern von eins bis neun in dicker brauner Schrift eingetragen."
+                    },
+                    "paragraph-2": {
+                        "text": "Die Regeln des Rätsels sind einfach wie genial: In einem Gitter der Größe 9×9 Felder muss in jedes Feld eine Ziffer von 1 bis 9 so eingetragen werden, dass:"
+                    },
+                    "paragraph-3": {
+                        "text": "- in jeder Zeile jede Ziffer **genau einmal** vorkommt und\n- in jeder Spalte jede Ziffer **genau einmal** vorkommt."
+                    },
+                    "paragraph-4": {
+                        "text": "Zusätzlich ist das Gitter in 9 Unterquadrate der Größe 3×3 unterteilt; in diesen darf ebenfalls jede Ziffer genau einmal vorkommen. Andere Sudoku-Größen, in denen diese Art von Unterteilung möglich ist, sind 4×4 und 16×16 Felder. Um einen Anhaltspunkt zum Ausfüllen zu geben, sind einige Ziffern vorgegeben, von denen die restlichen den obigen Regeln folgend hergeleitet werden müssen."
+                    },
+                    "image-2": {
+                        "asset": "assets/images/lessons/sudoku_example_solved.png",
+                        "caption": "Das Sudoku von vorhin — vollständig ausgefüllt und damit gelöst",
+                        "alttext": "Quadrat, das in neun mal neun kleine Quadrate zerteilt ist; in einigen Feldern sind Ziffern von eins bis neun in dicker brauner Schrift eingetragen, in den restlichen Ziffern in dünner roter Schrift."
+                    },
+                    "paragraph-5": {
+                        "text": "Da es also eine gewaltige Menge an Möglichkeiten gibt und die Einträge voneinander abhängen, kann das Rätsel auch als Optimierungsproblem aufgefasst werden. Hier bieten Quantenannealer ein gewaltiges Potenzial: Mit ihnen wäre es nicht nur möglich, Sudokus unabhängig von ihrer Größe auf einen Schlag auszufüllen, sondern aufgrund der Superposition der Qubits alle möglichen Konstellationen **zur gleichen Zeit** zu betrachten. Aber trifft das alles wirklich zu? Diese abschließende Lektion möchte dieser Fragestellung nachgehen und aufzeigen, wie wichtig es dabei ist, nicht den Überblick über das zu lösende Problem zu verlieren."
+                    }
+                }
+            },
+            "lesson-A3P": {
+                "title": "QUBO-Gleichung: Naive vs. optimierte Formulierung",
+                "content": {
+                    "sectiontitle-1": {
+                        "title": "Umwandlung in ein QUBO-Problem"
+                    },
+                    "paragraph-1": {
+                        "text": "Der erste Schritt ist wie immer das Finden einer gültigen Kostenfunktion, die genau dann ihren geringsten Wert annimmt, wenn alle Regeln des Sudoku befolgt werden. Mittlerweile solltest du schon etwas Übung in der Aufstellung von QUBO-Problemen haben und vielleicht erkennen, dass auch hier, ähnlich wie beim N-Damen-Problem, ein **Gitter** vorliegt, den wir mit benannten Qubits belegen können. Nehmen wir als Beispiel für diese Lektion das folgende, unvollständige Sudoku der Größe 4×4:"
+                    },
+                    "image-1": {
+                        "asset": "assets/images/lessons/sudoku_easy.png",
+                        "caption": "Dies ist die einfachste mögliche Sudokugröße",
+                        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen, deren horizontale und vertikale mittlere Trennlinie dick markiert ist; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift."
+                    },
+                    "paragraph-2": {
+                        "text": "Was ist aber mit den verschiedenen Ziffern? Hier können im Gegensatz zu QUBO nicht nur die Binärzahlen 0 und 1, sondern die Ziffern von 1 bis 4 eingetragen werden. Diese können als eine Art zusätzliche \"Dimension\" des Problems verstanden werden. Und genau das ist auch die Lösung: Wir erweitern unser QUBO-Quadrat ins **Dreidimensionale** mit weiteren Ebenen!"
+                    },
+                    "image-2": {
+                        "asset": "TODO"
+                    },
+                    "image-3": {
+                        "asset": "TODO"
+                    },
+                    "paragraph-3": {
+                        "text": "In dieser Darstellung sind die Kästchen diesmal nicht alphabetisch, sondern mit $$q_1$$ bis $$q_{64}$$ benannt, einfach, weil es sonst zu wenige Buchstaben gäbe. Jedes dieser Ebenen repräsentiert eine Ziffer von 1 bis 4 und beinhaltet in einem Kästchen 1, wenn im Sudoku **an dieser Stelle** die entsprechende Ziffer steht. Somit ist diese Technik eine Abwandlung des bereits behandelten One-Hot Encodings, wobei jede Ziffer als eine Kombination von 4 Binärzahlen repräsentiert wird: 1 ist $$[1, 0, 0, 0]$$, 2 ist $$[0, 1, 0, 0]$$ usw."
+                    },
+                    "paragraph-4": {
+                        "text": "Damit können wir bereits unsere QUBO-Gleichung formulieren. Da die ganze Formel viel zu lang wäre, um sie hier auf einmal zu zeigen, wird nur die Anleitung angegeben, um die Sudoku-Regeln in QUBO umzusetzen. Diese Einzelteile werden, sollte man sie ausformulieren, einfach addiert, um die fertige Kostenfunktion zu erhalten."
+                    },
+                    "paragraph-5": {
+                        "text": "- In jeder Zelle darf genau eine Ziffer stehen:"
+                    },
+                    "equation-1": {
+                        "tex": "(q_1+q_2+q_3+q_4-1)^2+(q_5+q_6+q_7+q_8-1)^2+\\hdots",
+                        "alttext": "(q₁+q₂+q₃+q₄-1)²+(q₅+q₆+q₇+q₈-1)²+⋯"
+                    },
+                    "paragraph-6": {
+                        "text": "- In jeder Zeile und Spalte muss jede Ziffer genau einmal vorkommen:"
+                    },
+                    "equation-2": {
+                        "tex": "(q_1+q_5+q_9+q_{13}-1)^2+(q_2+q_6+q_{10}+q_{14}-1)^2+\\hdots",
+                        "alttext": "(q₁+q₅+q₉+q₁₃-1)²+(q₂+q₆+q₁₀+q₁₄-1)²+⋯"
+                    },
+                    "equation-3": {
+                        "tex": "(q_1+q_{17}+q_{33}+q_{49}-1)^2+(q_2+q_{18}+q_{34}+q_{50}-1)^2+\\hdots",
+                        "alttext": "(q₁+q₁₇+q₃₃+q₄₉-1)²+(q₂+q₁₈+q₃₄+q₅₀-1)²+⋯"
+                    },
+                    "paragraph-7": {
+                        "text": "- Pro 2×2-Unterquadrat muss jede Ziffer genau einmal vorkommen:"
+                    },
+                    "equation-4": {
+                        "tex": "(q_1+q_5+q_{17}+q_{21}-1)^2+(q_2+q_6+q_{18}+q_{22}-1)^2+\\hdots",
+                        "alttext": "(q₁+q₅+q₁₇+q₂₁-1)²+(q₂+q₆+q₁₈+q₂₂-1)²+⋯"
+                    },
+                    "paragraph-8": {
+                        "text": "- Bereits ausgefüllte Felder dürfen nicht verändert werden (d.h. die Belegung anderer Ziffern als die eingetragenen mit hohen Kosten bestrafen):"
+                    },
+                    "equation-5": {
+                        "tex": "100\\times q_5+100\\times q_7+100\\times q_8+100\\times q_{13}+100\\times q_{14}+100\\times q_{16}+\\hdots",
+                        "alttext": "100×q₅+100×q₇+100×q₈+100×q₁₃+100×q₁₄+100×q₁₆+⋯"
+                    },
+                    "paragraph-9": {
+                        "text": "Hier ein Ausschnitt aus dem Hamiltonian und eine Visualisierung der ganzen Matrix:"
+                    },
+                    "image-4": {
+                        "asset": ""
                     }
                 }
             }
