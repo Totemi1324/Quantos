@@ -1,0 +1,30 @@
+{
+    "sectiontitle-1": {
+        "title": "Ancient and new alike"
+    },
+    "paragraph-1": {
+        "text": "When it comes to **Sudoku**, you are truly dealing with a resurrected fossil. It is one of the most popular logic puzzles of our time — but most certainly not a new invention. More than 4000 years ago, Sudoku was already being played feverishly in ancient China; at that time, it was known as \"magic squares\". Throughout the millennia, the game has fascinated people of all ages, mostly because it simply never seems to repeat itself. Now, we know that in the classic 9×9 Sudoku, **six quadrillion individual constellations** are possible — that's right, a six with 21 zeros. Thus, the entire population of the earth could solve multiple Sudokus every day for millions of years without ever encountering two identical ones."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/sudoku_example_empty.png",
+        "caption": "An example of a classic 9×9 Sudoku in its initial state",
+        "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering."
+    },
+    "paragraph-2": {
+        "text": "The rules of the puzzle are as simple as they are ingenious: in a grid of size 9×9 squares, a digit from 1 to 9 must be entered in each square in such a way that:"
+    },
+    "paragraph-3": {
+        "text": "- in each row, each digit occurs **exactly once** and\n- in each column, each digit occurs **exactly once**."
+    },
+    "paragraph-4": {
+        "text": "In addition, the grid is divided into 9 sub-squares of size 3×3; in these, each digit may also appear exactly once. Other Sudoku sizes where this kind of subdivision is possible are 4×4 and 16×16 squares. As a clue for filling in, some digits are given, from which the rest must be deduced following the above rules."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/sudoku_example_solved.png",
+        "caption": "The Sudoku from before — completely filled in and thus solved",
+        "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering, the rest have numerals inscribed in thin red lettering."
+    },
+    "paragraph-5": {
+        "text": "Since there is a huge amount of possibilities and the entries depend on each other, the puzzle can also be seen as an optimization problem. Here, quantum annealers offer tremendous potential: with them, it would not only be possible to fill in Sudokus in one fell swoop, regardless of their size, but also to consider all possible constellations **at the same time** due to the superposition of the qubits. But is this really true? This concluding lesson would like to explore this question and show how important it is not to lose track of the problem to be solved."
+    }
+}

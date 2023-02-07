@@ -17,7 +17,7 @@
         "text": "Die Städte sind so gelegt, dass die Kantenlänge der Polygone 0,5 beträgt. Das hat gleich mehrere Vorteile:"
     },
     "paragraph-4": {
-        "text": "1.Die kürzeste Tour und damit die richtige Lösung des Traveling-Salesman-Problems ist immer der **Umfang des Vielecks**.\n2. Es kann einfach ermittelt werden, ob der Quantenannealer korrekt liegt, da die optimale Energie durch die immer gleiche Streckenlänge mit einer Formel **hergeleitet** werden kann, die von der Anzahl der Ecken des Vielecks $$n$$ abhängt ($$h$$ ist der skalierte Koeffizient, der die Belegung von Städten begünstigt)."
+        "text": "1. Die kürzeste Tour und damit die richtige Lösung des Traveling-Salesman-Problems ist immer der **Umfang des Vielecks**.\n2. Es kann einfach ermittelt werden, ob der Quantenannealer korrekt liegt, da die optimale Energie durch die immer gleiche Kantenlänge mit einer Formel **hergeleitet** werden kann, die von der Anzahl der Ecken des Vielecks $$n$$ abhängt ($$h$$ ist der skalierte Koeffizient, der die Belegung von Städten begünstigt)."
     },
     "equation-1": {
         "tex": "\\min E=h\\times n+\\frac{1}{2}\\times n=\\left(h+\\frac{1}{2}\\right)\\times n",

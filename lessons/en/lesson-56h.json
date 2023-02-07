@@ -1,0 +1,50 @@
+{
+    "paragraph-1": {
+        "text": "A lot of work happens in the background when operating the DWave Advantage. One example of this, which we already know, is embedding the problem on the QPU; you usually don't notice it during a standard request, since it is calculated automatically by the communication interface. However, there are also static values, so-called **hyperparameters**, which directly affect the performance of the algorithm and can only be optimized by trial and error. In conjunction with the evaluation of our TSP algorithm, we will take a closer look at them this time."
+    },
+    "sectiontitle-1": {
+        "title": "The right benchmarking"
+    },
+    "paragraph-2": {
+        "text": "But first the question arises: **Which graphs should we use to test the quantum annealer?** In contrast to the chessboard in the N queens problem, this data structure is much more flexible and it is not only the number of cities but also their location that matters. Therefore, one approach to unification is to use graphs in the form of **regular polygons** (i.e., polygons with a uniform side length), starting with a triangle (the simplest shape containing a valid Hamiltonian cycle) and ending with an octagon."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/benchmark_graphs.png",
+        "caption": "Regular polygons are particularly suitable for testing algorithms that search routes",
+        "alttext": "Triangle, quadrilateral, pentagon, hexagon, heptagon and octagon, each with the same side length, the corners of which are marked with colored crosses."
+    },
+    "paragraph-3": {
+        "text": "The cities are placed so that the edge length of the polygons is 0.5. This has several advantages at once:"
+    },
+    "paragraph-4": {
+        "text": "1. The shortest tour and thus the correct solution of the traveling salesman problem is always the **perimeter of the polygon**.\n2. It can be easily determined whether the quantum annealer is correctly located, since the optimal energy can be **derived** with a formula due to the uniform edge length that depends on the number of vertices of the polygon $$n$$ ($$h$$ is the scaled coefficient that favors the occupancy of cities)."
+    },
+    "equation-1": {
+        "tex": "\\min E=h\\times n+\\frac{1}{2}\\times n=\\left(h+\\frac{1}{2}\\right)\\times n",
+        "alttext": "min E=h×n+½×n=(h+½)×n"
+    },
+    "sectiontitle-2": {
+        "title": "Hyperparameter optimization"
+    },
+    "paragraph-5": {
+        "text": "The most important hyperparameters for our problem are **chain strength** and **annealing time**. The former stands for the strength of the equality couplers between qubits forming a chain on the QPU, i.e., the **strength of the magnetic fields** that force the qubits to collapse to identical values. Similarly, the latter determines the **timespan** that the qubits are allowed to approach their optimal energy state before they are read and the superposition collapses. Rules of thumb exist for each of these values, but they may not always yield the best results."
+    },
+    "paragraph-6": {
+        "text": "The optimization process is lengthy and requires a lot of data, therefore we won't cover it in depth; if you are interested in the detailed procedure, you can read it up in the respective documentation that you can find in the Download tab on the homescreen. Below are the charts showing the progression of the success rate (the percentage of correct results) on DWave Advantage as you increase the chain strength — with a curve showing the average of 10 different embeddings. At the top, a solution is correct if it represents a valid round trip; at the bottom, if it's also the shortest round trip."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-7": {
+        "text": "Notice that stronger couplers are not always **better** for logical qubits: At one point, accuracy peaks for all curves and then drops steadily. For larger city networks, the difference between the simpler and the more complex task becomes larger and larger, until finally, starting at $$n=7$$ cities, the shortest round trip cannot be found anymore."
+    },
+    "paragraph-8": {
+        "text": "We do the same with annealing time; the hypothesis is that the fraction of correct solutions should keep increasing the longer the quantum computer has time for each anneal."
+    },
+    "interactive-2": {
+
+    },
+    "paragraph-9": {
+        "text": "Our assumption has been confirmed, but again the problem of performance degradation becomes apparent when path costs are taken into account. This is due to a concept called **sparsity**. The sparser the Hamiltonian matrix is, that is, **the more zeros** it has, the better a quantum annealer can solve it — because if there are less coefficients, more couplers can be saved, reducing the complexity and randomness factor of QPU embedding. The path costs appear in the QUBO equation as coefficients that were previously 0, which lowers the sparsity of the Hamiltonian matrix."
+    }
+}
