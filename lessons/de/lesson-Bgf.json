@@ -1,6 +1,6 @@
 {
     "paragraph-1": {
-        "text": "Die Erstellung eines Quantenlösungsverfahrens für das TSP ist ein spannendes Beispiel für die Vielseitigkeit der Quanteninformatik und eine Demonstration, wie sie zur Verbesserung alltäglicher Aufgaben beitragen kann. In den beiden vorangegangenen Lektionen haben wir das **Spielbrettmodell** für QUBO-Probleme ausführlich kennengelernt; diese möchten wir auch dieses Mal nutzen, die Umformung ist dieses Mal aber weniger offensichtlich. Der erste Schritt ist also die Frage, wie man die Kernkomponente des TSP, den Graphen, in ein QUBO-Problem umwandelt."
+        "text": "Die Erstellung eines Quantenlösungsverfahrens für das TSP ist ein spannendes Beispiel für die Vielseitigkeit der Quanteninformatik und eine Demonstration, wie sie zur Verbesserung alltäglicher Aufgaben beitragen kann. In den beiden vorangegangenen Lektionen haben wir das Spielbrettmodell für QUBO-Probleme ausführlich kennengelernt; diese möchten wir auch dieses Mal nutzen, die Umformung ist dieses Mal aber weniger offensichtlich. Der erste Schritt ist also die Frage, wie man die Kernkomponente des TSP, den **Graphen**, in ein QUBO-Problem umwandelt."
     },
     "sectiontitle-1": {
         "title": "Vom Graphen zur Matrix"
@@ -11,7 +11,7 @@
     "image-1": {
         "asset": "assets/images/lessons/example_tour.png",
         "caption": "Das ist nicht die optimale Tour, aber ein gültiger Hamiltonpfad",
-        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach B nach D nach C ist rosa hervorgehoben."
+        "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach B nach D nach C nach A ist rosa hervorgehoben."
     },
     "paragraph-3": {
         "text": "Wenn wir A als Ausgangspunkt nehmen, ist hier die Tour **A – B – D – C – A** eingezeichnet (natürlich ist auch der umgekehrte Weg A – C – D – B – A gültig). Eine mögliche Tour ist durch zwei Angaben definiert:"
@@ -24,7 +24,7 @@
     },
     "image-2": {
         "asset": "assets/images/lessons/tour_matrix.png",
-        "caption": "So kann eine Reihe an besuchten Städten numerisch kodiert werden",
+        "caption": "So kann eine Abfolge an besuchten Städten numerisch kodiert werden",
         "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1A, 2B, 3D und 4C ist jeweils eine Eins eingetragen."
     },
     "paragraph-6": {

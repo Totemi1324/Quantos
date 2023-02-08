@@ -24,7 +24,7 @@
     "image-3": {
         "asset": "assets/images/lessons/one_hot_encoding.png",
         "caption": "So würde der One-Hot-encodierte Stack für unser 4×4-Beispielsudoku aussehen; wenn in Ebene 2 eine 1 steht, dann ist im entsprechenden Feld im Original eine 2 eingetragen usw.",
-        "alttext": "perspektivische Darstellung eines Stapels von vier Gittern der Größe vier mal vier übereinander, wobei manche Felder leer und andere Felder mit den Ziffern null und eins ausgefüllt sind."
+        "alttext": "Perspektivische Darstellung eines Stapels von vier Gittern der Größe vier mal vier übereinander, wobei manche Felder leer und andere Felder mit den Ziffern null und eins ausgefüllt sind."
     },
     "paragraph-4": {
         "text": "Damit können wir bereits unsere QUBO-Gleichung formulieren. Da die ganze Formel viel zu lang wäre, um sie hier auf einmal zu zeigen, wird nur die Anleitung angegeben, um die Sudoku-Regeln in QUBO umzusetzen. Diese Einzelteile werden, sollte man sie ausformulieren, einfach addiert, um die fertige Kostenfunktion zu erhalten."
@@ -67,12 +67,12 @@
     "image-4": {
         "asset": "assets/images/lessons/sudoku_hamiltonian.png",
         "caption": "Die fertige Hamilton-Matrix des 4x4 Sudoku-Problems",
-        "alttext": "Ausschnitt aus einer Matrix mit reellen Zahlen, dessen untere Dreieckshälfte mit Nullen gefüllt ist und in der oberen Dreieckshälfte regelmäßige Anordnungen von zwei vier, minus vier und vierundsechzig aufweist."
+        "alttext": "Ausschnitt aus einer Matrix mit reellen Zahlen, dessen untere Dreieckshälfte mit Nullen gefüllt ist und in der oberen Dreieckshälfte regelmäßige Anordnungen von zwei, vier, minus vier und vierundsechzig aufweist."
     },
     "image-5": {
         "asset": "assets/images/lessons/sudoku_hamiltonian_visualization.png",
         "caption": "In der Visualisierung sind Streifenmuster unterschiedlicher Helligkeit, die pyramidenartig angeordnet sind, erkennbar",
-        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen und kürzeren diagonalen Linien in dreieckiger Anordnung bilden."
+        "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen und kürzeren diagonalen Linien in dreieckiger Anordnung bilden."
     },
     "sectiontitle-2": {
         "title": "Es geht aber noch besser"

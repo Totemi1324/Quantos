@@ -37,7 +37,7 @@
     },
     "image-4": {
         "asset": "assets/images/lessons/topologies.png",
-        "caption": "Die Diagramme der (a) Chimera-Architektur des D-Wave 2000Q und der neueren (b) Pegasus-Architektur",
+        "caption": "Die Diagramme der (a) Chimera-Architektur des DWave 2000Q und der neueren (b) Pegasus-Architektur",
         "alttext": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen."
     },
     "image-5": {
