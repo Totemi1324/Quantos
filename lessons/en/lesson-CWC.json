@@ -1,0 +1,62 @@
+{
+    "sectiontitle-1": {
+        "title": "Representing connections mathematically"
+    },
+    "paragraph-1": {
+        "text": "Computers can only work with numbers, which means we have to work with them as well. The previous lesson already introduced a key concept of the solution method with cities connected by lines: **graphs** are a fundamental part of mathematics, so much so that they have their own mathematical field called **graph theory**. In general, a graph describes a set of cities, called **vertices**, and how they are mathematically connected."
+    },
+    "paragraph-2": {
+        "text": "Let's simplify our example from earlier to just 4 cities named A, B, C, and D."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/graph_example.png",
+        "caption": "A simple graph with 4 nodes and their distances from each other",
+        "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines with a number next to each."
+    },
+    "paragraph-3": {
+        "text": "Each vertex is represented as a colored circle connected to other nodes by edges, with the distances between vertices noted in gray. In the example, every possible pair of vertices is connected, every edge can be traversed in either direction, and every edge is assigned a unique distance value, called a \"weight\". This is called a **complete, undirected, and weighted graph**. Graphs can take different forms and shapes, but in this course we will focus only on this one category, since it fits the standard definition of the TSP. Mathematically, such a graph can be characterized as follows:"
+    },
+    "equation-1": {
+        "tex": "G=\\left(V,E,d\\right)",
+        "alttext": "G=(V,E,d)"
+    },
+    "equation-2": {
+        "tex": "V=\\left{v_1,v_2,...\\right}",
+        "alttext": "V={v₁,v₂,...,vₙ}"
+    },
+    "equation-3": {
+        "tex": "E\\subseteq\\left{\\left{v_i,v_j\\right}|\\left(v_i,v_j\\right)\\in V^2\\wedge v_i\\neq v_j\\right}",
+        "alttext": "E⊆{{vᵢ,vⱼ}|(vᵢ,vⱼ)∈V²∧vᵢ≠vⱼ}"
+    },
+    "equation-4": {
+        "tex": "d:E\\to\\mathbb{R}",
+        "alttext": "d:E→ℝ"
+    },
+    "paragraph-4": {
+        "text": "Quite a lot to absorb at once; so here it is step by step:"
+    },
+    "paragraph-5": {
+        "text": "- A graph $$G$$ consists of three components: $$V$$, the vertices, $$E$$, the edges, and $$d$$, the distance function. The notation with () as a triplet symbolizes that they belong together.\n- $$V$$ denotes a set of vertices that make up a graph. Sets can be recognized by the curly braces {}.\n- $$E$$ is a set of edges, represented as unordered pairs of vertices $${v_i,v_j}$$. The vertical line | defines which conditions these pairs must satisfy: both $$v_i$$ and $$v_j$$ must be part of $$V^2$$ (\"squared\" in set notation stands for the Cartesian product, i.e. the set of all possible combinations of the elements of a set) and $$v_i$$ must not be equal to $$v_j$$ to avoid loops.\n- $$d$$ is a function that assigns a real number to each edge (i.e., to unordered pairs of vertices), in this case the length of the path."
+    },
+    "paragraph-6": {
+        "text": "So our example graph can be described as follows:"
+    },
+    "equation-5": {
+        "tex": "V=\\left{A,B,C,D\\right}",
+        "alttext": "V={A,B,C,D}"
+    },
+    "equation-6": {
+        "tex": "E=\\left{\\left{A,B\\right},\\left{A,C\\right},\\left{A,D\\right},\\left{B,C\\right},\\left{B,D\\right},\\left{C,D\\right}\\right}",
+        "alttext": "E={{A,B},{A,C},{A,D},{B,C},{B,D},{C,D}}"
+    },
+    "equation-7": {
+        "tex": "d:E\\to\\begin{cases}5.7 & \\text{wenn }E=\\left\\{A,B\\right\\} \\\\ 2.5 & \\text{wenn }E=\\left\\{A,C\\right\\} \\\\ 3.3 & \\text{wenn }E=\\left\\{A,D\\right\\} \\\\ 3.4 & \\text{wenn }E=\\left\\{B,C\\right\\} \\\\ 5.6 & \\text{wenn }E=\\left\\{B,D\\right\\} \\\\ 4.1 & \\text{wenn }E=\\left\\{C,D\\right\\}\\end{cases}",
+        "alttext": "d:E→{5.7 wenn E={A,B},2.5 wenn E={A,C},3.3 wenn E={A,D},3.4 wenn E={B,C},5.6 wenn E={B,D},4.1 wenn E={C,D}"
+    },
+    "paragraph-7": {
+        "text": "Paths are a sequence of vertices that are visited after one another. A path that passes through all vertices exactly once without traversing the same edge multiple times is called a **Hamiltonian path**. A Hamiltonian path whose start and end points are the same is in turn called a closed Hamiltonian path or **Hamiltonian cycle** — in TSP, we're searching for the one cycle where the sum of the distances from the distance function is as small as possible. Both the former and the latter are guaranteed to be present in complete graphs."
+    },
+    "interactive-1": {
+
+    }
+}

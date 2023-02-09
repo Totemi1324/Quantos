@@ -1,0 +1,17 @@
+{
+    "paragraph-1": {
+        "text": "This bonus lesson serves to better understand the actual mathematics behind QUBO and what quantum annealers really want to minimize. Besides its form as the QUBO equation, the optimization problem as a Hamiltonian matrix plays a role in the following operation:"
+    },
+    "equation-1": {
+        "tex": "\\min C\\left(q\\right)=\\min_{q_i=0,1}\\left(\\sum_{i=1}^{N}a_iq_i+\\sum_{i<j}^{N}b_{ij}q_iq_j\\right)=\\min\\left(\\vec{q}^T\\times H\\times\\vec{q}\\right)",
+        "alttext": "min C(q)=min[qᵢ=0,1](Σ[N,i=1](aᵢqᵢ)+Σ[N,i<j](bᵢⱼqᵢqⱼ))=min(qᵗ×H×q)"
+    },
+    "paragraph-2": {
+        "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten C minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/matrix_multiplication.png",
+        "caption": "Die Matrixmultiplikation ist ein weiterer Weg, um die Kosten zu berechnen. Links der normale, unten der transponierte Antwortvektor",
+        "alttext": "Zahlengitter, an dessen linker Seite eine vertikale und an dessen Unterseite eine horizontale Zahlenreihe angelegt ist."
+    }
+}
