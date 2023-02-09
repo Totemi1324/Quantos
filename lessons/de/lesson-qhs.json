@@ -8,7 +8,7 @@
     "image-1": {
         "asset": "assets/images/lessons/nqueens_results.png",
         "caption": "Mit diesen Zahlenreihen \"antwortet\" der Quantenannealer auf ein Rechenproblem",
-        "alttext": "Tabelle mit Zeilen, die jeweils 16 binäre Zahlen beinhalten; zweite Spalte ist beschriftet mit Energie, die sich zwischen minus acht und minus sechs bewegt, dritte Spalte mit Häufigkeit, wobei die Zahl in der ersten Zeile mit Abstand am höchsten ist."
+        "alttext": "Tabelle mit Zeilen, die jeweils sechzehn binäre Zahlen beinhalten; zweite Spalte ist beschriftet mit Energie, die sich zwischen minus acht und minus sechs bewegt, dritte Spalte mit Häufigkeit, wobei die Zahl in der ersten Zeile mit Abstand am höchsten ist."
     },
     "paragraph-2": {
         "text": "Die Tabelle zeigt einen Ausschnitt aus den Messergebnissen, sortiert von der geringsten bis zur höchsten Energie — was bedeutet, dass eine Lösung desto \"besser\" ist, je **weiter oben** sie in der Tabelle steht. Jede Zeile beinhaltet den Antwortvektor sowie rechts die Häufigkeit, wie oft diese jeweils gemessen wurden. Zu diesem Zeitpunkt ist das noch Zahlensalat; um zu verstehen, ob sich der Aufwand gelohnt hat, müssen die Ergebnisse erst im Kontext **interpretiert** werden."
@@ -50,10 +50,10 @@
     "image-3": {
         "asset": "assets/images/lessons/runtime_comparison.png",
         "caption": "Die Volumen der Würfel repräsentieren die Zeit, die die beiden Computerarten für das N-Damen-Problem gebraucht haben",
-        "alttext": "Drei kleine Würfel, die gleich groß sind und mit N gleich 4, N gleich 6 und N gleich 8 beschriftet sind, darunter 3 große Würfel, die immer größer werden mit der gleichen Beschriftung."
+        "alttext": "Drei kleine Würfel, die gleich groß sind und mit N gleich vier, N gleich sechs und N gleich acht beschriftet sind, darunter drei große Würfel, die immer größer werden mit der gleichen Beschriftung."
     },
     "paragraph-7": {
-        "text": "Diese Experimente zeigen sofort den Nachteil von traditionellen Berechnungsmethoden: Die für die Optimierung benötigte Zeit ist sehr lang, hier größtenteils über 10 Minuten und, das schwerwiegendste, **steigen mit größeren Problemen an**. Der Quantenannealer hingegen sind in der Lage, die gleichen Aufgaben in Bruchteilen einer Sekunde zu lösen, und das **unabhängig von der Problemgröße**."
+        "text": "Diese Experimente zeigen sofort den Nachteil von traditionellen Berechnungsmethoden: Die für die Optimierung benötigte Zeit ist sehr lang, hier größtenteils über 10 Minuten und, das schwerwiegendste, **steigen mit größeren Problemen an**. Der Quantenannealer hingegen ist in der Lage, die gleichen Aufgaben in Bruchteilen einer Sekunde zu lösen, und das **unabhängig von der Problemgröße**."
     },
     "paragraph-8": {
         "text": "Obwohl die unschlagbare Geschwindigkeit des quantenbasierten Ansatzes ihn sehr attraktiv macht, hat er leistungstechnisch große Einschränkungen. Eine allgemeine Faustregel besagt, dass je nach Embedding und dadurch eingesetzten Kopplungen zur Umsetzung von $$n$$ logischen Qubits ungefähr $$n^2$$ physikalische Qubits gebraucht werden. Der Advantage besitzt 5627 Qubits; da aus jedem N-Damen-Problem ein Hamiltonian der Größe N² wird, berechnet sich die theoretische Höchstleistung auf **8 Damen**."

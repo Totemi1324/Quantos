@@ -7,7 +7,7 @@
         "alttext": "min C(q)=min[qᵢ=0,1](Σ[N,i=1](aᵢqᵢ)+Σ[N,i<j](bᵢⱼqᵢqⱼ))=min(qᵗ×H×q)"
     },
     "paragraph-2": {
-        "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten C minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
+        "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten $$C$$ minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
     },
     "image-1": {
         "asset": "assets/images/lessons/matrix_multiplication.png",
