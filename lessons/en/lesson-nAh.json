@@ -7,11 +7,11 @@
         "alttext": "min C(q)=min[qᵢ=0,1](Σ[N,i=1](aᵢqᵢ)+Σ[N,i<j](bᵢⱼqᵢqⱼ))=min(qᵗ×H×q)"
     },
     "paragraph-2": {
-        "text": "Das sieht komplizierter aus, als es ist und sagt nur, dass wir die Kosten C minimieren wollen, die aus zwei Summen bestehen: Den Produkten jedes Koeffizienten $$a_i$$ mit seinem jeweiligen Gitterfeld $$q_i$$ und den anderen Koeffizienten $$b_{ij}$$ mit einem beliebigen Paar von zwei Feldern $$q_i$$ und $$q_j$$. Alternativ können wir die Operation als eine Matrixmultiplikation betrachten, wobei der Hamiltonian von rechts mit dem Antwortvektor und von links mit dem transponierten (d.h. horizontal ausgelegten) Antwortvektor multipliziert wird."
+        "text": "This looks more complicated than it really is and just says that we want to minimize the cost $$C$$, which consists of two sums: The products of each coefficient $$a_i$$ with its respective grid field $$q_i$$ and the other coefficient $$b_{ij}$$ with any pair of two fields $$q_i$$ and $$q_j$$. Alternatively, we can consider the operation as a matrix multiplication, where the Hamiltonian is multiplied by the answer vector from the right and by the transposed (i.e., horizontally aligned) answer vector from the left."
     },
     "image-1": {
         "asset": "assets/images/lessons/matrix_multiplication.png",
-        "caption": "Die Matrixmultiplikation ist ein weiterer Weg, um die Kosten zu berechnen. Links der normale, unten der transponierte Antwortvektor",
-        "alttext": "Zahlengitter, an dessen linker Seite eine vertikale und an dessen Unterseite eine horizontale Zahlenreihe angelegt ist."
+        "caption": "Matrix multiplication is another way to calculate the cost. Left the normal, below the transposed answer vector",
+        "alttext": "Number grid with a vertical row of numbers on the left side and a horizontal row of numbers on the bottom side of the grid."
     }
 }
