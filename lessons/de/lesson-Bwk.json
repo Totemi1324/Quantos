@@ -5,7 +5,7 @@
     "image-1": {
         "asset": "assets/images/lessons/dwave_procedure.png",
         "caption": "Der Verlauf einer Rechenoperation am DWave-Annealer",
-        "alttext": "Flussdiagramm, an dessen Anfang ein quadratisches Zahlenfeld steht, welches zu einem Foto des Quantenannealers zeigt, welches wiederum auf eine Reihe aus den Ziffern 0 und 1 zeigt."
+        "alttext": "Flussdiagramm, an dessen Anfang ein quadratisches Zahlenfeld steht, welches zu einem Foto des Quantenannealers zeigt, welches wiederum auf eine Reihe aus den Ziffern null und eins zeigt."
     },
     "paragraph-2": {
         "text": "Das sieht vielleicht etwas verwirrend aus, gehen wir es also Schritt für Schritt durch."
@@ -56,7 +56,7 @@
     "image-2": {
         "asset": "assets/images/lessons/hamiltonian_scaling.png",
         "caption": "Eine Hamilton-Matrix für eine QUBO-Gleichung mit 6 Unbekannten",
-        "alttext": "Quadratische Zahlenmatrix mit 6 mal 6 Einträgen, von h a bis h f durchnummeriert."
+        "alttext": "Quadratische Zahlenmatrix mit sechs mal sechs Einträgen, von h a bis h f durchnummeriert."
     },
     "image-3": {
         "asset": "assets/images/lessons/hamiltonian_pattern.png",

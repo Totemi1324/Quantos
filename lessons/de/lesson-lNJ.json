@@ -52,7 +52,7 @@
         "alttext": "Tabelle mit fünf Zeilen, die jeweils 16 binäre Zahlen beinhalten, von denen immer drei Stück Eins und der Rest Null sind; zweite Spalte ist beschriftet mit Energie, die immer minus vier beträgt."
     },
     "paragraph-8": {
-        "text": "Die Tabelle zeigt die besten fünf aus den Ergebnissen des D-Wave-Annealers. Alle davon besuchen nur **drei oder noch weniger** Städte. Das liegt daran, dass die Koeffizienten, die den Annealer zwingen, die Regel \"Genau eine Belegung pro Zeile/Spalte\" zu befolgen, -2 oder 2 sind – zu klein im Vergleich zu den Entfernungen zwischen den Knoten, die zwischen 3 und 7 liegen. Wenn der Annealer weniger Zellen belegt, **überwiegt** die Energie, die er durch das Weglassen von Kanten spart, bei weitem die Strafe, die er für den Besuch weniger Städte erhält."
+        "text": "Die Tabelle zeigt die besten fünf aus den Ergebnissen des DWave-Annealers. Alle davon besuchen nur **drei oder noch weniger** Städte. Das liegt daran, dass die Koeffizienten, die den Annealer zwingen, die Regel \"Genau eine Belegung pro Zeile/Spalte\" zu befolgen, -2 oder 2 sind – zu klein im Vergleich zu den Entfernungen zwischen den Knoten, die zwischen 3 und 7 liegen. Wenn der Annealer weniger Zellen belegt, **überwiegt** die Energie, die er durch das Weglassen von Kanten spart, bei weitem die Strafe, die er für den Besuch weniger Städte erhält."
     },
     "paragraph-9": {
         "text": "Um dieses Problem zu lösen, müssen wir unsere Koeffizienten entsprechend skalieren: Wenn wir alle Koeffizienten mit demselben Faktor multiplizieren, bleiben die Beziehungen erhalten, was bedeutet, dass wir bestimmte Teile der Gleichung skalieren können, um diese stärker zu **gewichten**. Als allgemeine Faustregel gilt: Wenn $$s$$ = die Länge der längsten möglichen Tour im Graphen und $$n$$ = die Anzahl der Städte ist, sollten alle Koeffizienten $$h_{ij}$$ aus der ersten Hälfte der QUBO-Gleichung nach dieser Formel berechnet werden:"
@@ -62,7 +62,7 @@
         "alttext": "hᵢⱼ=((3×s)/n)/2"
     },
     "paragraph-10": {
-        "text": "Diese Kostenfunktion sollte nun die beste (niedrigste) Energie liefern, wenn die formalen Regeln der Belegung, d.h. 1 pro Zeile und 1 pro Spalte, erfüllt sind und der Quantenannealer diejenigen Verbindungen auswählt, deren Summe gemäß den TSP-Anforderungen am kürzesten ist."
+        "text": "Diese Kostenfunktion sollte nun die beste (niedrigste) Energie liefern, wenn die formalen Regeln der Belegung, d.h. 1 pro Zeile und 1 pro Spalte, erfüllt sind **und** der Quantenannealer diejenigen Verbindungen auswählt, deren Summe gemäß den TSP-Anforderungen am kürzesten ist."
     },
     "image-4": {
         "asset": "assets/images/lessons/tsp_hamiltonian.png",
@@ -72,7 +72,7 @@
     "image-5": {
         "asset": "assets/images/lessons/tsp_visualization.png",
         "caption": "Visuell dargestellt weist der Hamiltonian ein typisches Muster mit diagonalen Streifen auf",
-        "alttext": "Graues Quadrad mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
+        "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
     },
     "sectiontitle-4": {
         "title": "Alles kommt zusammen"
@@ -85,7 +85,7 @@
         "alttext": "qₐ=[0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0]"
     },
     "paragraph-12": {
-        "text": "Doch wie kommen wir daraus wieder an die Tour auf dem Graphen? Dieser Prozess nennt sich **reverse engineering** (\"umgekehrtes Entwickeln\"). Der Antwortvektor $$q_A$$ (der die Werte der Variablen a bis n beinhaltet) muss zunächst in die Tourmatrix übersetzt werden, indem die Werte einzeln in ein 4×4-Gitter übertragen werden."
+        "text": "Doch wie kommen wir daraus wieder an die Tour auf dem Graphen? Dieser Prozess nennt sich **reverse engineering** (\"umgekehrtes Entwickeln\"). Der Antwortvektor $$q_A$$ (der die Werte der Variablen a bis n beinhaltet) muss zunächst in die Tourmatrix übersetzt werden, indem die Werte nacheinander in ein 4×4-Gitter übertragen werden."
     },
     "image-6": {
         "asset": "assets/images/lessons/solution_matrix.png",

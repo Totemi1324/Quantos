@@ -1,6 +1,6 @@
 {
     "paragraph-1": {
-        "text": "Diese Bonuslektion dient dazu, besser zu verstehen, welche Mathematik eigentlich hinter QUBO steckt und was Quantenannealer wirklich minimieren möchten. Außer in seiner Form als QUBO-Gleichung spielt das Optimierungsproblem als Hamilton-Matrix in der folgenden Operation eine Rolle:"
+        "text": "Diese Bonuseinheit dient dazu, besser zu verstehen, welche Mathematik eigentlich hinter QUBO steckt und was Quantenannealer wirklich minimieren möchten. Außer in seiner Form als QUBO-Gleichung spielt das Optimierungsproblem als Hamilton-Matrix in der folgenden Operation eine Rolle:"
     },
     "equation-1": {
         "tex": "\\min C\\left(q\\right)=\\min_{q_i=0,1}\\left(\\sum_{i=1}^{N}a_iq_i+\\sum_{i<j}^{N}b_{ij}q_iq_j\\right)=\\min\\left(\\vec{q}^T\\times H\\times\\vec{q}\\right)",

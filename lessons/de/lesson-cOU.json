@@ -36,7 +36,7 @@
         "text": "1. Pro Zeile soll **genau eine** Dame stehen\n2. Pro Spalte soll **genau eine** Dame stehen\n3. Pro Diagonale **muss keine, darf aber höchstens eine** Dame stehen"
     },
     "paragraph-6": {
-        "text": "Diese Regeln können durch logische Begründungen hergeleitet werden: Da das Schachfeld N×N groß ist und mehrere Damen nicht in der gleichen Zeile stehen dürfen (da sie sich sonst gegenseitig bedrohen würden), müssen die N Damen so verteilt werden, dass keine Zeile frei bleiben darf und jede genau eine beinhaltet. Ähnlich verhält es sich mit den Spalten, da Damen auch eine beliebige Distanz in vertikaler Richtung zurücklegen können. In einem 4×4-Schachbrett gibt es 5 Diagonalen von links nach rechts und 5 von rechts nach links, das wäre zu viel für 4 Damen. Daher müssen nicht alle belegt werden, pro Diagonale darf es aber aufgrund der Bedrohungslage trotzdem höchstens eine Dame geben."
+        "text": "Diese Regeln können durch logische Begründungen hergeleitet werden: Da das Schachfeld N×N groß ist und mehrere Damen nicht in der gleichen Zeile stehen dürfen (da sie sich sonst gegenseitig bedrohen würden), müssen die N Damen so verteilt werden, dass keine Zeile frei bleiben darf und jede genau eine beinhaltet. Ähnlich verhält es sich mit den Spalten, da Damen auch eine beliebige Distanz in vertikaler Richtung zurücklegen können. In einem 4×4-Schachbrett gibt es 5 Diagonalen von links nach rechts und 5 von rechts nach links, das wäre zu viel für 4 Damen (obwohl eine Dame sich immer in 2 Diagonalen gleichzeitig befindet). Daher müssen nicht alle belegt werden, pro Diagonale darf es aber aufgrund der Bedrohungslage trotzdem höchstens eine Dame geben."
     },
     "sectiontitle-2": {
         "title": "Die Umsetzung der Regeln"
