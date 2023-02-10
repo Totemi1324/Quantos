@@ -1,0 +1,34 @@
+{
+    "paragraph-1": {
+        "text": "Imagine you are the representative of a large company that sends you on a business tour of its major sites. As it happens, these are located in eight capital cities spread all over Europe. Your company naturally wants to save as much time as possible. If you start from Berlin, visit each city exactly once, and then return to Berlin, in what order should you visit the cities to keep the trip **as short as possible**?"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/europe_map.png",
+        "caption": "Berlin, Vienna, Paris and Bucharest — these and other cities will be passed during the round trip",
+        "alttext": "Simplified map of continental Europe with markers at the eight cities of Berlin, Vienna, Bucharest, Rome, Zurich, Paris, London, and Lisbon."
+    },
+    "paragraph-2": {
+        "text": "This is the question addressed by the **traveling salesman problem** (abbreviation: TSP). Or, more generally, given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the starting city? As a practical everyday problem repeatedly mentioned since the 17th century, it was first formulated and elaborated as a mathematical optimization problem around 1930 by the Austrian mathematician Karl Weber. It can be found in numerous real-world applications, such as supply chain planning, pipeline renovation, and structural analysis of crystals."
+    },
+    "sectiontitle-1": {
+        "title": "The challenge"
+    },
+    "paragraph-3": {
+        "text": "But why optimization? In such simple tasks as the previous one, the solution is, of course, quickly obvious: If we assume the distances to be air lines, the shortest path would be the one that goes around the outside."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/europe_route.png",
+        "caption": "The shortest journey with direct flights",
+        "alttext": "Previous map with lines connecting the drawn cities into a closed loop."
+    },
+    "paragraph-4": {
+        "text": "However, when you have to visit 20, 50 or even 100 cities, things are not so simple anymore. This is because with each new city there are many times more new possibilities for a round trip than already existing cities, which means that the number of options to check increases rapidly. In our example with 8 cities we have 2520 possibilities to choose from, but with 12 cities there are already 19,958,400 different routes (this can be calculated by a formula). Therefore, the problem is **NP-hard**, which basically means that an algorithm that finds the exact solution for large inputs in finite time is probably impossible."
+    },
+    "equation-1": {
+        "tex": "S\\left(n\\right)=\\frac{\\left(n-1\\right)!}{2}",
+        "alttext": "S(n)=(n-1)!/2"
+    },
+    "paragraph-5": {
+        "text": "So can we use the capabilities of qubits to find tours in a few milliseconds — and if so, up to what map size?"
+    }
+}

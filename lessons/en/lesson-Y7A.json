@@ -1,0 +1,20 @@
+{
+    "paragraph-1": {
+        "text": "It's time to get creative and start working on more complex networks! Now that you've successfully completed this lecture, you can experiment with larger TSPs or even TSPs of your own design."
+    },
+    "paragraph-2": {
+        "text": "If you want to submit your own networks to the quantum annealer, you must first convert them to a Hamiltonian. On desktop, you can do this with the **Graph to Matrix** tool in the Download tab of the homescreen, which generates a Hamiltonian from a graph as input, so you don't have to calculate it by hand."
+    },
+    "paragraph-3": {
+        "text": "1. Select your cities on the canvas and click \"Generate\" to calculate the edges; the distance in pixels between each vertex represents the cost of the corresponding edge.\n2. The Hamiltonian is automatically created with the correct scaling. Click \"Save Hamiltonian...\" to save it to your computer in NumPy matrix format. 3.\nClick on \"Save Vertices...\" to save the layout of your graph; this will be needed later for the evaluation of the results."
+    },
+    "paragraph-4": {
+        "text": "For sending the Hamiltonian, you can use the Coding tab on the homescreen. For the true randomness factor, it is recommended to use DWave Advantage mode; for this you need an API key associated with each DWave Leap account. Instructions on how to create and use it correctly can be found on our website."
+    },
+    "paragraph-5": {
+        "text": "If you want to visualize the results, download the desktop tool **Path Visualizer**, which reads the results of the annealer and draws the corresponding paths. You can switch back and forth between the solutions and compare their energy in the text output window."
+    },
+    "paragraph-6": {
+        "text": "**Happy experimenting!**"
+    }
+}
