@@ -11,13 +11,13 @@
     "image-1": {
         "asset": "assets/images/lessons/qubit_visualization.png",
         "caption": "So kann man sich Qubits ungefähr vorstellen: Eine Überlagerung von mehreren Zuständen",
-        "alttext": "Die Ziffern 0 und 1 in Kreisen, daneben ein Kreis mit 0 und 1 übereinandergelegt."
+        "alttext": "Die Ziffern Null und Eins in Kreisen, daneben ein Kreis mit Null und Eins übereinandergelegt."
     },
     "paragraph-3": {
         "text": "Doch wie ist das möglich? Vielleicht kennst du das Gedankenexperiment vom Physiker Erwin Schrödinger: In einer Kiste befindet sich eine Katze, welche durch ein Gift getötet wird, sobald ein instabiler Atomkern zerfällt; wann das passiert, kann man nicht genau vorhersagen. Bis zu dem Zeitpunkt, wo man in die Kiste hineinblickt, ist das Atom zerfallen und nicht zerfallen zugleich — und die Katze somit lebendig und tot zugleich."
     },
     "paragraph-4": {
-        "text": "Die kleinste Welt der Atome, der Quanten, benimmt sich völlig anders, als was wir mit bloßem Auge wahrnehmen können und die Gesetze der klassischen Physik gelten dort nicht. Daher hat sie ihren eigenen Zweig bekommen: Die Quantenphysik. Sie ganz zu verstehen, ist selbst für gelernte Physiker eine Schwierigkeit, die grundlegenden Modelle aber können von allen nachvollzogen werden. Die Quantenphysik geht davon aus, dass quantenmechanische Systeme — also Atome, Elektronen usw. — eine Überlagerung aller ihrer möglichen Zustände besitzen, die **Superposition**. Erst wenn man sie mit Geräten misst oder anderweitig beobachtet, entscheiden sie sich für einen bestimmten Zustand. Dies kombiniert mit der Erkenntnis, dass der nicht jeder Ausgang einer Messung gleich wahrscheinlich ist und durch eine Wellenfunktion beschrieben wird, wird als Kopenhagener Deutung bezeichnet."
+        "text": "Die kleinste Welt der Atome, der Quanten, benimmt sich völlig anders, als was wir mit bloßem Auge wahrnehmen können und die Gesetze der klassischen Physik gelten dort nicht. Daher hat sie ihren eigenen Zweig bekommen: Die Quantenphysik. Sie ganz zu verstehen, ist selbst für gelernte Physiker eine Schwierigkeit, die grundlegenden Modelle aber können von allen nachvollzogen werden. Die Quantenphysik geht davon aus, dass quantenmechanische Systeme — also Atome, Elektronen usw. — eine Überlagerung aller ihrer möglichen Zustände besitzen, die **Superposition**. Erst wenn man sie mit Geräten misst oder anderweitig beobachtet, entscheiden sie sich für einen bestimmten Zustand. Dies kombiniert mit der Erkenntnis, dass nicht jeder Ausgang einer Messung gleich wahrscheinlich ist und durch eine Wellenfunktion beschrieben wird, wird als Kopenhagener Deutung bezeichnet."
     },
     "interactive-1": {
 
@@ -33,7 +33,7 @@
     "image-3": {
         "asset": "assets/images/lessons/ion_example.png",
         "caption": "Genauso wie verschiedenen Energieniveaus von Ionen, die durch Elektronen auf verschiedenen Bahnen entstehen",
-        "alttext": "Zwei schematische Darstellungen von Atomen, bei dem sich das eine Elektron auf der näheren (Zustand 0) und das andere auf der ferneren Bahn (Zustand 1) befindet."
+        "alttext": "Zwei schematische Darstellungen von Atomen, bei dem sich das eine Elektron auf der näheren (Zustand Null) und das andere auf der ferneren Bahn (Zustand Eins) befindet."
     },
     "image-4": {
         "asset": "assets/images/lessons/superconductor_example.png",
@@ -53,12 +53,12 @@
     "image-5": {
         "asset": "assets/images/lessons/bloch_sphere.png",
         "caption": "Darstellung eines Qubits auf der sogenannten Bloch-Kugel",
-        "alttext": "Kugel in einem Koordinatensystem, am Südpol 1, am Nordpol 0; Qubit ist als Punkt auf der Oberfläche der oberen Halbkugel eingezeichnet und dessen Winkel zu den Achsen markiert."
+        "alttext": "Kugel in einem Koordinatensystem, am Südpol Eins, am Nordpol Null; Qubit ist als Punkt auf der Oberfläche der oberen Halbkugel eingezeichnet und dessen Winkel zu den Achsen markiert."
     },
     "image-6": {
         "asset": "assets/images/lessons/bloch_sphere_superposition.png",
         "caption": "So sieht ein Qubit mathematisch betrachtet aus, wenn er sich in Superposition befindet",
-        "alttext": "Kugel in einem Koordinatensystem, am Südpol 1, am Nordpol 0; Qubit ist als Punkt genau auf dem Äquator liegend eingezeichnet."
+        "alttext": "Kugel in einem Koordinatensystem, am Südpol Eins, am Nordpol Null; Qubit ist als Punkt genau auf dem Äquator liegend eingezeichnet."
     },
     "paragraph-8": {
         "text": "Die gegen die Intuition gehende Quantenmechanik zu begreifen ist etwas herausfordernd; nimm dir ruhig Zeit und geh zurück, wenn du etwas nicht verstanden hast. Alles klar? Dann geht es weiter zur nächsten Einheit! Am Ende jeder Einheit findest du einen Knopf zum Abschließen. Viel Spaß!"

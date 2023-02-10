@@ -31,10 +31,10 @@
                 "title": "Formulating the QUBO equation"
             },
             "lesson-t8i": {
-                "title": "Von Koeffizienten zur Hamilton-Matrix"
+                "title": "From coefficients to the Hamiltonian matrix"
             },
             "lesson-qhs": {
-                "title": "From coefficients to the Hamiltonian matrix"
+                "title": "Experimental results (and limitations)"
             },
             "lesson-rdx": {
                 "title": "Possibilities for optimization"

@@ -20,6 +20,6 @@
 
     },
     "paragraph-4": {
-        "text": "Bei kleineren Schachbrettgrößen ist die Lösung noch relativ einfach per Hand möglich. Mit jeder weiteren Dame jedoch erhöht sich jedoch die Komplexität um ein Vielfaches. Können wir also den Lösungsprozess vereinfachen und neue Konstellationen innerhalb von Mikrosekunden finden? Diese Lektion zeigt, wie das N-Damen-Problem als Optimierungs- und QUBO-Problem formuliert werden kann und wie es mit einem Quantenannealer lösbar ist. Dabei wollen wir auch der Frage nachgehen, ob sich der quantenbasierte Ansatz überhaupt lohnt und wo die Grenzen dieser neuen Technologie sind."
+        "text": "Bei kleineren Schachbrettgrößen ist die Lösung noch relativ einfach per Hand möglich. Mit jeder weiteren Dame (und folglich jeder weiteren Schachbrettgröße) jedoch erhöht sich jedoch die Komplexität um ein Vielfaches. Können wir also den Lösungsprozess vereinfachen und neue Konstellationen innerhalb von Mikrosekunden finden? Diese Lektion zeigt, wie das N-Damen-Problem als Optimierungs- und QUBO-Problem formuliert werden kann und wie es mit einem Quantenannealer lösbar ist. Dabei wollen wir auch der Frage nachgehen, ob sich der quantenbasierte Ansatz überhaupt lohnt und wo die Grenzen dieser neuen Technologie sind."
     }
 }

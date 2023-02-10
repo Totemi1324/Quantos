@@ -17,7 +17,7 @@
         "text": "Es muss also eine andere Herangehensweise her. Bisher war die vorherrschende Strategie, die beste Lösung Schritt für Schritt so gut wie möglich anzunähern. Dafür ist jedoch ein objektives Maß nötig, woran man messen kann, welche Lösungen besser sind als andere. Daher besteht jedes Optimierungsproblem aus mindestens zwei Komponenten:"
     },
     "paragraph-4": {
-        "text": "1. Kosten: Zahlen, die bewerten, wie \"gut\" eine bestimmte Lösung für das Problem ist\n2.Kostenfunktion: Eine Gleichung, welche die Kosten für eine bestimmte Lösungskonstellation berechnet"
+        "text": "1. Kosten: Zahlen, die bewerten, wie \"gut\" eine bestimmte Lösung für das Problem ist\n2. Kostenfunktion: Eine Gleichung, welche die Kosten für eine bestimmte Lösungskonstellation berechnet"
     },
     "paragraph-5": {
         "text": "Die Komplexität der Kostenfunktion hängt von der Anzahl der zu optimierenden Parameter ab; bei einer Unbekannten kann man es sich als eine Kurve vorstellen:"
@@ -28,7 +28,7 @@
         "alttext": "Nach oben geöffnete parabelförmige Kurve im Koordinatensystem; nummerierte Lösungen x-Achse, Kosten y-Achse; tiefster Punkt markiert mit einem Pfeil und der Beschriftung Minimum."
     },
     "paragraph-6": {
-        "text": "Nehmen wir an, wir möchten die Anzahl der Haushalte optimieren, die die einzelnen Müllwagen anfahren. Im obigen Graphen kann man ablesen, wie sich die Kosten mit dieser Anzahl verändern. Hier gilt: Je niedriger die Kosten, desto besser eine Lösung. Laut dem Graphen wäre also die beste Lösung $$n = 3$$, da hier die geringsten Kosten entstehen. Die Kostenfunktion, die dies letztendlich festlegt, wird meist nicht aktiv definiert, sondern ergibt sich aus Kostenwerten, die einzelnen Lösungen zugewiesen werden."
+        "text": "Nehmen wir an, wir möchten die Anzahl der Haushalte optimieren, die die einzelnen Müllwagen anfahren. Im obigen Graphen kann man ablesen, wie sich die Kosten mit dieser Anzahl verändern. Hier gilt: Je niedriger die Kosten, desto besser eine Lösung. Laut dem Graphen wäre also die beste Lösung $$n = 3$$, da hier die geringsten Kosten entstehen."
     },
     "paragraph-7": {
         "text": "Die Herausforderung dabei: Der Computer, der das Problem lösen soll, sieht auf dieser Kostenkurve immer nur einen Punkt auf einmal und muss eine Strategie entwickeln, trotzdem die \"Täler\", also die Lösungen mit den niedrigsten Kosten, zu finden. Es ist möglich, dabei das **globale Optimum**, die niedrigsten Kosten von allen, zu finden, aber man kann genauso gut bei einem **lokalen Optimum**, einem der vielen mitteltiefen Tälern, landen — im Glauben, der tiefste Punkt sei bereits erreicht."
@@ -61,7 +61,7 @@
     "image-5": {
         "asset": "assets/images/lessons/annealing_process.png",
         "caption": "Energieniveaus sind nicht statisch, sondern verändern sich im Laufe des Annealings",
-        "alttext": "Diagramm mit mehreren flachen Kurven, die eng beieinander verlaufen. x-Achse ist mit Kosten, y-Achse mit Zeit beschrieben. Auf die Stelle, wo der Abstand der Kurven besonders kein ist, zeigt ein Pfeil mit der Aufschrift Minimum Gap."
+        "alttext": "Diagramm mit mehreren flachen Kurven, die eng beieinander verlaufen. x-Achse ist mit Kosten, y-Achse mit Zeit beschrieben. Auf die Stelle, wo der Abstand der Kurven besonders klein ist, zeigt ein Pfeil mit der Aufschrift Minimum Gap."
     },
     "paragraph-11": {
         "text": "Vielleicht ahnst du schon, worauf es hinausläuft: Diese Effekte wollen Quantenannealer ausnutzen, indem man versucht, die Energiekurve der QPU (durch die Programmierung der Koppler) der vorhin behandelten Kostenkurve anzupassen, damit diese **ungefähr gleich aussehen**. Der Vorgang des \"annealings\", also des \"Abkühlens\", ist nichts anderes, als die Superposition der Qubits durch gezielte Messungen stückweise zerfallen zu lassen, damit sie den Zustand der geringsten Energie anstreben und ihre Werte so annehmen, dass sie die beste Lösung für das ursprüngliche Optimierungsproblem darstellen. Wo die Energiekurven eng zusammenlaufen, beim sogenannten \"minimum gap\", besteht die Chance, dass durch die Tunneleffekte nicht die optimalste Lösung rauskommt, deswegen führen Quantenannealer meist mehrere hundert Anneals durch und sind dabei extrem schnell, da ein Anneal nur ca. 20 Mikrosekunden (0.00002 Sekunden) dauert!"
