@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../bloc/content_outline_service.dart';
+import '../bloc/lesson_content_service.dart';
+import '../bloc/localization_service.dart';
 
-//import '../models/content/content_item.dart';
-//import '../models/content/paragraph.dart';
 import '../screens/lesson_screen.dart';
+import '../screens/loading_screen.dart';
 import './lesson_item.dart';
 
 class LessonList extends StatelessWidget {
@@ -13,6 +15,21 @@ class LessonList extends StatelessWidget {
   final List<String> lessonIds;
 
   const LessonList(this.lectionId, this.lessonIds, {super.key});
+
+  Future loadLessonAndProceed(BuildContext context, String lessonId) async {
+    /*await context.read<LessonContentService>().loadByIdFromLocale(
+                  lesson.id,
+                  locale,
+                  notFoundParagraph,
+                );
+            
+            if (!context.)
+
+            Navigator.of(context).pushNamed(
+              LessonScreen.routeName,
+              arguments: lesson.id,
+            );*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +40,24 @@ class LessonList extends StatelessWidget {
       itemBuilder: (context, index) {
         final lesson =
             context.read<ContentOutlineService>().lesson(lessonIds[index]);
-        /*final firstParagraph = lessons[index].content.firstWhere(
-              (element) => element.type == ContentType.paragraph,
-              orElse: () => const Paragraph(texts: [
-                ParagraphSpan(type: ParagraphSpanType.normal, text: ""),
-              ]),
-            ) as Paragraph;
-
-        final firstText = firstParagraph.texts.map((e) => e.text).join();*/
 
         return InkWell(
           splashFactory: NoSplash.splashFactory,
-          onTap: () => Navigator.of(context).pushNamed(
-            LessonScreen.routeName,
-            arguments: lesson.id,
-          ),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (buildContext) => LoadingScreen(
+              Future(
+                () => buildContext
+                    .read<LessonContentService>()
+                    .loadByIdFromLocale(
+                      lesson.id,
+                      buildContext.read<LocalizationService>().state,
+                      AppLocalizations.of(buildContext)!.authFormPassword,
+                    ),
+              ),
+              LessonScreen.routeName,
+              arguments: lesson.id,
+            ),
+          )),
           child: Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: LessonItem(
@@ -46,7 +66,6 @@ class LessonList extends StatelessWidget {
                   .read<ContentOutlineService>()
                   .state
                   .getLessonTitle(lesson.id),
-              previewText: "",
               readTimeInMinutes: lesson.readTimeInMinutes,
               progress: lesson.progress,
             ),

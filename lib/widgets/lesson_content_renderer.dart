@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 
-import '../models/lesson.dart';
+import '../bloc/lesson_content_service.dart';
+
 import '../models/content/content_item.dart';
 import '../models/content/section_title.dart';
 import '../models/content/paragraph.dart';
@@ -10,9 +12,7 @@ import '../models/content/image.dart' as image_content;
 import '../models/content/equation.dart';
 
 class LessonContentRenderer extends StatelessWidget {
-  final Lesson lesson;
-
-  const LessonContentRenderer(this.lesson, {super.key});
+  const LessonContentRenderer({super.key});
 
   Widget _buildContentItem(BuildContext buildContext, ContentItem item) {
     switch (item.type) {
@@ -155,9 +155,9 @@ class LessonContentRenderer extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: lesson.content.length,
-      itemBuilder: (context, index) =>
-          _buildContentItem(context, lesson.content[index]),
+      itemCount: context.read<LessonContentService>().state.content.length,
+      itemBuilder: (context, index) => _buildContentItem(
+          context, context.read<LessonContentService>().state.content[index]),
     );
   }
 }

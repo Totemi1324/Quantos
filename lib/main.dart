@@ -6,6 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'bloc/theme_service.dart';
 import 'bloc/localization_service.dart';
 import 'bloc/content_outline_service.dart';
+import 'bloc/lesson_content_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -46,7 +47,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<ContentOutlineService>(
           create: (_) => ContentOutlineService(),
-        )
+        ),
+        BlocProvider<LessonContentService>(
+          create: (_) => LessonContentService(),
+        ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(
         builder: (context, currentLocale) =>

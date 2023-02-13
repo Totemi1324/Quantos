@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/content_outline_service.dart';
+import '../bloc/lesson_content_service.dart';
 
 import './base/flat.dart';
 import '../widgets/lesson_content_renderer.dart';
@@ -19,7 +20,8 @@ class LessonScreen extends StatelessWidget {
     final lessonId = args as String;
     final lessonTitle =
         context.read<ContentOutlineService>().state.getLessonTitle(lessonId);
-    final sectionTitles = List<String>.empty(); //TODO
+    final sectionTitles =
+        context.read<LessonContentService>().state.sectionTitles;
 
     return Flat(
       body: SafeArea(
@@ -80,7 +82,7 @@ class LessonScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                LessonContentRenderer(lesson),
+                const LessonContentRenderer(),
                 const SizedBox(
                   height: 30,
                 ),
