@@ -5,7 +5,7 @@ import 'package:page_transition/page_transition.dart';
 // State management
 import 'bloc/theme_service.dart';
 import 'bloc/localization_service.dart';
-import 'bloc/lesson_content_service.dart';
+import 'bloc/content_outline_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -44,15 +44,15 @@ class MyApp extends StatelessWidget {
         BlocProvider<LocalizationService>(
           create: (_) => LocalizationService(),
         ),
-        BlocProvider<LessonContentService>(
-          create: (_) => LessonContentService(),
+        BlocProvider<ContentOutlineService>(
+          create: (_) => ContentOutlineService(),
         )
       ],
       child: BlocBuilder<LocalizationService, Locale>(
         builder: (context, currentLocale) =>
             BlocBuilder<ThemeService, ThemeData>(
           builder: (context, activeTheme) =>
-              BlocBuilder<LessonContentService, ContentOutline>(
+              BlocBuilder<ContentOutlineService, ContentOutline>(
             builder: (context, contentOutline) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Quantos",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/lesson_content_service.dart';
+import '../bloc/content_outline_service.dart';
 
 //import '../models/content/content_item.dart';
 //import '../models/content/paragraph.dart';
@@ -22,7 +22,7 @@ class LessonList extends StatelessWidget {
       itemCount: lessonIds.length,
       itemBuilder: (context, index) {
         final lesson =
-            context.read<LessonContentService>().lesson(lessonIds[index]);
+            context.read<ContentOutlineService>().lesson(lessonIds[index]);
         /*final firstParagraph = lessons[index].content.firstWhere(
               (element) => element.type == ContentType.paragraph,
               orElse: () => const Paragraph(texts: [
@@ -43,7 +43,7 @@ class LessonList extends StatelessWidget {
             child: LessonItem(
               index: index + 1,
               title: context
-                  .read<LessonContentService>()
+                  .read<ContentOutlineService>()
                   .state
                   .getLessonTitle(lesson.id),
               previewText: "",

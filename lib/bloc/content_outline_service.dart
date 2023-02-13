@@ -10,7 +10,7 @@ import '../models/lesson.dart';
 import '../models/content/content_outline.dart';
 import '../models/exceptions.dart';
 
-class LessonContentService extends Cubit<ContentOutline> {
+class ContentOutlineService extends Cubit<ContentOutline> {
   static const lectionJsonKey = "lection";
   static const lessonJsonKey = "lesson";
   static const titleJsonKey = "title";
@@ -145,7 +145,7 @@ class LessonContentService extends Cubit<ContentOutline> {
     ),
   ];
 
-  LessonContentService() : super(ContentOutline.emptyFromData(_contentData));
+  ContentOutlineService() : super(ContentOutline.emptyFromData(_contentData));
 
   List<Lection> get lections => _contentData;
 

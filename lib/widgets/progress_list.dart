@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/theme_service.dart';
-import '../bloc/lesson_content_service.dart';
+import '../bloc/content_outline_service.dart';
 
 import './ui/adaptive_progress_bar.dart';
 
@@ -16,7 +16,7 @@ class ProgressList extends StatefulWidget {
 class _ProgressListState extends State<ProgressList> {
   @override
   Widget build(BuildContext context) {
-    final lections = context.read<LessonContentService>().lections;
+    final lections = context.read<ContentOutlineService>().lections;
 
     return BlocListener<ThemeService, ThemeData>(
       listener: (context, state) => setState(() {}),
@@ -31,7 +31,7 @@ class _ProgressListState extends State<ProgressList> {
             children: [
               Text(
                 context
-                    .read<LessonContentService>()
+                    .read<ContentOutlineService>()
                     .state
                     .getLectionTitle(lections[index].id),
                 style: context.read<ThemeService>().state.textTheme.titleMedium,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/lesson_content_service.dart';
+import '../../bloc/content_outline_service.dart';
 
 import '../../widgets/ui/adaptive_circular_progress_bar.dart';
 import '../../widgets/statistics_list.dart';
@@ -29,7 +29,7 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
               AdaptiveCircularProgressBar(
-                context.read<LessonContentService>().cumulativeProgress,
+                context.read<ContentOutlineService>().cumulativeProgress,
                 footer: AppLocalizations.of(context)!
                     .statisticsScreenProgressSubtitle,
               ),

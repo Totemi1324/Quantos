@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/lesson_content_service.dart';
-import '../bloc/lesson_content_service.dart';
+import '../bloc/content_outline_service.dart';
+import '../bloc/content_outline_service.dart';
 
 import '../screens/lection_screen.dart';
 import './containers/panel_card.dart';
@@ -13,7 +13,7 @@ class LectionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lections = context.read<LessonContentService>().lections;
+    final lections = context.read<ContentOutlineService>().lections;
 
     return ListView.builder(
       shrinkWrap: true,
@@ -21,7 +21,7 @@ class LectionList extends StatelessWidget {
       itemCount: lections.length,
       itemBuilder: (buildContext, index) {
         final lection =
-            context.read<LessonContentService>().lection(lections[index].id);
+            context.read<ContentOutlineService>().lection(lections[index].id);
 
         return InkWell(
           splashFactory: NoSplash.splashFactory,
@@ -35,7 +35,7 @@ class LectionList extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: LectionItem(
               context
-                  .read<LessonContentService>()
+                  .read<ContentOutlineService>()
                   .state
                   .getLectionTitle(lection.id),
               iconAnimationAsset: lection.iconAnimationAsset,

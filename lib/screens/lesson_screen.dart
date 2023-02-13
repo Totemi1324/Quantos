@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/lesson_content_service.dart';
+import '../bloc/content_outline_service.dart';
 
 import './base/flat.dart';
 import '../widgets/lesson_content_renderer.dart';
@@ -18,7 +18,7 @@ class LessonScreen extends StatelessWidget {
     final args = ModalRoute.of(context)?.settings.arguments;
     final lessonId = args as String;
     final lessonTitle =
-        context.read<LessonContentService>().state.getLessonTitle(lessonId);
+        context.read<ContentOutlineService>().state.getLessonTitle(lessonId);
     final sectionTitles = List<String>.empty(); //TODO
 
     return Flat(
