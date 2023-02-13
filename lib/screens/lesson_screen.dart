@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/lesson_content_service.dart';
 
 import './base/flat.dart';
-import '../bloc/lesson_manager.dart';
-import '../models/lesson.dart';
 import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
 
@@ -15,10 +16,10 @@ class LessonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
-    final ids = args as List<String>;
-    final lesson = LessonManager.of(context)?.lesson(ids[0], ids[1]) as Lesson;
-    final sectionTitles = LessonManager.of(context)
-        ?.lessonOutline(ids[0], ids[1]) as List<String>;
+    final lessonId = args as String;
+    final lessonTitle =
+        context.read<LessonContentService>().state.getLessonTitle(lessonId);
+    final sectionTitles = List<String>.empty(); //TODO
 
     return Flat(
       body: SafeArea(
@@ -31,7 +32,7 @@ class LessonScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    lesson.title,
+                    lessonTitle,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),

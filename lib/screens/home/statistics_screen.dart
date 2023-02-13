@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/lesson_manager.dart';
+import '../../bloc/lesson_content_service.dart';
+
 import '../../widgets/ui/adaptive_circular_progress_bar.dart';
 import '../../widgets/statistics_list.dart';
 import '../../widgets/containers/rounded_card.dart';
@@ -27,7 +29,7 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
               AdaptiveCircularProgressBar(
-                LessonManager.of(context)?.cumulativeProgress ?? 0,
+                context.read<LessonContentService>().cumulativeProgress,
                 footer: AppLocalizations.of(context)!
                     .statisticsScreenProgressSubtitle,
               ),

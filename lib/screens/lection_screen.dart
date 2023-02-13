@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/lesson_content_service.dart';
 
 import './base/decorated.dart';
-import '../bloc/lesson_manager.dart';
-import '../models/lection.dart';
 import '../widgets/containers/panel_card.dart';
 import '../widgets/difficulty_badge.dart';
 import '../widgets/part_separator.dart';
@@ -19,7 +20,7 @@ class LectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
     final lectionId = args as String;
-    final lection = LessonManager.of(context)?.lection(lectionId) as Lection;
+    final lection = context.read<LessonContentService>().lection(lectionId);
 
     return Decorated(
       body: Padding(
@@ -44,7 +45,10 @@ class LectionScreen extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        lection.title,
+                        context
+                            .read<LessonContentService>()
+                            .state
+                            .getLectionTitle(lectionId),
                         style: Theme.of(context).textTheme.headlineMedium,
                         textAlign: TextAlign.center,
                       ),
@@ -53,7 +57,10 @@ class LectionScreen extends StatelessWidget {
                         child: DifficultyBadge(lection.difficultyLevel),
                       ),
                       Text(
-                        lection.description,
+                        context
+                            .read<LessonContentService>()
+                            .state
+                            .getLectionDescription(lectionId),
                         style: Theme.of(context).textTheme.labelSmall,
                         textAlign: TextAlign.center,
                       ),
@@ -66,7 +73,13 @@ class LectionScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: LessonList(lection.id, lection.lessons),
+                  child: LessonList(
+                    lectionId,
+                    context
+                        .read<LessonContentService>()
+                        .state
+                        .getLessonsOfLection(lectionId),
+                  ),
                 ),
               ],
             ),

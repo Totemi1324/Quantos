@@ -12,8 +12,6 @@ class Lection {
   final String headerAnimationAsset;
   final Difficulty difficultyLevel;
   final List<Lesson> lessons;
-  String title;
-  String description;
 
   double progressPercent;
   bool unlocked;
@@ -24,8 +22,6 @@ class Lection {
     required this.headerAnimationAsset,
     required this.difficultyLevel,
     required this.lessons,
-    this.title = "",
-    this.description = "",
     this.progressPercent = 0.0,
     this.unlocked = false,
   });
