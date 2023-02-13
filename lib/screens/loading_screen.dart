@@ -5,31 +5,36 @@ import 'base/flat.dart';
 import '../widgets/custom_circular_progress_indicator.dart';
 
 class LoadingScreen extends StatefulWidget {
+  final Future loadingRoutine;
   final String nextRoute;
+  final dynamic arguments;
 
-  const LoadingScreen(this.nextRoute, {super.key});
+  const LoadingScreen(
+    this.loadingRoutine,
+    this.nextRoute, {
+    this.arguments,
+    super.key,
+  });
 
   @override
   State<LoadingScreen> createState() => _LoadingScreenState();
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  // ignore: unused_field
-  late Timer _timer;
-
   @override
   void initState() {
     super.initState();
-    // TEMPORARY CODE
-    _timer = _onSplashStart();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await widget.loadingRoutine;
+      if (!mounted) {
+        return;
+      }
+      _toNextPage(context);
+    });
   }
 
-  Timer _onSplashStart() {
-    return Timer(const Duration(seconds: 3), () => _toNextPage(context));
-  }
-
-  void _toNextPage(BuildContext buildContext) =>
-      Navigator.of(buildContext).pushReplacementNamed(widget.nextRoute);
+  void _toNextPage(BuildContext buildContext) => Navigator.of(buildContext)
+      .pushReplacementNamed(widget.nextRoute, arguments: widget.arguments);
 
   @override
   Widget build(BuildContext context) {

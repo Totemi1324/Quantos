@@ -62,7 +62,10 @@ class ProfileExperienceScreen extends StatelessWidget {
                       extended: true,
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (_) => const LoadingScreen(Home.routeName),
+                          builder: (_) => LoadingScreen(
+                            Future.delayed(const Duration(milliseconds: 2000)),
+                            Home.routeName,
+                          ),
                         ),
                         (_) => false,
                       ),
