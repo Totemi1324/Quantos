@@ -1,0 +1,26 @@
+{
+    "paragraph-1": {
+        "text": "**Congratulations!** You made it to the end of the course. Hopefully you were able to learn a lot of new things along the way and get a feel for what quantum computers are capable of. Here's our take on it:"
+    },
+    "paragraph-2": {
+        "text": "As new milestones are reached each year, quantum computing is a rapidly evolving technology that will greatly impact our lives. It is currently one of our most promising solutions to the class of optimization problems as a whole, so further research on quantum algorithms for the traveling salesman problem and other tasks is definitely worthwhile."
+    },
+    "paragraph-3": {
+        "text": "Nevertheless, it is important to also acknowledge the limitations. Much progress remains to be made before this method can be applied to everyday and industrially relevant tasks. However, despite its (yet) limited capacity and error rate, the quantum approach has a great potential for real-life applications, since in industry most of the time not necessarily the best but a good enough solution is needed, and the **speed** at which it is found is much more important than its **accuracy**. Therefore, especially quantum annealers represent a great opportunity to significantly speed up manufacturing, logistics and research processes in the future."
+    },
+    "paragraph-4": {
+        "text": "Of course, we hope you enjoy our app. If you have feedback, we invite you to share it in the Help Center or on our website. Thanks for using Quantos - and cheers to your thirst for knowledge!"
+    },
+    "sectiontitle-1": {
+        "title": "Acknowledgements"
+    },
+    "paragraph-5": {
+        "text": "Thanks to all who supported the research of Quantos, especially **DWave Systems Inc.** and the **Juelich Supercomputing Centre** of Forschungszentrum Juelich. All calculations and experiments for this course's content were performed using **JUNIQ** (Juelich Unified Infrastructure for Quantum Computing) and its virtual **JUPSI** architecture."
+    },
+    "paragraph-6": {
+        "text": "Special thanks to **Dennis Willsch** and **Kristen Michielsen** from JSC for their generous support, guidance and coordination."
+    },
+    "paragraph-7": {
+        "text": "Thanks also to **René Grünbauer** from the Gymnasium der Regensburger Domspatzen, who made the project possible with his materials and excellent ideas."
+    }
+}

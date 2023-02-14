@@ -1,3 +1,5 @@
+import './lesson.dart';
+
 enum Difficulty {
   easy,
   advanced,
@@ -8,9 +10,9 @@ class Lection {
   final String id;
   final String iconAnimationAsset;
   final String headerAnimationAsset;
-  final String title;
-  final String description;
   final Difficulty difficultyLevel;
+  final List<Lesson> lessons;
+
   double progressPercent;
   bool unlocked;
 
@@ -18,9 +20,8 @@ class Lection {
     required this.id,
     required this.iconAnimationAsset,
     required this.headerAnimationAsset,
-    required this.title,
-    required this.description,
     required this.difficultyLevel,
+    required this.lessons,
     this.progressPercent = 0.0,
     this.unlocked = false,
   });

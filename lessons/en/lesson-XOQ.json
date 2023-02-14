@@ -1,0 +1,69 @@
+{
+    "paragraph-1": {
+        "text": "A local garbage collector must visit the residents of a city at the beginning of each week to empty their trash containers. Imagine you were in charge of setting the route for the garbage collection fleet. How would you proceed to ensure that the vehicles finish as quickly as possible, use as little gas as possible, perhaps that no vehicle is overloaded?"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/optimization_introduction.png",
+        "caption": "The schedule of a garbage collection must be well planned so that no resources are wasted",
+        "alttext": "Two garbage trucks drive on the streets of a grassy landscape with several houses; bird's eye view."
+    },
+    "paragraph-2": {
+        "text": "This scenario is a classic example of **optimization problems**; they play a large role in this course, as this is the one type of task that quantum annealer can (potentially) solve faster and more efficiently than conventional computers. The larger the city, the higher the number of theoretically possible routes for garbage collection; here we quickly reach several billion possibilities. Calculating and trying them all to find the most optimal solution — this is called \"brute force\" — is impossible, as decades of computation would be required."
+    },
+    "sectiontitle-1": {
+        "title": "Strategic approach"
+    },
+    "paragraph-3": {
+        "text": "So there has to be a different approach. Until now, the prevailing strategy has been to approximate the best solution as closely as possible, step by step. However, this requires an objective measure of which solutions are better than others. Therefore, every optimization problem consists of at least two components:"
+    },
+    "paragraph-4": {
+        "text": "1. Cost: numbers that evaluate how \"good\" a particular solution to the problem is\n2. Cost function: an equation that calculates the cost for a particular solution constellation"
+    },
+    "paragraph-5": {
+        "text": "The complexity of the cost function depends on the number of parameters to be optimized; with one unknown, it can be thought of as a curve:"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/quadratic_qubo.png",
+        "caption": "The lowest point (minimum) of the cost function is also the best solution of the optimization problem",
+        "alttext": "TODO."
+    },
+    "paragraph-6": {
+        "text": "Suppose we want to optimize the number of households that each garbage truck serves. In the graph above, we can see how the costs change with this number. Here, the lower the cost, the better a solution. So, according to the graph, the best solution would be $$n = 3$$, since this is where the lowest costs occur."
+    },
+    "paragraph-7": {
+        "text": "The challenge here is that the computer, which is supposed to solve the problem, sees only one point at a time on this cost curve and has to develop a strategy to still find the **valleys**, the solutions with the lowest costs. It is possible to find the **global optimum**, the lowest cost of all, in the process, but one can just as easily end up at a **local optimum**, one of the many medium-deep valleys — in the belief that the lowest point has already been reached."
+    },
+    "interactive-1": {
+
+    },
+    "sectiontitle-2": {
+        "title": "Optimizing with quantum computers"
+    },
+    "paragraph-8": {
+        "text": "But how does quantum computing come into play now? Due to the ability of qubits to be in a superposition, they see (figuratively speaking) the whole cost function at once and can \"jump\" to the deepest valley right away. Multiple quantum physical properties of qubits are responsible for this: the ground state and quantum tunneling."
+    },
+    "paragraph-9": {
+        "text": "Quantum mechanical systems possess a kind of \"internal energy\" and strive for it to be **as low as possible**. The state of lowest energy is also called ground state or zero point energy."
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/energy_levels.png",
+        "caption": "Different energy levels of particles: The ground state and excited states",
+        "alttext": "Diagram with colored horizontal lines at different heights next to an arrow as the x-axis labeled energy; the lowest line is labeled ground state, the higher ones as excited states."
+    },
+    "paragraph-10": {
+        "text": "In addition, quantum particles such as electrons have the ability to \"tunnel\" to certain energy levels. Since, as described in previous lessons, the position and velocity of an electron are not fixed values but a cloud of probabilities, particles are able to jump immediately to lower energy levels without having passed through previous, possibly higher, energy levels. This is the effect of **quantum tunneling**."
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/quantum_tunneling.png",
+        "caption": "Instead of following the classical path, it is also possible for the smallest particles to tunnel through it",
+        "alttext": "Diagram of an energy curve with a high hill in the center; From a circle lying in a valley in front of the hill labeled local minimum, an arrow points through the hill to a lower valley after the hill labeled global minimum."
+    },
+    "image-5": {
+        "asset": "assets/images/lessons/annealing_process.png",
+        "caption": "Energy levels are not static, but change during the annealing process",
+        "alttext": "Diagram with several flat curves running close together. x-axis is labeled as cost, y-axis as time. An arrow with the inscription minimum gap points to the place where the gap between the curves is particularly small."
+    },
+    "paragraph-11": {
+        "text": "You may already guess where this is going: Quantum annealers want to exploit these effects by trying to match the energy curve of the QPU (by programming the couplers) to the cost function's curve discussed earlier, so that they **look about the same**. The process of \"annealing\", that is, \"cooling\", is nothing more than allowing the superposition of the qubits to decay piecemeal through deliberate measurements so that they seek the state of least energy and take on values such that they represent the best solution to the original optimization problem. Where the energy curves converge closely, at the so-called \"minimum gap\", there is a chance that the tunneling effects will produce a non-optimal solution, which is why quantum annealers usually perform several hundred anneals and are extremely fast, since an anneal takes only about 20 microseconds (0.00002 seconds)!"
+    }
+}

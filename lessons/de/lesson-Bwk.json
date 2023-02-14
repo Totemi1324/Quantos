@@ -1,0 +1,81 @@
+{
+    "paragraph-1": {
+        "text": "Jetzt fehlt nur noch ein finaler Schritt, um Optimierungsprobleme auf einem Quantenannealer zu lösen: Ihm die QUBO-Gleichung zu übermitteln. Zudem müssen die Ergebnisse, wenn der Annealer fertig ist, in irgendeiner Form wieder zurückkommen. Für diese Kommunikation gibt es ein einheitliches Protokoll, welche die Formatierung der Daten festlegt. Sie sieht ungefähr so aus:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/dwave_procedure.png",
+        "caption": "Der Verlauf einer Rechenoperation am DWave-Annealer",
+        "alttext": "Flussdiagramm, an dessen Anfang ein quadratisches Zahlenfeld steht, welches zu einem Foto des Quantenannealers zeigt, welches wiederum auf eine Reihe aus den Ziffern null und eins zeigt."
+    },
+    "paragraph-2": {
+        "text": "Das sieht vielleicht etwas verwirrend aus, gehen wir es also Schritt für Schritt durch."
+    },
+    "sectiontitle-1": {
+        "title": "Vektoren und Matrizen"
+    },
+    "paragraph-3": {
+        "text": "Doch zuerst einige Grundlagen. Für die Darstellung der Daten sind **Vektoren** von zentraler Bedeutung. In seiner traditionellen Form ist ein Vektor eine Größe im Raum mit einer **Richtung** und **Länge** (oft als Pfeil oder Strahl dargestellt) und besteht aus zwei oder mehr Koordinaten, die in einer vertikalen Spalte untereinandergeschrieben werden. Ein Vektor im 3-dimensionalen Raum würde zum Beispiel drei Koordinaten enthalten."
+    },
+    "equation-1": {
+        "tex": "\\vec{q}=\\begin{pmatrix}q_1\\\\q_2\\\\q_3\\end{pmatrix}",
+        "alttext": "q=(q₁, q₂, q₃)"
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/vector_example.png",
+        "caption": "Mit Pfeilen können 3-dimensionale Vektoren visualisiert werden",
+        "alttext": "Bunter Pfeil in einem dreidimensionalen Koordinatensystem, welches vom Ursprung aus dem Bildschirm heraus zeigt."
+    },
+    "paragraph-4": {
+        "text": "Da ein Vektor im Grunde eine Zahlenreihe ist, werden Vektoren verwenden, um die Ergebnisse aus dem Quantenannealer abzurufen. Wenn wir ein 4×4-Spielbrett mit 4²=16 Feldern hätten, würden die Einträge angeben, ob unsere Felder a, b, usw. bis n besetzt (1) oder unbesetzt (0) sein sollten. Dies wird als der **Antwortvektor** $$q_A$$ definiert und ist das, was der Quantencomputer nach jedem Anneal ausgibt."
+    },
+    "equation-2": {
+        "tex": "\\vec{q}_A=\\begin{pmatrix}a\\\\b\\\\\\vdots\\\\n\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\\\\\vdots\\\\1\\end{pmatrix}",
+        "alttext": "qₐ=(a, b, ..., n)=(0, 1, ..., 1)"
+    },
+    "paragraph-5": {
+        "text": "In ähnlicher Weise kann man sich eine **Matrix** als eine Reihe von zusammengeklebten Vektoren vorstellen. Es handelt sich um ein rechteckiges Feld aus Zahlen, bei dem jedes Element im Format $$m_{ij}$$ indiziert ist (i und j bezeichnen den Zeilen- und Spaltenindex eines bestimmten Elements, also in welcher Zeile und Spalte es sich in der Matrix befindet). Ein Beispiel:"
+    },
+    "equation-3": {
+        "tex": "M=\\begin{pmatrix}1&4&2&1\\\\3&0&3&1\\\\5&1&2&0\\\\4&1&2&3\\end{pmatrix}",
+        "alttext": "M=((1,4,2,1),(3,0,3,1),(5,1,2,0),(4,1,2,3))"
+    },
+    "paragraph-6": {
+        "text": "Hier wäre das Element $$m_{31}$$ der Matrix gleich 5. Keine Angst, wenn es noch nicht ganz klar ist, wir werden Matrizen nur als einfaches Mittel zum Zweck verwenden. Denn in der Tat sind Matrizen die kompakteste Möglichkeit, QUBO-Probleme als Eingabe an den Quantenannealer zu übermitteln. Da die Form der QUBO-Gleichungen immer gleich ist, können die Koeffizienten (die einzigen Werte, die sich ändern) in einer Matrix im folgenden Format zusammengefasst werden, um sie dem Quantencomputer zugänglich zu machen:"
+    },
+    "equation-4": {
+        "tex": "f\\left(a,b,c,d\\right)=h_aa+h_bb+h_cc+h_dd+h_{ab}ab+h_{ac}ac+h_{ad}ad+h_{bc}bc+h_{bd}bd+h_{cd}cd",
+        "alttext": "f(a,b,c,d)=ha×a + hb×b + hc×c + hd×d + hab×a×b + hac×a×c + had×a×d + hbc×b×c + hbd×b×d + hcd×c×d"
+    },
+    "equation-5": {
+        "tex": "\\Rightarrow H=\\begin{pmatrix}h_a&h_{ab}&h_{ac}&h_{ad}\\\\0&h_b&h_{bc}&h_{bd}\\\\0&0&h_c&h_{cd}\\\\0&0&0&h_d\\end{pmatrix}",
+        "alttext": "⇒H=((ha, hab, hac, had),(0, hb, hbc, hbd),(0, 0, hc, hcd),(0, 0, 0, hd))"
+    },
+    "paragraph-7": {
+        "text": "Beobachte das **Muster**, wie die einzelnen Felder aufeinander folgen; auf gleicher Weise skaliert der Hamiltonian auch für QUBO-Gleichungen mit mehr Variablen."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/hamiltonian_scaling.png",
+        "caption": "Eine Hamilton-Matrix für eine QUBO-Gleichung mit 6 Unbekannten",
+        "alttext": "Quadratische Zahlenmatrix mit sechs mal sechs Einträgen, von h a bis h f durchnummeriert."
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/hamiltonian_pattern.png",
+        "caption": "Hamiltonians bilden mit ihren Variablen ein regelmäßiges Muster",
+        "alttext": "Eine Anordnung von bunten bzw. zweifarbigen Quadraten in einem Gitter; oben sind a, b, c und d unterschiedliche Farben zugewiesen; im Gitter repräsentieren sie die Stellung der Variablen."
+    },
+    "sectiontitle-2": {
+        "title": "Kopplung von Qubits"
+    },
+    "paragraph-8": {
+        "text": "Zusammengefasst versucht der Quantenannealer also, den Antwortvektor zu finden, dessen Koordinaten die geringsten Kosten verursachen. Die Einträge der Hamilton-Matrix dienen dabei als Grundlage für die Gewichtung (Bias) der Koppler-Magnetfelder auf der QPU. Diese Übersetzung wird automatisch berechnet und nennt sich **Embedding**. Was ist aber, wenn das QUBO-Problem komplexer ist? Nehmen wir die Chimera-Topologie als Beispiel: Hier kann jeder Qubit mit höchstens 6 anderen gekoppelt werden, was einer maximalen Hamiltonian-Größe von 7×7 entspricht."
+    },
+    "paragraph-9": {
+        "text": "Wenn ein Qubit mehr als 6 Verbindungen braucht, können dann mehrere **physikalische** Qubits zu sogenannten **logischen** Qubits gekoppelt werden, indem sie mit sehr starken Gleichheitskopplern verbunden werden. Bei der Messung verhalten sie sich dann beinahe wie eine Einheit. Mit jedem physikalischen Qubit, der an einen logischen angeschlossen wird, kommen 6 weitere Verbindungsmöglichkeiten dazu, es erhöht sich aber auch die Wahrscheinlichkeit, dass die Kette bricht und die Ergebnisse unbrauchbar werden."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-10": {
+        "text": "Herzlichen Glückwunsch! Du hast nun ein fundiertes Verständnis darüber erlangt, wie Quantenannealer Aufgaben lösen. Damit kannst du bereits den **Coding-Tab** auf dem Homescreen verwenden, um mit einem echten Annealer von DWave zu interagieren. Leg direkt los oder stürze dich in die nächsten Lektionen, die dieses Grundlagenwissen anhand echter Problemstellungen anwenden und Aufschluss über eine methodische Herangehensweise sowie die Grenzen des Quantenannealing geben!"
+    }
+}

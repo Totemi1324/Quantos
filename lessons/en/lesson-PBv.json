@@ -1,0 +1,29 @@
+{
+    "sectiontitle-1": {
+        "title": "Differences in energy levels"
+    },
+    "paragraph-1": {
+        "text": "From quantum physics we know that jumping to other energy levels by the tunneling effect is more likely the higher their density and consequently the shorter the distance between them. For the quantum annealer, this means that the probability of **non-optimal results** increases. The solutions are already sorted by increasing energy as they arrive; therefore, it is often helpful to pick out the best $$n$$ solutions and consider their energy delta $$\\delta E$$, i.e., their difference from the theoretically optimal energy. With our naive approach, the following picture emerges:"
+    },
+    "interactive-1": {
+        
+    },
+    "paragraph-2": {
+        "text": "In this type of evaluation, the lowest possible energy must first be determined using the QUBO equation in order to be able to use it as a basis for comparison. A look at the 64×64 Hamiltonian of the naive algorithm tells us: the annealer has to fill in all empty boxes of the Sudoku with exactly one digit without incurring penalties. For each occupancy there is a reward of -4, so the optimal energy is $$(-4)\\times16=-64$$."
+    },
+    "paragraph-3": {
+        "text": "The diagram shows by how much the solutions that just miss the optimum are exactly off. The fact that the jump from the best to the second best is larger than between the solutions thereafter shows that the **energy gap is larger** there — this is to our advantage, as it decreases the probability that the quantum mechanical system tunnels to a non-optimal solution."
+    },
+    "sectiontitle-2": {
+        "title": "How large is the degree of optimization?"
+    },
+    "paragraph-4": {
+        "text": "Finally, a comparison between the naive and optimized approaches of how many of the 2500 measurements successfully found the lowest energy."
+    },
+    "interactive-2": {
+        
+    },
+    "paragraph-5": {
+        "text": "The difference is remarkable, but not surprising due to the different size of the Hamiltonians. For the 4×4 sample Sudoku in the lesson, the correct solution could still be found using both approaches, but larger puzzles will **only be solvable using the exclusion-based method** (as long as enough fields are pre-filled)."
+    }
+}

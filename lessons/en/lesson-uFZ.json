@@ -1,0 +1,25 @@
+{
+    "paragraph-1": {
+        "text": "Chess is one of the best-known and most widely practiced board games in the world — and, despite its simplicity, one of the most mathematically complex. This already starts with the fact that there are more possible chess games than atoms in the observable universe. Too much, then, to apply brute force, or trial and error; that sounds like an optimization problem!"
+    },
+    "sectiontitle-1": {
+        "title": "How does the queen play in chess?"
+    },
+    "paragraph-2": {
+        "text": "A chess board consists of a square, which is divided into black and white sub-squares — 8 in the horizontal and 8 in the vertical axis, making a total of 64 squares. There are several chess pieces that can move on this board, but for us here only the **queen**, the strongest of all pieces, is of importance. It can move any number of squares horizontally, vertically and diagonally to capture other pieces. Thus, if another piece is within a queen's range, it is considered threatened."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/queen_range.png",
+        "caption": "The queen covers a large area on the board with her reach",
+        "alttext": "Bird's-eye view chessboard with a queen piece on D3; starting from it, a row, a column, and two diagonals of squares shaded in blue."
+    },
+    "paragraph-3": {
+        "text": "This made Max Bezzel, a German chess master, think. In 1848 he formulated the 8 queens problem for the first time in the Berliner Schachzeitung (\"Berlin chess magazine\"). The goal is to place 8 queens on a chessboard in such a way that they **do not threaten each other**, i.e. that none can attack another. Later, the problem was extended and generalized to the N queens problem, where the goal is to place N queens on a chessboard of size N×N squares without threat situations (N is an arbitrary integer here). This puzzle remained the subject of active research up to the present, with the highest exactly solved size being $$N=27$$, offering over **200 quadrillion** (!) different possibilities for a valid setup."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-4": {
+        "text": "With smaller chessboard sizes, the solution is still relatively simple by hand. With each additional queen (and consequently, each additional chess board size), however, the complexity increases many times over. So can we simplify the solution process and find new constellations within microseconds? This lesson shows how the N queens problem can be formulated as an optimization and QUBO problem and how it can be solved with a quantum annealer. Along the way, we will also explore the question of whether the quantum-based approach is worthwhile at all and what the limitations of this new technology are."
+    }
+}

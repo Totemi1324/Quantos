@@ -1,0 +1,65 @@
+{
+    "sectiontitle-1": {
+        "title": "Wie man Annealer-Ergebnisse interpretiert"
+    },
+    "paragraph-1": {
+        "text": "Die Antwort des Quantenannealers ist da! Schauen wir uns also an, wie wir die Datenpakete interpretieren können. Wenn Hamiltonians an den Annealer geschickt werden, sehen die Ergebnisse in etwa so aus:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/nqueens_results.png",
+        "caption": "Mit diesen Zahlenreihen \"antwortet\" der Quantenannealer auf ein Rechenproblem",
+        "alttext": "Tabelle mit Zeilen, die jeweils sechzehn binäre Zahlen beinhalten; zweite Spalte ist beschriftet mit Energie, die sich zwischen minus acht und minus sechs bewegt, dritte Spalte mit Häufigkeit, wobei die Zahl in der ersten Zeile mit Abstand am höchsten ist."
+    },
+    "paragraph-2": {
+        "text": "Die Tabelle zeigt einen Ausschnitt aus den Messergebnissen, sortiert von der geringsten bis zur höchsten Energie — was bedeutet, dass eine Lösung desto \"besser\" ist, je **weiter oben** sie in der Tabelle steht. Jede Zeile beinhaltet den Antwortvektor sowie rechts die Häufigkeit, wie oft diese jeweils gemessen wurden. Zu diesem Zeitpunkt ist das noch Zahlensalat; um zu verstehen, ob sich der Aufwand gelohnt hat, müssen die Ergebnisse erst im Kontext **interpretiert** werden."
+    },
+    "paragraph-3": {
+        "text": "Nehmen wir die oberste Lösung als Beispiel: Die Einträge der Antwortmatrix kommen in der Reihenfolge zurück, wie wir sie in der ursprünglichen QUBO-Gleichung berücksichtigt haben. Also schreiben wir die Werte von oben nach unten und von links nach rechts wieder in die Felder des ursprünglichen Gitters (in diesem Fall, des Schachbretts) und ersetzen jede 1 mit einer Dame. Idealerweise sollten das beim 4-Damen-Problem vier Stück sein, sonst stimmt etwas mit dem QUBO-Problem nicht."
+    },
+    "equation-1": {
+        "tex": "\\vec{q}_A=\\begin{bmatrix}0&10&0&0&0&0&1&1&0&0&0&0&0&1&0\\end{bmatrix}",
+        "alttext": "qₐ=[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]"
+    },
+    "equation-2": {
+        "tex": "\\Rightarrow\\begin{bmatrix}0&1&0&0\\\\0&0&0&1\\\\1&0&0&0\\\\0&0&1&0\\end{bmatrix}",
+        "alttext": "⇒[[0,1,0,0],[0,0,0,1],[1,0,0,0],[0,0,1,0]]"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/four_queens_problem.png",
+        "caption": "So sieht die obige Lösung des 4-Damen-Problems auf dem Schachbrett aus",
+        "alttext": "Schachbrett der Größe vier mal vier aus der Vogelperspektive mit vier Damenfiguren auf B1, D2, A3 und C4."
+    },
+    "sectiontitle-2": {
+        "title": "Wie groß ist die Leistung?"
+    },
+    "paragraph-4": {
+        "text": "Der erste wichtige Schritt ist getan. Für diesen Kurs wollen wir aber etwas weitergehen und erforschen, wo die **Grenzen** des Quantencomputings liegen. Wenn es darum geht, die Leistung von Quantenalgorithmen zu evaluieren, stellt dies oft eine Herausforderung dar, da diese Methode von Natur aus **nicht deterministisch** ist. Das bedeutet, dass aufgrund der Arbeit mit Quantenzuständen immer ein gewisser Anteil an Zufälligkeit im Spiel ist. Im ersten Experiment werden daher jeweils 2000 Messungen für das 4-Damen-Problem bis zum 8-Damen-Problem gemacht und verglichen, wie viele der Lösungen korrekt waren und wie viele nicht. Zum Vergleich wird der Versuch auch auf dem DWave 2000Q, dem Vorgängermodell der aktuellen Generation, wiederholt."
+    },
+    "interactive-1": {
+        
+    },
+    "interactive-2": {
+
+    },
+    "paragraph-5": {
+        "text": "Beim Scrollen durch die Diagramme wird der Leistungsabfall mit jeder neu hinzugekommenen Dame gut sichtbar. Während die Quantenannealer beim 4-Damen-Problem bei fast der Hälfte ihrer Messungen richtig liegen, sind bei größeren Schachbrettern nur noch eine aus 2000 Lösungen korrekt. Beim DWave Advantage liegt diese Leistungsgrenze bei 8 Damen, beim 2000Q-Modell (der generell öfter danebenliegt als sein Nachfolger) bei 7 Damen."
+    },
+    "paragraph-6": {
+        "text": "Das gleiche Optimierungsproblem wurde auch auf einem herkömmlichen Computer mit dem weit verbreiteten Algorithmus Simulated Annealing (\"simuliertes Abkühlen\") gelöst. Wie das funktioniert, ist nicht relevant und sprengt den Rahmen des Kurses, hier aber eine visuelle Darstellung, wie lange die beiden Arten von Computern jeweils gebraucht haben:"
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/runtime_comparison.png",
+        "caption": "Die Volumen der Würfel repräsentieren die Zeit, die die beiden Computerarten für das N-Damen-Problem gebraucht haben",
+        "alttext": "Drei kleine Würfel, die gleich groß sind und mit N gleich vier, N gleich sechs und N gleich acht beschriftet sind, darunter drei große Würfel, die immer größer werden mit der gleichen Beschriftung."
+    },
+    "paragraph-7": {
+        "text": "Diese Experimente zeigen sofort den Nachteil von traditionellen Berechnungsmethoden: Die für die Optimierung benötigte Zeit ist sehr lang, hier größtenteils über 10 Minuten und, das schwerwiegendste, **steigen mit größeren Problemen an**. Der Quantenannealer hingegen ist in der Lage, die gleichen Aufgaben in Bruchteilen einer Sekunde zu lösen, und das **unabhängig von der Problemgröße**."
+    },
+    "paragraph-8": {
+        "text": "Obwohl die unschlagbare Geschwindigkeit des quantenbasierten Ansatzes ihn sehr attraktiv macht, hat er leistungstechnisch große Einschränkungen. Eine allgemeine Faustregel besagt, dass je nach Embedding und dadurch eingesetzten Kopplungen zur Umsetzung von $$n$$ logischen Qubits ungefähr $$n^2$$ physikalische Qubits gebraucht werden. Der Advantage besitzt 5627 Qubits; da aus jedem N-Damen-Problem ein Hamiltonian der Größe N² wird, berechnet sich die theoretische Höchstleistung auf **8 Damen**."
+    },
+    "equation-3": {
+        "tex": "\\sqrt[4]{5627}\\approx8.66",
+        "alttext": "4√5627≈8.66"
+    }
+}

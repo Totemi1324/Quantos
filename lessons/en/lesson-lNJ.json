@@ -1,0 +1,103 @@
+{
+    "sectiontitle-1": {
+        "title": "How can we find QUBO rules?"
+    },
+    "paragraph-1": {
+        "text": "Similar to the N queens problem, it is advisable to look for **patterns and regularities** in the chosen representation form. The following rules for occupancy can be derived from the tour matrix:"
+    },
+    "paragraph-2": {
+        "text": "1. **Exactly one** occupancy per row is allowed (since it is not possible to visit a city two or more times)\n2. **Exactly one** occupancy per column is allowed (since it is not possible to visit more than one city at the same time)"
+    },
+    "paragraph-3": {
+        "text": "Let's consider our matrix again as a 4×4 grid with its fields named in alphabetical order. By now we are already skilled at implementing the above rules as a QUBO equation!"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/tour_matrix_variables.png",
+        "caption": "A tour matrix with variables as fields",
+        "alttext": "Grid whose columns are labeled one, two, three, four and whose rows are labeled A, B, C, D; panels are labeled a through p in alphabetical order from top left to bottom right."
+    },
+    "equation-1": {
+        "tex": "f\\left(a,...,p\\right)=\\left(a+b+c+d-1\\right)^2+\\left(e+f+g+h-1\\right)^2+\\left(i+j+k+l-1\\right)^2+\\left(m+n+o+p-1\\right)^2+\\left(a+e+i+m-1\\right)^2+\\left(b+f+j+n-1\\right)^2+\\left(c+g+k+o-1\\right)^2+\\left(d+h+l+p-1\\right)^2=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8",
+        "alttext": "f(a,...,p)=(a+b+c+d-1)²+(e+f+g+h-1)²+(i+j+k+l-1)²+(m+n+o+p-1)²+left(a+e+i+m-1)²+(b+f+j+n-1)²+(c+g+k+o-1)²+(d+h+l+p-1)²=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8"
+    },
+    "sectiontitle-2": {
+        "title": "And what about the road costs?"
+    },
+    "paragraph-4": {
+        "text": "But that's only half the story. Since it is also our goal to minimize the **length of the tour**, the route costs must also be considered in the QUBO equation. Fortunately, since this is also a cost function, the values can simply be added to the total cost. But how do you determine which values to add and when?"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/tour_costs.png",
+        "caption": "All possibilities to get from city B to other cities, regardless of the point in time.",
+        "alttext": "The previous grid with alphabetical labels, where arrows point from each field in the second row to all fields from each next column that do not belong to the second row."
+    },
+    "paragraph-5": {
+        "text": "A given edge is traversed exactly when its **starting vertex** in one column and its **destination vertex** in the following column are occupied. The arrows here represent all edges leading from city B to other vertices. Since we don't initially know when we will visit B, this must be repeated for all time steps."
+    },
+    "paragraph-6": {
+        "text": "For example, the edge $$\\overline{BA}$$ with the cost of 6.6 corresponds to $$(e,b)$$, $$(f,c)$$, $$(g,d)$$ and $$(h,a)$$. When we multiply the cost by these pairs of variables (this is compliant with the rules of QUBO problems), it is added only if both fields are visited, i.e., are equal to 1. Moreover, there is no danger of adding the cost of a given edge more than once: since it is forbidden to visit a city more than once, in a valid constellation, only one of these four cases will occur, if at all. So this is what the second half of the QUBO equation looks like:"
+    },
+    "equation-2": {
+        "tex": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la$+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi"
+    },
+    "sectiontitle-3": {
+        "title": "A small catch"
+    },
+    "paragraph-7": {
+        "text": "This part is simply added to the rest of the equation and must be **re-generated** for each TSP instance. However, there is still a problem. If the QUBO problem were sent to the quantum annealer at this time, the results would look something like this:"
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/tsp_results.png",
+        "caption": "The quantum annealer answer vectors for the present QUBO equation",
+        "alttext": "Table with five rows, each containing 16 binary numbers, three of which are always one and the rest zero; second column is labeled energy, which is always minus four."
+    },
+    "paragraph-8": {
+        "text": "The table shows the top five from the DWave annealer's results. All of them visit only **three or even fewer** cities. This is because the coefficients that force the annealer to follow the rule \"Exactly one occupancy per row/column\" are -2 or 2 – too small compared to the distances between nodes, which range from 3 to 7. If the annealer occupies fewer cells, the energy it saves by omitting edges **far outweighs** the penalty it receives for visiting fewer cities."
+    },
+    "paragraph-9": {
+        "text": "To solve this problem, we need to scale our coefficients appropriately: If we multiply all the coefficients by the same factor, the relationships are preserved, which means we can scale certain parts of the equation to **weight** them more. As a general rule of thumb, if $$s$$ = the length of the longest possible tour in the graph and $$n$$ = the number of cities, all coefficients $$h_{ij}$$ from the first half of the QUBO equation should be calculated using this formula:"
+    },
+    "equation-3": {
+        "tex": "h_{ij}=\\frac{\\left(\\frac{3\\times s}{n}\\right)}{2}",
+        "alttext": "hᵢⱼ=((3×s)/n)/2"
+    },
+    "paragraph-10": {
+        "text": "This cost function should now yield the best (lowest) energy if the formal rules of occupancy, i.e., 1 per row and 1 per column, are satisfied **and** the quantum annealer selects those connections whose sum is shortest according to the TSP requirements."
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/tsp_hamiltonian.png",
+        "caption": "The finished Hamilton matrix of the TSP",
+        "alttext": "Section of a matrix, first filled with letters as variable names and then with real numbers"
+    },
+    "image-5": {
+        "asset": "assets/images/lessons/tsp_visualization.png",
+        "caption": "Visually represented, the Hamiltonian exhibits a typical pattern consisting of diagonal stripes",
+        "alttext": "Gray square with some blue and yellow cells forming a pattern with solid diagonal lines."
+    },
+    "sectiontitle-4": {
+        "title": "Everything comes together"
+    },
+    "paragraph-11": {
+        "text": "With the Hamilton matrix now adjusted, the TSP from our original example can also be solved. Sending this to the DWave Advantage, the best solution is the following answer vector:"
+    },
+    "equation-4": {
+        "tex": "\\vec{q}_A=\\left[0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0\\right]",
+        "alttext": "qₐ=[0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0]"
+    },
+    "paragraph-12": {
+        "text": "But how do we get back to the tour on the graph from this? The process for that is called **reverse engineering**. The answer vector $$q_A$$ (which contains the values of variables a through n) must first be translated into the tour matrix by transferring the values after one another into a 4×4 grid."
+    },
+    "image-6": {
+        "asset": "assets/images/lessons/solution_matrix.png",
+        "caption": "The tour matrix containing the values from the answer vector",
+        "alttext": "Number grid filled with zeros, whose columns are labeled one, two, three, four, and whose rows are labeled A, B, C, D; 1D, 2B, 3C, and 4A each contain a one."
+    },
+    "paragraph-13": {
+        "text": "By adding the time step and city names, the order of visited cities becomes visible: D – B – C – A (– D). Let's take another look at the graph: Indeed, it found the shortest path!"
+    },
+    "image-7": {
+        "asset": "assets/images/lessons/solution_tour.png",
+        "caption": "Correct solution of the TSP problem from the last lesson, visualized on the graph",
+        "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines each; connection from A to D to B to C and back to A is highlighted in pink."
+    }
+}

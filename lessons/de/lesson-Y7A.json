@@ -1,0 +1,20 @@
+{
+    "paragraph-1": {
+        "text": "Es ist Zeit, kreativ zu werden und sich mit komplexeren Netzwerken zu beschäftigen! Jetzt, wo du diese Lektion erfolgreich abgeschlossen hast, kannst du mit größeren oder sogar selbst entworfenen TSPs experimentieren."
+    },
+    "paragraph-2": {
+        "text": "Wenn du deine eigenen Netze an den Quantenannealer übermitteln möchtest, musst du sie zunächst in den Hamiltonian umwandeln. Auf Desktop steht dir dafür das Tool **Graph to Matrix** im Download-Tab des Homescreens zur Verfügung, welches einen Hamiltonian aus einem Graphen als Input generiert, so dass du diesen nicht von Hand berechnen musst."
+    },
+    "paragraph-3": {
+        "text": "1. Markiere deine Städte auf der Leinwand und klicke auf \"Generate\", um die Kanten zu berechnen; der Abstand in Pixeln zwischen jedem Knoten stellt die Kosten der entsprechenden Kante dar.\n2. Der Hamiltonian wird automatisch mit der richtigen Skalierung erstellt. Klicke auf \"Save Hamiltonian...\", um ihn auf deinem Computer im NumPy-Matrixformat zu speichern. 3.\nKlicke auf \"Save Vertices...\", um das Layout deines Graphen zu speichern; dies wird später für die Auswertung der Ergebnisse benötigt."
+    },
+    "paragraph-4": {
+        "text": "Für die Übermittlung des Hamiltonians steht dir der Coding-Tab auf dem Homescreen zur Verfügung. Für den echten Zufallsfaktor ist es empfehlenswert, den DWave Advantage-Modus zu verwenden; dafür brauchst du einen API-Key, der jedem DWave Leap-Account zugeordnet ist. Eine entsprechende Anleitung zur Erstellung und korrekten Verwendung findet sich auf unserer Website."
+    },
+    "paragraph-5": {
+        "text": "Wenn du die Ergebnisse visualisieren möchtest, lade auf Desktop das Tool **Path Visualizer** herunter, welches die Ergebnisse des Annealers einliest und die entsprechenden Pfade einzeichnet. Du kannst zwischen den Lösungen hin- und herwechseln und ihre Energie im Textausgabefenster vergleichen."
+    },
+    "paragraph-6": {
+        "text": "**Viel Spaß beim Experimentieren!**"
+    }
+}

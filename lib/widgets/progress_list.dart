@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/theme_service.dart';
+import '../bloc/content_outline_service.dart';
 
-import '../data/lections.dart';
 import './ui/adaptive_progress_bar.dart';
 
 class ProgressList extends StatefulWidget {
@@ -16,6 +16,8 @@ class ProgressList extends StatefulWidget {
 class _ProgressListState extends State<ProgressList> {
   @override
   Widget build(BuildContext context) {
+    final lections = context.read<ContentOutlineService>().lections;
+
     return BlocListener<ThemeService, ThemeData>(
       listener: (context, state) => setState(() {}),
       child: ListView.builder(
@@ -28,7 +30,10 @@ class _ProgressListState extends State<ProgressList> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                lections[index].title,
+                context
+                    .read<ContentOutlineService>()
+                    .state
+                    .getLectionTitle(lections[index].id),
                 style: context.read<ThemeService>().state.textTheme.titleMedium,
               ),
               AdaptiveProgressBar.text(lections[index].progressPercent),

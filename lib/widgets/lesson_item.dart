@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 import './containers/rounded_card.dart';
 import './ui/adaptive_progress_bar.dart';
@@ -7,14 +6,12 @@ import './ui/adaptive_progress_bar.dart';
 class LessonItem extends StatelessWidget {
   final int index;
   final String title;
-  final String previewText;
   final int readTimeInMinutes;
   final double progress;
 
   const LessonItem({
     required this.index,
     required this.title,
-    required this.previewText,
     required this.readTimeInMinutes,
     required this.progress,
     super.key,
@@ -83,21 +80,12 @@ class LessonItem extends StatelessWidget {
             ],
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: AutoSizeText(
-              previewText,
-              minFontSize:
-                  Theme.of(context).textTheme.displaySmall?.fontSize ?? 15,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.displaySmall,
+            margin: const EdgeInsets.only(top: 20),
+            child: AdaptiveProgressBar(
+              progress,
+              withIcon: false,
+              withText: false,
             ),
-          ),
-          AdaptiveProgressBar(
-            progress,
-            withIcon: false,
-            withText: false,
           ),
         ],
       ),

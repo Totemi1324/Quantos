@@ -1,0 +1,29 @@
+{
+    "sectiontitle-1": {
+        "title": "Differenzen in den Energieniveaus"
+    },
+    "paragraph-1": {
+        "text": "Aus der Quantenphysik wissen wir, dass das Springen in andere Energieniveaus durch den Tunneleffekt wahrscheinlicher ist, je höher ihre Dichte und demzufolge, je geringer die Distanz zwischen ihnen ist. Für den Quantenannealer bedeutet das, dass die Wahrscheinlichkeit für **nicht optimale Ergebnisse** wächst. Die Lösungen werden bereits beim Eintreffen nach aufsteigender Energie sortiert; oft ist es daher hilfreich, die besten $$n$$ Lösungen herauszusuchen und ihr Energiedelta $$\\delta E$$, d.h. ihre Differenz zur theoretisch optimalen Energie zu betrachten. Bei unserem naiven Ansatz ergibt sich folgendes Bild:"
+    },
+    "interactive-1": {
+        
+    },
+    "paragraph-2": {
+        "text": "Bei dieser Art der Auswertung muss zuerst die geringste mögliche Energie anhand der QUBO-Gleichung festgestellt werden, um sie als Vergleichsbasis benutzen zu können. Ein Blick auf den 64×64-Hamiltonian des naiven Algorithmus verrät uns: Der Annealer muss alle Kästchen des Sudokus mit einer Ziffer belegen, ohne Strafen einzufahren. Für jede Belegung gibt es eine Belohnung von -4, also ist die optimale Energie $$(-4)\\times16=-64$$."
+    },
+    "paragraph-3": {
+        "text": "Das Diagramm zeigt, um wie viel die Lösungen, die das Optimum knapp verfehlen, genau danebenliegen. Dass der Sprung von der besten zur zweitbesten größer ist als zwischen den Lösungen danach, zeigt, dass dort die **Energielücke größer** ist — dies ist zu unserem Vorteil, da dadurch die Wahrscheinlichkeit sinkt, dass das quantenmechanische System zu einer nicht-optimalen Lösung tunnelt."
+    },
+    "sectiontitle-2": {
+        "title": "Wie groß ist der Optimierungsgrad?"
+    },
+    "paragraph-4": {
+        "text": "Abschließend ein Vergleich zwischen dem naiven und dem optimierten Ansatz, wie viele der 2500 Messungen erfolgreich die geringste Energie gefunden haben."
+    },
+    "interactive-2": {
+        
+    },
+    "paragraph-5": {
+        "text": "Der Unterschied ist bemerkenswert, jedoch aufgrund der unterschiedlichen Größe der Hamiltonians nicht überraschend. Für das 4×4-Beispielsudoku der Lektion konnte noch mit beiden Ansätzen die korrekte Lösung gefunden werden, größere Rätsel werden aber **nur mit dem ausschlussbasierten Verfahren** lösbar sein (solange genug Felder vorgegeben sind)."
+    }
+}

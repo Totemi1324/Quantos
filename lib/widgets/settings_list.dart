@@ -5,6 +5,7 @@ import 'package:quantos/bloc/stores/theme_store_service.dart';
 
 import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
+import '../bloc/content_outline_service.dart';
 
 import './section_separator.dart';
 import './settings_item.dart';
@@ -88,10 +89,13 @@ class SettingsList extends StatelessWidget {
                   items: _languages,
                   defaultSelectedIndex:
                       context.read<LocalizationService>().currentLocaleIndex,
-                  onChanged: (newValue) {
+                  onChanged: (newValue) async {
                     final newLocale = newValue as Locale;
 
                     context.read<LocalizationService>().setLocale(newLocale);
+                    await context
+                        .read<ContentOutlineService>()
+                        .loadFromLocale(newLocale);
                   },
                 ),
               ),

@@ -1,0 +1,39 @@
+{
+    "paragraph-1": {
+        "text": "Creating a quantum solution procedure for the TSP is an exciting example of the versatility of quantum computing and a demonstration of how it can help improve everyday tasks. In the previous two lectures, we learned in detail about the checkers board model for QUBO problems; we would like to use it again, but the transformation is less obvious this time. So the first step is to ask how to transform the core component of the TSP, the **graph**, into a QUBO problem."
+    },
+    "sectiontitle-1": {
+        "title": "From graph to matrix"
+    },
+    "paragraph-2": {
+        "text": "What is the easiest way to get from a graph to a square grid with numbered cells? The simplest instance of the TSP and our first example is a graph with four cities (since this is the minimum number of vertices that allows solutions other than the optimum):"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/example_tour.png",
+        "caption": "This is not the optimal tour, but it is a valid Hamiltonian cycle",
+        "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines each; connection from A to B to D to C to A is highlighted in pink."
+    },
+    "paragraph-3": {
+        "text": "If we take A as the starting point, the tour **A - B - D - C - A** is marked here (of course, the reverse route A - C - D - B - A is also valid). Whether a tour is optimal is defined by two conditions:"
+    },
+    "paragraph-4": {
+        "text": "1. The chronological **order** of cities visited\n2. The **total cost of the route**, i.e. the sum of the length of the edges traversed"
+    },
+    "paragraph-5": {
+        "text": "A matrix can be used to address the first point. One way to model the previous graph is to encode the order of the visits in a table."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/tour_matrix.png",
+        "caption": "A sequence of visited cities can be coded numerically like this",
+        "alttext": "Number grid filled with zeros, whose columns are labeled one, two, three, four, and whose rows are labeled A, B, C, D; 1A, 2B, 3D, and 4C each contain a one."
+    },
+    "paragraph-6": {
+        "text": "The rows represent the individual cities, while the columns mark the \"time points\", i.e. the individual steps. An entry of 1 in the field $$m_{ij}$$ means that the $$i$$-th city is visited in the $$j$$-th time step. The fifth column would mark the return to the initial city, but since it would always be an exact copy of the first column, it can be omitted to save some data. Now we have defined a kind of abstraction that can be applied to tours in graphs of any size. This will henceforth be called the **tour matrix**."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-7": {
+        "text": "Perhaps you can already see where this is going: In fact, this looks very similar to the queens problem from the last lecture. The 1s here are sort of game pieces that can be placed on a board to mark which city belongs to which time step. From this we can extract the QUBO equation in the next step."
+    }
+}

@@ -68,7 +68,7 @@ class _LectionItemState extends State<LectionItem> {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 80, maxHeight: 80),
           child: RiveAnimation.asset(
-            widget.iconAnimationAsset,
+            "assets/animations/lections/${widget.iconAnimationAsset}",
             fit: BoxFit.contain,
             onInit: _onIconInit,
           ),

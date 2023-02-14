@@ -1,0 +1,26 @@
+{
+    "paragraph-1": {
+        "text": "**Herzlichen Glückwunsch!** Du hast es bis zum Ende des Kurses geschafft. Hoffentlich hast du dabei viel Neues lernen und ein Gefühl dafür bekommen können, wozu Quantencomputer fähig sind. Hier ist unsere Einschätzung dazu:"
+    },
+    "paragraph-2": {
+        "text": "Da jährlich neue Meilensteine erreicht werden, ist Quantencomputing ist eine sich rasant entwickelnde Technologie, die unser Leben stark beeinflussen wird. Es ist derzeit eines unserer vielversprechendsten Lösungen für die Klasse der Optimierungsproblem insgesamt, weshalb sich die weitere Forschung an Quantenalgorithmen u.a. für das Traveling Salesman-Problem und andere Aufgaben auf jeden Fall lohnt."
+    },
+    "paragraph-3": {
+        "text": "Dennoch ist es wichtig, auch die Grenzen anzuerkennen. Bis diese Methode auf alltags- und industrierelevante Aufgabenstellungen angewandt werden kann, müssen noch viele Fortschritte gemacht werden. Obschon seiner (noch) begrenzten Kapazität und seiner Fehlerquote hat der Quantenansatz jedoch ein großes Potenzial für den Einsatz im wirklichen Leben, da in der Industrie meistens nicht unbedingt die beste, sondern eine ausreichend gute Lösung benötigt wird und die **Geschwindigkeit**, mit der sie gefunden wird, viel wichtiger ist als ihre **Genauigkeit**. Allem voran Quantenannealer stellen daher eine große Chance dar, die Herstellungs-, Logistik- und Forschungsprozesse in Zukunft erheblich zu beschleunigen."
+    },
+    "paragraph-4": {
+        "text": "Wir hoffen, dass dir die App gefällt. Wenn du Feedback hast, laden wir dich dazu ein, sie im Hilfe-Center oder auf unserer Website mitzuteilen. Danke, dass du Quantos nutzt — und ein Hoch auf deinen Wissensdurst!"
+    },
+    "sectiontitle-1": {
+        "title": "Danksagungen"
+    },
+    "paragraph-5": {
+        "text": "Dankeschön an alle, die die Forschung von Quantos unterstützt haben, insbesondere **DWave Systems Inc.** und der **Jülich Supercomputing Centre** des Forschungszentrums Jülich. Alle Berechnungen und Experimente für diese Kursinhalte wurden mit Hilfe von **JUNIQ** (Jülich Unified Infrastructure for Quantum Computing) und derer virtuellen **JUPSI**-Architektur durchgeführt."
+    },
+    "paragraph-6": {
+        "text": "Ein besonderer Dank geht an **Dennis Willsch** und **Kristen Michielsen** vom JSC für ihre großzügige Unterstützung, Beratung und Koordination."
+    },
+    "paragraph-7": {
+        "text": "Danke auch an **René Grünbauer** vom Gymnasium der Regensburger Domspatzen, der das Projekt durch Materialien und seinen hervorragenden Ideen ermöglicht hat."
+    }
+}

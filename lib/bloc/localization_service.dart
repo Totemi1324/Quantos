@@ -33,8 +33,7 @@ class LocalizationService extends Cubit<Locale> {
   }
 
   void setLocale(Locale newLocale) {
-    if (!AppLocalizations.supportedLocales
-        .any((locale) => locale.languageCode == newLocale.languageCode)) return;
+    if (!AppLocalizations.delegate.isSupported(newLocale)) return;
 
     emit(newLocale);
   }

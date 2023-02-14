@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/lections.dart';
+import '../../bloc/content_outline_service.dart';
+
 import '../../widgets/ui/adaptive_circular_progress_bar.dart';
 import '../../widgets/statistics_list.dart';
 import '../../widgets/containers/rounded_card.dart';
 
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({super.key});
-
-  double get _cumulativeProgress =>
-      lections
-          .map((lection) => lection.progressPercent)
-          .reduce((value, number) => value + number) /
-      lections.length;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +29,9 @@ class StatisticsScreen extends StatelessWidget {
                 ),
               ),
               AdaptiveCircularProgressBar(
-                _cumulativeProgress,
-                footer: AppLocalizations.of(context)!.statisticsScreenProgressSubtitle,
+                context.read<ContentOutlineService>().cumulativeProgress,
+                footer: AppLocalizations.of(context)!
+                    .statisticsScreenProgressSubtitle,
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),

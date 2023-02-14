@@ -1,0 +1,32 @@
+{
+    "paragraph-1": {
+        "text": "Können wir unser Vorgehen verbessern? Und wie! Je nach Optimierungsproblem ist es so oft möglich, die theoretischen Kapazitätslimits des Quantenannealers zu überschreiten und zusätzliche Problemgrößen, die sonst nicht möglich gewesen wären, herauszukitzeln."
+    },
+    "sectiontitle-1": {
+        "title": "Eine Dame geht noch"
+    },
+    "paragraph-2": {
+        "text": "Eine Möglichkeit zur Lösung des sonst zu schweren 9-Damen-Problems ist zum Beispiel, die Lösungsmenge zu verkleinern. Man könnte eine Dame in einer Ecke vorgeben, in der Darstellung links oben, die die Stellung weiterer Damen in der äußersten Zeile sowie Spalte **ausschließt**, um das Feld, welches dem Annealer zur Verarbeitung gegeben wird, auf 8×8 zu verkleinern und somit effektiv das 8-Damen-Problem lösen zu lassen. Erkennst du aber, was zusätzlich beachtet werden muss?"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/nine_queens.png",
+        "caption": "Ein Trick zum Lösen des 9-Damen-Problems: Die geschickte Positionierung der ersten Figur",
+        "alttext": "Schachbrett der Größe neun mal neun aus der Vogelperspektive mit einer Damenfigur in der rechten oberen Ecke, dessen Zeile, Spalte und Diagonale blau schattiert sind; das restliche acht mal acht große Feld ist mit acht Damen in gültiger Aufstellung belegt, keine steht auf den schattierten Feldern."
+    },
+    "paragraph-3": {
+        "text": "Das hier vorliegende 8-Damen-Problem braucht eine Zusatzregel, die besagt, dass die Diagonale, welche im Wirkungsbereich der Eck-Dame liegt, frei bleiben muss, da sie schon belegt ist. Mathematisch ausgedrückt bedeutet das, dass auf dieser Diagonale **genau 0 Felder** besetzt sein sollen. Um das umzusetzen, passen wir einfach die QUBO-Gleichung der Diagonale an, je nach dem, um welche es sich handelt:"
+    },
+    "equation-1": {
+        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
+        "alttext": "f(a,f,k,p)=(a+f+k+p-½)²⇒f(a,f,k,p)=(a+f+k+p)²"
+    },
+    "paragraph-4": {
+        "text": "Das wäre eine entsprechende Anpassung im Falle des 4-Damen-Problems. Da in der neuen Form die Werte aller Felder einfach addiert werden, entstehen nur dann die geringsten Kosten, wenn alle 0, also unbelegt sind. Tauschen wir diesen Teil des QUBO-Problems aus und senden die entsprechend geänderte 64×64 große Hamilton-Matrix an den Quantenannealer, finden sich tatsächlich einige korrekte Lösungen!"
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-5": {
+        "text": "Versuche also, über den Tellerrand zu blicken und durch geschickte Vorgaben den Job des Quantencomputers einfacher zu machen!"
+    }
+}

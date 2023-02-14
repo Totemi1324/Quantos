@@ -8,12 +8,10 @@ enum ContentType {
 
 abstract class ContentItem {
   final ContentType type;
-  final String id;
   final String? altText;
 
   const ContentItem({
     required this.type,
-    required this.id,
     this.altText,
   });
 }

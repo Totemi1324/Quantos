@@ -13,7 +13,7 @@ class TestScreen extends StatelessWidget {
     return Flat(
       body: Center(
         child: RichText(
-          
+          textAlign: TextAlign.justify,
           text: TextSpan(
             style: Theme.of(context).textTheme.bodySmall,
             children: [

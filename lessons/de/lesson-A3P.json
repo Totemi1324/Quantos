@@ -1,0 +1,113 @@
+{
+    "sectiontitle-1": {
+        "title": "Umwandlung in ein QUBO-Problem"
+    },
+    "paragraph-1": {
+        "text": "Der erste Schritt ist wie immer das Finden einer gültigen Kostenfunktion, die genau dann ihren geringsten Wert annimmt, wenn alle Regeln des Sudoku befolgt werden. Mittlerweile solltest du schon etwas Übung in der Aufstellung von QUBO-Problemen haben und vielleicht erkennen, dass auch hier, ähnlich wie beim N-Damen-Problem, ein **Gitter** vorliegt, den wir mit benannten Qubits belegen können. Nehmen wir als Beispiel für diese Lektion das folgende, unvollständige Sudoku der Größe 4×4:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/sudoku_easy.png",
+        "caption": "Dies ist die einfachste mögliche Sudokugröße",
+        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen, deren horizontale und vertikale mittlere Trennlinie dick markiert ist; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift."
+    },
+    "paragraph-2": {
+        "text": "Was ist aber mit den verschiedenen Ziffern? Hier können im Gegensatz zu QUBO nicht nur die Binärzahlen 0 und 1, sondern die Ziffern von 1 bis 4 eingetragen werden. Diese können als eine Art zusätzliche \"Dimension\" des Problems verstanden werden. Und genau das ist auch die Lösung: Wir erweitern unser QUBO-Quadrat ins **Dreidimensionale** mit weiteren Ebenen!"
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/variables_stack.png",
+        "caption": "Um unterschiedliche Ziffern zu repräsentieren, kann das Sudoku-Feld auf mehrere Ebenen aufgeteilt werden",
+        "alttext": "Zahlengitter der Größe vier mal vier Kästchen mit Ziffern von eins bis vier in dicker, brauner Schrift; daneben perspektivische Darstellung eines Stapels von vier Gittern gleicher Größe übereinander, deren Felder mit q eins bis q vierundsechzig beschriftet sind."
+    },
+    "paragraph-3": {
+        "text": "In dieser Darstellung sind die Kästchen diesmal nicht alphabetisch, sondern mit $$q_1$$ bis $$q_{64}$$ benannt, einfach, weil es sonst zu wenige Buchstaben gäbe. Jedes dieser Ebenen repräsentiert eine Ziffer von 1 bis 4 und beinhaltet in einem Kästchen 1, wenn im Sudoku **an dieser Stelle** die entsprechende Ziffer steht. Somit ist diese Technik eine Abwandlung des bereits behandelten One-Hot Encodings, wobei jede Ziffer als eine Kombination von 4 Binärzahlen repräsentiert wird: 1 ist $$[1, 0, 0, 0]$$, 2 ist $$[0, 1, 0, 0]$$ usw."
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/one_hot_encoding.png",
+        "caption": "So würde der One-Hot-encodierte Stack für unser 4×4-Beispielsudoku aussehen; wenn in Ebene 2 eine 1 steht, dann ist im entsprechenden Feld im Original eine 2 eingetragen usw.",
+        "alttext": "Perspektivische Darstellung eines Stapels von vier Gittern der Größe vier mal vier übereinander, wobei manche Felder leer und andere Felder mit den Ziffern null und eins ausgefüllt sind."
+    },
+    "paragraph-4": {
+        "text": "Damit können wir bereits unsere QUBO-Gleichung formulieren. Da die ganze Formel viel zu lang wäre, um sie hier auf einmal zu zeigen, wird nur die Anleitung angegeben, um die Sudoku-Regeln in QUBO umzusetzen. Diese Einzelteile werden, sollte man sie ausformulieren, einfach addiert, um die fertige Kostenfunktion zu erhalten."
+    },
+    "paragraph-5": {
+        "text": "- In jeder Zelle darf genau eine Ziffer stehen:"
+    },
+    "equation-1": {
+        "tex": "(q_1+q_2+q_3+q_4-1)^2+(q_5+q_6+q_7+q_8-1)^2+\\hdots",
+        "alttext": "(q₁+q₂+q₃+q₄-1)²+(q₅+q₆+q₇+q₈-1)²+⋯"
+    },
+    "paragraph-6": {
+        "text": "- In jeder Zeile und Spalte muss jede Ziffer genau einmal vorkommen:"
+    },
+    "equation-2": {
+        "tex": "(q_1+q_5+q_9+q_{13}-1)^2+(q_2+q_6+q_{10}+q_{14}-1)^2+\\hdots",
+        "alttext": "(q₁+q₅+q₉+q₁₃-1)²+(q₂+q₆+q₁₀+q₁₄-1)²+⋯"
+    },
+    "equation-3": {
+        "tex": "(q_1+q_{17}+q_{33}+q_{49}-1)^2+(q_2+q_{18}+q_{34}+q_{50}-1)^2+\\hdots",
+        "alttext": "(q₁+q₁₇+q₃₃+q₄₉-1)²+(q₂+q₁₈+q₃₄+q₅₀-1)²+⋯"
+    },
+    "paragraph-7": {
+        "text": "- Pro 2×2-Unterquadrat muss jede Ziffer genau einmal vorkommen:"
+    },
+    "equation-4": {
+        "tex": "(q_1+q_5+q_{17}+q_{21}-1)^2+(q_2+q_6+q_{18}+q_{22}-1)^2+\\hdots",
+        "alttext": "(q₁+q₅+q₁₇+q₂₁-1)²+(q₂+q₆+q₁₈+q₂₂-1)²+⋯"
+    },
+    "paragraph-8": {
+        "text": "- Bereits ausgefüllte Felder dürfen nicht verändert werden (d.h. die Belegung anderer Ziffern als die eingetragenen mit hohen Kosten bestrafen):"
+    },
+    "equation-5": {
+        "tex": "64\\times q_5+64\\times q_7+64\\times q_8+64\\times q_{13}+64\\times q_{14}+64\\times q_{16}+\\hdots",
+        "alttext": "64×q₅+64×q₇+64×q₈+64×q₁₃+64×q₁₄+64×q₁₆+⋯"
+    },
+    "paragraph-9": {
+        "text": "Hier ein Ausschnitt aus dem Hamiltonian und eine Visualisierung der ganzen Matrix:"
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/sudoku_hamiltonian.png",
+        "caption": "Die fertige Hamilton-Matrix des 4x4 Sudoku-Problems",
+        "alttext": "Ausschnitt aus einer Matrix mit reellen Zahlen, dessen untere Dreieckshälfte mit Nullen gefüllt ist und in der oberen Dreieckshälfte regelmäßige Anordnungen von zwei, vier, minus vier und vierundsechzig aufweist."
+    },
+    "image-5": {
+        "asset": "assets/images/lessons/sudoku_hamiltonian_visualization.png",
+        "caption": "In der Visualisierung sind Streifenmuster unterschiedlicher Helligkeit, die pyramidenartig angeordnet sind, erkennbar",
+        "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen und kürzeren diagonalen Linien in dreieckiger Anordnung bilden."
+    },
+    "sectiontitle-2": {
+        "title": "Es geht aber noch besser"
+    },
+    "paragraph-10": {
+        "text": "Ziemlich groß, nicht wahr? Dabei haben wir uns ein sehr einfaches Beispiel mit einem Sudoku vorgenommen, welches nicht mal halb so groß ist wie das klassische Rätsel. Die Art, wie wir unsere QUBO-Gleichung formulieren, ist zwar formell korrekt mit einem passenden Minimum, aber **drastisch ineffizient**. Wenn $$n$$ die Größe des Sudoku-Feldes ist, verbraucht die Modellierung bereits $$n\\times n\\times n=n^3$$ logische Qubits, was $$(n^3)^2=n^6$$ physikalische Qubits benötigt — ein horrendes Wachstum, würde man doch damit für ein 9×9-Sudoku einen Hamiltonian der Größe **729** brauchen."
+    },
+    "paragraph-11": {
+        "text": "Den Weg, den wir bisher gewählt haben, wird deswegen auch **naiver Ansatz** genannt; für eine tatsächliche praktische Anwendung ist diese oft, besonders bei komplexeren Problemstellungen, nicht ausreichend. Anstatt das Problem allgemein zu modellieren, ist es ratsam, gleich zu optimieren und nur Qubits mit einzubeziehen, die wirklich gebraucht werden. Wie könnte so eine Optimierung aussehen?"
+    },
+    "paragraph-12": {
+        "text": "Als erstes werden alle Qubits entfernt, die zu Zellen gehören, die im vorgegebenen Sudoku bereits ausgefüllt sind. Da sie sowieso nicht bearbeitet werden sollen, verbrauchen sie unnötig Kapazitäten. Dann kann die Methode so angepasst werden, wie wir Menschen ein Sudoku-Rätsel auch lösen würden: In den leeren Feldern **ausgeschlossene Optionen zu streichen**. Ein Beispiel dafür gibt die folgende Abbildung; in der obersten linken Zelle etwa ist nur eine 4 möglich, da in der zugehörigen Zeile bereits die 2 und die 3 und der ersten Spalte eine 1 steht."
+    },
+    "image-6": {
+        "asset": "assets/images/lessons/exclude_digits.png",
+        "caption": "Mit Hilfe der vorgegebenen Einträge können wir viele Möglichkeiten eliminieren",
+        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten jeweils vier von eins bis vier bezifferte Kreise, von denen manche durchgestrichen sind."
+    },
+    "paragraph-13": {
+        "text": "Übrig bleibt nur eine Handvoll von Optionen, in unserem Beispiel 11 an der Zahl. Diese können wir als unsere neuen Qubits betrachten und nach dem Schema $$q_{xyz}$$ benennen ($$x$$ = Zeilenindex, $$y$$ = Spaltenindex, $$z$$ = Ziffer der Option). Damit haben wir also die benötigte Anzahl von Qubits von 64 auf 11 reduziert. Der letzte Schritt ist es, die Paare von Qubits zu markieren, die nach den Sudoku-Regeln **nicht zusammen** in der Lösung auftreten dürfen:"
+    },
+    "image-7": {
+        "asset": "assets/images/lessons/qubit_relationships.png",
+        "caption": "Die Pfeile zeigen jeweils auf ein Paar von Qubits, die sich gegenseitig ausschließen, z.B. weil sie in der selben Zeile die gleiche Ziffer repräsentieren",
+        "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten mit q benannte Variablen und zweiendige, blaue Pfeile, die jeweils auf zwei verschiedene Variablen zeigen."
+    },
+    "paragraph-14": {
+        "text": "Grundsätzlich soll das Eintragen von Ziffern durch negative Koeffizienten belohnt werden, regelwidrige Paare werden aber mit einer positiven Strafe belegt. Nun müssen wir die Koeffizienten nur noch in die Hamilton-Matrix eintragen — und fertig!"
+    },
+    "image-8": {
+        "asset": "assets/images/lessons/optimized_hamiltonian.png",
+        "caption": "Der finale, optimierte Sudoku-Hamiltonian",
+        "alttext": "Zahlentabelle der Größe elf mal elf Zellen, dessen Zeilen und Spalten mit nummerierten q-Variablen beschriftet sind; gefüllt mit Nullen, in der Hauptdiagonale mit minus eins und in der oberen Dreieckshäfte vereinzelt mit eins."
+    },
+    "paragraph-15": {
+        "text": "Dieses Vorgehen ist ein Paradebeispiel, wie sich ein QUBO-Problem optimieren lässt, wenn man nicht den Überblick darüber verliert, welche Lösungen erlaubt sind und welche nicht. Die fertige Matrix ist fast **36-mal kleiner** als die vorherige und ist relativ spärlich, sodass der Quantenannealer sie einfacher lösen können sollte. Die Optimierung durch das Ausschlussverfahren ist umso effektiver, je mehr Einträge im ursprünglichen Sudoku vorgegeben werden."
+    }
+}

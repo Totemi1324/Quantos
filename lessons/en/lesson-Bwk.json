@@ -1,0 +1,81 @@
+{
+    "paragraph-1": {
+        "text": "Now only one final step is missing to solve optimization problems on a quantum annealer: Submitting the QUBO equation. Moreover, when the annealer is done, the results have to come back in some form. There is a standard protocol for this communication, which specifies the formatting of the data. It looks something like this:"
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/dwave_procedure.png",
+        "caption": "The course of a computational operation on the DWave annealer",
+        "alttext": "Flowchart beginning with a grid of numbers pointing to a photograph of the quantum annealer, which in turn points to a row of numbers consisting of the digits zero and one."
+    },
+    "paragraph-2": {
+        "text": "This may look a little confusing, so let's go through it step by step."
+    },
+    "sectiontitle-1": {
+        "title": "Vectors and matrices"
+    },
+    "paragraph-3": {
+        "text": "But first, some basics. For the representation of data, **vectors** are of central importance. In its traditional form, a vector is a quantity in space with a **direction** and **length** (often represented as an arrow or ray) and consists of two or more coordinates written below one another in a vertical column. For example, a vector in 3-dimensional space would contain three coordinates."
+    },
+    "equation-1": {
+        "tex": "\\vec{q}=\\begin{pmatrix}q_1\\\\q_2\\\\q_3\\end{pmatrix}",
+        "alttext": "q=(q₁, q₂, q₃)"
+    },
+    "image-4": {
+        "asset": "assets/images/lessons/vector_example.png",
+        "caption": "Arrows can be used to visualize 3-dimensional vectors",
+        "alttext": "Colored arrow in a three-dimensional coordinate system pointing from the origin out of the screen."
+    },
+    "paragraph-4": {
+        "text": "Since a vector is basically a series of numbers, they are used to retrieve the results from the quantum annealer. If we had a 4×4 game board with 4²=16 fields, the entries would indicate whether our squares a, b, etc. to n should be occupied (1) or unoccupied (0). This is defined as the **answer vector** $$q_A$$ and is what the quantum computer outputs after each anneal."
+    },
+    "equation-2": {
+        "tex": "\\vec{q}_A=\\begin{pmatrix}a\\\\b\\\\\\vdots\\\\n\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\\\\\vdots\\\\1\\end{pmatrix}",
+        "alttext": "qₐ=(a, b, ..., n)=(0, 1, ..., 1)"
+    },
+    "paragraph-5": {
+        "text": "Similarly, a **matrix** can be thought of as a series of vectors glued together. It is a rectangular array of numbers, with each element indexed in the format $$m_{ij}$$ (i and j denote the row and column index of a given element, i.e., in which row and column it is located in the matrix). An example:"
+    },
+    "equation-3": {
+        "tex": "M=\\begin{pmatrix}1&4&2&1\\\\3&0&3&1\\\\5&1&2&0\\\\4&1&2&3\\end{pmatrix}",
+        "alttext": "M=((1,4,2,1),(3,0,3,1),(5,1,2,0),(4,1,2,3))"
+    },
+    "paragraph-6": {
+        "text": "Here, the element $$m_{31}$$ of the matrix would be equal to 5. Don't worry if it's not quite clear yet, we will use matrices only as a simple means to an end. In fact, matrices are the most compact way to convey QUBO problems as input to the quantum annealer. Since the form of QUBO equations is standardized, the coefficients (the only values that change) can be summarized in a matrix in the following format to make them accessible to the quantum computer:"
+    },
+    "equation-4": {
+        "tex": "f\\left(a,b,c,d\\right)=h_aa+h_bb+h_cc+h_dd+h_{ab}ab+h_{ac}ac+h_{ad}ad+h_{bc}bc+h_{bd}bd+h_{cd}cd",
+        "alttext": "f(a,b,c,d)=ha×a + hb×b + hc×c + hd×d + hab×a×b + hac×a×c + had×a×d + hbc×b×c + hbd×b×d + hcd×c×d"
+    },
+    "equation-5": {
+        "tex": "\\Rightarrow H=\\begin{pmatrix}h_a&h_{ab}&h_{ac}&h_{ad}\\\\0&h_b&h_{bc}&h_{bd}\\\\0&0&h_c&h_{cd}\\\\0&0&0&h_d\\end{pmatrix}",
+        "alttext": "⇒H=((ha, hab, hac, had),(0, hb, hbc, hbd),(0, 0, hc, hcd),(0, 0, 0, hd))"
+    },
+    "paragraph-7": {
+        "text": "Observe the **pattern** of how each field relates to the others; in the same way, the Hamiltonian also scales for QUBO equations with more variables."
+    },
+    "image-2": {
+        "asset": "assets/images/lessons/hamiltonian_scaling.png",
+        "caption": "A Hamilton matrix for a QUBO equation with 6 unknowns",
+        "alttext": "Square number matrix with six by six entries, numbered from h a to h f."
+    },
+    "image-3": {
+        "asset": "assets/images/lessons/hamiltonian_pattern.png",
+        "caption": "The variables in Hamiltonians form a regular pattern",
+        "alttext": "An arrangement of single-color or two-color squares in a grid; at the top, a, b, c, and d are assigned different colors; in the grid, they represent the position of the variables."
+    },
+    "sectiontitle-2": {
+        "title": "Coupling qubits"
+    },
+    "paragraph-8": {
+        "text": "In summary, the quantum annealer thus tries to find the answer vector whose coordinates have the lowest cost. The entries of the Hamilton matrix serve as the basis for the weighting (bias) of the coupler magnetic fields on the QPU. This translation is calculated automatically and is called **embedding**. But what if the QUBO problem is more complex? Let's take the Chimera topology as an example: Here, each qubit can be coupled with at most 6 others, giving us a maximum Hamiltonian size of 7×7."
+    },
+    "paragraph-9": {
+        "text": "If a qubit needs more than 6 connections, multiple **physical** qubits can then be coupled into so-called **logical** qubits by connecting them with very strong equality couplers. When measured, they then behave almost as one. With each physical qubit connected into a logical one, 6 more connection possibilities are added, but it also increases the probability of a chain break, causing the results to become unusable."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-10": {
+        "text": "Congratulations! You have now gained a solid understanding of how quantum annealers solve tasks. With that, you can already use the **Coding tab** on your homescreen to interact with a real annealer from DWave. Get started right away or dive into the next lessons that apply this foundational knowledge to real-world problems and shed light on a methodical approach as well as the limitations of quantum annealing!"
+    }
+}

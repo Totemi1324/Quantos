@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/content_outline_service.dart';
+import '../bloc/lesson_content_service.dart';
 
 import './base/flat.dart';
-import '../data/lessons.dart';
-import '../models/content/content_item.dart';
-import '../models/content/section_title.dart';
 import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
 
@@ -16,12 +17,11 @@ class LessonScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments;
-    final id = args as String?;
-    final lesson = lessons.firstWhere((lesson) => lesson.id == id);
-    final sectionTitles = lesson.content
-        .where((item) => item.type == ContentType.sectionTitle)
-        .map((e) => e as SectionTitle)
-        .toList();
+    final lessonId = args as String;
+    final lessonTitle =
+        context.read<ContentOutlineService>().state.getLessonTitle(lessonId);
+    final sectionTitles =
+        context.read<LessonContentService>().state.sectionTitles;
 
     return Flat(
       body: SafeArea(
@@ -34,7 +34,7 @@ class LessonScreen extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: Text(
-                    lesson.title,
+                    lessonTitle,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
@@ -69,7 +69,7 @@ class LessonScreen extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Text(
-                                  sectionTitles[index].title,
+                                  sectionTitles[index],
                                 ),
                               ),
                             ),
@@ -82,7 +82,7 @@ class LessonScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                LessonContentRenderer(lesson),
+                const LessonContentRenderer(),
                 const SizedBox(
                   height: 30,
                 ),

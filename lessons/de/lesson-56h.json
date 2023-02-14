@@ -1,0 +1,50 @@
+{
+    "paragraph-1": {
+        "text": "Bei der Bedienung des DWave Advantage passiert viel Arbeit im Hintergrund. Ein Beispiel dafür, das wir bereits kennen, ist das Embedding auf der QPU; davon bekommt man bei einer standardmäßigen Anfrage meistens nicht viel mit, da sie von der Kommunikationsschnittstelle automatisch berechnet wird. Es gibt aber auch statische Werte, sogenannte **Hyperparameter**, die die Leistung des Algorithmus direkt beeinflussen und nur durch Ausprobieren optimiert werden können. In Verbindung mit der Auswertung unseres TSP-Algorithmus werden wir sie dieses Mal näher beleuchten."
+    },
+    "sectiontitle-1": {
+        "title": "Das richtige Benchmarking"
+    },
+    "paragraph-2": {
+        "text": "Doch zunächst stellt sich die Frage: **Mit welchen Graphen soll der Quantenannealer geprüft werden?** Im Gegensatz zum Schachbrett beim N-Damen-Problem ist diese Datenstruktur viel flexibler und es ist nicht nur die Anzahl der Städte, sondern auch deren Lage entscheidend. Ein Ansatz für eine Vereinheitlichung ist es daher, Graphen in Form **regelmäßiger Polygone** (also Vielecke mit gleicher Seitenlänge) zu verwenden, beginnend mit einem Dreieck (die einfachste Form mit einem gültigen Hamiltonkreis) bis hin zu einem Achteck."
+    },
+    "image-1": {
+        "asset": "assets/images/lessons/benchmark_graphs.png",
+        "caption": "Regelmäßige Polygone sind besonders geeignet, Algorithmen für Routenfindung zu testen",
+        "alttext": "Dreieck, Viereck, Fünfeck, Sechseck, Siebeneck und Achteck mit jeweils gleicher Seitenlänge, dessen Ecken mit bunten Kreuzen markiert sind."
+    },
+    "paragraph-3": {
+        "text": "Die Städte sind so gelegt, dass die Kantenlänge der Polygone 0,5 beträgt. Das hat gleich mehrere Vorteile:"
+    },
+    "paragraph-4": {
+        "text": "1. Die kürzeste Tour und damit die richtige Lösung des Traveling-Salesman-Problems ist immer der **Umfang des Vielecks**.\n2. Es kann einfach ermittelt werden, ob der Quantenannealer korrekt liegt, da die optimale Energie durch die immer gleiche Kantenlänge mit einer Formel **hergeleitet** werden kann, die von der Anzahl der Ecken des Vielecks $$n$$ abhängt ($$h$$ ist der skalierte Koeffizient, der die Belegung von Städten begünstigt)."
+    },
+    "equation-1": {
+        "tex": "\\min E=h\\times n+\\frac{1}{2}\\times n=\\left(h+\\frac{1}{2}\\right)\\times n",
+        "alttext": "min E=h×n+½×n=(h+½)×n"
+    },
+    "sectiontitle-2": {
+        "title": "Optimierung der Hyperparameter"
+    },
+    "paragraph-5": {
+        "text": "Die für unser Problem wichtigsten Hyperparameter sind **chain strength** und **annealing time**. Ersteres steht für die Gleichheitskopplungsstärke zwischen Qubits, die eine Kette auf der QPU bilden, d.h. die **Stärke der Magnetfelder**, die die Qubits zwingen, identische Werte anzunehmen. In ähnlicher Weise legt letzteres die **Zeitdauer** fest, die die Qubits sich ihrem optimalen Energiezustand annähern dürfen, bevor sie ausgelesen werden und die Superposition kollabiert. Für jeden dieser Werte gibt es Standards, die jedoch nicht immer die besten Ergebnisse liefern müssen."
+    },
+    "paragraph-6": {
+        "text": "Der Optimierungsprozess ist langwierig und benötigt viele Daten, sie wird hier nicht tiefer behandelt; wenn du am detaillierten Verfahren interessiert bist, kannst du diese vom Download-Tab auf dem Homescreen beziehen. Unten sind die Diagramme, die den Verlauf der Erfolgsrate (dem Prozentsatz der richtigen Ergebnisse) beim DWave Advantage zeigen, wenn man die Kettenstärke erhöht — mit einer Kurve, die den Durchschnitt aus 10 verschiedenen Embeddings abbildet. Oben ist eine Lösung richtig, wenn es eine gültige Rundreise darstellt, unten, wenn es die kürzeste Rundreise ist."
+    },
+    "interactive-1": {
+
+    },
+    "paragraph-7": {
+        "text": "Man merkt, dass stärkere Koppler bei logischen Qubits nicht immer **besser** sind: Die Genauigkeit hat bei allen Kurven einen Höhepunkt und fällt danach stetig ab. Bei größeren Stadtnetzwerken wird der Unterschied zwischen der einfacheren und der komplexeren Aufgabe immer größer, bis schließlich ab $$n=7$$ Städten der kürzeste Rundweg nicht mehr gefunden werden kann."
+    },
+    "paragraph-8": {
+        "text": "Das gleiche machen wir auch mit der annealing time; die Erwartungshaltung ist logischerweise, dass der Anteil der korrekten Lösungen immer weiter zunehmen sollte, je länger der Quantencomputer Zeit für die einzelnen Anneals hat."
+    },
+    "interactive-2": {
+
+    },
+    "paragraph-9": {
+        "text": "Unsere Annahme hat sich bestätigt, aber auch hier zeigt sich das Problem des Leistungsabfalls, wenn die Wegkosten berücksichtigt werden. Das liegt an einem Konzept, welches sich **Spärlichkeit** (auf Englisch \"sparsity\") nennt. Je spärlicher die Hamilton-Matrix ist, sprich **je mehr Nullen** sie hat, desto besser kann ein Quantenannealer sie lösen — denn wenn kein Koeffizient vorliegt, kann man mehr Koppler einsparen, wodurch die Komplexität und der Zufallsfaktor des QPU-Embeddings reduziert werden. Die Wegkosten kommen in der QUBO-Gleichung als Koeffizienten vor, die vorher 0 waren, was die Spärlichkeit der Hamilton-Matrix senkt."
+    }
+}

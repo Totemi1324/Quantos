@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../bloc/stores/experience_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
+import '../../bloc/content_outline_service.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
@@ -62,7 +63,18 @@ class ProfileExperienceScreen extends StatelessWidget {
                       extended: true,
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
-                          builder: (_) => const LoadingScreen(Home.routeName),
+                          builder: (buildContext) => LoadingScreen(
+                            Future(
+                              () => buildContext
+                                  .read<ContentOutlineService>()
+                                  .loadFromLocale(
+                                    buildContext
+                                        .read<LocalizationService>()
+                                        .state,
+                                  ),
+                            ),
+                            Home.routeName,
+                          ),
                         ),
                         (_) => false,
                       ),
