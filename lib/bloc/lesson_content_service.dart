@@ -68,7 +68,7 @@ class LessonContentService extends Cubit<LessonContent> {
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
 
     for (var entry in jsonMap.entries) {
-      if (entry.value! is Map<String, dynamic>) {
+      if (entry.value is! Map<String, dynamic>) {
         throw ParseErrorException(
           ParseError.invalidJsonValue,
           wrongContent: entry.key,

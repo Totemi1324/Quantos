@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 import './containers/rounded_card.dart';
 import './ui/adaptive_progress_bar.dart';
@@ -80,10 +79,13 @@ class LessonItem extends StatelessWidget {
               Text("$readTimeInMinutes min."),
             ],
           ),
-          AdaptiveProgressBar(
-            progress,
-            withIcon: false,
-            withText: false,
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: AdaptiveProgressBar(
+              progress,
+              withIcon: false,
+              withText: false,
+            ),
           ),
         ],
       ),

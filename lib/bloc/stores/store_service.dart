@@ -14,7 +14,6 @@ abstract class StoreService<T> extends Cubit<T> {
     return lookupAppLocalizations(locale);
   }
 
-  @protected
   void updateStore(Locale locale) {
     final appLocalization = getAppLocalization(locale);
 

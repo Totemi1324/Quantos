@@ -113,7 +113,6 @@ class ThemeService extends Cubit<ThemeData> {
         color: Colors.white,
       ),
     ),
-    backgroundColor: const Color(0xFF1B2033),
   );
 
   static final _lightTheme = ThemeData(
@@ -227,7 +226,6 @@ class ThemeService extends Cubit<ThemeData> {
         color: Colors.grey.shade900,
       ),
     ),
-    backgroundColor: const Color(0xFFC2C2C2),
   );
 
   static final _accessibilityTheme = ThemeData(
@@ -341,7 +339,6 @@ class ThemeService extends Cubit<ThemeData> {
         color: Color(0xFFFFFD48),
       ),
     ),
-    backgroundColor: const Color(0xFF000000),
   );
 
   ThemeService() : super(_darkTheme);
