@@ -20,10 +20,8 @@ class ContentOutlineService extends Cubit<ContentOutline> {
   static final List<Lection> _contentData = [
     Lection(
       id: "8hg",
-      iconAnimationAsset:
-          "assets/animations/icon_introduction_to_quantum_annealers.riv",
-      headerAnimationAsset:
-          "assets/animations/introduction_to_quantum_annealers.riv",
+      iconAnimationAsset: "icon_introduction_to_quantum_annealers.riv",
+      headerAnimationAsset: "introduction_to_quantum_annealers.riv",
       difficultyLevel: Difficulty.easy,
       lessons: [
         Lesson(
@@ -51,8 +49,8 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     ),
     Lection(
       id: "fC9",
-      iconAnimationAsset: "assets/animations/icon_the_n_queens_problem.riv",
-      headerAnimationAsset: "assets/animations/the_n_queens_problem.riv",
+      iconAnimationAsset: "icon_the_n_queens_problem.riv",
+      headerAnimationAsset: "the_n_queens_problem.riv",
       difficultyLevel: Difficulty.advanced,
       lessons: [
         Lesson(
@@ -83,10 +81,8 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     ),
     Lection(
       id: "chj",
-      iconAnimationAsset:
-          "assets/animations/icon_the_traveling_salesman_problem.riv",
-      headerAnimationAsset:
-          "assets/animations/the_traveling_salesman_problem.riv",
+      iconAnimationAsset: "icon_the_traveling_salesman_problem.riv",
+      headerAnimationAsset: "the_traveling_salesman_problem.riv",
       difficultyLevel: Difficulty.challenging,
       lessons: [
         Lesson(
@@ -121,7 +117,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     ),
     Lection(
       id: "BiE",
-      iconAnimationAsset: "assets/animations/icon_solving_sudoku_riddles.riv",
+      iconAnimationAsset: "icon_solving_sudoku_riddles.riv",
       headerAnimationAsset: "",
       difficultyLevel: Difficulty.advanced,
       lessons: [

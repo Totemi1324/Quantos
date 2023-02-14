@@ -85,6 +85,7 @@ class LessonContentRenderer extends StatelessWidget {
             Image.asset(
               fit: BoxFit.fitWidth,
               image.asset,
+              //TODO: Simplify image asset specifications in all JSON files
             ),
             const SizedBox(
               height: 10,

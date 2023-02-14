@@ -2,49 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/content_outline_service.dart';
-import '../bloc/content_outline_service.dart';
 
 import '../screens/lection_screen.dart';
 import './containers/panel_card.dart';
 import "./lection_item.dart";
+import '../models/content/content_outline.dart';
 
-class LectionList extends StatelessWidget {
+class LectionList extends StatefulWidget {
   const LectionList({super.key});
 
+  @override
+  State<LectionList> createState() => _LectionListState();
+}
+
+class _LectionListState extends State<LectionList> {
   @override
   Widget build(BuildContext context) {
     final lections = context.read<ContentOutlineService>().lections;
 
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: lections.length,
-      itemBuilder: (buildContext, index) {
-        final lection =
-            context.read<ContentOutlineService>().lection(lections[index].id);
-
-        return InkWell(
-          splashFactory: NoSplash.splashFactory,
-          onTap: lections[index].unlocked
-              ? () => Navigator.of(context).pushNamed(
-                    LectionScreen.routeName,
-                    arguments: lection.id,
-                  )
-              : null,
-          child: PanelCard(
-            padding: const EdgeInsets.all(10),
-            child: LectionItem(
-              context
-                  .read<ContentOutlineService>()
-                  .state
-                  .getLectionTitle(lection.id),
-              iconAnimationAsset: lection.iconAnimationAsset,
-              progressPercent: lection.progressPercent,
-              unlocked: lection.unlocked,
-            ),
-          ),
-        );
+    return BlocListener<ContentOutlineService, ContentOutline>(
+      listener: (context, state) {
+        setState(() {}); //TODO
       },
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: lections.length,
+        itemBuilder: (buildContext, index) {
+          final lection =
+              context.read<ContentOutlineService>().lection(lections[index].id);
+
+          return InkWell(
+            splashFactory: NoSplash.splashFactory,
+            onTap: lection.unlocked
+                ? () => Navigator.of(context).pushNamed(
+                      LectionScreen.routeName,
+                      arguments: lection.id,
+                    )
+                : null,
+            child: PanelCard(
+              padding: const EdgeInsets.all(10),
+              child: LectionItem(
+                context
+                    .read<ContentOutlineService>()
+                    .state
+                    .getLectionTitle(lection.id),
+                iconAnimationAsset: lection.iconAnimationAsset,
+                progressPercent: lection.progressPercent,
+                unlocked: lection.unlocked,
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

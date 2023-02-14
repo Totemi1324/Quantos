@@ -42,8 +42,8 @@ flutter:
   # To add assets to your application, add an assets section.
   assets:
     # Lesson contents
-    - lessons/en.json
-    - lessons/de.json
+    - lessons/en/
+    - lessons/de/
 
     # Rive animations
     - assets/animations/quantos_logo_intro.riv
@@ -53,14 +53,7 @@ flutter:
     - assets/animations/age_selection.riv
     - assets/animations/experience_selection.riv
 
-    - assets/animations/introduction_to_quantum_annealers.riv
-    - assets/animations/the_n_queens_problem.riv
-    - assets/animations/the_traveling_salesman_problem.riv
-
-    - assets/animations/icon_introduction_to_quantum_annealers.riv
-    - assets/animations/icon_the_n_queens_problem.riv
-    - assets/animations/icon_the_traveling_salesman_problem.riv
-    - assets/animations/icon_solving_sudoku_riddles.riv
+    - assets/animations/lections/
     
     # App images
     - assets/images/logo.png
@@ -71,14 +64,7 @@ flutter:
     - assets/images/profile_foreground.png
 
     # Lection content images
-    - assets/images/lessons/qubit_visualization.png
-    - assets/images/lessons/electron_spin_example.png
-    - assets/images/lessons/ion_example.png
-    - assets/images/lessons/superconductor_example.png
-    - assets/images/lessons/checkers_board.png
-    - assets/images/lessons/hamiltonian_pattern.png
-    - assets/images/lessons/vector_example.png
-    - assets/images/lessons/dwave_procedure.png
+    - assets/images/lessons/
 
 
   # To add custom fonts to your application, add a fonts section here,
