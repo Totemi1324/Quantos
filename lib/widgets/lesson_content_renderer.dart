@@ -80,25 +80,25 @@ class LessonContentRenderer extends StatelessWidget {
         );
       case ContentType.image:
         final image = item as image_content.Image;
-        return Column(
-          children: [
-            Image.asset(
-              fit: BoxFit.fitWidth,
-              image.asset,
-              //TODO: Simplify image asset specifications in all JSON files
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              image.caption,
-              textAlign: TextAlign.center,
-              style: Theme.of(buildContext).textTheme.displaySmall,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-          ],
+        return Container(
+          margin: const EdgeInsets.only(top: 10, bottom: 25),
+          child: Column(
+            children: [
+              Image.asset(
+                fit: BoxFit.fitWidth,
+                image.asset,
+                //TODO: Simplify image asset specifications in all JSON files
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                image.caption,
+                textAlign: TextAlign.center,
+                style: Theme.of(buildContext).textTheme.displaySmall,
+              ),
+            ],
+          ),
         );
       case ContentType.equation:
         final equation = item as Equation;
@@ -109,7 +109,7 @@ class LessonContentRenderer extends StatelessWidget {
               TextStyle(color: Theme.of(buildContext).colorScheme.onBackground),
         );
         return Container(
-          margin: const EdgeInsets.only(top: 5, bottom: 15),
+          margin: const EdgeInsets.only(top: 15, bottom: 25),
           child: Center(
             child: Wrap(
               alignment: WrapAlignment.center,
