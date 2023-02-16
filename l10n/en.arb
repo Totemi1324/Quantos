@@ -230,6 +230,10 @@
     "@lectionScreenLessonsSection": {
         "description": "Lection screen lessons section title"
     },
+    "lessonScreenOutlinesNavigation": "Jump to sections",
+    "@lessonScreenOutlinesNavigation": {
+        "description": "Lesson screen outlines navigation title"
+    },
 
     "settingsScreenTitle": "Settings",
     "@settingsScreenTitle": {
