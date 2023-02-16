@@ -51,7 +51,7 @@ class LessonList extends StatelessWidget {
                     .loadByIdFromLocale(
                       lesson.id,
                       buildContext.read<LocalizationService>().state,
-                      AppLocalizations.of(buildContext)!.authFormPassword,
+                      AppLocalizations.of(buildContext)!,
                     ),
               ),
               LessonScreen.routeName,

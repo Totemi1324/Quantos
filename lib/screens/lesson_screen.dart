@@ -40,7 +40,7 @@ class LessonScreen extends StatelessWidget {
                 ),
                 const Divider(),
                 ExpansionTile(
-                  title: const Text("Jump to sections"),
+                  title: const Text("Jump to sections"), //TODO: Localize
                   children: [
                     Row(
                       children: [
