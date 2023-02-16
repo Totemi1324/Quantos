@@ -9,7 +9,7 @@
         "text": "But to do that, we have to start with the basics: The **qubit**, a mixture of 'quantum' and 'bit' and the heart of this new technology, is responsible for the enormous computing power. A normal computer, like the one you probably have in your hand or on your desk right now, works with bits to store and calculate information. They are binary — that is, they are either 1 or 0. This is actually just a mathematical representation, because bits are mostly conductive paths made of copper in which either current flows (state 1) or not (state 0). What's special about qubits is that they can assume both states at the same time, or a mixture of them."
     },
     "image-1": {
-        "asset": "assets/images/lessons/qubit_visualization.png",
+        "asset": "qubit_visualization.png",
         "caption": "This is roughly how you can think of qubits: a blend of multiple states",
         "alttext": "The digits zero and one in circles, next to them a circle with zero and one superimposed."
     },
@@ -26,17 +26,17 @@
         "text": "This behavior can be exploited to build qubits — units that are a superposition of 0 and 1 until they are measured. Qubits can be realized with any atomic system that has at least two distinct states. Here are some examples:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/electron_spin_example.png",
+        "asset": "electron_spin_example.png",
         "caption": "Up and down spins of electrons could serve as qubits",
         "alttext": "Two schematic representations of electrons, with one arrow pointing up (titled upspin) and the other pointing down (titled downspin)."
     },
     "image-3": {
-        "asset": "assets/images/lessons/ion_example.png",
+        "asset": "ion_example.png",
         "caption": "Just like different energy levels of ions created by electrons on different orbits",
         "alttext": "Two schematic representations of atoms with one electron in the inner orbit (state zero) and the other in the outer orbit (state one)."
     },
     "image-4": {
-        "asset": "assets/images/lessons/superconductor_example.png",
+        "asset": "superconductor_example.png",
         "caption": "Loops of superconducting materials that can assume two states",
         "alttext": "A ring of conductive material with an arrow pointing up and an arrow pointing down at its center."
     },
@@ -51,12 +51,12 @@
         "text": "The qubit $$0.3\\vert 0\\rangle + 0.7\\vert 1\\rangle$$, for example, becomes 0 and 1 with a probability of 30% and 70%, respectively, after the measurement (although this is highly simplified, because in reality these probabilities come from the number space of complex numbers). We can also visualize this geometrically: If we convert alpha and beta to angles with a multi-step mathematical procedure, the state of a qubit always lies on a sphere with radius 1. Superposition is achieved when the state is exactly in the middle between the two poles."
     },
     "image-5": {
-        "asset": "assets/images/lessons/bloch_sphere.png",
+        "asset": "bloch_sphere.png",
         "caption": "Illustration of a qubit on the so-called Bloch sphere",
         "alttext": "Sphere in a coordinate system, at the south pole one, at the north pole zero; qubit is plotted as a point on the surface of the upper hemisphere and its angle to the axes is marked."
     },
     "image-6": {
-        "asset": "assets/images/lessons/bloch_sphere_superposition.png",
+        "asset": "bloch_sphere_superposition.png",
         "caption": "This is what a qubit looks like mathematically when it is in superposition",
         "alttext": "Sphere in a coordinate system, at the south pole one, at the north pole zero; qubit is plotted as a point lying exactly on the equator."
     },

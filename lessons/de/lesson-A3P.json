@@ -6,7 +6,7 @@
         "text": "Der erste Schritt ist wie immer das Finden einer gültigen Kostenfunktion, die genau dann ihren geringsten Wert annimmt, wenn alle Regeln des Sudoku befolgt werden. Mittlerweile solltest du schon etwas Übung in der Aufstellung von QUBO-Problemen haben und vielleicht erkennen, dass auch hier, ähnlich wie beim N-Damen-Problem, ein **Gitter** vorliegt, den wir mit benannten Qubits belegen können. Nehmen wir als Beispiel für diese Lektion das folgende, unvollständige Sudoku der Größe 4×4:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/sudoku_easy.png",
+        "asset": "sudoku_easy.png",
         "caption": "Dies ist die einfachste mögliche Sudokugröße",
         "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen, deren horizontale und vertikale mittlere Trennlinie dick markiert ist; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift."
     },
@@ -14,7 +14,7 @@
         "text": "Was ist aber mit den verschiedenen Ziffern? Hier können im Gegensatz zu QUBO nicht nur die Binärzahlen 0 und 1, sondern die Ziffern von 1 bis 4 eingetragen werden. Diese können als eine Art zusätzliche \"Dimension\" des Problems verstanden werden. Und genau das ist auch die Lösung: Wir erweitern unser QUBO-Quadrat ins **Dreidimensionale** mit weiteren Ebenen!"
     },
     "image-2": {
-        "asset": "assets/images/lessons/variables_stack.png",
+        "asset": "variables_stack.png",
         "caption": "Um unterschiedliche Ziffern zu repräsentieren, kann das Sudoku-Feld auf mehrere Ebenen aufgeteilt werden",
         "alttext": "Zahlengitter der Größe vier mal vier Kästchen mit Ziffern von eins bis vier in dicker, brauner Schrift; daneben perspektivische Darstellung eines Stapels von vier Gittern gleicher Größe übereinander, deren Felder mit q eins bis q vierundsechzig beschriftet sind."
     },
@@ -22,7 +22,7 @@
         "text": "In dieser Darstellung sind die Kästchen diesmal nicht alphabetisch, sondern mit $$q_1$$ bis $$q_{64}$$ benannt, einfach, weil es sonst zu wenige Buchstaben gäbe. Jedes dieser Ebenen repräsentiert eine Ziffer von 1 bis 4 und beinhaltet in einem Kästchen 1, wenn im Sudoku **an dieser Stelle** die entsprechende Ziffer steht. Somit ist diese Technik eine Abwandlung des bereits behandelten One-Hot Encodings, wobei jede Ziffer als eine Kombination von 4 Binärzahlen repräsentiert wird: 1 ist $$[1, 0, 0, 0]$$, 2 ist $$[0, 1, 0, 0]$$ usw."
     },
     "image-3": {
-        "asset": "assets/images/lessons/one_hot_encoding.png",
+        "asset": "one_hot_encoding.png",
         "caption": "So würde der One-Hot-encodierte Stack für unser 4×4-Beispielsudoku aussehen; wenn in Ebene 2 eine 1 steht, dann ist im entsprechenden Feld im Original eine 2 eingetragen usw.",
         "alttext": "Perspektivische Darstellung eines Stapels von vier Gittern der Größe vier mal vier übereinander, wobei manche Felder leer und andere Felder mit den Ziffern null und eins ausgefüllt sind."
     },
@@ -65,12 +65,12 @@
         "text": "Hier ein Ausschnitt aus dem Hamiltonian und eine Visualisierung der ganzen Matrix:"
     },
     "image-4": {
-        "asset": "assets/images/lessons/sudoku_hamiltonian.png",
+        "asset": "sudoku_hamiltonian.png",
         "caption": "Die fertige Hamilton-Matrix des 4x4 Sudoku-Problems",
         "alttext": "Ausschnitt aus einer Matrix mit reellen Zahlen, dessen untere Dreieckshälfte mit Nullen gefüllt ist und in der oberen Dreieckshälfte regelmäßige Anordnungen von zwei, vier, minus vier und vierundsechzig aufweist."
     },
     "image-5": {
-        "asset": "assets/images/lessons/sudoku_hamiltonian_visualization.png",
+        "asset": "sudoku_hamiltonian_visualization.png",
         "caption": "In der Visualisierung sind Streifenmuster unterschiedlicher Helligkeit, die pyramidenartig angeordnet sind, erkennbar",
         "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen und kürzeren diagonalen Linien in dreieckiger Anordnung bilden."
     },
@@ -87,7 +87,7 @@
         "text": "Als erstes werden alle Qubits entfernt, die zu Zellen gehören, die im vorgegebenen Sudoku bereits ausgefüllt sind. Da sie sowieso nicht bearbeitet werden sollen, verbrauchen sie unnötig Kapazitäten. Dann kann die Methode so angepasst werden, wie wir Menschen ein Sudoku-Rätsel auch lösen würden: In den leeren Feldern **ausgeschlossene Optionen zu streichen**. Ein Beispiel dafür gibt die folgende Abbildung; in der obersten linken Zelle etwa ist nur eine 4 möglich, da in der zugehörigen Zeile bereits die 2 und die 3 und der ersten Spalte eine 1 steht."
     },
     "image-6": {
-        "asset": "assets/images/lessons/exclude_digits.png",
+        "asset": "exclude_digits.png",
         "caption": "Mit Hilfe der vorgegebenen Einträge können wir viele Möglichkeiten eliminieren",
         "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten jeweils vier von eins bis vier bezifferte Kreise, von denen manche durchgestrichen sind."
     },
@@ -95,7 +95,7 @@
         "text": "Übrig bleibt nur eine Handvoll von Optionen, in unserem Beispiel 11 an der Zahl. Diese können wir als unsere neuen Qubits betrachten und nach dem Schema $$q_{xyz}$$ benennen ($$x$$ = Zeilenindex, $$y$$ = Spaltenindex, $$z$$ = Ziffer der Option). Damit haben wir also die benötigte Anzahl von Qubits von 64 auf 11 reduziert. Der letzte Schritt ist es, die Paare von Qubits zu markieren, die nach den Sudoku-Regeln **nicht zusammen** in der Lösung auftreten dürfen:"
     },
     "image-7": {
-        "asset": "assets/images/lessons/qubit_relationships.png",
+        "asset": "qubit_relationships.png",
         "caption": "Die Pfeile zeigen jeweils auf ein Paar von Qubits, die sich gegenseitig ausschließen, z.B. weil sie in der selben Zeile die gleiche Ziffer repräsentieren",
         "alttext": "Zahlenquadrat der Größe vier mal vier Kästchen; einige Felder enthalten jeweils eine Ziffer von eins bis vier in dicker, brauner Schrift, die anderen Felder beinhalten mit q benannte Variablen und zweiendige, blaue Pfeile, die jeweils auf zwei verschiedene Variablen zeigen."
     },
@@ -103,7 +103,7 @@
         "text": "Grundsätzlich soll das Eintragen von Ziffern durch negative Koeffizienten belohnt werden, regelwidrige Paare werden aber mit einer positiven Strafe belegt. Nun müssen wir die Koeffizienten nur noch in die Hamilton-Matrix eintragen — und fertig!"
     },
     "image-8": {
-        "asset": "assets/images/lessons/optimized_hamiltonian.png",
+        "asset": "optimized_hamiltonian.png",
         "caption": "Der finale, optimierte Sudoku-Hamiltonian",
         "alttext": "Zahlentabelle der Größe elf mal elf Zellen, dessen Zeilen und Spalten mit nummerierten q-Variablen beschriftet sind; gefüllt mit Nullen, in der Hauptdiagonale mit minus eins und in der oberen Dreieckshäfte vereinzelt mit eins."
     },

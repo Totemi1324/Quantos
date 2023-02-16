@@ -3,7 +3,7 @@
         "text": "Eine örtliche Müllabfuhr muss am Anfang jeder Woche die Bewohner einer Stadt besuchen, um ihre Müllcontainer zu leeren. Stell dir vor, du wärst dafür zuständig, die Route für die Flotte der Müllabfuhrflotte festzulegen. Wie würdest du vorgehen, um sicherzustellen, dass die Fahrzeuge möglichst schnell fertig sind, möglichst wenig Sprit verbrauchen, vielleicht dass kein Fahrzeug überlastet ist?"
     },
     "image-1": {
-        "asset": "assets/images/lessons/optimization_introduction.png",
+        "asset": "optimization_introduction.png",
         "caption": "Der Fahrplan einer Müllabfuhr muss gut geplant sein, damit keine Ressourcen verschwendet werden",
         "alttext": "Zwei Müllwägen fahren auf den Straßen einer Graslandschaft mit mehreren Häusern; aus der Vogelperspektive."
     },
@@ -23,7 +23,7 @@
         "text": "Die Komplexität der Kostenfunktion hängt von der Anzahl der zu optimierenden Parameter ab; bei einer Unbekannten kann man es sich als eine Kurve vorstellen:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/quadratic_qubo.png",
+        "asset": "quadratic_qubo.png",
         "caption": "Der tiefste Punkt (Minimum) der Kostenfunktion ist zugleich die beste Lösung des Optimierungsproblems",
         "alttext": "Nach oben geöffnete parabelförmige Kurve im Koordinatensystem; nummerierte Lösungen x-Achse, Kosten y-Achse; tiefster Punkt markiert mit einem Pfeil und der Beschriftung Minimum."
     },
@@ -46,7 +46,7 @@
         "text": "Quantenmechanische Systeme besitzen eine Art \"innere Energie\" und streben danach, dass diese **möglichst niedrig** ist. Der Zustand der geringsten Energie wird auch Grundzustand oder auch Nullpunktenergie bezeichnet."
     },
     "image-3": {
-        "asset": "assets/images/lessons/energy_levels.png",
+        "asset": "energy_levels.png",
         "caption": "Verschiedene Energiestufen von Teilchen: Der Grundzustand und erregte Zustände",
         "alttext": "Diagramm mit farbigen horizontalen Linien auf verschiedenen Höhen neben einem Pfeil als x-Achse mit der Aufschrift Energie; die tiefste Linie ist beschriftet als Grundzustand, die höher gelegenen als erregte Zustände."
     },
@@ -54,12 +54,12 @@
         "text": "Zusätzlich besitzen Quantenteilchen wie z.B. Elektronen die Fähigkeit, sich zu bestimmten Energieniveaus zu \"tunneln\". Da, wie in vorherigen Einheiten beschrieben, die Position und die Geschwindigkeit eines Elektrons keine festen Werte, sondern eine Wahrscheinlichkeitswolke sind, ist es den Teilchen möglich, gleich zu niedrigeren Energieniveaus zu springen, ohne vorherige, möglicherweise höhere Energiestufen durchlaufen zu haben. Dies nennt man \"quantum tunneling\", oder auch **Quantentunneleffekt**."
     },
     "image-4": {
-        "asset": "assets/images/lessons/quantum_tunneling.png",
+        "asset": "quantum_tunneling.png",
         "caption": "Anstatt den klassischen Weg zu gehen, ist es kleinsten Teilchen auch möglich, sich durchzutunneln",
         "alttext": "Diagramm von einer Energiekurve mit einem hohen Hügel in der Mitte; Von einem Kreis, der in einem Tal vor dem Hügel mit lokales Minimum beschriftet liegt, zeigt ein Pfeil durch den Hügel in ein tieferes Tal nach dem Hügel mit globales Minimum beschriftet."
     },
     "image-5": {
-        "asset": "assets/images/lessons/annealing_process.png",
+        "asset": "annealing_process.png",
         "caption": "Energieniveaus sind nicht statisch, sondern verändern sich im Laufe des Annealings",
         "alttext": "Diagramm mit mehreren flachen Kurven, die eng beieinander verlaufen. x-Achse ist mit Kosten, y-Achse mit Zeit beschrieben. Auf die Stelle, wo der Abstand der Kurven besonders klein ist, zeigt ein Pfeil mit der Aufschrift Minimum Gap."
     },

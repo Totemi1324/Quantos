@@ -9,7 +9,7 @@
         "text": "Doch zunächst stellt sich die Frage: **Mit welchen Graphen soll der Quantenannealer geprüft werden?** Im Gegensatz zum Schachbrett beim N-Damen-Problem ist diese Datenstruktur viel flexibler und es ist nicht nur die Anzahl der Städte, sondern auch deren Lage entscheidend. Ein Ansatz für eine Vereinheitlichung ist es daher, Graphen in Form **regelmäßiger Polygone** (also Vielecke mit gleicher Seitenlänge) zu verwenden, beginnend mit einem Dreieck (die einfachste Form mit einem gültigen Hamiltonkreis) bis hin zu einem Achteck."
     },
     "image-1": {
-        "asset": "assets/images/lessons/benchmark_graphs.png",
+        "asset": "benchmark_graphs.png",
         "caption": "Regelmäßige Polygone sind besonders geeignet, Algorithmen für Routenfindung zu testen",
         "alttext": "Dreieck, Viereck, Fünfeck, Sechseck, Siebeneck und Achteck mit jeweils gleicher Seitenlänge, dessen Ecken mit bunten Kreuzen markiert sind."
     },

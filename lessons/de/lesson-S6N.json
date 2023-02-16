@@ -9,7 +9,7 @@
         "text": "Dafür müssen wir aber bei den Grundlagen anfangen: Das **Qubit**, eine Mischung aus 'Quanten' und 'Bit' und das Herzstück dieser neuen Technologie, ist für die enorme Rechenleistung verantwortlich. Ein normaler Computer, so wie du ihn gerade wahrscheinlich in der Hand oder auf dem Tisch hast, arbeitet mit Bits, um Informationen zu speichern und zu berechnen. Diese sind binär — das bedeutet, sie sind entweder 1 oder 0. Das ist eigentlich nur eine mathematische Repräsentation, denn Bits sind meist Leiterbahnen aus Kupfer, in denen entweder Strom fließt (Zustand 1) oder nicht (Zustand 0). Das Besondere an Qubits: Sie können beide Zustände gleichzeitig bzw. eine Mischung davon annehmen."
     },
     "image-1": {
-        "asset": "assets/images/lessons/qubit_visualization.png",
+        "asset": "qubit_visualization.png",
         "caption": "So kann man sich Qubits ungefähr vorstellen: Eine Überlagerung von mehreren Zuständen",
         "alttext": "Die Ziffern Null und Eins in Kreisen, daneben ein Kreis mit Null und Eins übereinandergelegt."
     },
@@ -26,17 +26,17 @@
         "text": "Dieses Verhalten kann man sich zunutze machen, um Qubits zu bauen — Einheiten, die eine Überlagerung von 0 und 1 darstellen, bis sie gemessen werden. Qubits können mit jedem atomaren System, welches mindestens zwei verschiedene Zustände besitzt, realisiert werden. Hier einige Beispiele:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/electron_spin_example.png",
+        "asset": "electron_spin_example.png",
         "caption": "Up- und Down-Spins von Elektronen könnten als Qubits dienen",
         "alttext": "Zwei schematische Darstellungen von Elektronen, bei dem der eine Pfeil nach oben (Schriftzug up) und der andere nach unten (Schriftzug down) zeigt."
     },
     "image-3": {
-        "asset": "assets/images/lessons/ion_example.png",
+        "asset": "ion_example.png",
         "caption": "Genauso wie verschiedenen Energieniveaus von Ionen, die durch Elektronen auf verschiedenen Bahnen entstehen",
         "alttext": "Zwei schematische Darstellungen von Atomen, bei dem sich das eine Elektron auf der näheren (Zustand Null) und das andere auf der ferneren Bahn (Zustand Eins) befindet."
     },
     "image-4": {
-        "asset": "assets/images/lessons/superconductor_example.png",
+        "asset": "superconductor_example.png",
         "caption": "Schleifen aus supraleitenden Materialien, die zwei Zustände annehmen können",
         "alttext": "Ein Ring aus leitendem Material, in dessen Mitte ein Pfeil nach oben und ein Pfeil nach unten zeigt."
     },
@@ -51,12 +51,12 @@
         "text": "Das Qubit $$0.3\\vert 0\\rangle + 0.7\\vert 1\\rangle$$ zum Beispiel wird nach der Messung mit einer Wahrscheinlichkeit von 30% zu 0 und von 70% zu 1 (wobei das stark vereinfacht ist, denn in Wirklichkeit stammen diese Wahrscheinlichkeiten aus dem Zahlenraum der komplexen Zahlen). Das können wir auch geometrisch visualisieren: Wenn man Alpha und Beta mit einem mehrstufigen mathematischen Verfahren zu Winkel umrechnet, liegt der Zustand eines Qubits immer auf einer Kugel mit dem Radius 1. Die Superposition ist erreicht, wenn sich der Zustand genau in der Mitte zwischen den zwei Polen befindet."
     },
     "image-5": {
-        "asset": "assets/images/lessons/bloch_sphere.png",
+        "asset": "bloch_sphere.png",
         "caption": "Darstellung eines Qubits auf der sogenannten Bloch-Kugel",
         "alttext": "Kugel in einem Koordinatensystem, am Südpol Eins, am Nordpol Null; Qubit ist als Punkt auf der Oberfläche der oberen Halbkugel eingezeichnet und dessen Winkel zu den Achsen markiert."
     },
     "image-6": {
-        "asset": "assets/images/lessons/bloch_sphere_superposition.png",
+        "asset": "bloch_sphere_superposition.png",
         "caption": "So sieht ein Qubit mathematisch betrachtet aus, wenn er sich in Superposition befindet",
         "alttext": "Kugel in einem Koordinatensystem, am Südpol Eins, am Nordpol Null; Qubit ist als Punkt genau auf dem Äquator liegend eingezeichnet."
     },

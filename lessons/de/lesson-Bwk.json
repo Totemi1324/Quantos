@@ -3,7 +3,7 @@
         "text": "Jetzt fehlt nur noch ein finaler Schritt, um Optimierungsprobleme auf einem Quantenannealer zu lösen: Ihm die QUBO-Gleichung zu übermitteln. Zudem müssen die Ergebnisse, wenn der Annealer fertig ist, in irgendeiner Form wieder zurückkommen. Für diese Kommunikation gibt es ein einheitliches Protokoll, welche die Formatierung der Daten festlegt. Sie sieht ungefähr so aus:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/dwave_procedure.png",
+        "asset": "dwave_procedure.png",
         "caption": "Der Verlauf einer Rechenoperation am DWave-Annealer",
         "alttext": "Flussdiagramm, an dessen Anfang ein quadratisches Zahlenfeld steht, welches zu einem Foto des Quantenannealers zeigt, welches wiederum auf eine Reihe aus den Ziffern null und eins zeigt."
     },
@@ -21,7 +21,7 @@
         "alttext": "q=(q₁, q₂, q₃)"
     },
     "image-4": {
-        "asset": "assets/images/lessons/vector_example.png",
+        "asset": "vector_example.png",
         "caption": "Mit Pfeilen können 3-dimensionale Vektoren visualisiert werden",
         "alttext": "Bunter Pfeil in einem dreidimensionalen Koordinatensystem, welches vom Ursprung aus dem Bildschirm heraus zeigt."
     },
@@ -54,12 +54,12 @@
         "text": "Beobachte das **Muster**, wie die einzelnen Felder aufeinander folgen; auf gleicher Weise skaliert der Hamiltonian auch für QUBO-Gleichungen mit mehr Variablen."
     },
     "image-2": {
-        "asset": "assets/images/lessons/hamiltonian_scaling.png",
+        "asset": "hamiltonian_scaling.png",
         "caption": "Eine Hamilton-Matrix für eine QUBO-Gleichung mit 6 Unbekannten",
         "alttext": "Quadratische Zahlenmatrix mit sechs mal sechs Einträgen, von h a bis h f durchnummeriert."
     },
     "image-3": {
-        "asset": "assets/images/lessons/hamiltonian_pattern.png",
+        "asset": "hamiltonian_pattern.png",
         "caption": "Hamiltonians bilden mit ihren Variablen ein regelmäßiges Muster",
         "alttext": "Eine Anordnung von bunten bzw. zweifarbigen Quadraten in einem Gitter; oben sind a, b, c und d unterschiedliche Farben zugewiesen; im Gitter repräsentieren sie die Stellung der Variablen."
     },

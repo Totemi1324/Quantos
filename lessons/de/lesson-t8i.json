@@ -16,12 +16,12 @@
         "text": "Since the representation in this form is rather confusing, you should always convert it to a Hamilton matrix. Hamiltonians, which, as explained in the introductory lesson, contain only the coefficients of the respective variables and variable pairs, are much more compact and allow a focus on this only important information. Thus, they can also be viewed as a characteristic **fingerprint** of corresponding optimization problems. Here is the Hamilton matrix of the 4 queens problem just solved:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nqueens_hamiltonian.png",
+        "asset": "nqueens_hamiltonian.png",
         "caption": "Coefficients of the N queens equation make a characteristic pattern when displayed as a Hamilton matrix",
         "alttext": "Square number matrix with sixteen by sixteen entries whose lower triangle is filled with zeros and upper triangle is filled with two and minus two."
     },
     "image-2": {
-        "asset": "assets/images/lessons/nqueens_hamiltonian_visualization.png",
+        "asset": "nqueens_hamiltonian_visualization.png",
         "caption": "This can also be represented visually; the lighter the color of a cell, the higher the number",
         "alttext": "Gray square with blue and yellow cells forming a pattern with solid diagonal lines."
     },

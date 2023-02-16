@@ -9,7 +9,7 @@
         "text": "Eine Möglichkeit zur Lösung des sonst zu schweren 9-Damen-Problems ist zum Beispiel, die Lösungsmenge zu verkleinern. Man könnte eine Dame in einer Ecke vorgeben, in der Darstellung links oben, die die Stellung weiterer Damen in der äußersten Zeile sowie Spalte **ausschließt**, um das Feld, welches dem Annealer zur Verarbeitung gegeben wird, auf 8×8 zu verkleinern und somit effektiv das 8-Damen-Problem lösen zu lassen. Erkennst du aber, was zusätzlich beachtet werden muss?"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nine_queens.png",
+        "asset": "nine_queens.png",
         "caption": "Ein Trick zum Lösen des 9-Damen-Problems: Die geschickte Positionierung der ersten Figur",
         "alttext": "Schachbrett der Größe neun mal neun aus der Vogelperspektive mit einer Damenfigur in der rechten oberen Ecke, dessen Zeile, Spalte und Diagonale blau schattiert sind; das restliche acht mal acht große Feld ist mit acht Damen in gültiger Aufstellung belegt, keine steht auf den schattierten Feldern."
     },

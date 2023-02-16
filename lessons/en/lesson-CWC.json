@@ -9,7 +9,7 @@
         "text": "Let's simplify our example from earlier to just 4 cities named A, B, C, and D."
     },
     "image-1": {
-        "asset": "assets/images/lessons/graph_example.png",
+        "asset": "graph_example.png",
         "caption": "A simple graph with 4 nodes and their distances from each other",
         "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines with a number next to each."
     },

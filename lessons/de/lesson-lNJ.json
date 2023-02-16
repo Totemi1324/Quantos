@@ -12,7 +12,7 @@
         "text": "Betrachten wir unsere Matrix erneut als 4×4-Gitter, dessen Felder in alphabetischer Reihenfolge benannt sind. Mittlerweile sind wir schon geübt darin, die obigen Regeln als QUBO-Gleichung umzusetzen!"
     },
     "image-1": {
-        "asset": "assets/images/lessons/tour_matrix_variables.png",
+        "asset": "tour_matrix_variables.png",
         "caption": "Eine Tour-Matrix mit Variablen als Felder",
         "alttext": "Gitter, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; die Felder sind von links oben nach rechts unten in alphabetischer Reihenfolge mit a bis p beschriftet."
     },
@@ -27,7 +27,7 @@
         "text": "Aber das ist nur die halbe Miete. Da es auch unser Ziel ist, die **Länge der Tour zu minimieren**, müssen auch die Streckenkosten in der QUBO-Gleichung berücksichtigt werden. Da es sich hierbei glücklicherweise ebenfalls um eine Kostenfunktion handelt, können die Werte übernommen und zu den Gesamtkosten addiert werden. Aber wie bestimmt man, welche Werte man wann hinzufügt?"
     },
     "image-2": {
-        "asset": "assets/images/lessons/tour_costs.png",
+        "asset": "tour_costs.png",
         "caption": "Alle Möglichkeiten, von Stadt B in andere Städte zu kommen, unabhängig vom Zeitpunkt.",
         "alttext": "Das vorherige Gitter mit alphabetischer Beschriftung, wo von jedem Feld der zweiten Reihe aus Pfeile zu allen Feldern aus der jeweils nächsten Spalte, die nicht zur zweiten Zeile gehören, zeigen."
     },
@@ -47,7 +47,7 @@
         "text": "Dieser Teil wird einfach zum Rest der Gleichung hinzugefügt und muss für jede TSP-Instanz **neu generiert** werden. Es gibt aber noch ein Problem. Würde man das QUBO-Problem schon zum jetzigen Zeitpunkt an den Quantenannealer senden, sähen die Ergebnisse ungefähr so aus:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/tsp_results.png",
+        "asset": "tsp_results.png",
         "caption": "Die Lösungsvektoren des Quantenannealers für die jetzige QUBO-Gleichung",
         "alttext": "Tabelle mit fünf Zeilen, die jeweils 16 binäre Zahlen beinhalten, von denen immer drei Stück Eins und der Rest Null sind; zweite Spalte ist beschriftet mit Energie, die immer minus vier beträgt."
     },
@@ -65,12 +65,12 @@
         "text": "Diese Kostenfunktion sollte nun die beste (niedrigste) Energie liefern, wenn die formalen Regeln der Belegung, d.h. 1 pro Zeile und 1 pro Spalte, erfüllt sind **und** der Quantenannealer diejenigen Verbindungen auswählt, deren Summe gemäß den TSP-Anforderungen am kürzesten ist."
     },
     "image-4": {
-        "asset": "assets/images/lessons/tsp_hamiltonian.png",
+        "asset": "tsp_hamiltonian.png",
         "caption": "Die fertige Hamilton-Matrix des TSP",
         "alttext": "Ausschnitt aus einer Matrix, einmal mit Buchstaben als Variablennamen und einmal mit reellen Zahlenwerten ausgefüllt"
     },
     "image-5": {
-        "asset": "assets/images/lessons/tsp_visualization.png",
+        "asset": "tsp_visualization.png",
         "caption": "Visuell dargestellt weist der Hamiltonian ein typisches Muster mit diagonalen Streifen auf",
         "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
     },
@@ -88,7 +88,7 @@
         "text": "Doch wie kommen wir daraus wieder an die Tour auf dem Graphen? Dieser Prozess nennt sich **reverse engineering** (\"umgekehrtes Entwickeln\"). Der Antwortvektor $$q_A$$ (der die Werte der Variablen a bis n beinhaltet) muss zunächst in die Tourmatrix übersetzt werden, indem die Werte nacheinander in ein 4×4-Gitter übertragen werden."
     },
     "image-6": {
-        "asset": "assets/images/lessons/solution_matrix.png",
+        "asset": "solution_matrix.png",
         "caption": "Die Tourmatrix, der die Werte aus dem Antwortvektor beinhaltet",
         "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1D, 2B, 3C und 4A ist jeweils eine Eins eingetragen."
     },
@@ -96,7 +96,7 @@
         "text": "Durch das Hinzufügen der Zeitschritt- und Städtebezeichnungen wird die Reihenfolge der besuchten Städte sichtbar: D – B – C – A (– D). Werfen wir noch einmal einen Blick auf den Graphen: Tatsächlich, er hat den kürzesten Weg gefunden!"
     },
     "image-7": {
-        "asset": "assets/images/lessons/solution_tour.png",
+        "asset": "solution_tour.png",
         "caption": "Korrekte Lösung des TSP-Problems aus der letzten Einheit, visualisiert am Graphen",
         "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien ist jedes miteinander verbunden; Verbindung von A nach D nach B nach C und zurück nach A ist rosa hervorgehoben."
     }

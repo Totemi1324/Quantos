@@ -9,7 +9,7 @@
         "text": "A chess board consists of a square, which is divided into black and white sub-squares — 8 in the horizontal and 8 in the vertical axis, making a total of 64 squares. There are several chess pieces that can move on this board, but for us here only the **queen**, the strongest of all pieces, is of importance. It can move any number of squares horizontally, vertically and diagonally to capture other pieces. Thus, if another piece is within a queen's range, it is considered threatened."
     },
     "image-1": {
-        "asset": "assets/images/lessons/queen_range.png",
+        "asset": "queen_range.png",
         "caption": "The queen covers a large area on the board with her reach",
         "alttext": "Bird's-eye view chessboard with a queen piece on D3; starting from it, a row, a column, and two diagonals of squares shaded in blue."
     },

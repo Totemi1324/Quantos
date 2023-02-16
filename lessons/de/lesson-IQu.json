@@ -9,7 +9,7 @@
         "text": "Da es sich bei TSP-Touren um geschlossene Hamiltonpfade (Schleifen) handelt, die jede Stadt besuchen, kann der Startpunkt **beliebig festgelegt** werden. Wenn wir also dem Quantenannealer diese Entscheidung abnehmen und den Startpunkt z.B. auf A setzen, können die erste Zeile und die erste Spalte der Tour-Matrix weggelassen werden, da der erste Zeitschritt somit bereits getan ist und diese Stadt im weiteren Verlauf des Pfades garantiert nicht mehr besucht wird."
     },
     "image-1": {
-        "asset": "assets/images/lessons/tour_optimization.png",
+        "asset": "tour_optimization.png",
         "caption": "Wenn die erste besuchte Stadt bekannt ist, ist die Spalte und die Zeile dieses Besuchs irrelevant",
         "alttext": "Gitter mit alphabetischen Buchstaben von a nach p, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; die Felder 1A, 2C, 3B und 4D sind blau markiert, Zeile A und Spalte 1 sind rot schattiert."
     },
@@ -23,7 +23,7 @@
         "text": "Um den Algorithmus für reale Alltagssituationen anwendbarer zu machen, wäre es auch möglich, ihn über den Rahmen des klassischen Traveling-Salesman-Problems hinaus für **unvollständige Graphen** (bei denen nicht alle Knoten miteinander verbunden sind) zu erweitern. In der Praxis kann es oft vorkommen, dass nicht alle Knoten von jedem Punkt erreichbar sind. Wenn eine Verbindung zwischen zwei Städten nicht existiert (z.B. aufgrund der Struktur eines Straßennetzes), muss der Quantenannealer um jeden Preis davon **abgehalten** werden, sie in die Lösung einzubeziehen."
     },
     "image-2": {
-        "asset": "assets/images/lessons/incomplete_graph.png",
+        "asset": "incomplete_graph.png",
         "caption": "Ein Beispiel für einen unvollständigen Graph",
         "alttext": "Kreise, die durch graue Linien verbunden sind; zwischen manchen Kreisen besteht keine Verbindung."
     },

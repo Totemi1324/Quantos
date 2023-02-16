@@ -6,7 +6,7 @@
         "text": "The first step, as always, is to find a valid cost function that yields the least value exactly when all the rules of Sudoku are followed. By now you should have some practice in setting up QUBO problems and may recognize that, similar to the N queens problem, this one is also structured as a **grid** that we can assign named qubits to. As an example for this lecture, let's take the following incomplete Sudoku of size 4×4:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/sudoku_easy.png",
+        "asset": "sudoku_easy.png",
         "caption": "This is the simplest possible Sudoku size",
         "alttext": "Square of numbers, size four by four fields, with their horizontal and vertical center dividing line thickly marked; some boxes contain a digit from one to four in thick brown type."
     },
@@ -14,7 +14,7 @@
         "text": "But what about the different digits? Here, in contrast to QUBO, not only the binary numbers 0 and 1, but digits from 1 to 4 can be filled in. These can be understood as a kind of additional \"dimension\" of the problem. And this is exactly the solution: We extend our QUBO square into **three dimensions** with additional levels!"
     },
     "image-2": {
-        "asset": "assets/images/lessons/variables_stack.png",
+        "asset": "variables_stack.png",
         "caption": "To represent different digits, the Sudoku field can be divided into multiple levels",
         "alttext": "Number grid of size four by four fields with numerals from one to four in thick brown lettering; next to it, perspective view of a stack of four grids of the same size above one another, with fields labeled q one through q sixty-four."
     },
@@ -22,7 +22,7 @@
         "text": "This time, the boxes are not named alphabetically, but with $$q_1$$ to $$q_{64}$$, simply because otherwise we would be running out of letters. Each of these levels represents a digit from 1 to 4 and contains 1 in a field if the corresponding digit is present **at this position** in the Sudoku. Thus, this technique is a variation of the one-hot encoding already discussed, where each digit is represented as a combination of 4 binary numbers: 1 is $$[1, 0, 0, 0]$$, 2 is $$[0, 1, 0, 0]$$, etc."
     },
     "image-3": {
-        "asset": "assets/images/lessons/one_hot_encoding.png",
+        "asset": "one_hot_encoding.png",
         "caption": "This is what the one-hot-encoded stack would look like for our 4×4 example Sudoku; if there is a 1 in level 2, then there is a 2 in the corresponding field in the original, and so on",
         "alttext": "Perspective view of a stack of four grids of size four by four on top of each other, with some squares empty and other squares filled with the digits zero and one."
     },
@@ -65,12 +65,12 @@
         "text": "Here is a snippet from the Hamiltonian and a visualization of the whole matrix:"
     },
     "image-4": {
-        "asset": "assets/images/lessons/sudoku_hamiltonian.png",
+        "asset": "sudoku_hamiltonian.png",
         "caption": "The completed Hamilton matrix of the 4x4 Sudoku problem",
         "alttext": "Section of a matrix of real numbers whose lower triangular half is filled with zeros and has regular arrangements of two, four, minus four, and sixty-four in the upper triangular half."
     },
     "image-5": {
-        "asset": "assets/images/lessons/sudoku_hamiltonian_visualization.png",
+        "asset": "sudoku_hamiltonian_visualization.png",
         "caption": "In the visualization, stripe patterns of different brightness, arranged in a pyramid-like pattern, are visible",
         "alttext": "Gray square with blue and yellow boxes forming a pattern with long and shorter diagonal lines in triangular arrangement."
     },
@@ -87,7 +87,7 @@
         "text": "First, all qubits belonging to cells that are already filled in the given Sudoku are removed. Since they are not to be processed anyway, they consume capacity unnecessarily. Then the method can be adapted to how us humans would solve a Sudoku puzzle: cross out **excluded options** in the empty fields. An example of this is shown in the following figure; in the top left cell, for example, only a 4 is possible because the associated row already contains the 2 and the 3 and the first column contains a 1."
     },
     "image-6": {
-        "asset": "assets/images/lessons/exclude_digits.png",
+        "asset": "exclude_digits.png",
         "caption": "With the help of the given entries we can eliminate many possibilities",
         "alttext": "Number square of size four by four fields; some boxes contain a digit from one to four in thick, brown lettering, the other boxes each contain four circles numbered one to four, some of which are crossed out."
     },
@@ -95,7 +95,7 @@
         "text": "What remains is only a handful of options, 11 total in our example. We can consider these as our new qubits and name them according to the scheme $$q_{xyz}$$ ($$x$$ = row index, $$y$$ = column index, $$z$$ = digit of the option). Thus, we have reduced the required number of qubits from 64 to 11. The last step is to mark the pairs of qubits that, according to the Sudoku rules, **must not occur together** in the solution:"
     },
     "image-7": {
-        "asset": "assets/images/lessons/qubit_relationships.png",
+        "asset": "qubit_relationships.png",
         "caption": "The arrows each point to a pair of qubits that exclude each other, e.g. because they represent the same digit in the same row/column",
         "alttext": "Number square of size four by four fields; some boxes contain a digit from one to four in thick brown font, the other boxes contain variables named q and two-ended blue arrows each pointing to two different variables."
     },
@@ -103,7 +103,7 @@
         "text": "Entering digits in general should be rewarded by negative coefficients, but pairs that violate the rules should be subject to a positive penalty. Now we just have to enter the coefficients into the Hamilton matrix - and we're done!"
     },
     "image-8": {
-        "asset": "assets/images/lessons/optimized_hamiltonian.png",
+        "asset": "optimized_hamiltonian.png",
         "caption": "The final, optimized Sudoku Hamiltonian",
         "alttext": "Number table of size eleven by eleven cells, whose rows and columns are labeled with numbered q variables; filled with zeros, in the main diagonal with minus one, and in the upper half of the triangle sporadically with ones."
     },

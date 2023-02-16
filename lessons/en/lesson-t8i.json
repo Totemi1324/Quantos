@@ -16,12 +16,12 @@
         "text": "Da die Darstellung in dieser Form eher unübersichtlich ist, sollte man sie immer in eine Hamilton-Matrix umwandeln. Hamiltonians, die, wie in der einführenden Lektion erklärt, lediglich die Koeffizienten der jeweiligen Felder und Felderpaare enthalten, sind wesentlich kompakter und ermöglichen einen Fokus auf diese einzig wichtigen Informationen. Somit kann man sie auch als charakteristischen **Fingerabdruck** entsprechender Optimierungsprobleme betrachten. Hier ist die Hamilton-Matrix des eben gelösten 4-Damen-Problems:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nqueens_hamiltonian.png",
+        "asset": "nqueens_hamiltonian.png",
         "caption": "Koeffizienten der N-Damen-Gleichung ergeben als Hamilton-Matrix ein charakteristisches Muster",
         "alttext": "Quadratische Zahlenmatrix mit sechzehn mal sechzehn Einträgen, dessen unteres Dreieck mit Nullen und oberes Dreieck mit zwei und minus zwei gefüllt sind."
     },
     "image-2": {
-        "asset": "assets/images/lessons/nqueens_hamiltonian_visualization.png",
+        "asset": "nqueens_hamiltonian_visualization.png",
         "caption": "Dies kann man auch visuell darstellen; je heller die Farbe eines Kästchens, desto höher die Zahl",
         "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
     },

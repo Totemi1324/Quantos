@@ -9,7 +9,7 @@
         "text": "Since TSP tours are closed Hamiltonian paths (cycles) that visit every city, the starting point can be set **anywhere, arbitrarily**. So if we take this decision away from the quantum annealer and set the starting point to, say, A, the first row and the first column of the tour matrix can be omitted, since the first time step is thus already done and this city is guaranteed not to be visited in the rest of the cycle."
     },
     "image-1": {
-        "asset": "assets/images/lessons/tour_optimization.png",
+        "asset": "tour_optimization.png",
         "caption": "If the first city visited is known, the column and row of this visit is irrelevant",
         "alttext": "Grid of alphabetical letters from a to p, whose columns are labeled one, two, three, four, and whose rows are labeled A, B, C, D; cells 1A, 2C, 3B, and 4D are highlighted in blue, row A and column 1 are shaded in red."
     },
@@ -23,7 +23,7 @@
         "text": "To make the algorithm more applicable to real-world everyday situations, it would also be possible to extend it beyond the scope of the classical traveling salesman problem for **incomplete graphs** (where not all nodes are interconnected). In practice, it can often happen that not all nodes are reachable from every point. If a connection between two cities does not exist (e.g., due to the structure of a road network), the quantum annealer must be **prevented** from including it in the solution at all costs."
     },
     "image-2": {
-        "asset": "assets/images/lessons/incomplete_graph.png",
+        "asset": "incomplete_graph.png",
         "caption": "An example of an incomplete graph",
         "alttext": "Circles connected by gray lines; between some circles, there is no connection."
     },

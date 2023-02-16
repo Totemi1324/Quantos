@@ -9,7 +9,7 @@
         "text": "One way to solve the otherwise too hard 9 queens problem is, for example, to reduce the solution set. One could specify a queen in a corner, which is the top left in the image below, that **excludes** the positioning of further queens in the outermost row as well as column, in order to reduce the grid given to the annealer for processing to 8×8 and thus effectively let the 8 queens problem be solved instead. Do you recognize, however, what something else must be considered?"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nine_queens.png",
+        "asset": "nine_queens.png",
         "caption": "A trick to solve the 9 queens problem: the clever positioning of the first piece",
         "alttext": "Bird's-eye view of a chessboard of size nine by nine with a queen piece in the upper right corner, its row, column, and diagonal shaded in blue; the remaining eight-by-eight square is occupied by eight queens in valid placement, none standing on the shaded squares."
     },
