@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import '../../models/notification.dart';
@@ -29,8 +30,7 @@ class NotificationNews extends NotificationItem {
           ),
           CircleAvatar(
             radius: 25,
-            backgroundImage:
-                const AssetImage("assets/images/icon_background_gradient.png"),
+            backgroundImage: Assets.images.iconBackgroundGradient.provider(),
             foregroundImage: NetworkImage(newsObject.senderIconNetworkAddress),
           ),
           const SizedBox(

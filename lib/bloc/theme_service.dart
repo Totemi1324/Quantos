@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen/fonts.gen.dart';
 
 class ThemeService extends Cubit<ThemeData> {
   static final _darkTheme = ThemeData(
@@ -29,85 +30,85 @@ class ThemeService extends Cubit<ThemeData> {
       space: 30,
       thickness: 3,
     ),
-    fontFamily: "Quicksand",
+    fontFamily: FontFamily.quicksand,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         // Large headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 36,
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
       headlineMedium: TextStyle(
         // Medium headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 32,
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
       titleLarge: TextStyle(
         // Section titles
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 20,
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
       titleMedium: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 22,
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
       titleSmall: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 20,
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
       bodyLarge: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         color: Colors.white,
       ),
       bodyMedium: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 20,
         color: Colors.white,
       ),
       bodySmall: TextStyle(
         // Small body
-        fontFamily: "Quicksand",
-        fontSize: 16,
+        fontFamily: FontFamily.quicksand,
+        fontSize: 18,
         color: Colors.white,
       ),
       labelLarge: TextStyle(
         // Standard button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
       labelMedium: TextStyle(
         // Small button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: Colors.white,
       ),
       labelSmall: TextStyle(
         // Form field label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 18,
         fontWeight: FontWeight.w300,
         color: Colors.white,
       ),
       displaySmall: TextStyle(
         // Small label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 15,
         fontWeight: FontWeight.w300,
         color: Colors.white,
@@ -142,85 +143,85 @@ class ThemeService extends Cubit<ThemeData> {
       space: 30,
       thickness: 3,
     ),
-    fontFamily: "Quicksand",
+    fontFamily: FontFamily.quicksand,
     textTheme: TextTheme(
       headlineLarge: TextStyle(
         // Large headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 36,
         fontWeight: FontWeight.w700,
         color: Colors.grey.shade900,
       ),
       headlineMedium: TextStyle(
         // Medium headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 32,
         fontWeight: FontWeight.w700,
         color: Colors.grey.shade900,
       ),
       titleLarge: TextStyle(
         // Section titles
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 20,
         fontWeight: FontWeight.w600,
         color: Colors.grey.shade900,
       ),
       titleMedium: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 22,
         fontWeight: FontWeight.w700,
         color: Colors.grey.shade900,
       ),
       titleSmall: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 20,
         fontWeight: FontWeight.w700,
         color: Colors.grey.shade900,
       ),
       bodyLarge: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         color: Colors.grey.shade900,
       ),
       bodyMedium: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 20,
         color: Colors.grey.shade900,
       ),
       bodySmall: TextStyle(
         // Small body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 16,
         color: Colors.grey.shade900,
       ),
       labelLarge: TextStyle(
         // Standard button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         fontWeight: FontWeight.w600,
         color: Colors.grey.shade900,
       ),
       labelMedium: TextStyle(
         // Small button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: Colors.grey.shade900,
       ),
       labelSmall: TextStyle(
         // Form field label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 18,
         fontWeight: FontWeight.w300,
         color: Colors.grey.shade900,
       ),
       displaySmall: TextStyle(
         // Small label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 15,
         fontWeight: FontWeight.w300,
         color: Colors.grey.shade900,
@@ -255,85 +256,85 @@ class ThemeService extends Cubit<ThemeData> {
       space: 30,
       thickness: 3,
     ),
-    fontFamily: "Quicksand",
+    fontFamily: FontFamily.quicksand,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         // Large headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 42,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       headlineMedium: TextStyle(
         // Medium headers
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 38,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       titleLarge: TextStyle(
         // Section titles
-        fontFamily: "Josefin Sans",
+        fontFamily: FontFamily.josefinSans,
         fontSize: 26,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       titleMedium: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 28,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       titleSmall: TextStyle(
         // Lesson titles
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 26,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
       ),
       bodyLarge: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 30,
         color: Color(0xFFFFFD48),
       ),
       bodyMedium: TextStyle(
         // Standard body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 26,
         color: Color(0xFFFFFD48),
       ),
       bodySmall: TextStyle(
         // Small body
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 22,
         color: Color(0xFFFFFD48),
       ),
       labelLarge: TextStyle(
         // Standard button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 30,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       labelMedium: TextStyle(
         // Small button label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         fontWeight: FontWeight.w600,
         color: Color(0xFFFFFD48),
       ),
       labelSmall: TextStyle(
         // Form field label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 24,
         fontWeight: FontWeight.w300,
         color: Color(0xFFFFFD48),
       ),
       displaySmall: TextStyle(
         // Small label
-        fontFamily: "Quicksand",
+        fontFamily: FontFamily.quicksand,
         fontSize: 21,
         fontWeight: FontWeight.w300,
         color: Color(0xFFFFFD48),

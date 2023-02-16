@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' hide Notification;
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import './base/flat.dart';
 import '../models/news.dart';
@@ -28,8 +30,8 @@ class NotificationScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: const AssetImage(
-                    "assets/images/icon_background_gradient.png"),
+                backgroundImage:
+                    Assets.images.iconBackgroundGradient.provider(),
                 foregroundImage:
                     NetworkImage(newsObject.senderIconNetworkAddress),
               ),
@@ -38,7 +40,7 @@ class NotificationScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 20),
               alignment: Alignment.center,
               child: Text(
-                "News",
+                AppLocalizations.of(buildContext)!.notificationNewsTitle,
                 style: Theme.of(buildContext).textTheme.headlineMedium,
               ),
             ),

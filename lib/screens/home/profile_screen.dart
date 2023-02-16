@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../profile/profile_name_screen.dart';
 
@@ -82,11 +83,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: const CircleAvatar(
-                  backgroundImage:
-                      AssetImage("assets/images/profile_background.png"),
-                  foregroundImage:
-                      AssetImage("assets/images/profile_foreground.png"),
+                child: CircleAvatar(
+                  backgroundImage: Assets.images.profileBackground.provider(),
+                  foregroundImage: Assets.images.profileForeground.provider(),
                   radius: 70,
                 ),
               ),

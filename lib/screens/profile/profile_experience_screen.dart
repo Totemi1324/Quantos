@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../../bloc/stores/experience_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
@@ -54,7 +55,7 @@ class ProfileExperienceScreen extends StatelessWidget {
                         divisions: 2,
                         divisionToString: state,
                         initialDivision: 0,
-                        animationAsset: "assets/animations/age_selection.riv",
+                        animationAsset: Assets.animations.experienceSelection,
                         stateMachine: "AgeClasses",
                       ),
                     ),
