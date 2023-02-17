@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/content_outline_service.dart';
 import '../bloc/lesson_content_service.dart';
 
 import './base/flat.dart';
+import '../widgets/section_navigation.dart';
 import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
+import '../widgets/ui/adaptive_progress_bar.dart';
 
 class LessonScreen extends StatelessWidget {
   static const routeName = "/home/lection/lesson";
@@ -25,68 +26,77 @@ class LessonScreen extends StatelessWidget {
 
     return Flat(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  child: Text(
-                    lessonTitle,
-                    style: Theme.of(context).textTheme.headlineMedium,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                child: Text(
+                  lessonTitle,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+              const Divider(),
+              SectionNavigation(sectionTitles: sectionTitles),
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: ShaderMask(
+                  shaderCallback: (bounds) {
+                    return const LinearGradient(
+                      colors: [
+                        Colors.white,
+                        Colors.transparent,
+                      ],
+                      stops: [0.9, 1],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      tileMode: TileMode.mirror,
+                    ).createShader(bounds);
+                  },
+                  child: const SingleChildScrollView(
+                    child: LessonContentRenderer(),
                   ),
                 ),
-                const Divider(),
-                ExpansionTile(
-                  title: Text(AppLocalizations.of(context)!.lessonScreenOutlinesNavigation),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        const SizedBox(
-                          width: 25,
-                        ),
-                        Container(
-                          width: 25,
-                          height: 35.0 * sectionTitles.length,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              left: BorderSide(
-                                color: Colors.white.withOpacity(0.5),
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: sectionTitles.length,
-                            itemBuilder: (context, index) => InkWell(
-                              onTap: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Text(
-                                  sectionTitles[index],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
+                    AdaptiveButton.icon(
+                      "",
+                      onPressed: () {},
+                      icon: Icons.navigate_before_rounded,
+                    ),
+                    Expanded(
+                      child: AdaptiveProgressBar(
+                        0.4,
+                        withIcon: false,
+                        withText: false,
+                      ),
+                    ),
+                    AdaptiveButton.icon(
+                      "",
+                      onPressed: () {},
+                      icon: Icons.navigate_next_rounded,
+                    ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const LessonContentRenderer(),
-                const SizedBox(
-                  height: 30,
-                ),
-                Center(
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*Center(
                   child: AdaptiveButton.primary(
                     AppLocalizations.of(context)!.finishButtonLabel,
                     extended: false,
@@ -94,15 +104,4 @@ class LessonScreen extends StatelessWidget {
                       Navigator.of(context).pop();
                     },
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+                ),*/
