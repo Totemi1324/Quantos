@@ -522,7 +522,7 @@
             }
         }
     },
-    "unknownErrorParagraph": "Oops!\n\nIt seems that something went wrong while trying to load the resource you requested. You are receiving this error because even we don't know what caused this error. In order to resolve your issues as soon as possible, please submit the following message through our Help Center:\n\n{exception}",
+    "unknownErrorParagraph": "Oops!\n\nIt seems that something went wrong while trying to load the resource you requested. You are receiving this error because even we don't know what caused it. In order to resolve your issues as soon as possible, please submit the following message through our Help Center:\n\n{exception}",
     "@unknownErrorParagraph": {
         "description": "Unknown error message for lesson content screens",
         "placeholders": {

@@ -35,17 +35,22 @@ class LessonContentService extends Cubit<LessonContent> {
 
   LessonContentService() : super(LessonContent.empty());
 
+  Locale? previousLocale;
+
   Future loadByIdFromLocale(
       String lessonId, Locale locale, AppLocalizations localizations) async {
-    if (lessonId == state.lessonId) {
+    if (lessonId == state.lessonId &&
+        previousLocale != null &&
+        previousLocale == locale) {
       return;
     }
 
     state.lessonId = lessonId;
+    previousLocale = locale;
 
     try {
       final jsonString = await rootBundle
-          .loadString("lessons/${locale.languageCode}/lesso-$lessonId.json");
+          .loadString("lessons/${locale.languageCode}/lesson-$lessonId.json");
 
       state.clearContentData();
       _parse(jsonString);
