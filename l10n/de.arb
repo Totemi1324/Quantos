@@ -62,6 +62,10 @@
     "codingScreenWarning": "Die Einführungslektion 'Einführung zu Quantenannealern' enthält die Informationen und Kenntnisse, die für die Verwendung der Coding-Oberfläche erforderlich sind. Wenn du noch keine Erfahrung mit Quantenannealern hast, ist es hilfreich, es dir zuerst anzuschauen!",
 
     "lectionScreenLessonsSection": "Einheiten",
+    "lectionScreenDifficultyClass1": "Einfach",
+    "lectionScreenDifficultyClass2": "Fortgeschritten",
+    "lectionScreenDifficultyClass3": "Herausfordernd",
+
     "lessonScreenOutlinesNavigation": "Abschnitt wählen",
 
     "settingsScreenTitle": "Einstellungen",
