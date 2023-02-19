@@ -16,9 +16,9 @@ class DifficultyStoreService extends StoreService<Map<Difficulty, String>> {
   @override
   Map<int, String> getLocalizedStore(AppLocalizations localization) {
     final Map<Difficulty, String> localizedStore = {
-      Difficulty.easy: "Easy",
-      Difficulty.advanced: "Advanced",
-      Difficulty.challenging: "Challenging",
+      Difficulty.easy: localization.lectionScreenDifficultyClass1,
+      Difficulty.advanced: localization.lectionScreenDifficultyClass2,
+      Difficulty.challenging: localization.lectionScreenDifficultyClass3,
     };
 
     return localizedStore;
