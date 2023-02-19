@@ -68,10 +68,13 @@ class LessonScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    AdaptiveButton.icon(
-                      "",
+                    AdaptiveButton.navigator(
+                      type: ButtonType.secondary,
                       onPressed: () {},
                       icon: Icons.navigate_before_rounded,
+                    ),
+                    const SizedBox(
+                      width: 20,
                     ),
                     Expanded(
                       child: AdaptiveProgressBar(
@@ -80,8 +83,11 @@ class LessonScreen extends StatelessWidget {
                         withText: false,
                       ),
                     ),
-                    AdaptiveButton.icon(
-                      "",
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    AdaptiveButton.navigator(
+                      type: ButtonType.secondary,
                       onPressed: () {},
                       icon: Icons.navigate_next_rounded,
                     ),

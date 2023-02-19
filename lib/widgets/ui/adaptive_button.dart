@@ -13,12 +13,14 @@ class AdaptiveButton extends StatelessWidget {
   final ButtonType type;
   final String label;
   final bool extended;
+  final bool navigator;
   final VoidCallback onPressed;
   final IconData? icon;
 
   const AdaptiveButton(this.label,
       {required this.type,
       required this.extended,
+      required this.navigator,
       required this.onPressed,
       this.icon,
       super.key});
@@ -29,6 +31,7 @@ class AdaptiveButton extends StatelessWidget {
         label,
         type: ButtonType.primary,
         extended: extended,
+        navigator: false,
         onPressed: onPressed,
       );
 
@@ -38,6 +41,7 @@ class AdaptiveButton extends StatelessWidget {
         label,
         type: ButtonType.secondary,
         extended: extended,
+        navigator: false,
         onPressed: onPressed,
       );
 
@@ -47,6 +51,20 @@ class AdaptiveButton extends StatelessWidget {
         label,
         type: ButtonType.primary,
         extended: false,
+        navigator: false,
+        onPressed: onPressed,
+        icon: icon,
+      );
+
+  factory AdaptiveButton.navigator(
+          {required ButtonType type,
+          required VoidCallback onPressed,
+          required IconData icon}) =>
+      AdaptiveButton(
+        "",
+        type: type,
+        extended: false,
+        navigator: true,
         onPressed: onPressed,
         icon: icon,
       );
@@ -93,7 +111,7 @@ class AdaptiveButton extends StatelessWidget {
     );
 
     return SizedBox(
-      width: extended ? double.infinity : 140,
+      width: navigator ? 60 : (extended ? double.infinity : 140),
       height: 60,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
@@ -117,10 +135,12 @@ class AdaptiveButton extends StatelessWidget {
                       context.read<ThemeService>().accessibilityModeActive
                           ? Theme.of(context).colorScheme.onPrimary
                           : Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
+                  padding: navigator
+                      ? const EdgeInsets.all(0)
+                      : const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 onPressed: onPressed,
@@ -136,9 +156,9 @@ class AdaptiveButton extends StatelessWidget {
                                     .accessibilityModeActive
                                 ? Theme.of(context).colorScheme.onPrimary
                                 : Colors.white,
-                            size: 30,
+                            size: navigator ? 50 : 30,
                           ),
-                          Flexible(child: labelText),
+                          if (!navigator) Flexible(child: labelText),
                         ],
                       ),
               ),
