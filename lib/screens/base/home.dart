@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import '../home/home_screen.dart';
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
       const StatisticsScreen(),
       const ProfileScreen(),
     ];
-    _image = const AssetImage("assets/images/background.png");
+    _image = Assets.images.background.provider();
     super.initState();
   }
 

@@ -12,7 +12,7 @@
         "text": "Let's consider our matrix again as a 4×4 grid with its fields named in alphabetical order. By now we are already skilled at implementing the above rules as a QUBO equation!"
     },
     "image-1": {
-        "asset": "assets/images/lessons/tour_matrix_variables.png",
+        "asset": "tour_matrix_variables.png",
         "caption": "A tour matrix with variables as fields",
         "alttext": "Grid whose columns are labeled one, two, three, four and whose rows are labeled A, B, C, D; panels are labeled a through p in alphabetical order from top left to bottom right."
     },
@@ -27,7 +27,7 @@
         "text": "But that's only half the story. Since it is also our goal to minimize the **length of the tour**, the route costs must also be considered in the QUBO equation. Fortunately, since this is also a cost function, the values can simply be added to the total cost. But how do you determine which values to add and when?"
     },
     "image-2": {
-        "asset": "assets/images/lessons/tour_costs.png",
+        "asset": "tour_costs.png",
         "caption": "All possibilities to get from city B to other cities, regardless of the point in time.",
         "alttext": "The previous grid with alphabetical labels, where arrows point from each field in the second row to all fields from each next column that do not belong to the second row."
     },
@@ -47,7 +47,7 @@
         "text": "This part is simply added to the rest of the equation and must be **re-generated** for each TSP instance. However, there is still a problem. If the QUBO problem were sent to the quantum annealer at this time, the results would look something like this:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/tsp_results.png",
+        "asset": "tsp_results.png",
         "caption": "The quantum annealer answer vectors for the present QUBO equation",
         "alttext": "Table with five rows, each containing 16 binary numbers, three of which are always one and the rest zero; second column is labeled energy, which is always minus four."
     },
@@ -65,12 +65,12 @@
         "text": "This cost function should now yield the best (lowest) energy if the formal rules of occupancy, i.e., 1 per row and 1 per column, are satisfied **and** the quantum annealer selects those connections whose sum is shortest according to the TSP requirements."
     },
     "image-4": {
-        "asset": "assets/images/lessons/tsp_hamiltonian.png",
+        "asset": "tsp_hamiltonian.png",
         "caption": "The finished Hamilton matrix of the TSP",
         "alttext": "Section of a matrix, first filled with letters as variable names and then with real numbers"
     },
     "image-5": {
-        "asset": "assets/images/lessons/tsp_visualization.png",
+        "asset": "tsp_visualization.png",
         "caption": "Visually represented, the Hamiltonian exhibits a typical pattern consisting of diagonal stripes",
         "alttext": "Gray square with some blue and yellow cells forming a pattern with solid diagonal lines."
     },
@@ -88,7 +88,7 @@
         "text": "But how do we get back to the tour on the graph from this? The process for that is called **reverse engineering**. The answer vector $$q_A$$ (which contains the values of variables a through n) must first be translated into the tour matrix by transferring the values after one another into a 4×4 grid."
     },
     "image-6": {
-        "asset": "assets/images/lessons/solution_matrix.png",
+        "asset": "solution_matrix.png",
         "caption": "The tour matrix containing the values from the answer vector",
         "alttext": "Number grid filled with zeros, whose columns are labeled one, two, three, four, and whose rows are labeled A, B, C, D; 1D, 2B, 3C, and 4A each contain a one."
     },
@@ -96,7 +96,7 @@
         "text": "By adding the time step and city names, the order of visited cities becomes visible: D – B – C – A (– D). Let's take another look at the graph: Indeed, it found the shortest path!"
     },
     "image-7": {
-        "asset": "assets/images/lessons/solution_tour.png",
+        "asset": "solution_tour.png",
         "caption": "Correct solution of the TSP problem from the last lesson, visualized on the graph",
         "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines each; connection from A to D to B to C and back to A is highlighted in pink."
     }

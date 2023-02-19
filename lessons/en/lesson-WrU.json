@@ -15,7 +15,7 @@
         "text": "Note that there are other ways to program a quantum annealer, such as Ising problems, which we will omit for brevity and clarity. But now back to QUBO problems; let's consider an example to illustrate the concept:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/checkers_board.png",
+        "asset": "checkers_board.png",
         "caption": "An example checkers board with game pieces",
         "alttext": "An illustrated two by two red and black checkers board with four fields from bird's eye view, labeled from the upper left with the letters a, b, c, and d; above, four black counters."
     },
@@ -60,7 +60,7 @@
         "text": "This works because when summing all fields and subtracting 2, the result is 0 when exactly two fields are 1. But: if no field or one field is occupied, the result would be negative, which would result in an even better cost. This can be remedied by squaring the equation, because squaring a negative number always results in a positive value. The following graphical representation shows what squaring does:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/quadratic_qubo.png",
+        "asset": "quadratic_qubo.png",
         "caption": "Squaring produces a characteristic parabola, which has its vertex (lowest point) at the optimal solution",
         "alttext": "Parabolic curve opened upward in the coordinate system; number of occupancies on the x-axis, cost on the y-axis; lowest point marked with an arrow and labeled minimum."
     },

@@ -230,6 +230,23 @@
     "@lectionScreenLessonsSection": {
         "description": "Lection screen lessons section title"
     },
+    "lectionScreenDifficultyClass1": "Easy",
+    "@lectionScreenDifficultyClass1": {
+        "description": "First difficulty class"
+    },
+    "lectionScreenDifficultyClass2": "Advanced",
+    "@lectionScreenDifficultyClass2": {
+        "description": "Second difficulty class"
+    },
+    "lectionScreenDifficultyClass3": "Challenging",
+    "@lectionScreenDifficultyClass3": {
+        "description": "Third difficulty class"
+    },
+
+    "lessonScreenOutlinesNavigation": "Jump to sections",
+    "@lessonScreenOutlinesNavigation": {
+        "description": "Lesson screen outlines navigation title"
+    },
 
     "settingsScreenTitle": "Settings",
     "@settingsScreenTitle": {
@@ -506,5 +523,26 @@
     "helpMessageFormField": "Your message",
     "@helpMessageFormField": {
         "description": "Help message form field"
+    },
+
+    "parsingErrorParagraph": "Oops!\n\nIt seems that the resource you requested is corrupted and cannot be parsed. We're sorry for the inconvenience, as this error likely means something went wrong on our end. Hence, we would be thankful if you submitted the following error message via our Help Center:\n\n{exception}",
+    "@parsingErrorParagraph": {
+        "description": "Parsing error message for lesson content screens",
+        "placeholders": {
+            "exception": {
+                "type": "String",
+                "example": "ParseErrorException"
+            }
+        }
+    },
+    "unknownErrorParagraph": "Oops!\n\nIt seems that something went wrong while trying to load the resource you requested. You are receiving this error because even we don't know what caused it. In order to resolve your issues as soon as possible, please submit the following message through our Help Center:\n\n{exception}",
+    "@unknownErrorParagraph": {
+        "description": "Unknown error message for lesson content screens",
+        "placeholders": {
+            "exception": {
+                "type": "String",
+                "example": "FlutterException"
+            }
+        }
     }
 }

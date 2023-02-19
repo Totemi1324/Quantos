@@ -9,7 +9,7 @@
         "text": "Vereinfachen wir unser Beispiel von vorhin auf nur 4 Städte mit dem Namen A, B, C und D."
     },
     "image-1": {
-        "asset": "assets/images/lessons/graph_example.png",
+        "asset": "graph_example.png",
         "caption": "Ein simpler Graph mit 4 Knoten sowie ihren Abständen zueinander",
         "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien mit jeweils einer Zahl daneben verbunden."
     },

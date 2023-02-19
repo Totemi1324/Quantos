@@ -9,7 +9,7 @@
         "text": "Ein Schachbrett besteht aus einem Feld, welches in schwarze und weiße Quadrate aufgeteilt ist — 8 in der horizontalen und 8 in der vertikalen Seite, das macht insgesamt 64 Felder. Es gibt mehrere Schachfiguren, die sich auf diesem Brett bewegen können, für uns von Bedeutung ist hier aber nur die **Dame**, die stärkste aller Figuren. Sie kann sich in horizontaler, vertikaler und diagonaler Richtung beliebig viele Felder bewegen, um andere Figuren zu schlagen. Steht eine andere Figur also im Wirkungsbereich einer Dame, gilt sie als bedroht."
     },
     "image-1": {
-        "asset": "assets/images/lessons/queen_range.png",
+        "asset": "queen_range.png",
         "caption": "Die Dame deckt mit ihrer Reichweite eine große Fläche auf dem Brett ab",
         "alttext": "Schachbrett aus der Vogelperspektive mit einer Damenfigur auf D3; von ihr ausgehend eine Reihe, eine Spalte und zwei Diagonalen an Feldern blau schattiert."
     },

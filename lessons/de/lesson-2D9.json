@@ -6,7 +6,7 @@
         "text": "Wenn es um **Sudoku** geht, hat man es wahrlich mit einem wiederauferstandenen Fossil zu tun. Es ist eines der populärsten Logikrätsel unserer Zeit — jedoch definitiv keine neue Erfindung. Schon vor über 4000 Jahren wurde im antiken China fieberhaft Sudoku gespielt; damals war es unter dem Namen \"magische Quadrate\" bekannt. In diesen Jahrtausenden faszinierte das Spiel über alle Epochen, nicht zuletzt, da es sich einfach nie zu wiederholen scheint. Mittlerweile wissen wir, dass beim klassischen 9×9-Sudoku **sechs Trilliarden individuelle Konstellationen** möglich sind — richtig gelesen, eine Sechs mit 21 Nullen. Damit könnte die gesamte Erdbevölkerung Millionen Jahre lang täglich mehrere Sudokus lösen, ohne je zwei identischen zu begegnen."
     },
     "image-1": {
-        "asset": "assets/images/lessons/sudoku_example_empty.png",
+        "asset": "sudoku_example_empty.png",
         "caption": "Ein Beispiel für ein klassisches 9×9-Sudoku in Ausgangslage",
         "alttext": "Quadrat, das in neun mal neun kleine Quadrate zerteilt ist; in einigen Feldern sind Ziffern von eins bis neun in dicker brauner Schrift eingetragen."
     },

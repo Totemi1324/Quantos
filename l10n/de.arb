@@ -62,6 +62,11 @@
     "codingScreenWarning": "Die Einführungslektion 'Einführung zu Quantenannealern' enthält die Informationen und Kenntnisse, die für die Verwendung der Coding-Oberfläche erforderlich sind. Wenn du noch keine Erfahrung mit Quantenannealern hast, ist es hilfreich, es dir zuerst anzuschauen!",
 
     "lectionScreenLessonsSection": "Einheiten",
+    "lectionScreenDifficultyClass1": "Einfach",
+    "lectionScreenDifficultyClass2": "Fortgeschritten",
+    "lectionScreenDifficultyClass3": "Herausfordernd",
+
+    "lessonScreenOutlinesNavigation": "Abschnitt wählen",
 
     "settingsScreenTitle": "Einstellungen",
 
@@ -130,5 +135,8 @@
     "helpRequestTypeFeature": "Ich habe eine Frage zur App oder zu ihrem Inhalt",
     "helpRequestTypeOther": "Sonstiges",
     "helpInstructions": "Wähle eine Kategorie:",
-    "helpMessageFormField": "Deine Nachricht"
+    "helpMessageFormField": "Deine Nachricht",
+
+    "parsingErrorParagraph": "Ups!\n\nEs scheint, dass deine angeforderte Ressource beschädigt ist und nicht gelesen werden kann. Wir entschuldigen uns für die Unannehmlichkeiten, da dieser Fehler wahrscheinlich bedeutet, dass auf unserer Seite etwas schief gelaufen ist. Daher wären wir dir dankbar, wenn du die folgende Fehlermeldung über unser Hilfe-Center an uns übermittelst:\n\n{exception}",
+    "unknownErrorParagraph": "Ups!\n\nEs scheint, dass beim Versuch, die angeforderte Ressource zu laden, etwas schief gelaufen ist. Du erhälst diese Fehlermeldung, weil wir selbst nicht wissen, was diesen Fehler verursacht hat. Um dein Problem so schnell wie möglich zu beheben, übermittle bitte die folgende Fehlernachricht über unseren Hilfe-Center:\n\n{exception}"
 }

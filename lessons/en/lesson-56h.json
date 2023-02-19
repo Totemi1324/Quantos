@@ -9,7 +9,7 @@
         "text": "But first the question arises: **Which graphs should we use to test the quantum annealer?** In contrast to the chessboard in the N queens problem, this data structure is much more flexible and it is not only the number of cities but also their location that matters. Therefore, one approach to unification is to use graphs in the form of **regular polygons** (i.e., polygons with a uniform side length), starting with a triangle (the simplest shape containing a valid Hamiltonian cycle) and ending with an octagon."
     },
     "image-1": {
-        "asset": "assets/images/lessons/benchmark_graphs.png",
+        "asset": "benchmark_graphs.png",
         "caption": "Regular polygons are particularly suitable for testing algorithms that search routes",
         "alttext": "Triangle, quadrilateral, pentagon, hexagon, heptagon and octagon, each with the same side length, the corners of which are marked with colored crosses."
     },

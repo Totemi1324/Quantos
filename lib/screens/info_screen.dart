@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import './base/flat.dart';
 import '../widgets/section_separator.dart';
@@ -107,7 +108,7 @@ class _InfoScreenState extends State<InfoScreen> {
                   child: SizedBox(
                     width: 130,
                     child: Image.asset(
-                      "assets/images/logo.png",
+                      Assets.images.logo.path,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -144,14 +145,19 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                       _buildTextParagraph(
                         context,
-                        title: AppLocalizations.of(context)!.infoScreenImprintResponsiblePartyTitle,
+                        title: AppLocalizations.of(context)!
+                            .infoScreenImprintResponsiblePartyTitle,
                         text:
                             "Tamas Nemes\nAdolf-Schmetzer-Strasse 54\n93055 Regensburg\nGERMANY",
                       ),
                       _buildTextParagraph(
                         context,
-                        title: AppLocalizations.of(context)!.infoScreenImprintContactTitle,
-                        text: AppLocalizations.of(context)!.infoScreenImprintContactDescription("info@quantos-learning.com", "www.quantos-learning.com"),
+                        title: AppLocalizations.of(context)!
+                            .infoScreenImprintContactTitle,
+                        text: AppLocalizations.of(context)!
+                            .infoScreenImprintContactDescription(
+                                "info@quantos-learning.com",
+                                "www.quantos-learning.com"),
                       ),
                       SectionSeparator(
                         AppLocalizations.of(context)!.infoScreenPrivacySection,
@@ -159,7 +165,9 @@ class _InfoScreenState extends State<InfoScreen> {
                       ),
                       _buildTextParagraph(
                         context,
-                        text: AppLocalizations.of(context)!.infoScreenPrivacyDescription("www.quantos-learning.com"),
+                        text: AppLocalizations.of(context)!
+                            .infoScreenPrivacyDescription(
+                                "www.quantos-learning.com"),
                       ),
                     ],
                   ),

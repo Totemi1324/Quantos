@@ -3,7 +3,7 @@
         "text": "Imagine you are the representative of a large company that sends you on a business tour of its major sites. As it happens, these are located in eight capital cities spread all over Europe. Your company naturally wants to save as much time as possible. If you start from Berlin, visit each city exactly once, and then return to Berlin, in what order should you visit the cities to keep the trip **as short as possible**?"
     },
     "image-1": {
-        "asset": "assets/images/lessons/europe_map.png",
+        "asset": "europe_map.png",
         "caption": "Berlin, Vienna, Paris and Bucharest — these and other cities will be passed during the round trip",
         "alttext": "Simplified map of continental Europe with markers at the eight cities of Berlin, Vienna, Bucharest, Rome, Zurich, Paris, London, and Lisbon."
     },
@@ -17,7 +17,7 @@
         "text": "But why optimization? In such simple tasks as the previous one, the solution is, of course, quickly obvious: If we assume the distances to be air lines, the shortest path would be the one that goes around the outside."
     },
     "image-2": {
-        "asset": "assets/images/lessons/europe_route.png",
+        "asset": "europe_route.png",
         "caption": "The shortest journey with direct flights",
         "alttext": "Previous map with lines connecting the drawn cities into a closed loop."
     },

@@ -6,7 +6,7 @@
         "text": "**Quantenannealer** — ein auf den ersten Blick nicht vielsagender Begriff. Tatsächlich ist es aber Gegenstand eine der aktuellsten Forschungen der Gegenwart. Damit ist eine spezielle Art von Quantencomputern gemeint, die dieser Kurs behandelt. Im Gegensatz zu gatterbasierten Quantencomputern sind sie bereits weit fortgeschritten und können tatsächlich benutzt werden, um anwendungsbezogene Probleme zu lösen. \"Annealing\" bedeutet so viel wie \"Abkühlung\"; was es damit auf sich hat, wird in Einheit 3 gezeigt. Und so sehen sie aus:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/dwave_advantage.png",
+        "asset": "dwave_advantage.png",
         "caption": "Der Advantage-Annealer von DWave Systems, zum Vergleich eine erwachsene Person im Maßstab",
         "alttext": "Schwarzes Metallgehäuse mit orangenen Leuchtakzenten, daneben ein Strichmännchen auf etwa halber Höhe."
     },
@@ -17,12 +17,12 @@
         "text": "Doch wozu die viele, große Technik? Damit die Qubits im Annealer richtig funktionieren können — also dass die vorhin erklärte Superposition stabil bleibt und die Messungen durch Störungen nicht verfälscht werden — muss das Innere des Gehäuses auf eine Temperatur von **16 mK** (Millikelvin) gekühlt werden; das entspricht ungefähr -273,13° Celsius, was nahe dem absoluten Nullpunkt ist, dem physikalisch höchstem möglichen Maß an Kälte überhaupt. Dies ist für Ingenieure eine riesige Herausforderung: Einiges an Elektronik und dicke Wände aus Stahl, in dessen Inneren ein Vakuum, also ein luftleerer Raum, herrschen muss, sind nötig, um die Qubits vor aller möglichen Interferenz durch andere Teilchen zu schützen. Das Gehäuse selbst beherbergt ein umgekehrtes, pyramidenähnliches Gestell:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/annealer_insides.png",
+        "asset": "annealer_insides.png",
         "caption": "Quantenannealer beherbergen ein sog. Mischungskryostat, dessen Stufen immer kühler werden, je weiter unten sie sich befinden",
         "alttext": "Kupferfarbenes zylindrisches Metallgestell aus mehreren Stufen, welches an einer Decke befestigt und dicht vertrahtet ist."
     },
     "image-3": {
-        "asset": "assets/images/lessons/qpu.png",
+        "asset": "qpu.png",
         "caption": "Mit diesem QPU-Chip führt der Annealer Rechenoperationen aus",
         "alttext": "Rautenförmiger Silikonchip befestigt an einer kupfernen Stange und einer Leiterplatte mit vielen hervorstehenden Kabeln."
     },
@@ -36,12 +36,12 @@
         "text": "Die Qubits auf einer QPU sind in einer Art Muster, der sogenannten **Topologie**, angeordnet und sind untereinander durch **Koppler** verbunden. Die folgende schematische Zeichnung zeigt zwei Beispiele: Die Topologie des \"Advantage\"-Vorgängermodells heißt \"Chimera-Graph\", die des \"Advantage\"-s \"Pegasus-Graph\":"
     },
     "image-4": {
-        "asset": "assets/images/lessons/topologies.png",
+        "asset": "topologies.png",
         "caption": "Die Diagramme der (a) Chimera-Architektur des DWave 2000Q und der neueren (b) Pegasus-Architektur",
         "alttext": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen."
     },
     "image-5": {
-        "asset": "assets/images/lessons/topology_legend.png",
+        "asset": "topology_legend.png",
         "caption": "Die Linien im Diagramm stellen die Koppler, die Kreise die Qubits dar",
         "alttext": "Pfeile, die auf hervorgehobene Linien und Kreise des vorherigen Bildes zeigen, mit der Aufschrift Koppler und Qubit."
     },

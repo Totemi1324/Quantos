@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
                   context.read<LocalizationService>().supportedLocales,
               localizationsDelegates:
                   context.read<LocalizationService>().localizationsDelegates,
-              initialRoute: SplashScreen.routeName,
+              initialRoute: ProfileExperienceScreen.routeName,
               routes: {
                 SplashScreen.routeName: (context) => const SplashScreen(),
               },

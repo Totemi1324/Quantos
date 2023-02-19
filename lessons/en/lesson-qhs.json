@@ -6,7 +6,7 @@
         "text": "The response from the quantum annealer is here! So let's look at how we can interpret the data packets. When Hamiltonians are sent to the annealer, the results look something like this:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nqueens_results.png",
+        "asset": "nqueens_results.png",
         "caption": "Quantum annealers use these number sequences to \"answer\" to a computational problem",
         "alttext": "Table with rows each containing sixteen binary numbers; second column is labeled energy, ranging from minus eight to minus six, third column labeled frequency, with the number in the first row being the highest by far."
     },
@@ -25,7 +25,7 @@
         "alttext": "⇒[[0,1,0,0],[0,0,0,1],[1,0,0,0],[0,0,1,0]]"
     },
     "image-2": {
-        "asset": "assets/images/lessons/four_queens_problem.png",
+        "asset": "four_queens_problem.png",
         "caption": "This is how the above solution to the 4 queens problem looks on the chessboard",
         "alttext": "Chessboard of size four by four from bird's eye view with four queen pieces on B1, D2, A3 and C4."
     },
@@ -48,7 +48,7 @@
         "text": "The same optimization problem was also solved on a conventional computer using the widely known \"simulated annealing\" algorithm. How it works is not relevant and beyond the scope of the course, but here is a visual representation of how long it took each of the two types of computers:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/runtime_comparison.png",
+        "asset": "runtime_comparison.png",
         "caption": "The volumes of the cubes represent the time it took the two types of computers to solve the N queens problem",
         "alttext": "Three small cubes that are the same size and are labeled N equals four, N equals six, and N equals eight. Below them are three large cubes that get larger and larger with the same label."
     },

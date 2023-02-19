@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart' show Locale, SizedBox;
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../models/content/lesson_content.dart';
 import '../models/content/paragraph.dart';
@@ -34,13 +35,18 @@ class LessonContentService extends Cubit<LessonContent> {
 
   LessonContentService() : super(LessonContent.empty());
 
+  Locale? previousLocale;
+
   Future loadByIdFromLocale(
-      String lessonId, Locale locale, String notFoundParagraph) async {
-    if (lessonId == state.lessonId) {
+      String lessonId, Locale locale, AppLocalizations localizations) async {
+    if (lessonId == state.lessonId &&
+        previousLocale != null &&
+        previousLocale == locale) {
       return;
     }
 
     state.lessonId = lessonId;
+    previousLocale = locale;
 
     try {
       final jsonString = await rootBundle
@@ -48,14 +54,23 @@ class LessonContentService extends Cubit<LessonContent> {
 
       state.clearContentData();
       _parse(jsonString);
-    } catch (_) {
-      //TODO: Diversify catched exceptions
+    } on ParseErrorException catch (exception) {
       state.clearContentData();
       state.addContentItem(Paragraph(
         texts: [
           ParagraphSpan(
             type: ParagraphSpanType.normal,
-            text: notFoundParagraph,
+            text: localizations.parsingErrorParagraph(exception.message),
+          ),
+        ],
+      ));
+    } catch (exception) {
+      state.clearContentData();
+      state.addContentItem(Paragraph(
+        texts: [
+          ParagraphSpan(
+            type: ParagraphSpanType.normal,
+            text: localizations.unknownErrorParagraph(exception.toString()),
           ),
         ],
       ));

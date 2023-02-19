@@ -6,7 +6,7 @@
         "text": "Die Antwort des Quantenannealers ist da! Schauen wir uns also an, wie wir die Datenpakete interpretieren können. Wenn Hamiltonians an den Annealer geschickt werden, sehen die Ergebnisse in etwa so aus:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/nqueens_results.png",
+        "asset": "nqueens_results.png",
         "caption": "Mit diesen Zahlenreihen \"antwortet\" der Quantenannealer auf ein Rechenproblem",
         "alttext": "Tabelle mit Zeilen, die jeweils sechzehn binäre Zahlen beinhalten; zweite Spalte ist beschriftet mit Energie, die sich zwischen minus acht und minus sechs bewegt, dritte Spalte mit Häufigkeit, wobei die Zahl in der ersten Zeile mit Abstand am höchsten ist."
     },
@@ -25,7 +25,7 @@
         "alttext": "⇒[[0,1,0,0],[0,0,0,1],[1,0,0,0],[0,0,1,0]]"
     },
     "image-2": {
-        "asset": "assets/images/lessons/four_queens_problem.png",
+        "asset": "four_queens_problem.png",
         "caption": "So sieht die obige Lösung des 4-Damen-Problems auf dem Schachbrett aus",
         "alttext": "Schachbrett der Größe vier mal vier aus der Vogelperspektive mit vier Damenfiguren auf B1, D2, A3 und C4."
     },
@@ -48,7 +48,7 @@
         "text": "Das gleiche Optimierungsproblem wurde auch auf einem herkömmlichen Computer mit dem weit verbreiteten Algorithmus Simulated Annealing (\"simuliertes Abkühlen\") gelöst. Wie das funktioniert, ist nicht relevant und sprengt den Rahmen des Kurses, hier aber eine visuelle Darstellung, wie lange die beiden Arten von Computern jeweils gebraucht haben:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/runtime_comparison.png",
+        "asset": "runtime_comparison.png",
         "caption": "Die Volumen der Würfel repräsentieren die Zeit, die die beiden Computerarten für das N-Damen-Problem gebraucht haben",
         "alttext": "Drei kleine Würfel, die gleich groß sind und mit N gleich vier, N gleich sechs und N gleich acht beschriftet sind, darunter drei große Würfel, die immer größer werden mit der gleichen Beschriftung."
     },

@@ -15,7 +15,7 @@
         "text": "Angemerkt sei, dass es auch andere Möglichkeiten gibt, einen Quantenannealer zu programmieren, wie z.B. Ising-Probleme, die wir der Kürze und Verständlichkeit halber auslassen werden. Jetzt aber zurück zu QUBO-Problemen; betrachten wir ein Beispiel, um das Konzept zu veranschaulichen:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/checkers_board.png",
+        "asset": "checkers_board.png",
         "caption": "Eine beispielhaftes Damenbrett mit Spielsteinen",
         "alttext": "Ein illustriertes rot-schwarzes Damenbrett mit vier Feldern, beschriftet von oben links mit den Buchstaben a, b, c und d; darüber vier schwarze Spielsteine."
     },
@@ -60,7 +60,7 @@
         "text": "Das funktioniert, weil bei der Summierung aller Felder und der Subtraktion von 2 das Ergebnis genau dann 0 ist, wenn genau zwei Felder 1 sind. Aber: Wenn kein Feld oder ein Feld besetzt ist, wäre das Ergebnis negativ, was ein noch besseres Ergebnis zur Folge hätte. Dies kann durch das Quadrieren der Gleichung behoben werden, denn wenn eine negative Zahl quadriert wird, ergibt sich immer ein positiver Wert. Die nachfolgende graphische Darstellung zeigt, was das Quadrieren bewirkt:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/quadratic_qubo.png",
+        "asset": "quadratic_qubo.png",
         "caption": "Durch das Quadrieren entsteht die charakteristische Parabel, die ihren Tiefpunkt bei der optimalen Lösung hat",
         "alttext": "Nach oben geöffnete parabelförmige Kurve im Koordinatensystem; Anzahl an Belegungen x-Achse, Kosten y-Achse; tiefster Punkt markiert mit einem Pfeil und der Beschriftung Minimum."
     },

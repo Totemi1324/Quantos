@@ -6,7 +6,7 @@
         "text": "**Quantum annealer** — at first sight not a very meaningful term. In fact, however, it is the subject of one of the most vivid research fields of the present. It refers to a special kind of quantum computers, which this course covers. Unlike logic gate-based quantum computers, they are already well advanced and can actually be used to solve practical problems. \"Annealing\" in this context means something like \"cooling\"; what this is all about will be discussed in lesson 3. And this is what they look like:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/dwave_advantage.png",
+        "asset": "dwave_advantage.png",
         "caption": "The Advantage annealer from DWave Systems, for comparison an adult person in scale",
         "alttext": "Black metal case with orange luminous accents, a stick figure next to it that reaches about halfway up."
     },
@@ -17,12 +17,12 @@
         "text": "But what's all the equipment for? In order for the qubits in the annealer to function properly — that is, for the superposition explained earlier to remain stable and for the measurements not to be distorted by interference — the inside of the housing must be cooled to a temperature of **16 mK** (millikelvin); this corresponds to about -273.13° Celsius (~-460 °F), which is close to absolute zero, the physically highest possible level of cold in the universe. This is a huge challenge for engineers: tons of electronics and thick walls of steel, inside of which a vacuum, or airless space, must exist, are needed to protect the qubits from all possible interference from other particles. The enclosure itself houses an inverted pyramid-like frame:"
     },
     "image-2": {
-        "asset": "assets/images/lessons/annealer_insides.png",
+        "asset": "annealer_insides.png",
         "caption": "Quantum annealers house a so-called dilution refrigerator whose stages get cooler and cooler the further down they are",
         "alttext": "Copper colored cylindrical metal frame made of several steps, which is attached to a ceiling and is pierced by extensive wiring."
     },
     "image-3": {
-        "asset": "assets/images/lessons/qpu.png",
+        "asset": "qpu.png",
         "caption": "With this QPU chip, the annealer performs computing operations",
         "alttext": "Diamond-shaped silicone chip attached to a copper rod and a circuit board with many protruding wires."
     },
@@ -36,12 +36,12 @@
         "text": "The qubits on a QPU are arranged in a kind of pattern called **topology**, interconnected by **couplers**. The following schematic drawing shows two examples: The topology of the \"Advantage\"-predecessor is called \"Chimera graph\", that of the \"Advantage\"-s is called \"Pegasus graph\":"
     },
     "image-4": {
-        "asset": "assets/images/lessons/topologies.png",
+        "asset": "topologies.png",
         "caption": "The diagrams of the (a) Chimera architecture of the DWave 2000Q and the newer (b) Pegasus architecture",
         "alttext": "Kreise verbunden durch Linien, die eine regelmäßige Anordnung zeigen, daneben die gleiche Struktur als Teil eines dichteren Netzes von Kreisen."
     },
     "image-5": {
-        "asset": "assets/images/lessons/topology_legend.png",
+        "asset": "topology_legend.png",
         "caption": "Die Linien im Diagramm stellen die Koppler, die Kreise die Qubits dar",
         "alttext": "Circles connected by lines showing a regular arrangement, next to them the same structure as part of a denser network of circles."
     },

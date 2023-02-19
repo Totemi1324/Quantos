@@ -3,7 +3,7 @@
         "text": "Now only one final step is missing to solve optimization problems on a quantum annealer: Submitting the QUBO equation. Moreover, when the annealer is done, the results have to come back in some form. There is a standard protocol for this communication, which specifies the formatting of the data. It looks something like this:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/dwave_procedure.png",
+        "asset": "dwave_procedure.png",
         "caption": "The course of a computational operation on the DWave annealer",
         "alttext": "Flowchart beginning with a grid of numbers pointing to a photograph of the quantum annealer, which in turn points to a row of numbers consisting of the digits zero and one."
     },
@@ -21,7 +21,7 @@
         "alttext": "q=(q₁, q₂, q₃)"
     },
     "image-4": {
-        "asset": "assets/images/lessons/vector_example.png",
+        "asset": "vector_example.png",
         "caption": "Arrows can be used to visualize 3-dimensional vectors",
         "alttext": "Colored arrow in a three-dimensional coordinate system pointing from the origin out of the screen."
     },
@@ -54,12 +54,12 @@
         "text": "Observe the **pattern** of how each field relates to the others; in the same way, the Hamiltonian also scales for QUBO equations with more variables."
     },
     "image-2": {
-        "asset": "assets/images/lessons/hamiltonian_scaling.png",
+        "asset": "hamiltonian_scaling.png",
         "caption": "A Hamilton matrix for a QUBO equation with 6 unknowns",
         "alttext": "Square number matrix with six by six entries, numbered from h a to h f."
     },
     "image-3": {
-        "asset": "assets/images/lessons/hamiltonian_pattern.png",
+        "asset": "hamiltonian_pattern.png",
         "caption": "The variables in Hamiltonians form a regular pattern",
         "alttext": "An arrangement of single-color or two-color squares in a grid; at the top, a, b, c, and d are assigned different colors; in the grid, they represent the position of the variables."
     },

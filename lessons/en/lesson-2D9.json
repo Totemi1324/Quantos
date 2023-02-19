@@ -6,7 +6,7 @@
         "text": "When it comes to **Sudoku**, you are truly dealing with a resurrected fossil. It is one of the most popular logic puzzles of our time — but most certainly not a new invention. More than 4000 years ago, Sudoku was already being played feverishly in ancient China; at that time, it was known as \"magic squares\". Throughout the millennia, the game has fascinated people of all ages, mostly because it simply never seems to repeat itself. Now, we know that in the classic 9×9 Sudoku, **six quadrillion individual constellations** are possible — that's right, a six with 21 zeros. Thus, the entire population of the earth could solve multiple Sudokus every day for millions of years without ever encountering two identical ones."
     },
     "image-1": {
-        "asset": "assets/images/lessons/sudoku_example_empty.png",
+        "asset": "sudoku_example_empty.png",
         "caption": "An example of a classic 9×9 Sudoku in its initial state",
         "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering."
     },
@@ -20,7 +20,7 @@
         "text": "In addition, the grid is divided into 9 sub-squares of size 3×3; in these, each digit may also appear exactly once. Other Sudoku sizes where this kind of subdivision is possible are 4×4 and 16×16 squares. As a clue for filling in, some digits are given, from which the rest must be deduced following the above rules."
     },
     "image-2": {
-        "asset": "assets/images/lessons/sudoku_example_solved.png",
+        "asset": "sudoku_example_solved.png",
         "caption": "The Sudoku from before — completely filled in and thus solved",
         "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering, the rest have numerals inscribed in thin red lettering."
     },

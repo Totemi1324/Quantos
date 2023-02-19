@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import 'auth_signup_screen.dart';
 import 'auth_login_screen.dart';
@@ -54,13 +55,13 @@ class AuthHomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(
+              SizedBox(
                 width: 330,
                 height: 90,
                 child: RiveAnimation.asset(
-                  'assets/animations/quantos_logo_idle.riv',
+                  Assets.animations.quantosLogoIdle,
                   fit: BoxFit.contain,
-                  stateMachines: ['Mixer'],
+                  stateMachines: const ['Mixer'],
                 ),
               ),
               _buildAuthOption(
@@ -73,10 +74,8 @@ class AuthHomeScreen extends StatelessWidget {
               ),
               _buildAuthOption(
                 context,
-                description:
-                    AppLocalizations.of(context)!.authLogInDescription,
-                buttonLabel:
-                    AppLocalizations.of(context)!.authLogInButtonLabel,
+                description: AppLocalizations.of(context)!.authLogInDescription,
+                buttonLabel: AppLocalizations.of(context)!.authLogInButtonLabel,
                 routeName: AuthLogInScreen.routeName,
               ),
               _buildAuthOption(

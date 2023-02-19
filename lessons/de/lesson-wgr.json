@@ -3,7 +3,7 @@
         "text": "Stell dir vor, du bist der Vertreter eines großen Unternehmens, welches dich auf eine Geschäftsreise durch seine wichtigsten Standorte schickt. Zufälligerweise befinden sich diese in acht Hauptstädten, die über ganz Europa verteilt sind. Deine Firma will natürlich so viel Zeit wie möglich sparen. Wenn du von Berlin aus startest, jede Stadt genau einmal besuchst und anschließend nach Berlin zurückkehrst, in welcher Reihenfolge solltest du die Städte besuchen, um die Reise **so kurz wie möglich** zu halten?"
     },
     "image-1": {
-        "asset": "assets/images/lessons/europe_map.png",
+        "asset": "europe_map.png",
         "caption": "Berlin, Wien, Paris und Bucharest — diese und weitere Städte sollen bei der Rundreise passiert werden",
         "alttext": "Vereinfachte Karte von Kontinentaleuropa mit Markern an den acht Städten Berlin, Wien, Bucharest, Rom, Zürich, Paris, London und Lissabon."
     },
@@ -17,7 +17,7 @@
         "text": "Aber warum Optimierungsproblem? Bei solch einfachen Aufgaben wie der vorherigen ist die Lösung natürlich schnell ersichtlich: Nimmt man die Entfernungen als Luftlinien an, so wäre der kürzeste Weg derjenige, der außen herumführt."
     },
     "image-2": {
-        "asset": "assets/images/lessons/europe_route.png",
+        "asset": "europe_route.png",
         "caption": "Die kürzeste Reise mit direkten Flügen",
         "alttext": "Vorherige Karte mit Linien, die die eingezeichneten Städte zu einer geschlossenen Schleife verbinden."
     },

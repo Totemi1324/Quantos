@@ -9,7 +9,7 @@
         "text": "Perhaps you already recognize the correlation: In this often rather abstract step, it is helpful to look at the problem visually and **represent it as a grid**. In the case of the N queens problem, this is fortunately quite obvious: the fields of the chessboard represent the variables a, b, c, etc., on which there is either a queen (1) or not (0). If you remember the corresponding unit of the first lecture, the same approach was used there. Let's consider the simplest example of the 4 queens problem:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/chessboard_variables.png",
+        "asset": "chessboard_variables.png",
         "caption": "A 4×4 chessboard with labeled fields",
         "alttext": "A chessboard of size four by four, squares are labeled in alphabetical order from a to p."
     },
@@ -25,7 +25,7 @@
         "alttext": "[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]⇒"
     },
     "image-2": {
-        "asset": "assets/images/lessons/four_queens_problem.png",
+        "asset": "four_queens_problem.png",
         "caption": "The solution to the 4 queens problem which is represented by the vector above",
         "alttext": "A chessboard of size four by four with four queen pieces, in a constellation in which none can beat another."
     },
@@ -45,7 +45,7 @@
         "text": "For the rows, the following QUBO form is correct:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/row_highlight.png",
+        "asset": "row_highlight.png",
         "caption": "QUBO equation using a row as an example",
         "alttext": "A chessboard of size four by four, the top row of squares of which is shaded blue."
     },
@@ -57,7 +57,7 @@
         "text": "Squaring ensures that the **least cost** occurs only when $$a+b+c+d-1$$ equals 0, i.e., when only one out of all the fields in the row is occupied (as also shown in the introductory lecture). This is applied to all rows and added. The same for the columns:"
     },
     "image-4": {
-        "asset": "assets/images/lessons/column_highlight.png",
+        "asset": "column_highlight.png",
         "caption": "QUBO equation using a column as an example",
         "alttext": "A chessboard of size four by four whose left column of squares is shaded blue."
     },
@@ -73,12 +73,12 @@
         "alttext": "f(a,f,k,p)=(a+f+k+p-½)²"
     },
     "image-5": {
-        "asset": "assets/images/lessons/diagonal_highlight.png",
+        "asset": "diagonal_highlight.png",
         "caption": "QUBO equation using a diagonal as an example",
         "alttext": "A chessboard of size four by four with a diagonal of fields shaded in blue."
     },
     "image-6": {
-        "asset": "assets/images/lessons/truth_table.png",
+        "asset": "truth_table.png",
         "caption": "A truth table lists all possible pairs of inputs and outputs of a function. 0 and 1 occupancies give the lowest cost in this diagonal",
         "alttext": "Table with input values x in the first row and function values f in the second column; zero to zero-point-two-five, one to zero-point-two-five, two to two-point-two-five, three to six-point-two-five, four to twelve-point-two-five."
     }

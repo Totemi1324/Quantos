@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import './ui/adaptive_progress_bar.dart';
 
@@ -61,7 +62,7 @@ class _LectionItemState extends State<LectionItem> {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 60, maxHeight: 60),
           child: Image.asset(
-            "assets/images/icon_background.png",
+            Assets.images.iconBackground.path,
             fit: BoxFit.contain,
           ),
         ),

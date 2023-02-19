@@ -9,7 +9,7 @@
         "text": "Vielleicht erkennst du bereits die Parallele: Bei diesem oftmals eher abstrakten Schritt ist es hilfreich, die Problemstellung bildlich zu betrachten und **als ein Gitter darzustellen**. Beim N-Damen-Problem ist dies glücklicherweise ziemlich offensichtlich: Die Felder des Schachbretts sind die Variablen a, b, c usw, auf denen sich entweder eine Dame befindet (1) oder nicht (0). Wenn du dich an die entsprechende Einheit der ersten Lektion erinnerst, wurde dort der gleiche Ansatz angewandt. Betrachten wir das einfachste Beispiel des 4-Damen-Problems:"
     },
     "image-1": {
-        "asset": "assets/images/lessons/chessboard_variables.png",
+        "asset": "chessboard_variables.png",
         "caption": "Ein 4×4-Schachbrett mit beschrifteten Feldern",
         "alttext": "Ein Schachbrett der Größe vier mal vier, Felder sind in alphabetischer Reihenfolge von a nach p beschriftet."
     },
@@ -25,7 +25,7 @@
         "alttext": "[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]⇒"
     },
     "image-2": {
-        "asset": "assets/images/lessons/four_queens_problem.png",
+        "asset": "four_queens_problem.png",
         "caption": "Die Lösung des 4-Damen-Problems, welches vom obigen Vektor dargestellt wird",
         "alttext": "Ein Schachbrett der Größe vier mal vier mit vier Damenfiguren in einer Konstellation, dass keine eine andere schlagen kann."
     },
@@ -45,7 +45,7 @@
         "text": "Für die Zeilen ist folgende QUBO-Form korrekt:"
     },
     "image-3": {
-        "asset": "assets/images/lessons/row_highlight.png",
+        "asset": "row_highlight.png",
         "caption": "QUBO-Gleichung am Beispiel einer Zeile",
         "alttext": "Ein Schachbrett der Größe vier mal vier, dessen oberste Reihe an Feldern blau schattiert ist."
     },
@@ -57,7 +57,7 @@
         "text": "Das Quadrieren sorgt dafür, dass nur dann die **geringsten Kosten** entstehen, wenn $$a+b+c+d-1$$ gleich 0 ist, d.h. wenn aus allen Feldern der Zeile nur eines belegt ist (wie auch in der Einführungslektion dargestellt). Das wird auf alle Zeilen übertragen und addiert. Für die Spalten genauso:"
     },
     "image-4": {
-        "asset": "assets/images/lessons/column_highlight.png",
+        "asset": "column_highlight.png",
         "caption": "QUBO-Gleichung am Beispiel einer Spalte",
         "alttext": "Ein Schachbrett der Größe vier mal vier, dessen linke Spalte an Feldern blau schattiert ist."
     },
@@ -73,12 +73,12 @@
         "alttext": "f(a,f,k,p)=(a+f+k+p-½)²"
     },
     "image-5": {
-        "asset": "assets/images/lessons/diagonal_highlight.png",
+        "asset": "diagonal_highlight.png",
         "caption": "QUBO-Gleichung am Beispiel einer Diagonale",
         "alttext": "Ein Schachbrett der Größe vier mal vier, bei dem eine Querdiagonale an Feldern blau schattiert ist."
     },
     "image-6": {
-        "asset": "assets/images/lessons/truth_table.png",
+        "asset": "truth_table.png",
         "caption": "Eine Wahrheitstabelle listet alle möglichen Paare von Ein- und Ausgaben einer Funktion auf. 0 und 1 Belegungen ergeben in dieser Diagonalen die niedrigsten Kosten",
         "alttext": "Tabelle mit Eingabewerten x in der ersten Zeile und Funktionswerten f in der zweiten Spalte; null zu null-komma-zwei-fünf, eins zu null-komma-zwei-fünf, zwei zu zwei-komma-zwei-fünf, drei zu sechs-komma-zwei-fünf, vier zu zwölf-komma-zwei-fünf."
     }

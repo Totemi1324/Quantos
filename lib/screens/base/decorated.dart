@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../settings_screen.dart';
 
@@ -17,7 +18,7 @@ class _DecoratedState extends State<Decorated> {
   @override
   void initState() {
     super.initState();
-    _image = const AssetImage("assets/images/background.png");
+    _image = Assets.images.background.provider();
   }
 
   @override

@@ -9,7 +9,7 @@
         "text": "What is the easiest way to get from a graph to a square grid with numbered cells? The simplest instance of the TSP and our first example is a graph with four cities (since this is the minimum number of vertices that allows solutions other than the optimum):"
     },
     "image-1": {
-        "asset": "assets/images/lessons/example_tour.png",
+        "asset": "example_tour.png",
         "caption": "This is not the optimal tour, but it is a valid Hamiltonian cycle",
         "alttext": "Four colored circles labeled A, B, C, and D, connected by gray lines each; connection from A to B to D to C to A is highlighted in pink."
     },
@@ -23,7 +23,7 @@
         "text": "A matrix can be used to address the first point. One way to model the previous graph is to encode the order of the visits in a table."
     },
     "image-2": {
-        "asset": "assets/images/lessons/tour_matrix.png",
+        "asset": "tour_matrix.png",
         "caption": "A sequence of visited cities can be coded numerically like this",
         "alttext": "Number grid filled with zeros, whose columns are labeled one, two, three, four, and whose rows are labeled A, B, C, D; 1A, 2B, 3D, and 4C each contain a one."
     },

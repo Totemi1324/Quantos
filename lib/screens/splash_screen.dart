@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'dart:async';
+import 'package:flutter_gen/gen/assets.gen.dart';
 
 import 'base/flat.dart';
 import 'auth/auth_home_screen.dart';
@@ -39,10 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _onTap,
-      child: const Flat(
+      child: Flat(
         body: Center(
           child: RiveAnimation.asset(
-            "assets/animations/quantos_logo_intro.riv",
+            Assets.animations.quantosLogoIntro,
             fit: BoxFit.fitWidth,
           ),
         ),
