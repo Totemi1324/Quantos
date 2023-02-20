@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:tuple/tuple.dart';
 
 import '../bloc/lesson_content_service.dart';
 
@@ -11,8 +12,91 @@ import '../models/content/interactive.dart';
 import '../models/content/image.dart' as image_content;
 import '../models/content/equation.dart';
 
-class LessonContentRenderer extends StatelessWidget {
-  const LessonContentRenderer({super.key});
+enum NavigationAction {
+  next,
+  previous,
+  skip,
+}
+
+class LessonContentRenderer extends StatefulWidget {
+  final Stream<Tuple3<BuildContext, NavigationAction, String?>>
+      navigationStream;
+
+  const LessonContentRenderer({required this.navigationStream, super.key});
+
+  @override
+  State<LessonContentRenderer> createState() => _LessonContentRendererState();
+}
+
+class _LessonContentRendererState extends State<LessonContentRenderer>
+    with TickerProviderStateMixin {
+  final _scrollController = ScrollController();
+  late final AnimationController _fadeController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 250),
+    value: 1.0,
+  );
+  late final _fadeAnimation = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
+
+  int _currentPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    widget.navigationStream.listen(
+      (event) async {
+        await _fadeController.reverse();
+        _navigate(event.item1, event.item2, event.item3);
+        _scrollController.jumpTo(0);
+        _fadeController.forward();
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _fadeController.dispose();
+
+    super.dispose();
+  }
+
+  void _navigate(BuildContext buildContext, NavigationAction action,
+      String? sectionTitle) {
+    switch (action) {
+      case NavigationAction.next:
+        if (buildContext
+            .read<LessonContentService>()
+            .state
+            .moveNextIsSafe(_currentPageIndex)) {
+          setState(() {
+            _currentPageIndex++;
+          });
+        }
+        break;
+      case NavigationAction.previous:
+        if (buildContext
+            .read<LessonContentService>()
+            .state
+            .movePreviousIsSafe(_currentPageIndex)) {
+          setState(() {
+            _currentPageIndex--;
+          });
+        }
+        break;
+      case NavigationAction.skip:
+        if (sectionTitle != null) {
+          setState(() {
+            _currentPageIndex = buildContext
+                .read<LessonContentService>()
+                .state
+                .indexOfPageWithSectionTitle(sectionTitle);
+          });
+        }
+        break;
+    }
+  }
 
   Widget _buildContentItem(BuildContext buildContext, ContentItem item) {
     switch (item.type) {
@@ -152,12 +236,26 @@ class LessonContentRenderer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: context.read<LessonContentService>().state.content.length,
-      itemBuilder: (context, index) => _buildContentItem(
-          context, context.read<LessonContentService>().state.content[index]),
+    List<ContentItem> currentContent =
+        context.read<LessonContentService>().state.content[_currentPageIndex];
+
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: currentContent.length + 1,
+          itemBuilder: (context, index) {
+            return index < currentContent.length
+                ? _buildContentItem(context, currentContent[index])
+                : const SizedBox(
+                    height: 30,
+                  );
+          },
+        ),
+      ),
     );
   }
 }

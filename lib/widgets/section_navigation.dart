@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SectionNavigation extends StatelessWidget {
+class SectionNavigation extends StatefulWidget {
   final List<String> sectionTitles;
+  final Function(String) onTap; 
 
-  const SectionNavigation({required this.sectionTitles, super.key});
+  const SectionNavigation({required this.sectionTitles, required this.onTap, super.key});
+
+  @override
+  State<SectionNavigation> createState() => _SectionNavigationState();
+}
+
+class _SectionNavigationState extends State<SectionNavigation> {
+  int selectedItem = 0;
 
   @override
   Widget build(BuildContext context) {
+
     return ExpansionTile(
       title: Text(AppLocalizations.of(context)!.lessonScreenOutlinesNavigation),
       children: [
@@ -18,7 +27,7 @@ class SectionNavigation extends StatelessWidget {
             ),
             Container(
               width: 25,
-              height: 35.0 * sectionTitles.length,
+              height: 35.0 * widget.sectionTitles.length,
               decoration: BoxDecoration(
                 border: Border(
                   left: BorderSide(
@@ -32,13 +41,15 @@ class SectionNavigation extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: sectionTitles.length,
+                itemCount: widget.sectionTitles.length,
                 itemBuilder: (context, index) => InkWell(
-                  onTap: () {}, //TODO
+                  onTap: () {
+                    widget.onTap(widget.sectionTitles[index]);
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Text(
-                      sectionTitles[index],
+                      widget.sectionTitles[index],
                     ),
                   ),
                 ),

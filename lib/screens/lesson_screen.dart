@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tuple/tuple.dart';
 
 import '../bloc/content_outline_service.dart';
 import '../bloc/lesson_content_service.dart';
@@ -10,10 +13,24 @@ import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
 import '../widgets/ui/adaptive_progress_bar.dart';
 
-class LessonScreen extends StatelessWidget {
+class LessonScreen extends StatefulWidget {
   static const routeName = "/home/lection/lesson";
 
   const LessonScreen({super.key});
+
+  @override
+  State<LessonScreen> createState() => _LessonScreenState();
+}
+
+class _LessonScreenState extends State<LessonScreen> {
+  final navigationController =
+        StreamController<Tuple3<BuildContext, NavigationAction, String?>>();
+
+  @override
+  void dispose() {
+    navigationController.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +57,12 @@ class LessonScreen extends StatelessWidget {
                 ),
               ),
               const Divider(),
-              SectionNavigation(sectionTitles: sectionTitles),
+              SectionNavigation(
+                sectionTitles: sectionTitles,
+                onTap: (selectedTitle) => navigationController.add(
+                  Tuple3(context, NavigationAction.skip, selectedTitle),
+                ),
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -58,8 +80,8 @@ class LessonScreen extends StatelessWidget {
                       tileMode: TileMode.mirror,
                     ).createShader(bounds);
                   },
-                  child: const SingleChildScrollView(
-                    child: LessonContentRenderer(),
+                  child: LessonContentRenderer(
+                    navigationStream: navigationController.stream,
                   ),
                 ),
               ),
@@ -70,7 +92,9 @@ class LessonScreen extends StatelessWidget {
                   children: [
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
-                      onPressed: () {},
+                      onPressed: () => navigationController.add(
+                        Tuple3(context, NavigationAction.previous, null),
+                      ),
                       icon: Icons.navigate_before_rounded,
                     ),
                     const SizedBox(
@@ -88,7 +112,9 @@ class LessonScreen extends StatelessWidget {
                     ),
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
-                      onPressed: () {},
+                      onPressed: () => navigationController.add(
+                        Tuple3(context, NavigationAction.next, null),
+                      ),
                       icon: Icons.navigate_next_rounded,
                     ),
                   ],
