@@ -24,7 +24,7 @@ class LessonScreen extends StatefulWidget {
 
 class _LessonScreenState extends State<LessonScreen> {
   final navigationController =
-        StreamController<Tuple3<BuildContext, NavigationAction, String?>>();
+      StreamController<Tuple3<BuildContext, NavigationAction, String?>>();
 
   @override
   void dispose() {
@@ -53,7 +53,7 @@ class _LessonScreenState extends State<LessonScreen> {
                 margin: const EdgeInsets.only(top: 20),
                 child: Text(
                   lessonTitle,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
               const Divider(),
@@ -64,7 +64,7 @@ class _LessonScreenState extends State<LessonScreen> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 5,
               ),
               Expanded(
                 child: ShaderMask(

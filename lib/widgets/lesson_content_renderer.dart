@@ -36,7 +36,8 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
     duration: const Duration(milliseconds: 250),
     value: 1.0,
   );
-  late final _fadeAnimation = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
+  late final _fadeAnimation =
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
 
   int _currentPageIndex = 0;
 
@@ -46,6 +47,9 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
 
     widget.navigationStream.listen(
       (event) async {
+        if (!_checkValidNavigation(event.item1, event.item2)) {
+          return;
+        }
         await _fadeController.reverse();
         _navigate(event.item1, event.item2, event.item3);
         _scrollController.jumpTo(0);
@@ -62,28 +66,36 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
     super.dispose();
   }
 
+  bool _checkValidNavigation(
+      BuildContext buildContext, NavigationAction action) {
+    switch (action) {
+      case NavigationAction.next:
+        return buildContext
+            .read<LessonContentService>()
+            .state
+            .moveNextIsSafe(_currentPageIndex);
+      case NavigationAction.previous:
+        return buildContext
+            .read<LessonContentService>()
+            .state
+            .movePreviousIsSafe(_currentPageIndex);
+      case NavigationAction.skip:
+        return true;
+    }
+  }
+
   void _navigate(BuildContext buildContext, NavigationAction action,
       String? sectionTitle) {
     switch (action) {
       case NavigationAction.next:
-        if (buildContext
-            .read<LessonContentService>()
-            .state
-            .moveNextIsSafe(_currentPageIndex)) {
-          setState(() {
-            _currentPageIndex++;
-          });
-        }
+        setState(() {
+          _currentPageIndex++;
+        });
         break;
       case NavigationAction.previous:
-        if (buildContext
-            .read<LessonContentService>()
-            .state
-            .movePreviousIsSafe(_currentPageIndex)) {
-          setState(() {
-            _currentPageIndex--;
-          });
-        }
+        setState(() {
+          _currentPageIndex--;
+        });
         break;
       case NavigationAction.skip:
         if (sectionTitle != null) {
@@ -236,8 +248,9 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
 
   @override
   Widget build(BuildContext context) {
-    List<ContentItem> currentContent =
-        context.read<LessonContentService>().state.content[_currentPageIndex];
+    final currentState = context.read<LessonContentService>().state;
+    final List<ContentItem> currentContent =
+        currentState.content[_currentPageIndex];
 
     return FadeTransition(
       opacity: _fadeAnimation,

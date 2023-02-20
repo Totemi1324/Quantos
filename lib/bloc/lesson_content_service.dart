@@ -85,6 +85,7 @@ class LessonContentService extends Cubit<LessonContent> {
 
     for (var entry in jsonMap.entries) {
       if (entry.value is! Map<String, dynamic>) {
+        state.breakPage();
         throw ParseErrorException(
           ParseError.invalidJsonValue,
           wrongContent: entry.key,
@@ -120,6 +121,7 @@ class LessonContentService extends Cubit<LessonContent> {
 
   Paragraph _parseParagraph(Map<String, dynamic> json) {
     if (!json.keys.contains(textJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: textJsonKey,
@@ -134,6 +136,7 @@ class LessonContentService extends Cubit<LessonContent> {
 
   SectionTitle _parseSectionTitle(Map<String, dynamic> json) {
     if (!json.keys.contains(titleJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: titleJsonKey,
@@ -147,18 +150,21 @@ class LessonContentService extends Cubit<LessonContent> {
 
   Image _parseImage(Map<String, dynamic> json) {
     if (!json.keys.contains(assetJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: assetJsonKey,
       );
     }
     if (!json.keys.contains(captionJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: captionJsonKey,
       );
     }
     if (!json.keys.contains(altTextJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: altTextJsonKey,
@@ -174,12 +180,14 @@ class LessonContentService extends Cubit<LessonContent> {
 
   Equation _parseEquation(Map<String, dynamic> json) {
     if (!json.keys.contains(texJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: texJsonKey,
       );
     }
     if (!json.keys.contains(altTextJsonKey)) {
+      state.breakPage();
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: altTextJsonKey,

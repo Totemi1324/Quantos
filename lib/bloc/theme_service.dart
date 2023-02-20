@@ -46,6 +46,13 @@ class ThemeService extends Cubit<ThemeData> {
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),
+      headlineSmall: TextStyle(
+        // Medium headers
+        fontFamily: FontFamily.josefinSans,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+      ),
       titleLarge: TextStyle(
         // Section titles
         fontFamily: FontFamily.josefinSans,
@@ -159,6 +166,13 @@ class ThemeService extends Cubit<ThemeData> {
         fontWeight: FontWeight.w700,
         color: Colors.grey.shade900,
       ),
+      headlineSmall: TextStyle(
+        // Medium headers
+        fontFamily: FontFamily.josefinSans,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+      ),
       titleLarge: TextStyle(
         // Section titles
         fontFamily: FontFamily.josefinSans,
@@ -271,6 +285,13 @@ class ThemeService extends Cubit<ThemeData> {
         fontSize: 38,
         fontWeight: FontWeight.w700,
         color: Color(0xFFFFFD48),
+      ),
+      headlineSmall: TextStyle(
+        // Medium headers
+        fontFamily: FontFamily.josefinSans,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
       ),
       titleLarge: TextStyle(
         // Section titles

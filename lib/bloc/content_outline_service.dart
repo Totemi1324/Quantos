@@ -78,6 +78,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
           readTimeInMinutes: 1,
         ),
       ],
+      unlocked: true,
     ),
     Lection(
       id: "chj",
@@ -114,6 +115,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
           readTimeInMinutes: 1,
         ),
       ],
+      unlocked: true,
     ),
     Lection(
       id: "BiE",
