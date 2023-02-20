@@ -20,6 +20,8 @@
         "tex": "f\\left(a,...,p\\right)=\\left(a+b+c+d-1\\right)^2+\\left(e+f+g+h-1\\right)^2+\\left(i+j+k+l-1\\right)^2+\\left(m+n+o+p-1\\right)^2+\\left(a+e+i+m-1\\right)^2+\\left(b+f+j+n-1\\right)^2+\\left(c+g+k+o-1\\right)^2+\\left(d+h+l+p-1\\right)^2=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8",
         "alttext": "f(a,...,p)=(a+b+c+d-1)²+(e+f+g+h-1)²+(i+j+k+l-1)²+(m+n+o+p-1)²+left(a+e+i+m-1)²+(b+f+j+n-1)²+(c+g+k+o-1)²+(d+h+l+p-1)²=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+8"
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-2": {
         "title": "Und was ist mit den Wegkosten?"
     },
@@ -40,6 +42,8 @@
     "equation-2": {
         "tex": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la$+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi"
     },
+    "pagebreak-2": {
+    },
     "sectiontitle-3": {
         "title": "Ein kleiner Haken"
     },
@@ -53,6 +57,8 @@
     },
     "paragraph-8": {
         "text": "Die Tabelle zeigt die besten fünf aus den Ergebnissen des DWave-Annealers. Alle davon besuchen nur **drei oder noch weniger** Städte. Das liegt daran, dass die Koeffizienten, die den Annealer zwingen, die Regel \"Genau eine Belegung pro Zeile/Spalte\" zu befolgen, -2 oder 2 sind – zu klein im Vergleich zu den Entfernungen zwischen den Knoten, die zwischen 3 und 7 liegen. Wenn der Annealer weniger Zellen belegt, **überwiegt** die Energie, die er durch das Weglassen von Kanten spart, bei weitem die Strafe, die er für den Besuch weniger Städte erhält."
+    },
+    "pagebreak-3": {
     },
     "paragraph-9": {
         "text": "Um dieses Problem zu lösen, müssen wir unsere Koeffizienten entsprechend skalieren: Wenn wir alle Koeffizienten mit demselben Faktor multiplizieren, bleiben die Beziehungen erhalten, was bedeutet, dass wir bestimmte Teile der Gleichung skalieren können, um diese stärker zu **gewichten**. Als allgemeine Faustregel gilt: Wenn $$s$$ = die Länge der längsten möglichen Tour im Graphen und $$n$$ = die Anzahl der Städte ist, sollten alle Koeffizienten $$h_{ij}$$ aus der ersten Hälfte der QUBO-Gleichung nach dieser Formel berechnet werden:"
@@ -74,6 +80,8 @@
         "caption": "Visuell dargestellt weist der Hamiltonian ein typisches Muster mit diagonalen Streifen auf",
         "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
     },
+    "pagebreak-4": {
+    },
     "sectiontitle-4": {
         "title": "Alles kommt zusammen"
     },
@@ -91,6 +99,8 @@
         "asset": "solution_matrix.png",
         "caption": "Die Tourmatrix, der die Werte aus dem Antwortvektor beinhaltet",
         "alttext": "Zahlengitter gefüllt mit Nullen, dessen Spalten mit eins, zwei, drei, vier und dessen Zeilen mit A, B, C, D beschriftet sind; bei 1D, 2B, 3C und 4A ist jeweils eine Eins eingetragen."
+    },
+    "pagebreak-5": {
     },
     "paragraph-13": {
         "text": "Durch das Hinzufügen der Zeitschritt- und Städtebezeichnungen wird die Reihenfolge der besuchten Städte sichtbar: D – B – C – A (– D). Werfen wir noch einmal einen Blick auf den Graphen: Tatsächlich, er hat den kürzesten Weg gefunden!"

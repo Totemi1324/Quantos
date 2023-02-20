@@ -13,6 +13,8 @@
     "paragraph-2": {
         "text": "Ein großer, schwarzer Kasten, fast 3 Meter hoch und 3,8 Tonnen schwer, mit einem Kostenpunkt von ca. 15 Millionen Dollar. Sie hat also (noch) nicht die Dimensionen eines Heimcomputers, sondern ist vielmehr für Rechenzentren und Unternehmen gedacht. Bedient wird der DWave Advantage über einen — vergleichsweise — kleinen Monitor mit Tastatur an der Seite des Gehäuses."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "Doch wozu die viele, große Technik? Damit die Qubits im Annealer richtig funktionieren können — also dass die vorhin erklärte Superposition stabil bleibt und die Messungen durch Störungen nicht verfälscht werden — muss das Innere des Gehäuses auf eine Temperatur von **16 mK** (Millikelvin) gekühlt werden; das entspricht ungefähr -273,13° Celsius, was nahe dem absoluten Nullpunkt ist, dem physikalisch höchstem möglichen Maß an Kälte überhaupt. Dies ist für Ingenieure eine riesige Herausforderung: Einiges an Elektronik und dicke Wände aus Stahl, in dessen Inneren ein Vakuum, also ein luftleerer Raum, herrschen muss, sind nötig, um die Qubits vor aller möglichen Interferenz durch andere Teilchen zu schützen. Das Gehäuse selbst beherbergt ein umgekehrtes, pyramidenähnliches Gestell:"
     },
@@ -28,6 +30,8 @@
     },
     "paragraph-4": {
         "text": "Die **QPU** (Quantum Processing Unit, also \"Quantenverarbeitungseinheit\"), das Gegenstück zum klassischen CPU, steht dabei an der Spitze und ist das Herz des Quantenannealers; ein wenige Quadratzentimeter großer Chip, auf dessen Oberfläche sich die Qubits befinden. Das aktuellste Modell vom Hersteller DWave, der \"Advantage\", besitzt 5627 davon. Zum Vergleich: Die gebräuchlichsten CPUs in heutigen Heim-PCs und Smartphones besitzen zwischen 100 Millionen und 3 Billionen Transistoren, sprich individuell ein- und ausschaltbare Einheiten."
+    },
+    "pagebreak-2": {
     },
     "sectiontitle-2": {
         "title": "Die Muster auf einer QPU"
@@ -47,6 +51,8 @@
     },
     "paragraph-6": {
         "text": "Koppler sind im realen Gerät Magnetfelder, deren Stärke individuell angepasst werden kann. Und hier kommt der wichtigste Punkt: Sie können beeinflussen, ob Qubits bei der Messung in den Zustand $$\\vert 0\\rangle$$ oder $$\\vert 1\\rangle$$ zusammenfallen, jedoch nicht mit Sicherheit garantieren. Auch können sie das Verhalten von zwei Qubits so anpassen, dass sie dazu neigen, entweder einen gleichen oder einen ungleichen Wert einnehmen. Diese Arten heißen entsprechend Gleichheits- bzw. Ungleichheitskoppler. Wenn zum Beispiel zwei Qubits mit einem Ungleichheitskoppler verbunden sind und das erste eine $$\\vert 1\\rangle$$ wird, so wird die andere mit hoher Wahrscheinlichkeit eine $$\\vert 0\\rangle$$."
+    },
+    "pagebreak-3": {
     },
     "paragraph-7": {
         "text": "Quantenannealer werden programmiert, Probleme zu lösen, indem die Stärke und die Art dieser Koppler angepasst werden. Ein Qubit kann allerdings nur mit einer begrenzten Anzahl von anderen Qubits gekoppelt werden; die genaue Anzahl ist abhängig von der Topologie und ist maßgeblich für die \"Rechenpower\" des Quantenannealers verantwortlich. Wie dies alles genau zusammenhängt, erklärt die nächste Einheit."

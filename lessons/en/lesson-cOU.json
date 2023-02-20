@@ -13,6 +13,8 @@
         "caption": "A 4×4 chessboard with labeled fields",
         "alttext": "A chessboard of size four by four, squares are labeled in alphabetical order from a to p."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "We label the squares alphabetically from a to p, which change their binary value depending on whether they are **occupied** with a queen or **not**. This is useful because now every possible position of the 4 queens on the board can be represented by a string of numbers consisting of 16 ones and zeros - in mathematical terms: a vector with 16 coordinates. This modeling technique is also called **one-hot encoding**."
     },
@@ -29,6 +31,8 @@
         "caption": "The solution to the 4 queens problem which is represented by the vector above",
         "alttext": "A chessboard of size four by four with four queen pieces, in a constellation in which none can beat another."
     },
+    "pagebreak-2": {
+    },
     "paragraph-4": {
         "text": "Now, based on the rules in chess, we can set up our rules:"
     },
@@ -37,6 +41,8 @@
     },
     "paragraph-6": {
         "text": "These rules can be derived by logical reasoning: Since the chessboard is N×N in size and multiple queens must not be in the same row (since they would otherwise threaten each other), the N queens must be distributed in such a way that no row may remain empty and each contains exactly one. Same applies to the columns, since queens can also travel any distance in the vertical direction. In a 4×4 chessboard there are 5 diagonals from left to right and 5 from right to left, which would be too much for 4 queens (although a queen always is in two diagonals simultaneously). Therefore, not all of them need to be occupied, but there may still be at most one queen per diagonal because of the threatening."
+    },
+    "pagebreak-3": {
     },
     "sectiontitle-2": {
         "title": "Implementing the rules"
@@ -64,6 +70,8 @@
     "equation-4": {
         "tex": "f\\left(a,e,i,m\\right)=\\left(a+e+i+m-1\\right)^2",
         "alttext": "f(a,e,i,m)=(a+e+i+m-1)²"
+    },
+    "pagebreak-4": {
     },
     "paragraph-9": {
         "text": "To implement the \"at most 1 occupancy\" rule for the diagonals, this time ½ is subtracted instead of 1 in the parenthesis; this shifts the minimum of the function so that 0 **or** 1 can be the sum of the fields. Multiplying this out, it can be seen that in the end, all pairwise occupancies of these fields **are subject to a penalty**. Correctness can also be checked with a so-called truth table. In total, there are $$2(2N-3)=4N-6$$ diagonals to consider in the N queens problem."

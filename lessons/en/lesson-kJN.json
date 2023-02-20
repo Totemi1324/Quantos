@@ -11,8 +11,10 @@
     "paragraph-4": {
         "text": "Of course, we hope you enjoy our app. If you have feedback, we invite you to share it in the Help Center or on our website. Thanks for using Quantos - and cheers to your thirst for knowledge!"
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
-        "title": "Acknowledgements"
+        "title": "Thank you-notes"
     },
     "paragraph-5": {
         "text": "Thanks to all who supported the research of Quantos, especially **DWave Systems Inc.** and the **Juelich Supercomputing Centre** of Forschungszentrum Juelich. All calculations and experiments for this course's content were performed using **JUNIQ** (Juelich Unified Infrastructure for Quantum Computing) and its virtual **JUPSI** architecture."

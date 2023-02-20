@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Die Erstellung eines Quantenlösungsverfahrens für das TSP ist ein spannendes Beispiel für die Vielseitigkeit der Quanteninformatik und eine Demonstration, wie sie zur Verbesserung alltäglicher Aufgaben beitragen kann. In den beiden vorangegangenen Lektionen haben wir das Spielbrettmodell für QUBO-Probleme ausführlich kennengelernt; diese möchten wir auch dieses Mal nutzen, die Umformung ist dieses Mal aber weniger offensichtlich. Der erste Schritt ist also die Frage, wie man die Kernkomponente des TSP, den **Graphen**, in ein QUBO-Problem umwandelt."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Vom Graphen zur Matrix"
     },
@@ -19,6 +21,8 @@
     "paragraph-4": {
         "text": "1. Die chronologische **Reihenfolge** der besuchten Städte\n2. Die **Gesamtkosten der Route**, d.h. die Summe der Länge der Kanten, die befahren werden"
     },
+    "pagebreak-2": {
+    },
     "paragraph-5": {
         "text": "Mit Hilfe einer Matrix lässt sich der erste Punkt angehen. Eine Möglichkeit, den vorherigen Graphen zu modellieren, ist das Kodieren der Besuchsreihenfolge in einer Tabelle."
     },
@@ -32,6 +36,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "paragraph-7": {
         "text": "Vielleicht siehst du bereits, worauf das hinausläuft: In der Tat sieht dies sehr ähnlich aus wie das Damen-Problem aus der letzten Lektion. Die 1-en sind hierbei quasi Spielsteine, die auf ein Spielbrett gelegt werden können, um zu markieren, welche Stadt zu welchem Zeitschritt gehört. Daraus können wir im nächsten Schritt die QUBO-Gleichung extrahieren."

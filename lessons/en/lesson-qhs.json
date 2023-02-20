@@ -13,6 +13,8 @@
     "paragraph-2": {
         "text": "The table shows an excerpt from the measurement results, sorted from lowest to highest energy — which means that the **higher** a solution is in the table, the \"better\" it is. Each row contains the answer vector and, on the right, the frequency of how many times each of them was measured. At this point, it's still number salad; to understand whether the effort was worthwhile, the results need to be **interpreted** in context first."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "Let's take the top solution as an example: the entries of the answer matrix come back in the order we considered them in the original QUBO equation. So we write the values from top to bottom and from left to right back into the fields of the original grid (in this case, the chessboard) and replace each 1 with a queen. Ideally, in the 4 queens problem, that should be four pieces in total, otherwise there's something wrong with the QUBO problem."
     },
@@ -29,6 +31,8 @@
         "caption": "This is how the above solution to the 4 queens problem looks on the chessboard",
         "alttext": "Chessboard of size four by four from bird's eye view with four queen pieces on B1, D2, A3 and C4."
     },
+    "pagebreak-2": {
+    },
     "sectiontitle-2": {
         "title": "How big is the computing power?"
     },
@@ -44,6 +48,8 @@
     "paragraph-5": {
         "text": "Scrolling through the diagrams, the drop in performance with each new queen added is clearly visible. While the quantum annealers are correct in almost half of their measurements for the 4 queens problem, only one out of 2000 solutions are correct for larger checkerboards. For the DWave Advantage, this performance limit is 8 queens, and for the 2000Q model (which is generally incorrect more often than its successor), it is 7 queens."
     },
+    "pagebreak-3": {
+    },
     "paragraph-6": {
         "text": "The same optimization problem was also solved on a conventional computer using the widely known \"simulated annealing\" algorithm. How it works is not relevant and beyond the scope of the course, but here is a visual representation of how long it took each of the two types of computers:"
     },
@@ -54,6 +60,8 @@
     },
     "paragraph-7": {
         "text": "These experiments immediately show the disadvantage of traditional computational methods: the time required for optimization is very long (here mostly over 10 minutes) and, most importantly, **increases with larger problems**. The quantum annealer, on the other hand, is able to solve the same tasks in fractions of a second, and **independent of problem size**."
+    },
+    "pagebreak-4": {
     },
     "paragraph-8": {
         "text": "Although the unbeatable speed of the quantum-based approach makes it very attractive, it has major limitations performance-wise. A general rule of thumb is that, depending on embedding and couplings thereby employed, approximately $$n^2$$ physical qubits are needed to implement $$n$$ logical qubits. The Advantage has 5627 qubits; since each N queens problem becomes a Hamiltonian of size N², the theoretical maximum power is calculated to be **8 queens**."

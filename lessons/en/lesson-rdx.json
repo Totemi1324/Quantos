@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Can we improve our approach? And how! Depending on the optimization problem, it is often possible to exceed the theoretical capacity limits of the quantum annealer like this and squeeze out additional problem sizes that would not have been possible otherwise."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "One more queen"
     },
@@ -12,6 +14,8 @@
         "asset": "nine_queens.png",
         "caption": "A trick to solve the 9 queens problem: the clever positioning of the first piece",
         "alttext": "Bird's-eye view of a chessboard of size nine by nine with a queen piece in the upper right corner, its row, column, and diagonal shaded in blue; the remaining eight-by-eight square is occupied by eight queens in valid placement, none standing on the shaded squares."
+    },
+    "pagebreak-2": {
     },
     "paragraph-3": {
         "text": "The 8 queens problem here needs an additional rule, which says that the diagonal, which is in the range of the corner queen, must remain free, since it is already occupied. In mathematical terms, this means that **exactly 0 fields** should be occupied on this diagonal. To implement this, we simply adjust the QUBO equation of the diagonal, depending on which one it is:"
@@ -25,6 +29,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "paragraph-5": {
         "text": "So try to think outside the box and make the quantum computer's job easier by clever specifications!"

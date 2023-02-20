@@ -10,6 +10,8 @@
         "caption": "This is the simplest possible Sudoku size",
         "alttext": "Square of numbers, size four by four fields, with their horizontal and vertical center dividing line thickly marked; some boxes contain a digit from one to four in thick brown type."
     },
+    "pagebreak-1": {
+    },
     "paragraph-2": {
         "text": "But what about the different digits? Here, in contrast to QUBO, not only the binary numbers 0 and 1, but digits from 1 to 4 can be filled in. These can be understood as a kind of additional \"dimension\" of the problem. And this is exactly the solution: We extend our QUBO square into **three dimensions** with additional levels!"
     },
@@ -25,6 +27,8 @@
         "asset": "one_hot_encoding.png",
         "caption": "This is what the one-hot-encoded stack would look like for our 4×4 example Sudoku; if there is a 1 in level 2, then there is a 2 in the corresponding field in the original, and so on",
         "alttext": "Perspective view of a stack of four grids of size four by four on top of each other, with some squares empty and other squares filled with the digits zero and one."
+    },
+    "pagebreak-2": {
     },
     "paragraph-4": {
         "text": "Using this we can already formulate our QUBO equation. Since the full formula would be much too long to show here at once, only the instructions are given to implement the Sudoku rules in QUBO. These individual parts, should they be formulated, are simply added together to get the final cost function."
@@ -61,6 +65,8 @@
         "tex": "64\\times q_5+64\\times q_7+64\\times q_8+64\\times q_{13}+64\\times q_{14}+64\\times q_{16}+\\hdots",
         "alttext": "64×q₅+64×q₇+64×q₈+64×q₁₃+64×q₁₄+64×q₁₆+⋯"
     },
+    "pagebreak-3": {
+    },
     "paragraph-9": {
         "text": "Here is a snippet from the Hamiltonian and a visualization of the whole matrix:"
     },
@@ -74,6 +80,8 @@
         "caption": "In the visualization, stripe patterns of different brightness, arranged in a pyramid-like pattern, are visible",
         "alttext": "Gray square with blue and yellow boxes forming a pattern with long and shorter diagonal lines in triangular arrangement."
     },
+    "pagebreak-4": {
+    },
     "sectiontitle-2": {
         "title": "But it could be better"
     },
@@ -82,6 +90,8 @@
     },
     "paragraph-11": {
         "text": "The way we have chosen so far is therefore also called **naive approach**; for an actual practical application this is often insufficient, especially for more complex problems. Instead of modeling the problem in general, it is advisable to optimize right away and include only qubits that are really needed. What might such an optimization look like?"
+    },
+    "pagebreak-5": {
     },
     "paragraph-12": {
         "text": "First, all qubits belonging to cells that are already filled in the given Sudoku are removed. Since they are not to be processed anyway, they consume capacity unnecessarily. Then the method can be adapted to how us humans would solve a Sudoku puzzle: cross out **excluded options** in the empty fields. An example of this is shown in the following figure; in the top left cell, for example, only a 4 is possible because the associated row already contains the 2 and the 3 and the first column contains a 1."
@@ -98,6 +108,8 @@
         "asset": "qubit_relationships.png",
         "caption": "The arrows each point to a pair of qubits that exclude each other, e.g. because they represent the same digit in the same row/column",
         "alttext": "Number square of size four by four fields; some boxes contain a digit from one to four in thick brown font, the other boxes contain variables named q and two-ended blue arrows each pointing to two different variables."
+    },
+    "pagebreak-6": {
     },
     "paragraph-14": {
         "text": "Entering digits in general should be rewarded by negative coefficients, but pairs that violate the rules should be subject to a positive penalty. Now we just have to enter the coefficients into the Hamilton matrix - and we're done!"

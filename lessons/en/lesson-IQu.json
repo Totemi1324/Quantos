@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "In this lection as well, we would like to show by way of example how one can improve the own procedure in order to exceed the theoretical capacity limit of the available qubits. Because by analyzing the properties of the optimization problem at hand and cleverly limiting the solution set, one can often save some qubits!"
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Saving even more data"
     },
@@ -16,6 +18,8 @@
     "paragraph-3": {
         "text": "We are not done here, though, because in addition the cost function must be adjusted so that the path from A to B, A to C, etc. depends only on the second node visited — the logical qubits for A must eventually **disappear entirely** from the QUBO equation, otherwise the optimization has no effect. This approach reduces the size of the tour matrix by 1, which means that the number of cities for which the annealer can find a solution increases to 9."
     },
+    "pagebreak-2": {
+    },
     "sectiontitle-2": {
         "title": "Incomplete graphs"
     },
@@ -26,6 +30,8 @@
         "asset": "incomplete_graph.png",
         "caption": "An example of an incomplete graph",
         "alttext": "Circles connected by gray lines; between some circles, there is no connection."
+    },
+    "pagebreak-3": {
     },
     "paragraph-5": {
         "text": "So, to represent a non-existent edge, one could impose a **massive penalty** on it, so that the lowest cost is never reached if it is part of the tour. In the mathematical literature this is usually expressed with an infinity symbol, but in our case a high integer value is more appropriate."

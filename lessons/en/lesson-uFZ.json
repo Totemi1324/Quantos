@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Chess is one of the best-known and most widely practiced board games in the world — and, despite its simplicity, one of the most mathematically complex. This already starts with the fact that there are more possible chess games than atoms in the observable universe. Too much, then, to apply brute force, or trial and error; that sounds like an optimization problem!"
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "How does the queen play in chess?"
     },
@@ -12,6 +14,8 @@
         "asset": "queen_range.png",
         "caption": "The queen covers a large area on the board with her reach",
         "alttext": "Bird's-eye view chessboard with a queen piece on D3; starting from it, a row, a column, and two diagonals of squares shaded in blue."
+    },
+    "pagebreak-2": {
     },
     "paragraph-3": {
         "text": "This made Max Bezzel, a German chess master, think. In 1848 he formulated the 8 queens problem for the first time in the Berliner Schachzeitung (\"Berlin chess magazine\"). The goal is to place 8 queens on a chessboard in such a way that they **do not threaten each other**, i.e. that none can attack another. Later, the problem was extended and generalized to the N queens problem, where the goal is to place N queens on a chessboard of size N×N squares without threat situations (N is an arbitrary integer here). This puzzle remained the subject of active research up to the present, with the highest exactly solved size being $$N=27$$, offering over **200 quadrillion** (!) different possibilities for a valid setup."

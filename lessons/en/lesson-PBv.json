@@ -14,6 +14,8 @@
     "paragraph-3": {
         "text": "The diagram shows by how much the solutions that just miss the optimum are exactly off. The fact that the jump from the best to the second best is larger than between the solutions thereafter shows that the **energy gap is larger** there — this is to our advantage, as it decreases the probability that the quantum mechanical system tunnels to a non-optimal solution."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-2": {
         "title": "How large is the degree of optimization?"
     },

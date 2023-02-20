@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "This may look a little confusing, so let's go through it step by step."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Vectors and matrices"
     },
@@ -31,6 +33,8 @@
     "equation-2": {
         "tex": "\\vec{q}_A=\\begin{pmatrix}a\\\\b\\\\\\vdots\\\\n\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\\\\\vdots\\\\1\\end{pmatrix}",
         "alttext": "qₐ=(a, b, ..., n)=(0, 1, ..., 1)"
+    },
+    "pagebreak-2": {
     },
     "paragraph-5": {
         "text": "Similarly, a **matrix** can be thought of as a series of vectors glued together. It is a rectangular array of numbers, with each element indexed in the format $$m_{ij}$$ (i and j denote the row and column index of a given element, i.e., in which row and column it is located in the matrix). An example:"
@@ -63,6 +67,8 @@
         "caption": "The variables in Hamiltonians form a regular pattern",
         "alttext": "An arrangement of single-color or two-color squares in a grid; at the top, a, b, c, and d are assigned different colors; in the grid, they represent the position of the variables."
     },
+    "pagebreak-3": {
+    },
     "sectiontitle-2": {
         "title": "Coupling qubits"
     },
@@ -74,6 +80,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-4": {
     },
     "paragraph-10": {
         "text": "Congratulations! You have now gained a solid understanding of how quantum annealers solve tasks. With that, you can already use the **Coding tab** on your homescreen to interact with a real annealer from DWave. Get started right away or dive into the next lessons that apply this foundational knowledge to real-world problems and shed light on a methodical approach as well as the limitations of quantum annealing!"

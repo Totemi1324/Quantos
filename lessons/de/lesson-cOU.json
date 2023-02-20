@@ -13,6 +13,8 @@
         "caption": "Ein 4×4-Schachbrett mit beschrifteten Feldern",
         "alttext": "Ein Schachbrett der Größe vier mal vier, Felder sind in alphabetischer Reihenfolge von a nach p beschriftet."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "Wir beschriften die Felder alphabetisch von a bis p, die je nach dem ihren Binärwert verändern, ob sie mit einer Dame **belegt** sind oder **nicht**. Das ist deswegen nützlich, weil nun jede mögliche Stellung der 4 Damen auf dem Brett durch eine Zahlenreihe, bestehend aus 16 Einsen und Nullen, dargestellt werden kann — mathematisch ausgedrückt: Ein Vektor mit 16 Koordinaten. Diese Modellierungstechnik wird auch **One-Hot Encoding** genannt."
     },
@@ -29,6 +31,8 @@
         "caption": "Die Lösung des 4-Damen-Problems, welches vom obigen Vektor dargestellt wird",
         "alttext": "Ein Schachbrett der Größe vier mal vier mit vier Damenfiguren in einer Konstellation, dass keine eine andere schlagen kann."
     },
+    "pagebreak-2": {
+    },
     "paragraph-4": {
         "text": "Nun können wir, ausgehend von den Regeln im Schach, unsere Regeln festlegen:"
     },
@@ -37,6 +41,8 @@
     },
     "paragraph-6": {
         "text": "Diese Regeln können durch logische Begründungen hergeleitet werden: Da das Schachfeld N×N groß ist und mehrere Damen nicht in der gleichen Zeile stehen dürfen (da sie sich sonst gegenseitig bedrohen würden), müssen die N Damen so verteilt werden, dass keine Zeile frei bleiben darf und jede genau eine beinhaltet. Ähnlich verhält es sich mit den Spalten, da Damen auch eine beliebige Distanz in vertikaler Richtung zurücklegen können. In einem 4×4-Schachbrett gibt es 5 Diagonalen von links nach rechts und 5 von rechts nach links, das wäre zu viel für 4 Damen (obwohl eine Dame sich immer in 2 Diagonalen gleichzeitig befindet). Daher müssen nicht alle belegt werden, pro Diagonale darf es aber aufgrund der Bedrohungslage trotzdem höchstens eine Dame geben."
+    },
+    "pagebreak-3": {
     },
     "sectiontitle-2": {
         "title": "Die Umsetzung der Regeln"
@@ -64,6 +70,8 @@
     "equation-4": {
         "tex": "f\\left(a,e,i,m\\right)=\\left(a+e+i+m-1\\right)^2",
         "alttext": "f(a,e,i,m)=(a+e+i+m-1)²"
+    },
+    "pagebreak-4": {
     },
     "paragraph-9": {
         "text": "Um die \"höchstens 1 Belegung\"-Regel für die Diagonalen zu verwirklichen, wird dieses Mal ½ statt 1 in der Klammer subtrahiert; damit verschiebt sich das Minimum der Funktion so, dass 0 **oder** 1 die Summe der Felder sein kann. Wenn man das ausmultipliziert, ist ersichtlich, dass das im Endeffekt bedeutet, dass alle paarweise Belegungen dieser Felder **mit einer Strafe belegt** ist. Die Korrektheit kann auch mit einer sogenannten Wahrheitstabelle überprüft werden. Insgesamt gibt es beim N-Damen-Problem $$2(2N-3)=4N-6$$ Diagonalen zu berücksichtigen."

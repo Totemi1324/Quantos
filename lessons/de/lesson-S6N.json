@@ -2,10 +2,15 @@
     "paragraph-1": {
         "text": "Quantencomputer werden in der Berichterstattung vieler Medien immer präsenter — und die Behauptungen, sie wären in ihrer Rechenleistung klassischen Computern weit überlegen, würden diese bald ersetzen und sichere Verschlüsselungsmethoden der Gegenwart brechen. Aber wie viel davon ist wahr — und wie viel pure Übertreibung? Das Ziel dieses Kurses ist es, einen tiefen Einblick in das spannende Feld der Quanteninformatik zu geben, weshalb wir uns bedanken möchten, dass du Quantos nutzt! Auf dich wartet eine spaßige Lernerfahrung, nach dessen du eigene Rechenprobleme auf echten Quantencomputern lösen kannst."
     },
+    "paragraph-2": {
+        "text": "Drücke auf den **rechten Pfeilknopf**, um auf die nächste Seite zu kommen!"
+    },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Ein paar Grundlagen"
     },
-    "paragraph-2": {
+    "paragraph-3": {
         "text": "Dafür müssen wir aber bei den Grundlagen anfangen: Das **Qubit**, eine Mischung aus 'Quanten' und 'Bit' und das Herzstück dieser neuen Technologie, ist für die enorme Rechenleistung verantwortlich. Ein normaler Computer, so wie du ihn gerade wahrscheinlich in der Hand oder auf dem Tisch hast, arbeitet mit Bits, um Informationen zu speichern und zu berechnen. Diese sind binär — das bedeutet, sie sind entweder 1 oder 0. Das ist eigentlich nur eine mathematische Repräsentation, denn Bits sind meist Leiterbahnen aus Kupfer, in denen entweder Strom fließt (Zustand 1) oder nicht (Zustand 0). Das Besondere an Qubits: Sie können beide Zustände gleichzeitig bzw. eine Mischung davon annehmen."
     },
     "image-1": {
@@ -13,16 +18,20 @@
         "caption": "So kann man sich Qubits ungefähr vorstellen: Eine Überlagerung von mehreren Zuständen",
         "alttext": "Die Ziffern Null und Eins in Kreisen, daneben ein Kreis mit Null und Eins übereinandergelegt."
     },
-    "paragraph-3": {
-        "text": "Doch wie ist das möglich? Vielleicht kennst du das Gedankenexperiment vom Physiker Erwin Schrödinger: In einer Kiste befindet sich eine Katze, welche durch ein Gift getötet wird, sobald ein instabiler Atomkern zerfällt; wann das passiert, kann man nicht genau vorhersagen. Bis zu dem Zeitpunkt, wo man in die Kiste hineinblickt, ist das Atom zerfallen und nicht zerfallen zugleich — und die Katze somit lebendig und tot zugleich."
+    "pagebreak-2": {
     },
     "paragraph-4": {
+        "text": "Doch wie ist das möglich? Vielleicht kennst du das Gedankenexperiment vom Physiker Erwin Schrödinger: In einer Kiste befindet sich eine Katze, welche durch ein Gift getötet wird, sobald ein instabiler Atomkern zerfällt; wann das passiert, kann man nicht genau vorhersagen. Bis zu dem Zeitpunkt, wo man in die Kiste hineinblickt, ist das Atom zerfallen und nicht zerfallen zugleich — und die Katze somit lebendig und tot zugleich."
+    },
+    "paragraph-5": {
         "text": "Die kleinste Welt der Atome, der Quanten, benimmt sich völlig anders, als was wir mit bloßem Auge wahrnehmen können und die Gesetze der klassischen Physik gelten dort nicht. Daher hat sie ihren eigenen Zweig bekommen: Die Quantenphysik. Sie ganz zu verstehen, ist selbst für gelernte Physiker eine Schwierigkeit, die grundlegenden Modelle aber können von allen nachvollzogen werden. Die Quantenphysik geht davon aus, dass quantenmechanische Systeme — also Atome, Elektronen usw. — eine Überlagerung aller ihrer möglichen Zustände besitzen, die **Superposition**. Erst wenn man sie mit Geräten misst oder anderweitig beobachtet, entscheiden sie sich für einen bestimmten Zustand. Dies kombiniert mit der Erkenntnis, dass nicht jeder Ausgang einer Messung gleich wahrscheinlich ist und durch eine Wellenfunktion beschrieben wird, wird als Kopenhagener Deutung bezeichnet."
     },
     "interactive-1": {
 
     },
-    "paragraph-5": {
+    "pagebreak-3": {
+    },
+    "paragraph-6": {
         "text": "Dieses Verhalten kann man sich zunutze machen, um Qubits zu bauen — Einheiten, die eine Überlagerung von 0 und 1 darstellen, bis sie gemessen werden. Qubits können mit jedem atomaren System, welches mindestens zwei verschiedene Zustände besitzt, realisiert werden. Hier einige Beispiele:"
     },
     "image-2": {
@@ -40,14 +49,16 @@
         "caption": "Schleifen aus supraleitenden Materialien, die zwei Zustände annehmen können",
         "alttext": "Ein Ring aus leitendem Material, in dessen Mitte ein Pfeil nach oben und ein Pfeil nach unten zeigt."
     },
-    "paragraph-6": {
+    "pagebreak-4": {
+    },
+    "paragraph-7": {
         "text": "Dabei ist ein Qubit (in der Mathematik meist mit $$\\Psi$$ darsgestellt) immer eine Mischung aus $$\\vert 0\\rangle$$ (aus) und $$\\vert 1\\rangle$$ (ein). Welcher Anteil des jeweiligen Zustands vorhanden ist, wird durch zwei Zahlen $$\\alpha$$ und $$\\beta$$ ausgedrückt, die zusammen immer 1 ergeben."
     },
     "equation-1": {
         "tex": "\\vert\\Psi\\rangle = \\alpha \\times \\vert 0\\rangle + \\beta \\times \\vert 1\\rangle",
         "alttext": "|Ψ⟩ = α × |0⟩ + β × |1⟩"
     },
-    "paragraph-7": {
+    "paragraph-8": {
         "text": "Das Qubit $$0.3\\vert 0\\rangle + 0.7\\vert 1\\rangle$$ zum Beispiel wird nach der Messung mit einer Wahrscheinlichkeit von 30% zu 0 und von 70% zu 1 (wobei das stark vereinfacht ist, denn in Wirklichkeit stammen diese Wahrscheinlichkeiten aus dem Zahlenraum der komplexen Zahlen). Das können wir auch geometrisch visualisieren: Wenn man Alpha und Beta mit einem mehrstufigen mathematischen Verfahren zu Winkel umrechnet, liegt der Zustand eines Qubits immer auf einer Kugel mit dem Radius 1. Die Superposition ist erreicht, wenn sich der Zustand genau in der Mitte zwischen den zwei Polen befindet."
     },
     "image-5": {
@@ -60,7 +71,9 @@
         "caption": "So sieht ein Qubit mathematisch betrachtet aus, wenn er sich in Superposition befindet",
         "alttext": "Kugel in einem Koordinatensystem, am Südpol Eins, am Nordpol Null; Qubit ist als Punkt genau auf dem Äquator liegend eingezeichnet."
     },
-    "paragraph-8": {
+    "pagebreak-5": {
+    },
+    "paragraph-9": {
         "text": "Die gegen die Intuition gehende Quantenmechanik zu begreifen ist etwas herausfordernd; nimm dir ruhig Zeit und geh zurück, wenn du etwas nicht verstanden hast. Alles klar? Dann geht es weiter zur nächsten Einheit! Am Ende jeder Einheit findest du einen Knopf zum Abschließen. Viel Spaß!"
     }
 }
