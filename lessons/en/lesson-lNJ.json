@@ -40,7 +40,8 @@
         "text": "For example, the edge $$\\overline{BA}$$ with the cost of 6.6 corresponds to $$(e,b)$$, $$(f,c)$$, $$(g,d)$$ and $$(h,a)$$. When we multiply the cost by these pairs of variables (this is compliant with the rules of QUBO problems), it is added only if both fields are visited, i.e., are equal to 1. Moreover, there is no danger of adding the cost of a given edge more than once: since it is forbidden to visit a city more than once, in a valid constellation, only one of these four cases will occur, if at all. So this is what the second half of the QUBO equation looks like:"
     },
     "equation-2": {
-        "tex": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la$+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi"
+        "tex": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la$+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi",
+        "alttext": "6.6af+6.6bg+6.6ch+6.6de+5.4aj+5.4bk+5.4cl+5.4di+4.0an+4.0bo+4.0cp+4.0dm+6.6eb+6.6fc+6.6gd+6.6ha+1.6ej+1.6fk+1.6gl+1.6hi+3.6en+3.6fo+3.6gp+3.6hm+5.4ib+5.4jc+5.4kd+5.4la+1.6if+1.6jg+1.6kh+1.6le+3.2in+3.2jo+3.2kp+3.2lm+4.0mb+4.0nc+4.0od+4.0pa+3.6mf+3.6ng+3.6oh+3.6pe+3.2mj+3.2nk+3.2ol+3.2pi"
     },
     "pagebreak-2": {
     },
