@@ -13,6 +13,8 @@
     "paragraph-2": {
         "text": "Die Tabelle zeigt einen Ausschnitt aus den Messergebnissen, sortiert von der geringsten bis zur höchsten Energie — was bedeutet, dass eine Lösung desto \"besser\" ist, je **weiter oben** sie in der Tabelle steht. Jede Zeile beinhaltet den Antwortvektor sowie rechts die Häufigkeit, wie oft diese jeweils gemessen wurden. Zu diesem Zeitpunkt ist das noch Zahlensalat; um zu verstehen, ob sich der Aufwand gelohnt hat, müssen die Ergebnisse erst im Kontext **interpretiert** werden."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "Nehmen wir die oberste Lösung als Beispiel: Die Einträge der Antwortmatrix kommen in der Reihenfolge zurück, wie wir sie in der ursprünglichen QUBO-Gleichung berücksichtigt haben. Also schreiben wir die Werte von oben nach unten und von links nach rechts wieder in die Felder des ursprünglichen Gitters (in diesem Fall, des Schachbretts) und ersetzen jede 1 mit einer Dame. Idealerweise sollten das beim 4-Damen-Problem vier Stück sein, sonst stimmt etwas mit dem QUBO-Problem nicht."
     },
@@ -29,6 +31,8 @@
         "caption": "So sieht die obige Lösung des 4-Damen-Problems auf dem Schachbrett aus",
         "alttext": "Schachbrett der Größe vier mal vier aus der Vogelperspektive mit vier Damenfiguren auf B1, D2, A3 und C4."
     },
+    "pagebreak-2": {
+    },
     "sectiontitle-2": {
         "title": "Wie groß ist die Leistung?"
     },
@@ -44,6 +48,8 @@
     "paragraph-5": {
         "text": "Beim Scrollen durch die Diagramme wird der Leistungsabfall mit jeder neu hinzugekommenen Dame gut sichtbar. Während die Quantenannealer beim 4-Damen-Problem bei fast der Hälfte ihrer Messungen richtig liegen, sind bei größeren Schachbrettern nur noch eine aus 2000 Lösungen korrekt. Beim DWave Advantage liegt diese Leistungsgrenze bei 8 Damen, beim 2000Q-Modell (der generell öfter danebenliegt als sein Nachfolger) bei 7 Damen."
     },
+    "pagebreak-3": {
+    },
     "paragraph-6": {
         "text": "Das gleiche Optimierungsproblem wurde auch auf einem herkömmlichen Computer mit dem weit verbreiteten Algorithmus Simulated Annealing (\"simuliertes Abkühlen\") gelöst. Wie das funktioniert, ist nicht relevant und sprengt den Rahmen des Kurses, hier aber eine visuelle Darstellung, wie lange die beiden Arten von Computern jeweils gebraucht haben:"
     },
@@ -54,6 +60,8 @@
     },
     "paragraph-7": {
         "text": "Diese Experimente zeigen sofort den Nachteil von traditionellen Berechnungsmethoden: Die für die Optimierung benötigte Zeit ist sehr lang, hier größtenteils über 10 Minuten und, das schwerwiegendste, **steigen mit größeren Problemen an**. Der Quantenannealer hingegen ist in der Lage, die gleichen Aufgaben in Bruchteilen einer Sekunde zu lösen, und das **unabhängig von der Problemgröße**."
+    },
+    "pagebreak-4": {
     },
     "paragraph-8": {
         "text": "Obwohl die unschlagbare Geschwindigkeit des quantenbasierten Ansatzes ihn sehr attraktiv macht, hat er leistungstechnisch große Einschränkungen. Eine allgemeine Faustregel besagt, dass je nach Embedding und dadurch eingesetzten Kopplungen zur Umsetzung von $$n$$ logischen Qubits ungefähr $$n^2$$ physikalische Qubits gebraucht werden. Der Advantage besitzt 5627 Qubits; da aus jedem N-Damen-Problem ein Hamiltonian der Größe N² wird, berechnet sich die theoretische Höchstleistung auf **8 Damen**."

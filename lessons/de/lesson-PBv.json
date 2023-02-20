@@ -14,6 +14,8 @@
     "paragraph-3": {
         "text": "Das Diagramm zeigt, um wie viel die Lösungen, die das Optimum knapp verfehlen, genau danebenliegen. Dass der Sprung von der besten zur zweitbesten größer ist als zwischen den Lösungen danach, zeigt, dass dort die **Energielücke größer** ist — dies ist zu unserem Vorteil, da dadurch die Wahrscheinlichkeit sinkt, dass das quantenmechanische System zu einer nicht-optimalen Lösung tunnelt."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-2": {
         "title": "Wie groß ist der Optimierungsgrad?"
     },

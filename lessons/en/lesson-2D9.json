@@ -10,6 +10,8 @@
         "caption": "An example of a classic 9×9 Sudoku in its initial state",
         "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering."
     },
+    "pagebreak-1": {
+    },
     "paragraph-2": {
         "text": "The rules of the puzzle are as simple as they are ingenious: in a grid of size 9×9 squares, a digit from 1 to 9 must be entered in each square in such a way that:"
     },
@@ -23,6 +25,8 @@
         "asset": "sudoku_example_solved.png",
         "caption": "The Sudoku from before — completely filled in and thus solved",
         "alttext": "Square divided into nine by nine small squares; some squares have numerals from one to nine inscribed in thick brown lettering, the rest have numerals inscribed in thin red lettering."
+    },
+    "pagebreak-2": {
     },
     "paragraph-5": {
         "text": "Since there is a huge amount of possibilities and the entries depend on each other, the puzzle can also be seen as an optimization problem. Here, quantum annealers offer tremendous potential: with them, it would not only be possible to fill in Sudokus in one fell swoop, regardless of their size, but also to consider all possible constellations **at the same time** due to the superposition of the qubits. But is this really true? This concluding lesson would like to explore this question and show how important it is not to lose track of the problem to be solved."

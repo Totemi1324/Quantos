@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Creating a quantum solution procedure for the TSP is an exciting example of the versatility of quantum computing and a demonstration of how it can help improve everyday tasks. In the previous two lectures, we learned in detail about the checkers board model for QUBO problems; we would like to use it again, but the transformation is less obvious this time. So the first step is to ask how to transform the core component of the TSP, the **graph**, into a QUBO problem."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "From graph to matrix"
     },
@@ -19,6 +21,8 @@
     "paragraph-4": {
         "text": "1. The chronological **order** of cities visited\n2. The **total cost of the route**, i.e. the sum of the length of the edges traversed"
     },
+    "pagebreak-2": {
+    },
     "paragraph-5": {
         "text": "A matrix can be used to address the first point. One way to model the previous graph is to encode the order of the visits in a table."
     },
@@ -32,6 +36,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "paragraph-7": {
         "text": "Perhaps you can already see where this is going: In fact, this looks very similar to the queens problem from the last lecture. The 1s here are sort of game pieces that can be placed on a board to mark which city belongs to which time step. From this we can extract the QUBO equation in the next step."

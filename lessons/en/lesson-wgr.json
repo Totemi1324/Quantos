@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "This is the question addressed by the **traveling salesman problem** (abbreviation: TSP). Or, more generally, given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the starting city? As a practical everyday problem repeatedly mentioned since the 17th century, it was first formulated and elaborated as a mathematical optimization problem around 1930 by the Austrian mathematician Karl Weber. It can be found in numerous real-world applications, such as supply chain planning, pipeline renovation, and structural analysis of crystals."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "The challenge"
     },

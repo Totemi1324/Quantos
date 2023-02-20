@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "Das ist die Frage, mit der sich das **Traveling-Salesman-Problem** (zu Deutsch: \"Problem des Handelsreisenden\", Abkürzung: TSP) beschäftigt. Oder, allgemeiner ausgedrückt: Wie lautet die kürzeste mögliche Route, die jede Stadt genau einmal besucht und zur Ausgangsstadt zurückführt, wenn eine Liste von Städten und die Entfernungen zwischen jedem Städtepaar gegeben ist? Als praktisches Alltagsproblem schon seit dem 17. Jahrhundert immer wieder erwähnt, wurde es erstmals um 1930 vom österreichischen Mathematiker Karl Weber als mathematisches Optimierungsproblem formuliert und ausgearbeitet. Es ist in zahlreichen realen Anwendungen zu finden, z.B. bei der Planung von Lieferketten, der Renovierung von Pipelines oder der Strukturanalyse von Kristallen."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Die Herausforderung"
     },

@@ -10,6 +10,8 @@
         "caption": "Ein Beispiel für ein klassisches 9×9-Sudoku in Ausgangslage",
         "alttext": "Quadrat, das in neun mal neun kleine Quadrate zerteilt ist; in einigen Feldern sind Ziffern von eins bis neun in dicker brauner Schrift eingetragen."
     },
+    "pagebreak-1": {
+    },
     "paragraph-2": {
         "text": "Die Regeln des Rätsels sind einfach wie genial: In einem Gitter der Größe 9×9 Felder muss in jedes Feld eine Ziffer von 1 bis 9 so eingetragen werden, dass:"
     },
@@ -23,6 +25,8 @@
         "asset": "assets/images/lessons/sudoku_example_solved.png",
         "caption": "Das Sudoku von vorhin — vollständig ausgefüllt und damit gelöst",
         "alttext": "Quadrat, das in neun mal neun kleine Quadrate zerteilt ist; in einigen Feldern sind Ziffern von eins bis neun in dicker brauner Schrift eingetragen, in den restlichen Ziffern in dünner roter Schrift."
+    },
+    "pagebreak-2": {
     },
     "paragraph-5": {
         "text": "Da es also eine gewaltige Menge an Möglichkeiten gibt und die Einträge voneinander abhängen, kann das Rätsel auch als Optimierungsproblem aufgefasst werden. Hier bieten Quantenannealer ein gewaltiges Potenzial: Mit ihnen wäre es nicht nur möglich, Sudokus unabhängig von ihrer Größe auf einen Schlag auszufüllen, sondern aufgrund der Superposition der Qubits alle möglichen Konstellationen **zur gleichen Zeit** zu betrachten. Aber trifft das alles wirklich zu? Diese abschließende Lektion möchte dieser Fragestellung nachgehen und aufzeigen, wie wichtig es dabei ist, nicht den Überblick über das zu lösende Problem zu verlieren."

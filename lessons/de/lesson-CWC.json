@@ -13,6 +13,8 @@
         "caption": "Ein simpler Graph mit 4 Knoten sowie ihren Abständen zueinander",
         "alttext": "Vier bunte Kreise beschriftet mit A, B, C und D, durch graue Linien mit jeweils einer Zahl daneben verbunden."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "Jeder Knoten wird als bunter Kreis dargestellt, der mit anderen Knoten durch Kanten verbunden ist, wobei die Abstände zwischen den Knoten in grau notiert sind. Im Beispiel ist jedes mögliche Knotenpaar miteinander verbunden, jede Kante kann in beide Richtungen durchlaufen werden und jeder Kante ist ein eindeutiger Distanzwert, ein sogenanntes \"Gewicht\" zugewiesen. Dies wird als **vollständiger, ungerichteter und gewichteter Graph** bezeichnet. Graphen können verschiedene Arten und Formen annehmen, aber in diesem Kurs konzentrieren wir uns nur auf diese eine Kategorie, da er der Standarddefinition des TSP entspricht. Mathematisch gesehen lässt sich ein solcher Graph wie folgt charakterisieren:"
     },
@@ -38,6 +40,8 @@
     "paragraph-5": {
         "text": "- Ein Graph $$G$$ besteht aus drei Komponenten: $$V$$, die Knoten (von Englisch \"vertices\"), $$E$$, die Kanten (von Englisch \"edges\"), und $$d$$, die Distanzfunktion. Die Notation mit () als ein Tripel verdeutlicht, dass sie zusammengehören.\n- $$V$$ bezeichnet die Menge der Knoten, aus denen ein Graph besteht. Mengen erkennt man an den geschweiften Klammern {}.\n- $$E$$ ist die Menge der Kanten, dargestellt als nicht geordnete Knotenpaare $${v_i,v_j}$$. Der senkrechte Strich | definiert, welche Bedingungen diese Paare erfüllen müssen: Sowohl $$v_i$$ als auch $$v_j$$ müssen Teil von $$V^2$$ sein (\"hoch zwei\" steht in der Mengenschreibweise für das kartesische Produkt, d.h. die Menge aller möglichen Kombinationen der Elemente einer Menge) und $$v_i$$ darf nicht gleich $$v_j$$ sein, um Schleifen zu vermeiden.\n- $$d$$ ist eine Funktion, die jeder Kante (also einem ungeordneten Paar von Knoten) eine reelle Zahl zuordnet, in diesem Fall die Länge."
     },
+    "pagebreak-2": {
+    },
     "paragraph-6": {
         "text": "Unser Beispielgraph kann also wie folgt beschrieben werden:"
     },
@@ -52,6 +56,8 @@
     "equation-7": {
         "tex": "d:E\\to\\begin{cases}5.7 & \\text{wenn }E=\\left\\{A,B\\right\\} \\\\ 2.5 & \\text{wenn }E=\\left\\{A,C\\right\\} \\\\ 3.3 & \\text{wenn }E=\\left\\{A,D\\right\\} \\\\ 3.4 & \\text{wenn }E=\\left\\{B,C\\right\\} \\\\ 5.6 & \\text{wenn }E=\\left\\{B,D\\right\\} \\\\ 4.1 & \\text{wenn }E=\\left\\{C,D\\right\\}\\end{cases}",
         "alttext": "d:E→{5.7 wenn E={A,B},2.5 wenn E={A,C},3.3 wenn E={A,D},3.4 wenn E={B,C},5.6 wenn E={B,D},4.1 wenn E={C,D}"
+    },
+    "pagebreak-3": {
     },
     "paragraph-7": {
         "text": "Pfade sind dabei eine Reihenfolge von Knoten, die nacheinander besucht werden. Ein Pfad, der alle Knoten genau einmal passiert, ohne Kanten mehrfach zu durchlaufen, heißt **Hamiltonpfad**. Ein Hamiltonpfad, dessen Start- und Endpunkt gleich sind, heißt wiederum geschlossener Hamiltonpfad oder **Hamiltonkreis** — beim TSP wird derjenige davon gesucht, bei der die Summe der Distanzen aus der Distanzfunktion so gering wie möglich ist. Sowohl ersteres als auch letzteres sind bei vollständigen Graphen in jedem Fall vorhanden."

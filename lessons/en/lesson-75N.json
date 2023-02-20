@@ -13,6 +13,8 @@
     "paragraph-2": {
         "text": "A big, black box, almost 3 meters (~10 ft) high and weighing 3.8 tons, with a cost of about $15 million. So it doesn't have the dimensions of a home computer (yet), but is rather intended for use in computation centers and companies. The DWave Advantage is operated via a — comparatively — small monitor with keyboard on the side of the case."
     },
+    "pagebreak-1": {
+    },
     "paragraph-3": {
         "text": "But what's all the equipment for? In order for the qubits in the annealer to function properly — that is, for the superposition explained earlier to remain stable and for the measurements not to be distorted by interference — the inside of the housing must be cooled to a temperature of **16 mK** (millikelvin); this corresponds to about -273.13° Celsius (~-460 °F), which is close to absolute zero, the physically highest possible level of cold in the universe. This is a huge challenge for engineers: tons of electronics and thick walls of steel, inside of which a vacuum, or airless space, must exist, are needed to protect the qubits from all possible interference from other particles. The enclosure itself houses an inverted pyramid-like frame:"
     },
@@ -28,6 +30,8 @@
     },
     "paragraph-4": {
         "text": "The **QPU** (quantum processing unit), the counterpart to the classic CPU, is attached to the tip and is the heart of the quantum annealer; a chip a few square centimeters in size on whose surface the qubits are located. The latest model from the manufacturer DWave, the \"Advantage\", has 5627 of them. By comparison, the most common CPUs in today's PCs and smartphones have between 100 million and 3 trillion transistors, i.e. units that can be individually switched on and off."
+    },
+    "pagebreak-2": {
     },
     "sectiontitle-2": {
         "title": "The patterns on a QPU"
@@ -47,6 +51,8 @@
     },
     "paragraph-6": {
         "text": "In the real device, couplers are magnetic fields whose strength can be adjusted individually. And here comes the most important point: they can influence whether qubits collapse into the $$\\vert 0\\rangle$$ or $$\\vert 1\\rangle$$ state when measured, but they cannot guarantee it with certainty. Also, they can adjust the behavior of two qubits so that they tend to take either an equal or an unequal value. These types are called equality and inequality couplers, respectively. For example, if two qubits are connected to an inequality coupler and the first becomes a $$\\vert 1\\rangle$$, the other will most likely become a $$\\vert 0\\rangle$$."
+    },
+    "pagebreak-3": {
     },
     "paragraph-7": {
         "text": "Quantum annealers are programmed to solve problems by adjusting the strength and type of these couplers. However, a qubit can only be coupled to a limited number of other qubits; the exact number depends on the topology and is largely responsible for the \"computational power\" of the quantum annealer. Exactly how all this is related is explained in the next lesson."

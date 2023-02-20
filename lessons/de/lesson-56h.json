@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Bei der Bedienung des DWave Advantage passiert viel Arbeit im Hintergrund. Ein Beispiel dafür, das wir bereits kennen, ist das Embedding auf der QPU; davon bekommt man bei einer standardmäßigen Anfrage meistens nicht viel mit, da sie von der Kommunikationsschnittstelle automatisch berechnet wird. Es gibt aber auch statische Werte, sogenannte **Hyperparameter**, die die Leistung des Algorithmus direkt beeinflussen und nur durch Ausprobieren optimiert werden können. In Verbindung mit der Auswertung unseres TSP-Algorithmus werden wir sie dieses Mal näher beleuchten."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Das richtige Benchmarking"
     },
@@ -23,6 +25,8 @@
         "tex": "\\min E=h\\times n+\\frac{1}{2}\\times n=\\left(h+\\frac{1}{2}\\right)\\times n",
         "alttext": "min E=h×n+½×n=(h+½)×n"
     },
+    "pagebreak-2": {
+    },
     "sectiontitle-2": {
         "title": "Optimierung der Hyperparameter"
     },
@@ -37,6 +41,8 @@
     },
     "paragraph-7": {
         "text": "Man merkt, dass stärkere Koppler bei logischen Qubits nicht immer **besser** sind: Die Genauigkeit hat bei allen Kurven einen Höhepunkt und fällt danach stetig ab. Bei größeren Stadtnetzwerken wird der Unterschied zwischen der einfacheren und der komplexeren Aufgabe immer größer, bis schließlich ab $$n=7$$ Städten der kürzeste Rundweg nicht mehr gefunden werden kann."
+    },
+    "pagebreak-3": {
     },
     "paragraph-8": {
         "text": "Das gleiche machen wir auch mit der annealing time; die Erwartungshaltung ist logischerweise, dass der Anteil der korrekten Lösungen immer weiter zunehmen sollte, je länger der Quantencomputer Zeit für die einzelnen Anneals hat."

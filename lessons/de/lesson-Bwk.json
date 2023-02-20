@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "Das sieht vielleicht etwas verwirrend aus, gehen wir es also Schritt für Schritt durch."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Vektoren und Matrizen"
     },
@@ -31,6 +33,8 @@
     "equation-2": {
         "tex": "\\vec{q}_A=\\begin{pmatrix}a\\\\b\\\\\\vdots\\\\n\\end{pmatrix}=\\begin{pmatrix}0\\\\1\\\\\\vdots\\\\1\\end{pmatrix}",
         "alttext": "qₐ=(a, b, ..., n)=(0, 1, ..., 1)"
+    },
+    "pagebreak-2": {
     },
     "paragraph-5": {
         "text": "In ähnlicher Weise kann man sich eine **Matrix** als eine Reihe von zusammengeklebten Vektoren vorstellen. Es handelt sich um ein rechteckiges Feld aus Zahlen, bei dem jedes Element im Format $$m_{ij}$$ indiziert ist (i und j bezeichnen den Zeilen- und Spaltenindex eines bestimmten Elements, also in welcher Zeile und Spalte es sich in der Matrix befindet). Ein Beispiel:"
@@ -63,6 +67,8 @@
         "caption": "Hamiltonians bilden mit ihren Variablen ein regelmäßiges Muster",
         "alttext": "Eine Anordnung von bunten bzw. zweifarbigen Quadraten in einem Gitter; oben sind a, b, c und d unterschiedliche Farben zugewiesen; im Gitter repräsentieren sie die Stellung der Variablen."
     },
+    "pagebreak-3": {
+    },
     "sectiontitle-2": {
         "title": "Kopplung von Qubits"
     },
@@ -74,6 +80,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-4": {
     },
     "paragraph-10": {
         "text": "Herzlichen Glückwunsch! Du hast nun ein fundiertes Verständnis darüber erlangt, wie Quantenannealer Aufgaben lösen. Damit kannst du bereits den **Coding-Tab** auf dem Homescreen verwenden, um mit einem echten Annealer von DWave zu interagieren. Leg direkt los oder stürze dich in die nächsten Lektionen, die dieses Grundlagenwissen anhand echter Problemstellungen anwenden und Aufschluss über eine methodische Herangehensweise sowie die Grenzen des Quantenannealing geben!"

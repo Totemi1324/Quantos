@@ -20,6 +20,7 @@ class LessonContentService extends Cubit<LessonContent> {
   static const imageJsonKey = "image";
   static const equationJsonKey = "equation";
   static const interactiveJsonKey = "interactive";
+  static const pageBreakJsonKey = "pagebreak";
 
   static const textJsonKey = "text";
   static const titleJsonKey = "title";
@@ -94,22 +95,27 @@ class LessonContentService extends Cubit<LessonContent> {
 
       switch (entry.key.substring(0, entry.key.indexOf("-"))) {
         case paragraphJsonKey:
-          state.content.add(_parseParagraph(content));
+          state.addContentItem(_parseParagraph(content));
           break;
         case sectionTitleJsonKey:
-          state.content.add(_parseSectionTitle(content));
+          state.addContentItem(_parseSectionTitle(content));
           break;
         case imageJsonKey:
-          state.content.add(_parseImage(content));
+          state.addContentItem(_parseImage(content));
           break;
         case equationJsonKey:
-          state.content.add(_parseEquation(content));
+          state.addContentItem(_parseEquation(content));
           break;
         case interactiveJsonKey:
-          state.content.add(_parseInteractive(content));
+          state.addContentItem(_parseInteractive(content));
+          break;
+        case pageBreakJsonKey:
+          state.breakPage();
           break;
       }
     }
+
+    state.breakPage();
   }
 
   Paragraph _parseParagraph(Map<String, dynamic> json) {

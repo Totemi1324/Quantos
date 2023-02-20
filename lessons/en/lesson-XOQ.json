@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "This scenario is a classic example of **optimization problems**; they play a large role in this course, as this is the one type of task that quantum annealer can (potentially) solve faster and more efficiently than conventional computers. The larger the city, the higher the number of theoretically possible routes for garbage collection; here we quickly reach several billion possibilities. Calculating and trying them all to find the most optimal solution — this is called \"brute force\" — is impossible, as decades of computation would be required."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Strategic approach"
     },
@@ -30,11 +32,15 @@
     "paragraph-6": {
         "text": "Suppose we want to optimize the number of households that each garbage truck serves. In the graph above, we can see how the costs change with this number. Here, the lower the cost, the better a solution. So, according to the graph, the best solution would be $$n = 3$$, since this is where the lowest costs occur."
     },
+    "pagebreak-2": {
+    },
     "paragraph-7": {
         "text": "The challenge here is that the computer, which is supposed to solve the problem, sees only one point at a time on this cost curve and has to develop a strategy to still find the **valleys**, the solutions with the lowest costs. It is possible to find the **global optimum**, the lowest cost of all, in the process, but one can just as easily end up at a **local optimum**, one of the many medium-deep valleys — in the belief that the lowest point has already been reached."
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "sectiontitle-2": {
         "title": "Optimizing with quantum computers"
@@ -57,6 +63,8 @@
         "asset": "quantum_tunneling.png",
         "caption": "Instead of following the classical path, it is also possible for the smallest particles to tunnel through it",
         "alttext": "Diagram of an energy curve with a high hill in the center; From a circle lying in a valley in front of the hill labeled local minimum, an arrow points through the hill to a lower valley after the hill labeled global minimum."
+    },
+    "pagebreak-4": {
     },
     "image-5": {
         "asset": "annealing_process.png",

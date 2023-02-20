@@ -2,6 +2,8 @@
     "paragraph-1": {
         "text": "Können wir unser Vorgehen verbessern? Und wie! Je nach Optimierungsproblem ist es so oft möglich, die theoretischen Kapazitätslimits des Quantenannealers zu überschreiten und zusätzliche Problemgrößen, die sonst nicht möglich gewesen wären, herauszukitzeln."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Eine Dame geht noch"
     },
@@ -12,6 +14,8 @@
         "asset": "nine_queens.png",
         "caption": "Ein Trick zum Lösen des 9-Damen-Problems: Die geschickte Positionierung der ersten Figur",
         "alttext": "Schachbrett der Größe neun mal neun aus der Vogelperspektive mit einer Damenfigur in der rechten oberen Ecke, dessen Zeile, Spalte und Diagonale blau schattiert sind; das restliche acht mal acht große Feld ist mit acht Damen in gültiger Aufstellung belegt, keine steht auf den schattierten Feldern."
+    },
+    "pagebreak-2": {
     },
     "paragraph-3": {
         "text": "Das hier vorliegende 8-Damen-Problem braucht eine Zusatzregel, die besagt, dass die Diagonale, welche im Wirkungsbereich der Eck-Dame liegt, frei bleiben muss, da sie schon belegt ist. Mathematisch ausgedrückt bedeutet das, dass auf dieser Diagonale **genau 0 Felder** besetzt sein sollen. Um das umzusetzen, passen wir einfach die QUBO-Gleichung der Diagonale an, je nach dem, um welche es sich handelt:"
@@ -25,6 +29,8 @@
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "paragraph-5": {
         "text": "Versuche also, über den Tellerrand zu blicken und durch geschickte Vorgaben den Job des Quantencomputers einfacher zu machen!"

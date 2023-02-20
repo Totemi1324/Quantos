@@ -10,6 +10,8 @@
     "paragraph-2": {
         "text": "Dieses Szenario ist ein klassisches Beispiel für **Optimierungsprobleme**; sie spielen in diesem Kurs eine große Rolle, da das die eine Art von Aufgaben ist, die Quantenannealer (potenziell) schneller und effizienter lösen können als herkömmliche Computer. Je größer die Stadt ist, desto höher ist die Anzahl der theoretisch möglichen Routen für die Müllabfuhr; hier sind wir schnell bei mehreren Milliarden Möglichkeiten. Alle zu berechnen und durchzuprobieren, um die optimalste Lösung zu finden — dies wird \"brute force\" (\"rohe Kraft\") genannt — ist unmöglich, da jahrzehntelange Rechenarbeit nötig wäre."
     },
+    "pagebreak-1": {
+    },
     "sectiontitle-1": {
         "title": "Strategische Annäherung"
     },
@@ -30,11 +32,15 @@
     "paragraph-6": {
         "text": "Nehmen wir an, wir möchten die Anzahl der Haushalte optimieren, die die einzelnen Müllwagen anfahren. Im obigen Graphen kann man ablesen, wie sich die Kosten mit dieser Anzahl verändern. Hier gilt: Je niedriger die Kosten, desto besser eine Lösung. Laut dem Graphen wäre also die beste Lösung $$n = 3$$, da hier die geringsten Kosten entstehen."
     },
+    "pagebreak-2": {
+    },
     "paragraph-7": {
         "text": "Die Herausforderung dabei: Der Computer, der das Problem lösen soll, sieht auf dieser Kostenkurve immer nur einen Punkt auf einmal und muss eine Strategie entwickeln, trotzdem die \"Täler\", also die Lösungen mit den niedrigsten Kosten, zu finden. Es ist möglich, dabei das **globale Optimum**, die niedrigsten Kosten von allen, zu finden, aber man kann genauso gut bei einem **lokalen Optimum**, einem der vielen mitteltiefen Tälern, landen — im Glauben, der tiefste Punkt sei bereits erreicht."
     },
     "interactive-1": {
 
+    },
+    "pagebreak-3": {
     },
     "sectiontitle-2": {
         "title": "Mit Quantencomputern optimieren"
@@ -57,6 +63,8 @@
         "asset": "quantum_tunneling.png",
         "caption": "Anstatt den klassischen Weg zu gehen, ist es kleinsten Teilchen auch möglich, sich durchzutunneln",
         "alttext": "Diagramm von einer Energiekurve mit einem hohen Hügel in der Mitte; Von einem Kreis, der in einem Tal vor dem Hügel mit lokales Minimum beschriftet liegt, zeigt ein Pfeil durch den Hügel in ein tieferes Tal nach dem Hügel mit globales Minimum beschriftet."
+    },
+    "pagebreak-4": {
     },
     "image-5": {
         "asset": "annealing_process.png",

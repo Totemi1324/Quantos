@@ -1,31 +1,35 @@
 {
     "paragraph-1": {
-        "text": "Wenn alle Bestandteile ausgeschrieben und addiert sind (noch eine etwas mühselige Handarbeit), kann die Gleichung ausmultipliziert und somit die Quadrate aufgelöst werden, um der QUBO-Form gerecht zu werden. Das bedeutet, dass Elemente so lange **zusammengefasst und vereinfacht** werden, bis alle Regeln von QUBO erfüllt sind (die Details sind in der Einführungslektion erläutert). Das Ergebnis ist folgendes:"
+        "text": "Once all the components are written out and added (still a bit of tedious manual work), the equation can be multiplied out, thus eliminating the squares to meet the QUBO form. This means that elements are **combined and simplified** until all the rules of QUBO are satisfied (the details are explained in the introductory lection). The result is the following:"
     },
     "equation-1": {
         "tex": "f\\left(a,...,p\\right)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo+10.5",
         "alttext": "f(a,...,p)=-2a+2ab+2ac+2ad+2ae+2ai+2am-2b+2bc+2bd+2bf+2bj+2bn-2c+2cd+2cg+2ck+2co-2d+2dh+2dl+2dp-2e+2ef+2eg+2eh+2ei+2em-2f+2fg+2fh+2fj+2fn-2g+2gh+2gk+2go-2h+2hl+2hp-2i+2ij+2ik+2il+2im-2j+2jk+2jl+2jn-2k+2kl+2ko-2l+2lp-2m+2mn+2mo+2mp-2n+2no+2np-2o+2op-2p+2in+2ej+2eo+2jo+2af+2ak+2ap+2fk+2fp+2kp+2bg+2bl+2gl+2ch+2be+2cf+2ci+2fi+2dg+2dj+2dm+2gj+2gm+2jm+2hk+2hn+2kn+2lo"
     },
     "paragraph-2": {
-        "text": "Eine massive, unhandliche Gleichung, jedoch eine gültige Kostenfunktion, da nur die regelkonformen Damenanordnungen die geringsten Kosten verursachen. Da die QUBO-Gleichung auf N, der Größe des Schachbretts, basiert, beansprucht sie N² logische Qubits (was bedeutet, dass die nötige Anzahl an physischen Qubits mit steigender Problemgröße mit einer äußerst schnellen Rate steigt) und muss für jede Brettgröße neu berechnet werden. Das 4-Damen-Problem braucht 16 logische Qubits, das 5-Damen-Problem 25, das 6-Damen-Problem 36 und so weiter."
+        "text": "A massive, unwieldy equation, but a valid cost function, since only the rule-conforming arrangements of queens yield the lowest cost. Since the QUBO equation is based on N, the size of the chessboard, it takes up N² logical qubits (meaning that the necessary number of physical qubits increases at an extremely fast rate as the problem size increases) and must be recalculated for each board size. The 4 queens problem needs 16 logical qubits, the 5 queens problem 25, the 6 queens problem 36, and so on."
+    },
+    "pagebreak-1": {
     },
     "sectiontitle-1": {
-        "title": "Ein einzigartiges Muster"
+        "title": "A unique pattern"
     },
     "paragraph-3": {
-        "text": "Da die Darstellung in dieser Form eher unübersichtlich ist, sollte man sie immer in eine Hamilton-Matrix umwandeln. Hamiltonians, die, wie in der einführenden Lektion erklärt, lediglich die Koeffizienten der jeweiligen Felder und Felderpaare enthalten, sind wesentlich kompakter und ermöglichen einen Fokus auf diese einzig wichtigen Informationen. Somit kann man sie auch als charakteristischen **Fingerabdruck** entsprechender Optimierungsprobleme betrachten. Hier ist die Hamilton-Matrix des eben gelösten 4-Damen-Problems:"
+        "text": "Since the representation in this form is rather confusing, you should always convert it to a Hamilton matrix. Hamiltonians, which, as explained in the introductory lesson, contain only the coefficients of the respective variables and variable pairs, are much more compact and allow a focus on this only important information. Thus, they can also be viewed as a characteristic **fingerprint** of corresponding optimization problems. Here is the Hamilton matrix of the 4 queens problem just solved:"
     },
     "image-1": {
         "asset": "nqueens_hamiltonian.png",
-        "caption": "Koeffizienten der N-Damen-Gleichung ergeben als Hamilton-Matrix ein charakteristisches Muster",
-        "alttext": "Quadratische Zahlenmatrix mit sechzehn mal sechzehn Einträgen, dessen unteres Dreieck mit Nullen und oberes Dreieck mit zwei und minus zwei gefüllt sind."
+        "caption": "Coefficients of the N queens equation make a characteristic pattern when displayed as a Hamilton matrix",
+        "alttext": "Square number matrix with sixteen by sixteen entries whose lower triangle is filled with zeros and upper triangle is filled with two and minus two."
     },
     "image-2": {
         "asset": "nqueens_hamiltonian_visualization.png",
-        "caption": "Dies kann man auch visuell darstellen; je heller die Farbe eines Kästchens, desto höher die Zahl",
-        "alttext": "Graues Quadrat mit blauen und gelben Kästchen, die ein Muster mit durchgezogenen diagonalen Linien bilden."
+        "caption": "This can also be represented visually; the lighter the color of a cell, the higher the number",
+        "alttext": "Gray square with blue and yellow cells forming a pattern with solid diagonal lines."
+    },
+    "pagebreak-2": {
     },
     "paragraph-4": {
-        "text": "Was als Nächstes passiert, lässt sich im Coding-Tab des Homescreens selbst umsetzen: Die **Übermittlung des Hamiltonians** an den DWave-Quantenannealer. Dies geschieht im Hintergrund mittels des Ocean SDKs, welches eine Kommunikationsschnittstelle zwischen dem Endnutzer und den Servern von DWave bietet. Beim Absenden wird automatisch das Embedding generiert und mindestens ein paar Hundert Messungen durchgeführt, um den Zufallsfaktor der quantenphysikalischen Zustandsübergänge soweit wie möglich auszugleichen. Die dabei verbrauchte Rechenzeit wird vom eigenen Konto in DWave Leap abgezogen. Eine Anleitung dazu gibt es auf unserer Website. Dies alles ist aber optional; in der nächsten Einheit werden die Ergebnisse vorgestellt."
+        "text": "What happens next can be implemented in the coding tab of the homescreen on your own: The **transmission of the Hamiltonian** to the DWave quantum annealer. This is done in the background using the Ocean SDK, which provides a communication interface between the end user and DWave's servers. Upon submission, the embedding is automatically generated and at least a few hundred measurements are taken to balance the randomness of the quantum physical state transitions as much as possible. The computation time consumed in this process is deducted from the own DWave Leap account. Instructions are available on our website. However, all this is optional; in the next lesson the results are presented."
     }
 }
