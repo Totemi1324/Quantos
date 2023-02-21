@@ -430,7 +430,7 @@
     "@codingConsoleOutputMessageLoading": {
         "description": "Coding console output message for loading status"
     },
-    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
+    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top solutions (up to 5), sorted from best to worst energy:",
     "@codingConsoleOutputMessageSuccess": {
         "description": "Coding console output message for success status"
     },

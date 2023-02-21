@@ -114,7 +114,7 @@
     "codingConsoleOutputTitleAnnealer": "Antwort des DWave-Annealers",
     "codingConsoleOutputMessageIdle": "Warte auf Eingabe.",
     "codingConsoleOutputMessageLoading": "Warte auf Antwort des Servers...",
-    "codingConsoleOutputMessageSuccess": "Ausführung erfolgreich! Hier sind die 5 besten Lösungen, sortiert von der besten bis zur schlechtesten Energie:",
+    "codingConsoleOutputMessageSuccess": "Ausführung erfolgreich! Hier sind die besten Lösungen (bis zu 5), sortiert von der besten bis zur schlechtesten Energie:",
     "codingConsoleOutputMessageFailure": "Etwas ist schief gelaufen - Antwort kann nicht abgerufen werden. Wenn du den DWave Advantage-Modus verwendest, überprüfe deine Internetverbindung oder versuche es erneut.",
     "codingProbabilityTitle": "Wahrscheinlichkeitsverteilung",
     "codingProbabilitySliderLabel": "{temperature} Millikelvin",
