@@ -49,7 +49,7 @@ class ThemeService extends Cubit<ThemeData> {
       headlineSmall: TextStyle(
         // Medium headers
         fontFamily: FontFamily.josefinSans,
-        fontSize: 28,
+        fontSize: 25,
         fontWeight: FontWeight.w700,
         color: Colors.white,
       ),

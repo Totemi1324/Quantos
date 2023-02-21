@@ -177,12 +177,15 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
       case ContentType.image:
         final image = item as image_content.Image;
         return Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 25),
+          margin: const EdgeInsets.only(top: 10, bottom: 25, right: 10, left: 10),
           child: Column(
             children: [
-              Image.asset(
-                fit: BoxFit.fitWidth,
-                "assets/images/lessons/${image.asset}",
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 250),
+                child: Image.asset(
+                  fit: BoxFit.scaleDown,
+                  "assets/images/lessons/${image.asset}",
+                ),
               ),
               const SizedBox(
                 height: 10,
