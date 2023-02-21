@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qubo_embedder/qubo_embedder.dart';
+// ignore: implementation_imports
 import 'package:qubo_embedder/src/exceptions.dart';
 
 import '../models/console_content.dart';
