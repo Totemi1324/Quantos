@@ -2,9 +2,12 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qubo_embedder/qubo_embedder.dart';
+
+import '../../bloc/coding_service.dart';
 
 import '../../data/hamiltonian_sizes.dart';
-
 import '../part_separator.dart';
 import '../containers/panel_card.dart';
 import '../ui/adaptive_dropdown.dart';
@@ -21,6 +24,7 @@ class HamiltonianInput extends StatefulWidget {
 
 class _HamiltonianInputState extends State<HamiltonianInput> {
   late List<DropdownMenuItem> _sizes;
+  late Qubo _qubo;
   int _selectedSize = 4;
 
   final _formKey = GlobalKey<FormState>();
@@ -32,14 +36,15 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
       isDense: true,
       contentPadding: const EdgeInsets.all(0),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide.none, //<-- SEE HERE
+        borderSide: BorderSide.none, 
         borderRadius: BorderRadius.circular(10),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide.none, //<-- SEE HERE
+        borderSide: BorderSide.none, 
         borderRadius: BorderRadius.circular(10),
       ),
     ),
+    onChanged: (value) {},
   );
 
   @override
@@ -52,6 +57,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
       } else {
         _sizes = sizes;
       }
+      _qubo = Qubo(size: _selectedSize);
     });
   }
 

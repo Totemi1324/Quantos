@@ -124,13 +124,6 @@ class _CodingScreenState extends State<CodingScreen> {
                               _outputConsoleKey.currentContext as BuildContext,
                             );
                           }
-                          final qubo = Qubo(size: 2);
-                          qubo.addEntry(0, 0, value: 2);
-                          qubo.addEntry(1, 1, value: 2.0);
-                          qubo.addEntry(0, 1, value: -2.0);
-                          context
-                              .read<CodingService>()
-                              .add(SendSimulator(qubo));
                         },
                       ),
                       ConsoleOutput(
