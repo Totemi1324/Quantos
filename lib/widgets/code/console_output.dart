@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../bloc/stores/coding_modes_store_service.dart';
+import '../../bloc/coding_service.dart';
 
+import '../../models/console_content.dart';
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
-
-enum ConsoleStatus {
-  idle,
-  loading,
-  success,
-  failure,
-}
 
 class ConsoleOutput extends StatefulWidget {
   final CodingMode mode;
@@ -24,8 +20,6 @@ class ConsoleOutput extends StatefulWidget {
 }
 
 class _ConsoleOutputState extends State<ConsoleOutput> {
-  ConsoleStatus _status = ConsoleStatus.success;
-
   Widget _buildMessageForStatus(
       BuildContext buildContext, ConsoleStatus status) {
     final defaultStyle = Theme.of(buildContext).textTheme.labelMedium;
@@ -81,48 +75,65 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        PartSeparator(
-          widget.mode == CodingMode.simulator
-              ? AppLocalizations.of(context)!.codingConsoleOutputTitleSimulator
-              : AppLocalizations.of(context)!.codingConsoleOutputTitleAnnealer,
-          verticalMargin: 20,
-        ),
-        PanelCard(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildMessageForStatus(context, _status),
-              Container(
-                height: 300,
-                margin: const EdgeInsets.only(top: 20),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.onBackground,
-                    width: 2,
-                  ),
-                ),
-                child: SingleChildScrollView(
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      TyperAnimatedText(
-                        "#1: -36.5 E\n[0, 1, 0, 0, 1, 1] x 15\n\n#2: -32.5 E\n[0, 1, 0, 0, 1, 0] x 13\n\n...",
-                      ),
-                    ],
-                    totalRepeatCount: 1,
-                  ),
-                ),
-              )
-            ],
+    final consoleState = context.read<CodingService>().state;
+
+    return BlocListener<CodingService, ConsoleContent>(
+      listener: (context, state) => setState(() {}),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PartSeparator(
+            widget.mode == CodingMode.simulator
+                ? AppLocalizations.of(context)!
+                    .codingConsoleOutputTitleSimulator
+                : AppLocalizations.of(context)!
+                    .codingConsoleOutputTitleAnnealer,
+            verticalMargin: 20,
           ),
-        )
-      ],
+          PanelCard(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _buildMessageForStatus(
+                  context,
+                  consoleState.status,
+                ),
+                Container(
+                  height: 300,
+                  margin: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.onBackground,
+                      width: 2,
+                    ),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Text(consoleState.message ?? ""),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
+
+/*AnimatedTextKit(
+                      animatedTexts: [
+                        if (consoleState.message != null)
+                          TyperAnimatedText(
+                            consoleState.message!,
+                          ),
+                        if (consoleState.message == null)
+                          TyperAnimatedText(
+                            "",
+                          )
+                      ],
+                      totalRepeatCount: 1,
+                    )*/

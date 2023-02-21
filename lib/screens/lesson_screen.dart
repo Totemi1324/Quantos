@@ -53,7 +53,9 @@ class _LessonScreenState extends State<LessonScreen> {
                 margin: const EdgeInsets.only(top: 20),
                 child: Text(
                   lessonTitle,
-                  style: Theme.of(context).textTheme.headlineSmall,
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
                 ),
               ),
               const Divider(),
