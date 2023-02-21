@@ -23,11 +23,11 @@
         "alttext": "G=(V,E,d)"
     },
     "equation-2": {
-        "tex": "V=\\left{v_1,v_2,...\\right}",
+        "tex": "V=\\left\\{v_1,v_2,...\\right\\}",
         "alttext": "V={v₁,v₂,...,vₙ}"
     },
     "equation-3": {
-        "tex": "E\\subseteq\\left{\\left{v_i,v_j\\right}|\\left(v_i,v_j\\right)\\in V^2\\wedge v_i\\neq v_j\\right}",
+        "tex": "E\\subseteq\\left\\{\\left\\{v_i,v_j\\right\\}|\\left(v_i,v_j\\right)\\in V^2\\wedge v_i\\neq v_j\\right\\}",
         "alttext": "E⊆{{vᵢ,vⱼ}|(vᵢ,vⱼ)∈V²∧vᵢ≠vⱼ}"
     },
     "equation-4": {
@@ -46,11 +46,11 @@
         "text": "Unser Beispielgraph kann also wie folgt beschrieben werden:"
     },
     "equation-5": {
-        "tex": "V=\\left{A,B,C,D\\right}",
+        "tex": "V=\\left\\{A,B,C,D\\right\\}",
         "alttext": "V={A,B,C,D}"
     },
     "equation-6": {
-        "tex": "E=\\left{\\left{A,B\\right},\\left{A,C\\right},\\left{A,D\\right},\\left{B,C\\right},\\left{B,D\\right},\\left{C,D\\right}\\right}",
+        "tex": "E=\\left\\{\\left\\{A,B\\right\\},\\left\\{A,C\\right\\},\\left\\{A,D\\right\\},\\left\\{B,C\\right\\},\\left\\{B,D\\right\\},\\left\\{C,D\\right\\}\\right\\}",
         "alttext": "E={{A,B},{A,C},{A,D},{B,C},{B,D},{C,D}}"
     },
     "equation-7": {
