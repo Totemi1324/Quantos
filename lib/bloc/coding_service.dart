@@ -51,7 +51,7 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
       (event, emit) async {
         emit(const ConsoleContent(ConsoleStatus.loading));
 
-        await Future.delayed(const Duration(milliseconds: 6));
+        await Future.delayed(const Duration(seconds: 6));
         final hamiltonian = Hamiltonian.fromQubo(event.qubo);
 
         try {

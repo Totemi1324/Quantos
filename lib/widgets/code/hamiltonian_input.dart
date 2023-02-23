@@ -119,10 +119,10 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
     return result;
   }
 
-  void _submitHamiltonian(BuildContext buildContext, CodingMode codingMode) {
+  bool _submitHamiltonian(BuildContext buildContext, CodingMode codingMode) {
     final inputsAreValid = _formKey.currentState?.validate();
     if (inputsAreValid == null || !inputsAreValid) {
-      return;
+      return false;
     }
     _formKey.currentState?.save();
 
@@ -136,6 +136,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
         _qubo = Qubo(size: _selectedSize);
         break;
     }
+    return true;
   }
 
   @override
@@ -210,8 +211,10 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                 extended: false,
                 onPressed: () {
                   final selectedMode = widget.getCurrentMode();
-                  _submitHamiltonian(context, selectedMode);
-                  widget.onSubmit();
+                  final success = _submitHamiltonian(context, selectedMode);
+                  if (success) {
+                    widget.onSubmit();
+                  }
                 },
               )
             ],

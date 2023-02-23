@@ -9,7 +9,6 @@ import 'bloc/lesson_content_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
-import 'screens/profile/profile_experience_screen.dart';
 
 import './route_register.dart';
 import './models/content/content_outline.dart';
@@ -53,7 +52,7 @@ class MyApp extends StatelessWidget {
                   context.read<LocalizationService>().supportedLocales,
               localizationsDelegates:
                   context.read<LocalizationService>().localizationsDelegates,
-              initialRoute: ProfileExperienceScreen.routeName,
+              initialRoute: SplashScreen.routeName,
               routes: {
                 SplashScreen.routeName: (context) => const SplashScreen(),
               },
