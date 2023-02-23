@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _toNextPage(BuildContext buildContext) =>
-      Navigator.of(buildContext).pushNamed(AuthHomeScreen.routeName);
+      Navigator.of(buildContext).pushReplacementNamed(AuthHomeScreen.routeName);
 
   @override
   Widget build(BuildContext context) {
