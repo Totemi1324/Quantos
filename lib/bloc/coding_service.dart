@@ -13,13 +13,45 @@ class SendSimulator extends CodingEvent {
   SendSimulator(this.qubo);
 }
 
+class SendAdvantage extends CodingEvent {
+  final Qubo qubo;
+
+  SendAdvantage(this.qubo);
+}
+
 class CodingService extends Bloc<CodingEvent, ConsoleContent> {
   CodingService() : super(ConsoleContent.initial()) {
     on<SendSimulator>(
       (event, emit) async {
         emit(const ConsoleContent(ConsoleStatus.loading));
 
-        await Future.delayed(const Duration(seconds: 1));
+        await Future.delayed(const Duration(milliseconds: 300));
+        final hamiltonian = Hamiltonian.fromQubo(event.qubo);
+
+        try {
+          final results = Sampler.simulate(hamiltonian);
+
+          var stringBuilder = "";
+          var counter = 0;
+          for (var entry in results.entries()) {
+            stringBuilder +=
+                "#$counter: ${entry.energy.toStringAsFixed(1)} E\n${entry.solutionVector} x ${entry.numOccurrences}";
+            stringBuilder += "\n\n";
+            counter += 1;
+          }
+
+          emit(ConsoleContent(ConsoleStatus.success, message: stringBuilder));
+        } on QuboEmbedderException {
+          emit(const ConsoleContent(ConsoleStatus.failure));
+        }
+      },
+    );
+
+    on<SendAdvantage>(
+      (event, emit) async {
+        emit(const ConsoleContent(ConsoleStatus.loading));
+
+        await Future.delayed(const Duration(milliseconds: 6));
         final hamiltonian = Hamiltonian.fromQubo(event.qubo);
 
         try {

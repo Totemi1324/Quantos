@@ -111,8 +111,22 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
                       width: 2,
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    child: Text(consoleState.message ?? ""),
+                  child: ShaderMask(
+                    shaderCallback: (bounds) {
+                      return const LinearGradient(
+                        colors: [
+                          Colors.white,
+                          Colors.transparent,
+                        ],
+                        stops: [0.9, 1],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        tileMode: TileMode.mirror,
+                      ).createShader(bounds);
+                    },
+                    child: SingleChildScrollView(
+                      child: Text(consoleState.message ?? ""),
+                    ),
                   ),
                 )
               ],

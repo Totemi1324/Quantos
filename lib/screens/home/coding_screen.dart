@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:qubo_embedder/qubo_embedder.dart';
 
 import '../../bloc/stores/coding_modes_store_service.dart';
 import '../../bloc/coding_service.dart';
@@ -118,6 +117,7 @@ class _CodingScreenState extends State<CodingScreen> {
                       if (_selectedMode == CodingMode.annealer)
                         const TokenInput(),
                       HamiltonianInput(
+                        getCurrentMode: () => _selectedMode,
                         onSubmit: () {
                           if (_outputConsoleKey.currentContext != null) {
                             Scrollable.ensureVisible(
