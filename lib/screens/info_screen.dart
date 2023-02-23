@@ -156,8 +156,8 @@ class _InfoScreenState extends State<InfoScreen> {
                             .infoScreenImprintContactTitle,
                         text: AppLocalizations.of(context)!
                             .infoScreenImprintContactDescription(
-                                "info@quantos-learning.com",
-                                "www.quantos-learning.com"),
+                                "hi@quantos.online",
+                                "www.quantos.online"),
                       ),
                       SectionSeparator(
                         AppLocalizations.of(context)!.infoScreenPrivacySection,
@@ -167,7 +167,7 @@ class _InfoScreenState extends State<InfoScreen> {
                         context,
                         text: AppLocalizations.of(context)!
                             .infoScreenPrivacyDescription(
-                                "www.quantos-learning.com"),
+                                "www.quantos.online"),
                       ),
                     ],
                   ),
