@@ -3,9 +3,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
+import '../../bloc/content_outline_service.dart';
+import '../../bloc/localization_service.dart';
 
+import '../../screens/base/home.dart';
+import '../../screens/loading_screen.dart';
 import '../ui/adaptive_form_field.dart';
 import '../ui/adaptive_button.dart';
+import '../../models/exceptions.dart';
+import '../authentication_error_popup.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({super.key});
@@ -35,11 +41,51 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
 
     _formKey.currentState?.save();
     if (!mounted) return;
-    await context.read<AuthenticationService>().attemptLogIn(_email, _password);
+
+    try {
+      await context
+          .read<AuthenticationService>()
+          .attemptLogIn(_email, _password);
+    } on AuthenticationException catch (error) {
+      showDialog(
+        context: context,
+        builder: (_) => AuthenticationErrorPopup(error.responseCode),
+        barrierDismissible: true,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    } catch (error) {
+      showDialog(
+        context: context,
+        builder: (_) =>
+            const AuthenticationErrorPopup(AuthenticationError.unknown),
+        barrierDismissible: true,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    }
 
     setState(() {
       _isLoading = false;
     });
+
+    if (!mounted) return;
+    Navigator.of(buildContext).pushReplacement(
+      MaterialPageRoute(
+        builder: (buildContext) => LoadingScreen(
+          Future(
+            () => buildContext.read<ContentOutlineService>().loadFromLocale(
+                  buildContext.read<LocalizationService>().state,
+                ),
+          ),
+          Home.routeName,
+        ),
+      ),
+    );
   }
 
   @override
@@ -83,7 +129,9 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
             height: 50,
           ),
           AnimatedCrossFade(
-            crossFadeState: _isLoading ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            crossFadeState: _isLoading
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
             duration: const Duration(milliseconds: 150),
             firstCurve: Curves.ease,
             secondCurve: Curves.ease,

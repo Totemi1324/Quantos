@@ -64,12 +64,21 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
         builder: (_) => AuthenticationErrorPopup(error.responseCode),
         barrierDismissible: true,
       );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
     } catch (error) {
       showDialog(
         context: context,
-        builder: (_) => const AuthenticationErrorPopup(AuthenticationError.unknown),
+        builder: (_) =>
+            const AuthenticationErrorPopup(AuthenticationError.unknown),
         barrierDismissible: true,
       );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
     }
 
     setState(() {
@@ -77,7 +86,8 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     });
 
     if (!mounted) return;
-    Navigator.of(context).pushNamedAndRemoveUntil(ProfileNameScreen.routeName, (_) => false);
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(ProfileNameScreen.routeName, (_) => false);
   }
 
   @override
