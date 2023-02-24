@@ -34,11 +34,6 @@ class AuthLogInScreen extends StatelessWidget {
                     margin: const EdgeInsets.symmetric(vertical: 50),
                     child: const LogInForm(),
                   ),
-                  AdaptiveButton.secondary(
-                    AppLocalizations.of(context)!.authLogInButtonLabel,
-                    extended: true,
-                    onPressed: () {},
-                  )
                 ],
               ),
             ),

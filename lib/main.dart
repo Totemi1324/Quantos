@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // State management
 import 'bloc/theme_service.dart';
 import 'bloc/localization_service.dart';
-import 'bloc/account_service.dart';
+import 'bloc/authentication_service.dart';
 import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
 
@@ -13,6 +13,7 @@ import 'screens/splash_screen.dart';
 
 import './route_register.dart';
 import './models/content/content_outline.dart';
+import './models/user_credentials.dart';
 
 void main() {
   Paint.enableDithering = true;
@@ -38,8 +39,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<LessonContentService>(
           create: (_) => LessonContentService(),
         ),
-        BlocProvider<AccountService>(
-          create: (_) => AccountService(),
+        BlocProvider<AuthenticationService>(
+          create: (_) => AuthenticationService(),
         )
       ],
       child: BlocBuilder<LocalizationService, Locale>(
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
           builder: (context, activeTheme) =>
               BlocBuilder<ContentOutlineService, ContentOutline>(
             builder: (context, contentOutline) =>
-                BlocBuilder<AccountService, int>(
+                BlocBuilder<AuthenticationService, UserCredentials>(
               builder: (context, state) => MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: "Quantos",

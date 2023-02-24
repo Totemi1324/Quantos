@@ -544,5 +544,23 @@
                 "example": "FlutterException"
             }
         }
+    },
+
+    "validationFailEmailIncorrectFormat": "Please enter a valid email address.",
+    "@validationFailEmailIncorrectFormat": {
+        "description": "Validation fail message for email in incorrect format"
+    },
+    "validationFailPasswordNotSufficient": "Your password must fulfill the following requirements:\n- Minimum length of 10 characters\n- At least one letter\n- At least one number\n- At least one special character",
+    "@validationFailPasswordNotSufficient": {
+        "description": "Validation fail message for not sufficient password"
+    },
+    "validationFailConfirmPasswordNoMatch": "Passwords do not match.",
+    "@validationFailConfirmPasswordNoMatch": {
+        "description": "Validation fail message for not matching confirm password"
+    },
+
+    "tooltipShowHidePassword": "Show or hide password",
+    "@tooltipShowHidePassword": {
+        "description": "Tooltip for show hide password button"
     }
 }

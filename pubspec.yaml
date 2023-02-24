@@ -73,6 +73,9 @@ flutter:
     # Lection content images
     - assets/images/lessons/
 
+    # Credentials
+    - lib/credentials.json
+
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section.

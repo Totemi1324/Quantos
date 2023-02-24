@@ -54,6 +54,7 @@ class _HelpFormState extends State<HelpForm> {
                 autocorrect: true,
                 enableSuggestions: true,
                 isFinalField: true,
+                onSaved: (_) {}, //TODO
               ),
               Container(
                 margin: const EdgeInsets.only(top: 50),
