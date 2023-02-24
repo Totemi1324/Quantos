@@ -21,7 +21,7 @@
         "text": "Das hier vorliegende 8-Damen-Problem braucht eine Zusatzregel, die besagt, dass die Diagonale, welche im Wirkungsbereich der Eck-Dame liegt, frei bleiben muss, da sie schon belegt ist. Mathematisch ausgedrückt bedeutet das, dass auf dieser Diagonale **genau 0 Felder** besetzt sein sollen. Um das umzusetzen, passen wir einfach die QUBO-Gleichung der Diagonale an, je nach dem, um welche es sich handelt:"
     },
     "equation-1": {
-        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
+        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow f\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
         "alttext": "f(a,f,k,p)=(a+f+k+p-½)²⇒f(a,f,k,p)=(a+f+k+p)²"
     },
     "paragraph-4": {
