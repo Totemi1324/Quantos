@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class AdaptiveMessageDialog extends StatelessWidget {
-  final String title;
+  final String? title;
   final Widget message;
   final String dismissActionName;
 
   const AdaptiveMessageDialog({
-    required this.title,
     required this.message,
+    this.title,
     this.dismissActionName = "OK",
     super.key,
   });
 
   Widget _buildMaterialDialog(BuildContext buildContext) {
     return AlertDialog(
-      title: Text(title),
+      title: title != null ? Text(title!) : null,
       content: SingleChildScrollView(child: message),
       actions: [
         TextButton(
@@ -37,7 +37,7 @@ class AdaptiveMessageDialog extends StatelessWidget {
 
   Widget _buildCupertinoDialog(BuildContext buildContext) {
     return CupertinoAlertDialog(
-      title: Text(title),
+      title: title != null ? Text(title!) : null,
       content: SingleChildScrollView(child: message),
       actions: [
         TextButton(

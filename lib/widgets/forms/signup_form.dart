@@ -6,6 +6,8 @@ import '../../bloc/authentication_service.dart';
 
 import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
+import '../../models/exceptions.dart';
+import '../../widgets/authentication_error_popup.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -50,9 +52,24 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
 
     _formKey.currentState?.save();
     if (!mounted) return;
-    await context
-        .read<AuthenticationService>()
-        .attemptSignUp(_email, _password);
+
+    try {
+      await context
+          .read<AuthenticationService>()
+          .attemptSignUp(_email, _password);
+    } on AuthenticationException catch (error) {
+      showDialog(
+        context: context,
+        builder: (_) => AuthenticationErrorPopup(error.responseCode),
+        barrierDismissible: true,
+      );
+    } catch (error) {
+      showDialog(
+        context: context,
+        builder: (_) => const AuthenticationErrorPopup(AuthenticationError.unknown),
+        barrierDismissible: true,
+      );
+    }
 
     setState(() {
       _isLoading = false;

@@ -139,6 +139,12 @@
 
     "parsingErrorParagraph": "Ups!\n\nEs scheint, dass deine angeforderte Ressource beschädigt ist und nicht gelesen werden kann. Wir entschuldigen uns für die Unannehmlichkeiten, da dieser Fehler wahrscheinlich bedeutet, dass auf unserer Seite etwas schief gelaufen ist. Daher wären wir dir dankbar, wenn du die folgende Fehlermeldung über unser Hilfe-Center an uns übermittelst:\n\n{exception}",
     "unknownErrorParagraph": "Ups!\n\nEs scheint, dass beim Versuch, die angeforderte Ressource zu laden, etwas schief gelaufen ist. Du erhälst diese Meldung, weil wir selbst nicht wissen, was diesen Fehler verursacht hat. Um dein Problem so schnell wie möglich zu beheben, übermittle bitte die folgende Fehlernachricht über unseren Hilfe-Center:\n\n{exception}",
+    "authenticationErrorEmailExists": "Die angegebene Email-Adresse gehört bereits einem anderen Nutzer. Bitte wähle eine andere Adresse oder, wenn du bereits ein Konto erstellt hast, versuche stattdessen, dich einzuloggen!",
+    "authenticationErrorTooManyAttempts": "Wir haben zu viele Anmeldeversuche für diese Email-Adresse festgestellt und sie aufgrund potenziell bösartiger Aktivitäten vorübergehend gesperrt. Bitte versuche es später noch einmal!",
+    "authenticationErrorEmailNotFound": "Die angegebene Email-Adresse gehört zu keinem Konto. Wenn du neu hier bist, registriere zuerst dein Konto! Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
+    "authenticationErrorInvalidPassword": "Das eingegebene Passwort ist falsch. Bitte nochmal versuchen!",
+    "authenticationErrorUserDisabled": "Einloggen nicht möglich, da dieses Konto deaktiviert wurde. Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
+    "authenticationErrorUnknown": "Etwas ist schief gelaufen. Bitte versuche es später noch einmal! Wenn das Problem weiterhin besteht, kontaktiere uns bitte unter help@quantos.online.",
 
     "validationFailEmailIncorrectFormat": "Bitte gib eine gülte Email-Adresse an.",
     "validationFailPasswordNotSufficient": "Dein Passwort muss folgendes beinhalten:\n- Mindestens 10 Zeichen\n- Mindestens ein Buchstabe\n- Mindestens eine Zahl\n- Mindestens ein Sonderzeichen",
