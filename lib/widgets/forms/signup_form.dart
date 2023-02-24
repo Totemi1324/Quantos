@@ -23,14 +23,6 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
   final _passwordFocusNode = FocusNode();
   final _confirmPasswordFocusNode = FocusNode();
 
-  late final AnimationController _fadeController = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 150),
-    value: 1.0,
-  );
-  late final _fadeAnimation =
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
-
   bool _isLoading = false;
   String _email = "";
   String _password = "";
@@ -44,14 +36,12 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
   }
 
   void _onRegisterPressed(BuildContext buildContext) async {
-    await _fadeController.reverse();
     setState(() {
       _isLoading = true;
     });
 
     final success = _formKey.currentState?.validate();
     if (success == null || !success) {
-      await _fadeController.forward();
       setState(() {
         _isLoading = false;
       });
@@ -64,7 +54,9 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
         .read<AuthenticationService>()
         .attemptSignUp(_email, _password);
 
-    _fadeController.forward();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -91,7 +83,9 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
                 },
                 validator: (value) {
                   if (value == null || value == "") {
-                    return null;
+                    return AppLocalizations.of(context)
+                            ?.validationFailEmailMissing ??
+                        "";
                   }
                   return emailFormat.hasMatch(value)
                       ? null
@@ -114,7 +108,9 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
                 validator: (value) {
                   _passwordCache = value;
                   if (value == null || value == "") {
-                    return null;
+                    return AppLocalizations.of(context)
+                            ?.validationFailPasswordMissing ??
+                        "";
                   }
                   return passwordFormat.hasMatch(value)
                       ? null
@@ -144,18 +140,24 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
         const SizedBox(
           height: 50,
         ),
-        FadeTransition(
-          opacity: _fadeAnimation,
-          child: _isLoading
-              ? Text(
-                  "...",
-                  style: Theme.of(context).textTheme.labelMedium,
-                )
-              : AdaptiveButton.secondary(
-                  AppLocalizations.of(context)!.authSignUpButtonLabel,
-                  extended: true,
-                  onPressed: () => _onRegisterPressed(context),
-                ),
+        AnimatedCrossFade(
+          crossFadeState:
+              _isLoading ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          duration: const Duration(milliseconds: 150),
+          firstCurve: Curves.ease,
+          secondCurve: Curves.ease,
+          firstChild: AdaptiveButton.secondary(
+            AppLocalizations.of(context)!.authSignUpButtonLabel,
+            extended: true,
+            onPressed: () => _onRegisterPressed(context),
+            enabled: true,
+          ),
+          secondChild: AdaptiveButton.secondary(
+            AppLocalizations.of(context)!.authSignUpButtonLabel,
+            extended: true,
+            onPressed: () => _onRegisterPressed(context),
+            enabled: false,
+          ),
         ),
       ],
     );

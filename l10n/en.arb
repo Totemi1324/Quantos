@@ -558,6 +558,14 @@
     "@validationFailConfirmPasswordNoMatch": {
         "description": "Validation fail message for not matching confirm password"
     },
+    "validationFailEmailMissing": "Email address is required.",
+    "@validationFailEmailMissing": {
+        "description": "Validation fail message for missing email"
+    },
+    "validationFailPasswordMissing": "Password is required.",
+    "@validationFailPasswordMissing": {
+        "description": "Validation fail message for missing password"
+    },
 
     "tooltipShowHidePassword": "Show or hide password",
     "@tooltipShowHidePassword": {

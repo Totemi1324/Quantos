@@ -18,14 +18,6 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _passwordFocusNode = FocusNode();
 
-  late final AnimationController _fadeController = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 150),
-    value: 1.0,
-  );
-  late final _fadeAnimation =
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
-
   bool _isLoading = false;
   String _email = "";
   String _password = "";
@@ -37,7 +29,6 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
   }
 
   void _onSignInPressed(BuildContext buildContext) async {
-    await _fadeController.reverse();
     setState(() {
       _isLoading = true;
     });
@@ -46,7 +37,9 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
     if (!mounted) return;
     await context.read<AuthenticationService>().attemptLogIn(_email, _password);
 
-    _fadeController.forward();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -89,19 +82,24 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
           const SizedBox(
             height: 50,
           ),
-          FadeTransition(
-            opacity: _fadeAnimation,
-            child: _isLoading
-                ? Text(
-                    "...",
-                    style: Theme.of(context).textTheme.labelMedium,
-                  )
-                : AdaptiveButton.secondary(
-                    AppLocalizations.of(context)!.authLogInButtonLabel,
-                    extended: true,
-                    onPressed: () => _onSignInPressed(context),
-                  ),
-          )
+          AnimatedCrossFade(
+            crossFadeState: _isLoading ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 150),
+            firstCurve: Curves.ease,
+            secondCurve: Curves.ease,
+            firstChild: AdaptiveButton.secondary(
+              AppLocalizations.of(context)!.authLogInButtonLabel,
+              extended: true,
+              onPressed: () => _onSignInPressed(context),
+              enabled: true,
+            ),
+            secondChild: AdaptiveButton.secondary(
+              AppLocalizations.of(context)!.authLogInButtonLabel,
+              extended: true,
+              onPressed: () => _onSignInPressed(context),
+              enabled: false,
+            ),
+          ),
         ],
       ),
     );

@@ -143,6 +143,8 @@
     "validationFailEmailIncorrectFormat": "Bitte gib eine gülte Email-Adresse an.",
     "validationFailPasswordNotSufficient": "Dein Passwort muss folgendes beinhalten:\n- Mindestens 10 Zeichen\n- Mindestens ein Buchstabe\n- Mindestens eine Zahl\n- Mindestens ein Sonderzeichen",
     "validationFailConfirmPasswordNoMatch": "Passwörter stimmen nicht überein.",
+    "validationFailEmailMissing": "Email-Adresse ist erforderich.",
+    "validationFailPasswordMissing": "Passwort ist erforderlich.",
 
     "tooltipShowHidePassword": "Passwort anzeigen oder verbergen"
 }
