@@ -177,7 +177,8 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
       case ContentType.image:
         final image = item as image_content.Image;
         return Container(
-          margin: const EdgeInsets.only(top: 10, bottom: 25, right: 10, left: 10),
+          margin:
+              const EdgeInsets.only(top: 10, bottom: 25, right: 10, left: 10),
           child: Column(
             children: [
               ConstrainedBox(
@@ -267,7 +268,7 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
             return index < currentContent.length
                 ? _buildContentItem(context, currentContent[index])
                 : const SizedBox(
-                    height: 30,
+                    height: 40,
                   );
           },
         ),
