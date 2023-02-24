@@ -8,6 +8,7 @@ import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
 import '../../models/exceptions.dart';
 import '../../widgets/authentication_error_popup.dart';
+import '../../screens/profile/profile_name_screen.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -74,6 +75,9 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     setState(() {
       _isLoading = false;
     });
+
+    if (!mounted) return;
+    Navigator.of(context).pushNamedAndRemoveUntil(ProfileNameScreen.routeName, (_) => false);
   }
 
   @override

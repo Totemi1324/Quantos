@@ -27,15 +27,46 @@ class AuthenticationService extends Cubit<UserCredentials> {
 
   AuthenticationService() : super(UserCredentials.empty());
 
+  bool get isAuthenticated =>
+      state.token != "" &&
+      state.expiryDate != null &&
+      state.expiryDate!.isAfter(DateTime.now());
+
   Future attemptSignUp(String email, String password) async {
-    return _sendAuthRequest(email, password, "signUp");
+    final responseData = await _sendAuthRequest(email, password, "signUp");
+    emit(
+      UserCredentials(
+        userId: responseData["localId"],
+        token: responseData["idToken"],
+        expiryDate: DateTime.now().add(
+          Duration(
+            seconds: int.parse(responseData["expiresIn"]),
+          ),
+        ),
+      ),
+    );
   }
 
   Future attemptLogIn(String email, String password) async {
-    return _sendAuthRequest(email, password, "signInWithPassword");
+    final responseData = await _sendAuthRequest(email, password, "signInWithPassword");
+    emit(
+      UserCredentials(
+        userId: responseData["localId"],
+        token: responseData["idToken"],
+        expiryDate: DateTime.now().add(
+          Duration(
+            seconds: int.parse(responseData["expiresIn"]),
+          ),
+        ),
+      ),
+    );
   }
 
-  Future _sendAuthRequest(
+  void logOut() {
+    emit(UserCredentials.empty());
+  }
+
+  Future<Map<String, dynamic>> _sendAuthRequest(
       String email, String password, String firebaseOperationSegment) async {
     final credentials = await CredentialsLoader.load();
 
@@ -57,9 +88,12 @@ class AuthenticationService extends Cubit<UserCredentials> {
         ),
       );
       final responseJson = json.decode(response.body) as Map<String, dynamic>;
-      if (responseJson["error"] != null && responseJson["error"]["message"] is String) {
-        throw AuthenticationException(_firebaseErrorCodes(responseJson["error"]["message"]));
+      if (responseJson["error"] != null &&
+          responseJson["error"]["message"] is String) {
+        throw AuthenticationException(
+            _firebaseErrorCodes(responseJson["error"]["message"]));
       }
+      return responseJson;
     } catch (error) {
       rethrow;
     }
