@@ -51,6 +51,7 @@
     "profileScreenOptionGroups": "Gruppen verwalten",
     "profileScreenOptionPersonal": "Persönliche Daten bearbeiten",
     "profileScreenOptionPassword": "Passwort ändern",
+    "profileScreenOptionLogout": "Abmelden",
     "profileScreenOptionDelete": "Account löschen",
 
     "downloadScreenTitle": "Download-Zentrum",

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/authentication_service.dart';
 
 import '../home/home_screen.dart';
 import '../home/profile_screen.dart';
@@ -59,7 +62,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BlocListener(listener: listener, child: Container(
       decoration: BoxDecoration(
         gradient: RadialGradient(
           center: const Alignment(-0.6, -0.7),
@@ -133,6 +136,6 @@ class _HomeState extends State<Home> {
         ),
         body: _pages[_selectedPageIndex],
       ),
-    );
+    ),);
   }
 }

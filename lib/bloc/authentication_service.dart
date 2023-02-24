@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -25,6 +26,8 @@ class AuthenticationService extends Cubit<UserCredentials> {
     }
   }
 
+  Timer? _logoutTimer;
+
   AuthenticationService() : super(UserCredentials.empty());
 
   bool get isAuthenticated =>
@@ -34,6 +37,7 @@ class AuthenticationService extends Cubit<UserCredentials> {
 
   Future attemptSignUp(String email, String password) async {
     final responseData = await _sendAuthRequest(email, password, "signUp");
+    _setAutomaticLogoutTimer();
     emit(
       UserCredentials(
         userId: responseData["localId"],
@@ -49,6 +53,7 @@ class AuthenticationService extends Cubit<UserCredentials> {
 
   Future attemptLogIn(String email, String password) async {
     final responseData = await _sendAuthRequest(email, password, "signInWithPassword");
+    _setAutomaticLogoutTimer();
     emit(
       UserCredentials(
         userId: responseData["localId"],
@@ -63,6 +68,9 @@ class AuthenticationService extends Cubit<UserCredentials> {
   }
 
   void logOut() {
+    if (_logoutTimer != null) {
+      _logoutTimer!.cancel();
+    }
     emit(UserCredentials.empty());
   }
 
@@ -97,5 +105,18 @@ class AuthenticationService extends Cubit<UserCredentials> {
     } catch (error) {
       rethrow;
     }
+  }
+
+  void _setAutomaticLogoutTimer() {
+    if (_logoutTimer != null) {
+      _logoutTimer!.cancel();
+    }
+
+    final timeToLogout = state.expiryDate?.difference(DateTime.now()).inSeconds;
+    if (timeToLogout == null) {
+      return;
+    }
+
+    _logoutTimer = Timer(Duration(seconds: timeToLogout), logOut);
   }
 }

@@ -195,6 +195,10 @@
     "@profileScreenOptionPassword": {
         "description": "Profile screen option for changing password"
     },
+    "profileScreenOptionLogout": "Log out",
+    "@profileScreenOptionLogout": {
+        "description": "Profile screen option for logging out"
+    },
     "profileScreenOptionDelete": "Delete account",
     "@profileScreenOptionDelete": {
         "description": "Profile screen option for deleting account"
