@@ -171,6 +171,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                   AdaptiveButton.icon(
                     AppLocalizations.of(context)!
                         .codingHamiltonianInputLoadButtonLabel,
+                    enabled: true,
                     onPressed: () {},
                     icon: Icons.file_upload_rounded,
                   ),
@@ -209,6 +210,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
               AdaptiveButton.secondary(
                 AppLocalizations.of(context)!.sendButtonLabel,
                 extended: false,
+                enabled: true, //TODO: Lock down Hamiltonian submission while processing request
                 onPressed: () {
                   final selectedMode = widget.getCurrentMode();
                   final success = _submitHamiltonian(context, selectedMode);

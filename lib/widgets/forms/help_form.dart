@@ -61,6 +61,7 @@ class _HelpFormState extends State<HelpForm> {
                 child: AdaptiveButton.secondary(
                   AppLocalizations.of(context)!.sendButtonLabel,
                   extended: true,
+                  enabled: true,
                   onPressed: () {},
                 ),
               )

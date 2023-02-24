@@ -62,6 +62,7 @@ class ProfileExperienceScreen extends StatelessWidget {
                     AdaptiveButton.primary(
                       AppLocalizations.of(context)!.readyButtonLabel,
                       extended: true,
+                      enabled: true,
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
                           builder: (buildContext) => LoadingScreen(
