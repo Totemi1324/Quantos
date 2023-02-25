@@ -88,6 +88,7 @@ class AuthenticationService extends Cubit<UserCredentials> {
     final expiryDate = DateTime.parse(credentialsMap["expiryDate"]);
 
     if (expiryDate.isBefore(DateTime.now())) {
+      preferencesInstance.clear();
       return false;
     }
     emit(
