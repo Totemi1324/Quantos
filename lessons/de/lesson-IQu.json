@@ -37,11 +37,11 @@
         "text": "Um eine nicht existierende Kante zu repräsentieren, könnte man sie also mit einer **massiven Strafe** belegen, so dass die niedrigsten Kosten nie erreicht werden, wenn sie Teil der Tour ist. In der mathematischen Literatur wird dies üblicherweise mit einem Unendlichkeitssymbol ausgedrückt, aber in unserem Fall ist eine hohe ganze Zahl besser geeignet."
     },
     "equation-1": {
-        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0&\\hdots\\\\0&-2&\\infty&2&\\infty\\hdots\\\\0&0&-2&\\infty&2&\\hdots\\\\0&0&0&-2&\\infty\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0\\\\0&-2&\\infty&2&\\infty\\\\0&0&-2&\\infty&2\\\\0&0&0&-2&\\infty\\\\0&0&0&0&-2\\end{bmatrix}",
         "alttext": "H=[[-2,2,2,∞,0,⋯],[0,-2,∞,2,∞,⋯],[0,0,-2,∞,2,⋯],[0,0,0,-2,∞,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
     },
     "equation-2": {
-        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0&\\hdots\\\\0&-2&100&2&100\\hdots\\\\0&0&-2&100&2&\\hdots\\\\0&0&0&-2&100\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0\\\\0&-2&100&2&100\\\\0&0&-2&100&2\\\\0&0&0&-2&100\\\\0&0&0&0&-2\\end{bmatrix}",
         "alttext": "⇒[[-2,2,2,100,0,⋯],[0,-2,100,2,100,⋯],[0,0,-2,100,2,⋯],[0,0,0,-2,100,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
     },
     "paragraph-6": {
