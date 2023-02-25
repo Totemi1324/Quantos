@@ -74,7 +74,7 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
     });
 
     if (!mounted) return;
-    Navigator.of(buildContext).pushReplacement(
+    Navigator.of(buildContext).pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
           Future(
@@ -85,6 +85,7 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
           Home.routeName,
         ),
       ),
+      (_) => false,
     );
   }
 

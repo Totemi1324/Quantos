@@ -41,8 +41,13 @@ class _SplashScreenState extends State<SplashScreen> {
     _toNextPage(context);
   }
 
-  void _toNextPage(BuildContext buildContext) {
-    if (buildContext.read<AuthenticationService>().isAuthenticated) {
+  Future _toNextPage(BuildContext buildContext) async {
+    final autoLoginSuccessful =
+        await buildContext.read<AuthenticationService>().attemptAutoLogIn();
+    if (!mounted) return;
+
+    if (autoLoginSuccessful ||
+        buildContext.read<AuthenticationService>().isAuthenticated) {
       Navigator.of(buildContext).pushReplacement(
         MaterialPageRoute(
           builder: (buildContext) => LoadingScreen(

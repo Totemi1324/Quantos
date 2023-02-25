@@ -3,12 +3,15 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/user_credentials.dart';
 import '../models/exceptions.dart';
 import '../credentials.dart';
 
 class AuthenticationService extends Cubit<UserCredentials> {
+  static const String preferencesEntryKey = "userCredentials";
+
   static AuthenticationError _firebaseErrorCodes(String errorCode) {
     switch (errorCode) {
       case "EMAIL_EXISTS":
@@ -37,7 +40,6 @@ class AuthenticationService extends Cubit<UserCredentials> {
 
   Future attemptSignUp(String email, String password) async {
     final responseData = await _sendAuthRequest(email, password, "signUp");
-    _setAutomaticLogoutTimer();
     emit(
       UserCredentials(
         userId: responseData["localId"],
@@ -49,11 +51,13 @@ class AuthenticationService extends Cubit<UserCredentials> {
         ),
       ),
     );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
   }
 
   Future attemptLogIn(String email, String password) async {
-    final responseData = await _sendAuthRequest(email, password, "signInWithPassword");
-    _setAutomaticLogoutTimer();
+    final responseData =
+        await _sendAuthRequest(email, password, "signInWithPassword");
     emit(
       UserCredentials(
         userId: responseData["localId"],
@@ -65,6 +69,36 @@ class AuthenticationService extends Cubit<UserCredentials> {
         ),
       ),
     );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
+  }
+
+  Future<bool> attemptAutoLogIn() async {
+    final preferencesInstance = await SharedPreferences.getInstance();
+    if (!preferencesInstance.containsKey(preferencesEntryKey)) {
+      return false;
+    }
+
+    final userCredentials = preferencesInstance.getString(preferencesEntryKey);
+    if (userCredentials == null) {
+      return false;
+    }
+
+    final credentialsMap = json.decode(userCredentials) as Map<String, dynamic>;
+    final expiryDate = DateTime.parse(credentialsMap["expiryDate"]);
+
+    if (expiryDate.isBefore(DateTime.now())) {
+      return false;
+    }
+    emit(
+      UserCredentials(
+        userId: credentialsMap["userId"],
+        token: credentialsMap["token"],
+        expiryDate: expiryDate,
+      ),
+    );
+    _setAutomaticLogoutTimer();
+    return true;
   }
 
   void logOut() {
@@ -118,5 +152,16 @@ class AuthenticationService extends Cubit<UserCredentials> {
     }
 
     _logoutTimer = Timer(Duration(seconds: timeToLogout), logOut);
+  }
+
+  Future _storeToken() async {
+    final preferencesInstance = await SharedPreferences.getInstance();
+    final userCredentials = json.encode({
+      "token": state.token,
+      "userId": state.userId,
+      "expiryDate": state.expiryDate?.toIso8601String(),
+    });
+
+    preferencesInstance.setString(preferencesEntryKey, userCredentials);
   }
 }
