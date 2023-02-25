@@ -101,11 +101,15 @@ class AuthenticationService extends Cubit<UserCredentials> {
     return true;
   }
 
-  void logOut() {
+  Future logOut() async {
     if (_logoutTimer != null) {
       _logoutTimer!.cancel();
+      _logoutTimer = null;
     }
     emit(UserCredentials.empty());
+
+    final preferencesInstance = await SharedPreferences.getInstance();
+    preferencesInstance.clear();
   }
 
   Future<Map<String, dynamic>> _sendAuthRequest(
