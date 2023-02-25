@@ -66,6 +66,7 @@ class ProfileAgeScreen extends StatelessWidget {
                     AdaptiveButton.primary(
                       AppLocalizations.of(context)!.confirmButtonLabel,
                       extended: true,
+                      enabled: true,
                       onPressed: () => Navigator.of(context)
                           .pushNamed(ProfileExperienceScreen.routeName),
                     ),

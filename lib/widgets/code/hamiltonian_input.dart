@@ -2,18 +2,27 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qubo_embedder/qubo_embedder.dart';
+
+import '../../bloc/stores/coding_modes_store_service.dart';
+import '../../bloc/coding_service.dart';
 
 import '../../data/hamiltonian_sizes.dart';
-
 import '../part_separator.dart';
 import '../containers/panel_card.dart';
 import '../ui/adaptive_dropdown.dart';
 import '../ui/adaptive_button.dart';
 
 class HamiltonianInput extends StatefulWidget {
+  final CodingMode Function() getCurrentMode;
   final VoidCallback onSubmit;
 
-  const HamiltonianInput({required this.onSubmit, super.key});
+  const HamiltonianInput({
+    required this.getCurrentMode,
+    required this.onSubmit,
+    super.key,
+  });
 
   @override
   State<HamiltonianInput> createState() => _HamiltonianInputState();
@@ -21,26 +30,10 @@ class HamiltonianInput extends StatefulWidget {
 
 class _HamiltonianInputState extends State<HamiltonianInput> {
   late List<DropdownMenuItem> _sizes;
+  late Qubo _qubo;
   int _selectedSize = 4;
 
   final _formKey = GlobalKey<FormState>();
-  final Widget _inputField = TextFormField(
-    keyboardType: TextInputType.number,
-    textInputAction: TextInputAction.next,
-    textAlign: TextAlign.center,
-    decoration: InputDecoration(
-      isDense: true,
-      contentPadding: const EdgeInsets.all(0),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide.none, //<-- SEE HERE
-        borderRadius: BorderRadius.circular(10),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide.none, //<-- SEE HERE
-        borderRadius: BorderRadius.circular(10),
-      ),
-    ),
-  );
 
   @override
   void initState() {
@@ -52,8 +45,45 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
       } else {
         _sizes = sizes;
       }
+      _qubo = Qubo(size: _selectedSize);
     });
   }
+
+  Widget _buildInputField(BuildContext buildContext, int i, int j) =>
+      TextFormField(
+        keyboardType: TextInputType.number,
+        textInputAction: TextInputAction.next,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding: const EdgeInsets.all(0),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.error,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+        validator: (value) =>
+            value != null && value != "" && double.tryParse(value) == null
+                ? ""
+                : null,
+        onSaved: (newValue) {
+          final value = double.tryParse(newValue ?? "");
+          if (value != null) {
+            _qubo.addEntry(i, j, value: value);
+          }
+        },
+      );
 
   List<Widget> _buildGrid(BuildContext buildContext) {
     var result = List<Widget>.empty(growable: true);
@@ -70,7 +100,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                     .withOpacity(0.2),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: _inputField,
+              child: _buildInputField(buildContext, i, j),
             ),
           );
         } else {
@@ -87,6 +117,26 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
       }
     }
     return result;
+  }
+
+  bool _submitHamiltonian(BuildContext buildContext, CodingMode codingMode) {
+    final inputsAreValid = _formKey.currentState?.validate();
+    if (inputsAreValid == null || !inputsAreValid) {
+      return false;
+    }
+    _formKey.currentState?.save();
+
+    switch (codingMode) {
+      case CodingMode.simulator:
+        buildContext.read<CodingService>().add(SendSimulator(_qubo));
+        _qubo = Qubo(size: _selectedSize);
+        break;
+      case CodingMode.annealer:
+        buildContext.read<CodingService>().add(SendAdvantage(_qubo));
+        _qubo = Qubo(size: _selectedSize);
+        break;
+    }
+    return true;
   }
 
   @override
@@ -112,13 +162,16 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                       if (newValue is int) {
                         setState(() {
                           _selectedSize = newValue;
+                          _qubo = Qubo(size: newValue);
                           _formKey.currentState?.reset();
                         });
                       }
                     },
                   ),
                   AdaptiveButton.icon(
-                    AppLocalizations.of(context)!.codingHamiltonianInputLoadButtonLabel,
+                    AppLocalizations.of(context)!
+                        .codingHamiltonianInputLoadButtonLabel,
+                    enabled: true,
                     onPressed: () {},
                     icon: Icons.file_upload_rounded,
                   ),
@@ -130,14 +183,18 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Form(
                     key: _formKey,
-                    child: GridView.count(
-                      crossAxisCount: _selectedSize,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      childAspectRatio: 1,
+                    child: GridView.custom(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      children: _buildGrid(context),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: _selectedSize,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 1,
+                      ),
+                      childrenDelegate: SliverChildListDelegate.fixed(
+                        _buildGrid(context),
+                      ),
                     ),
                   ),
                 ),
@@ -145,14 +202,22 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
-                  AppLocalizations.of(context)!.codingHamiltonianInputInstructions,
+                  AppLocalizations.of(context)!
+                      .codingHamiltonianInputInstructions,
                   textAlign: TextAlign.center,
                 ),
               ),
               AdaptiveButton.secondary(
                 AppLocalizations.of(context)!.sendButtonLabel,
                 extended: false,
-                onPressed: widget.onSubmit,
+                enabled: true, //TODO: Lock down Hamiltonian submission while processing request
+                onPressed: () {
+                  final selectedMode = widget.getCurrentMode();
+                  final success = _submitHamiltonian(context, selectedMode);
+                  if (success) {
+                    widget.onSubmit();
+                  }
+                },
               )
             ],
           ),

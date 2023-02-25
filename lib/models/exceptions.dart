@@ -6,6 +6,15 @@ enum ParseError {
   incompleteJsonObject,
 }
 
+enum AuthenticationError {
+  emailExists,
+  tooManyAttempts,
+  emailNotFound,
+  invalidPassword,
+  userDisabled,
+  unknown,
+}
+
 abstract class QuantosException implements Exception {
   String get exceptionId;
   String get message;
@@ -38,6 +47,33 @@ class ParseErrorException extends QuantosException {
         return "JSON value of $wrongContent has an invalid type.";
       case ParseError.incompleteJsonObject:
         return "JSON object is missing the mandatory entry $wrongContent";
+    }
+  }
+}
+
+class AuthenticationException extends QuantosException {
+  final AuthenticationError responseCode;
+  
+  AuthenticationException(this.responseCode);
+  
+  @override
+  String get exceptionId => "AuthenticationException";
+  
+  @override
+  String get message {
+    switch (responseCode) {
+      case AuthenticationError.emailExists:
+        return "Firebase API on sign up returned error code EMAIL_EXISTS.";
+      case AuthenticationError.tooManyAttempts:
+        return "Firebase API on sign up returned error code TOO_MANY_ATTEMPTS_TRY_LATER.";
+      case AuthenticationError.emailNotFound:
+        return "Firebase API on sign in returned error code EMAIL_NOT_FOUND.";
+      case AuthenticationError.invalidPassword:
+        return "Firebase API on sign in returned error code INVALID_PASSWORD.";
+      case AuthenticationError.userDisabled:
+        return "Firebase API on sign in returned error code USER_DISABLED.";
+      case AuthenticationError.unknown:
+        return "Firebase API returned an unknown error code.";
     }
   }
 }

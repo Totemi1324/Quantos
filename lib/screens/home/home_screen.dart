@@ -23,7 +23,10 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 margin: const EdgeInsets.only(top: 20),
                 child: Text(
-                  userName == null ? AppLocalizations.of(context)!.homeScreenTitleWithoutName : AppLocalizations.of(context)!.homeScreenTitleWithName(userName),
+                  userName == null
+                      ? AppLocalizations.of(context)!.homeScreenTitleWithoutName
+                      : AppLocalizations.of(context)!
+                          .homeScreenTitleWithName(userName),
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),

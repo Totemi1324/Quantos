@@ -20,6 +20,7 @@ dependencies:
   http: ^0.13.5
   flutter_bloc: ^8.1.1
   rive: ^0.9.1
+  qubo_embedder: ^0.1.0
   auto_size_text: ^3.0.0
   flutter_math_fork: ^0.6.3
   flutter_switch: ^0.3.2
@@ -28,6 +29,7 @@ dependencies:
   page_transition: ^2.0.9
   animated_text_kit: ^4.2.2
   package_info_plus: 3.0.1
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,9 @@ flutter:
 
     # Lection content images
     - assets/images/lessons/
+
+    # Credentials
+    - lib/credentials.json
 
 
   # To add custom fonts to your application, add a fonts section here,

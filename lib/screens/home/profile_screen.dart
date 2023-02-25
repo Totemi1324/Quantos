@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/authentication_service.dart';
 
 import '../profile/profile_name_screen.dart';
-
+import '../splash_screen.dart';
 import '../../widgets/part_separator.dart';
 import '../../widgets/account_settings_item.dart';
 
@@ -118,6 +121,17 @@ class ProfileScreen extends StatelessWidget {
                   AccountSettingsItem(
                     AppLocalizations.of(context)!.profileScreenOptionPassword,
                     onTap: () => _sendWorkInProgressMessage(context),
+                  ),
+                  AccountSettingsItem(
+                    AppLocalizations.of(context)!.profileScreenOptionLogout,
+                    optionColor: Theme.of(context).colorScheme.error,
+                    onTap: () {
+                      context.read<AuthenticationService>().logOut();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        SplashScreen.routeName,
+                        (_) => false,
+                      );
+                    },
                   ),
                   AccountSettingsItem(
                     AppLocalizations.of(context)!.profileScreenOptionDelete,

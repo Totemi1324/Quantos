@@ -15,6 +15,7 @@ class AdaptiveButton extends StatelessWidget {
   final bool extended;
   final bool navigator;
   final VoidCallback onPressed;
+  final bool enabled;
   final IconData? icon;
 
   const AdaptiveButton(this.label,
@@ -22,37 +23,41 @@ class AdaptiveButton extends StatelessWidget {
       required this.extended,
       required this.navigator,
       required this.onPressed,
+      required this.enabled,
       this.icon,
       super.key});
 
   factory AdaptiveButton.primary(String label,
-          {required bool extended, required VoidCallback onPressed}) =>
+          {required bool extended, required VoidCallback onPressed, required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.primary,
         extended: extended,
         navigator: false,
         onPressed: onPressed,
+        enabled: enabled,
       );
 
   factory AdaptiveButton.secondary(String label,
-          {required bool extended, required VoidCallback onPressed}) =>
+          {required bool extended, required VoidCallback onPressed, required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.secondary,
         extended: extended,
         navigator: false,
         onPressed: onPressed,
+        enabled: enabled,
       );
 
   factory AdaptiveButton.icon(String label,
-          {required VoidCallback onPressed, required IconData icon}) =>
+          {required VoidCallback onPressed, required IconData icon, required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.primary,
         extended: false,
         navigator: false,
         onPressed: onPressed,
+        enabled: enabled,
         icon: icon,
       );
 
@@ -66,6 +71,7 @@ class AdaptiveButton extends StatelessWidget {
         extended: false,
         navigator: true,
         onPressed: onPressed,
+        enabled: true,
         icon: icon,
       );
 
@@ -118,12 +124,12 @@ class AdaptiveButton extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned.fill(
+            if (enabled) Positioned.fill(
               child: Container(
                 decoration: decorationFirstLayer,
               ),
             ),
-            Positioned.fill(
+            if (enabled) Positioned.fill(
               child: Container(
                 decoration: decorationSecondLayer,
               ),
@@ -135,6 +141,7 @@ class AdaptiveButton extends StatelessWidget {
                       context.read<ThemeService>().accessibilityModeActive
                           ? Theme.of(context).colorScheme.onPrimary
                           : Colors.white,
+                  disabledBackgroundColor: Colors.grey,
                   padding: navigator
                       ? const EdgeInsets.all(0)
                       : const EdgeInsets.symmetric(
@@ -143,7 +150,7 @@ class AdaptiveButton extends StatelessWidget {
                         ),
                   textStyle: Theme.of(context).textTheme.labelLarge,
                 ),
-                onPressed: onPressed,
+                onPressed: enabled ? onPressed : null,
                 child: icon == null
                     ? labelText
                     : Row(

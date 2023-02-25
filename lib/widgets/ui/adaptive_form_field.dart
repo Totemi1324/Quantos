@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdaptiveFormField extends StatefulWidget {
   final String labelText;
@@ -10,17 +11,23 @@ class AdaptiveFormField extends StatefulWidget {
   final IconData? prefixIcon;
   final bool passwordField;
   final bool multiline;
+  final String? Function(String?)? validator;
+  final AutovalidateMode? autoValidateMode;
+  final Function(String?) onSaved;
 
   const AdaptiveFormField(
     this.labelText, {
     required this.autocorrect,
     required this.enableSuggestions,
     required this.isFinalField,
+    required this.onSaved,
     this.thisField,
     this.nextField,
     this.prefixIcon,
     this.passwordField = false,
     this.multiline = false,
+    this.validator,
+    this.autoValidateMode,
     super.key,
   });
 
@@ -29,38 +36,51 @@ class AdaptiveFormField extends StatefulWidget {
           required bool autocorrect,
           required bool enableSuggestions,
           required bool isFinalField,
+          required Function(String?) onSaved,
           FocusNode? thisField,
-          FocusNode? nextField}) =>
+          FocusNode? nextField,
+          String? Function(String?)? validator,
+          AutovalidateMode? autoValidateMode}) =>
       AdaptiveFormField(
         labelText,
         prefixIcon: prefixIcon,
         autocorrect: autocorrect,
         enableSuggestions: enableSuggestions,
         isFinalField: isFinalField,
+        onSaved: onSaved,
         thisField: thisField,
         nextField: nextField,
+        validator: validator,
+        autoValidateMode: autoValidateMode,
       );
 
   factory AdaptiveFormField.password(String labelText,
           {required bool isFinalField,
+          required Function(String?) onSaved,
           IconData? prefixIcon,
           FocusNode? thisField,
-          FocusNode? nextField}) =>
+          FocusNode? nextField,
+          String? Function(String?)? validator,
+          AutovalidateMode? autoValidateMode}) =>
       AdaptiveFormField(
         labelText,
         autocorrect: false,
         enableSuggestions: false,
         isFinalField: isFinalField,
+        onSaved: onSaved,
         thisField: thisField,
         nextField: nextField,
         prefixIcon: prefixIcon,
         passwordField: true,
+        validator: validator,
+        autoValidateMode: autoValidateMode,
       );
 
   factory AdaptiveFormField.multiline(String labelText,
           {required bool autocorrect,
           required bool enableSuggestions,
           required bool isFinalField,
+          required Function(String?) onSaved,
           IconData? prefixIcon,
           FocusNode? thisField,
           FocusNode? nextField}) =>
@@ -69,6 +89,7 @@ class AdaptiveFormField extends StatefulWidget {
         autocorrect: autocorrect,
         enableSuggestions: enableSuggestions,
         isFinalField: isFinalField,
+        onSaved: onSaved,
         prefixIcon: prefixIcon,
         multiline: true,
         thisField: thisField,
@@ -98,6 +119,9 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
       onFieldSubmitted: !widget.isFinalField
           ? (_) => FocusScope.of(context).requestFocus(widget.nextField)
           : null,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
+      autovalidateMode: widget.autoValidateMode ?? AutovalidateMode.disabled,
       decoration: InputDecoration(
         prefixIcon: widget.prefixIcon != null
             ? Icon(widget.prefixIcon)
@@ -111,7 +135,7 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
                       ? Icons.visibility_rounded
                       : Icons.visibility_off_rounded,
                 ),
-                tooltip: "Show or hide password",
+                tooltip: AppLocalizations.of(context)?.tooltipShowHidePassword,
                 onPressed: () => setState(() {
                   _hidden = !_hidden;
                 }),
@@ -119,6 +143,7 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
             : null,
         labelText: widget.labelText,
         labelStyle: Theme.of(context).textTheme.labelSmall,
+        errorMaxLines: 6,
       ),
     );
   }

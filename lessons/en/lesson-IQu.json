@@ -37,11 +37,11 @@
         "text": "So, to represent a non-existent edge, one could impose a **massive penalty** on it, so that the lowest cost is never reached if it is part of the tour. In the mathematical literature this is usually expressed with an infinity symbol, but in our case a high integer value is more appropriate."
     },
     "equation-1": {
-        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0&\\hdots\\\\0&-2&\\infty&2&\\infty\\hdots\\\\0&0&-2&\\infty&2&\\hdots\\\\0&0&0&-2&\\infty\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "tex": "H=\\begin{bmatrix}-2&2&2&\\infty&0\\\\0&-2&\\infty&2&\\infty\\\\0&0&-2&\\infty&2\\\\0&0&0&-2&\\infty\\\\0&0&0&0&-2\\end{bmatrix}",
         "alttext": "H=[[-2,2,2,∞,0,⋯],[0,-2,∞,2,∞,⋯],[0,0,-2,∞,2,⋯],[0,0,0,-2,∞,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
     },
     "equation-2": {
-        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0&\\hdots\\\\0&-2&100&2&100\\hdots\\\\0&0&-2&100&2&\\hdots\\\\0&0&0&-2&100\\hdots\\\\0&0&0&0&-2&\\hdots\\\\\\vdots\\vdots\\vdots\\vdots\\vdots\\ddots\\end{bmatrix}",
+        "tex": "\\Rightarrow\\begin{bmatrix}-2&2&2&100&0\\\\0&-2&100&2&100\\\\0&0&-2&100&2\\\\0&0&0&-2&100\\\\0&0&0&0&-2\\end{bmatrix}",
         "alttext": "⇒[[-2,2,2,100,0,⋯],[0,-2,100,2,100,⋯],[0,0,-2,100,2,⋯],[0,0,0,-2,100,⋯],[0,0,0,0,-2,⋯],[⋮,⋮,⋮,⋮,⋮,⋱]]"
     },
     "paragraph-6": {

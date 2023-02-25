@@ -29,6 +29,7 @@ class TokenInput extends StatelessWidget {
               AdaptiveFormField.password(
                 AppLocalizations.of(context)!.codingTokenFormField,
                 isFinalField: true,
+                onSaved: (_) {}, //TODO
               ),
             ],
           ),

@@ -3,9 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/authentication_service.dart';
+import '../bloc/content_outline_service.dart';
+import '../bloc/localization_service.dart';
 
 import 'base/flat.dart';
+import 'base/home.dart';
 import 'auth/auth_home_screen.dart';
+import './loading_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = "/splash-screen";
@@ -34,8 +41,29 @@ class _SplashScreenState extends State<SplashScreen> {
     _toNextPage(context);
   }
 
-  void _toNextPage(BuildContext buildContext) =>
-      Navigator.of(buildContext).pushNamed(AuthHomeScreen.routeName);
+  Future _toNextPage(BuildContext buildContext) async {
+    final autoLoginSuccessful =
+        await buildContext.read<AuthenticationService>().attemptAutoLogIn();
+    if (!mounted) return;
+
+    if (autoLoginSuccessful ||
+        buildContext.read<AuthenticationService>().isAuthenticated) {
+      Navigator.of(buildContext).pushReplacement(
+        MaterialPageRoute(
+          builder: (buildContext) => LoadingScreen(
+            Future(
+              () => buildContext.read<ContentOutlineService>().loadFromLocale(
+                    buildContext.read<LocalizationService>().state,
+                  ),
+            ),
+            Home.routeName,
+          ),
+        ),
+      );
+    } else {
+      Navigator.of(buildContext).pushReplacementNamed(AuthHomeScreen.routeName);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

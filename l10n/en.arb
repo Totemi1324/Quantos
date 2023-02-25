@@ -195,6 +195,10 @@
     "@profileScreenOptionPassword": {
         "description": "Profile screen option for changing password"
     },
+    "profileScreenOptionLogout": "Log out",
+    "@profileScreenOptionLogout": {
+        "description": "Profile screen option for logging out"
+    },
     "profileScreenOptionDelete": "Delete account",
     "@profileScreenOptionDelete": {
         "description": "Profile screen option for deleting account"
@@ -430,7 +434,7 @@
     "@codingConsoleOutputMessageLoading": {
         "description": "Coding console output message for loading status"
     },
-    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top 5 solutions, sorted from best to worst energy:",
+    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top solutions (up to 5), sorted from best to worst energy:",
     "@codingConsoleOutputMessageSuccess": {
         "description": "Coding console output message for success status"
     },
@@ -544,5 +548,55 @@
                 "example": "FlutterException"
             }
         }
+    },
+    "authenticationErrorEmailExists": "The email address provided already belongs to another user. Please choose another address or, if you already created the account, try to log in instead!",
+    "@authenticationErrorEmailExists": {
+        "description": "Authentication error message for email exists"
+    },
+    "authenticationErrorTooManyAttempts": "We detected too many sign up attempts for this email address and locked it temporarily due to potentially malicious activity. Please try again later!",
+    "@authenticationErrorTooManyAttempts": {
+        "description": "Authentication error message for too many attempts"
+    },
+    "authenticationErrorEmailNotFound": "The email address provided does not belong to any account. If you are new here, sign up first to create your account! If you believe you got this message in error, please contact us at help@quantos.online.",
+    "@authenticationErrorEmailNotFound": {
+        "description": "Authentication error message for email not found"
+    },
+    "authenticationErrorInvalidPassword": "The password entered is incorrect. Try again!",
+    "@authenticationErrorInvalidPassword": {
+        "description": "Authentication error message for invalid password"
+    },
+    "authenticationErrorUserDisabled": "Log in not possible because this account has been disabled. If you believe you got this message in error, please contact us at help@quantos.online.",
+    "@authenticationErrorUserDisabled": {
+        "description": "Authentication error message for disabled user"
+    },
+    "authenticationErrorUnknown": "Something went wrong. Please try again later! If the issue persists, please contact us at help@quantos.online.",
+    "@authenticationErrorUnknown": {
+        "description": "Authentication error message for unknown"
+    },
+
+    "validationFailEmailIncorrectFormat": "Please enter a valid email address.",
+    "@validationFailEmailIncorrectFormat": {
+        "description": "Validation fail message for email in incorrect format"
+    },
+    "validationFailPasswordNotSufficient": "Your password must fulfill the following requirements:\n- Minimum length of 10 characters\n- At least one letter\n- At least one number\n- At least one special character",
+    "@validationFailPasswordNotSufficient": {
+        "description": "Validation fail message for not sufficient password"
+    },
+    "validationFailConfirmPasswordNoMatch": "Passwords do not match.",
+    "@validationFailConfirmPasswordNoMatch": {
+        "description": "Validation fail message for not matching confirm password"
+    },
+    "validationFailEmailMissing": "Email address is required.",
+    "@validationFailEmailMissing": {
+        "description": "Validation fail message for missing email"
+    },
+    "validationFailPasswordMissing": "Password is required.",
+    "@validationFailPasswordMissing": {
+        "description": "Validation fail message for missing password"
+    },
+
+    "tooltipShowHidePassword": "Show or hide password",
+    "@tooltipShowHidePassword": {
+        "description": "Tooltip for show hide password button"
     }
 }

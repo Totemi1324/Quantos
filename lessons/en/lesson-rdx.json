@@ -21,7 +21,7 @@
         "text": "The 8 queens problem here needs an additional rule, which says that the diagonal, which is in the range of the corner queen, must remain free, since it is already occupied. In mathematical terms, this means that **exactly 0 fields** should be occupied on this diagonal. To implement this, we simply adjust the QUBO equation of the diagonal, depending on which one it is:"
     },
     "equation-1": {
-        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
+        "tex": "f\\left(a,f,k,p\\right)=\\left(a+f+k+p-\\frac{1}{2}\\right)^2\\Rightarrow f\\left(a,f,k,p\\right)=\\left(a+f+k+p\\right)^2",
         "alttext": "f(a,f,k,p)=(a+f+k+p-½)²⇒f(a,f,k,p)=(a+f+k+p)²"
     },
     "paragraph-4": {

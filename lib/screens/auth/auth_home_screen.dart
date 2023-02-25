@@ -39,6 +39,7 @@ class AuthHomeScreen extends StatelessWidget {
           child: AdaptiveButton.primary(
             buttonLabel,
             extended: false,
+            enabled: true,
             onPressed: () => Navigator.of(buildContext).pushNamed(routeName),
           ),
         ),

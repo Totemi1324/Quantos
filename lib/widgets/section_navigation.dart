@@ -3,9 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SectionNavigation extends StatefulWidget {
   final List<String> sectionTitles;
-  final Function(String) onTap; 
+  final Function(String) onTap;
 
-  const SectionNavigation({required this.sectionTitles, required this.onTap, super.key});
+  const SectionNavigation(
+      {required this.sectionTitles, required this.onTap, super.key});
 
   @override
   State<SectionNavigation> createState() => _SectionNavigationState();
@@ -16,9 +17,10 @@ class _SectionNavigationState extends State<SectionNavigation> {
 
   @override
   Widget build(BuildContext context) {
-
     return ExpansionTile(
-      title: Text(AppLocalizations.of(context)!.lessonScreenOutlinesNavigation),
+      title: Text(
+        AppLocalizations.of(context)!.lessonScreenOutlinesNavigation,
+      ),
       children: [
         Row(
           children: [

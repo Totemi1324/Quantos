@@ -57,6 +57,7 @@ class ProfileNameScreen extends StatelessWidget {
                   AdaptiveButton.primary(
                     AppLocalizations.of(context)!.confirmButtonLabel,
                     extended: true,
+                    enabled: true,
                     onPressed: () => _onSubmit(context, "Tamas"),
                   ),
                   const SizedBox(

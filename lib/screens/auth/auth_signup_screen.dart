@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
-import '../profile/profile_name_screen.dart';
 import '../../widgets/forms/signup_form.dart';
-import '../../widgets/ui/adaptive_button.dart';
 
 class AuthSignUpScreen extends StatelessWidget {
   static const routeName = "/authenticate/sign-up";
@@ -35,13 +33,6 @@ class AuthSignUpScreen extends StatelessWidget {
                     margin: const EdgeInsets.symmetric(vertical: 50),
                     child: const SignUpForm(),
                   ),
-                  AdaptiveButton.secondary(
-                    AppLocalizations.of(context)!.authSignUpButtonLabel,
-                    extended: true,
-                    onPressed: () => Navigator.of(context)
-                        .pushNamedAndRemoveUntil(
-                            ProfileNameScreen.routeName, (_) => false),
-                  )
                 ],
               ),
             ),
