@@ -12,6 +12,7 @@ import '../ui/adaptive_form_field.dart';
 import '../ui/adaptive_button.dart';
 import '../../models/exceptions.dart';
 import '../authentication_error_popup.dart';
+import '../no_intnernet_popup.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({super.key});
@@ -50,6 +51,16 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
       showDialog(
         context: context,
         builder: (_) => AuthenticationErrorPopup(error.responseCode),
+        barrierDismissible: true,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    } on NoInternetException {
+      showDialog(
+        context: context,
+        builder: (_) => const NoInternetPopup(),
         barrierDismissible: true,
       );
       setState(() {

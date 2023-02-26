@@ -7,7 +7,8 @@ import '../../bloc/authentication_service.dart';
 import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
 import '../../models/exceptions.dart';
-import '../../widgets/authentication_error_popup.dart';
+import '../authentication_error_popup.dart';
+import '../no_intnernet_popup.dart';
 import '../../screens/profile/profile_name_screen.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -62,6 +63,16 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
       showDialog(
         context: context,
         builder: (_) => AuthenticationErrorPopup(error.responseCode),
+        barrierDismissible: true,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    } on NoInternetException {
+      showDialog(
+        context: context,
+        builder: (_) => const NoInternetPopup(),
         barrierDismissible: true,
       );
       setState(() {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:io' show SocketException;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -141,6 +142,8 @@ class AuthenticationService extends Cubit<UserCredentials> {
             _firebaseErrorCodes(responseJson["error"]["message"]));
       }
       return responseJson;
+    } on SocketException {
+      throw NoInternetException();
     } catch (error) {
       rethrow;
     }

@@ -146,6 +146,7 @@
     "authenticationErrorInvalidPassword": "Das eingegebene Passwort ist falsch. Bitte nochmal versuchen!",
     "authenticationErrorUserDisabled": "Einloggen nicht möglich, da dieses Konto deaktiviert wurde. Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
     "authenticationErrorUnknown": "Etwas ist schief gelaufen. Bitte versuche es später noch einmal! Wenn das Problem weiterhin besteht, kontaktiere uns bitte unter help@quantos.online.",
+    "noInternetConnectionErrorMessage": "Keine Internetverbindung! Bitte versuche es später noch einmal.",
 
     "validationFailEmailIncorrectFormat": "Bitte gib eine gülte Email-Adresse an.",
     "validationFailPasswordNotSufficient": "Dein Passwort muss folgendes beinhalten:\n- Mindestens 10 Zeichen\n- Mindestens ein Buchstabe\n- Mindestens eine Zahl\n- Mindestens ein Sonderzeichen",

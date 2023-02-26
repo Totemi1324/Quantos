@@ -573,6 +573,10 @@
     "@authenticationErrorUnknown": {
         "description": "Authentication error message for unknown"
     },
+    "noInternetConnectionErrorMessage": "No internet connection! Please try again later.",
+    "@noInternetConnectionErrorMessage": {
+        "description": "No internet connection error message"
+    },
 
     "validationFailEmailIncorrectFormat": "Please enter a valid email address.",
     "@validationFailEmailIncorrectFormat": {

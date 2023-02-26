@@ -53,12 +53,12 @@ class ParseErrorException extends QuantosException {
 
 class AuthenticationException extends QuantosException {
   final AuthenticationError responseCode;
-  
+
   AuthenticationException(this.responseCode);
-  
+
   @override
   String get exceptionId => "AuthenticationException";
-  
+
   @override
   String get message {
     switch (responseCode) {
@@ -76,4 +76,13 @@ class AuthenticationException extends QuantosException {
         return "Firebase API returned an unknown error code.";
     }
   }
+}
+
+class NoInternetException extends QuantosException {
+  @override
+  String get exceptionId => "NoInternetException";
+
+  @override
+  String get message =>
+      "Operation failed because client device has no active internet connection.";
 }
