@@ -8,6 +8,7 @@ class SliderSelectForm extends StatefulWidget {
   final String animationAsset;
   final String stateMachine;
   final String scalarInput;
+  final Function(int)? onChanged;
 
   const SliderSelectForm({
     required this.divisions,
@@ -16,6 +17,7 @@ class SliderSelectForm extends StatefulWidget {
     required this.stateMachine,
     required this.scalarInput,
     this.initialDivision,
+    this.onChanged,
     super.key,
   });
 
@@ -81,6 +83,9 @@ class _SliderSelectFormState extends State<SliderSelectForm> {
               });
               if (_sliderValue != null) {
                 _sliderValue!.value = _selected;
+              }
+              if (widget.onChanged != null) {
+                widget.onChanged!(_selected.toInt());
               }
             },
           ),

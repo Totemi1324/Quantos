@@ -71,7 +71,7 @@ class RouteRegister {
         );
       case ProfileNameScreen.routeName:
         return PageTransition(
-          child: const ProfileNameScreen(),
+          child: ProfileNameScreen(),
           type: PageTransitionType.fade,
           curve: Curves.ease,
           duration: const Duration(milliseconds: 500),

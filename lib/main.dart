@@ -7,6 +7,7 @@ import 'bloc/localization_service.dart';
 import 'bloc/authentication_service.dart';
 import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
+import '../../bloc/profile_info_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -41,31 +42,28 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AuthenticationService>(
           create: (_) => AuthenticationService(),
-        )
+        ),
+        BlocProvider<ProfileInfoService>(
+          create: (_) => ProfileInfoService(),
+        ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(
         builder: (context, currentLocale) =>
             BlocBuilder<ThemeService, ThemeData>(
-          builder: (context, activeTheme) =>
-              BlocBuilder<ContentOutlineService, ContentOutline>(
-            builder: (context, contentOutline) =>
-                BlocBuilder<AuthenticationService, UserCredentials>(
-              builder: (context, state) => MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: "Quantos",
-                theme: activeTheme,
-                locale: context.read<LocalizationService>().state,
-                supportedLocales:
-                    context.read<LocalizationService>().supportedLocales,
-                localizationsDelegates:
-                    context.read<LocalizationService>().localizationsDelegates,
-                initialRoute: SplashScreen.routeName,
-                routes: {
-                  SplashScreen.routeName: (context) => const SplashScreen(),
-                },
-                onGenerateRoute: RouteRegister.onGenerateRoute,
-              ),
-            ),
+          builder: (context, activeTheme) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: "Quantos",
+            theme: activeTheme,
+            locale: currentLocale,
+            supportedLocales:
+                context.read<LocalizationService>().supportedLocales,
+            localizationsDelegates:
+                context.read<LocalizationService>().localizationsDelegates,
+            initialRoute: SplashScreen.routeName,
+            routes: {
+              SplashScreen.routeName: (context) => const SplashScreen(),
+            },
+            onGenerateRoute: RouteRegister.onGenerateRoute,
           ),
         ),
       ),

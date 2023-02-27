@@ -6,10 +6,12 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 import '../../bloc/stores/experience_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
 import '../../bloc/content_outline_service.dart';
+import '../../bloc/profile_info_service.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
 import '../../screens/loading_screen.dart';
+import '../../models/profile_info.dart';
 import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
@@ -58,6 +60,9 @@ class ProfileExperienceScreen extends StatelessWidget {
                         animationAsset: Assets.animations.experienceSelection,
                         stateMachine: "ExperienceClasses",
                         scalarInput: "experience_class",
+                        onChanged: (selected) => context
+                            .read<ProfileInfoService>()
+                            .updateExperience(Experience.values[selected]),
                       ),
                     ),
                     AdaptiveButton.primary(
