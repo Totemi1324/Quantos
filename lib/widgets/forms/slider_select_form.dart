@@ -7,12 +7,14 @@ class SliderSelectForm extends StatefulWidget {
   final int? initialDivision;
   final String animationAsset;
   final String stateMachine;
+  final String scalarInput;
 
   const SliderSelectForm({
     required this.divisions,
     required this.divisionToString,
     required this.animationAsset,
     required this.stateMachine,
+    required this.scalarInput,
     this.initialDivision,
     super.key,
   });
@@ -23,17 +25,16 @@ class SliderSelectForm extends StatefulWidget {
 
 class _SliderSelectFormState extends State<SliderSelectForm> {
   late double _selected;
-  late StateMachineController _controller;
+  //late StateMachineController _controller;
+  SMINumber? _sliderValue;
 
   void _onInit(Artboard artboard) {
     var controller =
         StateMachineController.fromArtboard(artboard, widget.stateMachine)
             as StateMachineController;
-    controller.isActive = true;
     artboard.addController(controller);
-    setState(() {
-      _controller = controller;
-    });
+    _sliderValue =
+        controller.findInput<double>(widget.scalarInput) as SMINumber;
   }
 
   @override
@@ -78,6 +79,9 @@ class _SliderSelectFormState extends State<SliderSelectForm> {
               setState(() {
                 _selected = value;
               });
+              if (_sliderValue != null) {
+                _sliderValue!.value = _selected;
+              }
             },
           ),
         ),

@@ -56,7 +56,8 @@ class ProfileExperienceScreen extends StatelessWidget {
                         divisionToString: state,
                         initialDivision: 0,
                         animationAsset: Assets.animations.experienceSelection,
-                        stateMachine: "AgeClasses",
+                        stateMachine: "ExperienceClasses",
+                        scalarInput: "experience_class",
                       ),
                     ),
                     AdaptiveButton.primary(

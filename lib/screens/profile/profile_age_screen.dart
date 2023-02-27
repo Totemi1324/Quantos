@@ -61,6 +61,7 @@ class ProfileAgeScreen extends StatelessWidget {
                         initialDivision: 1,
                         animationAsset: Assets.animations.ageSelection,
                         stateMachine: "AgeClasses",
+                        scalarInput: "age_class",
                       ),
                     ),
                     AdaptiveButton.primary(
