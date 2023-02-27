@@ -6,9 +6,13 @@ import 'notification_item.dart';
 
 class NotificationStatistic extends NotificationItem {
   final Statistic statisticObject;
+  final VoidCallback onOpenAction;
+  final VoidCallback onCloseAction;
 
   const NotificationStatistic({
     required this.statisticObject,
+    required this.onOpenAction,
+    required this.onCloseAction,
     super.key,
   }) : super(NotificationType.statistic, dismissible: false);
 
@@ -21,11 +25,8 @@ class NotificationStatistic extends NotificationItem {
   }
 
   @override
-  void onClose() {
-  }
+  void onClose() => onCloseAction();
 
   @override
-  void onOpen() {
-    // TODO: implement onOpen
-  }
+  void onOpen() => onOpenAction();
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/navigation_service.dart';
 
 import '../../screens/notification_screen.dart';
-
 import 'notification_news.dart';
 import 'notification_statistic.dart';
 import '../../models/synced_list.dart';
@@ -30,7 +32,7 @@ class _NotificationBarState extends State<NotificationBar> {
     super.initState();
     _notifications = SyncedList<Notification>(
       listKey: _listKey,
-      initialItems: news.map((element) => element).toList(),
+      initialItems: notifications.map((element) => element).toList(),
       removedItemBuilder: _buildRemovedItem,
     );
   }
@@ -57,6 +59,7 @@ class _NotificationBarState extends State<NotificationBar> {
                 setState(() {
                   _notifications.removeAt(listIndex);
                 });
+                notifications.removeAt(listIndex);
               },
             ),
           ),
@@ -66,6 +69,9 @@ class _NotificationBarState extends State<NotificationBar> {
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: NotificationStatistic(
             statisticObject: notification as Statistic,
+            onOpenAction: () =>
+                buildContext.read<NavigationService>().navigateToPage(3),
+            onCloseAction: () {},
           ),
         );
     }
