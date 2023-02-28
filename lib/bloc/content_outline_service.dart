@@ -45,7 +45,6 @@ class ContentOutlineService extends Cubit<ContentOutline> {
           readTimeInMinutes: 4,
         ),
       ],
-      unlocked: true,
     ),
     Lection(
       id: "fC9",
@@ -78,7 +77,6 @@ class ContentOutlineService extends Cubit<ContentOutline> {
           readTimeInMinutes: 1,
         ),
       ],
-      unlocked: true,
     ),
     Lection(
       id: "chj",
@@ -115,7 +113,6 @@ class ContentOutlineService extends Cubit<ContentOutline> {
           readTimeInMinutes: 1,
         ),
       ],
-      unlocked: true,
     ),
     Lection(
       id: "BiE",
@@ -151,12 +148,6 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       .map((lection) => lection.lessons)
       .expand((list) => list)
       .toList();
-
-  double get cumulativeProgress =>
-      _contentData
-          .map((lection) => lection.progressPercent)
-          .reduce((value, number) => value + number) /
-      _contentData.length;
 
   //Queries
   Lection lection(String lectionId) {

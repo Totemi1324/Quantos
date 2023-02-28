@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/theme_service.dart';
 import '../bloc/content_outline_service.dart';
+import '../bloc/database_service.dart';
 
 import './ui/adaptive_progress_bar.dart';
 
@@ -36,7 +37,9 @@ class _ProgressListState extends State<ProgressList> {
                     .getLectionTitle(lections[index].id),
                 style: context.read<ThemeService>().state.textTheme.titleMedium,
               ),
-              AdaptiveProgressBar.text(lections[index].progressPercent),
+              AdaptiveProgressBar.text(
+                context.read<DatabaseService>().lectionProgress(lections[index].id),
+              ),
             ],
           ),
         ),

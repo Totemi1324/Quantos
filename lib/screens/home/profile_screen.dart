@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
 import '../../bloc/localization_service.dart';
 import '../../bloc/stores/age_classes_store_service.dart';
 import '../../bloc/stores/experience_classes_store_service.dart';
@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileInfo = context.read<DatabaseService>().state;
+    final userInfo = context.read<DatabaseService>().state;
 
     return MultiBlocProvider(
       providers: [
@@ -122,13 +122,13 @@ class ProfileScreen extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(vertical: 30),
                       child: _buildUserInfo(
                         context,
-                        age: ageClasses[profileInfo.age.index] ?? "NaN",
+                        age: ageClasses[userInfo.age.index] ?? "NaN",
                         experience:
-                            experienceClasses[profileInfo.experience.index] ??
+                            experienceClasses[userInfo.experience.index] ??
                                 "NaN",
-                        name: profileInfo.name,
-                        team: profileInfo.name == "Tamas"
-                            ? profileInfo.team
+                        name: userInfo.name,
+                        team: userInfo.name == "Tamas"
+                            ? userInfo.team
                             : null,
                       ),
                     ),

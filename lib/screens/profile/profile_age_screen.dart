@@ -5,11 +5,11 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../../bloc/stores/age_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../base/flat.dart';
 import './profile_experience_screen.dart';
-import '../../models/profile_info.dart';
+import '../../models/user_data.dart';
 import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 

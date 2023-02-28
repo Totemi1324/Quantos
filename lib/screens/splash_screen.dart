@@ -42,6 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future _toNextPage(BuildContext buildContext) async {
+    _timer.cancel();
     final autoLoginSuccessful =
         await buildContext.read<AuthenticationService>().attemptAutoLogIn();
     if (!mounted) return;

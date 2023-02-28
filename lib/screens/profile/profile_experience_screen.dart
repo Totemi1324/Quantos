@@ -6,12 +6,13 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 import '../../bloc/stores/experience_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
 import '../../bloc/content_outline_service.dart';
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
+import '../../bloc/authentication_service.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
 import '../../screens/loading_screen.dart';
-import '../../models/profile_info.dart';
+import '../../models/user_data.dart';
 import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
@@ -73,13 +74,22 @@ class ProfileExperienceScreen extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (buildContext) => LoadingScreen(
                             Future(
-                              () => buildContext
-                                  .read<ContentOutlineService>()
-                                  .loadFromLocale(
-                                    buildContext
-                                        .read<LocalizationService>()
-                                        .state,
-                                  ),
+                              () async {
+                                buildContext
+                                .read<ContentOutlineService>()
+                                .loadFromLocale(
+                                  buildContext
+                                      .read<LocalizationService>()
+                                      .state,
+                                );
+                                await buildContext
+                                .read<DatabaseService>().
+                                updateProfileInfo(
+                                  buildContext
+                                      .read<AuthenticationService>()
+                                      .state.userId,
+                                );
+                              }
                             ),
                             Home.routeName,
                           ),
