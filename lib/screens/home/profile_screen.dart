@@ -24,40 +24,43 @@ class ProfileScreen extends StatelessWidget {
     String? name,
     String? team,
   }) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        if (name != null)
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (name != null)
+            Text(
+              name,
+              style: Theme.of(buildContext).textTheme.headlineLarge,
+              textAlign: TextAlign.center,
+            ),
+          if (name != null)
+            const SizedBox(
+              height: 10,
+            ),
           Text(
-            name,
-            style: Theme.of(buildContext).textTheme.headlineLarge,
-            textAlign: TextAlign.center,
+            age,
+            style: Theme.of(buildContext).textTheme.labelLarge,
           ),
-        if (name != null)
           const SizedBox(
             height: 10,
           ),
-        Text(
-          age,
-          style: Theme.of(buildContext).textTheme.labelLarge,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          experience,
-          style: Theme.of(buildContext).textTheme.labelLarge,
-        ),
-        if (team != null)
-          const SizedBox(
-            height: 10,
-          ),
-        if (team != null)
           Text(
-            AppLocalizations.of(buildContext)!.profileScreenAffiliation(team),
-            textAlign: TextAlign.center,
+            experience,
+            style: Theme.of(buildContext).textTheme.labelLarge,
           ),
-      ],
+          if (team != null)
+            const SizedBox(
+              height: 10,
+            ),
+          if (team != null)
+            Text(
+              AppLocalizations.of(buildContext)!.profileScreenAffiliation(team),
+              textAlign: TextAlign.center,
+            ),
+        ],
+      ),
     );
   }
 

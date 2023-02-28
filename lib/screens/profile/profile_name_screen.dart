@@ -58,8 +58,14 @@ class ProfileNameScreen extends StatelessWidget {
                             labelStyle: Theme.of(context).textTheme.labelSmall,
                           ),
                           onSaved: (newValue) => context
-                                  .read<DatabaseService>()
-                                  .updateName(newValue),
+                              .read<DatabaseService>()
+                              .updateName(newValue),
+                          validator: (value) {
+                            if (value == null || value == "") {
+                              return "";
+                            }
+                            return null;
+                          },
                         ),
                       ),
                     ),
@@ -68,6 +74,11 @@ class ProfileNameScreen extends StatelessWidget {
                       extended: true,
                       enabled: true,
                       onPressed: () {
+                        final success =
+                            _formKey.currentState?.validate() ?? false;
+                        if (!success) {
+                          return;
+                        }
                         _formKey.currentState?.save();
                         _onSubmit(context);
                       },
@@ -77,7 +88,7 @@ class ProfileNameScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        _formKey.currentState?.save();
+                        context.read<DatabaseService>().updateName(null);
                         _onSubmit(context);
                       },
                       child: Text(
