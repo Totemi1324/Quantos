@@ -13,8 +13,6 @@ import '../../bloc/profile_info_service.dart';
 import 'screens/splash_screen.dart';
 
 import './route_register.dart';
-import './models/content/content_outline.dart';
-import './models/user_credentials.dart';
 
 void main() {
   Paint.enableDithering = true;
