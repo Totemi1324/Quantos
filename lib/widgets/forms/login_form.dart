@@ -98,7 +98,7 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
               await buildContext.read<DatabaseService>().getUserInfo(
                 buildContext.read<AuthenticationService>().state.userId,
               );
-            }
+            },
           ),
           Home.routeName,
         ),
