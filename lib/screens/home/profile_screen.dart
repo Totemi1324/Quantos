@@ -127,9 +127,7 @@ class ProfileScreen extends StatelessWidget {
                             experienceClasses[userInfo.experience.index] ??
                                 "NaN",
                         name: userInfo.name,
-                        team: userInfo.name == "Tamas"
-                            ? userInfo.team
-                            : null,
+                        team: userInfo.team,
                       ),
                     ),
                     PartSeparator(

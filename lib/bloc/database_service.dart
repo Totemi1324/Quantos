@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:tuple/tuple.dart';
 
 import '../models/user_data.dart';
 import '../models/content/content_outline.dart';
@@ -36,7 +37,7 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
   }
 
   // Database interaction
-  Future initializeUserEntry(String userId) async {
+  Future initializeUserEntry(String userId, {String? team}) async {
     final ref = _database.ref("users/$userId");
     final activityMap = Map.fromIterables(
       state.activityLog.keys.map((time) => time.toIso8601String()),
@@ -45,7 +46,7 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
 
     await ref.set({
       "name": state.name,
-      "team": state.team,
+      "team": team ?? state.team,
       "age": state.age.index,
       "experience": state.experience.index,
       "unlocked": state.lectionUnlocked,
@@ -59,7 +60,6 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
 
     await ref.update({
       "name": state.name,
-      "team": state.team,
       "age": state.age.index,
       "experience": state.experience.index,
     });
@@ -75,6 +75,42 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
     }
     
     emit(state);
+  }
+
+  Future<bool> accessCodeExists(String accessCode) async {
+    final ref = _database.ref("accesscodes");
+    final event = await ref.child(accessCode).once(DatabaseEventType.value);
+
+    return event.snapshot.exists;
+  }
+
+  Future<Tuple2<bool, String?>> getAccessCodeInfo(String accessCode) async {
+    final ref = _database.ref("accesscodes/$accessCode");
+    final data = await ref.get();
+    bool active = false;
+    String? team;
+
+    if (data.exists) {
+      for (var child in data.children) {
+        switch (child.key) {
+          case "team":
+            team = child.value as String?;
+            break;
+          case "active":
+            active = (child.value ?? false) as bool;
+            break;
+        }
+      }
+    }
+
+    return Tuple2(active, team);
+  }
+
+  Future<bool> accessCodeHasSignedUp(String accessCode) async {
+    final ref = _database.ref("users");
+    final event = await ref.child(accessCode).once(DatabaseEventType.value);
+
+    return event.snapshot.exists;
   }
 
   // Local queries
@@ -112,16 +148,15 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
         state.experience = Experience.values[child.value as int];
         break;
       case "progress":
-        state.lessonProgress = Map.fromIterables(
-          child.children.map((c) => c.key as String),
-          child.children.map((c) => c.value is int ? (c.value as int).toDouble() : c.value as double),
-        );
+        for (child in child.children) {
+          state.lessonProgress[child.key as String] = child.value is int ? (child.value as int).toDouble() : child.value as double;
+        }
         break;
       case "unlocked":
-        state.lectionUnlocked = Map.fromIterables(
-          child.children.map((c) => c.key as String),
-          child.children.map((c) => c.value as bool),
-        );
+        for (child in child.children) {
+          state.lectionUnlocked[child.key as String] = child.value as bool;
+        }
+        break;
     } 
   }
 }

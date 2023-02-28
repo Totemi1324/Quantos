@@ -26,6 +26,9 @@ class AuthenticationErrorPopup extends StatelessWidget {
       case AuthenticationError.userDisabled:
         return AppLocalizations.of(buildContext)!
             .authenticationErrorUserDisabled;
+      case AuthenticationError.accessCodeNotFound:
+        return AppLocalizations.of(buildContext)!
+            .authenticationErrorAccessCodeNotFound;
       case AuthenticationError.unknown:
         return AppLocalizations.of(buildContext)!.authenticationErrorUnknown;
     }

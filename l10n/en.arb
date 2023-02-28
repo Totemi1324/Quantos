@@ -577,6 +577,10 @@
     "@authenticationErrorUserDisabled": {
         "description": "Authentication error message for disabled user"
     },
+    "authenticationErrorAccessCodeNotFound": "The access code provided is not registered. Check your access card again for typos or create an own account instead!",
+    "@authenticationErrorAccessCodeNotFound": {
+        "description": "Authentication error message for access code not found"
+    },
     "authenticationErrorUnknown": "Something went wrong. Please try again later! If the issue persists, please contact us at help@quantos.online.",
     "@authenticationErrorUnknown": {
         "description": "Authentication error message for unknown"

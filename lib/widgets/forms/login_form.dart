@@ -6,7 +6,6 @@ import '../../bloc/authentication_service.dart';
 import '../../bloc/content_outline_service.dart';
 import '../../bloc/localization_service.dart';
 import '../../bloc/database_service.dart';
-import '../../bloc/authentication_service.dart';
 
 import '../../screens/base/home.dart';
 import '../../screens/loading_screen.dart';

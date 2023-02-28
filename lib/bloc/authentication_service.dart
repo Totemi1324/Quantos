@@ -74,6 +74,34 @@ class AuthenticationService extends Cubit<UserCredentials> {
     await _storeToken();
   }
 
+  Future accessCodeSignUp(String accessCode) async {
+    emit(
+      UserCredentials(
+        userId: accessCode,
+        token: "be45e1d8-7569-4287-804a-7aaed56c99d7",
+        expiryDate: DateTime.now().add(
+          const Duration(hours: 1),
+        ),
+      ),
+    );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
+  }
+
+  Future accessCodeLogIn(String accessCode) async {
+    emit(
+      UserCredentials(
+        userId: accessCode,
+        token: "8d8fa04d-7358-417a-92cf-b8bfa46a8bac",
+        expiryDate: DateTime.now().add(
+          const Duration(hours: 1),
+        ),
+      ),
+    );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
+  }
+
   Future<bool> attemptAutoLogIn() async {
     final preferencesInstance = await SharedPreferences.getInstance();
     if (!preferencesInstance.containsKey(preferencesEntryKey)) {

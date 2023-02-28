@@ -147,6 +147,7 @@
     "authenticationErrorEmailNotFound": "Die angegebene Email-Adresse gehört zu keinem Konto. Wenn du neu hier bist, registriere zuerst dein Konto! Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
     "authenticationErrorInvalidPassword": "Das eingegebene Passwort ist falsch. Bitte nochmal versuchen!",
     "authenticationErrorUserDisabled": "Einloggen nicht möglich, da dieses Konto deaktiviert wurde. Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
+    "authenticationErrorAccessCodeNotFound": "Der angegebene Zugangscode ist nicht registriert. Überprüfe deine Zugangskarte erneut auf Tippfehler oder erstelle stattdessen ein eigenes Konto!",
     "authenticationErrorUnknown": "Etwas ist schief gelaufen. Bitte versuche es später noch einmal! Wenn das Problem weiterhin besteht, kontaktiere uns bitte unter help@quantos.online.",
     "noInternetConnectionErrorMessage": "Keine Internetverbindung! Bitte versuche es später noch einmal.",
 

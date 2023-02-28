@@ -12,6 +12,7 @@ enum AuthenticationError {
   emailNotFound,
   invalidPassword,
   userDisabled,
+  accessCodeNotFound,
   unknown,
 }
 
@@ -72,6 +73,8 @@ class AuthenticationException extends QuantosException {
         return "Firebase API on sign in returned error code INVALID_PASSWORD.";
       case AuthenticationError.userDisabled:
         return "Firebase API on sign in returned error code USER_DISABLED.";
+      case AuthenticationError.accessCodeNotFound:
+        return "Firebase Realtime Database does not contain the specified access code.";
       case AuthenticationError.unknown:
         return "Firebase API returned an unknown error code.";
     }
