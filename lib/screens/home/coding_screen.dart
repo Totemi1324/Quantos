@@ -5,10 +5,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../bloc/stores/coding_modes_store_service.dart';
 import '../../bloc/coding_service.dart';
 import '../../bloc/localization_service.dart';
+import '../../bloc/profile_info_service.dart';
 
 import '../../models/console_content.dart';
+import '../../models/profile_info.dart';
 import '../../widgets/code/token_input.dart';
 import '../../widgets/code/coding_mode_info_popup.dart';
+import '../../widgets/code/beginner_warning_popup.dart';
 import '../../widgets/code/hamiltonian_input.dart';
 import '../../widgets/code/console_output.dart';
 import '../../widgets/code/probability_distribution.dart';
@@ -30,6 +33,18 @@ class _CodingScreenState extends State<CodingScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final profileInfo = context.read<ProfileInfoService>().state;
+      if (profileInfo.firstTimeCoding &&
+          profileInfo.experience == Experience.beginner) {
+        showDialog(
+          context: context,
+          builder: (_) => const BeginnerWarningPopup(),
+          barrierDismissible: true,
+        );
+        context.read<ProfileInfoService>().visitedCodingScreen();
+      }
+    });
   }
 
   @override

@@ -105,6 +105,8 @@
     "codingInfoTitle": "Coding-Modus",
     "codingInfoSimulator": " berechnet die fünf besten Lösungen für deinen Hamiltonian lokal und zeigt sie so an, wie sie von einem echten Quantenannealer kommen würden. So hast du die Freiheit, zu experimentieren und bekommst ein Gefühl dafür, wie das richtige Gerät funktioniert. Zusätzlich bietet er eine ungefähre Wahrscheinlichkeitsverteilung, um zu zeigen, wie wahrscheinlich jedes Ergebnis wäre.",
     "codingInfoAnnealer": " sendet deinen Hamiltonian an das neueste Modell eines echten Quantenannealers von DWave Systems mit 5627 Qubits. Um diesen Modus nutzen zu können, musst du dein API-Token angeben. Eine Anleitung, wie du ein Leap-Konto erstellen und dein Token erhalten kannst, findest du auf unserer Website. Aus Sicherheitsgründen speichern wir deinen Token nicht, sodass du es jedes Mal neu eingeben musst, wenn du ein Optimierungsproblem senden möchtest.",
+    "codingWarningTitle": "Achtung",
+    "codingWarningMessage": "Du hast die Erfahrungsstufe 'Anfänger' gewählt. Den Coding-Tab richtig zu nutzen erfordert Kenntnisse über die innere Funktionsweise von Quantenannealern. Wir empfehlen, dich zunächst damit vertraut zu machen; absolviere dazu die erste Einführungslektion.",
     "codingTokenFormFieldSectionTitle": "Authentifizierung",
     "codingTokenFormFieldTitle": "Dein API-Token:",
     "codingTokenFormField": "Füge deinen Token hier ein",

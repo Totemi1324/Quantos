@@ -394,6 +394,14 @@
     "@codingInfoAnnealer": {
         "description": "Info on Annealer coding mode: 'DWave Advantage sends your...'"
     },
+    "codingWarningTitle": "Attention",
+    "@codingWarningTitle": {
+        "description": "Coding warning title"
+    },
+    "codingWarningMessage": "You selected 'beginner' as your experience level. Using the coding interface properly requires knowledge of the inner workings of quantum annealers. We recommend to familiarize yourself with them first; to do so, complete the first introductory lection.",
+    "@codingWarningMessage": {
+        "description": "Warning on coding mode for new users: 'You selected 'beginner'...'"
+    },
     "codingTokenFormFieldSectionTitle": "Authentication",
     "@codingTokenFormFieldSectionTitle": {
         "description": "Coding token input form field section title"

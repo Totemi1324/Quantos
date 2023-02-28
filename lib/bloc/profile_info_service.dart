@@ -11,6 +11,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
       team: state.team,
       age: state.age,
       experience: state.experience,
+      firstTimeCoding: state.firstTimeCoding,
     ));
   }
 
@@ -20,6 +21,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
       team: state.team,
       age: state.age,
       experience: state.experience,
+      firstTimeCoding: state.firstTimeCoding,
     ));
   }
 
@@ -29,6 +31,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
       team: state.team,
       age: newAge,
       experience: state.experience,
+      firstTimeCoding: state.firstTimeCoding,
     ));
   }
 
@@ -38,6 +41,17 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
       team: state.team,
       age: state.age,
       experience: newExperience,
+      firstTimeCoding: state.firstTimeCoding,
+    ));
+  }
+
+  void visitedCodingScreen() {
+    emit(ProfileInfo(
+      name: state.name,
+      team: state.team,
+      age: state.age,
+      experience: state.experience,
+      firstTimeCoding: false,
     ));
   }
 }
