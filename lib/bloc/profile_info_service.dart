@@ -8,6 +8,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
   void updateName(String newName) {
     emit(ProfileInfo(
       name: newName,
+      team: state.team,
       age: state.age,
       experience: state.experience,
     ));
@@ -16,6 +17,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
   void eraseName() {
     emit(ProfileInfo(
       name: null,
+      team: state.team,
       age: state.age,
       experience: state.experience,
     ));
@@ -24,6 +26,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
   void updateAge(Age newAge) {
     emit(ProfileInfo(
       name: state.name,
+      team: state.team,
       age: newAge,
       experience: state.experience,
     ));
@@ -32,6 +35,7 @@ class ProfileInfoService extends Cubit<ProfileInfo> {
   void updateExperience(Experience newExperience) {
     emit(ProfileInfo(
       name: state.name,
+      team: state.team,
       age: state.age,
       experience: newExperience,
     ));
