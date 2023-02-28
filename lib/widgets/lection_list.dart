@@ -5,9 +5,10 @@ import '../bloc/content_outline_service.dart';
 import '../bloc/database_service.dart';
 
 import '../screens/lection_screen.dart';
+import '../models/content/content_outline.dart';
+import '../models/user_data.dart';
 import './containers/panel_card.dart';
 import "./lection_item.dart";
-import '../models/content/content_outline.dart';
 
 class LectionList extends StatefulWidget {
   const LectionList({super.key});
@@ -21,10 +22,15 @@ class _LectionListState extends State<LectionList> {
   Widget build(BuildContext context) {
     final lections = context.read<ContentOutlineService>().lections;
 
-    return BlocListener<ContentOutlineService, ContentOutline>(
-      listener: (context, state) {
-        setState(() {}); //TODO
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<ContentOutlineService, ContentOutline>(
+          listener: (context, state) => setState(() {}), //TODO
+        ),
+        BlocListener<DatabaseService, UserData>(
+          listener: (context, state) => setState(() {}),
+        )
+      ],
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -47,8 +53,12 @@ class _LectionListState extends State<LectionList> {
                     .read<ContentOutlineService>()
                     .state
                     .getLectionTitle(lectionId),
-                iconAnimationAsset: context.read<ContentOutlineService>().lection(lectionId).iconAnimationAsset,
-                progressPercent: context.read<DatabaseService>().lectionProgress(lectionId),
+                iconAnimationAsset: context
+                    .read<ContentOutlineService>()
+                    .lection(lectionId)
+                    .iconAnimationAsset,
+                progressPercent:
+                    context.read<DatabaseService>().lectionProgress(lectionId),
                 unlocked: context.read<DatabaseService>().isUnlocked(lectionId),
               ),
             ),

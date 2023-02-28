@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuple/tuple.dart';
 
 import '../bloc/content_outline_service.dart';
 import '../bloc/lesson_content_service.dart';
+import '../bloc/database_service.dart';
+import '../bloc/authentication_service.dart';
 
 import './base/flat.dart';
 import '../widgets/section_navigation.dart';
@@ -23,12 +26,13 @@ class LessonScreen extends StatefulWidget {
 }
 
 class _LessonScreenState extends State<LessonScreen> {
-  final navigationController =
+  final _navigationController =
       StreamController<Tuple3<BuildContext, NavigationAction, String?>>();
+  double _progressPercent = 0.0;
 
   @override
   void dispose() {
-    navigationController.close();
+    _navigationController.close();
     super.dispose();
   }
 
@@ -38,8 +42,7 @@ class _LessonScreenState extends State<LessonScreen> {
     final lessonId = args as String;
     final lessonTitle =
         context.read<ContentOutlineService>().state.getLessonTitle(lessonId);
-    final sectionTitles =
-        context.read<LessonContentService>().state.sectionTitles;
+    final lessonContent = context.read<LessonContentService>().state;
 
     return Flat(
       body: SafeArea(
@@ -60,8 +63,8 @@ class _LessonScreenState extends State<LessonScreen> {
               ),
               const Divider(),
               SectionNavigation(
-                sectionTitles: sectionTitles,
-                onTap: (selectedTitle) => navigationController.add(
+                sectionTitles: lessonContent.sectionTitles,
+                onTap: (selectedTitle) => _navigationController.add(
                   Tuple3(context, NavigationAction.skip, selectedTitle),
                 ),
               ),
@@ -83,7 +86,7 @@ class _LessonScreenState extends State<LessonScreen> {
                     ).createShader(bounds);
                   },
                   child: LessonContentRenderer(
-                    navigationStream: navigationController.stream,
+                    navigationStream: _navigationController.stream,
                   ),
                 ),
               ),
@@ -94,29 +97,89 @@ class _LessonScreenState extends State<LessonScreen> {
                   children: [
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
-                      onPressed: () => navigationController.add(
-                        Tuple3(context, NavigationAction.previous, null),
-                      ),
+                      onPressed: () {
+                        if (_progressPercent > 0.0) {
+                          setState(() {
+                            _progressPercent -= 1 /
+                                context
+                                    .read<LessonContentService>()
+                                    .state
+                                    .pages;
+                            if (_progressPercent < 0.02) {
+                              _progressPercent = 0.0;
+                            }
+                          });
+                          context
+                              .read<DatabaseService>()
+                              .updateProgressOfLesson(
+                                lessonId,
+                                _progressPercent,
+                                context
+                                    .read<AuthenticationService>()
+                                    .state
+                                    .userId,
+                              );
+                        }
+                        _navigationController.add(
+                          Tuple3(context, NavigationAction.previous, null),
+                        );
+                      },
                       icon: Icons.navigate_before_rounded,
                     ),
                     const SizedBox(
                       width: 20,
                     ),
-                    Expanded(
-                      child: AdaptiveProgressBar(
-                        0.4,
-                        withIcon: false,
-                        withText: false,
+                    if (_progressPercent != 1.0)
+                      Expanded(
+                        child: AdaptiveProgressBar(
+                          _progressPercent,
+                          withIcon: false,
+                          withText: false,
+                        ),
                       ),
-                    ),
+                    if (_progressPercent == 1.0)
+                      Center(
+                        child: AdaptiveButton.primary(
+                          AppLocalizations.of(context)!.finishButtonLabel,
+                          extended: false,
+                          enabled: true,
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
                     const SizedBox(
                       width: 20,
                     ),
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
-                      onPressed: () => navigationController.add(
-                        Tuple3(context, NavigationAction.next, null),
-                      ),
+                      onPressed: () {
+                        if (_progressPercent < 1.0) {
+                          setState(() {
+                            _progressPercent += 1 /
+                                context
+                                    .read<LessonContentService>()
+                                    .state
+                                    .pages;
+                            if (_progressPercent > 0.98) {
+                              _progressPercent = 1.0;
+                            }
+                          });
+                          context
+                              .read<DatabaseService>()
+                              .updateProgressOfLesson(
+                                lessonId,
+                                _progressPercent,
+                                context
+                                    .read<AuthenticationService>()
+                                    .state
+                                    .userId,
+                              );
+                        }
+                        _navigationController.add(
+                          Tuple3(context, NavigationAction.next, null),
+                        );
+                      },
                       icon: Icons.navigate_next_rounded,
                     ),
                   ],

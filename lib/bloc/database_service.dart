@@ -7,16 +7,20 @@ import 'package:tuple/tuple.dart';
 import '../models/user_data.dart';
 import '../models/content/content_outline.dart';
 
-class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
+class DatabaseService extends Cubit<UserData> {
+  //TODO: Save preferences
   final _database = FirebaseDatabase.instance;
   late ContentOutline _outlineInstance;
 
-  DatabaseService(ContentOutline outline) : super(UserData.defaultUser(outline)) {
+  DatabaseService(ContentOutline outline)
+      : super(UserData.defaultUser(outline)) {
     _database.setPersistenceEnabled(true);
     _outlineInstance = outline;
   }
 
-  double get cumulativeProgress => state.lessonProgress.values.reduce((value, number) => value + number) / state.lessonProgress.values.length;
+  double get cumulativeProgress =>
+      state.lessonProgress.values.reduce((value, number) => value + number) /
+      state.lessonProgress.values.length;
 
   // State management
   void fullReset() => emit(UserData.defaultUser(_outlineInstance));
@@ -34,6 +38,31 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
   void updateExperience(Experience newExperience) {
     state.experience = newExperience;
     emit(state);
+  }
+
+  void updateProgressOfLesson(String lessonId, double progress, String userId) {
+    if (state.lessonProgress[lessonId] == null) {
+      return;
+    }
+
+    if (progress > state.lessonProgress[lessonId]!) {
+      final lessonProgress = state.lessonProgress;
+      lessonProgress[lessonId] = progress;
+      emit(
+        UserData(
+          name: state.name,
+          team: state.team,
+          age: state.age,
+          experience: state.experience,
+          lectionUnlocked: state.lectionUnlocked,
+          lessonProgress: lessonProgress,
+          activityLog: state.activityLog,
+        ),
+      );
+      unawaited(
+        updateProgress(userId, lessonId),
+      );
+    }
   }
 
   // Database interaction
@@ -73,8 +102,16 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
         _parseDataChild(child);
       }
     }
-    
+
     emit(state);
+  }
+
+  Future updateProgress(String userId, String lessonId) async {
+    final ref = _database.ref("users/$userId/progress");
+
+    await ref.update({
+      lessonId: state.lessonProgress[lessonId],
+    });
   }
 
   Future<bool> accessCodeExists(String accessCode) async {
@@ -116,16 +153,20 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
   // Local queries
   bool isUnlocked(String lectionId) => state.lectionUnlocked[lectionId] ?? true;
 
+  double lessonProgress(String lessonId) =>
+      state.lessonProgress[lessonId] ?? 0.0;
+
   double lectionProgress(String lectionId) {
     if (_outlineInstance.lessonGrouping[lectionId] == null) {
       return 0.0;
     }
 
-    final lessonEntriesOfLection = state.lessonProgress.entries
-      .where((entry) => _outlineInstance.lessonGrouping[lectionId]!
-      .contains(entry.key));
-    return lessonEntriesOfLection.map((entry) => entry.value)
-      .reduce((value, number) => value + number) / lessonEntriesOfLection.length;
+    final lessonEntriesOfLection = state.lessonProgress.entries.where((entry) =>
+        _outlineInstance.lessonGrouping[lectionId]!.contains(entry.key));
+    return lessonEntriesOfLection
+            .map((entry) => entry.value)
+            .reduce((value, number) => value + number) /
+        lessonEntriesOfLection.length;
   }
 
   // Private helper methods
@@ -149,7 +190,9 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
         break;
       case "progress":
         for (child in child.children) {
-          state.lessonProgress[child.key as String] = child.value is int ? (child.value as int).toDouble() : child.value as double;
+          state.lessonProgress[child.key as String] = child.value is int
+              ? (child.value as int).toDouble()
+              : child.value as double;
         }
         break;
       case "unlocked":
@@ -157,6 +200,6 @@ class DatabaseService extends Cubit<UserData> { //TODO: Save preferences
           state.lectionUnlocked[child.key as String] = child.value as bool;
         }
         break;
-    } 
+    }
   }
 }
