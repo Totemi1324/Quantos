@@ -125,7 +125,7 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
                       ).createShader(bounds);
                     },
                     child: SingleChildScrollView(
-                      child: Text(consoleState.message ?? ""),
+                      child: Text(consoleState.formatted ?? ""),
                     ),
                   ),
                 )

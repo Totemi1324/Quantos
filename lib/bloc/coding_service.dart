@@ -32,7 +32,7 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
           final results = Sampler.simulate(hamiltonian);
 
           var stringBuilder = "";
-          var counter = 0;
+          var counter = 1;
           for (var entry in results.entries()) {
             stringBuilder +=
                 "#$counter: ${entry.energy.toStringAsFixed(1)} E\n${entry.solutionVector} x ${entry.numOccurrences}";
@@ -40,7 +40,8 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
             counter += 1;
           }
 
-          emit(ConsoleContent(ConsoleStatus.success, message: stringBuilder));
+          emit(ConsoleContent(ConsoleStatus.success,
+              record: results, formatted: stringBuilder));
         } on QuboEmbedderException {
           emit(const ConsoleContent(ConsoleStatus.failure));
         }
@@ -66,7 +67,8 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
             counter += 1;
           }
 
-          emit(ConsoleContent(ConsoleStatus.success, message: stringBuilder));
+          emit(ConsoleContent(ConsoleStatus.success,
+              record: results, formatted: stringBuilder));
         } on QuboEmbedderException {
           emit(const ConsoleContent(ConsoleStatus.failure));
         }
