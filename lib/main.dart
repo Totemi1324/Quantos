@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // State management
 import 'bloc/theme_service.dart';
@@ -13,8 +14,14 @@ import '../../bloc/profile_info_service.dart';
 import 'screens/splash_screen.dart';
 
 import './route_register.dart';
+import './firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   Paint.enableDithering = true;
   runApp(const MyApp());
 }
@@ -41,8 +48,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthenticationService>(
           create: (_) => AuthenticationService(),
         ),
-        BlocProvider<ProfileInfoService>(
-          create: (_) => ProfileInfoService(),
+        BlocProvider<DatabaseService>(
+          create: (_) => DatabaseService(),
         ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(

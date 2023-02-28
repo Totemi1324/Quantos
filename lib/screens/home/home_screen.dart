@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? profileName = context.read<ProfileInfoService>().state.name;
+    final String? profileName = context.read<DatabaseService>().state.name;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),

@@ -11,14 +11,14 @@ enum Experience {
   skilled,
 }
 
-class ProfileInfo {
+class UserData {
   final String? name;
   final String? team;
   final Age age;
   final Experience experience;
   final bool firstTimeCoding;
 
-  const ProfileInfo({
+  const UserData({
     required this.age,
     required this.experience,
     this.name,
@@ -26,7 +26,7 @@ class ProfileInfo {
     this.firstTimeCoding = true,
   });
 
-  factory ProfileInfo.empty() => const ProfileInfo(
+  factory UserData.empty() => const UserData(
         name: "Tamas",
         team: "Universität Regensburg",
         age: Age.student,

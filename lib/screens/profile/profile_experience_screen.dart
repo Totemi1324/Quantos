@@ -61,7 +61,7 @@ class ProfileExperienceScreen extends StatelessWidget {
                         stateMachine: "ExperienceClasses",
                         scalarInput: "experience_class",
                         onChanged: (selected) => context
-                            .read<ProfileInfoService>()
+                            .read<DatabaseService>()
                             .updateExperience(Experience.values[selected]),
                       ),
                     ),

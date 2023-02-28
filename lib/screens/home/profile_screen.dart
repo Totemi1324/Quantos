@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileInfo = context.read<ProfileInfoService>().state;
+    final profileInfo = context.read<DatabaseService>().state;
 
     return MultiBlocProvider(
       providers: [

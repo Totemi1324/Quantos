@@ -20,7 +20,7 @@ class ProfileAgeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileName = context.read<ProfileInfoService>().state.name;
+    final profileName = context.read<DatabaseService>().state.name;
 
     return BlocProvider(
       create: (context) =>
@@ -64,7 +64,7 @@ class ProfileAgeScreen extends StatelessWidget {
                         stateMachine: "AgeClasses",
                         scalarInput: "age_class",
                         onChanged: (selected) => context
-                            .read<ProfileInfoService>()
+                            .read<DatabaseService>()
                             .updateAge(Age.values[selected]),
                       ),
                     ),

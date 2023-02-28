@@ -22,7 +22,7 @@ class ProfileNameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileInfoService, ProfileInfo>(
+    return BlocBuilder<DatabaseService, UserData>(
       builder: (context, state) => GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Flat(
@@ -59,10 +59,10 @@ class ProfileNameScreen extends StatelessWidget {
                           ),
                           onSaved: (newValue) {
                             if (newValue == null || newValue == "") {
-                              context.read<ProfileInfoService>().eraseName();
+                              context.read<DatabaseService>().eraseName();
                             } else {
                               context
-                                  .read<ProfileInfoService>()
+                                  .read<DatabaseService>()
                                   .updateName(newValue);
                             }
                           },

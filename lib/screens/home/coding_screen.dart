@@ -34,7 +34,7 @@ class _CodingScreenState extends State<CodingScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final profileInfo = context.read<ProfileInfoService>().state;
+      final profileInfo = context.read<DatabaseService>().state;
       if (profileInfo.firstTimeCoding &&
           profileInfo.experience == Experience.beginner) {
         showDialog(
@@ -42,7 +42,7 @@ class _CodingScreenState extends State<CodingScreen> {
           builder: (_) => const BeginnerWarningPopup(),
           barrierDismissible: true,
         );
-        context.read<ProfileInfoService>().visitedCodingScreen();
+        context.read<DatabaseService>().visitedCodingScreen();
       }
     });
   }
