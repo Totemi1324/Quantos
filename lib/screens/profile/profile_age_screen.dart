@@ -5,11 +5,11 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../../bloc/stores/age_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../base/flat.dart';
 import './profile_experience_screen.dart';
-import '../../models/profile_info.dart';
+import '../../models/user_data.dart';
 import '../../widgets/forms/slider_select_form.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
@@ -20,7 +20,7 @@ class ProfileAgeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileName = context.read<ProfileInfoService>().state.name;
+    final profileName = context.read<DatabaseService>().state.name;
 
     return BlocProvider(
       create: (context) =>
@@ -64,7 +64,7 @@ class ProfileAgeScreen extends StatelessWidget {
                         stateMachine: "AgeClasses",
                         scalarInput: "age_class",
                         onChanged: (selected) => context
-                            .read<ProfileInfoService>()
+                            .read<DatabaseService>()
                             .updateAge(Age.values[selected]),
                       ),
                     ),

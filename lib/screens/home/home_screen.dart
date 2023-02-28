@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../../widgets/notifications/notification_bar.dart';
 import '../../widgets/part_separator.dart';
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? profileName = context.read<ProfileInfoService>().state.name;
+    final String? profileName = context.read<DatabaseService>().state.name;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 0),

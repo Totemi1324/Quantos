@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/content_outline_service.dart';
+import '../bloc/database_service.dart';
 
 import '../screens/lection_screen.dart';
 import './containers/panel_card.dart';
@@ -29,15 +30,14 @@ class _LectionListState extends State<LectionList> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: lections.length,
         itemBuilder: (buildContext, index) {
-          final lection =
-              context.read<ContentOutlineService>().lection(lections[index].id);
+          final lectionId = lections[index].id;
 
           return InkWell(
             splashFactory: NoSplash.splashFactory,
-            onTap: lection.unlocked
+            onTap: context.read<DatabaseService>().isUnlocked(lectionId)
                 ? () => Navigator.of(context).pushNamed(
                       LectionScreen.routeName,
-                      arguments: lection.id,
+                      arguments: lectionId,
                     )
                 : null,
             child: PanelCard(
@@ -46,10 +46,10 @@ class _LectionListState extends State<LectionList> {
                 context
                     .read<ContentOutlineService>()
                     .state
-                    .getLectionTitle(lection.id),
-                iconAnimationAsset: lection.iconAnimationAsset,
-                progressPercent: lection.progressPercent,
-                unlocked: lection.unlocked,
+                    .getLectionTitle(lectionId),
+                iconAnimationAsset: context.read<ContentOutlineService>().lection(lectionId).iconAnimationAsset,
+                progressPercent: context.read<DatabaseService>().lectionProgress(lectionId),
+                unlocked: context.read<DatabaseService>().isUnlocked(lectionId),
               ),
             ),
           );

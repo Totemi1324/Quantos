@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/profile_info_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../base/flat.dart';
 import './profile_age_screen.dart';
-import '../../models/profile_info.dart';
+import '../../models/user_data.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
 class ProfileNameScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class ProfileNameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileInfoService, ProfileInfo>(
+    return BlocBuilder<DatabaseService, UserData>(
       builder: (context, state) => GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Flat(
@@ -57,15 +57,9 @@ class ProfileNameScreen extends StatelessWidget {
                                 .profileNameScreenFormField,
                             labelStyle: Theme.of(context).textTheme.labelSmall,
                           ),
-                          onSaved: (newValue) {
-                            if (newValue == null || newValue == "") {
-                              context.read<ProfileInfoService>().eraseName();
-                            } else {
-                              context
-                                  .read<ProfileInfoService>()
-                                  .updateName(newValue);
-                            }
-                          },
+                          onSaved: (newValue) => context
+                                  .read<DatabaseService>()
+                                  .updateName(newValue),
                         ),
                       ),
                     ),

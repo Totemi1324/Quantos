@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
@@ -56,12 +57,12 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     if (!mounted) return;
 
     try {
-      await context
+      await buildContext
           .read<AuthenticationService>()
           .attemptSignUp(_email, _password);
     } on AuthenticationException catch (error) {
       showDialog(
-        context: context,
+        context: buildContext,
         builder: (_) => AuthenticationErrorPopup(error.responseCode),
         barrierDismissible: true,
       );
@@ -71,7 +72,7 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
       return;
     } on NoInternetException {
       showDialog(
-        context: context,
+        context: buildContext,
         builder: (_) => const NoInternetPopup(),
         barrierDismissible: true,
       );
@@ -81,7 +82,7 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
       return;
     } catch (error) {
       showDialog(
-        context: context,
+        context: buildContext,
         builder: (_) =>
             const AuthenticationErrorPopup(AuthenticationError.unknown),
         barrierDismissible: true,
@@ -92,12 +93,18 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
       return;
     }
 
+    if (!mounted) return;
+    buildContext.read<DatabaseService>().fullReset();
+    await buildContext.read<DatabaseService>().initializeUserEntry(
+      buildContext.read<AuthenticationService>().state.userId,
+    );
+
     setState(() {
       _isLoading = false;
     });
 
     if (!mounted) return;
-    Navigator.of(context)
+    Navigator.of(buildContext)
         .pushNamedAndRemoveUntil(ProfileNameScreen.routeName, (_) => false);
   }
 
