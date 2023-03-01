@@ -35,7 +35,8 @@ class _CodingScreenState extends State<CodingScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final service = context.read<DatabaseService>();
-      if (service.state.experience == Experience.beginner && service.lectionProgress("8hg") == 0.0) {
+      if (service.state.experience == Experience.beginner &&
+          service.lectionProgress("8hg") == 0.0) {
         showDialog(
           context: context,
           builder: (_) => const BeginnerWarningPopup(),
@@ -114,6 +115,8 @@ class _CodingScreenState extends State<CodingScreen> {
                               ),
                             ),
                             IconButton(
+                              tooltip: AppLocalizations.of(context)!
+                                  .tooltipInformation,
                               icon: Icon(
                                 Icons.info_outline_rounded,
                                 color: Theme.of(context).colorScheme.tertiary,

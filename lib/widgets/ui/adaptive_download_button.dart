@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdaptiveDownloadButton extends StatelessWidget {
   final String link;
@@ -29,6 +30,7 @@ class AdaptiveDownloadButton extends StatelessWidget {
         IconButton(
           onPressed: () {},
           iconSize: 50,
+          tooltip: AppLocalizations.of(context)!.tooltipDownload,
           icon: Icon(
             Icons.download_for_offline_rounded,
             color: Theme.of(context).colorScheme.primary,

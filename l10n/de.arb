@@ -157,5 +157,15 @@
     "validationFailEmailMissing": "Email-Adresse ist erforderich.",
     "validationFailPasswordMissing": "Passwort ist erforderlich.",
 
-    "tooltipShowHidePassword": "Passwort anzeigen oder verbergen"
+    "tooltipShowHidePassword": "Passwort anzeigen oder verbergen",
+    "tooltipBack": "Zurück",
+    "tooltipSettings": "Einstellungen",
+    "tooltipInformation": "Erläuterungen",
+    "tooltipReadOut": "Vorlesen",
+    "tooltipClose": "Schließen",
+    "tooltipDownload": "Herunterladen",
+    "tooltipToggleOn": "Schalter an",
+    "tooltipToggleOff": "Schalter aus",
+    "tooltipNextPage": "Vorherige Seite",
+    "tooltipPreviousPage": "Nächste Seite"
 }

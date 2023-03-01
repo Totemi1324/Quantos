@@ -52,7 +52,7 @@
     "pagebreak-4": {
     },
     "paragraph-7": {
-        "text": "Dabei ist ein Qubit (in der Mathematik meist mit $$\\Psi$$ darsgestellt) immer eine Mischung aus $$\\vert 0\\rangle$$ (aus) und $$\\vert 1\\rangle$$ (ein). Welcher Anteil des jeweiligen Zustands vorhanden ist, wird durch zwei Zahlen $$\\alpha$$ und $$\\beta$$ ausgedrückt, die zusammen immer 1 ergeben."
+        "text": "Dabei ist ein Qubit (in der Mathematik meist mit $$\\Psi$$ dargestellt) immer eine Mischung aus $$\\vert 0\\rangle$$ (aus) und $$\\vert 1\\rangle$$ (ein). Welcher Anteil des jeweiligen Zustands vorhanden ist, wird durch zwei Zahlen $$\\alpha$$ und $$\\beta$$ ausgedrückt, die zusammen immer 1 ergeben."
     },
     "equation-1": {
         "tex": "\\vert\\Psi\\rangle = \\alpha \\times \\vert 0\\rangle + \\beta \\times \\vert 1\\rangle",

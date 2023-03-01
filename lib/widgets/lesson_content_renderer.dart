@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:tuple/tuple.dart';
@@ -154,6 +155,8 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
                       onPressed: () {},
                       color: Theme.of(buildContext).colorScheme.secondary,
                       padding: const EdgeInsets.all(2),
+                      tooltip:
+                          AppLocalizations.of(buildContext)!.tooltipReadOut,
                       icon: const Icon(
                         Icons.record_voice_over_rounded,
                         size: 40,
@@ -183,9 +186,12 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
             children: [
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 250),
-                child: Image.asset(
-                  fit: BoxFit.scaleDown,
-                  "assets/images/lessons/${image.asset}",
+                child: Tooltip(
+                  message: image.altText,
+                  child: Image.asset(
+                    fit: BoxFit.scaleDown,
+                    "assets/images/lessons/${image.asset}",
+                  ),
                 ),
               ),
               const SizedBox(
@@ -209,12 +215,15 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
         );
         return Container(
           margin: const EdgeInsets.only(top: 15, bottom: 25),
-          child: Center(
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              runSpacing: 10,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: longTex.texBreak().parts,
+          child: Tooltip(
+            message: equation.altText,
+            child: Center(
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                runSpacing: 10,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: longTex.texBreak().parts,
+              ),
             ),
           ),
         );

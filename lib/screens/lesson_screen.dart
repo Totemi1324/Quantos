@@ -97,6 +97,8 @@ class _LessonScreenState extends State<LessonScreen> {
                   children: [
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
+                      tooltip:
+                          AppLocalizations.of(context)!.tooltipPreviousPage,
                       onPressed: () {
                         if (_progressPercent > 0.0) {
                           setState(() {
@@ -153,6 +155,7 @@ class _LessonScreenState extends State<LessonScreen> {
                     ),
                     AdaptiveButton.navigator(
                       type: ButtonType.secondary,
+                      tooltip: AppLocalizations.of(context)!.tooltipNextPage,
                       onPressed: () {
                         if (_progressPercent < 1.0) {
                           setState(() {
@@ -192,13 +195,3 @@ class _LessonScreenState extends State<LessonScreen> {
     );
   }
 }
-
-/*Center(
-                  child: AdaptiveButton.primary(
-                    AppLocalizations.of(context)!.finishButtonLabel,
-                    extended: false,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),*/

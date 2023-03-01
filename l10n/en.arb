@@ -614,5 +614,45 @@
     "tooltipShowHidePassword": "Show or hide password",
     "@tooltipShowHidePassword": {
         "description": "Tooltip for show hide password button"
+    },
+    "tooltipBack": "Back",
+    "@tooltipBack": {
+        "description": "Tooltip for back button"
+    },
+    "tooltipSettings": "Settings",
+    "@tooltipSettings": {
+        "description": "Tooltip for settings button"
+    },
+    "tooltipInformation": "Information",
+    "@tooltipInformation": {
+        "description": "Tooltip for information button"
+    },
+    "tooltipReadOut": "Read aloud",
+    "@tooltipReadOut": {
+        "description": "Tooltip for read out button"
+    },
+    "tooltipClose": "Close",
+    "@tooltipClose": {
+        "description": "Tooltip for close button"
+    },
+    "tooltipDownload": "Download",
+    "@tooltipDownload": {
+        "description": "Tooltip for download button"
+    },
+    "tooltipToggleOn": "Toggle on",
+    "@tooltipToggleOn": {
+        "description": "Tooltip for on toggle"
+    },
+    "tooltipToggleOff": "Toggle off",
+    "@tooltipToggleOff": {
+        "description": "Tooltip for off toggle"
+    },
+    "tooltipNextPage": "Next page",
+    "@tooltipNextPage": {
+        "description": "Tooltip for next page button"
+    },
+    "tooltipPreviousPage": "Previous page",
+    "@tooltipPreviousPage": {
+        "description": "Tooltip for previous page button"
     }
 }

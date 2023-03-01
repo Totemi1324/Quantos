@@ -56,6 +56,7 @@ abstract class NotificationItem extends StatelessWidget {
                   color: Colors.transparent,
                   child: IconButton(
                     onPressed: onClose,
+                    tooltip: AppLocalizations.of(context)!.tooltipClose,
                     icon: const Icon(
                       Icons.close_rounded,
                       color: Colors.white,
