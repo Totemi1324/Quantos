@@ -221,7 +221,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
               AdaptiveButton.secondary(
                 AppLocalizations.of(context)!.sendButtonLabel,
                 extended: false,
-                enabled: _canSend, //TODO: Lock down Hamiltonian submission while processing request
+                enabled: _canSend,
                 onPressed: () {
                   final selectedMode = widget.getCurrentMode();
                   final success = _submitHamiltonian(context, selectedMode);

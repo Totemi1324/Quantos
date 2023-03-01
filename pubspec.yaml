@@ -3,7 +3,7 @@ description: Everybody can understand quantum computing - Quantos is your beginn
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
@@ -38,11 +38,24 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.12.0
   build_runner:
   flutter_gen_runner:
 
 flutter_gen:
   output: .dart_tool/flutter_gen/gen/
+
+flutter_icons:
+  android: true
+  image_path: "assets/images/icon.png"
+  adaptive_icon_background: "assets/images/icon_adaptive_background.png"
+  adaptive_icon_foreground: "assets/images/icon_adaptive_foreground.png"
+  min_sdk_android: 19
+  web:
+    generate: true
+    image_path: "assets/images/icon.png"
+    background_color: "#262D47"
+    theme_color: "#262D47"
 
 # The following section is specific to Flutter packages.
 flutter:
