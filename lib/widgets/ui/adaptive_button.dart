@@ -126,30 +126,7 @@ class AdaptiveButton extends StatelessWidget {
       overflow: TextOverflow.fade,
     );
 
-    return SizedBox(
-      width: navigator ? 60 : (extended ? double.infinity : 140),
-      height: 60,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            if (enabled)
-              Positioned.fill(
-                child: Container(
-                  decoration: decorationFirstLayer,
-                ),
-              ),
-            if (enabled)
-              Positioned.fill(
-                child: Container(
-                  decoration: decorationSecondLayer,
-                ),
-              ),
-            Positioned.fill(
-              child: Tooltip(
-                message: tooltip,
-                child: TextButton(
+    final TextButton textButton = TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor:
                         context.read<ThemeService>().accessibilityModeActive
@@ -182,8 +159,33 @@ class AdaptiveButton extends StatelessWidget {
                             if (!navigator) Flexible(child: labelText),
                           ],
                         ),
+                );
+
+    return SizedBox(
+      width: navigator ? 60 : (extended ? double.infinity : 140),
+      height: 60,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (enabled)
+              Positioned.fill(
+                child: Container(
+                  decoration: decorationFirstLayer,
                 ),
               ),
+            if (enabled)
+              Positioned.fill(
+                child: Container(
+                  decoration: decorationSecondLayer,
+                ),
+              ),
+            Positioned.fill(
+              child: tooltip != null ? Tooltip(
+                message: tooltip,
+                child: textButton,
+              ) : textButton,
             )
           ],
         ),
