@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/authentication_service.dart';
 import '../bloc/content_outline_service.dart';
 import '../bloc/localization_service.dart';
+import '../bloc/database_service.dart';
 
 import 'base/flat.dart';
 import 'base/home.dart';
@@ -42,6 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future _toNextPage(BuildContext buildContext) async {
+    _timer.cancel();
     final autoLoginSuccessful =
         await buildContext.read<AuthenticationService>().attemptAutoLogIn();
     if (!mounted) return;
@@ -52,9 +54,14 @@ class _SplashScreenState extends State<SplashScreen> {
         MaterialPageRoute(
           builder: (buildContext) => LoadingScreen(
             Future(
-              () => buildContext.read<ContentOutlineService>().loadFromLocale(
-                    buildContext.read<LocalizationService>().state,
-                  ),
+              () async {
+                buildContext.read<ContentOutlineService>().loadFromLocale(
+                  buildContext.read<LocalizationService>().state,
+                );
+                await buildContext.read<DatabaseService>().getUserInfo(
+                  buildContext.read<AuthenticationService>().state.userId,
+                );
+              },
             ),
             Home.routeName,
           ),

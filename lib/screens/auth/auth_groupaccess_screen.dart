@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
-import '../profile/profile_name_screen.dart';
 import '../../widgets/forms/accesscode_form.dart';
 
 class AuthGroupAccessScreen extends StatelessWidget {
@@ -40,10 +39,7 @@ class AuthGroupAccessScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 30),
-                    child: AccessCodeForm(
-                      () => Navigator.of(context).pushNamedAndRemoveUntil(
-                          ProfileNameScreen.routeName, (_) => false),
-                    ),
+                    child: const AccessCodeForm(),
                   )
                 ],
               ),

@@ -105,6 +105,8 @@
     "codingInfoTitle": "Coding-Modus",
     "codingInfoSimulator": " berechnet die fünf besten Lösungen für deinen Hamiltonian lokal und zeigt sie so an, wie sie von einem echten Quantenannealer kommen würden. So hast du die Freiheit, zu experimentieren und bekommst ein Gefühl dafür, wie das richtige Gerät funktioniert. Zusätzlich bietet er eine ungefähre Wahrscheinlichkeitsverteilung, um zu zeigen, wie wahrscheinlich jedes Ergebnis wäre.",
     "codingInfoAnnealer": " sendet deinen Hamiltonian an das neueste Modell eines echten Quantenannealers von DWave Systems mit 5627 Qubits. Um diesen Modus nutzen zu können, musst du dein API-Token angeben. Eine Anleitung, wie du ein Leap-Konto erstellen und dein Token erhalten kannst, findest du auf unserer Website. Aus Sicherheitsgründen speichern wir deinen Token nicht, sodass du es jedes Mal neu eingeben musst, wenn du ein Optimierungsproblem senden möchtest.",
+    "codingWarningTitle": "Achtung",
+    "codingWarningMessage": "Du hast die Erfahrungsstufe 'Anfänger' gewählt. Den Coding-Tab richtig zu nutzen erfordert Kenntnisse über die innere Funktionsweise von Quantenannealern. Wir empfehlen, dich zunächst damit vertraut zu machen; absolviere dazu die erste Einführungslektion.",
     "codingTokenFormFieldSectionTitle": "Authentifizierung",
     "codingTokenFormFieldTitle": "Dein API-Token:",
     "codingTokenFormField": "Füge deinen Token hier ein",
@@ -145,13 +147,25 @@
     "authenticationErrorEmailNotFound": "Die angegebene Email-Adresse gehört zu keinem Konto. Wenn du neu hier bist, registriere zuerst dein Konto! Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
     "authenticationErrorInvalidPassword": "Das eingegebene Passwort ist falsch. Bitte nochmal versuchen!",
     "authenticationErrorUserDisabled": "Einloggen nicht möglich, da dieses Konto deaktiviert wurde. Wenn du glaubst, dass du diese Nachricht irrtümlich erhalten hast, kontaktiere uns bitte unter help@quantos.online.",
+    "authenticationErrorAccessCodeNotFound": "Der angegebene Zugangscode ist nicht registriert. Überprüfe deine Zugangskarte erneut auf Tippfehler oder erstelle stattdessen ein eigenes Konto!",
     "authenticationErrorUnknown": "Etwas ist schief gelaufen. Bitte versuche es später noch einmal! Wenn das Problem weiterhin besteht, kontaktiere uns bitte unter help@quantos.online.",
+    "noInternetConnectionErrorMessage": "Keine Internetverbindung! Bitte versuche es später noch einmal.",
 
-    "validationFailEmailIncorrectFormat": "Bitte gib eine gülte Email-Adresse an.",
+    "validationFailEmailIncorrectFormat": "Bitte gib eine gültige Email-Adresse an.",
     "validationFailPasswordNotSufficient": "Dein Passwort muss folgendes beinhalten:\n- Mindestens 10 Zeichen\n- Mindestens ein Buchstabe\n- Mindestens eine Zahl\n- Mindestens ein Sonderzeichen",
     "validationFailConfirmPasswordNoMatch": "Passwörter stimmen nicht überein.",
     "validationFailEmailMissing": "Email-Adresse ist erforderich.",
     "validationFailPasswordMissing": "Passwort ist erforderlich.",
 
-    "tooltipShowHidePassword": "Passwort anzeigen oder verbergen"
+    "tooltipShowHidePassword": "Passwort anzeigen oder verbergen",
+    "tooltipBack": "Zurück",
+    "tooltipSettings": "Einstellungen",
+    "tooltipInformation": "Erläuterungen",
+    "tooltipReadOut": "Vorlesen",
+    "tooltipClose": "Schließen",
+    "tooltipDownload": "Herunterladen",
+    "tooltipToggleOn": "Schalter an",
+    "tooltipToggleOff": "Schalter aus",
+    "tooltipNextPage": "Vorherige Seite",
+    "tooltipPreviousPage": "Nächste Seite"
 }

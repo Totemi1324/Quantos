@@ -9,6 +9,7 @@ import '../../bloc/stores/coding_modes_store_service.dart';
 import '../../bloc/coding_service.dart';
 
 import '../../data/hamiltonian_sizes.dart';
+import '../../models/console_content.dart';
 import '../part_separator.dart';
 import '../containers/panel_card.dart';
 import '../ui/adaptive_dropdown.dart';
@@ -32,6 +33,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
   late List<DropdownMenuItem> _sizes;
   late Qubo _qubo;
   int _selectedSize = 4;
+  bool _canSend = true;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -141,7 +143,16 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return BlocListener<CodingService, ConsoleContent>(listener: (context, state) {
+      if (state.status == ConsoleStatus.loading) {
+        _canSend = false;
+      }
+      else {
+        if (!_canSend) {
+          _canSend = true;
+        }
+      }
+    }, child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PartSeparator(
@@ -210,7 +221,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
               AdaptiveButton.secondary(
                 AppLocalizations.of(context)!.sendButtonLabel,
                 extended: false,
-                enabled: true, //TODO: Lock down Hamiltonian submission while processing request
+                enabled: _canSend, //TODO: Lock down Hamiltonian submission while processing request
                 onPressed: () {
                   final selectedMode = widget.getCurrentMode();
                   final success = _submitHamiltonian(context, selectedMode);
@@ -223,6 +234,6 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
           ),
         ),
       ],
-    );
+    ),);
   }
 }

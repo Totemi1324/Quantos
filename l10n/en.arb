@@ -394,6 +394,14 @@
     "@codingInfoAnnealer": {
         "description": "Info on Annealer coding mode: 'DWave Advantage sends your...'"
     },
+    "codingWarningTitle": "Attention",
+    "@codingWarningTitle": {
+        "description": "Coding warning title"
+    },
+    "codingWarningMessage": "You selected 'beginner' as your experience level. Using the coding interface properly requires knowledge of the inner workings of quantum annealers. We recommend to familiarize yourself with them first; to do so, complete the first introductory lection.",
+    "@codingWarningMessage": {
+        "description": "Warning on coding mode for new users: 'You selected 'beginner'...'"
+    },
     "codingTokenFormFieldSectionTitle": "Authentication",
     "@codingTokenFormFieldSectionTitle": {
         "description": "Coding token input form field section title"
@@ -569,9 +577,17 @@
     "@authenticationErrorUserDisabled": {
         "description": "Authentication error message for disabled user"
     },
+    "authenticationErrorAccessCodeNotFound": "The access code provided is not registered. Check your access card again for typos or create an own account instead!",
+    "@authenticationErrorAccessCodeNotFound": {
+        "description": "Authentication error message for access code not found"
+    },
     "authenticationErrorUnknown": "Something went wrong. Please try again later! If the issue persists, please contact us at help@quantos.online.",
     "@authenticationErrorUnknown": {
         "description": "Authentication error message for unknown"
+    },
+    "noInternetConnectionErrorMessage": "No internet connection! Please try again later.",
+    "@noInternetConnectionErrorMessage": {
+        "description": "No internet connection error message"
     },
 
     "validationFailEmailIncorrectFormat": "Please enter a valid email address.",
@@ -598,5 +614,45 @@
     "tooltipShowHidePassword": "Show or hide password",
     "@tooltipShowHidePassword": {
         "description": "Tooltip for show hide password button"
+    },
+    "tooltipBack": "Back",
+    "@tooltipBack": {
+        "description": "Tooltip for back button"
+    },
+    "tooltipSettings": "Settings",
+    "@tooltipSettings": {
+        "description": "Tooltip for settings button"
+    },
+    "tooltipInformation": "Information",
+    "@tooltipInformation": {
+        "description": "Tooltip for information button"
+    },
+    "tooltipReadOut": "Read aloud",
+    "@tooltipReadOut": {
+        "description": "Tooltip for read out button"
+    },
+    "tooltipClose": "Close",
+    "@tooltipClose": {
+        "description": "Tooltip for close button"
+    },
+    "tooltipDownload": "Download",
+    "@tooltipDownload": {
+        "description": "Tooltip for download button"
+    },
+    "tooltipToggleOn": "Toggle on",
+    "@tooltipToggleOn": {
+        "description": "Tooltip for on toggle"
+    },
+    "tooltipToggleOff": "Toggle off",
+    "@tooltipToggleOff": {
+        "description": "Tooltip for off toggle"
+    },
+    "tooltipNextPage": "Next page",
+    "@tooltipNextPage": {
+        "description": "Tooltip for next page button"
+    },
+    "tooltipPreviousPage": "Previous page",
+    "@tooltipPreviousPage": {
+        "description": "Tooltip for previous page button"
     }
 }

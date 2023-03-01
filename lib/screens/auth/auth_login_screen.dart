@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../base/flat.dart';
 import '../../widgets/forms/login_form.dart';
-import '../../widgets/ui/adaptive_button.dart';
 
 class AuthLogInScreen extends StatelessWidget {
   static const routeName = "/authenticate/log-in";

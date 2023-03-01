@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qubo_embedder/qubo_embedder.dart';
 // ignore: implementation_imports
@@ -32,7 +34,7 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
           final results = Sampler.simulate(hamiltonian);
 
           var stringBuilder = "";
-          var counter = 0;
+          var counter = 1;
           for (var entry in results.entries()) {
             stringBuilder +=
                 "#$counter: ${entry.energy.toStringAsFixed(1)} E\n${entry.solutionVector} x ${entry.numOccurrences}";
@@ -40,7 +42,8 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
             counter += 1;
           }
 
-          emit(ConsoleContent(ConsoleStatus.success, message: stringBuilder));
+          emit(ConsoleContent(ConsoleStatus.success,
+              record: results, formatted: stringBuilder));
         } on QuboEmbedderException {
           emit(const ConsoleContent(ConsoleStatus.failure));
         }
@@ -57,20 +60,42 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
         try {
           final results = Sampler.simulate(hamiltonian);
 
+          //TODO: TEMP CODE
+          final probabilities = _boltzmannDistribution(
+            results.entries().map((entry) => entry.energy).toList(),
+            (500 / 16) * event.qubo.size / 100.0,
+          );
+
           var stringBuilder = "";
-          var counter = 0;
+          var counter = 1;
           for (var entry in results.entries()) {
             stringBuilder +=
-                "#$counter: ${entry.energy.toStringAsFixed(1)} E\n${entry.solutionVector} x ${entry.numOccurrences}";
+                "#$counter: ${entry.energy.toStringAsFixed(1)} E\n${entry.solutionVector} x ${(500 * probabilities[counter - 1]).round()}";
             stringBuilder += "\n\n";
             counter += 1;
           }
 
-          emit(ConsoleContent(ConsoleStatus.success, message: stringBuilder));
+          emit(ConsoleContent(ConsoleStatus.success,
+              record: results, formatted: stringBuilder));
         } on QuboEmbedderException {
           emit(const ConsoleContent(ConsoleStatus.failure));
         }
       },
     );
+  }
+
+  //TODO: TEMP CODE
+  List<double> _boltzmannDistribution(
+    List<double> energies,
+    double temperature,
+  ) {
+    List<double> factorized = energies.map((e) => -e / temperature).toList();
+    double lse = _logsumexp(factorized);
+    return factorized.map((e) => exp(e - lse)).toList();
+  }
+
+  double _logsumexp(List<double> numbers) {
+    double c = numbers.fold(0, (v1, v2) => max(v1, v2));
+    return c + log(numbers.map((n) => exp(n - c)).fold(0, (a, b) => a + b));
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:io' show SocketException;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -66,6 +67,34 @@ class AuthenticationService extends Cubit<UserCredentials> {
           Duration(
             seconds: int.parse(responseData["expiresIn"]),
           ),
+        ),
+      ),
+    );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
+  }
+
+  Future accessCodeSignUp(String accessCode) async {
+    emit(
+      UserCredentials(
+        userId: accessCode,
+        token: "be45e1d8-7569-4287-804a-7aaed56c99d7",
+        expiryDate: DateTime.now().add(
+          const Duration(hours: 1),
+        ),
+      ),
+    );
+    _setAutomaticLogoutTimer();
+    await _storeToken();
+  }
+
+  Future accessCodeLogIn(String accessCode) async {
+    emit(
+      UserCredentials(
+        userId: accessCode,
+        token: "8d8fa04d-7358-417a-92cf-b8bfa46a8bac",
+        expiryDate: DateTime.now().add(
+          const Duration(hours: 1),
         ),
       ),
     );
@@ -141,6 +170,8 @@ class AuthenticationService extends Cubit<UserCredentials> {
             _firebaseErrorCodes(responseJson["error"]["message"]));
       }
       return responseJson;
+    } on SocketException {
+      throw NoInternetException();
     } catch (error) {
       rethrow;
     }

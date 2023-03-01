@@ -17,6 +17,10 @@ class LessonContent {
       .map((sectionTitle) => sectionTitle.title)
       .toList();
 
+  int get pages => content.length - 1;
+
+  int get totalLength => content.expand((element) => element).length;
+
   void addContentItem(ContentItem item) => contentCache.add(item);
 
   void breakPage() {

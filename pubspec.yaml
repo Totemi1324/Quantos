@@ -30,6 +30,9 @@ dependencies:
   animated_text_kit: ^4.2.2
   package_info_plus: 3.0.1
   shared_preferences: ^2.0.18
+  audioplayers: ^3.0.1
+  firebase_core: ^2.7.0
+  firebase_database: ^10.0.14
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +76,9 @@ flutter:
 
     # Lection content images
     - assets/images/lessons/
+
+    # Sound effects
+    - assets/sounds/
 
     # Credentials
     - lib/credentials.json

@@ -17,6 +17,7 @@ class AdaptiveButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool enabled;
   final IconData? icon;
+  final String? tooltip;
 
   const AdaptiveButton(this.label,
       {required this.type,
@@ -25,10 +26,13 @@ class AdaptiveButton extends StatelessWidget {
       required this.onPressed,
       required this.enabled,
       this.icon,
+      this.tooltip,
       super.key});
 
   factory AdaptiveButton.primary(String label,
-          {required bool extended, required VoidCallback onPressed, required bool enabled}) =>
+          {required bool extended,
+          required VoidCallback onPressed,
+          required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.primary,
@@ -39,7 +43,9 @@ class AdaptiveButton extends StatelessWidget {
       );
 
   factory AdaptiveButton.secondary(String label,
-          {required bool extended, required VoidCallback onPressed, required bool enabled}) =>
+          {required bool extended,
+          required VoidCallback onPressed,
+          required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.secondary,
@@ -50,7 +56,9 @@ class AdaptiveButton extends StatelessWidget {
       );
 
   factory AdaptiveButton.icon(String label,
-          {required VoidCallback onPressed, required IconData icon, required bool enabled}) =>
+          {required VoidCallback onPressed,
+          required IconData icon,
+          required bool enabled}) =>
       AdaptiveButton(
         label,
         type: ButtonType.primary,
@@ -64,7 +72,8 @@ class AdaptiveButton extends StatelessWidget {
   factory AdaptiveButton.navigator(
           {required ButtonType type,
           required VoidCallback onPressed,
-          required IconData icon}) =>
+          required IconData icon,
+          required String tooltip}) =>
       AdaptiveButton(
         "",
         type: type,
@@ -73,6 +82,7 @@ class AdaptiveButton extends StatelessWidget {
         onPressed: onPressed,
         enabled: true,
         icon: icon,
+        tooltip: tooltip,
       );
 
   @override
@@ -124,50 +134,55 @@ class AdaptiveButton extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            if (enabled) Positioned.fill(
-              child: Container(
-                decoration: decorationFirstLayer,
-              ),
-            ),
-            if (enabled) Positioned.fill(
-              child: Container(
-                decoration: decorationSecondLayer,
-              ),
-            ),
-            Positioned.fill(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  foregroundColor:
-                      context.read<ThemeService>().accessibilityModeActive
-                          ? Theme.of(context).colorScheme.onPrimary
-                          : Colors.white,
-                  disabledBackgroundColor: Colors.grey,
-                  padding: navigator
-                      ? const EdgeInsets.all(0)
-                      : const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 10,
-                        ),
-                  textStyle: Theme.of(context).textTheme.labelLarge,
+            if (enabled)
+              Positioned.fill(
+                child: Container(
+                  decoration: decorationFirstLayer,
                 ),
-                onPressed: enabled ? onPressed : null,
-                child: icon == null
-                    ? labelText
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Icon(
-                            icon,
-                            color: context
-                                    .read<ThemeService>()
-                                    .accessibilityModeActive
-                                ? Theme.of(context).colorScheme.onPrimary
-                                : Colors.white,
-                            size: navigator ? 50 : 30,
+              ),
+            if (enabled)
+              Positioned.fill(
+                child: Container(
+                  decoration: decorationSecondLayer,
+                ),
+              ),
+            Positioned.fill(
+              child: Tooltip(
+                message: tooltip,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor:
+                        context.read<ThemeService>().accessibilityModeActive
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Colors.white,
+                    disabledBackgroundColor: Colors.grey,
+                    padding: navigator
+                        ? const EdgeInsets.all(0)
+                        : const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
                           ),
-                          if (!navigator) Flexible(child: labelText),
-                        ],
-                      ),
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                  ),
+                  onPressed: enabled ? onPressed : null,
+                  child: icon == null
+                      ? labelText
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(
+                              icon,
+                              color: context
+                                      .read<ThemeService>()
+                                      .accessibilityModeActive
+                                  ? Theme.of(context).colorScheme.onPrimary
+                                  : Colors.white,
+                              size: navigator ? 50 : 30,
+                            ),
+                            if (!navigator) Flexible(child: labelText),
+                          ],
+                        ),
+                ),
               ),
             )
           ],

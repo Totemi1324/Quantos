@@ -33,15 +33,15 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
   @override
   void initState() {
     super.initState();
-
-    _probabilityDistribution = _boltzmannDistribution(
-      widget.energies,
-      _selected / 100.0,
-    );
   }
 
   @override
   Widget build(BuildContext context) {
+    _probabilityDistribution = _boltzmannDistribution(
+      widget.energies,
+      _selected / 100.0,
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [

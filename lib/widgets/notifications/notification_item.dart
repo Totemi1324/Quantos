@@ -17,8 +17,10 @@ abstract class NotificationItem extends StatelessWidget {
   @protected
   String _typeToString(BuildContext buildContext, NotificationType type) {
     switch (type) {
-      case NotificationType.news: return AppLocalizations.of(buildContext)!.notificationNewsTitle;
-      case NotificationType.statistic: return AppLocalizations.of(buildContext)!.notificationStatisticTitle;
+      case NotificationType.news:
+        return AppLocalizations.of(buildContext)!.notificationNewsTitle;
+      case NotificationType.statistic:
+        return AppLocalizations.of(buildContext)!.notificationStatisticTitle;
     }
   }
 
@@ -44,24 +46,26 @@ abstract class NotificationItem extends StatelessWidget {
               style: Theme.of(context).textTheme.labelMedium,
             ),
           ),
-          if (dismissible) Positioned(
-            top: 0,
-            right: 0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
-              child: Material(
-                color: Colors.transparent,
-                child: IconButton(
-                  onPressed: onClose,
-                  icon: const Icon(
-                    Icons.close_rounded,
-                    color: Colors.white,
-                    size: 25,
+          if (dismissible)
+            Positioned(
+              top: 0,
+              right: 0,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: Material(
+                  color: Colors.transparent,
+                  child: IconButton(
+                    onPressed: onClose,
+                    tooltip: AppLocalizations.of(context)!.tooltipClose,
+                    icon: const Icon(
+                      Icons.close_rounded,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                   ),
                 ),
               ),
-            ),
-          )
+            )
         ],
       ),
     );

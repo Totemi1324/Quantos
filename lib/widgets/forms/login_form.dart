@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/authentication_service.dart';
 import '../../bloc/content_outline_service.dart';
 import '../../bloc/localization_service.dart';
+import '../../bloc/database_service.dart';
 
 import '../../screens/base/home.dart';
 import '../../screens/loading_screen.dart';
@@ -12,6 +13,7 @@ import '../ui/adaptive_form_field.dart';
 import '../ui/adaptive_button.dart';
 import '../../models/exceptions.dart';
 import '../authentication_error_popup.dart';
+import '../no_intnernet_popup.dart';
 
 class LogInForm extends StatefulWidget {
   const LogInForm({super.key});
@@ -43,13 +45,23 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
     if (!mounted) return;
 
     try {
-      await context
+      await buildContext
           .read<AuthenticationService>()
           .attemptLogIn(_email, _password);
     } on AuthenticationException catch (error) {
       showDialog(
-        context: context,
+        context: buildContext,
         builder: (_) => AuthenticationErrorPopup(error.responseCode),
+        barrierDismissible: true,
+      );
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    } on NoInternetException {
+      showDialog(
+        context: buildContext,
+        builder: (_) => const NoInternetPopup(),
         barrierDismissible: true,
       );
       setState(() {
@@ -58,7 +70,7 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
       return;
     } catch (error) {
       showDialog(
-        context: context,
+        context: buildContext,
         builder: (_) =>
             const AuthenticationErrorPopup(AuthenticationError.unknown),
         barrierDismissible: true,
@@ -78,9 +90,14 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
       MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
           Future(
-            () => buildContext.read<ContentOutlineService>().loadFromLocale(
-                  buildContext.read<LocalizationService>().state,
-                ),
+            () async {
+              buildContext.read<ContentOutlineService>().loadFromLocale(
+                buildContext.read<LocalizationService>().state,
+              );
+              await buildContext.read<DatabaseService>().getUserInfo(
+                buildContext.read<AuthenticationService>().state.userId,
+              );
+            },
           ),
           Home.routeName,
         ),

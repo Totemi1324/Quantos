@@ -12,6 +12,7 @@ enum AuthenticationError {
   emailNotFound,
   invalidPassword,
   userDisabled,
+  accessCodeNotFound,
   unknown,
 }
 
@@ -53,12 +54,12 @@ class ParseErrorException extends QuantosException {
 
 class AuthenticationException extends QuantosException {
   final AuthenticationError responseCode;
-  
+
   AuthenticationException(this.responseCode);
-  
+
   @override
   String get exceptionId => "AuthenticationException";
-  
+
   @override
   String get message {
     switch (responseCode) {
@@ -72,8 +73,19 @@ class AuthenticationException extends QuantosException {
         return "Firebase API on sign in returned error code INVALID_PASSWORD.";
       case AuthenticationError.userDisabled:
         return "Firebase API on sign in returned error code USER_DISABLED.";
+      case AuthenticationError.accessCodeNotFound:
+        return "Firebase Realtime Database does not contain the specified access code.";
       case AuthenticationError.unknown:
         return "Firebase API returned an unknown error code.";
     }
   }
+}
+
+class NoInternetException extends QuantosException {
+  @override
+  String get exceptionId => "NoInternetException";
+
+  @override
+  String get message =>
+      "Operation failed because client device has no active internet connection.";
 }

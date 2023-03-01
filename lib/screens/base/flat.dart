@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Flat extends StatelessWidget {
   final Widget body;
@@ -28,6 +29,7 @@ class Flat extends StatelessWidget {
           leading: ModalRoute.of(context)?.canPop == true
               ? IconButton(
                   onPressed: () => Navigator.of(context).pop(),
+                  tooltip: AppLocalizations.of(context)!.tooltipBack,
                   icon: const Icon(
                     Icons.arrow_back_rounded,
                     size: 40,

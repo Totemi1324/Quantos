@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // State management
 import 'bloc/theme_service.dart';
@@ -7,15 +8,23 @@ import 'bloc/localization_service.dart';
 import 'bloc/authentication_service.dart';
 import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
+import 'bloc/database_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
 
-import './route_register.dart';
-import './models/content/content_outline.dart';
-import './models/user_credentials.dart';
+// Models
+import 'models/content/content_outline.dart';
 
-void main() {
+import './route_register.dart';
+import './firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   Paint.enableDithering = true;
   runApp(const MyApp());
 }
@@ -41,20 +50,20 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AuthenticationService>(
           create: (_) => AuthenticationService(),
-        )
+        ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(
         builder: (context, currentLocale) =>
             BlocBuilder<ThemeService, ThemeData>(
           builder: (context, activeTheme) =>
               BlocBuilder<ContentOutlineService, ContentOutline>(
-            builder: (context, contentOutline) =>
-                BlocBuilder<AuthenticationService, UserCredentials>(
-              builder: (context, state) => MaterialApp(
+            builder: (context, outlines) => BlocProvider(
+              create: (_) => DatabaseService(outlines),
+              child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: "Quantos",
                 theme: activeTheme,
-                locale: context.read<LocalizationService>().state,
+                locale: currentLocale,
                 supportedLocales:
                     context.read<LocalizationService>().supportedLocales,
                 localizationsDelegates:

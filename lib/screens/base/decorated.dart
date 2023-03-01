@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../settings_screen.dart';
 
@@ -55,6 +56,7 @@ class _DecoratedState extends State<Decorated> {
           leading: ModalRoute.of(context)?.canPop == true
               ? IconButton(
                   onPressed: () => Navigator.of(context).pop(),
+                  tooltip: AppLocalizations.of(context)!.tooltipBack,
                   icon: const Icon(
                     Icons.arrow_back_rounded,
                     size: 40,
@@ -65,6 +67,7 @@ class _DecoratedState extends State<Decorated> {
             IconButton(
               onPressed: () =>
                   Navigator.of(context).pushNamed(SettingsScreen.routeName),
+              tooltip: AppLocalizations.of(context)!.tooltipSettings,
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

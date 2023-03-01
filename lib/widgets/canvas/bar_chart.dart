@@ -15,15 +15,17 @@ class BarChart extends StatelessWidget {
     final double minY = values.fold(0, (v1, v2) => min(v1, v2));
     final double maxY = values.fold(0, (v1, v2) => max(v1, v2));
     List<NumericDataPoint> points = List<NumericDataPoint>.empty();
-    if (values.length >= 5) {
+
+    if (values.length >= 2) {
       points = List<NumericDataPoint>.generate(
-        5,
+        values.length.clamp(2, 5),
         (index) => NumericDataPoint(
           "#${index + 1}",
           values[index],
         ),
       );
     }
+
     return Tuple3<double, double, List<NumericDataPoint>>(minY, maxY, points);
   }
 
