@@ -35,6 +35,7 @@ class LessonItem extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ShaderMask(
             blendMode: BlendMode.srcIn,

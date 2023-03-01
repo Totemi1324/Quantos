@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../bloc/authentication_service.dart';
 import '../../bloc/navigation_service.dart';
@@ -40,7 +41,12 @@ class _HomeState extends State<Home> {
       const StatisticsScreen(),
       const ProfileScreen(),
     ];
-    _image = Assets.images.background.provider();
+    if (UniversalPlatform.isWeb) {
+      _image = Assets.images.backgroundDesktop.provider();
+    } else {
+      _image = Assets.images.backgroundDesktop.provider();
+    }
+
     super.initState();
   }
 

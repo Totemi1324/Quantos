@@ -11,9 +11,12 @@ class PanelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = context.watch<ThemeService>().accessibilityModeActive ? Colors.white : const Color(0xFF303859).withOpacity(0.5);
+    final color = context.watch<ThemeService>().accessibilityModeActive
+        ? Colors.white
+        : const Color(0xFF303859).withOpacity(0.5);
 
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(
           color: color,

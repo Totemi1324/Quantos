@@ -17,6 +17,34 @@ class LectionList extends StatefulWidget {
   State<LectionList> createState() => _LectionListState();
 }
 
+Widget _buildLectionItem(BuildContext buildContext, String lectionId) {
+  return InkWell(
+    splashFactory: NoSplash.splashFactory,
+    onTap: buildContext.read<DatabaseService>().isUnlocked(lectionId)
+        ? () => Navigator.of(buildContext).pushNamed(
+              LectionScreen.routeName,
+              arguments: lectionId,
+            )
+        : null,
+    child: PanelCard(
+      padding: const EdgeInsets.all(10),
+      child: LectionItem(
+        buildContext
+            .read<ContentOutlineService>()
+            .state
+            .getLectionTitle(lectionId),
+        iconAnimationAsset: buildContext
+            .read<ContentOutlineService>()
+            .lection(lectionId)
+            .iconAnimationAsset,
+        progressPercent:
+            buildContext.read<DatabaseService>().lectionProgress(lectionId),
+        unlocked: buildContext.read<DatabaseService>().isUnlocked(lectionId),
+      ),
+    ),
+  );
+}
+
 class _LectionListState extends State<LectionList> {
   @override
   Widget build(BuildContext context) {
@@ -31,38 +59,20 @@ class _LectionListState extends State<LectionList> {
           listener: (context, state) => setState(() {}),
         )
       ],
-      child: ListView.builder(
+      child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: lections.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount:
+              MediaQuery.of(context).orientation == Orientation.landscape
+                  ? 2
+                  : 1,
+          childAspectRatio: 16 / 5,
+        ),
         itemBuilder: (buildContext, index) {
           final lectionId = lections[index].id;
-
-          return InkWell(
-            splashFactory: NoSplash.splashFactory,
-            onTap: context.read<DatabaseService>().isUnlocked(lectionId)
-                ? () => Navigator.of(context).pushNamed(
-                      LectionScreen.routeName,
-                      arguments: lectionId,
-                    )
-                : null,
-            child: PanelCard(
-              padding: const EdgeInsets.all(10),
-              child: LectionItem(
-                context
-                    .read<ContentOutlineService>()
-                    .state
-                    .getLectionTitle(lectionId),
-                iconAnimationAsset: context
-                    .read<ContentOutlineService>()
-                    .lection(lectionId)
-                    .iconAnimationAsset,
-                progressPercent:
-                    context.read<DatabaseService>().lectionProgress(lectionId),
-                unlocked: context.read<DatabaseService>().isUnlocked(lectionId),
-              ),
-            ),
-          );
+          return _buildLectionItem(context, lectionId);
         },
       ),
     );

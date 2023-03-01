@@ -56,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
             Future(
               () async {
                 buildContext.read<ContentOutlineService>().loadFromLocale(
-                  buildContext.read<LocalizationService>().state,
-                );
+                      buildContext.read<LocalizationService>().state,
+                    );
                 await buildContext.read<DatabaseService>().getUserInfo(
-                  buildContext.read<AuthenticationService>().state.userId,
-                );
+                      buildContext.read<AuthenticationService>().state.userId,
+                    );
               },
             ),
             Home.routeName,
@@ -78,9 +78,12 @@ class _SplashScreenState extends State<SplashScreen> {
       onTap: _onTap,
       child: Flat(
         body: Center(
-          child: RiveAnimation.asset(
-            Assets.animations.quantosLogoIntro,
-            fit: BoxFit.fitWidth,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: RiveAnimation.asset(
+              Assets.animations.quantosLogoIntro,
+              fit: BoxFit.fitWidth,
+            ),
           ),
         ),
       ),

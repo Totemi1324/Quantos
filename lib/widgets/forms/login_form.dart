@@ -90,13 +90,13 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
       MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
           Future(
-            () async {
+            () {
               buildContext.read<ContentOutlineService>().loadFromLocale(
-                buildContext.read<LocalizationService>().state,
-              );
-              await buildContext.read<DatabaseService>().getUserInfo(
-                buildContext.read<AuthenticationService>().state.userId,
-              );
+                    buildContext.read<LocalizationService>().state,
+                  );
+              buildContext.read<DatabaseService>().getUserInfo(
+                    buildContext.read<AuthenticationService>().state.userId,
+                  );
             },
           ),
           Home.routeName,
@@ -108,65 +108,68 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: ListView(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: AdaptiveFormField.icon(
-              AppLocalizations.of(context)!.authFormEmail,
-              prefixIcon: Icons.alternate_email_rounded,
-              autocorrect: false,
-              enableSuggestions: true,
-              isFinalField: false,
-              nextField: _passwordFocusNode,
-              onSaved: (newValue) {
-                if (newValue != null) {
-                  _email = newValue;
-                }
-              },
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 400),
+      child: Form(
+        key: _formKey,
+        child: ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: AdaptiveFormField.icon(
+                AppLocalizations.of(context)!.authFormEmail,
+                prefixIcon: Icons.alternate_email_rounded,
+                autocorrect: false,
+                enableSuggestions: true,
+                isFinalField: false,
+                nextField: _passwordFocusNode,
+                onSaved: (newValue) {
+                  if (newValue != null) {
+                    _email = newValue;
+                  }
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: AdaptiveFormField.password(
-              AppLocalizations.of(context)!.authFormPassword,
-              isFinalField: true,
-              thisField: _passwordFocusNode,
-              onSaved: (newValue) {
-                if (newValue != null) {
-                  _password = newValue;
-                }
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: AdaptiveFormField.password(
+                AppLocalizations.of(context)!.authFormPassword,
+                isFinalField: true,
+                thisField: _passwordFocusNode,
+                onSaved: (newValue) {
+                  if (newValue != null) {
+                    _password = newValue;
+                  }
+                },
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          AnimatedCrossFade(
-            crossFadeState: _isLoading
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
-            duration: const Duration(milliseconds: 150),
-            firstCurve: Curves.ease,
-            secondCurve: Curves.ease,
-            firstChild: AdaptiveButton.secondary(
-              AppLocalizations.of(context)!.authLogInButtonLabel,
-              extended: true,
-              onPressed: () => _onSignInPressed(context),
-              enabled: true,
+            const SizedBox(
+              height: 50,
             ),
-            secondChild: AdaptiveButton.secondary(
-              AppLocalizations.of(context)!.authLogInButtonLabel,
-              extended: true,
-              onPressed: () => _onSignInPressed(context),
-              enabled: false,
+            AnimatedCrossFade(
+              crossFadeState: _isLoading
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 150),
+              firstCurve: Curves.ease,
+              secondCurve: Curves.ease,
+              firstChild: AdaptiveButton.secondary(
+                AppLocalizations.of(context)!.authLogInButtonLabel,
+                extended: true,
+                onPressed: () => _onSignInPressed(context),
+                enabled: true,
+              ),
+              secondChild: AdaptiveButton.secondary(
+                AppLocalizations.of(context)!.authLogInButtonLabel,
+                extended: true,
+                onPressed: () => _onSignInPressed(context),
+                enabled: false,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

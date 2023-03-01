@@ -33,7 +33,8 @@ class AuthGroupAccessScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.only(top: 70),
                     child: Text(
-                      AppLocalizations.of(context)!.authGroupAccessScreenInstructions,
+                      AppLocalizations.of(context)!
+                          .authGroupAccessScreenInstructions,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),

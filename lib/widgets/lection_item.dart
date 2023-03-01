@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import './ui/adaptive_progress_bar.dart';
 
@@ -54,6 +55,46 @@ class _LectionItemState extends State<LectionItem> {
     _pressed = controller.findInput<bool>('Pressed') as SMIBool;
   }
 
+  Widget _buildColumn(Widget icon, Widget progressBar) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Row(
+          children: [
+            Flexible(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, bottom: 10, top: 10),
+                child: widget.unlocked
+                    ? icon
+                    : ColorFiltered(
+                        colorFilter: LectionItem.grayscaleImageFilter,
+                        child: icon,
+                      ),
+              ),
+            ),
+            Flexible(
+              flex: 8,
+              child: Container(
+                margin: const EdgeInsets.only(left: 5),
+                child: Text(
+                  widget.title,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ),
+            ),
+          ],
+        ),
+        widget.unlocked
+            ? progressBar
+            : ColorFiltered(
+                colorFilter: LectionItem.grayscaleImageFilter,
+                child: progressBar,
+              ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final icon = Stack(
@@ -67,7 +108,7 @@ class _LectionItemState extends State<LectionItem> {
           ),
         ),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 80, maxHeight: 80),
+          constraints: const BoxConstraints(maxWidth: 70, maxHeight: 70),
           child: RiveAnimation.asset(
             "assets/animations/lections/${widget.iconAnimationAsset}",
             fit: BoxFit.contain,
@@ -78,49 +119,27 @@ class _LectionItemState extends State<LectionItem> {
     );
     final progressBar = AdaptiveProgressBar.icon(widget.progressPercent);
 
-    return GestureDetector(
-      onLongPress: () {
-        if (_pressed?.value != null && widget.unlocked) {
-          _pressed!.value = !_pressed!.value;
-        }
-      },
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Flexible(
-                flex: 2,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(right: 10, bottom: 10, top: 10),
-                  child: widget.unlocked
-                      ? icon
-                      : ColorFiltered(
-                          colorFilter: LectionItem.grayscaleImageFilter,
-                          child: icon,
-                        ),
-                ),
-              ),
-              Flexible(
-                flex: 8,
-                child: Container(
-                  margin: const EdgeInsets.only(left: 5),
-                  child: Text(
-                    widget.title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          widget.unlocked
-              ? progressBar
-              : ColorFiltered(
-                  colorFilter: LectionItem.grayscaleImageFilter,
-                  child: progressBar,
-                ),
-        ],
-      ),
-    );
+    return UniversalPlatform.isWeb
+        ? MouseRegion(
+            onEnter: (event) {
+              if (_pressed?.value != null && widget.unlocked) {
+                _pressed!.value = true;
+              }
+            },
+            onExit: (event) {
+              if (_pressed?.value != null && widget.unlocked) {
+                _pressed!.value = false;
+              }
+            },
+            child: _buildColumn(icon, progressBar),
+          )
+        : GestureDetector(
+            onLongPress: () {
+              if (_pressed?.value != null && widget.unlocked) {
+                _pressed!.value = !_pressed!.value;
+              }
+            },
+            child: _buildColumn(icon, progressBar),
+          );
   }
 }

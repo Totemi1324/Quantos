@@ -45,18 +45,22 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
 
     final code = _code.join();
     try {
-      final exists = await buildContext.read<DatabaseService>().accessCodeExists(code);
+      final exists =
+          await buildContext.read<DatabaseService>().accessCodeExists(code);
       if (!exists) {
         throw AuthenticationException(AuthenticationError.accessCodeNotFound);
       }
       if (!mounted) return;
-      final data = await buildContext.read<DatabaseService>().getAccessCodeInfo(code);
+      final data =
+          await buildContext.read<DatabaseService>().getAccessCodeInfo(code);
       if (!data.item1) {
         throw AuthenticationException(AuthenticationError.userDisabled);
       }
       if (!mounted) return;
 
-      if (await buildContext.read<DatabaseService>().accessCodeHasSignedUp(code)) {
+      if (await buildContext
+          .read<DatabaseService>()
+          .accessCodeHasSignedUp(code)) {
         await buildContext.read<AuthenticationService>().accessCodeLogIn(code);
 
         if (!mounted) return;
@@ -66,11 +70,11 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
               Future(
                 () async {
                   buildContext.read<ContentOutlineService>().loadFromLocale(
-                    buildContext.read<LocalizationService>().state,
-                  );
+                        buildContext.read<LocalizationService>().state,
+                      );
                   await buildContext.read<DatabaseService>().getUserInfo(
-                    buildContext.read<AuthenticationService>().state.userId,
-                  );
+                        buildContext.read<AuthenticationService>().state.userId,
+                      );
                 },
               ),
               Home.routeName,
@@ -84,9 +88,9 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
         if (!mounted) return;
         buildContext.read<DatabaseService>().fullReset();
         await buildContext.read<DatabaseService>().initializeUserEntry(
-          buildContext.read<AuthenticationService>().state.userId,
-          team: data.item2,
-        );
+              buildContext.read<AuthenticationService>().state.userId,
+              team: data.item2,
+            );
 
         setState(() {
           _isLoading = false;
@@ -182,20 +186,23 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildAutoFormField(context, index: 0),
-          _buildAutoFormField(context, index: 1),
-          _buildAutoFormField(context, index: 2),
-          Text(
-            "-",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          _buildAutoFormField(context, index: 3),
-          _buildAutoFormField(context, index: 4),
-          _buildAutoFormField(context, index: 5),
-        ],
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 400),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildAutoFormField(context, index: 0),
+            _buildAutoFormField(context, index: 1),
+            _buildAutoFormField(context, index: 2),
+            Text(
+              "-",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            _buildAutoFormField(context, index: 3),
+            _buildAutoFormField(context, index: 4),
+            _buildAutoFormField(context, index: 5),
+          ],
+        ),
       ),
     );
   }

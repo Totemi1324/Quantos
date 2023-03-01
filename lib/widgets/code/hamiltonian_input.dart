@@ -1,8 +1,7 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universal_platform/universal_platform.dart';
 import 'package:qubo_embedder/qubo_embedder.dart';
 
 import '../../bloc/stores/coding_modes_store_service.dart';
@@ -42,7 +41,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
     super.initState();
 
     setState(() {
-      if (Platform.isAndroid || Platform.isIOS) {
+      if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
         _sizes = sizes.where((item) => item.value <= 6).toList();
       } else {
         _sizes = sizes;
@@ -143,97 +142,101 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CodingService, ConsoleContent>(listener: (context, state) {
-      if (state.status == ConsoleStatus.loading) {
-        _canSend = false;
-      }
-      else {
-        if (!_canSend) {
-          _canSend = true;
+    return BlocListener<CodingService, ConsoleContent>(
+      listener: (context, state) {
+        if (state.status == ConsoleStatus.loading) {
+          _canSend = false;
+        } else {
+          if (!_canSend) {
+            _canSend = true;
+          }
         }
-      }
-    }, child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        PartSeparator(
-          AppLocalizations.of(context)!.codingHamiltonianInputTitle,
-          verticalMargin: 20,
-        ),
-        PanelCard(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AdaptiveDropdown(
-                    items: _sizes,
-                    defaultSelectedIndex: 2,
-                    onChanged: (newValue) {
-                      if (newValue is int) {
-                        setState(() {
-                          _selectedSize = newValue;
-                          _qubo = Qubo(size: newValue);
-                          _formKey.currentState?.reset();
-                        });
-                      }
-                    },
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          PartSeparator(
+            AppLocalizations.of(context)!.codingHamiltonianInputTitle,
+            verticalMargin: 20,
+          ),
+          PanelCard(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AdaptiveDropdown(
+                      items: _sizes,
+                      defaultSelectedIndex: 2,
+                      onChanged: (newValue) {
+                        if (newValue is int) {
+                          setState(() {
+                            _selectedSize = newValue;
+                            _qubo = Qubo(size: newValue);
+                            _formKey.currentState?.reset();
+                          });
+                        }
+                      },
+                    ),
+                    AdaptiveButton.icon(
+                      AppLocalizations.of(context)!
+                          .codingHamiltonianInputLoadButtonLabel,
+                      enabled: true,
+                      onPressed: () {},
+                      icon: Icons.file_upload_rounded,
+                    ),
+                  ],
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: UniversalPlatform.isWeb ? 600 : 350,
                   ),
-                  AdaptiveButton.icon(
-                    AppLocalizations.of(context)!
-                        .codingHamiltonianInputLoadButtonLabel,
-                    enabled: true,
-                    onPressed: () {},
-                    icon: Icons.file_upload_rounded,
-                  ),
-                ],
-              ),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 350),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Form(
-                    key: _formKey,
-                    child: GridView.custom(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: _selectedSize,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 1,
-                      ),
-                      childrenDelegate: SliverChildListDelegate.fixed(
-                        _buildGrid(context),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Form(
+                      key: _formKey,
+                      child: GridView.custom(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: _selectedSize,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 1,
+                        ),
+                        childrenDelegate: SliverChildListDelegate.fixed(
+                          _buildGrid(context),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Text(
-                  AppLocalizations.of(context)!
-                      .codingHamiltonianInputInstructions,
-                  textAlign: TextAlign.center,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    AppLocalizations.of(context)!
+                        .codingHamiltonianInputInstructions,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              AdaptiveButton.secondary(
-                AppLocalizations.of(context)!.sendButtonLabel,
-                extended: false,
-                enabled: _canSend,
-                onPressed: () {
-                  final selectedMode = widget.getCurrentMode();
-                  final success = _submitHamiltonian(context, selectedMode);
-                  if (success) {
-                    widget.onSubmit();
-                  }
-                },
-              )
-            ],
+                AdaptiveButton.secondary(
+                  AppLocalizations.of(context)!.sendButtonLabel,
+                  extended: false,
+                  enabled: _canSend,
+                  onPressed: () {
+                    final selectedMode = widget.getCurrentMode();
+                    final success = _submitHamiltonian(context, selectedMode);
+                    if (success) {
+                      widget.onSubmit();
+                    }
+                  },
+                )
+              ],
+            ),
           ),
-        ),
-      ],
-    ),);
+        ],
+      ),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class Flat extends StatelessWidget {
   final Widget body;
@@ -37,7 +38,12 @@ class Flat extends StatelessWidget {
                 )
               : null,
         ),
-        body: body,
+        body: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 700),
+            child: body,
+          ),
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:universal_platform/universal_platform.dart';
 import 'package:tuple/tuple.dart';
 
 import '../models/user_data.dart';
@@ -14,7 +15,9 @@ class DatabaseService extends Cubit<UserData> {
 
   DatabaseService(ContentOutline outline)
       : super(UserData.defaultUser(outline)) {
-    _database.setPersistenceEnabled(true);
+    if (!UniversalPlatform.isWeb) {
+      _database.setPersistenceEnabled(true);
+    }
     _outlineInstance = outline;
   }
 
