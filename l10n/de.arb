@@ -151,7 +151,7 @@
     "authenticationErrorUnknown": "Etwas ist schief gelaufen. Bitte versuche es später noch einmal! Wenn das Problem weiterhin besteht, kontaktiere uns bitte unter help@quantos.online.",
     "noInternetConnectionErrorMessage": "Keine Internetverbindung! Bitte versuche es später noch einmal.",
 
-    "validationFailEmailIncorrectFormat": "Bitte gib eine gülte Email-Adresse an.",
+    "validationFailEmailIncorrectFormat": "Bitte gib eine gültige Email-Adresse an.",
     "validationFailPasswordNotSufficient": "Dein Passwort muss folgendes beinhalten:\n- Mindestens 10 Zeichen\n- Mindestens ein Buchstabe\n- Mindestens eine Zahl\n- Mindestens ein Sonderzeichen",
     "validationFailConfirmPasswordNoMatch": "Passwörter stimmen nicht überein.",
     "validationFailEmailMissing": "Email-Adresse ist erforderich.",

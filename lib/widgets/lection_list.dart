@@ -25,7 +25,7 @@ class _LectionListState extends State<LectionList> {
     return MultiBlocListener(
       listeners: [
         BlocListener<ContentOutlineService, ContentOutline>(
-          listener: (context, state) => setState(() {}), //TODO
+          listener: (context, state) => setState(() {}),
         ),
         BlocListener<DatabaseService, UserData>(
           listener: (context, state) => setState(() {}),

@@ -33,10 +33,15 @@ class UserData {
   });
 
   factory UserData.defaultUser(ContentOutline outline) => UserData(
-        age: Age.student,
-        experience: Experience.beginner,
-        lectionUnlocked: Map.fromIterable(outline.lectionIds, value: (element) => element == "8hg",),
-        lessonProgress: Map.fromIterable(outline.lessonIds, value: (_) => 0.0,),
-        activityLog: {}
-      );
+      age: Age.student,
+      experience: Experience.beginner,
+      lectionUnlocked: Map.fromIterable(
+        outline.lectionIds,
+        value: (element) => true,
+      ),
+      lessonProgress: Map.fromIterable(
+        outline.lessonIds,
+        value: (_) => 0.0,
+      ),
+      activityLog: {});
 }

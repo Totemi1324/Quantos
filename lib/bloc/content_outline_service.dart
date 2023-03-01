@@ -163,13 +163,14 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     final jsonString =
         await rootBundle.loadString("lessons/${locale.languageCode}/base.json");
 
-    _parse(jsonString);
+    final newState = _parse(jsonString);
 
-    emit(state);
+    emit(newState);
   }
 
-  void _parse(String jsonString) {
+  ContentOutline _parse(String jsonString) {
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
+    final result = ContentOutline.emptyFromData(_contentData);
 
     for (var entry in jsonMap.entries) {
       if (entry.key.substring(0, 8) != "$lectionJsonKey-") {
@@ -180,7 +181,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       }
       final lectionId = entry.key.substring(8);
       if (entry.value is Map<String, dynamic>) {
-        _parseLection(lectionId, entry.value as Map<String, dynamic>);
+        _parseLection(lectionId, entry.value as Map<String, dynamic>, result);
       } else {
         throw ParseErrorException(
           ParseError.invalidJsonValue,
@@ -188,9 +189,12 @@ class ContentOutlineService extends Cubit<ContentOutline> {
         );
       }
     }
+
+    return result;
   }
 
-  void _parseLection(String id, Map<String, dynamic> lectionMap) {
+  void _parseLection(
+      String id, Map<String, dynamic> lectionMap, ContentOutline currentState) {
     if (!lectionMap.keys.contains(titleJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
@@ -204,7 +208,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       );
     }
 
-    state.updateLectionData(
+    currentState.updateLectionData(
       id,
       lectionMap[titleJsonKey],
       lectionMap[descriptionJsonKey],
@@ -217,7 +221,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       );
     }
     if (lectionMap[contentJsonKey] is Map<String, dynamic>) {
-      _parseContents(lectionMap[contentJsonKey]);
+      _parseContents(lectionMap[contentJsonKey], currentState);
     } else {
       throw ParseErrorException(
         ParseError.invalidJsonValue,
@@ -226,7 +230,8 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     }
   }
 
-  void _parseContents(Map<String, dynamic> content) {
+  void _parseContents(
+      Map<String, dynamic> content, ContentOutline currentState) {
     for (var entry in content.entries) {
       if (entry.key.substring(0, 7) != "$lessonJsonKey-") {
         throw ParseErrorException(
@@ -236,7 +241,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       }
       final lessonId = entry.key.substring(7);
       if (entry.value is Map<String, dynamic>) {
-        _parseLesson(lessonId, entry.value);
+        _parseLesson(lessonId, entry.value, currentState);
       } else {
         throw ParseErrorException(
           ParseError.invalidJsonValue,
@@ -246,7 +251,8 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     }
   }
 
-  void _parseLesson(String lessonId, Map<String, dynamic> lessonMap) {
+  void _parseLesson(String lessonId, Map<String, dynamic> lessonMap,
+      ContentOutline currentState) {
     if (!lessonMap.keys.contains(titleJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
@@ -254,6 +260,6 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       );
     }
 
-    state.updateLessonData(lessonId, lessonMap[titleJsonKey]);
+    currentState.updateLessonData(lessonId, lessonMap[titleJsonKey]);
   }
 }
