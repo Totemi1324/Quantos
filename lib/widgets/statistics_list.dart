@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
@@ -111,6 +112,21 @@ class _StatisticsListState extends State<StatisticsList> {
     }
   }
 
+  Future _readOutContent(int index) async {
+    final player = AudioPlayer();
+
+    switch (index) {
+      case 0:
+        await player.play(AssetSource("sounds/heatmap.mp3"));
+        break;
+      case 1:
+        await player.play(AssetSource("sounds/linechart.mp3"));
+        break;
+      default:
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
@@ -152,7 +168,10 @@ class _StatisticsListState extends State<StatisticsList> {
                           child: Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () async =>
+                                  await _readOutContent(index),
+                              tooltip:
+                                  AppLocalizations.of(context)!.tooltipReadOut,
                               icon: Icon(
                                 Icons.record_voice_over_rounded,
                                 color: activeTheme.colorScheme.onBackground,
