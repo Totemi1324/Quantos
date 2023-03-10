@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/coding_service.dart';
 
 class AdaptiveFormField extends StatefulWidget {
   final String labelText;
@@ -14,6 +18,7 @@ class AdaptiveFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final AutovalidateMode? autoValidateMode;
   final Function(String?) onSaved;
+  final String? keyword;
 
   const AdaptiveFormField(
     this.labelText, {
@@ -28,6 +33,7 @@ class AdaptiveFormField extends StatefulWidget {
     this.multiline = false,
     this.validator,
     this.autoValidateMode,
+    this.keyword,
     super.key,
   });
 
@@ -61,7 +67,8 @@ class AdaptiveFormField extends StatefulWidget {
           FocusNode? thisField,
           FocusNode? nextField,
           String? Function(String?)? validator,
-          AutovalidateMode? autoValidateMode}) =>
+          AutovalidateMode? autoValidateMode,
+          String? keyword}) =>
       AdaptiveFormField(
         labelText,
         autocorrect: false,
@@ -74,6 +81,7 @@ class AdaptiveFormField extends StatefulWidget {
         passwordField: true,
         validator: validator,
         autoValidateMode: autoValidateMode,
+        keyword: keyword ?? "",
       );
 
   factory AdaptiveFormField.multiline(String labelText,
@@ -118,6 +126,11 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
           : (widget.isFinalField ? TextInputAction.done : TextInputAction.next),
       onFieldSubmitted: !widget.isFinalField
           ? (_) => FocusScope.of(context).requestFocus(widget.nextField)
+          : null,
+      onChanged: widget.keyword != null && widget.keyword == "Token"
+          ? (value) {
+              context.read<CodingService>().saveTokenInput(value);
+            }
           : null,
       onSaved: widget.onSaved,
       validator: widget.validator,
