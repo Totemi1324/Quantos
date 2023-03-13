@@ -21,11 +21,11 @@
 Built with:
 
 <div align="center">
-<a href="https://flutter.dev/"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
-<a href="https://dart.dev/"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
-<a href="https://rive.app/"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
-<a href="https://www.dwavesys.com/"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
-<a href="https://firebase.google.com/"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
+<a href="https://flutter.dev/" target="_blank"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
+<a href="https://dart.dev/" target="_blank"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
+<a href="https://rive.app/" target="_blank"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
+<a href="https://www.dwavesys.com/" target="_blank"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
+<a href="https://firebase.google.com/" target="_blank"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
 </div>
 
 ## What is QUANTOS?
@@ -39,13 +39,13 @@ Project website: [Project site and blog](https://quantos.online)
 ## Installation
 
 <div align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app">
+  <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app" target="_blank">
     <img alt="Get it on Google Play" src="./assets/github/playstore.png" height="40">
   </a>
-  <a href="https://app.quantos.online">
+  <a href="https://app.quantos.online" target="_blank">
     <img alt="Launch PWA" src="./assets/github/pwa.png" height="40">
   </a>
-  <a href="https://quantos.online">
+  <a href="https://quantos.online" target="_blank">
     <img alt="Get it from the Windows store" src="./assets/github/microsoft.png" height="40">
   </a>
 </div>
@@ -78,13 +78,13 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 
 ## Supporters
 
-<a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
+<a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility" target="_blank">
   <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="./assets/github/support_juniq.png" width="300"/>
 </a>
-<a href="https://www.dwavesys.com/">
+<a href="https://www.dwavesys.com/" target="_blank">
   <img alt="DWave Systems - The Quantum Computing Company" src="./assets/github/support_dwave.png" width="300"/>
 </a>
-<a href="https://www.juforum.de/">
+<a href="https://www.juforum.de/" target="_blank">
   <img alt="Deutsches Jungforschernetzwerk JuFORUM e.V." src="./assets/github/support_juforum.png" width="150"/>
 </a>
 
