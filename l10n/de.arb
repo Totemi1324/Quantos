@@ -24,19 +24,16 @@
     "profileNameScreenFormField": "Vorname",
     "profileNameScreenTextButtonLabel": "Ich möchte nicht mit Namen angesprochen werden",
 
-    "profileAgeScreenTitleWithName": "Und wie alt bist du, {name}?",
-    "profileAgeScreenTitleWithoutName": "Und wie alt bist du?",
-    "profileAgeScreenInstructions": "Wir benötigen diese Informationen, um deine optimalen Lerninhalte auszuwählen.",
-    "profileAgeScreenSliderClass1": "15-18",
-    "profileAgeScreenSliderClass2": "19-28",
-    "profileAgeScreenSliderClass3": "29-59",
-    "profileAgeScreenSliderClass4": "60+",
-
-    "profileExperienceScreenTitle": "Wie würdest du dich beschreiben?",
-    "profileExperienceScreenInstructions": "Genauer: Wie vertraut bist du mit dem Thema Quantencomputing im Allgemeinen?",
-    "profileExperienceScreenSliderClass1": "Anfänger",
-    "profileExperienceScreenSliderClass2": "Fortgeschritten",
-    "profileExperienceScreenSliderClass3": "Erfahren",
+    "profileQuizIntroScreenTitleWithName": "Beginnen wir mit ein paar Fragen, {name}.",
+    "profileQuizIntroScreenTitleWithoutName": "Beginnen wir mit ein paar Fragen.",
+    "profileQuizIntroScreenInstructions": "Um die optimalen Lerninhalte für dich auszuwählen, müssen wir wissen, wie dein aktueller Wissensstand ist.\nDas funktioniert am besten, wenn du die folgenden Fragen ehrlich beantwortest, also keine Scheu, denn es gibt keine schlechten Antworten! :)",
+    
+    "profileQuizAnswer1": "Ich könnte diese Frage beantworten.",
+    "profileQuizAnswer2": "Ich könnte diese Frage nicht beantworten.",
+    "profileQuizAnswer3": "Ich könnte sie beantworten, möchte aber das Thema auffrischen.",
+    "profileQuizExperienceClass1": "Anfänger",
+    "profileQuizExperienceClass2": "Fortgeschritten",
+    "profileQuizExperienceClass3": "Erfahren",
 
     "homeScreenTitleWithName": "Hallo {name}!",
     "homeScreenTitleWithoutName": "Hallo!",
@@ -166,6 +163,6 @@
     "tooltipDownload": "Herunterladen",
     "tooltipToggleOn": "Schalter an",
     "tooltipToggleOff": "Schalter aus",
-    "tooltipNextPage": "Vorherige Seite",
-    "tooltipPreviousPage": "Nächste Seite"
+    "tooltipNextPage": "Nächste Seite",
+    "tooltipPreviousPage": "Vorherige Seite"
 }

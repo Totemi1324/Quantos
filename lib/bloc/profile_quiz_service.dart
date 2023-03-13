@@ -1,18 +1,15 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart' show Locale;
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './lesson_content_parser.dart';
 
-import '../models/content/lesson_content.dart';
-import '../models/content/paragraph.dart';
+import '../models/profile_quiz_content.dart';
 import '../models/exceptions.dart';
 
-class LessonContentService extends Cubit<LessonContent> {
+class ProfileQuizService extends Cubit<ProfileQuizContent> {
   static const paragraphJsonKey = "paragraph";
   static const sectionTitleJsonKey = "sectiontitle";
   static const imageJsonKey = "image";
@@ -20,50 +17,43 @@ class LessonContentService extends Cubit<LessonContent> {
   static const interactiveJsonKey = "interactive";
   static const pageBreakJsonKey = "pagebreak";
 
-  LessonContentService() : super(LessonContent.empty());
+  ProfileQuizService() : super(ProfileQuizContent.empty());
 
-  Locale? previousLocale;
-
-  Future loadByIdFromLocale(
-      String lessonId, Locale locale, AppLocalizations localizations) async {
-    if (lessonId == state.lessonId &&
-        previousLocale != null &&
-        previousLocale == locale) {
-      return;
-    }
-
-    state.lessonId = lessonId;
-    previousLocale = locale;
-
+  Future loadFromLocale(Locale locale) async {
     try {
-      final jsonString = await rootBundle
-          .loadString("lessons/${locale.languageCode}/lesson-$lessonId.json");
+      final jsonString =
+          await rootBundle.loadString("quiz/${locale.languageCode}.json");
 
-      state.clearContentData();
+      state.clearData();
       _parse(jsonString);
-    } on ParseErrorException catch (exception) {
-      state.clearContentData();
-      state.addContentItem(Paragraph(
-        texts: [
-          ParagraphSpan(
-            type: ParagraphSpanType.normal,
-            text: localizations.parsingErrorParagraph(exception.message),
-          ),
-        ],
-      ));
     } catch (exception) {
-      state.clearContentData();
-      state.addContentItem(Paragraph(
-        texts: [
-          ParagraphSpan(
-            type: ParagraphSpanType.normal,
-            text: localizations.unknownErrorParagraph(exception.toString()),
-          ),
-        ],
-      ));
+      state.clearData();
+      throw ProcessFailedException(exception as Exception);
     }
 
     emit(state);
+  }
+
+  int previousQuestion() {
+    final current = state.currentQuestion;
+    emit(
+      ProfileQuizContent(
+        questions: state.questions.toList(),
+        currentQuestion: current - 1,
+      ),
+    );
+    return current - 1;
+  }
+
+  int nextQuestion() {
+    final current = state.currentQuestion;
+    emit(
+      ProfileQuizContent(
+        questions: state.questions.toList(),
+        currentQuestion: current + 1,
+      ),
+    );
+    return current + 1;
   }
 
   void _parse(String jsonString) {
@@ -71,7 +61,7 @@ class LessonContentService extends Cubit<LessonContent> {
 
     for (var entry in jsonMap.entries) {
       if (entry.value is! Map<String, dynamic>) {
-        state.breakPage();
+        state.finalizeQuestion();
         throw ParseErrorException(
           ParseError.invalidJsonValue,
           wrongContent: entry.key,
@@ -97,11 +87,11 @@ class LessonContentService extends Cubit<LessonContent> {
           state.addContentItem(LessonContentParser.parseInteractive(content));
           break;
         case pageBreakJsonKey:
-          state.breakPage();
+          state.finalizeQuestion();
           break;
       }
     }
 
-    state.breakPage();
+    state.finalizeQuestion();
   }
 }

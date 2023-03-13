@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:universal_platform/universal_platform.dart';
 
 import '../settings_screen.dart';
 

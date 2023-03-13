@@ -9,6 +9,7 @@ import 'bloc/authentication_service.dart';
 import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
 import 'bloc/database_service.dart';
+import 'bloc/profile_quiz_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<LessonContentService>(
           create: (_) => LessonContentService(),
+        ),
+        BlocProvider<ProfileQuizService>(
+          create: (_) => ProfileQuizService(),
         ),
         BlocProvider<AuthenticationService>(
           create: (_) => AuthenticationService(),

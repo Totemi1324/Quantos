@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../bloc/stores/age_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
@@ -32,7 +33,9 @@ class ProfileAgeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: UniversalPlatform.isWeb
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
                   children: [
                     Container(
                       alignment: Alignment.centerLeft,
@@ -87,4 +90,4 @@ class ProfileAgeScreen extends StatelessWidget {
       ),
     );
   }
-}
+}*/

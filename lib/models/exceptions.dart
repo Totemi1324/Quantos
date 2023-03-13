@@ -89,3 +89,21 @@ class NoInternetException extends QuantosException {
   String get message =>
       "Operation failed because client device has no active internet connection.";
 }
+
+class ProcessFailedException extends QuantosException {
+  final Exception innerException;
+
+  ProcessFailedException(this.innerException);
+
+  @override
+  String get exceptionId => "ProcessFailedException";
+
+  @override
+  String get message {
+    if (innerException is QuantosException) {
+      return "Internal process failed with exception of type ${innerException.toString()}";
+    } else {
+      return "Process failed with exception of type ${innerException.toString()}";
+    }
+  }
+}

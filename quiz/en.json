@@ -1,0 +1,36 @@
+{
+    "paragraph-1": {
+        "text": "1. The following function has two unknowns:"
+    },
+    "equation-1": {
+        "tex": "f\\left(x,y\\right)=-x^2+50y",
+        "alttext": "f(x,y)=-x²+50y"
+    },
+    "paragraph-2": {
+        "text": "What value does $$f\\left(7,2\\right)$$ have?"
+    },
+    "pagebreak-1": {
+    },
+    "paragraph-3": {
+        "text": "2. Binary numbers only need two digits, namely 0 and 1. What number do we get if we add the following two binary numbers?"
+    },
+    "equation-2": {
+        "tex": "101+1=?",
+        "alttext": "101+1=?"
+    },
+    "pagebreak-2": {
+    },
+    "paragraph-4": {
+        "text": "3. Millions of transistors can be found in today's computers and smartphones. But what is their function?"
+    },
+    "pagebreak-3": {
+    },
+    "paragraph-5": {
+        "text": "4. Atoms, ions and electrons are different types of particles. Which of them is uncharged?"
+    },
+    "pagebreak-4": {
+    },
+    "paragraph-6": {
+        "text": "5. How familiar are you with quantum computing in general?"
+    }
+}

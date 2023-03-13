@@ -41,6 +41,8 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
       _isLoading = true;
     });
 
+    final currentLocale = buildContext.read<LocalizationService>().state;
+
     _formKey.currentState?.save();
     if (!mounted) return;
 
@@ -92,7 +94,7 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
           Future(
             () {
               buildContext.read<ContentOutlineService>().loadFromLocale(
-                    buildContext.read<LocalizationService>().state,
+                    currentLocale,
                   );
               buildContext.read<DatabaseService>().getUserInfo(
                     buildContext.read<AuthenticationService>().state.userId,

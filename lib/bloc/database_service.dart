@@ -33,8 +33,10 @@ class DatabaseService extends Cubit<UserData> {
     emit(state);
   }
 
-  void updateAge(Age newAge) {
-    state.age = newAge;
+  void setAnswerToQuestion(int questionIndex, QuizAnswer? answer) {
+    if (answer != null) {
+      state.quizAnswers[questionIndex] = answer;
+    }
     emit(state);
   }
 
@@ -55,7 +57,7 @@ class DatabaseService extends Cubit<UserData> {
         UserData(
           name: state.name,
           team: state.team,
-          age: state.age,
+          quizAnswers: state.quizAnswers,
           experience: state.experience,
           lectionUnlocked: state.lectionUnlocked,
           lessonProgress: lessonProgress,
@@ -71,6 +73,10 @@ class DatabaseService extends Cubit<UserData> {
   // Database interaction
   Future initializeUserEntry(String userId, {String? team}) async {
     final ref = _database.ref("users/$userId");
+    final answersMap = Map.fromIterables(
+      state.quizAnswers.keys,
+      state.quizAnswers.values.map((answer) => answer.index),
+    );
     final activityMap = Map.fromIterables(
       state.activityLog.keys.map((time) => time.toIso8601String()),
       state.activityLog.values,
@@ -79,7 +85,7 @@ class DatabaseService extends Cubit<UserData> {
     await ref.set({
       "name": state.name,
       "team": team ?? state.team,
-      "age": state.age.index,
+      "profile_quiz": answersMap,
       "experience": state.experience.index,
       "unlocked": state.lectionUnlocked,
       "progress": state.lessonProgress,
@@ -89,10 +95,14 @@ class DatabaseService extends Cubit<UserData> {
 
   Future updateProfileInfo(String userId) async {
     final ref = _database.ref("users/$userId");
+    final answersMap = Map.fromIterables(
+      state.quizAnswers.keys,
+      state.quizAnswers.values.map((answer) => answer.index),
+    );
 
     await ref.update({
       "name": state.name,
-      "age": state.age.index,
+      "profile_quiz": answersMap,
       "experience": state.experience.index,
     });
   }
@@ -154,6 +164,11 @@ class DatabaseService extends Cubit<UserData> {
   }
 
   // Local queries
+  QuizAnswer? answerForQuestion(int questionIndex) =>
+      state.quizAnswers.containsKey(questionIndex)
+          ? state.quizAnswers[questionIndex]
+          : null;
+
   bool isUnlocked(String lectionId) => state.lectionUnlocked[lectionId] ?? true;
 
   double lessonProgress(String lessonId) =>
@@ -185,8 +200,13 @@ class DatabaseService extends Cubit<UserData> {
       case "team":
         state.team = child.value as String;
         break;
-      case "age":
-        state.age = Age.values[child.value as int];
+      case "profile_quiz":
+        for (child in child.children) {
+          setAnswerToQuestion(
+            child.key as int,
+            QuizAnswer.values[child.value as int],
+          );
+        }
         break;
       case "experience":
         state.experience = Experience.values[child.value as int];

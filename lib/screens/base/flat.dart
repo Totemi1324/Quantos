@@ -38,12 +38,14 @@ class Flat extends StatelessWidget {
                 )
               : null,
         ),
-        body: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 700),
-            child: body,
-          ),
-        ),
+        body: UniversalPlatform.isWeb
+            ? Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 700),
+                  child: body,
+                ),
+              )
+            : body,
       ),
     );
   }

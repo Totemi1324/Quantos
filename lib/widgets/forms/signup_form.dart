@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
 import '../../bloc/database_service.dart';
+import '../../bloc/profile_quiz_service.dart';
+import '../../bloc/localization_service.dart';
 
 import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
@@ -56,7 +58,12 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     _formKey.currentState?.save();
     if (!mounted) return;
 
+    final currentLocale = buildContext.read<LocalizationService>().state;
     try {
+      await buildContext
+          .read<ProfileQuizService>()
+          .loadFromLocale(currentLocale);
+      if (!mounted) return;
       await buildContext
           .read<AuthenticationService>()
           .attemptSignUp(_email, _password);

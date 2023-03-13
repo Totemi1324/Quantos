@@ -81,9 +81,9 @@
         "description": "Profile name screen text button label"
     },
 
-    "profileAgeScreenTitleWithName": "And how old are you, {name}?",
-    "@profileAgeScreenTitleWithName": {
-        "description": "Profile age screen title with name placeholder",
+    "profileQuizIntroScreenTitleWithName": "Let's start with some questions, {name}.",
+    "@profileQuizIntroScreenTitleWithName": {
+        "description": "Profile quiz intro screen title with name placeholder",
         "placeholders": {
             "name": {
                 "type": "String",
@@ -91,50 +91,38 @@
             }
         }
     },
-    "profileAgeScreenTitleWithoutName": "And how old are you?",
-    "@profileAgeScreenTitleWithoutName": {
-        "description": "Profile age screen title"
+    "profileQuizIntroScreenTitleWithoutName": "Let's start with some questions.",
+    "@profileQuizIntroScreenTitleWithoutName": {
+        "description": "Profile quiz intro screen title"
     },
-    "profileAgeScreenInstructions": "We need this information to choose the optimal learning contents for you.",
-    "@profileAgeScreenInstructions": {
-        "description": "Profile age screen instructions"
-    },
-    "profileAgeScreenSliderClass1": "15-18",
-    "@profileAgeScreenSliderClass1": {
-        "description": "First age class"
-    },
-    "profileAgeScreenSliderClass2": "19-28",
-    "@profileAgeScreenSliderClass2": {
-        "description": "Second age class"
-    },
-    "profileAgeScreenSliderClass3": "29-59",
-    "@profileAgeScreenSliderClass3": {
-        "description": "Third age class"
-    },
-    "profileAgeScreenSliderClass4": "60+",
-    "@profileAgeScreenSliderClass4": {
-        "description": "Fourth age class"
+    "profileQuizIntroScreenInstructions": "To choose the optimal learning contents for you, we have to know what your current knowledge level is.\nThis works the best if you answer the following questions honestly, so don't be shy – there are no wrong answers! :)",
+    "@profileQuizIntroScreenInstructions": {
+        "description": "Profile quiz intro screen instructions"
     },
 
-    "profileExperienceScreenTitle": "How would you describe yourself?",
-    "@profileExperienceScreenTitle": {
-        "description": "Profile experience screen title"
+    "profileQuizAnswer1": "I would be able to answer this question.",
+    "@profileQuizAnswer1": {
+        "description": "First profile quiz answer"
     },
-    "profileExperienceScreenInstructions": "That is, how familiar are you with quantum computing in general?",
-    "@profileExperienceScreenInstructions": {
-        "description": "Profile experience screen instructions"
+    "profileQuizAnswer2": "I would not be able to answer this question.",
+    "@profileQuizAnswer2": {
+        "description": "Second profile quiz answer"
     },
-    "profileExperienceScreenSliderClass1": "Beginner",
-    "@profileExperienceScreenSliderClass1": {
-        "description": "First experience class"
+    "profileQuizAnswer3": "I would be able to answer it, but would like a recap on the topic.",
+    "@profileQuizAnswer3": {
+        "description": "Third profile quiz answer"
     },
-    "profileExperienceScreenSliderClass2": "Advanced",
-    "@profileExperienceScreenSliderClass2": {
-        "description": "Second experience class"
+    "profileQuizExperienceClass1": "Beginner",
+    "@profileQuizExperienceClass1": {
+        "description": "First profile quiz experience class"
     },
-    "profileExperienceScreenSliderClass3": "Skilled",
-    "@profileExperienceScreenSliderClass3": {
-        "description": "Third experience class"
+    "profileQuizExperienceClass2": "Advanced",
+    "@profileQuizExperienceClass2": {
+        "description": "Second profile quiz experience class"
+    },
+    "profileQuizExperienceClass3": "Skilled",
+    "@profileQuizExperienceClass3": {
+        "description": "Third profile quiz experience class"
     },
 
     "homeScreenTitleWithName": "Hello {name}!",

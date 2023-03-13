@@ -10,8 +10,8 @@ import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
 import 'screens/auth/auth_groupaccess_screen.dart';
 import 'screens/profile/profile_name_screen.dart';
-import 'screens/profile/profile_age_screen.dart';
-import 'screens/profile/profile_experience_screen.dart';
+import 'screens/profile/profile_quiz_intro_screen.dart';
+import 'screens/profile/profile_quiz_screen.dart';
 import 'screens/lection_screen.dart';
 import 'screens/lesson_screen.dart';
 import 'screens/base/home.dart';
@@ -76,17 +76,16 @@ class RouteRegister {
           curve: Curves.ease,
           duration: const Duration(milliseconds: 500),
         );
-      case ProfileAgeScreen.routeName:
+      case ProfileQuizIntroScreen.routeName:
         return PageTransition(
-          child: const ProfileAgeScreen(),
-          settings: settings,
+          child: const ProfileQuizIntroScreen(),
           type: PageTransitionType.fade,
           curve: Curves.ease,
           duration: const Duration(milliseconds: 500),
         );
-      case ProfileExperienceScreen.routeName:
+      case ProfileQuizScreen.routeName:
         return PageTransition(
-          child: const ProfileExperienceScreen(),
+          child: const ProfileQuizScreen(),
           type: PageTransitionType.fade,
           curve: Curves.ease,
           duration: const Duration(milliseconds: 500),
