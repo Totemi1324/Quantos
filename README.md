@@ -34,7 +34,7 @@ Progress is reaching a fascinating speed in today's world due to ever more power
 
 Quantos is a cooperation with the [Forschungszentrum Jülich (Jülich Research Center)](https://www.fz-juelich.de/en) - a beginner-friendly and WCAG 2.1 Level AA-compliant learning platform that enables a wide target group from middle school to workpersons to learn how quantum annealers function. The app design is based on gamification, delivering content in diverse ways with a mix of text blocks and interactive participatory tasks. The additional accessibilty features, such as a high-contrast mode and audio descriptions, support visually impaired users in getting an equal learning experience. Quantos runs natively on all major platforms, including mobile on Android and iOS, web, and desktop on Windows, macOS, and Linux. Making quantum physics as easy as brushing your teeth - you may not like doing it, but with the right approach, it can actually be fun!
 
-Project website: [Project site and blog](https://www.quantos-learning.com)
+Project website: [Project site and blog](https://quantos.online)
 
 ## Installation
 
@@ -58,6 +58,9 @@ $ git clone git@github.com:Totemi1324/Quantos
 
 # Get packages
 $ flutter pub get
+
+# Generate assets with flutter_gen:
+$ flutter packages pub run build_runner build
 
 # Start Dart DevTools:
 $ dart devtools
