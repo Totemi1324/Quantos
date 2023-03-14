@@ -78,6 +78,7 @@ flutter:
     - assets/animations/circular_progress_indicator.riv
 
     - assets/animations/assessment_quiz.riv
+    - assets/animations/experience_selection.riv
 
     # Lection header and icon animations
     - assets/animations/lections/

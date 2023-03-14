@@ -201,11 +201,15 @@ class DatabaseService extends Cubit<UserData> {
         state.team = child.value as String;
         break;
       case "profile_quiz":
-        for (child in child.children) {
-          setAnswerToQuestion(
-            child.key as int,
-            QuizAnswer.values[child.value as int],
-          );
+        var index = 0;
+        for (var answerIndex in (child.value as List<Object?>)) {
+          if (answerIndex is int) {
+            setAnswerToQuestion(
+              index,
+              QuizAnswer.values[answerIndex],
+            );
+          }
+          index++;
         }
         break;
       case "experience":

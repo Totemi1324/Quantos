@@ -5,6 +5,10 @@
     "@confirmButtonLabel": {
         "description": "Confirm button label"
     },
+    "continueButtonLabel": "Continue",
+    "@continueButtonLabel": {
+        "description": "Continue button label"
+    },
     "readyButtonLabel": "I'm ready",
     "@readyButtonLabel": {
         "description": "Ready button label"
@@ -112,17 +116,26 @@
     "@profileQuizAnswer3": {
         "description": "Third profile quiz answer"
     },
-    "profileQuizExperienceClass1": "Beginner",
-    "@profileQuizExperienceClass1": {
-        "description": "First profile quiz experience class"
+    
+    "profileExperienceScreenTitle": "How would you describe yourself?",
+    "@profileExperienceScreenTitle": {
+        "description": "Profile experience screen title"
     },
-    "profileQuizExperienceClass2": "Advanced",
-    "@profileQuizExperienceClass2": {
-        "description": "Second profile quiz experience class"
+    "profileExperienceScreenInstructions": "That is, how familiar are you with quantum computing in general?",
+    "@profileExperienceScreenInstructions": {
+        "description": "Profile experience screen instructions"
     },
-    "profileQuizExperienceClass3": "Skilled",
-    "@profileQuizExperienceClass3": {
-        "description": "Third profile quiz experience class"
+    "profileExperienceScreenSliderClass1": "Beginner",
+    "@profileExperienceScreenSliderClass1": {
+        "description": "First experience class"
+    },
+    "profileExperienceScreenSliderClass2": "Advanced",
+    "@profileExperienceScreenSliderClass2": {
+        "description": "Second experience class"
+    },
+    "profileExperienceScreenSliderClass3": "Skilled",
+    "@profileExperienceScreenSliderClass3": {
+        "description": "Third experience class"
     },
 
     "homeScreenTitleWithName": "Hello {name}!",

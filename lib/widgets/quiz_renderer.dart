@@ -15,31 +15,46 @@ import '../models/content/equation.dart';
 
 class QuizRenderer extends StatefulWidget {
   final Stream<Tuple2<BuildContext, NavigationAction>> navigationStream;
+  final VoidCallback onSelect;
 
-  const QuizRenderer({required this.navigationStream, super.key});
+  const QuizRenderer(
+      {required this.navigationStream, required this.onSelect, super.key});
 
   @override
   State<QuizRenderer> createState() => _QuizRendererState();
 }
 
-class _QuizRendererState extends State<QuizRenderer> {
+class _QuizRendererState extends State<QuizRenderer>
+    with TickerProviderStateMixin {
   final _formController = StreamController<Tuple2<BuildContext, int>>();
+  late final AnimationController _fadeController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 250),
+    value: 1.0,
+  );
+  late final _fadeAnimation =
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
 
   @override
   void initState() {
     super.initState();
 
     widget.navigationStream.listen(
-      (event) /*async*/ {
+      (event) async {
         if (!_checkValidNavigation(event.item1, event.item2)) {
           return;
         }
-        //await _fadeController.reverse();
+        await _fadeController.reverse();
         _navigate(event.item1, event.item2);
-        //_scrollController.jumpTo(0);
-        //_fadeController.forward();
+        _fadeController.forward();
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _fadeController.dispose();
+    super.dispose();
   }
 
   bool _checkValidNavigation(
@@ -177,19 +192,23 @@ class _QuizRendererState extends State<QuizRenderer> {
     final currentQuestionIndex =
         context.read<ProfileQuizService>().state.currentQuestion;
 
-    return Column(
-      children: [
-        ..._buildQuestion(
-          context,
-          currentQuestionIndex,
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        QuizForm(
-          formStream: _formController.stream,
-        ),
-      ],
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: Column(
+        children: [
+          ..._buildQuestion(
+            context,
+            currentQuestionIndex,
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          QuizForm(
+            formStream: _formController.stream,
+            onSelect: () => widget.onSelect(),
+          ),
+        ],
+      ),
     );
   }
 }

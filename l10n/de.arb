@@ -2,6 +2,7 @@
     "@@locale": "de",
 
     "confirmButtonLabel": "Weiter",
+    "continueButtonLabel": "Fortfahren",
     "readyButtonLabel": "Ich bin bereit",
     "finishButtonLabel": "Fertig",
     "sendButtonLabel": "Senden",
@@ -31,9 +32,12 @@
     "profileQuizAnswer1": "Ich könnte diese Frage beantworten.",
     "profileQuizAnswer2": "Ich könnte diese Frage nicht beantworten.",
     "profileQuizAnswer3": "Ich könnte sie beantworten, möchte aber das Thema auffrischen.",
-    "profileQuizExperienceClass1": "Anfänger",
-    "profileQuizExperienceClass2": "Fortgeschritten",
-    "profileQuizExperienceClass3": "Erfahren",
+    
+    "profileExperienceScreenTitle": "Wie würdest du dich beschreiben?",
+    "profileExperienceScreenInstructions": "Genauer: Wie vertraut bist du mit dem Thema Quantencomputing im Allgemeinen?",
+    "profileExperienceScreenSliderClass1": "Anfänger",
+    "profileExperienceScreenSliderClass2": "Fortgeschritten",
+    "profileExperienceScreenSliderClass3": "Erfahren",
 
     "homeScreenTitleWithName": "Hallo {name}!",
     "homeScreenTitleWithoutName": "Hallo!",
