@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../settings_screen.dart';
 
@@ -20,7 +21,11 @@ class _DecoratedState extends State<Decorated> {
   void initState() {
     super.initState();
 
-    _image = Assets.images.backgroundDesktop.provider();
+    if (UniversalPlatform.isWeb) {
+      _image = Assets.images.backgroundDesktop.provider();
+    } else {
+      _image = Assets.images.background.provider();
+    }
   }
 
   @override

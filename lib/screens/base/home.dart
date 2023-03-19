@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
     if (UniversalPlatform.isWeb) {
       _image = Assets.images.backgroundDesktop.provider();
     } else {
-      _image = Assets.images.backgroundDesktop.provider();
+      _image = Assets.images.background.provider();
     }
 
     super.initState();

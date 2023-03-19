@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../bloc/content_outline_service.dart';
 import '../bloc/database_service.dart';
@@ -59,7 +61,20 @@ class _LectionListState extends State<LectionList> {
           listener: (context, state) => setState(() {}),
         )
       ],
-      child: GridView.builder(
+      child: StaggeredGrid.count(
+        crossAxisCount: UniversalPlatform.isWeb ? 2 : 1,
+        children: lections.map<Widget>((lection) {
+          return StaggeredGridTile.fit(
+            crossAxisCellCount: 1,
+            child: _buildLectionItem(context, lection.id),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+/*GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: lections.length,
@@ -74,7 +89,4 @@ class _LectionListState extends State<LectionList> {
           final lectionId = lections[index].id;
           return _buildLectionItem(context, lectionId);
         },
-      ),
-    );
-  }
-}
+      ),*/
