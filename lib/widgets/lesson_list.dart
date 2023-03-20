@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../bloc/content_outline_service.dart';
 import '../bloc/lesson_content_service.dart';
@@ -41,15 +42,18 @@ Widget _buildLessonItem(BuildContext buildContext, int index, Lesson lesson) {
     )),
     child: Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: LessonItem(
-        index: index + 1,
-        title: buildContext
-            .read<ContentOutlineService>()
-            .state
-            .getLessonTitle(lesson.id),
-        readTimeInMinutes: lesson.readTimeInMinutes,
-        progress:
-            buildContext.read<DatabaseService>().lessonProgress(lesson.id),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 250),
+        child: LessonItem(
+          index: index,
+          title: buildContext
+              .read<ContentOutlineService>()
+              .state
+              .getLessonTitle(lesson.id),
+          readTimeInMinutes: lesson.readTimeInMinutes,
+          progress:
+              buildContext.read<DatabaseService>().lessonProgress(lesson.id),
+        ),
       ),
     ),
   );
@@ -58,9 +62,31 @@ Widget _buildLessonItem(BuildContext buildContext, int index, Lesson lesson) {
 class _LessonListState extends State<LessonList> {
   @override
   Widget build(BuildContext context) {
+    int itemIndex = 0;
+
     return BlocListener<DatabaseService, UserData>(
       listener: (context, state) => setState(() {}),
-      child: GridView.builder(
+      child: StaggeredGrid.extent(
+        mainAxisSpacing: 10,
+        maxCrossAxisExtent: 400,
+        crossAxisSpacing: 20,
+        children: widget.lessonIds.map<Widget>((id) {
+          itemIndex++;
+          return StaggeredGridTile.fit(
+            crossAxisCellCount: 1,
+            child: _buildLessonItem(
+              context,
+              itemIndex,
+              context.read<ContentOutlineService>().lesson(id),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+/*GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.lessonIds.length,
@@ -77,15 +103,4 @@ class _LessonListState extends State<LessonList> {
 
           return _buildLessonItem(context, index, lesson);
         },
-      ),
-    );
-  }
-}
-
-/*(context, index) {
-          final lesson = context
-              .read<ContentOutlineService>()
-              .lesson(widget.lessonIds[index]);
-
-          return _buildLessonItem(context, index, lesson);
-        } */
+      ) */
