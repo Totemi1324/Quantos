@@ -141,7 +141,7 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
           margin: const EdgeInsets.symmetric(vertical: 15),
           child: Column(
             children: [
-              interactive.content,
+              interactive.render(),
               Row(
                 children: [
                   Transform.scale(
