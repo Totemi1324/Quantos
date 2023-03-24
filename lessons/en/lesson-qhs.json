@@ -40,10 +40,37 @@
         "text": "The first important step is done. For this course, however, we want to go a little further and explore where the **limits** of quantum computing lie. When it comes to evaluating the performance of quantum algorithms, this is often challenging because this method is **nondeterministic** by nature. This means that due to working with quantum states, there is always a certain amount of randomness involved. Therefore, in the first experiment, 2000 measurements are made for each of the 4 queens problem to the 8 queens problem and compared to see how many of the solutions were correct and how many were not. For comparison, the experiment is also repeated on the DWave 2000Q, the previous model of the current generation."
     },
     "interactive-1": {
-        
+        "id": "qhs_graph_advantage",
+        "caption": "Move the slider to compare the success rates on the DWave Advantage!",
+        "alttext": "The percentage of correct solutions is 44.9 percent for four queens, 23.2 percent for five queens, 0.6 percent for six queens, 0.3 percent for seven queens and 0.05 percent for eight queens.",
+        "args": {
+            "labels": [
+                "correct", "wrong"
+            ],
+            "values": [
+                [0.4496, 0.5504],
+                [0.2324, 0.7676],
+                [0.0065, 0.9935],
+                [0.0030, 0.9970],
+                [0.0005, 0.9995]
+            ]
+        }
     },
     "interactive-2": {
-
+        "id": "qhs_graph_2000q",
+        "caption": "Compare the above results with those of the DWave 2000Q!",
+        "alttext": "The proportion of correct solutions was 23.5 percent for four queens which is 21.4 percent less, 13.7 percent for five queens which is 9.5 percent less, 0.2 percent for six queens which is 0.4 percent less and 0.05 percent for seven queens which is 0.25 percent less. Measurements with eight queens did not happen.",
+        "args": {
+            "labels": [
+                "correct", "wrong"
+            ],
+            "values": [
+                [0.2350, 0.7650],
+                [0.1370, 0.8630],
+                [0.0020, 0.9980],
+                [0.0005, 0.9995]
+            ]
+        }
     },
     "paragraph-5": {
         "text": "Scrolling through the diagrams, the drop in performance with each new queen added is clearly visible. While the quantum annealers are correct in almost half of their measurements for the 4 queens problem, only one out of 2000 solutions are correct for larger checkerboards. For the DWave Advantage, this performance limit is 8 queens, and for the 2000Q model (which is generally incorrect more often than its successor), it is 7 queens."

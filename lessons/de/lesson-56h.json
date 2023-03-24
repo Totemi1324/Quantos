@@ -37,7 +37,11 @@
         "text": "Der Optimierungsprozess ist langwierig und benötigt viele Daten, sie wird hier nicht tiefer behandelt; wenn du am detaillierten Verfahren interessiert bist, kannst du diese vom Download-Tab auf dem Homescreen beziehen. Unten sind die Diagramme, die den Verlauf der Erfolgsrate (dem Prozentsatz der richtigen Ergebnisse) beim DWave Advantage zeigen, wenn man die Kettenstärke erhöht — mit einer Kurve, die den Durchschnitt aus 10 verschiedenen Embeddings abbildet. Oben ist eine Lösung richtig, wenn es eine gültige Rundreise darstellt, unten, wenn es die kürzeste Rundreise ist."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {
+        }
     },
     "paragraph-7": {
         "text": "Man merkt, dass stärkere Koppler bei logischen Qubits nicht immer **besser** sind: Die Genauigkeit hat bei allen Kurven einen Höhepunkt und fällt danach stetig ab. Bei größeren Stadtnetzwerken wird der Unterschied zwischen der einfacheren und der komplexeren Aufgabe immer größer, bis schließlich ab $$n=7$$ Städten der kürzeste Rundweg nicht mehr gefunden werden kann."
@@ -48,7 +52,10 @@
         "text": "Das gleiche machen wir auch mit der annealing time; die Erwartungshaltung ist logischerweise, dass der Anteil der korrekten Lösungen immer weiter zunehmen sollte, je länger der Quantencomputer Zeit für die einzelnen Anneals hat."
     },
     "interactive-2": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-9": {
         "text": "Unsere Annahme hat sich bestätigt, aber auch hier zeigt sich das Problem des Leistungsabfalls, wenn die Wegkosten berücksichtigt werden. Das liegt an einem Konzept, welches sich **Spärlichkeit** (auf Englisch \"sparsity\") nennt. Je spärlicher die Hamilton-Matrix ist, sprich **je mehr Nullen** sie hat, desto besser kann ein Quantenannealer sie lösen — denn wenn kein Koeffizient vorliegt, kann man mehr Koppler einsparen, wodurch die Komplexität und der Zufallsfaktor des QPU-Embeddings reduziert werden. Die Wegkosten kommen in der QUBO-Gleichung als Koeffizienten vor, die vorher 0 waren, was die Spärlichkeit der Hamilton-Matrix senkt."

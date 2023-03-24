@@ -21,7 +21,10 @@
         "text": "This made Max Bezzel, a German chess master, think. In 1848 he formulated the 8 queens problem for the first time in the Berliner Schachzeitung (\"Berlin chess magazine\"). The goal is to place 8 queens on a chessboard in such a way that they **do not threaten each other**, i.e. that none can attack another. Later, the problem was extended and generalized to the N queens problem, where the goal is to place N queens on a chessboard of size N×N squares without threat situations (N is an arbitrary integer here). This puzzle remained the subject of active research up to the present, with the highest exactly solved size being $$N=27$$, offering over **200 quadrillion** (!) different possibilities for a valid setup."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-4": {
         "text": "With smaller chessboard sizes, the solution is still relatively simple by hand. With each additional queen (and consequently, each additional chess board size), however, the complexity increases many times over. So can we simplify the solution process and find new constellations within microseconds? This lesson shows how the N queens problem can be formulated as an optimization and QUBO problem and how it can be solved with a quantum annealer. Along the way, we will also explore the question of whether the quantum-based approach is worthwhile at all and what the limitations of this new technology are."

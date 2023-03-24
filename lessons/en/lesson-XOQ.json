@@ -38,7 +38,10 @@
         "text": "The challenge here is that the computer, which is supposed to solve the problem, sees only one point at a time on this cost curve and has to develop a strategy to still find the **valleys**, the solutions with the lowest costs. It is possible to find the **global optimum**, the lowest cost of all, in the process, but one can just as easily end up at a **local optimum**, one of the many medium-deep valleys — in the belief that the lowest point has already been reached."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

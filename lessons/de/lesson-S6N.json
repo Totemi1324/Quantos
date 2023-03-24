@@ -27,7 +27,10 @@
         "text": "Die kleinste Welt der Atome, der Quanten, benimmt sich völlig anders, als was wir mit bloßem Auge wahrnehmen können und die Gesetze der klassischen Physik gelten dort nicht. Daher hat sie ihren eigenen Zweig bekommen: Die Quantenphysik. Sie ganz zu verstehen, ist selbst für gelernte Physiker eine Schwierigkeit, die grundlegenden Modelle aber können von allen nachvollzogen werden. Die Quantenphysik geht davon aus, dass quantenmechanische Systeme — also Atome, Elektronen usw. — eine Überlagerung aller ihrer möglichen Zustände besitzen, die **Superposition**. Erst wenn man sie mit Geräten misst oder anderweitig beobachtet, entscheiden sie sich für einen bestimmten Zustand. Dies kombiniert mit der Erkenntnis, dass nicht jeder Ausgang einer Messung gleich wahrscheinlich ist und durch eine Wellenfunktion beschrieben wird, wird als Kopenhagener Deutung bezeichnet."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

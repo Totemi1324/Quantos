@@ -35,7 +35,10 @@
         "text": "The rows represent the individual cities, while the columns mark the \"time points\", i.e. the individual steps. An entry of 1 in the field $$m_{ij}$$ means that the $$i$$-th city is visited in the $$j$$-th time step. The fifth column would mark the return to the initial city, but since it would always be an exact copy of the first column, it can be omitted to save some data. Now we have defined a kind of abstraction that can be applied to tours in graphs of any size. This will henceforth be called the **tour matrix**."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

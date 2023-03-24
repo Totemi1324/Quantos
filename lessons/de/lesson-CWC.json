@@ -63,6 +63,9 @@
         "text": "Pfade sind dabei eine Reihenfolge von Knoten, die nacheinander besucht werden. Ein Pfad, der alle Knoten genau einmal passiert, ohne Kanten mehrfach zu durchlaufen, heißt **Hamiltonpfad**. Ein Hamiltonpfad, dessen Start- und Endpunkt gleich sind, heißt wiederum geschlossener Hamiltonpfad oder **Hamiltonkreis** — beim TSP wird derjenige davon gesucht, bei der die Summe der Distanzen aus der Distanzfunktion so gering wie möglich ist. Sowohl ersteres als auch letzteres sind bei vollständigen Graphen in jedem Fall vorhanden."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     }
 }

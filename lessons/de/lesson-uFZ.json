@@ -21,7 +21,10 @@
         "text": "Dies machte Max Bezzel, einen deutschen Schachmeister, nachdenklich. 1848 formulierte er in der Berliner Schachzeitung erstmals das 8-Damen-Problem. Dabei ist das Ziel, 8 Damen auf einem Schachbrett so zu platzieren, dass sie sich **nicht gegenseitig bedrohen**, also dass keine eine andere schlagen kann. Später wurde das Problem aufgeweitet und zum N-Damen-Problem verallgemeinert, wobei es N Damen auf einem Schachfeld der Größe N×N Felder bedrohungsfrei aufzustellen gilt (N ist hierbei eine beliebige ganze Zahl). Dieses Rätsel ist bis heute Gegenstand aktiver Forschung, wobei die höchste exakt gelöste Größe $$N=27$$ beträgt und über **200 Billiarden** (!) verschiedene Möglichkeiten für eine gültige Aufstellung bietet."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-4": {
         "text": "Bei kleineren Schachbrettgrößen ist die Lösung noch relativ einfach per Hand möglich. Mit jeder weiteren Dame (und folglich jeder weiteren Schachbrettgröße) jedoch erhöht sich jedoch die Komplexität um ein Vielfaches. Können wir also den Lösungsprozess vereinfachen und neue Konstellationen innerhalb von Mikrosekunden finden? Diese Lektion zeigt, wie das N-Damen-Problem als Optimierungs- und QUBO-Problem formuliert werden kann und wie es mit einem Quantenannealer lösbar ist. Dabei wollen wir auch der Frage nachgehen, ob sich der quantenbasierte Ansatz überhaupt lohnt und wo die Grenzen dieser neuen Technologie sind."
