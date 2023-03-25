@@ -42,11 +42,11 @@ Project website: [Project site and blog](https://www.quantos-learning.com)
   <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app">
     <img alt="Get it on Google Play" src="./assets/github/playstore.png" height="40">
   </a>
+  <a href="https://apps.apple.com/us/app/quantos/id6446584307">
+    <img alt="Download on the App Store" src="./assets/github/appstore.png" height="40">
+  </a>
   <a href="https://app.quantos.com">
     <img alt="Launch PWA" src="./assets/github/pwa.png" height="40">
-  </a>
-  <a href="https://quantos-learning.com">
-    <img alt="Get it from the Windows store" src="./assets/github/microsoft.png" height="40">
   </a>
 </div>
 
