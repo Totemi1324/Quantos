@@ -59,7 +59,7 @@
     "interactive-2": {
         "id": "qhs_graph_2000q",
         "caption": "Vergleiche die obigen Ergebnisse mit denen der DWave 2000Q!",
-        "alttext": "Der Anteil korrekter Lösungen beträgt bei vier Damen 23,5 Prozent, also 21,4 Prozent weniger, bei fünf Damen 13,7 Prozent, also 9,5 Prozent weniger, bei sechs Damen 0,2 Prozent, also 0,4 Prozent wenier und bei sieben Damen 0,05 Prozent, also 0,25 Prozent weniger. Messungen mit acht Damen fanden nicht statt.",
+        "alttext": "Der Anteil korrekter Lösungen beträgt bei vier Damen 23,5 Prozent, also 21,4 Prozent weniger, bei fünf Damen 13,7 Prozent, also 9,5 Prozent weniger, bei sechs Damen 0,2 Prozent, also 0,4 Prozent weniger und bei sieben Damen 0,05 Prozent, also 0,25 Prozent weniger. Messungen mit acht Damen fanden nicht statt.",
         "args": {
             "labels": [
                 "richtig", "falsch"
