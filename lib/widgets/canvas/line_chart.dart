@@ -1,97 +1,65 @@
+import 'dart:math' show min, max;
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart' hide TextDirection;
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:tuple/tuple.dart';
 
-import '../../bloc/localization_service.dart';
-
-import '../../data/daily_activites.dart';
 import '../../models/numeric_data_point.dart';
 
-class LineChart extends StatefulWidget {
-  final double height;
-
-  const LineChart({this.height = 200, super.key});
-
-  @override
-  State<LineChart> createState() => _LineChartState();
-
-  int daysBetween(DateTime from, DateTime to) {
-    from = DateTime(from.year, from.month, from.day);
-    to = DateTime(to.year, to.month, to.day);
-    return (to.difference(from).inHours / 24).round();
-  }
+enum ValueFormatMode {
+  integer,
+  decimalProbability,
 }
 
-class _LineChartState extends State<LineChart> {
-  late double _minY, _maxY;
-  late List<NumericDataPoint> _points;
+class LineChart extends StatelessWidget {
+  final double height;
+  final List<String> labels;
+  final List<double> values;
+  final ValueFormatMode formatMode;
+  final double fixedMin;
+  final double fixedMax;
 
-  @override
-  void initState() {
-    super.initState();
-    var max = -double.maxFinite;
-    for (var element in dailyActivities) {
-      max = (max < element.completedLessons ? element.completedLessons : max)
-          .toDouble();
-    }
-    _points = List<NumericDataPoint>.generate(
-      7,
-      (index) => NumericDataPoint(
-        DateFormat("E").format(
-          DateTime.now().subtract(
-            Duration(days: index),
-          ),
+  const LineChart(
+      {this.height = 200,
+      required this.labels,
+      required this.values,
+      this.formatMode = ValueFormatMode.integer,
+      this.fixedMin = -1,
+      this.fixedMax = -1,
+      super.key});
+
+  Tuple3<double, double, List<NumericDataPoint>> _calculateData() {
+    final double minY = values.fold(0, (v1, v2) => min(v1, v2));
+    final double maxY = values.fold(0, (v1, v2) => max(v1, v2));
+    List<NumericDataPoint> points = List<NumericDataPoint>.empty();
+
+    if (values.isNotEmpty && labels.length == values.length) {
+      points = List<NumericDataPoint>.generate(
+        values.length,
+        (index) => NumericDataPoint(
+          labels[index],
+          values[index],
         ),
-        0,
-      ),
-    );
+      );
+    }
 
-    setState(() {
-      _minY = 0;
-      _maxY = max + 1;
-      for (var element in dailyActivities) {
-        var differenceInDays =
-            widget.daysBetween(element.lastOnline, DateTime.now());
-        if (differenceInDays < 7) {
-          var currectItem = _points[differenceInDays];
-          _points[differenceInDays] = NumericDataPoint(
-              currectItem.label, element.completedLessons.toDouble());
-        }
-      }
-      _points = _points.reversed.toList();
-    });
-
-    initializeDateFormatting();
+    return Tuple3<double, double, List<NumericDataPoint>>(minY, maxY, points);
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> weekdays = List<String>.generate(
-      7,
-      (index) => DateFormat(
-        "E",
-        context.read<LocalizationService>().state.languageCode,
-      ).format(
-        DateTime.now().subtract(
-          Duration(days: index),
-        ),
-      ),
-    );
-    for (int i = 0; i < _points.length; i++) {
-      _points[i] = NumericDataPoint(weekdays[i], _points[i].value);
-    }
+    final data = _calculateData();
 
     return SizedBox(
-      height: widget.height,
+      height: height,
       child: CustomPaint(
         painter: LineChartPainter(
-          _points,
+          data.item3,
           4,
-          _minY,
-          _maxY,
+          fixedMin == -1 ? data.item1 : fixedMin,
+          fixedMax == -1 ? data.item2 : fixedMax,
+          formatMode,
           Theme.of(context).colorScheme,
-          Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 18),
+          Theme.of(context).textTheme.labelMedium!.copyWith(fontSize: 16),
           Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14),
         ),
         child: Container(),
@@ -108,6 +76,7 @@ class LineChartPainter extends CustomPainter {
   final ColorScheme themeColors;
   final TextStyle dataLabelStyle;
   final TextStyle axisLabelStyle;
+  final ValueFormatMode labelFormatMode;
 
   final Paint guidelinePaint = Paint()
     ..strokeWidth = 1
@@ -123,6 +92,7 @@ class LineChartPainter extends CustomPainter {
     this.guides,
     this.minY,
     this.maxY,
+    this.labelFormatMode,
     this.themeColors,
     this.dataLabelStyle,
     this.axisLabelStyle,
@@ -137,15 +107,15 @@ class LineChartPainter extends CustomPainter {
     final drawableHeight = size.height - 2 * padding;
     final drawableWidth = size.width - 2 * padding;
     final segmentHeight = drawableHeight / 5.0;
-    final segmentWidth = drawableWidth / points.length.toDouble();
+    final segmentWidth = drawableWidth /
+        (points.length.toDouble() == 0 ? 1 : points.length.toDouble());
 
     final height = segmentHeight * 4.0;
     final width = drawableWidth;
 
     if (height <= 0 || width <= 0.0) return;
-    if (maxY - minY < 1.0e-6) return;
 
-    final unitHeight = height / (maxY - minY);
+    final double unitHeight = (maxY - minY) == 0 ? 0 : height / (maxY - minY);
     final centerOfSegment =
         Offset(padding + segmentWidth / 2.0, padding + height / 2.0);
 
@@ -203,8 +173,17 @@ class LineChartPainter extends CustomPainter {
     return path;
   }
 
-  List<String> _computeLabels() =>
-      points.map((point) => point.value.toStringAsFixed(0)).toList();
+  List<String> _computeLabels() {
+    switch (labelFormatMode) {
+      case ValueFormatMode.decimalProbability:
+        return points
+            .map((point) => "${(point.value * 100).toStringAsFixed(0)}%")
+            .toList();
+      case ValueFormatMode.integer:
+      default:
+        return points.map((point) => point.value.toStringAsFixed(0)).toList();
+    }
+  }
 
   Size _drawTextCentered(Canvas canvas, Offset center, String text,
       TextStyle textStyle, double segmentWidth) {

@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:tuple/tuple.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../bloc/lesson_content_service.dart';
 
@@ -174,6 +175,10 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
         );
       case ContentType.image:
         final image = item as image_content.Image;
+        final imageWidget = Image.asset(
+          fit: BoxFit.scaleDown,
+          "assets/images/lessons/${image.asset}",
+        );
         return Container(
           margin:
               const EdgeInsets.only(top: 10, bottom: 25, right: 10, left: 10),
@@ -181,13 +186,12 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
             children: [
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 250),
-                child: Tooltip(
-                  message: image.altText,
-                  child: Image.asset(
-                    fit: BoxFit.scaleDown,
-                    "assets/images/lessons/${image.asset}",
-                  ),
-                ),
+                child: UniversalPlatform.isWeb
+                    ? imageWidget
+                    : Tooltip(
+                        message: image.altText,
+                        child: imageWidget,
+                      ),
               ),
               const SizedBox(
                 height: 10,
@@ -208,19 +212,22 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
           textStyle:
               TextStyle(color: Theme.of(buildContext).colorScheme.onBackground),
         );
+        final center = Center(
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            runSpacing: 10,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: longTex.texBreak().parts,
+          ),
+        );
         return Container(
           margin: const EdgeInsets.only(top: 15, bottom: 25),
-          child: Tooltip(
-            message: equation.altText,
-            child: Center(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                runSpacing: 10,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: longTex.texBreak().parts,
-              ),
-            ),
-          ),
+          child: UniversalPlatform.isWeb
+              ? center
+              : Tooltip(
+                  message: equation.altText,
+                  child: center,
+                ),
         );
     }
   }

@@ -8,8 +8,8 @@ import '../bloc/localization_service.dart';
 
 import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
-import './canvas/line_chart.dart';
 import './canvas/heatmap_chart.dart';
+import './performace_chart.dart';
 import './progress_list.dart';
 
 class StatisticsList extends StatefulWidget {
@@ -94,7 +94,7 @@ class _StatisticsListState extends State<StatisticsList> {
               const SizedBox(
                 height: 10,
               ),
-              const LineChart(),
+              const PerformanceChart(),
               Text(
                 localization.statisticsListElementPerformanceLegend,
                 style: theme.textTheme.labelSmall,
