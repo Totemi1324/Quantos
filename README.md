@@ -21,11 +21,11 @@
 Built with:
 
 <div align="center">
-<a href="https://flutter.dev/"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
-<a href="https://dart.dev/"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
-<a href="https://rive.app/"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
-<a href="https://www.dwavesys.com/"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
-<a href="https://firebase.google.com/"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
+<a href="https://flutter.dev/" target="_blank"><img alt="Flutter" src="./assets/github/flutter.svg" width="50" /></a>
+<a href="https://dart.dev/" target="_blank"><img alt="Dart" src="./assets/github/dart.svg" width="50" /></a>
+<a href="https://rive.app/" target="_blank"><img alt="Rive" src="./assets/github/rive.svg" width="50" /></a>
+<a href="https://www.dwavesys.com/" target="_blank"><img alt="DWave Solver API" src="./assets/github/dwave.svg" width="50" /></a>
+<a href="https://firebase.google.com/" target="_blank"><img alt="Firebase" src="./assets/github/firebase.svg" width="50" /></a>
 </div>
 
 ## What is QUANTOS?
@@ -34,12 +34,12 @@ Progress is reaching a fascinating speed in today's world due to ever more power
 
 Quantos is a cooperation with the [Forschungszentrum Jülich (Jülich Research Center)](https://www.fz-juelich.de/en) - a beginner-friendly and WCAG 2.1 Level AA-compliant learning platform that enables a wide target group from middle school to workpersons to learn how quantum annealers function. The app design is based on gamification, delivering content in diverse ways with a mix of text blocks and interactive participatory tasks. The additional accessibilty features, such as a high-contrast mode and audio descriptions, support visually impaired users in getting an equal learning experience. Quantos runs natively on all major platforms, including mobile on Android and iOS, web, and desktop on Windows, macOS, and Linux. Making quantum physics as easy as brushing your teeth - you may not like doing it, but with the right approach, it can actually be fun!
 
-Project website: [Project site and blog](https://www.quantos-learning.com)
+Project website: [Project site and blog](https://quantos.online)
 
 ## Installation
 
 <div align="center">
-  <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app">
+  <a href="https://play.google.com/store/apps/details?id=com.quantoslearning.app" target="_blank">
     <img alt="Get it on Google Play" src="./assets/github/playstore.png" height="40">
   </a>
   <a href="https://apps.apple.com/us/app/quantos/id6446584307">
@@ -59,6 +59,9 @@ $ git clone git@github.com:Totemi1324/Quantos
 # Get packages
 $ flutter pub get
 
+# Generate assets with flutter_gen:
+$ flutter packages pub run build_runner build
+
 # Start Dart DevTools:
 $ dart devtools
 
@@ -75,13 +78,13 @@ Now, DevTools can be accessed at `localhost:9100` in the browser. Paste your tok
 
 ## Supporters
 
-<a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility">
+<a href="https://www.fz-juelich.de/en/ias/jsc/systems/quantum-computing/juniq-facility" target="_blank">
   <img alt="Forschungszentrum Jülich and JUNIQ quantum user facility" src="./assets/github/support_juniq.png" width="300"/>
 </a>
-<a href="https://www.dwavesys.com/">
+<a href="https://www.dwavesys.com/" target="_blank">
   <img alt="DWave Systems - The Quantum Computing Company" src="./assets/github/support_dwave.png" width="300"/>
 </a>
-<a href="https://www.juforum.de/">
+<a href="https://www.juforum.de/" target="_blank">
   <img alt="Deutsches Jungforschernetzwerk JuFORUM e.V." src="./assets/github/support_juforum.png" width="150"/>
 </a>
 
