@@ -15,6 +15,7 @@ import '../widgets/section_navigation.dart';
 import '../widgets/lesson_content_renderer.dart';
 import '../widgets/ui/adaptive_button.dart';
 import '../widgets/ui/adaptive_progress_bar.dart';
+import '../models/navigation_action.dart';
 
 class LessonScreen extends StatefulWidget {
   static const routeName = "/home/lection/lesson";
@@ -187,7 +188,7 @@ class _LessonScreenState extends State<LessonScreen> {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),

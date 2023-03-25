@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
 import '../../bloc/database_service.dart';
+import '../../bloc/profile_quiz_service.dart';
+import '../../bloc/localization_service.dart';
 
 import '../ui/adaptive_button.dart';
 import '../ui/adaptive_form_field.dart';
@@ -56,7 +58,12 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     _formKey.currentState?.save();
     if (!mounted) return;
 
+    final currentLocale = buildContext.read<LocalizationService>().state;
     try {
+      await buildContext
+          .read<ProfileQuizService>()
+          .loadFromLocale(currentLocale);
+      if (!mounted) return;
       await buildContext
           .read<AuthenticationService>()
           .attemptSignUp(_email, _password);
@@ -96,8 +103,8 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
     if (!mounted) return;
     buildContext.read<DatabaseService>().fullReset();
     await buildContext.read<DatabaseService>().initializeUserEntry(
-      buildContext.read<AuthenticationService>().state.userId,
-    );
+          buildContext.read<AuthenticationService>().state.userId,
+        );
 
     setState(() {
       _isLoading = false;
@@ -112,78 +119,81 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Form(
-          key: _formKey,
-          child: ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              AdaptiveFormField.icon(
-                AppLocalizations.of(context)!.authFormEmail,
-                prefixIcon: Icons.alternate_email_rounded,
-                autocorrect: false,
-                enableSuggestions: true,
-                isFinalField: false,
-                nextField: _passwordFocusNode,
-                onSaved: (newValue) {
-                  if (newValue != null) {
-                    _email = newValue;
-                  }
-                },
-                validator: (value) {
-                  if (value == null || value == "") {
-                    return AppLocalizations.of(context)
-                            ?.validationFailEmailMissing ??
-                        "";
-                  }
-                  return emailFormat.hasMatch(value)
-                      ? null
-                      : (AppLocalizations.of(context)
-                              ?.validationFailEmailIncorrectFormat ??
-                          "");
-                },
-                autoValidateMode: AutovalidateMode.onUserInteraction,
-              ),
-              AdaptiveFormField.password(
-                AppLocalizations.of(context)!.authFormPassword,
-                isFinalField: false,
-                thisField: _passwordFocusNode,
-                nextField: _confirmPasswordFocusNode,
-                onSaved: (newValue) {
-                  if (newValue != null) {
-                    _password = newValue;
-                  }
-                },
-                validator: (value) {
-                  _passwordCache = value;
-                  if (value == null || value == "") {
-                    return AppLocalizations.of(context)
-                            ?.validationFailPasswordMissing ??
-                        "";
-                  }
-                  return passwordFormat.hasMatch(value)
-                      ? null
-                      : (AppLocalizations.of(context)
-                              ?.validationFailPasswordNotSufficient ??
-                          "");
-                },
-                autoValidateMode: AutovalidateMode.onUserInteraction,
-              ),
-              AdaptiveFormField.password(
-                AppLocalizations.of(context)!.authFormConfirmPassword,
-                prefixIcon: Icons.spellcheck_rounded,
-                isFinalField: true,
-                thisField: _confirmPasswordFocusNode,
-                onSaved: (_) {},
-                validator: (value) {
-                  return value == _passwordCache
-                      ? null
-                      : (AppLocalizations.of(context)
-                              ?.validationFailConfirmPasswordNoMatch ??
-                          "");
-                },
-              )
-            ],
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                AdaptiveFormField.icon(
+                  AppLocalizations.of(context)!.authFormEmail,
+                  prefixIcon: Icons.alternate_email_rounded,
+                  autocorrect: false,
+                  enableSuggestions: true,
+                  isFinalField: false,
+                  nextField: _passwordFocusNode,
+                  onSaved: (newValue) {
+                    if (newValue != null) {
+                      _email = newValue;
+                    }
+                  },
+                  validator: (value) {
+                    if (value == null || value == "") {
+                      return AppLocalizations.of(context)
+                              ?.validationFailEmailMissing ??
+                          "";
+                    }
+                    return emailFormat.hasMatch(value)
+                        ? null
+                        : (AppLocalizations.of(context)
+                                ?.validationFailEmailIncorrectFormat ??
+                            "");
+                  },
+                  autoValidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                AdaptiveFormField.password(
+                  AppLocalizations.of(context)!.authFormPassword,
+                  isFinalField: false,
+                  thisField: _passwordFocusNode,
+                  nextField: _confirmPasswordFocusNode,
+                  onSaved: (newValue) {
+                    if (newValue != null) {
+                      _password = newValue;
+                    }
+                  },
+                  validator: (value) {
+                    _passwordCache = value;
+                    if (value == null || value == "") {
+                      return AppLocalizations.of(context)
+                              ?.validationFailPasswordMissing ??
+                          "";
+                    }
+                    return passwordFormat.hasMatch(value)
+                        ? null
+                        : (AppLocalizations.of(context)
+                                ?.validationFailPasswordNotSufficient ??
+                            "");
+                  },
+                  autoValidateMode: AutovalidateMode.onUserInteraction,
+                ),
+                AdaptiveFormField.password(
+                  AppLocalizations.of(context)!.authFormConfirmPassword,
+                  prefixIcon: Icons.spellcheck_rounded,
+                  isFinalField: true,
+                  thisField: _confirmPasswordFocusNode,
+                  onSaved: (_) {},
+                  validator: (value) {
+                    return value == _passwordCache
+                        ? null
+                        : (AppLocalizations.of(context)
+                                ?.validationFailConfirmPasswordNoMatch ??
+                            "");
+                  },
+                )
+              ],
+            ),
           ),
         ),
         const SizedBox(

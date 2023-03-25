@@ -5,6 +5,10 @@
     "@confirmButtonLabel": {
         "description": "Confirm button label"
     },
+    "continueButtonLabel": "Continue",
+    "@continueButtonLabel": {
+        "description": "Continue button label"
+    },
     "readyButtonLabel": "I'm ready",
     "@readyButtonLabel": {
         "description": "Ready button label"
@@ -81,9 +85,9 @@
         "description": "Profile name screen text button label"
     },
 
-    "profileAgeScreenTitleWithName": "And how old are you, {name}?",
-    "@profileAgeScreenTitleWithName": {
-        "description": "Profile age screen title with name placeholder",
+    "profileQuizIntroScreenTitleWithName": "Let's start with some questions, {name}.",
+    "@profileQuizIntroScreenTitleWithName": {
+        "description": "Profile quiz intro screen title with name placeholder",
         "placeholders": {
             "name": {
                 "type": "String",
@@ -91,31 +95,28 @@
             }
         }
     },
-    "profileAgeScreenTitleWithoutName": "And how old are you?",
-    "@profileAgeScreenTitleWithoutName": {
-        "description": "Profile age screen title"
+    "profileQuizIntroScreenTitleWithoutName": "Let's start with some questions.",
+    "@profileQuizIntroScreenTitleWithoutName": {
+        "description": "Profile quiz intro screen title"
     },
-    "profileAgeScreenInstructions": "We need this information to choose the optimal learning contents for you.",
-    "@profileAgeScreenInstructions": {
-        "description": "Profile age screen instructions"
-    },
-    "profileAgeScreenSliderClass1": "15-18",
-    "@profileAgeScreenSliderClass1": {
-        "description": "First age class"
-    },
-    "profileAgeScreenSliderClass2": "19-28",
-    "@profileAgeScreenSliderClass2": {
-        "description": "Second age class"
-    },
-    "profileAgeScreenSliderClass3": "29-59",
-    "@profileAgeScreenSliderClass3": {
-        "description": "Third age class"
-    },
-    "profileAgeScreenSliderClass4": "60+",
-    "@profileAgeScreenSliderClass4": {
-        "description": "Fourth age class"
+    "profileQuizIntroScreenInstructions": "To choose the optimal learning contents for you, we have to know what your current knowledge level is.\nThis works the best if you answer the following questions honestly, so don't be shy – there are no wrong answers! :)",
+    "@profileQuizIntroScreenInstructions": {
+        "description": "Profile quiz intro screen instructions"
     },
 
+    "profileQuizAnswer1": "I would be able to answer this question.",
+    "@profileQuizAnswer1": {
+        "description": "First profile quiz answer"
+    },
+    "profileQuizAnswer2": "I would not be able to answer this question.",
+    "@profileQuizAnswer2": {
+        "description": "Second profile quiz answer"
+    },
+    "profileQuizAnswer3": "I would be able to answer it, but would like a recap on the topic.",
+    "@profileQuizAnswer3": {
+        "description": "Third profile quiz answer"
+    },
+    
     "profileExperienceScreenTitle": "How would you describe yourself?",
     "@profileExperienceScreenTitle": {
         "description": "Profile experience screen title"

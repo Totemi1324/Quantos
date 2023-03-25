@@ -79,7 +79,10 @@
         "text": "If a qubit needs more than 6 connections, multiple **physical** qubits can then be coupled into so-called **logical** qubits by connecting them with very strong equality couplers. When measured, they then behave almost as one. With each physical qubit connected into a logical one, 6 more connection possibilities are added, but it also increases the probability of a chain break, causing the results to become unusable."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-4": {
     },

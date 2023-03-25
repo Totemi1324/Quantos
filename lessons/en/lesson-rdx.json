@@ -28,7 +28,10 @@
         "text": "This would be an appropriate adjustment in the case of the 4 queens problem. Since in the new form the values of all fields are simply added, the least cost is reached only if all are 0, i.e. unoccupied. If we exchange this part of the QUBO problem and send the appropriately modified 64×64 Hamilton matrix to the quantum annealer, we actually find some correct solutions!"
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

@@ -1,0 +1,31 @@
+{
+    "paragraph-1": {
+        "text": "1. Die folgende Funktion hat zwei Unbekannte:"
+    },
+    "equation-1": {
+        "tex": "f\\left(x,y\\right)=-x^2+50y",
+        "alttext": "f(x,y)=-x²+50y"
+    },
+    "paragraph-2": {
+        "text": "Welchen Wert hat dann $$f\\left(7,2\\right)$$?"
+    },
+    "pagebreak-1": {
+    },
+    "paragraph-3": {
+        "text": "2. Binärzahlen kommen mit nur zwei Ziffern aus, nämlich 0 und 1. Welche Zahl erhalten wir, wenn wir die zwei folgenden Binärzahlen addieren?"
+    },
+    "equation-2": {
+        "tex": "101+1=?",
+        "alttext": "101+1=?"
+    },
+    "pagebreak-2": {
+    },
+    "paragraph-4": {
+        "text": "3. Transistoren findet man in heutigen Computern und Smartphones millionenfach verbaut. Aber was ist ihre Funktion?"
+    },
+    "pagebreak-3": {
+    },
+    "paragraph-5": {
+        "text": "4. Atome, Ionen und Elektronen sind verschiedene Arten von Teilchen. Welches von ihnen ist ungeladen?"
+    }
+}

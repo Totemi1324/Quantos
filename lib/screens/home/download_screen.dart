@@ -1,7 +1,6 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../widgets/containers/rounded_card.dart';
 import '../../widgets/part_separator.dart';
@@ -19,7 +18,9 @@ class DownloadScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              alignment: Alignment.centerLeft,
+              alignment: UniversalPlatform.isWeb
+                  ? Alignment.center
+                  : Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 30),
               margin: const EdgeInsets.only(top: 20),
               child: Text(
@@ -45,8 +46,9 @@ class DownloadScreen extends StatelessWidget {
                 itemCount: downloadCategories.length,
                 itemBuilder: (context, index) {
                   bool show = true;
-                  
-                  if (Platform.isAndroid || Platform.isIOS) {
+
+                  if (UniversalPlatform.isAndroid ||
+                      UniversalPlatform.isAndroid) {
                     show = downloadCategories[index].id != "2fT4z";
                   }
 

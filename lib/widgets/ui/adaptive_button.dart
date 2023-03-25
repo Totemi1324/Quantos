@@ -120,10 +120,44 @@ class AdaptiveButton extends StatelessWidget {
 
     final AutoSizeText labelText = AutoSizeText(
       label,
+      softWrap: true,
+      wrapWords: false,
       textAlign: TextAlign.center,
       minFontSize: 12,
       maxLines: 2,
       overflow: TextOverflow.fade,
+    );
+
+    final TextButton textButton = TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: context.read<ThemeService>().accessibilityModeActive
+            ? Theme.of(context).colorScheme.onPrimary
+            : Colors.white,
+        disabledBackgroundColor: Colors.grey,
+        padding: navigator
+            ? const EdgeInsets.all(0)
+            : const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+        textStyle: Theme.of(context).textTheme.labelLarge,
+      ),
+      onPressed: enabled ? onPressed : null,
+      child: icon == null
+          ? labelText
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(
+                  icon,
+                  color: context.read<ThemeService>().accessibilityModeActive
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Colors.white,
+                  size: navigator ? 50 : 30,
+                ),
+                if (!navigator) Flexible(child: labelText),
+              ],
+            ),
     );
 
     return SizedBox(
@@ -147,43 +181,12 @@ class AdaptiveButton extends StatelessWidget {
                 ),
               ),
             Positioned.fill(
-              child: Tooltip(
-                message: tooltip,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    foregroundColor:
-                        context.read<ThemeService>().accessibilityModeActive
-                            ? Theme.of(context).colorScheme.onPrimary
-                            : Colors.white,
-                    disabledBackgroundColor: Colors.grey,
-                    padding: navigator
-                        ? const EdgeInsets.all(0)
-                        : const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 10,
-                          ),
-                    textStyle: Theme.of(context).textTheme.labelLarge,
-                  ),
-                  onPressed: enabled ? onPressed : null,
-                  child: icon == null
-                      ? labelText
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(
-                              icon,
-                              color: context
-                                      .read<ThemeService>()
-                                      .accessibilityModeActive
-                                  ? Theme.of(context).colorScheme.onPrimary
-                                  : Colors.white,
-                              size: navigator ? 50 : 30,
-                            ),
-                            if (!navigator) Flexible(child: labelText),
-                          ],
-                        ),
-                ),
-              ),
+              child: tooltip != null
+                  ? Tooltip(
+                      message: tooltip,
+                      child: textButton,
+                    )
+                  : textButton,
             )
           ],
         ),

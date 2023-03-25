@@ -6,18 +6,13 @@ import 'package:tuple/tuple.dart';
 
 import '../bloc/lesson_content_service.dart';
 
+import '../models/navigation_action.dart';
 import '../models/content/content_item.dart';
 import '../models/content/section_title.dart';
 import '../models/content/paragraph.dart';
 import '../models/content/interactive.dart';
 import '../models/content/image.dart' as image_content;
 import '../models/content/equation.dart';
-
-enum NavigationAction {
-  next,
-  previous,
-  skip,
-}
 
 class LessonContentRenderer extends StatefulWidget {
   final Stream<Tuple3<BuildContext, NavigationAction, String?>>

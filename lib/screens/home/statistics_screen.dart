@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../bloc/database_service.dart';
 
@@ -21,7 +22,9 @@ class StatisticsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                alignment: Alignment.centerLeft,
+                alignment: UniversalPlatform.isWeb
+                    ? Alignment.center
+                    : Alignment.centerLeft,
                 margin: const EdgeInsets.only(top: 20, bottom: 30),
                 child: Text(
                   AppLocalizations.of(context)!.statisticsScreenTitle,

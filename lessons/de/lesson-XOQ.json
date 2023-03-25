@@ -38,7 +38,10 @@
         "text": "Die Herausforderung dabei: Der Computer, der das Problem lösen soll, sieht auf dieser Kostenkurve immer nur einen Punkt auf einmal und muss eine Strategie entwickeln, trotzdem die \"Täler\", also die Lösungen mit den niedrigsten Kosten, zu finden. Es ist möglich, dabei das **globale Optimum**, die niedrigsten Kosten von allen, zu finden, aber man kann genauso gut bei einem **lokalen Optimum**, einem der vielen mitteltiefen Tälern, landen — im Glauben, der tiefste Punkt sei bereits erreicht."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

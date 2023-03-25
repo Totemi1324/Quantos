@@ -98,7 +98,10 @@
         "text": "Try to read out the optimal occupancies from ready-made QUBO equations by yourself!"
     },
     "interactive-1": {
-        
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-15": {
         "text": "To be able to formulate an optimization problem as a QUBO problem is the **only** and **most important** prerequisite to be able to solve it on a quantum annealer. This step often requires some thought; but once it's done, it's half the battle! The following lections give enough examples and opportunities to practice this."

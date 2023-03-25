@@ -27,7 +27,10 @@
         "text": "The smallest world of atoms, the quantum world, behaves completely different from what we can perceive with the naked eye and the laws of classical physics do not apply there. Therefore, it has its own scientific field: quantum physics. To comprehend it completely is a great difficulty even for learned physicists, but the basic models can be understood by everyone. Quantum physics assumes that quantum mechanical systems — atoms, electrons, etc. — have a **superposition** of all their possible states. Only when measured with instruments or otherwise observed do they decide on a particular state. This combined with the realization that not every outcome of a measurement is equally probable and is described by a wave function is called the Copenhagen interpretation."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },

@@ -40,10 +40,37 @@
         "text": "Der erste wichtige Schritt ist getan. Für diesen Kurs wollen wir aber etwas weitergehen und erforschen, wo die **Grenzen** des Quantencomputings liegen. Wenn es darum geht, die Leistung von Quantenalgorithmen zu evaluieren, stellt dies oft eine Herausforderung dar, da diese Methode von Natur aus **nicht deterministisch** ist. Das bedeutet, dass aufgrund der Arbeit mit Quantenzuständen immer ein gewisser Anteil an Zufälligkeit im Spiel ist. Im ersten Experiment werden daher jeweils 2000 Messungen für das 4-Damen-Problem bis zum 8-Damen-Problem gemacht und verglichen, wie viele der Lösungen korrekt waren und wie viele nicht. Zum Vergleich wird der Versuch auch auf dem DWave 2000Q, dem Vorgängermodell der aktuellen Generation, wiederholt."
     },
     "interactive-1": {
-        
+        "id": "qhs_graph_advantage",
+        "caption": "Bewege den Schieberegler, um die Erfolgsquoten auf dem DWave Advantage zu vergleichen!",
+        "alttext": "Der Anteil korrekter Lösungen beträgt bei vier Damen 44,9 Prozent, bei fünf Damen 23,2 Prozent, bei sechs Damen 0,6 Prozent, bei sieben Damen 0,3 Prozent und bei acht Damen 0,05 Prozent.",
+        "args": {
+            "labels": [
+                "richtig", "falsch"
+            ],
+            "values": [
+                [0.4496, 0.5504],
+                [0.2324, 0.7676],
+                [0.0065, 0.9935],
+                [0.0030, 0.9970],
+                [0.0005, 0.9995]
+            ]
+        }
     },
     "interactive-2": {
-
+        "id": "qhs_graph_2000q",
+        "caption": "Vergleiche die obigen Ergebnisse mit denen der DWave 2000Q!",
+        "alttext": "Der Anteil korrekter Lösungen beträgt bei vier Damen 23,5 Prozent, also 21,4 Prozent weniger, bei fünf Damen 13,7 Prozent, also 9,5 Prozent weniger, bei sechs Damen 0,2 Prozent, also 0,4 Prozent weniger und bei sieben Damen 0,05 Prozent, also 0,25 Prozent weniger. Messungen mit acht Damen fanden nicht statt.",
+        "args": {
+            "labels": [
+                "richtig", "falsch"
+            ],
+            "values": [
+                [0.2350, 0.7650],
+                [0.1370, 0.8630],
+                [0.0020, 0.9980],
+                [0.0005, 0.9995]
+            ]
+        }
     },
     "paragraph-5": {
         "text": "Beim Scrollen durch die Diagramme wird der Leistungsabfall mit jeder neu hinzugekommenen Dame gut sichtbar. Während die Quantenannealer beim 4-Damen-Problem bei fast der Hälfte ihrer Messungen richtig liegen, sind bei größeren Schachbrettern nur noch eine aus 2000 Lösungen korrekt. Beim DWave Advantage liegt diese Leistungsgrenze bei 8 Damen, beim 2000Q-Modell (der generell öfter danebenliegt als sein Nachfolger) bei 7 Damen."

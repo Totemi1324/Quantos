@@ -7,20 +7,25 @@ import '../../models/numeric_data_point.dart';
 
 class BarChart extends StatelessWidget {
   final double height;
+  final List<String> labels;
   final List<double> values;
 
-  const BarChart({this.height = 200, required this.values, super.key});
+  const BarChart(
+      {this.height = 200,
+      required this.labels,
+      required this.values,
+      super.key});
 
   Tuple3<double, double, List<NumericDataPoint>> _calculateData() {
     final double minY = values.fold(0, (v1, v2) => min(v1, v2));
     final double maxY = values.fold(0, (v1, v2) => max(v1, v2));
     List<NumericDataPoint> points = List<NumericDataPoint>.empty();
 
-    if (values.length >= 2) {
+    if (values.isNotEmpty && labels.length == values.length) {
       points = List<NumericDataPoint>.generate(
-        values.length.clamp(2, 5),
+        values.length,
         (index) => NumericDataPoint(
-          "#${index + 1}",
+          labels[index],
           values[index],
         ),
       );
@@ -80,13 +85,13 @@ class BarChartPainter extends CustomPainter {
     final drawableHeight = size.height - 2 * padding;
     final drawableWidth = size.width - 2 * padding;
     final segmentHeight = drawableHeight / 5.0;
-    final segmentWidth = drawableWidth / points.length.toDouble();
+    final segmentWidth = drawableWidth /
+        (points.length.toDouble() == 0 ? 1 : points.length.toDouble());
 
     final height = segmentHeight * 4.0;
     final width = drawableWidth;
 
     if (height <= 0 || width <= 0.0) return;
-    if (maxY - minY < 1.0e-6) return;
 
     final centerOfSegment = Offset(
       padding + segmentWidth / 2.0,

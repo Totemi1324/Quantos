@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../bloc/stores/coding_modes_store_service.dart';
 import '../../bloc/coding_service.dart';
@@ -72,7 +73,9 @@ class _CodingScreenState extends State<CodingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        alignment: Alignment.centerLeft,
+                        alignment: UniversalPlatform.isWeb
+                            ? Alignment.center
+                            : Alignment.centerLeft,
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         margin: const EdgeInsets.only(top: 20),
                         child: Text(

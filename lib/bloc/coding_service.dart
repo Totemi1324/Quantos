@@ -21,7 +21,11 @@ class SendAdvantage extends CodingEvent {
   SendAdvantage(this.qubo);
 }
 
+class GiveError extends CodingEvent {}
+
 class CodingService extends Bloc<CodingEvent, ConsoleContent> {
+  String? _tokenEntered;
+
   CodingService() : super(ConsoleContent.initial()) {
     on<SendSimulator>(
       (event, emit) async {
@@ -82,6 +86,16 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
         }
       },
     );
+
+    on<GiveError>(
+      (event, emit) {
+        emit(const ConsoleContent(ConsoleStatus.failure));
+      },
+    );
+  }
+
+  void saveTokenInput(String? input) {
+    _tokenEntered = input;
   }
 
   //TODO: TEMP CODE

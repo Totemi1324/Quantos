@@ -1,7 +1,6 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class AdaptiveMessageDialog extends StatelessWidget {
   final String? title;
@@ -52,7 +51,7 @@ class AdaptiveMessageDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS || Platform.isMacOS
+    return UniversalPlatform.isIOS || UniversalPlatform.isMacOS
         ? _buildCupertinoDialog(context)
         : _buildMaterialDialog(context);
   }

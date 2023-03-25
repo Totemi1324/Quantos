@@ -37,7 +37,29 @@
         "text": "The optimization process is lengthy and requires a lot of data, therefore we won't cover it in depth; if you are interested in the detailed procedure, you can read it up in the respective documentation that you can find in the Download tab on the homescreen. Below are the charts showing the progression of the success rate (the percentage of correct results) on DWave Advantage as you increase the chain strength — with a curve showing the average of 10 different embeddings. At the top, a solution is correct if it represents a valid round trip; at the bottom, if it's also the shortest round trip."
     },
     "interactive-1": {
-
+        "id": "56h_graph_chainstrength",
+        "caption": "Use the slider and change the number of cities to observe how the chain strength affects the success rate!",
+        "alttext": "",
+        "args": {
+            "title_simple": "without route costs",
+            "title_complex": "with route costs",
+            "values_simple": [
+                [0.2166, 0.5884, 0.9436, 0.9836, 0.9796, 0.9696, 0.9378, 0.8670, 0.8286, 0.7570],
+                [0.0000, 0.0016, 0.1518, 0.6464, 0.8854, 0.8786, 0.8146, 0.7032, 0.5870, 0.5044],
+                [0.0000, 0.0000, 0.0014, 0.0758, 0.2608, 0.4590, 0.4654, 0.3696, 0.3056, 0.2170],
+                [0.0000, 0.0000, 0.0002, 0.0086, 0.0822, 0.1870, 0.2120, 0.1718, 0.1400, 0.1008],
+                [0.0000, 0.0000, 0.0018, 0.0140, 0.0358, 0.0564, 0.0782, 0.0642, 0.0448, 0.0362],
+                [0.0000, 0.0000, 0.0000, 0.0006, 0.0036, 0.0094, 0.0172, 0.0216, 0.0152, 0.0096]
+            ],
+            "values_complex": [
+                [0.1030, 0.4800, 0.9276, 0.9826, 0.9718, 0.9314, 0.8676, 0.7812, 0.7264, 0.6618],
+                [0.0000, 0.0140, 0.0998, 0.2390, 0.3338, 0.3224, 0.2658, 0.2142, 0.1662, 0.1480],
+                [0.0000, 0.0000, 0.0020, 0.0050, 0.0292, 0.0480, 0.0536, 0.0350, 0.0292, 0.0218],
+                [0.0000, 0.0000, 0.0012, 0.0008, 0.0014, 0.0024, 0.0046, 0.0052, 0.0020, 0.0024],
+                [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000],
+                [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000]
+            ]
+        }
     },
     "paragraph-7": {
         "text": "Notice that stronger couplers are not always **better** for logical qubits: At one point, accuracy peaks for all curves and then drops steadily. For larger city networks, the difference between the simpler and the more complex task becomes larger and larger, until finally, starting at $$n=7$$ cities, the shortest round trip cannot be found anymore."
@@ -48,7 +70,29 @@
         "text": "We do the same with annealing time; the hypothesis is that the fraction of correct solutions should keep increasing the longer the quantum computer has time for each anneal."
     },
     "interactive-2": {
-
+        "id": "56h_graph_annealingtime",
+        "caption": "Use the slider and change the number of cities to observe how the length of the anneal affects the success rate!",
+        "alttext": "",
+        "args": {
+            "title_simple": "without route costs",
+            "title_complex": "with route costs",
+            "values_simple": [
+                [0.9040, 0.9690, 0.9870, 0.9930, 0.9930, 1.0000, 0.9980, 0.9980, 0.9960, 0.9980],
+                [0.2980, 0.4160, 0.5980, 0.6890, 0.8160, 0.8270, 0.8730, 0.9040, 0.9110, 0.9420],
+                [0.0270, 0.1530, 0.2600, 0.3730, 0.4530, 0.5420, 0.6310, 0.6910, 0.7490, 0.8400],
+                [0.0000, 0.0310, 0.0980, 0.1760, 0.2270, 0.2870, 0.3270, 0.3440, 0.4600, 0.4620],
+                [0.0000, 0.0020, 0.0070, 0.0200, 0.0400, 0.1070, 0.1200, 0.1220, 0.2400, 0.1510],
+                [0.0000, 0.0000, 0.0040, 0.0000, 0.0040, 0.0020, 0.0090, 0.0070, 0.0160, 0.0200]
+            ],
+            "values_complex": [
+                [0.7840, 0.9220, 0.9360, 0.9600, 0.9780, 0.9820, 0.9760, 0.9890, 1.0000, 1.0000],
+                [0.0960, 0.1960, 0.2000, 0.2760, 0.3000, 0.3110, 0.2910, 0.2640, 0.3620, 0.3560],
+                [0.0000, 0.0000, 0.0020, 0.0050, 0.0292, 0.0480, 0.0536, 0.0350, 0.0292, 0.0218],
+                [0.0000, 0.0000, 0.0020, 0.0020, 0.0000, 0.0000, 0.0000, 0.0000, 0.0020, 0.0000],
+                [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0020, 0.0000, 0.0020, 0.0000, 0.0000],
+                [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000]
+            ]
+        }
     },
     "paragraph-9": {
         "text": "Our assumption has been confirmed, but again the problem of performance degradation becomes apparent when path costs are taken into account. This is due to a concept called **sparsity**. The sparser the Hamiltonian matrix is, that is, **the more zeros** it has, the better a quantum annealer can solve it — because if there are less coefficients, more couplers can be saved, reducing the complexity and randomness factor of QPU embedding. The path costs appear in the QUBO equation as coefficients that were previously 0, which lowers the sparsity of the Hamiltonian matrix."

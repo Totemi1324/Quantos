@@ -23,7 +23,7 @@ class ProfileExperienceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<ExperienceClassesStoreService>(
       create: (context) => ExperienceClassesStoreService(
           context.read<LocalizationService>().state),
       child: BlocBuilder<ExperienceClassesStoreService, Map<int, String>>(
@@ -73,24 +73,23 @@ class ProfileExperienceScreen extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
                           builder: (buildContext) => LoadingScreen(
-                            Future(
-                              () async {
-                                buildContext
-                                .read<ContentOutlineService>()
-                                .loadFromLocale(
-                                  buildContext
-                                      .read<LocalizationService>()
-                                      .state,
-                                );
-                                await buildContext
-                                .read<DatabaseService>().
-                                updateProfileInfo(
-                                  buildContext
-                                      .read<AuthenticationService>()
-                                      .state.userId,
-                                );
-                              }
-                            ),
+                            Future(() async {
+                              buildContext
+                                  .read<ContentOutlineService>()
+                                  .loadFromLocale(
+                                    buildContext
+                                        .read<LocalizationService>()
+                                        .state,
+                                  );
+                              await buildContext
+                                  .read<DatabaseService>()
+                                  .updateProfileInfo(
+                                    buildContext
+                                        .read<AuthenticationService>()
+                                        .state
+                                        .userId,
+                                  );
+                            }),
                             Home.routeName,
                           ),
                         ),

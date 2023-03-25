@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/database_service.dart';
 
 import '../base/flat.dart';
-import './profile_age_screen.dart';
+import './profile_quiz_intro_screen.dart';
 import '../../models/user_data.dart';
 import '../../widgets/ui/adaptive_button.dart';
 
@@ -17,7 +17,7 @@ class ProfileNameScreen extends StatelessWidget {
 
   void _onSubmit(BuildContext buildContext) {
     FocusManager.instance.primaryFocus?.unfocus();
-    Navigator.of(buildContext).pushNamed(ProfileAgeScreen.routeName);
+    Navigator.of(buildContext).pushNamed(ProfileQuizIntroScreen.routeName);
   }
 
   @override

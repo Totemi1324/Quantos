@@ -79,7 +79,10 @@
         "text": "Wenn ein Qubit mehr als 6 Verbindungen braucht, können dann mehrere **physikalische** Qubits zu sogenannten **logischen** Qubits gekoppelt werden, indem sie mit sehr starken Gleichheitskopplern verbunden werden. Bei der Messung verhalten sie sich dann beinahe wie eine Einheit. Mit jedem physikalischen Qubit, der an einen logischen angeschlossen wird, kommen 6 weitere Verbindungsmöglichkeiten dazu, es erhöht sich aber auch die Wahrscheinlichkeit, dass die Kette bricht und die Ergebnisse unbrauchbar werden."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-4": {
     },
