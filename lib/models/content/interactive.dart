@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 import './content_item.dart';
 
-class Interactive extends ContentItem {
+abstract class Interactive extends ContentItem {
   static const contentType = ContentType.interactive;
 
-  final Widget content;
   final String caption;
+  final Map<String, dynamic>? args;
 
   const Interactive({
-    required this.content,
     required this.caption,
     required String altText,
+    this.args,
   }) : super(type: contentType, altText: altText);
+
+  String get id;
+  Widget get content;
 }

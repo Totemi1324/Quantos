@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart' show SizedBox;
-
 import '../models/content/paragraph.dart';
 import '../models/content/section_title.dart';
 import '../models/content/image.dart';
 import '../models/content/equation.dart';
 import '../models/content/interactive.dart';
 import '../models/exceptions.dart';
+
+import '../widgets/interactives/interactive_lookup.dart';
 
 class LessonContentParser {
   static const paragraphJsonKey = "paragraph";
@@ -21,6 +21,8 @@ class LessonContentParser {
   static const captionJsonKey = "caption";
   static const altTextJsonKey = "alttext";
   static const texJsonKey = "tex";
+  static const idJsonKey = "id";
+  static const argsJsonKey = "args";
 
   static const formatters = {
     ParagraphSpanType.bold: r"**",
@@ -102,8 +104,41 @@ class LessonContentParser {
   }
 
   static Interactive parseInteractive(Map<String, dynamic> json) {
-    return const Interactive(
-        content: SizedBox(height: 50), caption: "", altText: "");
+    if (!json.keys.contains(idJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: idJsonKey,
+      );
+    }
+    if (!json.keys.contains(captionJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: captionJsonKey,
+      );
+    }
+    if (!json.keys.contains(altTextJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: altTextJsonKey,
+      );
+    }
+    if (!json.keys.contains(argsJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: argsJsonKey,
+      );
+    }
+
+    final id = json[idJsonKey] as String;
+    final caption = json[captionJsonKey] as String;
+    final altText = json[altTextJsonKey] as String;
+    final args = json[argsJsonKey] as Map<String, dynamic>;
+
+    if (args.isEmpty) {
+      return InteractiveLookup.getElement(id, caption, altText);
+    } else {
+      return InteractiveLookup.getElement(id, caption, altText, args: args);
+    }
   }
 
   static List<ParagraphSpan> _extractSpans(String text) {

@@ -42,10 +42,22 @@ class _ProbabilityCalculatorState extends State<ProbabilityCalculator> {
       _selected / 100.0,
     );
 
+    if (_probabilityDistribution.length < 2) {
+      _probabilityDistribution = List.empty();
+    }
+    if (_probabilityDistribution.length > 5) {
+      _probabilityDistribution.removeRange(5, _probabilityDistribution.length);
+    }
+
+    final labels = List<String>.generate(
+      _probabilityDistribution.length,
+      (index) => "#${index + 1}",
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        BarChart(values: _probabilityDistribution),
+        BarChart(labels: labels, values: _probabilityDistribution),
         Text(
           AppLocalizations.of(context)!
               .codingProbabilitySliderLabel(_selected.toStringAsFixed(1)),

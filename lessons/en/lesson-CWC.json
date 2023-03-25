@@ -63,6 +63,9 @@
         "text": "Paths are a sequence of vertices that are visited after one another. A path that passes through all vertices exactly once without traversing the same edge multiple times is called a **Hamiltonian path**. A Hamiltonian path whose start and end points are the same is in turn called a closed Hamiltonian path or **Hamiltonian cycle** — in TSP, we're searching for the one cycle where the sum of the distances from the distance function is as small as possible. Both the former and the latter are guaranteed to be present in complete graphs."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     }
 }

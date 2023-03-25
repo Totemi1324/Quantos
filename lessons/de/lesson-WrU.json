@@ -98,7 +98,10 @@
         "text": "Probiere, aus fertigen QUBO-Gleichungen selbst die optimalen Belegungen herauszulesen!"
     },
     "interactive-1": {
-        
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-15": {
         "text": "Ein Optimierungsproblem als QUBO-Problem formulieren zu können, ist die **einzige** und **wichtigste** Voraussetzung, es auf einem Quantenannealer lösen zu können. Dieser Schritt erfordert oft etwas Gedankenarbeit; wenn es aber geschafft ist, ist es die halbe Miete! Die nachfolgenden Lektionen geben genug Beispiele und Möglichkeiten, dies zu üben."

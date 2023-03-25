@@ -37,7 +37,10 @@
         "text": "The optimization process is lengthy and requires a lot of data, therefore we won't cover it in depth; if you are interested in the detailed procedure, you can read it up in the respective documentation that you can find in the Download tab on the homescreen. Below are the charts showing the progression of the success rate (the percentage of correct results) on DWave Advantage as you increase the chain strength — with a curve showing the average of 10 different embeddings. At the top, a solution is correct if it represents a valid round trip; at the bottom, if it's also the shortest round trip."
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-7": {
         "text": "Notice that stronger couplers are not always **better** for logical qubits: At one point, accuracy peaks for all curves and then drops steadily. For larger city networks, the difference between the simpler and the more complex task becomes larger and larger, until finally, starting at $$n=7$$ cities, the shortest round trip cannot be found anymore."
@@ -48,7 +51,10 @@
         "text": "We do the same with annealing time; the hypothesis is that the fraction of correct solutions should keep increasing the longer the quantum computer has time for each anneal."
     },
     "interactive-2": {
-
+        "id": "",
+        "caption": "Use the interactive element!",
+        "alttext": "",
+        "args": {}
     },
     "paragraph-9": {
         "text": "Our assumption has been confirmed, but again the problem of performance degradation becomes apparent when path costs are taken into account. This is due to a concept called **sparsity**. The sparser the Hamiltonian matrix is, that is, **the more zeros** it has, the better a quantum annealer can solve it — because if there are less coefficients, more couplers can be saved, reducing the complexity and randomness factor of QPU embedding. The path costs appear in the QUBO equation as coefficients that were previously 0, which lowers the sparsity of the Hamiltonian matrix."

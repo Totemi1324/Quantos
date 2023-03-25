@@ -28,7 +28,10 @@
         "text": "Das wäre eine entsprechende Anpassung im Falle des 4-Damen-Problems. Da in der neuen Form die Werte aller Felder einfach addiert werden, entstehen nur dann die geringsten Kosten, wenn alle 0, also unbelegt sind. Tauschen wir diesen Teil des QUBO-Problems aus und senden die entsprechend geänderte 64×64 große Hamilton-Matrix an den Quantenannealer, finden sich tatsächlich einige korrekte Lösungen!"
     },
     "interactive-1": {
-
+        "id": "",
+        "caption": "Bediene das interaktive Element!",
+        "alttext": "",
+        "args": {}
     },
     "pagebreak-3": {
     },
