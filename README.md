@@ -45,7 +45,7 @@ Project website: [Project site and blog](https://www.quantos-learning.com)
   <a href="https://apps.apple.com/us/app/quantos/id6446584307">
     <img alt="Download on the App Store" src="./assets/github/appstore.png" height="40">
   </a>
-  <a href="https://app.quantos.com">
+  <a href="https://app.quantos.online">
     <img alt="Launch PWA" src="./assets/github/pwa.png" height="40">
   </a>
 </div>
