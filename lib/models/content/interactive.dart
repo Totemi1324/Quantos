@@ -15,6 +15,5 @@ abstract class Interactive extends ContentItem {
   }) : super(type: contentType, altText: altText);
 
   String get id;
-
-  Widget render();
+  Widget get content;
 }

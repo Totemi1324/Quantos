@@ -12,5 +12,5 @@ class EmptyInteractive extends Interactive {
   String get id => "000_empty";
 
   @override
-  Widget render() => const Placeholder();
+  Widget get content => const Placeholder();
 }
