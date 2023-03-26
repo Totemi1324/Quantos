@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/authentication_service.dart';
 import '../../bloc/database_service.dart';
+import '../../bloc/localization_service.dart';
+import '../../bloc/profile_quiz_service.dart';
 
 import '../profile/profile_name_screen.dart';
 import '../splash_screen.dart';
@@ -54,6 +56,8 @@ class ProfileScreen extends StatelessWidget {
           backgroundColor: Theme.of(buildContext).colorScheme.surface,
         ),
       );
+
+  void foo() {}
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +111,16 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   AccountSettingsItem(
                     AppLocalizations.of(context)!.profileScreenOptionPersonal,
-                    onTap: () => Navigator.of(context)
-                        .pushNamed(ProfileNameScreen.routeName),
+                    onTap: () async {
+                      final currentLocale =
+                          context.read<LocalizationService>().state;
+                      await context
+                          .read<ProfileQuizService>()
+                          .loadFromLocale(currentLocale);
+
+                      Navigator.of(context)
+                          .pushNamed(ProfileNameScreen.routeName);
+                    },
                   ),
                   AccountSettingsItem(
                     AppLocalizations.of(context)!.profileScreenOptionPassword,

@@ -21,8 +21,8 @@ class ProfileQuizService extends Cubit<ProfileQuizContent> {
 
   Future loadFromLocale(Locale locale) async {
     try {
-      final jsonString =
-          await rootBundle.loadString("quiz/${locale.languageCode}.json");
+      final assetName = "quiz/${locale.languageCode}.json";
+      final jsonString = await rootBundle.loadString(assetName);
 
       state.clearData();
       _parse(jsonString);
