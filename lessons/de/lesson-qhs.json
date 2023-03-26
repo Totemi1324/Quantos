@@ -19,7 +19,7 @@
         "text": "Nehmen wir die oberste Lösung als Beispiel: Die Einträge der Antwortmatrix kommen in der Reihenfolge zurück, wie wir sie in der ursprünglichen QUBO-Gleichung berücksichtigt haben. Also schreiben wir die Werte von oben nach unten und von links nach rechts wieder in die Felder des ursprünglichen Gitters (in diesem Fall, des Schachbretts) und ersetzen jede 1 mit einer Dame. Idealerweise sollten das beim 4-Damen-Problem vier Stück sein, sonst stimmt etwas mit dem QUBO-Problem nicht."
     },
     "equation-1": {
-        "tex": "\\vec{q}_A=\\begin{bmatrix}0&10&0&0&0&0&1&1&0&0&0&0&0&1&0\\end{bmatrix}",
+        "tex": "\\vec{q}_A=\\begin{bmatrix}0&1&0&0&\\dots\\end{bmatrix}",
         "alttext": "qₐ=[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]"
     },
     "equation-2": {

@@ -21,9 +21,9 @@
         "text": "This made Max Bezzel, a German chess master, think. In 1848 he formulated the 8 queens problem for the first time in the Berliner Schachzeitung (\"Berlin chess magazine\"). The goal is to place 8 queens on a chessboard in such a way that they **do not threaten each other**, i.e. that none can attack another. Later, the problem was extended and generalized to the N queens problem, where the goal is to place N queens on a chessboard of size N×N squares without threat situations (N is an arbitrary integer here). This puzzle remained the subject of active research up to the present, with the highest exactly solved size being $$N=27$$, offering over **200 quadrillion** (!) different possibilities for a valid setup."
     },
     "interactive-1": {
-        "id": "",
-        "caption": "Use the interactive element!",
-        "alttext": "",
+        "id": "uFZ_nqueens_demo",
+        "caption": "Drag the queens onto the chessboard to form a valid constellation for the 5 queens problem!",
+        "alttext": "This exercise is designed to familiarize you with the N queens problem. Five queen chess pieces can be placed anywhere on a chessboard of size five by five. The problem is considered solved if the queens are placed in such a way that there is no more than one queen in any row, column or diagonal. For example, if the columns are labeled A through E and the rows are labeled one through five, a valid placement would be A one, C two, E three, B four, and D five.",
         "args": {}
     },
     "paragraph-4": {

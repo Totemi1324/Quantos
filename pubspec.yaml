@@ -101,6 +101,9 @@ flutter:
     # Lection content images
     - assets/images/lessons/
 
+    # Lection interactive element assets
+    - assets/images/interactives/
+
     # Sound effects
     - assets/sounds/
 

@@ -5,6 +5,7 @@ import './n_queens_success_rate_advantage.dart';
 import './n_queens_success_rate_2000q.dart';
 import './chain_strength_success_rate.dart';
 import './annealing_time_success_rate.dart';
+import './n_queens_demo.dart';
 
 class InteractiveLookup {
   static Interactive getElement(String id, String caption, String altText,
@@ -22,6 +23,8 @@ class InteractiveLookup {
       case AnnealingTimeSuccessRate.identifier:
         return AnnealingTimeSuccessRate(
             caption: caption, altText: altText, args: args);
+      case NQueensDemo.identifier:
+        return NQueensDemo(caption: caption, altText: altText);
       default:
         return EmptyInteractive(caption: caption, altText: altText);
     }

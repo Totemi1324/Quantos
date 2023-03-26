@@ -19,7 +19,7 @@
         "text": "Let's take the top solution as an example: the entries of the answer matrix come back in the order we considered them in the original QUBO equation. So we write the values from top to bottom and from left to right back into the fields of the original grid (in this case, the chessboard) and replace each 1 with a queen. Ideally, in the 4 queens problem, that should be four pieces in total, otherwise there's something wrong with the QUBO problem."
     },
     "equation-1": {
-        "tex": "\\vec{q}_A=\\begin{bmatrix}0&10&0&0&0&0&1&1&0&0&0&0&0&1&0\\end{bmatrix}",
+        "tex": "\\vec{q}_A=\\begin{bmatrix}0&1&0&0&\\dots\\end{bmatrix}",
         "alttext": "qₐ=[0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0]"
     },
     "equation-2": {
