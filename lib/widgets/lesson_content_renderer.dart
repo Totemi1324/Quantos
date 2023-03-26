@@ -6,6 +6,7 @@ import 'package:tuple/tuple.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import '../bloc/lesson_content_service.dart';
+import '../bloc/text_to_speech_service.dart';
 
 import '../models/navigation_action.dart';
 import '../models/content/content_item.dart';
@@ -28,6 +29,7 @@ class LessonContentRenderer extends StatefulWidget {
 class _LessonContentRendererState extends State<LessonContentRenderer>
     with TickerProviderStateMixin {
   final _scrollController = ScrollController();
+
   late final AnimationController _fadeController = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 250),
@@ -148,7 +150,19 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
                   Transform.scale(
                     scale: 0.7,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        var currentTtsState =
+                            buildContext.read<TextToSpeechService>().state;
+                        if (currentTtsState == TtsState.stopped) {
+                          buildContext
+                              .read<TextToSpeechService>()
+                              .speak(interactive.altText!);
+                          return;
+                        }
+                        if (currentTtsState == TtsState.playing) {
+                          buildContext.read<TextToSpeechService>().stop();
+                        }
+                      },
                       color: Theme.of(buildContext).colorScheme.secondary,
                       padding: const EdgeInsets.all(2),
                       tooltip:

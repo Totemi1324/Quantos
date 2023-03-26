@@ -33,6 +33,7 @@ dependencies:
   package_info_plus: 3.0.1
   shared_preferences: ^2.0.18
   audioplayers: ^3.0.1
+  flutter_tts: ^3.6.3
   firebase_core: ^2.7.0
   firebase_database: ^10.0.16
 

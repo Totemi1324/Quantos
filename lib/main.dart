@@ -10,6 +10,7 @@ import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
 import 'bloc/database_service.dart';
 import 'bloc/profile_quiz_service.dart';
+import 'bloc/text_to_speech_service.dart';
 
 // Screens
 import 'screens/splash_screen.dart';
@@ -55,32 +56,38 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthenticationService>(
           create: (_) => AuthenticationService(),
         ),
+        BlocProvider<TextToSpeechService>(
+          create: (_) => TextToSpeechService(),
+        ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(
-        builder: (context, currentLocale) =>
-            BlocBuilder<ThemeService, ThemeData>(
-          builder: (context, activeTheme) =>
-              BlocBuilder<ContentOutlineService, ContentOutline>(
-            builder: (context, outlines) => BlocProvider(
-              create: (_) => DatabaseService(outlines),
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: "Quantos",
-                theme: activeTheme,
-                locale: currentLocale,
-                supportedLocales:
-                    context.read<LocalizationService>().supportedLocales,
-                localizationsDelegates:
-                    context.read<LocalizationService>().localizationsDelegates,
-                initialRoute: SplashScreen.routeName,
-                routes: {
-                  SplashScreen.routeName: (context) => const SplashScreen(),
-                },
-                onGenerateRoute: RouteRegister.onGenerateRoute,
+        builder: (context, currentLocale) {
+          context.read<TextToSpeechService>().setLanguage(currentLocale);
+          return BlocBuilder<ThemeService, ThemeData>(
+            builder: (context, activeTheme) =>
+                BlocBuilder<ContentOutlineService, ContentOutline>(
+              builder: (context, outlines) => BlocProvider(
+                create: (_) => DatabaseService(outlines),
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: "Quantos",
+                  theme: activeTheme,
+                  locale: currentLocale,
+                  supportedLocales:
+                      context.read<LocalizationService>().supportedLocales,
+                  localizationsDelegates: context
+                      .read<LocalizationService>()
+                      .localizationsDelegates,
+                  initialRoute: SplashScreen.routeName,
+                  routes: {
+                    SplashScreen.routeName: (context) => const SplashScreen(),
+                  },
+                  onGenerateRoute: RouteRegister.onGenerateRoute,
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

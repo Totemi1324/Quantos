@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:audioplayers/audioplayers.dart';
 
 import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
+import '../bloc/text_to_speech_service.dart';
 
 import '../models/titled_element.dart';
 import './containers/rounded_card.dart';
@@ -112,18 +112,34 @@ class _StatisticsListState extends State<StatisticsList> {
     }
   }
 
-  Future _readOutContent(int index) async {
-    final player = AudioPlayer();
+  void _readOutContent(BuildContext buildContext, int index) {
+    final currentLocale = buildContext.read<LocalizationService>().state;
 
-    switch (index) {
-      case 0:
-        await player.play(AssetSource("sounds/heatmap.mp3"));
-        break;
-      case 1:
-        await player.play(AssetSource("sounds/linechart.mp3"));
-        break;
-      default:
-        break;
+    if (index == 0) {
+      switch (currentLocale.languageCode) {
+        case "de":
+          buildContext.read<TextToSpeechService>().speak(
+              "Du warst in den letzten 30 Tagen an 1 Tag online. Montag, der 27. März.");
+          break;
+        case "en":
+        default:
+          buildContext.read<TextToSpeechService>().speak(
+              "Out of the last 30 days, you were online on 1 day. Monday, march 27.");
+          break;
+      }
+    }
+    if (index == 1) {
+      switch (currentLocale.languageCode) {
+        case "de":
+          buildContext.read<TextToSpeechService>().speak(
+              "In den letzten 7 Tagen hast du folgende Leistung erbracht: Dienstag, 0 Einheiten, Mittwoch, 0 Einheiten, Donnerstag, 0 Einheiten, Freitag, 0 Einheiten, Samstag, 0 Einheiten, Sonntag, 0 Einheiten, Montag, 2 Einheiten.");
+          break;
+        case "en":
+        default:
+          buildContext.read<TextToSpeechService>().speak(
+              "In the last 7 days, you performed the following: Tuesday, 0 lessons, Wednesday, 0 lessons, Thursday, 0 lessons, Friday, 0 lessons, Saturday, 0 lessons, Sunday, 0 lessons, Monday, 2 lessons.");
+          break;
+      }
     }
   }
 
@@ -168,8 +184,7 @@ class _StatisticsListState extends State<StatisticsList> {
                           child: Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () async =>
-                                  await _readOutContent(index),
+                              onPressed: () => _readOutContent(context, index),
                               tooltip:
                                   AppLocalizations.of(context)!.tooltipReadOut,
                               icon: Icon(
