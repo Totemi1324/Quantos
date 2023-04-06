@@ -1,0 +1,30 @@
+{
+    "category-titles": {
+        "2fT": "Anwendungen",
+        "VpJ": "Dokumente",
+        "U7s": "Datenbanken",
+        "ft1": "Code"
+    },
+    "items": {
+        "h09": {
+            "title": "TSP-Benchmarking-Ergebnisse",
+            "description": "Alle relevanten experimentellen Daten aus dem Benchmarking, zusammengefasst in einem einzigen Dokument."
+        },
+        "4ub": {
+            "title": "Standardprobleme und ihre QUBO-Form",
+            "description": "Die QUBO-Bibel - enthält jedes einzelne bekannte Problem und seine QUBO-Implementierung."
+        },
+        "Nv2": {
+            "title": "Experimentelle Ergebnisse",
+            "description": "Diese Datei enthält die Rohdaten der Messungen, die zur Bewertung der Leistung der Algorithmen dieses Kurses durchgeführt wurden."
+        },
+        "DqF": {
+            "title": "Tutorial-Notebook für TSPs",
+            "description": "Ein interaktives Python-Notebook für diejenigen, die sich für den Code hinter Traveling Salesman-Problemen und die DWave-API interessieren."
+        },
+        "2fT": {
+            "title": "Graph to Matrix",
+            "description": "Entwerfe Graphen visuell auf einer Zeichenfläche und exportiere den dazugehörigen Hamiltonian mit einem Klick als Eingabe für Quantenannealer."
+        }
+    }
+}

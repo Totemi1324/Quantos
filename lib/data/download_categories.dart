@@ -2,19 +2,19 @@ import '../models/download_category.dart';
 
 List<DownloadCategory> downloadCategories = const [
   DownloadCategory(
-    "2fT4z",
+    "2fT",
     title: "Programs",
   ),
   DownloadCategory(
-    "VpJsk",
+    "VpJ",
     title: "Documents",
   ),
   DownloadCategory(
-    "U7s8F",
+    "U7s",
     title: "Databases",
   ),
   DownloadCategory(
-    "ft1Tj",
+    "ft1",
     title: "Code",
   ),
 ];

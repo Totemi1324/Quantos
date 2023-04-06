@@ -1,0 +1,88 @@
+{
+    "categories": {
+        "2fT": {
+            "_title": "Programs",
+            "availability": [1]
+        },
+        "VpJ": {
+            "_title": "Documents",
+            "availability": [0, 1]
+        },
+        "U7s": {
+            "_title": "Databases",
+            "availability": [0, 1]
+        },
+        "ft1": {
+            "_title": "Code",
+            "availability": [0, 1]
+        }
+    },
+    "items": {
+        "h09": {
+            "_title": "TSP Benchmarking Results",
+            "category": "VpJ",
+            "download-size": {
+                "size": 2.5,
+                "unit": 1
+            },
+            "type": 0,
+            "links": {
+                "EN": "https://tsp-quantum.netlify.app/docs/Resultsbook.pdf",
+                "DE": "https://tsp-quantum.netlify.app/docs/Resultsbook.pdf"
+            },
+            "availability": [0, 1]
+        },
+        "4ub": {
+            "_title": "Standard Problems and Their QUBO Form",
+            "category": "VpJ",
+            "download-size": {
+                "size": 3.4,
+                "unit": 1
+            },
+            "type": 0,
+            "links": {
+                "EN": ""
+            },
+            "availability": [0, 1]
+        },
+        "Nv2": {
+            "_title": "Experimental results",
+            "category": "U7s",
+            "download-size": {
+                "size": 44.3,
+                "unit": 0
+            },
+            "type": 2,
+            "links": {
+                "": "https://tsp-quantum.netlify.app/docs/data.json"
+            },
+            "availability": [0, 1]
+        },
+        "DqF": {
+            "_title": "Tutorial notebook for TSPs",
+            "category": "ft1",
+            "download-size": {
+                "size": 1.2,
+                "unit": 1
+            },
+            "type": 3,
+            "links": {
+                "EN": "https://tsp-quantum.netlify.app/docs/Solving%20the%20Traveling%20Salesman%20Problem%20with%20quantum%20annealers.ipynb"
+            },
+            "availability": [1]
+        },
+        "2fT": {
+            "_title": "Graph to Matrix",
+            "category": "2fT",
+            "download-size": {
+                "size": 8.7,
+                "unit": 1
+            },
+            "type": 1,
+            "links": {
+                "EN": "https://tsp-quantum.netlify.app/docs/Graph%20to%20Matrix%20-%20TSPQ.exe"
+            },
+            "availability": [0, 1]
+        }
+    }
+}

@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart' show BuildContext;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 enum DownloadSizeUnit {
   kilobyte,
   megabyte,
@@ -11,38 +14,58 @@ enum FileType {
   ipynb,
 }
 
+enum Platform {
+  mobile,
+  desktop
+}
+
 class Download {
   final String categoryId;
   final String title;
   final DownloadSize size;
   final String description;
   final FileType type;
-  final String link;
+  final Map<String, String> links;
+  final Set<Platform> availableOn;
 
   const Download(
     this.title, {
-    required this.categoryId,
     required this.description,
+    required this.categoryId,
     required this.size,
     required this.type,
-    required this.link,
+    required this.links,
+    required this.availableOn
   });
+
+  List<String> get locales => links.keys.map((locale) => locale.toUpperCase()).toList();
+
+  String? linkForLocale(String locale) => links.containsKey(locale) ? links[locale] : null;
 }
 
 class DownloadSize {
   final double size;
   final DownloadSizeUnit unit;
 
-  static const Map<DownloadSizeUnit, String> sizeUnitToString = {
-    DownloadSizeUnit.kilobyte: "KB",
-    DownloadSizeUnit.megabyte: "MB",
-    DownloadSizeUnit.gigabyte: "GB"
-  };
-
   const DownloadSize({required this.size, required this.unit});
 
-  @override
-  String toString() {
-    return "${size.toStringAsFixed(1)} ${sizeUnitToString[unit]}";
+  String convertToLocalizedString(BuildContext buildContext) {
+    String localizedUnit;
+    switch (unit) {
+      case DownloadSizeUnit.kilobyte:
+        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitKilobyte;
+        break;
+      case DownloadSizeUnit.megabyte:
+        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitMegabyte;
+        break;
+      case DownloadSizeUnit.gigabyte:
+        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitGigabyte;
+        break;
+      default:
+        localizedUnit = "NaN";
+        break;
+    }
+
+    return "${size.toStringAsFixed(1)}$localizedUnit";
   }
 }
