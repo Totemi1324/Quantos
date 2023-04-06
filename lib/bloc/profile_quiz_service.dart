@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart' show Locale;
 import 'package:flutter/services.dart';
 
-import './lesson_content_parser.dart';
+import 'content_parser.dart';
 
 import '../models/profile_quiz_content.dart';
 import '../models/exceptions.dart';

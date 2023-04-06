@@ -31,7 +31,7 @@ class DownloadList extends StatelessWidget {
           size: items[index].size.toString(),
           description: items[index].description,
           fileType: items[index].type.name.toUpperCase(),
-          link: items[index].link,
+          link: items[index].links["EN"]!, //TODO: TEMP
         ),
       ),
     );

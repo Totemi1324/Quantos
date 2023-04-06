@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import './platform.dart';
+
 enum DownloadSizeUnit {
   kilobyte,
   megabyte,
@@ -14,12 +16,8 @@ enum FileType {
   ipynb,
 }
 
-enum Platform {
-  mobile,
-  desktop
-}
-
 class Download {
+  final String id;
   final String categoryId;
   final String title;
   final DownloadSize size;
@@ -29,7 +27,8 @@ class Download {
   final Set<Platform> availableOn;
 
   const Download(
-    this.title, {
+    this.id, {
+    required this.title,
     required this.description,
     required this.categoryId,
     required this.size,

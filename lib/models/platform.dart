@@ -1,0 +1,4 @@
+enum Platform {
+  mobile,
+  desktop
+}
