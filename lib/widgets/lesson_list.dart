@@ -59,6 +59,25 @@ Widget _buildLessonItem(BuildContext buildContext, int index, Lesson lesson) {
   );
 }
 
+List<String> _transformLessonIds(BuildContext buildContext, List<String> ids) {
+  final List<String> result = [];
+  final conditionalIds = ["TE0", "s0f", "fAX", "Ydj"];
+  final service = buildContext.read<DatabaseService>();
+
+  for (var id in ids) {
+    if (conditionalIds.contains(id)) {
+      var index = conditionalIds.indexOf(id);
+      if (service.answerForQuestion(index) != QuizAnswer.yes) {
+        result.add(id);
+      }
+    } else {
+      result.add(id);
+    }
+  }
+
+  return result;
+}
+
 class _LessonListState extends State<LessonList> {
   @override
   Widget build(BuildContext context) {
@@ -70,8 +89,10 @@ class _LessonListState extends State<LessonList> {
         mainAxisSpacing: 10,
         maxCrossAxisExtent: 400,
         crossAxisSpacing: 20,
-        children: widget.lessonIds.map<Widget>((id) {
+        children:
+            _transformLessonIds(context, widget.lessonIds).map<Widget>((id) {
           itemIndex++;
+
           return StaggeredGridTile.fit(
             crossAxisCellCount: 1,
             child: _buildLessonItem(
@@ -85,22 +106,3 @@ class _LessonListState extends State<LessonList> {
     );
   }
 }
-
-/*GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget.lessonIds.length,
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 400,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 20,
-          childAspectRatio: 1.2,
-        ),
-        itemBuilder: (context, index) {
-          final lesson = context
-              .read<ContentOutlineService>()
-              .lesson(widget.lessonIds[index]);
-
-          return _buildLessonItem(context, index, lesson);
-        },
-      ) */

@@ -3,6 +3,18 @@
         "title": "Introduction To Quantum Annealers",
         "description": "...But what exactly are quantum computers? How do they work? These questions and more will be answered in this introductory lection!",
         "content": {
+            "lesson-TE0": {
+                "title": "Introduction: How to use functions"
+            },
+            "lesson-s0f": {
+                "title": "Introduction: How to calculate with binary numbers"
+            },
+            "lesson-fAX": {
+                "title": "Introduction: How transistors work"
+            },
+            "lesson-Ydj": {
+                "title": "Introduction: The smallest particles of our universe"
+            },
             "lesson-S6N": {
                 "title": "What is a qubit?"
             },

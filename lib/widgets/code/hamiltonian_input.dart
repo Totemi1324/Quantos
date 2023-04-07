@@ -133,7 +133,7 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
         _qubo = Qubo(size: _selectedSize);
         break;
       case CodingMode.annealer:
-        buildContext.read<CodingService>().add(SendAdvantage(_qubo));
+        buildContext.read<CodingService>().add(GiveError());
         _qubo = Qubo(size: _selectedSize);
         break;
     }

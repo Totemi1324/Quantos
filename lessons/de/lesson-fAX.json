@@ -1,0 +1,11 @@
+{
+    "sectiontitle-1": {
+        "title": "Binärzahlen praktisch umgesetzt"
+    },
+    "paragraph-1": {
+        "text": "Der Transistor wurde von drei Wissenschaftlern in den Bell Laboratories 1947 entwickelt. Er ersetzte sehr schnell die Vakuumröhre als Regler für elektronische Signale. Ein Transistor reguliert den Strom- oder Spannungsfluss und agiert wie ein Schalter oder Tor für elektronische Signale. Ein Transistor besteht aus drei Halbleiterschichten. Ein Halbleiter ist ein Material wie zum Beispiel Germanium oder Silizium, der Strom nur unter bestimmten Umständen leitet. Die Komponente liegt irgendwo zwischen einem echten Leiter wie zum Beispiel Kupfer und einem Isolator. Letzteres könnte Plastik sein, das um Leitungen gewickelt ist."
+    },
+    "paragraph-2": {
+        "text": "Das Halbleitermaterial hat bestimmte Eigenschaften, die es durch einen chemischen Prozess mit dem Namen Dotierung erhält. Das Dotieren erschafft ein Material, bei dem entweder zusätzliche Elektronen hinzufügt werden oder es kreiert Löcher in der Kristallstruktur des Materials. Ersteres nennt man N-Typ oder n-leitend, weil es mehr negative Ladeteilchen gibt. Die andere Variante wird durch die überwiegend positiven Ladeteilchen P-Typ oder p-leitend genannt. Die drei Schichten des Transistors enthalten einen N-Typ der sich zwischen den beiden P-Typ-Schichten (PNP-Konfiguration) befindet. Es gibt auch die NPN-Konfiguration, bei der eine P-Typ-Schicht zwischen zwei N-Typ-Schichten liegt."
+    }
+}

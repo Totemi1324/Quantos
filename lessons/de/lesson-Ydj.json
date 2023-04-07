@@ -1,0 +1,13 @@
+{
+    "sectiontitle-1": {
+        "title": "Elektronen, Atome und Ionen"
+    },
+    "paragraph-1": {
+        "text": "In fast allen physikalischen Effekten spielen Elektronen eine bedeutende Rolle. Da Elektronen Ladung tragen, erzeugen sie auch ein elektrisches Feld. Setzt du das Elektron in Bewegung, erhältst du dazu ein magnetisches Feld. Durchdringt ein Elektron ein anderes externes elektrisches Feld, wird dessen Bahn aufgrund der Lorentzkraft verändert. Die in einem Atom gebunden Elektronen, bilden dessen Elektronenhülle. In der Chemie sind vor allem diese von Bedeutung. "
+    },
+    "image-1": {
+        "asset": "electron_spin_example.png",
+        "caption": "Up- und Down-Spins von Elektronen könnten als Qubits dienen",
+        "alttext": "Zwei schematische Darstellungen von Elektronen, bei dem der eine Pfeil nach oben (Schriftzug up) und der andere nach unten (Schriftzug down) zeigt."
+    }
+}

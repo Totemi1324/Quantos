@@ -1,0 +1,13 @@
+{
+    "sectiontitle-1": {
+        "title": "Electrons, Atoms, and Ions"
+    },
+    "paragraph-1": {
+        "text": "In almost all physical effects, electrons play a significant role. Since electrons carry charge, they also generate an electric field. If you set the electron in motion, you get a magnetic field in addition. If an electron penetrates another external electric field, its path is changed due to the Lorentz force. The electrons bound in an atom, form its electron shell. In chemistry, these are the most important. "
+    },
+    "image-1": {
+        "asset": "electron_spin_example.png",
+        "caption": "Up and down spins of electrons could serve as qubits",
+        "alttext": "Two schematic representations of electrons, with one arrow pointing up (writing up) and the other pointing down (writing down)."
+    }
+}

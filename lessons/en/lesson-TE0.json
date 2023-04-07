@@ -1,0 +1,8 @@
+{
+    "sectiontitle-1": {
+        "title": "Multiple inputs, one output"
+    },
+    "paragraph-1": {
+        "text": "A function f assigns exactly one y-value to each x-value. If an x-value has two y-values, it is not a function! So it is important that each element in the definition area (x-axis) may have only one associated element in the value area (y-axis). The result of functions must always be unique. Linear functions are straight lines in the coordinate system. If the intersection of two straight lines is required, you set the two linear functions equal. The function graph of quadratic functions is called a parabola. The simplest quadratic function is the normal parabola f(x) = x2."
+    }
+}

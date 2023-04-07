@@ -1,0 +1,8 @@
+{
+    "sectiontitle-1": {
+        "title": "Mehrere Eingaben, eine Ausgabe"
+    },
+    "paragraph-1": {
+        "text": "Eine Funktion f ordnet jedem x-Wert genau einen y-Wert zu. Hat ein x-Wert zwei y-Werte, handelt es sich nicht um eine Funktion! Wichtig ist also, dass jedes Element im Definitionsbereich (x-Achse) nur ein zugehöriges Element im Wertebereich (y-Achse) haben darf. Das Ergebnis von Funktionen muss also immer eindeutig sein. Lineare Funktionen sind Geraden im Koordinatensystem. Wenn der Schnittpunkt zweier Geraden gefragt ist, setzt du die beiden linearen Funktionen gleich. Der Funktionsgraph von quadratischen Funktionen heißt Parabel. Die einfachste quadratische Funktion ist die Normalparabel f(x) = x2."
+    }
+}

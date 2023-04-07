@@ -25,6 +25,22 @@ class ContentOutlineService extends Cubit<ContentOutline> {
       difficultyLevel: Difficulty.easy,
       lessons: [
         Lesson(
+          id: "TE0",
+          readTimeInMinutes: 2,
+        ),
+        Lesson(
+          id: "s0f",
+          readTimeInMinutes: 2,
+        ),
+        Lesson(
+          id: "fAX",
+          readTimeInMinutes: 2,
+        ),
+        Lesson(
+          id: "Ydj",
+          readTimeInMinutes: 2,
+        ),
+        Lesson(
           id: "S6N",
           readTimeInMinutes: 4,
         ),

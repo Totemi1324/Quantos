@@ -1,0 +1,11 @@
+{
+    "sectiontitle-1": {
+        "title": "Binary Numbers Implemented Practically"
+    },
+    "paragraph-1": {
+        "text": "The transistor was developed by three scientists at Bell Laboratories in 1947. It very quickly replaced the vacuum tube as a regulator for electronic signals. A transistor regulates the flow of current or voltage and acts like a switch or gate for electronic signals. A transistor consists of three semiconductor layers. A semiconductor is a material such as germanium or silicon that conducts electricity only under certain circumstances. The component lies somewhere between a true conductor, such as copper, and an insulator. The latter could be plastic wrapped around wires."
+    },
+"   paragraph-2": {
+        "text": "Semiconductor material has certain properties that it gets through a chemical process called doping. Doping creates a material where either extra electrons are added or it creates holes in the crystal structure of the material. The former is called N-type or n-type because there are more negative charge particles. The other type is called P-type or p-conducting because of the predominantly positive charging particles. The three layers of the transistor contain an N-type which is located between the two P-type layers (PNP configuration). There is also the NPN configuration, where a P-type layer is sandwiched between two N-type layers."
+    }
+}

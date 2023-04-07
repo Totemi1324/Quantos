@@ -1,0 +1,12 @@
+{
+    "sectiontitle-1": {
+        "title": "Only Two Options"
+    },
+    "paragraph-1": {
+        "text": "In decimal numbers, we use ten digits, namely 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. We put these digits together and form corresponding decimal numbers, such as 115, 981, 2578. To count binary numbers starting from 0 upwards, we have to consider what follows 0 and 1. It can't be a 2, because 2 is not a binary number. That means we have a carry to the next digit (left)."
+    },
+    "equation-1": {
+        "tex": "1+1=10",
+        "alttext": "1+1=10"
+    }
+}

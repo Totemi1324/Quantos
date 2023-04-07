@@ -3,6 +3,18 @@
         "title": "Quantenannealer: Eine Einführung",
         "description": "...Aber was genau sind Quantencomputer? Wie funktionieren sie? Auf diese Fragen und mehr gibt diese Einführungslektion eine Antwort!",
         "content": {
+            "lesson-TE0": {
+                "title": "Vorbereitung: Wie man Funktionen verwendet"
+            },
+            "lesson-s0f": {
+                "title": "Vorbereitung: Wie man mit Binärzahlen rechnet"
+            },
+            "lesson-fAX": {
+                "title": "Vorbereitung: Wie Transistoren funktionieren"
+            },
+            "lesson-Ydj": {
+                "title": "Vorbereitung: Die kleinsten Teilchen unseres Universums"
+            },
             "lesson-S6N": {
                 "title": "Was ist ein Qubit?"
             },

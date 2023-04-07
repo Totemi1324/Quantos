@@ -6,6 +6,7 @@ import '../../bloc/authentication_service.dart';
 import '../../bloc/database_service.dart';
 import '../../bloc/content_outline_service.dart';
 import '../../bloc/localization_service.dart';
+import '../../bloc/profile_quiz_service.dart';
 
 import '../../screens/base/home.dart';
 import '../../screens/loading_screen.dart';
@@ -56,11 +57,11 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
       if (!data.item1) {
         throw AuthenticationException(AuthenticationError.userDisabled);
       }
-      if (!mounted) return;
 
       if (await buildContext
           .read<DatabaseService>()
           .accessCodeHasSignedUp(code)) {
+        if (!mounted) return;
         await buildContext.read<AuthenticationService>().accessCodeLogIn(code);
 
         if (!mounted) return;
@@ -83,6 +84,12 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
           (_) => false,
         );
       } else {
+        if (!mounted) return;
+        final currentLocale = buildContext.read<LocalizationService>().state;
+        await buildContext
+            .read<ProfileQuizService>()
+            .loadFromLocale(currentLocale);
+        if (!mounted) return;
         await buildContext.read<AuthenticationService>().accessCodeSignUp(code);
 
         if (!mounted) return;
