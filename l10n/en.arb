@@ -538,6 +538,19 @@
         "description": "Help message form field"
     },
 
+    "downloadSizeUnitKilobyte": "KB",
+    "@downloadSizeUnitKilobyte": {
+        "description": "Abbreviation for download size unit kilobyte"
+    },
+    "downloadSizeUnitMegabyte": "MB",
+    "@downloadSizeUnitMegabyte": {
+        "description": "Abbreviation for download size unit megabyte"
+    },
+    "downloadSizeUnitGigabyte": "GB",
+    "@downloadSizeUnitGigabyte": {
+        "description": "Abbreviation for download size unit gigabyte"
+    },
+
     "parsingErrorParagraph": "Oops!\n\nIt seems that the resource you requested is corrupted and cannot be parsed. We're sorry for the inconvenience, as this error likely means something went wrong on our end. Hence, we would be thankful if you submitted the following error message via our Help Center:\n\n{exception}",
     "@parsingErrorParagraph": {
         "description": "Parsing error message for lesson content screens",

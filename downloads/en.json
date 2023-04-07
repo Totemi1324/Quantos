@@ -1,0 +1,30 @@
+{
+    "category-titles": {
+        "2fT": "Programs",
+        "VpJ": "Documents",
+        "U7s": "Databases",
+        "ft1": "Code"
+    },
+    "items": {
+        "h09": {
+            "title": "TSP Benchmarking Results",
+            "description": "All relevant experimental and benchmarking data, concatenated into a single document."
+        },
+        "4ub": {
+            "title": "Standard Problems and Their QUBO Form",
+            "description": "The QUBO bible — contains every single known problem and its QUBO implementation."
+        },
+        "Nv2": {
+            "title": "Experimental Results",
+            "description": "This file contains the raw data of the measurements made to evaluate the performance of this course's algorithms."
+        },
+        "DqF": {
+            "title": "Tutorial notebook for TSPs",
+            "description": "An interactive Python notebook for those who are interested in the code for TSPs and the DWave API."
+        },
+        "2fT": {
+            "title": "Graph to Matrix",
+            "description": "Visually design graphs on a canvas and export their Hamiltonian with one click as an input for the quantum annealers."
+        }
+    }
+}

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart' show Locale;
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import './lesson_content_parser.dart';
+import 'content_parser.dart';
 
 import '../models/content/lesson_content.dart';
 import '../models/content/paragraph.dart';
@@ -51,6 +51,7 @@ class LessonContentService extends Cubit<LessonContent> {
           ),
         ],
       ));
+      state.breakPage();
     } catch (exception) {
       state.clearContentData();
       state.addContentItem(Paragraph(
@@ -61,6 +62,7 @@ class LessonContentService extends Cubit<LessonContent> {
           ),
         ],
       ));
+      state.breakPage();
     }
 
     emit(state);

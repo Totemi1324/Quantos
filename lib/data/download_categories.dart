@@ -1,20 +1,25 @@
 import '../models/download_category.dart';
+import '../models/platform.dart';
 
 List<DownloadCategory> downloadCategories = const [
   DownloadCategory(
-    "2fT4z",
+    "2fT",
     title: "Programs",
+    availableOn: {Platform.desktop}
   ),
   DownloadCategory(
-    "VpJsk",
+    "VpJ",
     title: "Documents",
+    availableOn: {Platform.mobile, Platform.desktop}
   ),
   DownloadCategory(
-    "U7s8F",
+    "U7s",
     title: "Databases",
+    availableOn: {Platform.mobile, Platform.desktop}
   ),
   DownloadCategory(
-    "ft1Tj",
+    "ft1",
     title: "Code",
+    availableOn: {Platform.mobile, Platform.desktop}
   ),
 ];
