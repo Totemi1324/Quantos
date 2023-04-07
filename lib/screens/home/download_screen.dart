@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:universal_platform/universal_platform.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../bloc/download_service.dart';
 
 import '../../widgets/containers/rounded_card.dart';
 import '../../widgets/part_separator.dart';
 import '../../widgets/download_list.dart';
-import '../../data/download_categories.dart';
 
 class DownloadScreen extends StatelessWidget {
   const DownloadScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final categories = context.read<DownloadService>().state.categories;
+    final currentPlatform = context.read<DownloadService>().currentPlatform;
+
     return SingleChildScrollView(
       child: SafeArea(
         child: Column(
@@ -43,23 +48,22 @@ class DownloadScreen extends StatelessWidget {
             ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: downloadCategories.length,
+                itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  bool show = true;
+                  final category = categories[index];
 
-                  if (UniversalPlatform.isAndroid ||
-                      UniversalPlatform.isAndroid) {
-                    show = downloadCategories[index].id != "2fT4z";
-                  }
-
-                  return show
+                  return category.availableOn.contains(currentPlatform)
                       ? Column(
                           children: [
                             PartSeparator(
-                              downloadCategories[index].title,
+                              category.title,
                               verticalMargin: 10,
                             ),
-                            DownloadList(downloadCategories[index].id),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
+                              child: DownloadList(category.id),
+                            ),
                           ],
                         )
                       : Container();

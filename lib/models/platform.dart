@@ -1,4 +1,5 @@
 enum Platform {
   mobile,
-  desktop
+  desktop,
+  undefined,
 }

@@ -10,6 +10,7 @@ import 'bloc/content_outline_service.dart';
 import 'bloc/lesson_content_service.dart';
 import 'bloc/database_service.dart';
 import 'bloc/profile_quiz_service.dart';
+import 'bloc/download_service.dart';
 import 'bloc/text_to_speech_service.dart';
 
 // Screens
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<TextToSpeechService>(
           create: (_) => TextToSpeechService(),
+        ),
+        BlocProvider<DownloadService>(
+          create: (_) => DownloadService(),
         ),
       ],
       child: BlocBuilder<LocalizationService, Locale>(

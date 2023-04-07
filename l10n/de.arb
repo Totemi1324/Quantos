@@ -141,6 +141,8 @@
     "helpInstructions": "Wähle eine Kategorie:",
     "helpMessageFormField": "Deine Nachricht",
 
+    "downloadAvailableMessage": "Verfügbar in deiner Sprache",
+    "downloadSelectLocaleTitle": "Sprache wählen:",
     "downloadSizeUnitKilobyte": "KB",
     "downloadSizeUnitMegabyte": "MB",
     "downloadSizeUnitGigabyte": "GB",

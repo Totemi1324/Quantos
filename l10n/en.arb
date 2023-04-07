@@ -538,6 +538,14 @@
         "description": "Help message form field"
     },
 
+    "downloadAvailableMessage": "Available in your locale",
+    "@downloadAvailableMessage": {
+        "description": "Download available message"
+    },
+    "downloadSelectLocaleTitle": "Select locale:",
+    "@downloadSelectLocaleTitle": {
+        "description": "Download select locale title"
+    },
     "downloadSizeUnitKilobyte": "KB",
     "@downloadSizeUnitKilobyte": {
         "description": "Abbreviation for download size unit kilobyte"
