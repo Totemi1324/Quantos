@@ -5,6 +5,7 @@ import 'screens/notification_screen.dart';
 import 'screens/settings_screen.dart';
 import 'screens/info_screen.dart';
 import 'screens/help_screen.dart';
+import 'screens/download_item_screen.dart';
 import 'screens/auth/auth_home_screen.dart';
 import 'screens/auth/auth_signup_screen.dart';
 import 'screens/auth/auth_login_screen.dart';
@@ -46,6 +47,12 @@ class RouteRegister {
       case HelpScreen.routeName:
         return PageTransition(
           child: const HelpScreen(),
+          type: PageTransitionType.bottomToTop,
+        );
+      case DownloadItemScreen.routeName:
+        return PageTransition(
+          child: const DownloadItemScreen(),
+          settings: settings,
           type: PageTransitionType.bottomToTop,
         );
       case AuthHomeScreen.routeName:

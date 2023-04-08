@@ -16,6 +16,13 @@ class DownloadStore {
 
   void addItem(Download item) => items.add(item);
   void removeItem(String id) => items.removeWhere((item) => item.id == id);
+  Download? getItemById(String id) {
+    try {
+      return items.firstWhere((item) => item.id == id);
+    } on StateError {
+      return null;
+    }
+  }
 
   List<Download> getDownloadsForCategory(String categoryId) =>
       items.where((item) => item.categoryId == categoryId).toList();

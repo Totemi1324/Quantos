@@ -5,6 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../bloc/download_service.dart';
 import '../bloc/localization_service.dart';
 
+import '../screens/download_item_screen.dart';
 import '../widgets/download_item.dart';
 import '../models/download.dart';
 
@@ -22,7 +23,8 @@ class _DownloadListState extends State<DownloadList> {
           BuildContext buildContext, Locale currentLocale, Download item) =>
       InkWell(
         splashFactory: NoSplash.splashFactory,
-        onTap: () {},
+        onTap: () => Navigator.of(buildContext)
+            .pushNamed(DownloadItemScreen.routeName, arguments: item.id),
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: ConstrainedBox(

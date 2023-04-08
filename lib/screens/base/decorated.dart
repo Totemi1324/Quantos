@@ -7,8 +7,9 @@ import '../settings_screen.dart';
 
 class Decorated extends StatefulWidget {
   final Widget body;
+  final bool showSettings;
 
-  const Decorated({required this.body, super.key});
+  const Decorated({required this.body, this.showSettings = true, super.key});
 
   @override
   State<Decorated> createState() => _DecoratedState();
@@ -70,27 +71,28 @@ class _DecoratedState extends State<Decorated> {
                 )
               : null,
           actions: [
-            IconButton(
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(SettingsScreen.routeName),
-              tooltip: AppLocalizations.of(context)!.tooltipSettings,
-              icon: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      offset: const Offset(0, 5),
-                      blurRadius: 8.0,
-                    ),
-                  ],
+            if (widget.showSettings)
+              IconButton(
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(SettingsScreen.routeName),
+                tooltip: AppLocalizations.of(context)!.tooltipSettings,
+                icon: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        offset: const Offset(0, 5),
+                        blurRadius: 8.0,
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.settings_rounded,
+                    size: 30,
+                  ),
                 ),
-                child: const Icon(
-                  Icons.settings_rounded,
-                  size: 30,
-                ),
-              ),
-            )
+              )
           ],
         ),
         body: widget.body,
