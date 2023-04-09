@@ -21,7 +21,7 @@
         "h09": {
             "_title": "TSP Benchmarking Results",
             "category": "VpJ",
-            "download-size": {
+            "downloadsize": {
                 "size": 2.5,
                 "unit": 1
             },
@@ -35,7 +35,7 @@
         "4ub": {
             "_title": "Standard Problems and Their QUBO Form",
             "category": "VpJ",
-            "download-size": {
+            "downloadsize": {
                 "size": 3.4,
                 "unit": 1
             },
@@ -48,7 +48,7 @@
         "Nv2": {
             "_title": "Experimental results",
             "category": "U7s",
-            "download-size": {
+            "downloadsize": {
                 "size": 44.3,
                 "unit": 0
             },
@@ -61,7 +61,7 @@
         "DqF": {
             "_title": "Tutorial notebook for TSPs",
             "category": "ft1",
-            "download-size": {
+            "downloadsize": {
                 "size": 1.2,
                 "unit": 1
             },
@@ -74,7 +74,7 @@
         "2fT": {
             "_title": "Graph to Matrix",
             "category": "2fT",
-            "download-size": {
+            "downloadsize": {
                 "size": 8.7,
                 "unit": 1
             },

@@ -3,18 +3,14 @@ import '../models/content/section_title.dart';
 import '../models/content/image.dart';
 import '../models/content/equation.dart';
 import '../models/content/interactive.dart';
+import '../models/download.dart';
+import '../models/download_category.dart';
+import '../models/platform.dart';
 import '../models/exceptions.dart';
 
 import '../widgets/interactives/interactive_lookup.dart';
 
-class LessonContentParser {
-  static const paragraphJsonKey = "paragraph";
-  static const sectionTitleJsonKey = "sectiontitle";
-  static const imageJsonKey = "image";
-  static const equationJsonKey = "equation";
-  static const interactiveJsonKey = "interactive";
-  static const pageBreakJsonKey = "pagebreak";
-
+class ContentParser {
   static const textJsonKey = "text";
   static const titleJsonKey = "title";
   static const assetJsonKey = "asset";
@@ -24,13 +20,22 @@ class LessonContentParser {
   static const idJsonKey = "id";
   static const argsJsonKey = "args";
 
+  static const categoryJsonKey = "category";
+  static const downloadSizeJsonKey = "downloadsize";
+  static const sizeJsonKey = "size";
+  static const unitJsonKey = "unit";
+  static const typeJsonKey = "type";
+  static const linksJsonKey = "links";
+  static const availabilityJsonKey = "availability";
+  static const descriptionJsonKey = "description";
+
   static const formatters = {
     ParagraphSpanType.bold: r"**",
     ParagraphSpanType.equation: r"$$",
   };
 
   static Paragraph parseParagraph(Map<String, dynamic> json) {
-    if (!json.keys.contains(textJsonKey)) {
+    if (!json.containsKey(textJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: textJsonKey,
@@ -44,7 +49,7 @@ class LessonContentParser {
   }
 
   static SectionTitle parseSectionTitle(Map<String, dynamic> json) {
-    if (!json.keys.contains(titleJsonKey)) {
+    if (!json.containsKey(titleJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: titleJsonKey,
@@ -57,19 +62,19 @@ class LessonContentParser {
   }
 
   static Image parseImage(Map<String, dynamic> json) {
-    if (!json.keys.contains(assetJsonKey)) {
+    if (!json.containsKey(assetJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: assetJsonKey,
       );
     }
-    if (!json.keys.contains(captionJsonKey)) {
+    if (!json.containsKey(captionJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: captionJsonKey,
       );
     }
-    if (!json.keys.contains(altTextJsonKey)) {
+    if (!json.containsKey(altTextJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: altTextJsonKey,
@@ -84,13 +89,13 @@ class LessonContentParser {
   }
 
   static Equation parseEquation(Map<String, dynamic> json) {
-    if (!json.keys.contains(texJsonKey)) {
+    if (!json.containsKey(texJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: texJsonKey,
       );
     }
-    if (!json.keys.contains(altTextJsonKey)) {
+    if (!json.containsKey(altTextJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: altTextJsonKey,
@@ -104,25 +109,25 @@ class LessonContentParser {
   }
 
   static Interactive parseInteractive(Map<String, dynamic> json) {
-    if (!json.keys.contains(idJsonKey)) {
+    if (!json.containsKey(idJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: idJsonKey,
       );
     }
-    if (!json.keys.contains(captionJsonKey)) {
+    if (!json.containsKey(captionJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: captionJsonKey,
       );
     }
-    if (!json.keys.contains(altTextJsonKey)) {
+    if (!json.containsKey(altTextJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: altTextJsonKey,
       );
     }
-    if (!json.keys.contains(argsJsonKey)) {
+    if (!json.containsKey(argsJsonKey)) {
       throw ParseErrorException(
         ParseError.incompleteJsonObject,
         wrongContent: argsJsonKey,
@@ -139,6 +144,123 @@ class LessonContentParser {
     } else {
       return InteractiveLookup.getElement(id, caption, altText, args: args);
     }
+  }
+
+  static DownloadCategory parseDownloadCategory(
+      String id, Map<String, dynamic> json) {
+    if (!json.containsKey(availabilityJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: availabilityJsonKey,
+      );
+    }
+
+    final availabilityList = json[availabilityJsonKey] as List<dynamic>;
+    final availability = availabilityList
+        .map(
+          (e) => (e as num).round(),
+        )
+        .map(
+          (e) => e < Platform.values.length
+              ? Platform.values[e]
+              : Platform.undefined,
+        );
+
+    return DownloadCategory(id, title: "", availableOn: availability.toSet());
+  }
+
+  static DownloadCategory updateDownloadCategoryLocalization(
+          DownloadCategory previous, String value) =>
+      DownloadCategory(previous.id,
+          title: value, availableOn: previous.availableOn);
+
+  static Download parseDownload(String id, Map<String, dynamic> json) {
+    if (!json.containsKey(categoryJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: categoryJsonKey,
+      );
+    }
+    if (!json.containsKey(downloadSizeJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: downloadSizeJsonKey,
+      );
+    }
+    if (!json.containsKey(typeJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: typeJsonKey,
+      );
+    }
+    if (!json.containsKey(linksJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: linksJsonKey,
+      );
+    }
+    if (!json.containsKey(availabilityJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: availabilityJsonKey,
+      );
+    }
+
+    final category = json[categoryJsonKey] as String;
+    final downloadSizeJson = json[downloadSizeJsonKey] as Map<String, dynamic>;
+    final type = (json[typeJsonKey] as num).toDouble();
+    final linksMap = json[linksJsonKey] as Map<String, dynamic>;
+    final availabilityList = json[availabilityJsonKey] as List<dynamic>;
+
+    final downloadSize = _parseDownloadSize(downloadSizeJson);
+    final availability = availabilityList
+        .map(
+          (e) => (e as num).round(),
+        )
+        .map(
+          (e) => e < Platform.values.length
+              ? Platform.values[e]
+              : Platform.undefined,
+        );
+    final links = Map<String, String>.fromEntries(linksMap.entries
+        .map((entry) => MapEntry(entry.key, entry.value as String)));
+
+    return Download(id,
+        title: "",
+        description: "",
+        categoryId: category,
+        size: downloadSize,
+        type: FileType.values[type.round()],
+        links: links,
+        availableOn: availability.toSet());
+  }
+
+  static Download updateDownloadLocalization(
+      Download previous, Map<String, dynamic> json) {
+    if (!json.containsKey(titleJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: titleJsonKey,
+      );
+    }
+    if (!json.containsKey(descriptionJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: descriptionJsonKey,
+      );
+    }
+
+    final title = json[titleJsonKey] as String;
+    final description = json[descriptionJsonKey] as String;
+
+    return Download(previous.id,
+        title: title,
+        description: description,
+        categoryId: previous.categoryId,
+        size: previous.size,
+        type: previous.type,
+        links: previous.links,
+        availableOn: previous.availableOn);
   }
 
   static List<ParagraphSpan> _extractSpans(String text) {
@@ -204,5 +326,28 @@ class LessonContentParser {
       ),
     );
     return spans;
+  }
+
+  static DownloadSize _parseDownloadSize(Map<String, dynamic> json) {
+    if (!json.containsKey(sizeJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: sizeJsonKey,
+      );
+    }
+    if (!json.containsKey(unitJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: unitJsonKey,
+      );
+    }
+
+    final size = json[sizeJsonKey] as num;
+    final unit = json[unitJsonKey] as num;
+
+    return DownloadSize(
+      size: size.toDouble(),
+      unit: DownloadSizeUnit.values[unit.round()],
+    );
   }
 }

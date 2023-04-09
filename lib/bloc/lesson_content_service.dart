@@ -84,19 +84,19 @@ class LessonContentService extends Cubit<LessonContent> {
 
       switch (entry.key.substring(0, entry.key.indexOf("-"))) {
         case paragraphJsonKey:
-          state.addContentItem(LessonContentParser.parseParagraph(content));
+          state.addContentItem(ContentParser.parseParagraph(content));
           break;
         case sectionTitleJsonKey:
-          state.addContentItem(LessonContentParser.parseSectionTitle(content));
+          state.addContentItem(ContentParser.parseSectionTitle(content));
           break;
         case imageJsonKey:
-          state.addContentItem(LessonContentParser.parseImage(content));
+          state.addContentItem(ContentParser.parseImage(content));
           break;
         case equationJsonKey:
-          state.addContentItem(LessonContentParser.parseEquation(content));
+          state.addContentItem(ContentParser.parseEquation(content));
           break;
         case interactiveJsonKey:
-          state.addContentItem(LessonContentParser.parseInteractive(content));
+          state.addContentItem(ContentParser.parseInteractive(content));
           break;
         case pageBreakJsonKey:
           state.breakPage();

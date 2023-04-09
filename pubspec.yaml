@@ -79,6 +79,9 @@ flutter:
     - lessons/en/
     - lessons/de/
 
+    # Download feeds
+    - downloads/
+
     # Rive animations
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv

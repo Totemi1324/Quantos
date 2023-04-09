@@ -43,11 +43,11 @@ class ParseErrorException extends QuantosException {
       case ParseError.lessonIdDoesNotExist:
         return "Lesson with ID '$wrongContent' does not exist in the app's content data.";
       case ParseError.invalidJsonEntry:
-        return "JSON entry $wrongContent is invalid.";
+        return "JSON entry '$wrongContent' is invalid.";
       case ParseError.invalidJsonValue:
-        return "JSON value of $wrongContent has an invalid type.";
+        return "JSON value of '$wrongContent' has an invalid type.";
       case ParseError.incompleteJsonObject:
-        return "JSON object is missing the mandatory entry $wrongContent";
+        return "JSON object is missing the mandatory entry '$wrongContent'";
     }
   }
 }

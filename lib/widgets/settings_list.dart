@@ -7,6 +7,7 @@ import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
 import '../bloc/content_outline_service.dart';
 import '../bloc/text_to_speech_service.dart';
+import '../bloc/download_service.dart';
 
 import './section_separator.dart';
 import './settings_item.dart';
@@ -92,14 +93,18 @@ class SettingsList extends StatelessWidget {
                       context.read<LocalizationService>().currentLocaleIndex,
                   onChanged: (newValue) async {
                     final newLocale = newValue as Locale;
+                    final localizationService =
+                        context.read<LocalizationService>();
+                    final contentOutlineService =
+                        context.read<ContentOutlineService>();
+                    final textToSpeechService =
+                        context.read<TextToSpeechService>();
+                    final downloadService = context.read<DownloadService>();
 
-                    context.read<LocalizationService>().setLocale(newLocale);
-                    await context
-                        .read<ContentOutlineService>()
-                        .loadFromLocale(newLocale);
-                    await context
-                        .read<TextToSpeechService>()
-                        .setLanguage(newLocale);
+                    localizationService.setLocale(newLocale);
+                    await contentOutlineService.loadFromLocale(newLocale);
+                    await textToSpeechService.setLanguage(newLocale);
+                    await downloadService.loadFromLocale(newLocale);
                   },
                 ),
               ),

@@ -34,7 +34,7 @@ class _DownloadItemScreenState extends State<DownloadItemScreen> {
     final args = ModalRoute.of(context)?.settings.arguments;
     final downloadId = args as String;
     final download =
-        context.read<DownloadService>().state.getItemById(downloadId);
+        context.read<DownloadService>().state.getDownloadById(downloadId);
     if (download != null && _selected == null) {
       _selected = download.locales.first;
     }
@@ -93,52 +93,56 @@ class _DownloadItemScreenState extends State<DownloadItemScreen> {
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 10, top: 25),
-                          width: double.infinity,
-                          child: Text(
-                            AppLocalizations.of(context)!
-                                .downloadSelectLocaleTitle,
-                            style: Theme.of(context).textTheme.bodySmall,
+                        if (_selected != "")
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 10, top: 25),
+                            width: double.infinity,
+                            child: Text(
+                              AppLocalizations.of(context)!
+                                  .downloadSelectLocaleTitle,
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
                           ),
-                        ),
-                        GridView.extent(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          maxCrossAxisExtent: 100,
-                          childAspectRatio: 1.5,
-                          crossAxisSpacing: 10,
-                          children: download.locales
-                              .map<Widget>(
-                                (locale) => OutlinedButton(
-                                  onPressed: () => setState(() {
-                                    _selected = locale;
-                                  }),
-                                  style: ButtonStyle(
-                                    side: MaterialStateProperty.all(
-                                      BorderSide(
-                                        color: locale == _selected
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .primary
-                                            : Colors.white.withOpacity(0.3),
+                        if (_selected != "")
+                          GridView.extent(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            maxCrossAxisExtent: 100,
+                            childAspectRatio: 1.5,
+                            crossAxisSpacing: 10,
+                            children: download.locales
+                                .map<Widget>(
+                                  (locale) => OutlinedButton(
+                                    onPressed: () => setState(() {
+                                      _selected = locale;
+                                    }),
+                                    style: ButtonStyle(
+                                      side: MaterialStateProperty.all(
+                                        BorderSide(
+                                          color: locale == _selected
+                                              ? Theme.of(context)
+                                                  .colorScheme
+                                                  .primary
+                                              : Colors.white.withOpacity(0.3),
+                                        ),
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
                                       ),
                                     ),
-                                    shape: MaterialStateProperty.all(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
+                                    child: Text(
+                                      locale,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium,
                                     ),
                                   ),
-                                  child: Text(
-                                    locale,
-                                    style:
-                                        Theme.of(context).textTheme.labelMedium,
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                        )
+                                )
+                                .toList(),
+                          )
                       ],
                     ),
                   ),

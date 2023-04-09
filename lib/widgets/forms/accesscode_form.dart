@@ -7,6 +7,7 @@ import '../../bloc/database_service.dart';
 import '../../bloc/content_outline_service.dart';
 import '../../bloc/localization_service.dart';
 import '../../bloc/profile_quiz_service.dart';
+import '../../bloc/download_service.dart';
 
 import '../../screens/base/home.dart';
 import '../../screens/loading_screen.dart';
@@ -45,6 +46,8 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
     if (!mounted) return;
 
     final code = _code.join();
+    final currentLocale = buildContext.read<LocalizationService>().state;
+
     try {
       final exists =
           await buildContext.read<DatabaseService>().accessCodeExists(code);
@@ -70,12 +73,19 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
             builder: (buildContext) => LoadingScreen(
               Future(
                 () async {
-                  buildContext.read<ContentOutlineService>().loadFromLocale(
-                        buildContext.read<LocalizationService>().state,
-                      );
-                  await buildContext.read<DatabaseService>().getUserInfo(
-                        buildContext.read<AuthenticationService>().state.userId,
-                      );
+                  final contentOutlineService =
+                      buildContext.read<ContentOutlineService>();
+                  final databaseService = buildContext.read<DatabaseService>();
+                  final authenticationService =
+                      buildContext.read<AuthenticationService>();
+                  final downloadService = buildContext.read<DownloadService>();
+
+                  await contentOutlineService.loadFromLocale(currentLocale);
+                  await databaseService.getUserInfo(
+                    authenticationService.state.userId,
+                  );
+                  await downloadService.loadBase();
+                  await downloadService.loadFromLocale(currentLocale);
                 },
               ),
               Home.routeName,

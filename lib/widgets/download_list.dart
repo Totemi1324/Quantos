@@ -7,6 +7,7 @@ import '../bloc/localization_service.dart';
 
 import '../screens/download_item_screen.dart';
 import '../widgets/download_item.dart';
+import '../models/download_store.dart';
 import '../models/download.dart';
 
 class DownloadList extends StatefulWidget {
@@ -48,7 +49,9 @@ class _DownloadListState extends State<DownloadList> {
         buildContext.read<DownloadService>().currentPlatform;
 
     return downloads
-        .where((download) => download.availableOn.contains(currentPlatform))
+        .where((download) =>
+            download.availableOn.contains(currentPlatform) &&
+            download.title != "")
         .toList();
   }
 
@@ -60,7 +63,7 @@ class _DownloadListState extends State<DownloadList> {
         .getDownloadsForCategory(widget.categoryId);
     final currentLocale = context.read<LocalizationService>().state;
 
-    return BlocListener<LocalizationService, Locale>(
+    return BlocListener<DownloadService, DownloadStore>(
       listener: (context, state) => setState(() {}),
       child: StaggeredGrid.extent(
         mainAxisSpacing: 10,
