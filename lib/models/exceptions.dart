@@ -8,9 +8,10 @@ enum ParseError {
 
 enum AuthenticationError {
   emailExists,
+  weakPassword,
   tooManyAttempts,
-  emailNotFound,
-  invalidPassword,
+  userNotFound,
+  wrongPassword,
   userDisabled,
   accessCodeNotFound,
   unknown,
@@ -64,15 +65,17 @@ class AuthenticationException extends QuantosException {
   String get message {
     switch (responseCode) {
       case AuthenticationError.emailExists:
-        return "Firebase API on sign up returned error code EMAIL_EXISTS.";
+        return "Firebase API on sign up returned error code email-already-in-use.";
+      case AuthenticationError.weakPassword:
+        return "Firebase API on sign up returned error code weak-password.";
       case AuthenticationError.tooManyAttempts:
         return "Firebase API on sign up returned error code TOO_MANY_ATTEMPTS_TRY_LATER.";
-      case AuthenticationError.emailNotFound:
-        return "Firebase API on sign in returned error code EMAIL_NOT_FOUND.";
-      case AuthenticationError.invalidPassword:
-        return "Firebase API on sign in returned error code INVALID_PASSWORD.";
+      case AuthenticationError.userNotFound:
+        return "Firebase API on sign in returned error code user-not-found.";
+      case AuthenticationError.wrongPassword:
+        return "Firebase API on sign in returned error code wrong-password.";
       case AuthenticationError.userDisabled:
-        return "Firebase API on sign in returned error code USER_DISABLED.";
+        return "Firebase API on sign in returned error code user-disabled.";
       case AuthenticationError.accessCodeNotFound:
         return "Firebase Realtime Database does not contain the specified access code.";
       case AuthenticationError.unknown:

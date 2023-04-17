@@ -1,17 +1,17 @@
 class UserCredentials {
   final String userId;
-  final String token;
-  final DateTime? expiryDate;
+  final String? userEmail;
+  final DateTime? lastSignedIn;
 
   const UserCredentials({
     required this.userId,
-    required this.token,
-    required this.expiryDate,
+    required this.userEmail,
+    required this.lastSignedIn,
   });
 
   factory UserCredentials.empty() => const UserCredentials(
         userId: "",
-        token: "",
-        expiryDate: null,
+        userEmail: "",
+        lastSignedIn: null,
       );
 }

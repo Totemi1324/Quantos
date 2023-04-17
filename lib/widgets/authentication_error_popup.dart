@@ -14,13 +14,16 @@ class AuthenticationErrorPopup extends StatelessWidget {
       case AuthenticationError.emailExists:
         return AppLocalizations.of(buildContext)!
             .authenticationErrorEmailExists;
+      case AuthenticationError.weakPassword:
+        return AppLocalizations.of(buildContext)!
+            .validationFailPasswordNotSufficient;
       case AuthenticationError.tooManyAttempts:
         return AppLocalizations.of(buildContext)!
             .authenticationErrorTooManyAttempts;
-      case AuthenticationError.emailNotFound:
+      case AuthenticationError.userNotFound:
         return AppLocalizations.of(buildContext)!
             .authenticationErrorEmailNotFound;
-      case AuthenticationError.invalidPassword:
+      case AuthenticationError.wrongPassword:
         return AppLocalizations.of(buildContext)!
             .authenticationErrorInvalidPassword;
       case AuthenticationError.userDisabled:
