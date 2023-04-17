@@ -93,6 +93,14 @@ class NoInternetException extends QuantosException {
       "Operation failed because client device has no active internet connection.";
 }
 
+class DownloadFailedException extends QuantosException {
+  @override
+  String get exceptionId => "DownloadFailedException";
+
+  @override
+  String get message => "Download failed";
+}
+
 class ProcessFailedException extends QuantosException {
   final Exception innerException;
 
