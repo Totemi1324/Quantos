@@ -5,10 +5,8 @@ import 'package:flutter_gen/gen/assets.gen.dart';
 
 import '../../bloc/stores/experience_classes_store_service.dart';
 import '../../bloc/localization_service.dart';
-import '../../bloc/content_outline_service.dart';
 import '../../bloc/database_service.dart';
-import '../../bloc/authentication_service.dart';
-import '../../bloc/download_service.dart';
+import '../../loading_routines.dart';
 
 import '../base/flat.dart';
 import '../base/home.dart';
@@ -74,28 +72,7 @@ class ProfileExperienceScreen extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
                           builder: (buildContext) => LoadingScreen(
-                            Future(() async {
-                              final contentOutlineService =
-                                  buildContext.read<ContentOutlineService>();
-                              final databaseService =
-                                  buildContext.read<DatabaseService>();
-                              final authenticationService =
-                                  buildContext.read<AuthenticationService>();
-                              final downloadService =
-                                  buildContext.read<DownloadService>();
-                              final currentLocale = buildContext
-                                  .read<LocalizationService>()
-                                  .state;
-
-                              await contentOutlineService
-                                  .loadFromLocale(currentLocale);
-                              await databaseService.getUserInfo(
-                                authenticationService.state.userId,
-                              );
-                              await downloadService.loadBase();
-                              await downloadService
-                                  .loadFromLocale(currentLocale);
-                            }),
+                            getDefaultLoadingRoutine(buildContext),
                             Home.routeName,
                           ),
                         ),

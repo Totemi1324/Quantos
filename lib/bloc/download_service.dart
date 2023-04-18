@@ -37,7 +37,6 @@ class DownloadService extends Cubit<DownloadStore> {
     } on Exception catch (exception) {
       emit(DownloadStore.empty());
       throw ProcessFailedException(exception);
-      //return;
     }
 
     emit(state);
@@ -55,7 +54,6 @@ class DownloadService extends Cubit<DownloadStore> {
       } else {
         emit(DownloadStore.empty());
         throw ProcessFailedException(exception);
-        //return;
       }
     }
 
