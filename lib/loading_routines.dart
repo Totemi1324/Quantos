@@ -8,6 +8,7 @@ import '../bloc/lesson_content_service.dart';
 import '../bloc/localization_service.dart';
 import '../bloc/database_service.dart';
 import '../bloc/download_service.dart';
+import '../bloc/storage_service.dart';
 
 Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
   return Future(
@@ -16,14 +17,30 @@ Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
       final databaseService = buildContext.read<DatabaseService>();
       final authenticationService = buildContext.read<AuthenticationService>();
       final downloadService = buildContext.read<DownloadService>();
+      final storageService = buildContext.read<StorageService>();
       final currentLocale = buildContext.read<LocalizationService>().state;
 
-      await contentOutlineService.loadFromLocale(currentLocale);
       await databaseService.getUserInfo(
         authenticationService.state.userId,
       );
-      await downloadService.loadBase();
-      await downloadService.loadFromLocale(currentLocale);
+      await contentOutlineService.loadFromLocale(currentLocale);
+
+      try {
+        await storageService.getDownloadBase();
+        if (storageService.state.hasData) {
+          await downloadService.loadBase(storageService.state.content);
+
+          storageService.getDownloadLocalization(currentLocale);
+          final currentDownloadData = storageService.state.content;
+          storageService.getDownloadLocalization(const Locale("en"));
+          final fallbackDownloadData = storageService.state.content;
+
+          await downloadService.loadFromLocale(
+              currentDownloadData, fallbackDownloadData);
+        }
+      } on Exception {
+        downloadService.clear();
+      }
     },
   );
 }

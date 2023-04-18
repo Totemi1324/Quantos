@@ -17,6 +17,12 @@ enum AuthenticationError {
   unknown,
 }
 
+enum DownloadError {
+  fileDoesNotExist,
+  notAuthenticated,
+  unknown,
+}
+
 abstract class QuantosException implements Exception {
   String get exceptionId;
   String get message;
@@ -84,6 +90,27 @@ class AuthenticationException extends QuantosException {
   }
 }
 
+class DownloadFailedException extends QuantosException {
+  final DownloadError responseCode;
+
+  DownloadFailedException(this.responseCode);
+
+  @override
+  String get exceptionId => "DownloadFailedException";
+
+  @override
+  String get message {
+    switch (responseCode) {
+      case DownloadError.fileDoesNotExist:
+        return "Firebase storage bucket returned error code storage/object-not-found.";
+      case DownloadError.notAuthenticated:
+        return "Firebase storage bucket returned error code storage/unauthenticated.";
+      case DownloadError.unknown:
+        return "Firebase storage bucket returned an unknown error code.";
+    }
+  }
+}
+
 class NoInternetException extends QuantosException {
   @override
   String get exceptionId => "NoInternetException";
@@ -91,14 +118,6 @@ class NoInternetException extends QuantosException {
   @override
   String get message =>
       "Operation failed because client device has no active internet connection.";
-}
-
-class DownloadFailedException extends QuantosException {
-  @override
-  String get exceptionId => "DownloadFailedException";
-
-  @override
-  String get message => "Download failed";
 }
 
 class ProcessFailedException extends QuantosException {

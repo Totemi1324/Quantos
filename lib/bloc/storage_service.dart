@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
+import '../models/data_reader.dart';
 import '../models/exceptions.dart';
 
-class StorageService extends Cubit<String> {
+class StorageService extends Cubit<DataReader> {
   static const downloadsPath = "downloads";
   static const downloadsLocalizationFile = "content.json";
 
@@ -15,34 +16,50 @@ class StorageService extends Cubit<String> {
 
   final _storage = FirebaseStorage.instance;
 
-  StorageService() : super("");
+  static DownloadError _firebaseErrorCodes(String errorCode) {
+    switch (errorCode) {
+      case "storage/object-not-found":
+        return DownloadError.fileDoesNotExist;
+      case "storage/unauthenticated":
+        return DownloadError.notAuthenticated;
+      default:
+        return DownloadError.unknown;
+    }
+  }
+
+  StorageService() : super(const DataReader());
 
   Future getDownloadBase() async {
+    emit(const DataReader());
+
     const path = "$downloadsPath/$baseFile";
     final string = await _getString(path);
-    emit(string);
+
+    emit(DataReader(data: string));
   }
 
   Future getDownloadLocalization(Locale locale) async {
+    emit(const DataReader());
+
     final path =
         "$downloadsPath/${locale.languageCode}/$downloadsLocalizationFile";
     final string = await _getString(path);
-    emit(string);
+
+    emit(DataReader(data: string));
   }
 
-  Future<String> _getString(String path) async {
+  Future<String?> _getString(String path) async {
     try {
       _ensureConnectivity();
       final ref = _storage.ref(path);
       final data = await ref.getData();
-      if (data == null) {
-        throw DownloadFailedException();
+      return data == null ? null : String.fromCharCodes(data);
+    } on FirebaseException catch (error) {
+      if (_firebaseErrorCodes(error.code) == DownloadError.fileDoesNotExist) {
+        return null;
+      } else {
+        throw ProcessFailedException(error);
       }
-      return String.fromCharCodes(data);
-    } on FirebaseException {
-      throw DownloadFailedException();
-    } on DownloadFailedException {
-      rethrow;
     }
   }
 
