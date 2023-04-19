@@ -6,7 +6,7 @@ import 'package:quantos/bloc/stores/theme_store_service.dart';
 import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
 import '../bloc/content_outline_service.dart';
-import '../bloc/text_to_speech_service.dart';
+//import '../bloc/text_to_speech_service.dart';
 import '../bloc/download_service.dart';
 import '../bloc/storage_service.dart';
 
