@@ -26,20 +26,21 @@ class Download {
   final Map<String, String> links;
   final Set<Platform> availableOn;
 
-  const Download(
-    this.id, {
-    required this.title,
-    required this.description,
-    required this.categoryId,
-    required this.size,
-    required this.type,
-    required this.links,
-    required this.availableOn
-  });
+  const Download(this.id,
+      {required this.title,
+      required this.description,
+      required this.categoryId,
+      required this.size,
+      required this.type,
+      required this.links,
+      required this.availableOn});
 
-  List<String> get locales => links.keys.map((locale) => locale.toUpperCase()).toList();
+  List<String> get locales =>
+      links.keys.map((locale) => locale.toUpperCase()).toList();
 
-  String? linkForLocale(String locale) => links.containsKey(locale) ? links[locale] : null;
+  String? linkForLocale(String locale) => links.containsKey("")
+      ? links[""]
+      : (links.containsKey(locale) ? links[locale] : null);
 }
 
 class DownloadSize {
@@ -52,13 +53,16 @@ class DownloadSize {
     String localizedUnit;
     switch (unit) {
       case DownloadSizeUnit.kilobyte:
-        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitKilobyte;
+        localizedUnit =
+            AppLocalizations.of(buildContext)!.downloadSizeUnitKilobyte;
         break;
       case DownloadSizeUnit.megabyte:
-        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitMegabyte;
+        localizedUnit =
+            AppLocalizations.of(buildContext)!.downloadSizeUnitMegabyte;
         break;
       case DownloadSizeUnit.gigabyte:
-        localizedUnit = AppLocalizations.of(buildContext)!.downloadSizeUnitGigabyte;
+        localizedUnit =
+            AppLocalizations.of(buildContext)!.downloadSizeUnitGigabyte;
         break;
       default:
         localizedUnit = "NaN";

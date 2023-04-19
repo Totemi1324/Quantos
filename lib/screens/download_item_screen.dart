@@ -1,13 +1,9 @@
-import 'dart:io' show Directory;
-
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_gen/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:universal_platform/universal_platform.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:dio/dio.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../bloc/download_service.dart';
 
@@ -157,15 +153,13 @@ class _DownloadItemScreenState extends State<DownloadItemScreen> {
                         height: 200,
                         child: GestureDetector(
                           onTapUp: (_) async {
-                            try {
-                              Directory? saveDirectory;
-                              if (UniversalPlatform.isAndroid) {
-                                saveDirectory = await getExternalStorageDirectory();
-                              } else {
-                                saveDirectory = await getDownloadsDirectory();
-                              }
-                            } on Exception catch (e) {
-                              // TODO
+                            await Future.delayed(const Duration(seconds: 3));
+
+                            final downloadLink = Uri.tryParse(
+                              download.linkForLocale(_selected ?? "") ?? "",
+                            );
+                            if (downloadLink != null) {
+                              await launchUrl(downloadLink);
                             }
                           },
                           child: RiveAnimation.asset(
