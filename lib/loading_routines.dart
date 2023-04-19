@@ -28,14 +28,14 @@ Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
       try {
         await storageService.getDownloadBase();
         if (storageService.state.hasData) {
-          await downloadService.loadBase(storageService.state.content);
+          downloadService.loadBase(storageService.state.content);
 
-          storageService.getDownloadLocalization(currentLocale);
+          await storageService.getDownloadLocalization(currentLocale);
           final currentDownloadData = storageService.state.content;
-          storageService.getDownloadLocalization(const Locale("en"));
+          await storageService.getDownloadLocalization(const Locale("en"));
           final fallbackDownloadData = storageService.state.content;
 
-          await downloadService.loadFromLocale(
+          downloadService.loadFromLocale(
               currentDownloadData, fallbackDownloadData);
         }
       } on Exception {

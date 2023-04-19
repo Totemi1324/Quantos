@@ -27,7 +27,7 @@ class DownloadService extends Cubit<DownloadStore> {
     return Platform.undefined;
   }
 
-  Future loadBase(String jsonString) async {
+  void loadBase(String jsonString) {
     state.clear();
 
     try {
@@ -40,12 +40,12 @@ class DownloadService extends Cubit<DownloadStore> {
     emit(state);
   }
 
-  Future loadFromLocale(String jsonString, String? fallbackJsonString) async {
+  void loadFromLocale(String jsonString, String? fallbackJsonString) {
     try {
       _parseLocale(jsonString);
     } on Exception catch (exception) {
       if (fallbackJsonString != null) {
-        await loadFromLocale(fallbackJsonString, null);
+        loadFromLocale(fallbackJsonString, null);
       } else {
         emit(DownloadStore.empty());
         throw ProcessFailedException(exception);

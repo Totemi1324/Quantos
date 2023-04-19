@@ -112,18 +112,19 @@ class _StatisticsListState extends State<StatisticsList> {
     }
   }
 
-  void _readOutContent(BuildContext buildContext, int index) {
+  Future _readOutContent(BuildContext buildContext, int index) async {
     final currentLocale = buildContext.read<LocalizationService>().state;
+    final ttsService = buildContext.read<TextToSpeechService>();
 
     if (index == 0) {
       switch (currentLocale.languageCode) {
         case "de":
-          buildContext.read<TextToSpeechService>().speak(
+          await ttsService.speak(
               "Du warst in den letzten 30 Tagen an 1 Tag online. Montag, der 27. März.");
           break;
         case "en":
         default:
-          buildContext.read<TextToSpeechService>().speak(
+          await ttsService.speak(
               "Out of the last 30 days, you were online on 1 day. Monday, march 27.");
           break;
       }
@@ -131,12 +132,12 @@ class _StatisticsListState extends State<StatisticsList> {
     if (index == 1) {
       switch (currentLocale.languageCode) {
         case "de":
-          buildContext.read<TextToSpeechService>().speak(
+          await ttsService.speak(
               "In den letzten 7 Tagen hast du folgende Leistung erbracht: Dienstag, 0 Einheiten, Mittwoch, 0 Einheiten, Donnerstag, 0 Einheiten, Freitag, 0 Einheiten, Samstag, 0 Einheiten, Sonntag, 0 Einheiten, Montag, 2 Einheiten.");
           break;
         case "en":
         default:
-          buildContext.read<TextToSpeechService>().speak(
+          await ttsService.speak(
               "In the last 7 days, you performed the following: Tuesday, 0 lessons, Wednesday, 0 lessons, Thursday, 0 lessons, Friday, 0 lessons, Saturday, 0 lessons, Sunday, 0 lessons, Monday, 2 lessons.");
           break;
       }
@@ -184,7 +185,7 @@ class _StatisticsListState extends State<StatisticsList> {
                           child: Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () => _readOutContent(context, index),
+                              onPressed: () async => await _readOutContent(context, index),
                               tooltip:
                                   AppLocalizations.of(context)!.tooltipReadOut,
                               icon: Icon(

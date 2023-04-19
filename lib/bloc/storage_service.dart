@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart' show Locale;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,11 +50,13 @@ class StorageService extends Cubit<DataReader> {
   }
 
   Future<String?> _getString(String path) async {
+    const utf8 = Utf8Decoder();
+
     try {
       _ensureConnectivity();
       final ref = _storage.ref(path);
       final data = await ref.getData();
-      return data == null ? null : String.fromCharCodes(data);
+      return data == null ? null : utf8.convert(data);
     } on FirebaseException catch (error) {
       if (_firebaseErrorCodes(error.code) == DownloadError.fileDoesNotExist) {
         return null;
