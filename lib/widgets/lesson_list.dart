@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../bloc/content_outline_service.dart';
-import '../bloc/lesson_content_service.dart';
-import '../bloc/localization_service.dart';
 import '../bloc/database_service.dart';
+import '../loading_routines.dart';
 
 import '../screens/lesson_screen.dart';
 import '../screens/loading_screen.dart';
@@ -30,13 +28,7 @@ class _LessonListState extends State<LessonList> {
       splashFactory: NoSplash.splashFactory,
       onTap: () => Navigator.of(buildContext).push(MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
-          Future(
-            () => buildContext.read<LessonContentService>().loadByIdFromLocale(
-                  lesson.id,
-                  buildContext.read<LocalizationService>().state,
-                  AppLocalizations.of(buildContext)!,
-                ),
-          ),
+          getLessonLoadingRoutine(buildContext, lesson.id),
           LessonScreen.routeName,
           arguments: lesson.id,
         ),

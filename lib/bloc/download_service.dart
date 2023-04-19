@@ -27,40 +27,35 @@ class DownloadService extends Cubit<DownloadStore> {
     return Platform.undefined;
   }
 
-  Future loadBase() async {
+  Future loadBase(String jsonString) async {
     state.clear();
 
     try {
-      final jsonString = await rootBundle.loadString("downloads/base.json");
-
       _parseBase(jsonString);
     } on Exception catch (exception) {
       emit(DownloadStore.empty());
       throw ProcessFailedException(exception);
-      //return;
     }
 
     emit(state);
   }
 
-  Future loadFromLocale(Locale locale) async {
+  Future loadFromLocale(String jsonString, String? fallbackJsonString) async {
     try {
-      final jsonString =
-          await rootBundle.loadString("downloads/${locale.languageCode}.json");
-
       _parseLocale(jsonString);
     } on Exception catch (exception) {
-      if (locale.languageCode != "en") {
-        await loadFromLocale(const Locale('en'));
+      if (fallbackJsonString != null) {
+        await loadFromLocale(fallbackJsonString, null);
       } else {
         emit(DownloadStore.empty());
         throw ProcessFailedException(exception);
-        //return;
       }
     }
 
     emit(DownloadStore(categories: state.categories, items: state.items));
   }
+
+  void clear() => emit(DownloadStore.empty());
 
   void _parseBase(String jsonString) {
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
