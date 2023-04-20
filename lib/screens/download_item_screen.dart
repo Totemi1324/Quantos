@@ -158,7 +158,7 @@ class _DownloadItemScreenState extends State<DownloadItemScreen> {
                             final downloadLink = Uri.tryParse(
                               download.linkForLocale(_selected ?? "") ?? "",
                             );
-                            if (downloadLink != null) {
+                            if (downloadLink != null && await canLaunchUrl(downloadLink)) {
                               await launchUrl(downloadLink);
                             }
                           },

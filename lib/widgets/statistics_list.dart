@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sdk_int/sdk_int.dart';
 
 import '../bloc/theme_service.dart';
 import '../bloc/localization_service.dart';
@@ -116,15 +117,15 @@ class _StatisticsListState extends State<StatisticsList> {
     final currentLocale = buildContext.read<LocalizationService>().state;
     final ttsService = buildContext.read<TextToSpeechService>();
 
-    if (index == 0) {
+    if (index == 0 && await SDKInt.currentSDKVersion < 30) {
       switch (currentLocale.languageCode) {
         case "de":
-          await ttsService.speak(
+          ttsService.speak(
               "Du warst in den letzten 30 Tagen an 1 Tag online. Montag, der 27. März.");
           break;
         case "en":
         default:
-          await ttsService.speak(
+          ttsService.speak(
               "Out of the last 30 days, you were online on 1 day. Monday, march 27.");
           break;
       }
@@ -132,12 +133,12 @@ class _StatisticsListState extends State<StatisticsList> {
     if (index == 1) {
       switch (currentLocale.languageCode) {
         case "de":
-          await ttsService.speak(
+          ttsService.speak(
               "In den letzten 7 Tagen hast du folgende Leistung erbracht: Dienstag, 0 Einheiten, Mittwoch, 0 Einheiten, Donnerstag, 0 Einheiten, Freitag, 0 Einheiten, Samstag, 0 Einheiten, Sonntag, 0 Einheiten, Montag, 2 Einheiten.");
           break;
         case "en":
         default:
-          await ttsService.speak(
+          ttsService.speak(
               "In the last 7 days, you performed the following: Tuesday, 0 lessons, Wednesday, 0 lessons, Thursday, 0 lessons, Friday, 0 lessons, Saturday, 0 lessons, Sunday, 0 lessons, Monday, 2 lessons.");
           break;
       }
