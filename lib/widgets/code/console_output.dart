@@ -22,6 +22,8 @@ class ConsoleOutput extends StatefulWidget {
 
 class _ConsoleOutputState extends State<ConsoleOutput> {
   final scrollController = ScrollController();
+  int _sortColumnIndex = 0;
+  bool _isAscending = true;
 
   Widget _buildMessageForStatus(
       BuildContext buildContext, ConsoleStatus status) {
@@ -81,9 +83,9 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
 
     columns.add(
       DataColumn(
-        label: Text(AppLocalizations.of(context)!.codingTableEnergyLabel),
-        numeric: true,
-      ),
+          label: Text(AppLocalizations.of(context)!.codingTableEnergyLabel),
+          numeric: true,
+          onSort: _onSort),
     );
 
     columns.addAll(
@@ -91,23 +93,25 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
         record == null
             ? 0
             : record.entries().first.solutionVector.vector.length,
-        (index) => DataColumn(label: Container(), numeric: true),
+        (index) =>
+            DataColumn(label: Container(), numeric: true, onSort: _onSort),
       ),
     );
 
     columns.add(
       DataColumn(
-        label: Text(AppLocalizations.of(context)!.codingTableFrequencyLabel),
-      ),
+          label: Text(AppLocalizations.of(context)!.codingTableFrequencyLabel),
+          onSort: _onSort),
     );
 
     return columns;
   }
 
-  List<DataRow> _buildRowsFromSolutionRecord(SolutionRecord record) {
+  List<DataRow> _buildRowsFromSolutionRecordEntries(
+      Iterable<SolutionRecordEntry> recordEntries) {
     final rows = <DataRow>[];
 
-    for (var entry in record.entries()) {
+    for (var entry in recordEntries) {
       final cells = <DataCell>[];
       final solutionList = entry.solutionVector.vector;
 
@@ -124,6 +128,40 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
     }
 
     return rows;
+  }
+
+  void _onSort(int columnIndex, bool ascending) {
+    setState(() {
+      _sortColumnIndex = columnIndex;
+      _isAscending = ascending;
+    });
+  }
+
+  Iterable<SolutionRecordEntry> _sort(Iterable<SolutionRecordEntry> entries) {
+    final vectorLength = entries.first.solutionVector.vector.length;
+    compareNumbers(num1, num2) =>
+        _isAscending ? num1.compareTo(num2) : num2.compareTo(num1);
+
+    final entryList = entries.toList();
+
+    if (_sortColumnIndex == 0) {
+      entryList.sort(
+        (a, b) => compareNumbers(a.energy, b.energy),
+      );
+    } else if (_sortColumnIndex > 0 && _sortColumnIndex <= vectorLength) {
+      entryList.sort(
+        (a, b) => compareNumbers(
+          a.solutionVector.vector[_sortColumnIndex - 1],
+          b.solutionVector.vector[_sortColumnIndex - 1],
+        ),
+      );
+    } else if (_sortColumnIndex == vectorLength + 1) {
+      entryList.sort(
+        (a, b) => compareNumbers(a.numOccurrences, b.numOccurrences),
+      );
+    }
+
+    return entryList;
   }
 
   @override
@@ -160,21 +198,22 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
                   RawScrollbar(
                     controller: scrollController,
                     thumbVisibility: true,
-                    thumbColor:
-                        Theme.of(context).colorScheme.surface.withOpacity(0.7),
+                    thumbColor: Colors.white.withOpacity(0.3),
                     radius: const Radius.circular(5),
                     child: SingleChildScrollView(
                       controller: scrollController,
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
-                        sortColumnIndex: 0,
-                        sortAscending: true,
+                        sortColumnIndex: _sortColumnIndex,
+                        sortAscending: _isAscending,
                         headingRowColor: MaterialStateColor.resolveWith(
                             (_) => Theme.of(context).colorScheme.surface),
                         columns: _buildColumnsFromSolutionRecord(
                             consoleState.record),
                         rows: consoleState.record != null
-                            ? _buildRowsFromSolutionRecord(consoleState.record!)
+                            ? _buildRowsFromSolutionRecordEntries(
+                                _sort(consoleState.record!.entries()),
+                              )
                             : [],
                       ),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 import 'package:sdk_int/sdk_int.dart';
 
 import '../bloc/theme_service.dart';
@@ -117,7 +118,12 @@ class _StatisticsListState extends State<StatisticsList> {
     final currentLocale = buildContext.read<LocalizationService>().state;
     final ttsService = buildContext.read<TextToSpeechService>();
 
-    if (index == 0 && await SDKInt.currentSDKVersion < 30) {
+    if (index == 0) {
+      if (UniversalPlatform.isAndroid) {
+        if (await SDKInt.currentSDKVersion >= 30) {
+          return;
+        }
+      }
       switch (currentLocale.languageCode) {
         case "de":
           ttsService.speak(
@@ -131,6 +137,11 @@ class _StatisticsListState extends State<StatisticsList> {
       }
     }
     if (index == 1) {
+      if (UniversalPlatform.isAndroid) {
+        if (await SDKInt.currentSDKVersion >= 30) {
+          return;
+        }
+      }
       switch (currentLocale.languageCode) {
         case "de":
           ttsService.speak(
@@ -186,7 +197,8 @@ class _StatisticsListState extends State<StatisticsList> {
                           child: Material(
                             color: Colors.transparent,
                             child: IconButton(
-                              onPressed: () async => await _readOutContent(context, index),
+                              onPressed: () async =>
+                                  await _readOutContent(context, index),
                               tooltip:
                                   AppLocalizations.of(context)!.tooltipReadOut,
                               icon: Icon(

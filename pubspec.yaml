@@ -19,7 +19,7 @@ dependencies:
   tuple: ^2.0.1
   http: ^0.13.5
   flutter_bloc: ^8.1.1
-  rive: ^0.9.1
+  rive: ^0.10.4
   qubo_embedder: ^0.1.0
   universal_platform: ^1.0.0+1
   sdk_int: ^0.0.1
@@ -35,10 +35,10 @@ dependencies:
   package_info_plus: 3.0.1
   flutter_tts: ^3.6.3
   url_launcher: ^6.1.10
-  firebase_core: ^2.7.0
-  firebase_database: ^10.0.16
-  firebase_auth: ^4.4.1
-  firebase_storage: ^11.1.0
+  firebase_core: ^2.10.0
+  firebase_database: ^10.1.1
+  firebase_auth: ^4.4.2
+  firebase_storage: ^11.1.1
 
 
 dev_dependencies:

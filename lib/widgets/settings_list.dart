@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quantos/bloc/stores/theme_store_service.dart';
+import 'package:universal_platform/universal_platform.dart';
 import 'package:sdk_int/sdk_int.dart';
 
 import '../bloc/theme_service.dart';
@@ -106,8 +107,10 @@ class SettingsList extends StatelessWidget {
 
                     localizationService.setLocale(newLocale);
                     await contentOutlineService.loadFromLocale(newLocale);
-                    if (await SDKInt.currentSDKVersion < 30) {
-                      await textToSpeechService.setLanguage(newLocale);
+                    if (UniversalPlatform.isAndroid) {
+                      if (await SDKInt.currentSDKVersion < 30) {
+                        await textToSpeechService.setLanguage(newLocale);
+                      }
                     }
 
                     await storageService.getDownloadLocalization(newLocale);
