@@ -59,3 +59,15 @@ Future<dynamic> getLessonLoadingRoutine(
     },
   );
 }
+
+Future<dynamic> getUpdateCurrentUserLoadingRoutine(BuildContext buildContext) {
+  return Future(() async {
+    final authenticationService = buildContext.read<AuthenticationService>();
+    final databaseService = buildContext.read<DatabaseService>();
+
+    if (authenticationService.isAuthenticated) {
+      await databaseService
+          .updateProfileInfo(authenticationService.state.userId);
+    }
+  });
+}

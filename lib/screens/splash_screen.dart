@@ -51,7 +51,9 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(buildContext).pushReplacement(
         MaterialPageRoute(
           builder: (buildContext) => LoadingScreen(
-            getDefaultLoadingRoutine(buildContext),
+            [
+              getDefaultLoadingRoutine(buildContext),
+            ],
             Home.routeName,
           ),
         ),

@@ -87,7 +87,9 @@ class _LogInFormState extends State<LogInForm> with TickerProviderStateMixin {
     Navigator.of(buildContext).pushAndRemoveUntil(
       MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
-          getDefaultLoadingRoutine(buildContext),
+          [
+            getDefaultLoadingRoutine(buildContext),
+          ],
           Home.routeName,
         ),
       ),

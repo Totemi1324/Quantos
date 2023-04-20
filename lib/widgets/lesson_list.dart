@@ -28,7 +28,9 @@ class _LessonListState extends State<LessonList> {
       splashFactory: NoSplash.splashFactory,
       onTap: () => Navigator.of(buildContext).push(MaterialPageRoute(
         builder: (buildContext) => LoadingScreen(
-          getLessonLoadingRoutine(buildContext, lesson.id),
+          [
+            getLessonLoadingRoutine(buildContext, lesson.id),
+          ],
           LessonScreen.routeName,
           arguments: lesson.id,
         ),

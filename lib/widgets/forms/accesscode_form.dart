@@ -69,7 +69,9 @@ class _AccessCodeFormState extends State<AccessCodeForm> {
         Navigator.of(buildContext).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (buildContext) => LoadingScreen(
-              getDefaultLoadingRoutine(buildContext),
+              [
+                getDefaultLoadingRoutine(buildContext),
+              ],
               Home.routeName,
             ),
           ),

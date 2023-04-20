@@ -72,7 +72,10 @@ class ProfileExperienceScreen extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
                           builder: (buildContext) => LoadingScreen(
-                            getDefaultLoadingRoutine(buildContext),
+                            [
+                              getUpdateCurrentUserLoadingRoutine(buildContext),
+                              getDefaultLoadingRoutine(buildContext),
+                            ],
                             Home.routeName,
                           ),
                         ),

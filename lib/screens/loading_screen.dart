@@ -5,12 +5,12 @@ import 'base/flat.dart';
 import '../widgets/custom_circular_progress_indicator.dart';
 
 class LoadingScreen extends StatefulWidget {
-  final Future loadingRoutine;
+  final List<Future> loadingRoutines;
   final String nextRoute;
   final dynamic arguments;
 
   const LoadingScreen(
-    this.loadingRoutine,
+    this.loadingRoutines,
     this.nextRoute, {
     this.arguments,
     super.key,
@@ -25,7 +25,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await widget.loadingRoutine;
+      for (var routine in widget.loadingRoutines) {
+        await routine;
+      }
       if (!mounted) {
         return;
       }
