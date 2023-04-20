@@ -443,13 +443,21 @@
     "@codingConsoleOutputMessageLoading": {
         "description": "Coding console output message for loading status"
     },
-    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the top solutions (up to 5), sorted from best to worst energy:",
+    "codingConsoleOutputMessageSuccess": "Operation successful! Here are the best solutions (up to 5, tap on the column labels to sort):",
     "@codingConsoleOutputMessageSuccess": {
         "description": "Coding console output message for success status"
     },
     "codingConsoleOutputMessageFailure": "Something went wrong - unable to fetch response. If you're using DWave Advantage mode, check your internet connection, or try again.",
     "@codingConsoleOutputMessageFailure": {
         "description": "Coding console output message for failure status"
+    },
+    "codingTableEnergyLabel": "Energy",
+    "@codingTableEnergyLabel": {
+        "description": "Coding table label for energy column"
+    },
+    "codingTableFrequencyLabel": "Occurrences",
+    "@codingTableFrequencyLabel": {
+        "description": "Coding table label for occurrences column"
     },
     "codingProbabilityTitle": "Probability distribution",
     "@codingProbabilityTitle": {
