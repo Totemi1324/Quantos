@@ -1,7 +1,11 @@
+import 'dart:io' show Platform;
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class LocalizationService extends Cubit<Locale> {
   static final List<Locale> _supportedLocales = [
@@ -16,8 +20,12 @@ class LocalizationService extends Cubit<Locale> {
     GlobalWidgetsLocalizations.delegate,
   ];
 
-  LocalizationService() : super(const Locale('de')) {
-    //setLocale(Locale(UniversalPlatform.localeName.substring(0, 2)));
+  LocalizationService() : super(const Locale('en')) {
+    if (UniversalPlatform.isWeb) {
+      setLocale(Locale(window.locale.languageCode));
+    } else {
+      setLocale(Locale(Platform.localeName.substring(0, 2)));
+    }
   }
 
   List<Locale> get supportedLocales => _supportedLocales;
