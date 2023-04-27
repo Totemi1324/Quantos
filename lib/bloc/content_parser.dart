@@ -3,6 +3,7 @@ import '../models/content/section_title.dart';
 import '../models/content/image.dart';
 import '../models/content/equation.dart';
 import '../models/content/interactive.dart';
+import '../models/content/content_outline.dart';
 import '../models/lection.dart';
 import '../models/lesson.dart';
 import '../models/download.dart';
@@ -232,6 +233,39 @@ class ContentParser {
     }
 
     return Lesson(id: id, readTimeInMinutes: readTime);
+  }
+
+  static void updateLection(
+      ContentOutline currentState, String id, Map<String, dynamic> json) {
+    json.assertKey(titleJsonKey);
+    json.assertKey(descriptionJsonKey);
+    json.assertKey(lessonsJsonKey);
+
+    final title = json[titleJsonKey] as String;
+    final description = json[descriptionJsonKey] as String;
+    final lessons = json[lessonsJsonKey] as Map<String, dynamic>;
+
+    currentState.updateLectionData(id, title, description);
+
+    for (var entry in lessons.entries) {
+      if (entry.value is! Map<String, dynamic>) {
+        throw ParseErrorException(
+          ParseError.invalidJsonEntry,
+          wrongContent: entry.key,
+        );
+      }
+
+      updateLesson(currentState, entry.key, entry.value);
+    }
+  }
+
+  static void updateLesson(
+      ContentOutline currentState, String id, Map<String, dynamic> json) {
+    json.assertKey(titleJsonKey);
+
+    final title = json[titleJsonKey] as String;
+
+    currentState.updateLessonData(id, title);
   }
 
   static List<ParagraphSpan> _extractSpans(String text) {

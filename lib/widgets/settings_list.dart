@@ -107,19 +107,29 @@ class SettingsList extends StatelessWidget {
 
                     localizationService.setLocale(newLocale);
 
-                    //await contentOutlineService.loadFromLocale(newLocale);
-                    
-                    await storageService.getDownloadLocalization(newLocale);
-                    final currentDownloadData = storageService.state.content;
-                    String? fallbackDownloadData;
-                    if (newLocale.languageCode != "en") {
-                      await storageService
-                          .getDownloadLocalization(const Locale("en"));
-                      fallbackDownloadData = storageService.state.content;
+                    try {
+                      await storageService.getContentLocalization(newLocale);
+                      contentOutlineService
+                          .loadFromLocale(storageService.state.content);
+                    } on Exception {
+                      contentOutlineService.clear();
                     }
-                    downloadService.loadFromLocale(
-                        currentDownloadData, fallbackDownloadData);
-                    
+
+                    try {
+                      await storageService.getDownloadLocalization(newLocale);
+                      final currentDownloadData = storageService.state.content;
+                      String? fallbackDownloadData;
+                      if (newLocale.languageCode != "en") {
+                        await storageService
+                            .getDownloadLocalization(const Locale("en"));
+                        fallbackDownloadData = storageService.state.content;
+                      }
+                      downloadService.loadFromLocale(
+                          currentDownloadData, fallbackDownloadData);
+                    } on Exception {
+                      downloadService.clear();
+                    }
+
                     if (UniversalPlatform.isAndroid) {
                       if (await SDKInt.currentSDKVersion < 30) {
                         await textToSpeechService.setLanguage(newLocale);

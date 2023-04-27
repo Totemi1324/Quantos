@@ -41,6 +41,9 @@ extension AssetTransformator on Lection {
   }
 
   void getAssetLocations(String assetPath) {
+    if (assetPath.isEmpty) {
+      return;
+    }
     _iconAnimation = "$assetPath/$_iconAnimation";
     _headerAnimation = "$assetPath/$_headerAnimation";
   }

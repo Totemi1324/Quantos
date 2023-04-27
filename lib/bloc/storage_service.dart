@@ -64,6 +64,16 @@ class StorageService extends Cubit<DataReader> {
     emit(DataReader(data: string));
   }
 
+  Future getContentLocalization(Locale locale) async {
+    emit(const DataReader());
+
+    final path =
+        "$lessonsPath/$contentPath/${locale.languageCode}/$lessonsLocalizationFile";
+    final string = await _getString(path);
+
+    emit(DataReader(data: string));
+  }
+
   Future getDownloadLinkForLectionAnimation(String name) async {
     emit(const DataReader());
 

@@ -29,6 +29,9 @@ Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
         if (storageService.state.hasData) {
           contentOutlineService.loadBase(storageService.state.content);
           contentOutlineService.getAssetLocations();
+
+          await storageService.getContentLocalization(currentLocale);
+          contentOutlineService.loadFromLocale(storageService.state.content);
         }
       } on Exception {
         contentOutlineService.clear();
