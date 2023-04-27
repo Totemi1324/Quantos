@@ -52,7 +52,7 @@ class ContentOutlineService extends Cubit<ContentOutline> {
     }
   }
 
-  Future loadFromLocale(String jsonString) async {
+  void loadFromLocale(String jsonString) {
     if (_base.isEmpty) {
       return;
     }
