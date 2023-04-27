@@ -43,7 +43,7 @@ class LectionScreen extends StatelessWidget {
                           width: 350,
                           height: 350,
                           child: RiveAnimation.asset(
-                            "assets/animations/lections/${lection.headerAnimationAsset}",
+                            "assets/animations/lections/${lection.headerAnimation}",
                             fit: BoxFit.contain,
                           ),
                         ),

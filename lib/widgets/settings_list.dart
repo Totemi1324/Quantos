@@ -106,13 +106,9 @@ class SettingsList extends StatelessWidget {
                     final storageService = context.read<StorageService>();
 
                     localizationService.setLocale(newLocale);
-                    await contentOutlineService.loadFromLocale(newLocale);
-                    if (UniversalPlatform.isAndroid) {
-                      if (await SDKInt.currentSDKVersion < 30) {
-                        await textToSpeechService.setLanguage(newLocale);
-                      }
-                    }
 
+                    //await contentOutlineService.loadFromLocale(newLocale);
+                    
                     await storageService.getDownloadLocalization(newLocale);
                     final currentDownloadData = storageService.state.content;
                     String? fallbackDownloadData;
@@ -121,9 +117,14 @@ class SettingsList extends StatelessWidget {
                           .getDownloadLocalization(const Locale("en"));
                       fallbackDownloadData = storageService.state.content;
                     }
-
                     downloadService.loadFromLocale(
                         currentDownloadData, fallbackDownloadData);
+                    
+                    if (UniversalPlatform.isAndroid) {
+                      if (await SDKInt.currentSDKVersion < 30) {
+                        await textToSpeechService.setLanguage(newLocale);
+                      }
+                    }
                   },
                 ),
               ),

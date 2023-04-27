@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../bloc/authentication_service.dart';
-import '../bloc/content_outline_service.dart';
-import '../bloc/lesson_content_service.dart';
-import '../bloc/localization_service.dart';
-import '../bloc/database_service.dart';
-import '../bloc/download_service.dart';
-import '../bloc/storage_service.dart';
+import './bloc/authentication_service.dart';
+import './bloc/content_outline_service.dart';
+import './bloc/lesson_content_service.dart';
+import './bloc/localization_service.dart';
+import './bloc/database_service.dart';
+import './bloc/download_service.dart';
+import './bloc/storage_service.dart';
 
 Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
   return Future(
@@ -23,7 +23,16 @@ Future<dynamic> getDefaultLoadingRoutine(BuildContext buildContext) {
       await databaseService.getUserInfo(
         authenticationService.state.userId,
       );
-      await contentOutlineService.loadFromLocale(currentLocale);
+
+      try {
+        await storageService.getContentBase();
+        if (storageService.state.hasData) {
+          contentOutlineService.loadBase(storageService.state.content);
+          contentOutlineService.getAssetLocations();
+        }
+      } on Exception {
+        contentOutlineService.clear();
+      }
 
       try {
         await storageService.getDownloadBase();

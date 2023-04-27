@@ -35,10 +35,10 @@ Widget _buildLectionItem(BuildContext buildContext, String lectionId) {
             .read<ContentOutlineService>()
             .state
             .getLectionTitle(lectionId),
-        iconAnimationAsset: buildContext
+        iconAnimation: buildContext
             .read<ContentOutlineService>()
             .lection(lectionId)
-            .iconAnimationAsset,
+            .iconAnimation,
         progressPercent:
             buildContext.read<DatabaseService>().lectionProgress(lectionId),
         unlocked: buildContext.read<DatabaseService>().isUnlocked(lectionId),

@@ -18,6 +18,15 @@ class ContentOutline {
     required this.lessonTitles,
   });
 
+  factory ContentOutline.empty() => const ContentOutline(
+        lectionIds: [],
+        lessonIds: [],
+        lessonGrouping: {},
+        lectionTitles: {},
+        lectionDescriptions: {},
+        lessonTitles: {},
+      );
+
   factory ContentOutline.emptyFromData(List<Lection> contentData) {
     final List<String> lectionIds =
         contentData.map((lection) => lection.id).toList();

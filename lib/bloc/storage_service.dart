@@ -10,8 +10,14 @@ import '../models/data_reader.dart';
 import '../models/exceptions.dart';
 
 class StorageService extends Cubit<DataReader> {
+  static const lessonsPath = "lessons";
   static const downloadsPath = "downloads";
+
+  static const contentPath = "content";
+  static const animationAssetsPath = "animations/assets";
+
   static const downloadsLocalizationFile = "content.json";
+  static const lessonsLocalizationFile = "localization.json";
 
   static const baseFile = "base.json";
 
@@ -19,9 +25,9 @@ class StorageService extends Cubit<DataReader> {
 
   static DownloadError _firebaseErrorCodes(String errorCode) {
     switch (errorCode) {
-      case "storage/object-not-found":
+      case "object-not-found":
         return DownloadError.fileDoesNotExist;
-      case "storage/unauthenticated":
+      case "unauthenticated":
         return DownloadError.notAuthenticated;
       default:
         return DownloadError.unknown;
@@ -49,6 +55,24 @@ class StorageService extends Cubit<DataReader> {
     emit(DataReader(data: string));
   }
 
+  Future getContentBase() async {
+    emit(const DataReader());
+
+    const path = "$lessonsPath/$contentPath/$baseFile";
+    final string = await _getString(path);
+
+    emit(DataReader(data: string));
+  }
+
+  Future getDownloadLinkForLectionAnimation(String name) async {
+    emit(const DataReader());
+
+    final path = "$lessonsPath/$animationAssetsPath/$name";
+    final link = await _getLink(path);
+
+    emit(DataReader(data: link ?? ""));
+  }
+
   Future<String?> _getString(String path) async {
     const utf8 = Utf8Decoder();
 
@@ -57,6 +81,21 @@ class StorageService extends Cubit<DataReader> {
       final ref = _storage.ref(path);
       final data = await ref.getData();
       return data == null ? null : utf8.convert(data);
+    } on FirebaseException catch (error) {
+      if (_firebaseErrorCodes(error.code) == DownloadError.fileDoesNotExist) {
+        return null;
+      } else {
+        throw ProcessFailedException(error);
+      }
+    }
+  }
+
+  Future<String?> _getLink(String path) async {
+    try {
+      _ensureConnectivity();
+      final ref = _storage.ref(path);
+      final data = await ref.getDownloadURL();
+      return data;
     } on FirebaseException catch (error) {
       if (_firebaseErrorCodes(error.code) == DownloadError.fileDoesNotExist) {
         return null;

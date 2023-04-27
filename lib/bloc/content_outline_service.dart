@@ -5,169 +5,37 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart' show Locale;
 import 'package:flutter/services.dart';
 
+import './content_parser.dart';
+import './storage_service.dart';
+
 import '../models/lection.dart';
 import '../models/lesson.dart';
 import '../models/content/content_outline.dart';
 import '../models/exceptions.dart';
 
 class ContentOutlineService extends Cubit<ContentOutline> {
+  static const lectionsJsonKey = "lections";
+
   static const lectionJsonKey = "lection";
   static const lessonJsonKey = "lesson";
   static const titleJsonKey = "title";
   static const descriptionJsonKey = "description";
   static const contentJsonKey = "content";
 
-  static final List<Lection> _contentData = [
-    Lection(
-      id: "8hg",
-      iconAnimationAsset: "icon_introduction_to_quantum_annealers.riv",
-      headerAnimationAsset: "introduction_to_quantum_annealers.riv",
-      difficultyLevel: Difficulty.easy,
-      lessons: [
-        Lesson(
-          id: "TE0",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "s0f",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "fAX",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "Ydj",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "S6N",
-          readTimeInMinutes: 4,
-        ),
-        Lesson(
-          id: "75N",
-          readTimeInMinutes: 3,
-        ),
-        Lesson(
-          id: "XOQ",
-          readTimeInMinutes: 5,
-        ),
-        Lesson(
-          id: "WrU",
-          readTimeInMinutes: 6,
-        ),
-        Lesson(
-          id: "Bwk",
-          readTimeInMinutes: 4,
-        ),
-      ],
-    ),
-    Lection(
-      id: "fC9",
-      iconAnimationAsset: "icon_the_n_queens_problem.riv",
-      headerAnimationAsset: "the_n_queens_problem.riv",
-      difficultyLevel: Difficulty.advanced,
-      lessons: [
-        Lesson(
-          id: "uFZ",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "cOU",
-          readTimeInMinutes: 3,
-        ),
-        Lesson(
-          id: "t8i",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "qhs",
-          readTimeInMinutes: 4,
-        ),
-        Lesson(
-          id: "rdx",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "nAh",
-          readTimeInMinutes: 1,
-        ),
-      ],
-    ),
-    Lection(
-      id: "chj",
-      iconAnimationAsset: "icon_the_traveling_salesman_problem.riv",
-      headerAnimationAsset: "the_traveling_salesman_problem.riv",
-      difficultyLevel: Difficulty.challenging,
-      lessons: [
-        Lesson(
-          id: "wgr",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "CWC",
-          readTimeInMinutes: 3,
-        ),
-        Lesson(
-          id: "Bgf",
-          readTimeInMinutes: 3,
-        ),
-        Lesson(
-          id: "lNJ",
-          readTimeInMinutes: 5,
-        ),
-        Lesson(
-          id: "56h",
-          readTimeInMinutes: 4,
-        ),
-        Lesson(
-          id: "IQu",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "Y7A",
-          readTimeInMinutes: 1,
-        ),
-      ],
-    ),
-    Lection(
-      id: "BiE",
-      iconAnimationAsset: "icon_solving_sudoku_riddles.riv",
-      headerAnimationAsset: "",
-      difficultyLevel: Difficulty.advanced,
-      lessons: [
-        Lesson(
-          id: "2D9",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "A3P",
-          readTimeInMinutes: 5,
-        ),
-        Lesson(
-          id: "PBv",
-          readTimeInMinutes: 2,
-        ),
-        Lesson(
-          id: "kJN",
-          readTimeInMinutes: 2,
-        ),
-      ],
-    ),
-  ];
+  static const animationsPath = "assets/animations/lections";
 
-  ContentOutlineService() : super(ContentOutline.emptyFromData(_contentData));
+  static List<Lection> _base = [];
 
-  List<Lection> get lections => _contentData;
+  ContentOutlineService() : super(ContentOutline.empty());
 
-  List<Lesson> get lessonsFlat => _contentData
-      .map((lection) => lection.lessons)
-      .expand((list) => list)
-      .toList();
+  List<Lection> get lections => _base;
+
+  List<Lesson> get lessonsFlat =>
+      _base.map((lection) => lection.lessons).expand((list) => list).toList();
 
   //Queries
   Lection lection(String lectionId) {
-    return _contentData.firstWhere((lection) => lection.id == lectionId);
+    return _base.firstWhere((lection) => lection.id == lectionId);
   }
 
   Lesson lesson(String lessonId) {
@@ -175,18 +43,86 @@ class ContentOutlineService extends Cubit<ContentOutline> {
   }
 
   //State management
-  Future loadFromLocale(Locale locale) async {
-    final jsonString =
-        await rootBundle.loadString("lessons/${locale.languageCode}/base.json");
+  void loadBase(String jsonString) {
+    try {
+      final newState = _parseBase(jsonString);
 
-    final newState = _parse(jsonString);
-
-    emit(newState);
+      emit(newState);
+    } on Exception catch (exception) {
+      emit(ContentOutline.empty());
+      throw ProcessFailedException(exception);
+    }
   }
 
-  ContentOutline _parse(String jsonString) {
+  Future loadFromLocale(String jsonString) async {
+    if (_base.isEmpty) {
+      return;
+    }
+
+    try {
+      final newState = _parseLocale(jsonString);
+
+      emit(newState);
+    } on Exception catch (exception) {
+      throw ProcessFailedException(exception);
+    }
+  }
+
+  Future getDownloadLinks(StorageService storageService) async {
+    for (var lection in _base) {
+      await lection.getDownloadLinks(storageService);
+    }
+  }
+
+  void getAssetLocations() {
+    for (var lection in _base) {
+      lection.getAssetLocations(animationsPath);
+    }
+  }
+
+  void clear() {
+    _base.clear();
+    emit(ContentOutline.empty());
+  }
+
+  ContentOutline _parseBase(String jsonString) {
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
-    final result = ContentOutline.emptyFromData(_contentData);
+    final content = <Lection>[];
+
+    if (!jsonMap.containsKey(lectionsJsonKey)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: lectionsJsonKey,
+      );
+    }
+    if (jsonMap[lectionsJsonKey] is! Map<String, dynamic>) {
+      throw ParseErrorException(
+        ParseError.invalidJsonEntry,
+        wrongContent: lectionsJsonKey,
+      );
+    }
+
+    final ids = jsonMap[lectionsJsonKey] as Map<String, dynamic>;
+
+    for (var entry in ids.entries) {
+      if (entry.value is! Map<String, dynamic>) {
+        throw ParseErrorException(
+          ParseError.invalidJsonEntry,
+          wrongContent: entry.key,
+        );
+      }
+
+      content.add(ContentParser.parseLection(entry.key, entry.value));
+    }
+
+    _base = content;
+
+    return ContentOutline.emptyFromData(_base);
+  }
+
+  ContentOutline _parseLocale(String jsonString) {
+    final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
+    final result = ContentOutline.emptyFromData(_base);
 
     for (var entry in jsonMap.entries) {
       if (entry.key.substring(0, 8) != "$lectionJsonKey-") {

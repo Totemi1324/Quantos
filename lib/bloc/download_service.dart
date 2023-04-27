@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart' show Locale;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/services.dart';
 import 'package:universal_platform/universal_platform.dart';
 
 import 'content_parser.dart';

@@ -3,6 +3,8 @@ import '../models/content/section_title.dart';
 import '../models/content/image.dart';
 import '../models/content/equation.dart';
 import '../models/content/interactive.dart';
+import '../models/lection.dart';
+import '../models/lesson.dart';
 import '../models/download.dart';
 import '../models/download_category.dart';
 import '../models/platform.dart';
@@ -20,6 +22,12 @@ class ContentParser {
   static const idJsonKey = "id";
   static const argsJsonKey = "args";
 
+  static const iconJsonKey = "icon";
+  static const headerJsonKey = "header";
+  static const difficultyJsonKey = "difficulty";
+  static const lessonsJsonKey = "lessons";
+  static const readtimeJsonKey = "readtime";
+
   static const categoryJsonKey = "category";
   static const downloadSizeJsonKey = "downloadsize";
   static const sizeJsonKey = "size";
@@ -35,12 +43,7 @@ class ContentParser {
   };
 
   static Paragraph parseParagraph(Map<String, dynamic> json) {
-    if (!json.containsKey(textJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: textJsonKey,
-      );
-    }
+    json.assertKey(textJsonKey);
 
     final text = json[textJsonKey] as String;
     final spans = _extractSpans(text);
@@ -49,12 +52,7 @@ class ContentParser {
   }
 
   static SectionTitle parseSectionTitle(Map<String, dynamic> json) {
-    if (!json.containsKey(titleJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: titleJsonKey,
-      );
-    }
+    json.assertKey(titleJsonKey);
 
     final title = json[titleJsonKey] as String;
 
@@ -62,24 +60,9 @@ class ContentParser {
   }
 
   static Image parseImage(Map<String, dynamic> json) {
-    if (!json.containsKey(assetJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: assetJsonKey,
-      );
-    }
-    if (!json.containsKey(captionJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: captionJsonKey,
-      );
-    }
-    if (!json.containsKey(altTextJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: altTextJsonKey,
-      );
-    }
+    json.assertKey(assetJsonKey);
+    json.assertKey(captionJsonKey);
+    json.assertKey(altTextJsonKey);
 
     final asset = json[assetJsonKey] as String;
     final caption = json[captionJsonKey] as String;
@@ -89,18 +72,8 @@ class ContentParser {
   }
 
   static Equation parseEquation(Map<String, dynamic> json) {
-    if (!json.containsKey(texJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: texJsonKey,
-      );
-    }
-    if (!json.containsKey(altTextJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: altTextJsonKey,
-      );
-    }
+    json.assertKey(texJsonKey);
+    json.assertKey(altTextJsonKey);
 
     final tex = json[texJsonKey] as String;
     final altText = json[altTextJsonKey] as String;
@@ -109,30 +82,10 @@ class ContentParser {
   }
 
   static Interactive parseInteractive(Map<String, dynamic> json) {
-    if (!json.containsKey(idJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: idJsonKey,
-      );
-    }
-    if (!json.containsKey(captionJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: captionJsonKey,
-      );
-    }
-    if (!json.containsKey(altTextJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: altTextJsonKey,
-      );
-    }
-    if (!json.containsKey(argsJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: argsJsonKey,
-      );
-    }
+    json.assertKey(idJsonKey);
+    json.assertKey(captionJsonKey);
+    json.assertKey(altTextJsonKey);
+    json.assertKey(argsJsonKey);
 
     final id = json[idJsonKey] as String;
     final caption = json[captionJsonKey] as String;
@@ -175,36 +128,11 @@ class ContentParser {
           title: value, availableOn: previous.availableOn);
 
   static Download parseDownload(String id, Map<String, dynamic> json) {
-    if (!json.containsKey(categoryJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: categoryJsonKey,
-      );
-    }
-    if (!json.containsKey(downloadSizeJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: downloadSizeJsonKey,
-      );
-    }
-    if (!json.containsKey(typeJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: typeJsonKey,
-      );
-    }
-    if (!json.containsKey(linksJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: linksJsonKey,
-      );
-    }
-    if (!json.containsKey(availabilityJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: availabilityJsonKey,
-      );
-    }
+    json.assertKey(categoryJsonKey);
+    json.assertKey(downloadSizeJsonKey);
+    json.assertKey(typeJsonKey);
+    json.assertKey(linksJsonKey);
+    json.assertKey(availabilityJsonKey);
 
     final category = json[categoryJsonKey] as String;
     final downloadSizeJson = json[downloadSizeJsonKey] as Map<String, dynamic>;
@@ -237,18 +165,8 @@ class ContentParser {
 
   static Download updateDownloadLocalization(
       Download previous, Map<String, dynamic> json) {
-    if (!json.containsKey(titleJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: titleJsonKey,
-      );
-    }
-    if (!json.containsKey(descriptionJsonKey)) {
-      throw ParseErrorException(
-        ParseError.incompleteJsonObject,
-        wrongContent: descriptionJsonKey,
-      );
-    }
+    json.assertKey(titleJsonKey);
+    json.assertKey(descriptionJsonKey);
 
     final title = json[titleJsonKey] as String;
     final description = json[descriptionJsonKey] as String;
@@ -261,6 +179,59 @@ class ContentParser {
         type: previous.type,
         links: previous.links,
         availableOn: previous.availableOn);
+  }
+
+  static Lection parseLection(String id, Map<String, dynamic> json) {
+    json.assertKey(iconJsonKey);
+    json.assertKey(headerJsonKey);
+    json.assertKey(difficultyJsonKey);
+    json.assertKey(lessonsJsonKey);
+
+    final icon = json[iconJsonKey] as String;
+    final header = json[headerJsonKey] as String;
+    final difficulty = json[difficultyJsonKey] as int;
+    final lessons = json[lessonsJsonKey] as Map<String, dynamic>;
+
+    if (difficulty >= Difficulty.values.length || difficulty < 0) {
+      throw ParseErrorException(
+        ParseError.invalidJsonValue,
+        wrongContent: difficultyJsonKey,
+      );
+    }
+    final difficultyLevel = Difficulty.values[difficulty];
+
+    final lessonsList = <Lesson>[];
+    for (var entry in lessons.entries) {
+      if (entry.value is! Map<String, dynamic>) {
+        throw ParseErrorException(
+          ParseError.invalidJsonEntry,
+          wrongContent: entry.key,
+        );
+      }
+      lessonsList.add(parseLesson(entry.key, entry.value));
+    }
+
+    return Lection(
+      id: id,
+      iconAnimation: icon,
+      headerAnimation: header,
+      difficultyLevel: difficultyLevel,
+      lessons: lessonsList,
+    );
+  }
+
+  static Lesson parseLesson(String id, Map<String, dynamic> json) {
+    json.assertKey(readtimeJsonKey);
+
+    final readTime = json[readtimeJsonKey] as int;
+    if (readTime < 1) {
+      throw ParseErrorException(
+        ParseError.invalidJsonValue,
+        wrongContent: readtimeJsonKey,
+      );
+    }
+
+    return Lesson(id: id, readTimeInMinutes: readTime);
   }
 
   static List<ParagraphSpan> _extractSpans(String text) {
@@ -349,5 +320,16 @@ class ContentParser {
       size: size.toDouble(),
       unit: DownloadSizeUnit.values[unit.round()],
     );
+  }
+}
+
+extension Assert on Map<String, dynamic> {
+  void assertKey(String key) {
+    if (!containsKey(key)) {
+      throw ParseErrorException(
+        ParseError.incompleteJsonObject,
+        wrongContent: key,
+      );
+    }
   }
 }

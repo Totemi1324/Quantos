@@ -6,7 +6,7 @@ import 'package:universal_platform/universal_platform.dart';
 import './ui/adaptive_progress_bar.dart';
 
 class LectionItem extends StatefulWidget {
-  final String iconAnimationAsset;
+  final String iconAnimation;
   final String title;
   final double progressPercent;
   final bool unlocked;
@@ -36,7 +36,7 @@ class LectionItem extends StatefulWidget {
 
   const LectionItem(
     this.title, {
-    required this.iconAnimationAsset,
+    required this.iconAnimation,
     required this.progressPercent,
     required this.unlocked,
     super.key,
@@ -110,7 +110,7 @@ class _LectionItemState extends State<LectionItem> {
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 70, maxHeight: 70),
           child: RiveAnimation.asset(
-            "assets/animations/lections/${widget.iconAnimationAsset}",
+            widget.iconAnimation,
             fit: BoxFit.contain,
             onInit: _onIconInit,
           ),
