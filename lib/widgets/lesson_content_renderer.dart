@@ -189,9 +189,9 @@ class _LessonContentRendererState extends State<LessonContentRenderer>
         );
       case ContentType.image:
         final image = item as image_content.Image;
-        final imageWidget = Image.asset(
+        final imageWidget = Image.network(
+          image.asset,
           fit: BoxFit.scaleDown,
-          "assets/images/lessons/${image.asset}",
         );
         return Container(
           margin:

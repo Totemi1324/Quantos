@@ -34,14 +34,16 @@ class UserData {
   factory UserData.defaultUser(ContentOutline outline) => UserData(
         quizAnswers: {},
         experience: Experience.beginner,
-        lectionUnlocked: Map.fromIterable(
+        lectionUnlocked: {} /*Map.fromIterable(
           outline.lectionIds,
           value: (element) => true,
-        ),
-        lessonProgress: Map.fromIterable(
+        )*/
+        ,
+        lessonProgress: {} /*Map.fromIterable(
           outline.lessonIds,
           value: (_) => 0.0,
-        ),
+        )*/
+        ,
         activityLog: {},
       );
 }

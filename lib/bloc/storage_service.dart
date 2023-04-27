@@ -15,9 +15,13 @@ class StorageService extends Cubit<DataReader> {
 
   static const contentPath = "content";
   static const animationAssetsPath = "animations/assets";
+  static const imagesPath = "images";
+  String lessonContentPath(Locale locale) =>
+      "content/${locale.languageCode}/lessons";
 
   static const downloadsLocalizationFile = "content.json";
   static const lessonsLocalizationFile = "localization.json";
+  String lessonFile(String lessonId) => "$lessonId.json";
 
   static const baseFile = "base.json";
 
@@ -74,10 +78,29 @@ class StorageService extends Cubit<DataReader> {
     emit(DataReader(data: string));
   }
 
+  Future getLessonContent(Locale locale, String lessonId) async {
+    emit(const DataReader());
+
+    final path =
+        "$lessonsPath/${lessonContentPath(locale)}/${lessonFile(lessonId)}";
+    final string = await _getString(path);
+
+    emit(DataReader(data: string));
+  }
+
   Future getDownloadLinkForLectionAnimation(String name) async {
     emit(const DataReader());
 
     final path = "$lessonsPath/$animationAssetsPath/$name";
+    final link = await _getLink(path);
+
+    emit(DataReader(data: link ?? ""));
+  }
+
+  Future getDownloadLinkForLessonImage(String name) async {
+    emit(const DataReader());
+
+    final path = "$lessonsPath/$imagesPath/$name";
     final link = await _getLink(path);
 
     emit(DataReader(data: link ?? ""));

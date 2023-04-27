@@ -2,14 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/material.dart' show Locale;
-import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:crypto/crypto.dart';
 
 import 'content_parser.dart';
+import './storage_service.dart';
 
 import '../models/content/lesson_content.dart';
 import '../models/content/paragraph.dart';
+import '../models/content/image.dart';
 import '../models/exceptions.dart';
 
 class LessonContentService extends Cubit<LessonContent> {
@@ -22,24 +23,23 @@ class LessonContentService extends Cubit<LessonContent> {
 
   LessonContentService() : super(LessonContent.empty());
 
-  Locale? previousLocale;
+  String? previousHash;
 
-  Future loadByIdFromLocale(
-      String lessonId, Locale locale, AppLocalizations localizations) async {
-    if (lessonId == state.lessonId &&
-        previousLocale != null &&
-        previousLocale == locale) {
-      return;
+  bool loadByIdFromLocale(
+      String lessonId, String jsonString, AppLocalizations localizations) {
+    final bytes = utf8.encode(jsonString);
+    final hash = sha1.convert(bytes).toString();
+
+    if (previousHash != null && hash == previousHash) {
+      return false;
     }
 
     state.lessonId = lessonId;
-    previousLocale = locale;
+    previousHash = hash;
 
     try {
-      final jsonString = await rootBundle
-          .loadString("lessons/${locale.languageCode}/lesson-$lessonId.json");
-
       state.clearContentData();
+
       _parse(jsonString);
     } on ParseErrorException catch (exception) {
       state.clearContentData();
@@ -66,6 +66,19 @@ class LessonContentService extends Cubit<LessonContent> {
     }
 
     emit(state);
+    return true;
+  }
+
+  Future getDownloadLinks(StorageService storageService) async {
+    final images = <Image>[];
+
+    for (var page in state.content) {
+      images.addAll(page.whereType<Image>());
+    }
+
+    for (var image in images) {
+      await image.getDownloadLinks(storageService);
+    }
   }
 
   void _parse(String jsonString) {

@@ -62,12 +62,22 @@ Future<dynamic> getLessonLoadingRoutine(
   return Future(
     () async {
       final lessonContentService = buildContext.read<LessonContentService>();
+      final storageService = buildContext.read<StorageService>();
+      final localizationService = buildContext.read<LocalizationService>();
+      final appLocalizations = AppLocalizations.of(buildContext)!;
 
-      await lessonContentService.loadByIdFromLocale(
-        lessonId,
-        buildContext.read<LocalizationService>().state,
-        AppLocalizations.of(buildContext)!,
-      );
+      await storageService.getLessonContent(
+          localizationService.state, lessonId);
+      if (storageService.state.hasData) {
+        final isNew = lessonContentService.loadByIdFromLocale(
+          lessonId,
+          storageService.state.content,
+          appLocalizations,
+        );
+        if (isNew) {
+          await lessonContentService.getDownloadLinks(storageService);
+        }
+      }
     },
   );
 }

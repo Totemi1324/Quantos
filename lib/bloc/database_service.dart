@@ -21,9 +21,10 @@ class DatabaseService extends Cubit<UserData> {
     _outlineInstance = outline;
   }
 
-  double get cumulativeProgress =>
-      state.lessonProgress.values.reduce((value, number) => value + number) /
-      state.lessonProgress.values.length;
+  double get cumulativeProgress => state.lessonProgress.isEmpty
+      ? 0
+      : state.lessonProgress.values.reduce((value, number) => value + number) /
+          state.lessonProgress.values.length;
 
   // State management
   void fullReset() => emit(UserData.defaultUser(_outlineInstance));
