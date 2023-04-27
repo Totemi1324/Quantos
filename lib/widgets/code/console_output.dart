@@ -190,10 +190,13 @@ class _ConsoleOutputState extends State<ConsoleOutput> {
                   context,
                   consoleState.status,
                 ),
-                if (consoleState.status == ConsoleStatus.success)
+                if (consoleState.status == ConsoleStatus.success ||
+                    consoleState.status == ConsoleStatus.failure)
                   const SizedBox(
                     height: 15,
                   ),
+                if (consoleState.status == ConsoleStatus.failure)
+                  Text(consoleState.errorMessage ?? ""),
                 if (consoleState.status == ConsoleStatus.success)
                   RawScrollbar(
                     controller: scrollController,

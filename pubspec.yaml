@@ -20,7 +20,7 @@ dependencies:
   http: ^0.13.5
   flutter_bloc: ^8.1.1
   rive: ^0.10.4
-  qubo_embedder: ^0.1.0
+  qubo_embedder: ^0.2.1
   universal_platform: ^1.0.0+1
   sdk_int: ^0.0.1
   connectivity_plus: ^3.0.4

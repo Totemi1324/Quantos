@@ -9,6 +9,7 @@ import '../../bloc/coding_service.dart';
 
 import '../../data/hamiltonian_sizes.dart';
 import '../../models/console_content.dart';
+import './token_input.dart';
 import '../part_separator.dart';
 import '../containers/panel_card.dart';
 import '../ui/adaptive_dropdown.dart';
@@ -16,10 +17,12 @@ import '../ui/adaptive_button.dart';
 
 class HamiltonianInput extends StatefulWidget {
   final CodingMode Function() getCurrentMode;
+  final GlobalKey<TokenInputState> tokenInputKey;
   final VoidCallback onSubmit;
 
   const HamiltonianInput({
     required this.getCurrentMode,
+    required this.tokenInputKey,
     required this.onSubmit,
     super.key,
   });
@@ -133,7 +136,10 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
         _qubo = Qubo(size: _selectedSize);
         break;
       case CodingMode.annealer:
-        buildContext.read<CodingService>().add(GiveError());
+        widget.tokenInputKey.currentState!.saveToken();
+        buildContext
+            .read<CodingService>()
+            .add(SendAdvantage(_qubo, AppLocalizations.of(buildContext)!));
         _qubo = Qubo(size: _selectedSize);
         break;
     }
@@ -142,6 +148,10 @@ class _HamiltonianInputState extends State<HamiltonianInput> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.getCurrentMode() == CodingMode.annealer) {
+      _sizes = _sizes.where((item) => item.value <= 4).toList();
+    }
+
     return BlocListener<CodingService, ConsoleContent>(
       listener: (context, state) {
         if (state.status == ConsoleStatus.loading) {

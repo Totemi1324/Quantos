@@ -447,9 +447,25 @@
     "@codingConsoleOutputMessageSuccess": {
         "description": "Coding console output message for success status"
     },
-    "codingConsoleOutputMessageFailure": "Something went wrong - unable to fetch response. If you're using DWave Advantage mode, check your internet connection, or try again.",
+    "codingConsoleOutputMessageFailure": "Something went wrong - unable to fetch response. Error message:",
     "@codingConsoleOutputMessageFailure": {
         "description": "Coding console output message for failure status"
+    },
+    "codingConsoleErrorMessageTokenIsEmpty": "Your API token is empty. Please provide a valid token from your DWave Leap account to use the DWave Advantage mode.",
+    "@codingConsoleErrorMessageTokenIsEmpty": {
+        "description": "Coding console message when token is empty"
+    },
+    "codingConsoleErrorMessageTokenIsIncorrect": "Authorization failed. The API token you entered is incorrect, nonexistent or does not have the necessary rights. Please check for typos or enter another token.",
+    "@codingConsoleErrorMessageTokenIsIncorrect": {
+        "description": "Coding console message when token is incorrect"
+    },
+    "codingConsoleErrorMessageNoConnection": "No internet connection.",
+    "@codingConsoleErrorMessageNoConnection": {
+        "description": "Coding console message when no connection"
+    },
+    "codingConsoleErrorMessageNoEmbeddingFound": "An embedding for the submitted problem could not be found. Please check the formal correctness of your Hamiltonian and try again.",
+    "@codingConsoleErrorMessageNoEmbeddingFound": {
+        "description": "Coding console message when no embedding found"
     },
     "codingTableEnergyLabel": "Energy",
     "@codingTableEnergyLabel": {

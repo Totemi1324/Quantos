@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../bloc/coding_service.dart';
 
 import '../containers/panel_card.dart';
 import '../part_separator.dart';
 import '../ui/adaptive_form_field.dart';
 
-class TokenInput extends StatelessWidget {
+class TokenInput extends StatefulWidget {
   const TokenInput({super.key});
+
+  @override
+  State<TokenInput> createState() => TokenInputState();
+}
+
+class TokenInputState extends State<TokenInput> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +36,15 @@ class TokenInput extends StatelessWidget {
                 AppLocalizations.of(context)!.codingTokenFormFieldTitle,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
-              AdaptiveFormField.password(
-                AppLocalizations.of(context)!.codingTokenFormField,
-                isFinalField: true,
-                onSaved: (_) {}, //TODO
+              Form(
+                key: _formKey,
+                child: AdaptiveFormField.password(
+                  AppLocalizations.of(context)!.codingTokenFormField,
+                  isFinalField: true,
+                  onSaved: (currentValue) => context
+                      .read<CodingService>()
+                      .add(UpdateToken(currentValue)),
+                ),
               ),
             ],
           ),
@@ -37,4 +52,6 @@ class TokenInput extends StatelessWidget {
       ],
     );
   }
+
+  void saveToken() => _formKey.currentState?.save();
 }

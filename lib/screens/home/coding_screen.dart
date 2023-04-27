@@ -28,6 +28,7 @@ class CodingScreen extends StatefulWidget {
 
 class _CodingScreenState extends State<CodingScreen> {
   final _outputConsoleKey = GlobalKey();
+  final GlobalKey<TokenInputState> _tokenInputKey = GlobalKey();
 
   CodingMode _selectedMode = CodingMode.simulator;
 
@@ -134,9 +135,12 @@ class _CodingScreenState extends State<CodingScreen> {
                         ),
                       ),
                       if (_selectedMode == CodingMode.annealer)
-                        const TokenInput(),
+                        TokenInput(
+                          key: _tokenInputKey,
+                        ),
                       HamiltonianInput(
                         getCurrentMode: () => _selectedMode,
+                        tokenInputKey: _tokenInputKey,
                         onSubmit: () {
                           if (_outputConsoleKey.currentContext != null) {
                             Scrollable.ensureVisible(

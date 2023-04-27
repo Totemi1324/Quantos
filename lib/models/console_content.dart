@@ -10,8 +10,9 @@ enum ConsoleStatus {
 class ConsoleContent {
   final ConsoleStatus status;
   final SolutionRecord? record;
+  final String? errorMessage;
 
-  const ConsoleContent(this.status, {this.record});
+  const ConsoleContent(this.status, {this.record, this.errorMessage});
 
   factory ConsoleContent.initial() => const ConsoleContent(ConsoleStatus.idle);
 }
