@@ -48,6 +48,8 @@ Widget _buildLectionItem(BuildContext buildContext, String lectionId) {
 }
 
 class _LectionListState extends State<LectionList> {
+  String? prevLectionTitle;
+
   @override
   Widget build(BuildContext context) {
     final lections = context.read<ContentOutlineService>().lections;
@@ -55,7 +57,14 @@ class _LectionListState extends State<LectionList> {
     return MultiBlocListener(
       listeners: [
         BlocListener<ContentOutlineService, ContentOutline>(
-          listener: (context, state) => setState(() {}),
+          listener: (context, state) {
+            var firstLectionTitle = state.getLectionTitle(lections[0].id);
+            if (firstLectionTitle.isNotEmpty &&
+                (prevLectionTitle == null ||
+                    prevLectionTitle != firstLectionTitle)) {
+              setState(() {});
+            }
+          },
         ),
         BlocListener<DatabaseService, UserData>(
           listener: (context, state) => setState(() {}),
@@ -73,20 +82,3 @@ class _LectionListState extends State<LectionList> {
     );
   }
 }
-
-/*GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: lections.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount:
-              MediaQuery.of(context).orientation == Orientation.landscape
-                  ? 2
-                  : 1,
-          childAspectRatio: 16 / 5,
-        ),
-        itemBuilder: (buildContext, index) {
-          final lectionId = lections[index].id;
-          return _buildLectionItem(context, lectionId);
-        },
-      ),*/
