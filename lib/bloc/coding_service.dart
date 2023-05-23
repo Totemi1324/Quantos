@@ -115,8 +115,4 @@ class CodingService extends Bloc<CodingEvent, ConsoleContent> {
       (event, emit) => _tokenEntered = null,
     );
   }
-
-  void saveTokenInput(String? input) {
-    _tokenEntered = input;
-  }
 }

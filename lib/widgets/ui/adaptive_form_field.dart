@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../../bloc/coding_service.dart';
 
 class AdaptiveFormField extends StatefulWidget {
   final String labelText;
@@ -17,7 +14,8 @@ class AdaptiveFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final AutovalidateMode? autoValidateMode;
   final Function(String?) onSaved;
-  final String? keyword;
+  final Function(String?)? onChanged;
+  final VoidCallback? onTap;
 
   const AdaptiveFormField(
     this.labelText, {
@@ -25,6 +23,8 @@ class AdaptiveFormField extends StatefulWidget {
     required this.enableSuggestions,
     required this.isFinalField,
     required this.onSaved,
+    this.onChanged,
+    this.onTap,
     this.thisField,
     this.nextField,
     this.prefixIcon,
@@ -32,7 +32,6 @@ class AdaptiveFormField extends StatefulWidget {
     this.multiline = false,
     this.validator,
     this.autoValidateMode,
-    this.keyword,
     super.key,
   });
 
@@ -67,7 +66,8 @@ class AdaptiveFormField extends StatefulWidget {
           FocusNode? nextField,
           String? Function(String?)? validator,
           AutovalidateMode? autoValidateMode,
-          String? keyword}) =>
+          Function(String?)? onChanged,
+          VoidCallback? onTap}) =>
       AdaptiveFormField(
         labelText,
         autocorrect: false,
@@ -80,7 +80,8 @@ class AdaptiveFormField extends StatefulWidget {
         passwordField: true,
         validator: validator,
         autoValidateMode: autoValidateMode,
-        keyword: keyword ?? "",
+        onChanged: onChanged,
+        onTap: onTap,
       );
 
   factory AdaptiveFormField.multiline(String labelText,
@@ -126,11 +127,8 @@ class _AdaptiveFormFieldState extends State<AdaptiveFormField> {
       onFieldSubmitted: !widget.isFinalField
           ? (_) => FocusScope.of(context).requestFocus(widget.nextField)
           : null,
-      onChanged: widget.keyword != null && widget.keyword == "Token"
-          ? (value) {
-              context.read<CodingService>().saveTokenInput(value);
-            }
-          : null,
+      onChanged: widget.onChanged,
+      onTap: widget.onTap,
       onSaved: widget.onSaved,
       validator: widget.validator,
       autovalidateMode: widget.autoValidateMode ?? AutovalidateMode.disabled,

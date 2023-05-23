@@ -7,7 +7,6 @@ import '../../bloc/database_service.dart';
 import '../../bloc/profile_quiz_service.dart';
 import '../../bloc/localization_service.dart';
 
-import '../../screens/profile/profile_name_screen.dart';
 import '../ui/adaptive_button.dart';
 import '../authentication_error_popup.dart';
 import '../no_intnernet_popup.dart';
@@ -17,11 +16,15 @@ class SignupSubmit extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final Stream<String> emailStream;
   final Stream<String> passwordStream;
+  final VoidCallback onSuccess;
+  final VoidCallback onFail;
 
   const SignupSubmit(
     this.formKey, {
     required this.emailStream,
     required this.passwordStream,
+    required this.onSuccess,
+    required this.onFail,
     super.key,
   });
 
@@ -52,6 +55,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
       setState(() {
         _isLoading = false;
       });
+      widget.onFail();
       return;
     }
 
@@ -76,6 +80,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
       setState(() {
         _isLoading = false;
       });
+      widget.onFail;
       return;
     } on NoInternetException {
       showDialog(
@@ -86,6 +91,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
       setState(() {
         _isLoading = false;
       });
+      widget.onFail;
       return;
     } catch (error) {
       showDialog(
@@ -97,6 +103,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
       setState(() {
         _isLoading = false;
       });
+      widget.onFail;
       return;
     }
 
@@ -111,8 +118,7 @@ class _SignupSubmitState extends State<SignupSubmit> {
     });
 
     if (!mounted) return;
-    Navigator.of(buildContext)
-        .pushNamedAndRemoveUntil(ProfileNameScreen.routeName, (_) => false);
+    widget.onSuccess;
   }
 
   @override

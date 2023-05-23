@@ -7,11 +7,15 @@ class SignUpForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
   final void Function(String) onEmailSave;
   final void Function(String) onPasswordSave;
+  final Function(String?) onPasswordChange;
+  final VoidCallback onPasswordTap;
 
   const SignUpForm(
     this.formKey, {
     required this.onEmailSave,
     required this.onPasswordSave,
+    required this.onPasswordChange,
+    required this.onPasswordTap,
     super.key,
   });
 
@@ -82,20 +86,15 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
                   widget.onPasswordSave(newValue);
                 }
               },
+              onChanged: widget.onPasswordChange,
+              onTap: widget.onPasswordTap,
               validator: (value) {
                 _passwordCache = value;
                 if (value == null || value == "") {
-                  return AppLocalizations.of(context)
-                          ?.validationFailPasswordMissing ??
-                      "";
+                  return "";
                 }
-                return passwordFormat.hasMatch(value)
-                    ? null
-                    : (AppLocalizations.of(context)
-                            ?.validationFailPasswordNotSufficient ??
-                        "");
+                return passwordFormat.hasMatch(value) ? null : "";
               },
-              autoValidateMode: AutovalidateMode.onUserInteraction,
             ),
             AdaptiveFormField.password(
               AppLocalizations.of(context)!.authFormConfirmPassword,
