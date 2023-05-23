@@ -54,6 +54,7 @@ class _QuizRendererState extends State<QuizRenderer>
   @override
   void dispose() {
     _fadeController.dispose();
+    _formController.close();
     super.dispose();
   }
 
