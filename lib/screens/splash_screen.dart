@@ -31,6 +31,12 @@ class _SplashScreenState extends State<SplashScreen> {
     _timer = _onSplashStart();
   }
 
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   Timer _onSplashStart() {
     return Timer(const Duration(seconds: 12), () => _toNextPage(context));
   }

@@ -64,7 +64,7 @@ class RouteRegister {
         );
       case AuthSignUpScreen.routeName:
         return PageTransition(
-          child: const AuthSignUpScreen(),
+          child: AuthSignUpScreen(),
           type: PageTransitionType.rightToLeft,
         );
       case AuthLogInScreen.routeName:

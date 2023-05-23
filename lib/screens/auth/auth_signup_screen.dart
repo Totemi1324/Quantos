@@ -1,13 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quantos/widgets/forms/signup_submit.dart';
 
 import '../base/flat.dart';
 import '../../widgets/forms/signup_form.dart';
 
 class AuthSignUpScreen extends StatelessWidget {
   static const routeName = "/authenticate/sign-up";
+  final formKey = GlobalKey<FormState>();
+  final emailController = StreamController<String>();
+  final passwordController = StreamController<String>();
 
-  const AuthSignUpScreen({super.key});
+  AuthSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,16 @@ class AuthSignUpScreen extends StatelessWidget {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(vertical: 50),
-                    child: const SignUpForm(),
+                    child: SignUpForm(
+                      formKey,
+                      onEmailSave: (newEmail) => emailController.add(newEmail),
+                      onPasswordSave: (newPassword) => passwordController.add(newPassword),
+                    ),
+                  ),
+                  SignupSubmit(
+                    formKey,
+                    emailStream: emailController.stream,
+                    passwordStream: passwordController.stream,
                   ),
                 ],
               ),
