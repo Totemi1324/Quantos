@@ -88,6 +88,7 @@ flutter:
     - assets/animations/quantos_logo_intro.riv
     - assets/animations/quantos_logo_idle.riv
     - assets/animations/circular_progress_indicator.riv
+    - assets/animations/password_assistant.riv
     - assets/animations/download_button.riv
 
     - assets/animations/assessment_quiz.riv
