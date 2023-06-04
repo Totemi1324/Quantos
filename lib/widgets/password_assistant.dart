@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+/*
+- Länge >= 8: +1 Punkt
+- Länge >= 10: +1 Punkt
+- Länge >= 12: +1 Punkt
+- Hat Buchstabe: +1 Punkt
+- Hat Zahl: +1 Punkt
+- Hat Sonderzeichen: +1 Punkt
+- Groß- und Kleinbuchstaben: +1 Punkt
+- Hat 3+ Sonderzeichen: +1 Punkt
+- Min. 1 Großschreibung, die nicht am Anfang ist: +1 Punkt
+- Min. 1 Zahl, die nicht am Ende ist: +1 Punkt
+
+SCHWACH: 0 - 5 | MITTEL: 6 - 8 | STARK: 9 - 10
+*/
+
 enum SecurityLevel {
   weak,
   medium,
