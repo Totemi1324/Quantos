@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../ui/adaptive_form_field.dart';
+import '../password_assistant.dart';
 
 class SignUpForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -27,6 +30,7 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
   static final RegExp emailFormat = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
   static final RegExp passwordFormat = RegExp(
       r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{10,}$");
+  final _passwordController = StreamController<String>();
 
   final _passwordFocusNode = FocusNode();
   final _confirmPasswordFocusNode = FocusNode();
@@ -37,6 +41,7 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
   void dispose() {
     _passwordFocusNode.dispose();
     _confirmPasswordFocusNode.dispose();
+    _passwordController.close();
     super.dispose();
   }
 
@@ -76,6 +81,7 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
               },
               autoValidateMode: AutovalidateMode.onUserInteraction,
             ),
+            PasswordAssistant(_passwordController.stream),
             AdaptiveFormField.password(
               AppLocalizations.of(context)!.authFormPassword,
               isFinalField: false,
@@ -86,7 +92,10 @@ class _SignUpFormState extends State<SignUpForm> with TickerProviderStateMixin {
                   widget.onPasswordSave(newValue);
                 }
               },
-              onChanged: widget.onPasswordChange,
+              onChanged: (newValue) {
+                widget.onPasswordChange(newValue);
+                _passwordController.add(newValue ?? "");
+              },
               onTap: widget.onPasswordTap,
               validator: (value) {
                 _passwordCache = value;

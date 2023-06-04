@@ -5,8 +5,12 @@ class AdaptiveProgressBar extends StatelessWidget {
   final bool withIcon;
   final bool withText;
 
-  const AdaptiveProgressBar(this.progressPercent,
-      {required this.withIcon, required this.withText, super.key});
+  const AdaptiveProgressBar(
+    this.progressPercent, {
+    required this.withIcon,
+    required this.withText,
+    super.key,
+  });
 
   factory AdaptiveProgressBar.icon(double progressPercent) =>
       AdaptiveProgressBar(
@@ -44,10 +48,11 @@ class AdaptiveProgressBar extends StatelessWidget {
                 FractionallySizedBox(
                   widthFactor: progressPercent,
                   child: Container(
-                      decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onErrorContainer,
-                    borderRadius: BorderRadius.circular(10),
-                  )),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onErrorContainer,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                 ),
                 Container(
                   decoration: BoxDecoration(

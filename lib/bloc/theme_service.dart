@@ -15,6 +15,7 @@ class ThemeService extends Cubit<ThemeData> {
       background: Color(0xFF1B2033),
       brightness: Brightness.dark,
       error: Color(0xFFBA4360),
+      errorContainer: Color(0xFFB59C35),
       onErrorContainer: Color(0xFF43BA73),
       onBackground: Colors.white,
       onError: Colors.white,
